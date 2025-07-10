@@ -20,6 +20,9 @@ def main():
     response = llm.invoke("What is the meaning of life?")
     print(response)
 
+    # TODO: Implement a langgraph chain
+    # https://medium.com/@699580621meliga/build-your-first-langraph-chain-with-openrouter-mistral-7b-c7b47fdd4ced
+
 if __name__ == "__main__":
     main()
 
