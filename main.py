@@ -2,6 +2,12 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
+# Check out the models here: https://openrouter.ai/models
+# https://openrouter.ai/models
+# Check out my usage here: https://openrouter.ai/activity
+# Models I've used
+# openai/gpt-4o
+
 def get_completion(client, prompt, model="openai/gpt-4o"):
     messages = [
         {
