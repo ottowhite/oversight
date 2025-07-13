@@ -31,10 +31,14 @@ def main():
 	# TODO: Add AI conferences (NeurIPS, ICML, ICLR, etc.)
 	# TODO: Run some kind of cronjob that processes data feeds and alerts me of new relevant information, storing any information that was relevant
 	# TODO: Add additional data sources (e.g. arxiv, email feeds, blogs)
+	# TODO: Experiment with feeding whole papers in
+	# TODO: See if I can do a multi-keyword search (an AND-based cosine similarity)
+	# TODO: Set up agents that help me to scrape this data
 
 	search_engine = ConferenceSearchEngine(
 		embedded_docs_path="data/docs/gemini_embedded_docs.json",
 		embedding_model="models/embedding-001",
+		# filter=lambda metadata: "MLSYS" in metadata["conference"] and int(metadata["year"]) == 2024,
 		# filter=lambda metadata: int(metadata["year"]) > 2023,
 		# filter=lambda metadata: "OSDI" in metadata["conference"],
 		filter=lambda _: True,
