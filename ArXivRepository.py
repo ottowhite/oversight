@@ -2,8 +2,10 @@ import xmltodict
 from datetime import datetime, timedelta
 from sickle import Sickle
 import os
+import time
 import json
 from collections import OrderedDict
+from EmbeddingModel import EmbeddingModel
 
 class ArXivRepository:
     def __init__(self, xml_data_path, json_ai_papers_path):
@@ -55,18 +57,64 @@ class ArXivRepository:
         print(f"Loaded {len(self.papers_xml)} papers from {self.xml_data_path}")
     
     def load_from_json(self):
+        human_readable_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        print(f"Loading {self.json_ai_papers_path} at {human_readable_time}...")
+        time_start = time.time()
         with open(self.json_ai_papers_path, "rt", encoding="utf-8") as f:
             self.papers_json = json.load(f)
-
-        print(f"Loaded {len(self.papers_json)} papers from {self.json_ai_papers_path}")
+        time_end = time.time()
+        time_diff = time_end - time_start
+        print(f"Loaded {len(self.papers_json)} papers from {self.json_ai_papers_path} in {time_diff:.2f} seconds.")
 
         return self.papers_json
-    
+
+    def embed(self, model_name, max_papers=None):
+        assert self.papers_json is not None, "You must load the JSON file first"
+
+        # 1. Load the embedding model
+        embedding_model = EmbeddingModel(model_name)
+
+        # 2. Get the papers to embed
+        papers_to_embed = []
+        papers_to_embed_ixs = []
+        for i, paper in enumerate(self.papers_json):
+            # If the paper has never been embedded, or hasn't been embedded with this model
+            if ("embeddings" not in paper["metadata"] 
+                or model_name not in paper["metadata"]["embeddings"]):
+                papers_to_embed.append(paper)
+                papers_to_embed_ixs.append(i)
+            
+            if max_papers is not None and len(papers_to_embed) == max_papers:
+                break
+        
+        print(f"Embedding {len(papers_to_embed)} papers with {model_name}.")
+        print(f"Embedding ixs: {papers_to_embed_ixs[:10]}...")
+        
+        # 3. Get the abstracts to embed
+        abstract_to_embed = [paper["metadata"]["arXivRaw"]["abstract"] for paper in papers_to_embed]
+        
+        # 4. Embed the abstracts
+        abstract_embeddings_iterator = embedding_model.embed_documents_rate_limited(abstract_to_embed)
+
+        # 5. Put the embeddings in the papers
+        save_interval = 10_000
+        for i, (paper, embedding) in enumerate(zip(papers_to_embed, abstract_embeddings_iterator)):
+            if "embeddings" not in paper["metadata"]:
+                paper["metadata"]["embeddings"] = {}
+
+            paper["metadata"]["embeddings"][model_name] = embedding
+
+            if (i + 1) % save_interval == 0 and i != 0:
+                print(f"{i + 1} new embeddings retrieved.")
+                self._save_to_json_naive(self.papers_json, self.json_ai_papers_path)
+
+        self._save_to_json_naive(self.papers_json, self.json_ai_papers_path)
+
     def save_to_json(self, json_file_path):
         # 1. filter the papers loaded from XML by latest revision
         self._filter_by_latest_revision()
 
-        print(f"Saving {len(self.papers_xml)} papers to {json_file_path}")
+        print(f"Saving papers to {json_file_path}")
         assert self.papers_xml is not None, "You must load the XML file first"
 
         if not os.path.exists(json_file_path):
@@ -86,7 +134,7 @@ class ArXivRepository:
 
             assert id in self.xml_stored_revisions
 
-			# From the XML file, we have the latest revision and version of each paper
+            # From the XML file, we have the latest revision and version of each paper
             newest_paper_from_xml, newest_revision_date_from_xml = self.xml_stored_revisions[id]
             if newest_revision_date_from_xml > paper_date_from_json:
                 updated_json_papers.append(newest_paper_from_xml)
@@ -100,7 +148,7 @@ class ArXivRepository:
         for paper in self.papers_xml:
             id = paper["metadata"]["arXivRaw"]["id"]
 
-			# Stored revisions is of the XML, rather than the JSON
+            # Stored revisions is of the XML, rather than the JSON
             if id not in json_stored_revisions:
                 new_papers.append(paper)
                 json_stored_revisions.add(id)
@@ -111,11 +159,18 @@ class ArXivRepository:
 
         # 4. Combine the stored, updated json papers with the new papers and save
         stored_json_papers.extend(new_papers)
-        with open(json_file_path, "wt", encoding="utf-8") as f:
-            json.dump(stored_json_papers, f, indent=4)
-        
+        self._save_to_json_naive(stored_json_papers, json_file_path)
         self.papers_json = stored_json_papers
-
+    
+    def _save_to_json_naive(self, papers, json_file_path):
+        time_start = time.time()
+        print(f"Saving {len(papers)} papers to {json_file_path}...")
+        with open(json_file_path, "wt", encoding="utf-8") as f:
+            json.dump(papers, f, indent=4)
+            # json.dump(papers, f)
+        time_end = time.time()
+        time_diff = time_end - time_start
+        print(f"Saved {len(papers)} papers to {json_file_path} in {time_diff:.2f} seconds.")
     
     def filter_by_categories(self, categories):
         filtered_papers = []
@@ -126,6 +181,27 @@ class ArXivRepository:
 
         print(f"Filtered to {len(filtered_papers)} papers that appear in {categories}.")
         self.papers_xml = filtered_papers
+    
+    def print_total_tokens_approx(self):
+        assert self.papers_json is not None, "You must load the JSON file first"
+
+        max_words = 0
+        total_words = 0
+        for paper in self.papers_json:
+            abstract = paper["metadata"]["arXivRaw"]["abstract"]
+            num_words = len(abstract.split())
+
+            total_words += num_words
+            max_words = max(max_words, num_words)
+    
+        words_per_token = 0.75
+        total_words_millions = total_words / 1000000
+        total_tokens_millions = total_words / words_per_token / 1000000
+        max_tokens = max_words / words_per_token
+        print(f"Total words: {total_words_millions:.2f} million")
+        print(f"Total tokens: {total_tokens_millions:.2f} million")
+        print(f"Max words: {max_words}")
+        print(f"Max tokens: {max_tokens}")
     
     def _filter_by_latest_revision(self):
         stored_revisions = OrderedDict()
@@ -232,19 +308,6 @@ if __name__ == "__main__":
         "data/arxiv/arxiv_ai_papers.json")
 
     # repo.synchronise_ai_papers()
-    papers = repo.load_from_json()
-
-	# 80M tokens
-    total_words = 0
-    for paper in papers:
-        abstract = paper["metadata"]["arXivRaw"]["abstract"]
-        num_words = len(abstract.split())
-
-        total_words += num_words
-    
-    words_per_token = 0.75
-    total_words_millions = total_words / 1000000
-    total_tokens_millions = total_words / words_per_token / 1000000
-    print(f"Total words: {total_words_millions:.2f} million")
-    print(f"Total tokens: {total_tokens_millions:.2f} million")
-
+    repo.load_from_json()
+    # repo.print_total_tokens_approx()
+    repo.embed("models/gemini-embedding-001")
