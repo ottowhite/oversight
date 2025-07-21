@@ -33,7 +33,7 @@ class EmbeddingModel:
             self.max_requests_per_minute = floor(100_000 * 0.75) # 75% of the max requests per minute
             # Takes around 25s to serve 1000 requests, so that's around 2000 rpm (way, way below the number that 100,000 threshold)
             # So don't worry about sleeping, just go 1000 at a time
-            self.batch_size = 1000 
+            self.batch_size = 500
 
             self.inter_batch_sleep_time = 60
         else:

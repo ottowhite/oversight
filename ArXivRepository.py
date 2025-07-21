@@ -8,7 +8,7 @@ from collections import OrderedDict
 from EmbeddingModel import EmbeddingModel
 
 class ArXivRepository:
-    def __init__(self, xml_data_path, bson_ai_papers_path):
+    def __init__(self, xml_data_path, bson_ai_papers_path, embedding_model_name):
         self.xml_data_path = xml_data_path
         self.bson_ai_papers_path = bson_ai_papers_path
         self.date_format = "%Y-%m-%d"
@@ -18,13 +18,20 @@ class ArXivRepository:
         self.papers_xml = None
         self.papers_bson = None
         self.xml_stored_revisions = None
+        self.embedding_model_name = embedding_model_name
     
     def synchronise_ai_papers(self):
         # The XML can have multiple revisions of the same paper
         self.synchronise_xml()
 
-        # The bson file only stores the latest revision of each paper
+        # The bson file only stores the latest revision of each paper, also loads bson papers
         self.xml_to_ai_bson()
+
+        # Unload this from memory as it is very large
+        del self.papers_xml
+
+        # Embed the papers
+        self.embed()
     
     def xml_to_ai_bson(self):
         print(f"Converting and filtering the contents of {self.xml_data_path} to {self.bson_ai_papers_path}...")
@@ -71,11 +78,11 @@ class ArXivRepository:
 
         return self.papers_bson
 
-    def embed(self, model_name, max_papers=None):
+    def embed(self, max_papers=None):
         assert self.papers_bson is not None, "You must load the bson file first"
 
         # 1. Load the embedding model
-        embedding_model = EmbeddingModel(model_name)
+        embedding_model = EmbeddingModel(self.embedding_model_name)
 
         # 2. Get the papers to embed
         papers_to_embed = []
@@ -83,14 +90,14 @@ class ArXivRepository:
         for i, paper in enumerate(self.papers_bson):
             # If the paper has never been embedded, or hasn't been embedded with this model
             if ("embeddings" not in paper["metadata"] 
-                or model_name not in paper["metadata"]["embeddings"]):
+                or self.embedding_model_name not in paper["metadata"]["embeddings"]):
                 papers_to_embed.append(paper)
                 papers_to_embed_ixs.append(i)
             
             if max_papers is not None and len(papers_to_embed) == max_papers:
                 break
         
-        print(f"Embedding {len(papers_to_embed)} papers with {model_name}.")
+        print(f"Embedding {len(papers_to_embed)} papers with {self.embedding_model_name}.")
         print(f"Embedding ixs: {papers_to_embed_ixs[:10]}...")
         
         # 3. Get the abstracts to embed
@@ -100,12 +107,12 @@ class ArXivRepository:
         abstract_embeddings_iterator = embedding_model.embed_documents_rate_limited(abstract_to_embed)
 
         # 5. Put the embeddings in the papers
-        save_interval = 10_000
+        save_interval = 3000
         for i, (paper, embedding) in enumerate(zip(papers_to_embed, abstract_embeddings_iterator)):
             if "embeddings" not in paper["metadata"]:
                 paper["metadata"]["embeddings"] = {}
 
-            paper["metadata"]["embeddings"][model_name] = embedding
+            paper["metadata"]["embeddings"][self.embedding_model_name] = embedding
 
             if (i + 1) % save_interval == 0 and i != 0:
                 print(f"{i + 1} new embeddings retrieved.")
@@ -124,7 +131,7 @@ class ArXivRepository:
         # 1. filter the papers loaded from XML by latest revision
         self._filter_by_latest_revision()
 
-        print(f"Saving papers to {bson_file_path}")
+        print(f"Saving most up to date papers to {bson_file_path}")
         assert self.papers_xml is not None, "You must load the XML file first"
 
         if not os.path.exists(bson_file_path):
@@ -314,9 +321,9 @@ if __name__ == "__main__":
     # repo = ArXivRepository("data/arxiv/test_arxiv_cs_records.xml")
     repo = ArXivRepository(
         "data/arxiv/arxiv_cs_records.xml",
-        "data/arxiv/arxiv_ai_papers.bson")
+        "data/arxiv/arxiv_ai_papers.bson",
+        "models/gemini-embedding-001")
 
-    # repo.synchronise_ai_papers()
-    repo.load_from_bson()
     # repo.print_total_tokens_approx()
-    repo.embed("models/gemini-embedding-001")
+
+    repo.synchronise_ai_papers()
