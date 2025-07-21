@@ -3,31 +3,31 @@ from datetime import datetime, timedelta
 from sickle import Sickle
 import os
 import time
-import json
+import bson
 from collections import OrderedDict
 from EmbeddingModel import EmbeddingModel
 
 class ArXivRepository:
-    def __init__(self, xml_data_path, json_ai_papers_path):
+    def __init__(self, xml_data_path, bson_ai_papers_path):
         self.xml_data_path = xml_data_path
-        self.json_ai_papers_path = json_ai_papers_path
+        self.bson_ai_papers_path = bson_ai_papers_path
         self.date_format = "%Y-%m-%d"
         self.base_url = "https://oaipmh.arxiv.org/oai"       
         self.cs_set = "cs:cs"                              
         self.arxiv_metadata_type = "arXivRaw"                              
         self.papers_xml = None
-        self.papers_json = None
+        self.papers_bson = None
         self.xml_stored_revisions = None
     
     def synchronise_ai_papers(self):
         # The XML can have multiple revisions of the same paper
         self.synchronise_xml()
 
-        # The JSON file only stores the latest revision of each paper
-        self.xml_to_ai_json()
+        # The bson file only stores the latest revision of each paper
+        self.xml_to_ai_bson()
     
-    def xml_to_ai_json(self):
-        print(f"Converting and filtering the contents of {self.xml_data_path} to {self.json_ai_papers_path}...")
+    def xml_to_ai_bson(self):
+        print(f"Converting and filtering the contents of {self.xml_data_path} to {self.bson_ai_papers_path}...")
         self.load_from_xml()
         relevant_categories = [
             "cs:cs:AI",
@@ -36,7 +36,7 @@ class ArXivRepository:
             "cs:cs:MA"
         ]
         self.filter_by_categories(relevant_categories)
-        self.save_to_json(self.json_ai_papers_path)
+        self.save_to_bson(self.bson_ai_papers_path)
 
     def synchronise_xml(self):
         print(f"Synchronising the contents of {self.xml_data_path}...")
@@ -56,20 +56,23 @@ class ArXivRepository:
         self.papers_xml = self._load_papers_xml()
         print(f"Loaded {len(self.papers_xml)} papers from {self.xml_data_path}")
     
-    def load_from_json(self):
+    def load_from_bson(self):
         human_readable_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        print(f"Loading {self.json_ai_papers_path} at {human_readable_time}...")
+        print(f"Loading {self.bson_ai_papers_path} at {human_readable_time}...")
         time_start = time.time()
-        with open(self.json_ai_papers_path, "rt", encoding="utf-8") as f:
-            self.papers_json = json.load(f)
+
+        with open(self.bson_ai_papers_path, "rb") as f:
+            file_contents = f.read()
+            self.papers_bson = list(bson.decode_iter(file_contents))
+
         time_end = time.time()
         time_diff = time_end - time_start
-        print(f"Loaded {len(self.papers_json)} papers from {self.json_ai_papers_path} in {time_diff:.2f} seconds.")
+        print(f"Loaded {len(self.papers_bson)} papers from {self.bson_ai_papers_path} in {time_diff:.2f} seconds.")
 
-        return self.papers_json
+        return self.papers_bson
 
     def embed(self, model_name, max_papers=None):
-        assert self.papers_json is not None, "You must load the JSON file first"
+        assert self.papers_bson is not None, "You must load the bson file first"
 
         # 1. Load the embedding model
         embedding_model = EmbeddingModel(model_name)
@@ -77,7 +80,7 @@ class ArXivRepository:
         # 2. Get the papers to embed
         papers_to_embed = []
         papers_to_embed_ixs = []
-        for i, paper in enumerate(self.papers_json):
+        for i, paper in enumerate(self.papers_bson):
             # If the paper has never been embedded, or hasn't been embedded with this model
             if ("embeddings" not in paper["metadata"] 
                 or model_name not in paper["metadata"]["embeddings"]):
@@ -106,71 +109,77 @@ class ArXivRepository:
 
             if (i + 1) % save_interval == 0 and i != 0:
                 print(f"{i + 1} new embeddings retrieved.")
-                self._save_to_json_naive(self.papers_json, self.json_ai_papers_path)
+                self._save_to_bson_naive(self.papers_bson, self.bson_ai_papers_path)
 
-        self._save_to_json_naive(self.papers_json, self.json_ai_papers_path)
+        self._save_to_bson_naive(self.papers_bson, self.bson_ai_papers_path)
+    
+    def _load_from_bson(self, bson_file_path):
+        with open(bson_file_path, "rb") as f:
+            file_contents = f.read()
+            bson_data = bson.decode_iter(file_contents)
 
-    def save_to_json(self, json_file_path):
+        return list(bson_data)
+
+    def save_to_bson(self, bson_file_path):
         # 1. filter the papers loaded from XML by latest revision
         self._filter_by_latest_revision()
 
-        print(f"Saving papers to {json_file_path}")
+        print(f"Saving papers to {bson_file_path}")
         assert self.papers_xml is not None, "You must load the XML file first"
 
-        if not os.path.exists(json_file_path):
-            stored_json_papers = []
+        if not os.path.exists(bson_file_path):
+            stored_bson_papers = []
         else:
-            with open(json_file_path, "rt", encoding="utf-8") as f:
-                stored_json_papers = json.load(f)
+            stored_bson_papers = self._load_from_bson(bson_file_path)
         
-        # 2. Apply any updated revisions to the JSON papers to update stored_json_papers
-        json_stored_revisions = set()
-        updated_json_papers = []
-        non_updated_json_papers = []
-        for paper_from_json in stored_json_papers:
-            id = paper_from_json["metadata"]["arXivRaw"]["id"]
-            paper_date_from_json = datetime.strptime(paper_from_json["header"]["datestamp"], self.date_format)
-            json_stored_revisions.add(id)
+        # 2. Apply any updated revisions to the bson papers to update stored_bson_papers
+        bson_stored_revisions = set()
+        updated_bson_papers = []
+        non_updated_bson_papers = []
+        for paper_from_bson in stored_bson_papers:
+            id = paper_from_bson["metadata"]["arXivRaw"]["id"]
+            paper_date_from_bson = datetime.strptime(paper_from_bson["header"]["datestamp"], self.date_format)
+            bson_stored_revisions.add(id)
 
             assert id in self.xml_stored_revisions
 
             # From the XML file, we have the latest revision and version of each paper
             newest_paper_from_xml, newest_revision_date_from_xml = self.xml_stored_revisions[id]
-            if newest_revision_date_from_xml > paper_date_from_json:
-                updated_json_papers.append(newest_paper_from_xml)
+            if newest_revision_date_from_xml > paper_date_from_bson:
+                updated_bson_papers.append(newest_paper_from_xml)
             else:
-                non_updated_json_papers.append(paper_from_json)
+                non_updated_bson_papers.append(paper_from_bson)
 
-        stored_json_papers = non_updated_json_papers + updated_json_papers
+        stored_bson_papers = non_updated_bson_papers + updated_bson_papers
 
         # 3. Add completely new papers to the top of the list
         new_papers = []
         for paper in self.papers_xml:
             id = paper["metadata"]["arXivRaw"]["id"]
 
-            # Stored revisions is of the XML, rather than the JSON
-            if id not in json_stored_revisions:
+            # Stored revisions is of the XML, rather than the bson
+            if id not in bson_stored_revisions:
                 new_papers.append(paper)
-                json_stored_revisions.add(id)
+                bson_stored_revisions.add(id)
         
-        print(f"Found {len(new_papers)} new papers to add to {json_file_path}")
-        print(f"Found {len(updated_json_papers)} papers to update in {json_file_path}")
-        print(f"Adding {len(new_papers)} new papers to {json_file_path}")
+        print(f"Found {len(new_papers)} new papers to add to {bson_file_path}")
+        print(f"Found {len(updated_bson_papers)} papers to update in {bson_file_path}")
+        print(f"Adding {len(new_papers)} new papers to {bson_file_path}")
 
-        # 4. Combine the stored, updated json papers with the new papers and save
-        stored_json_papers.extend(new_papers)
-        self._save_to_json_naive(stored_json_papers, json_file_path)
-        self.papers_json = stored_json_papers
+        # 4. Combine the stored, updated bson papers with the new papers and save
+        stored_bson_papers.extend(new_papers)
+        self._save_to_bson_naive(stored_bson_papers, bson_file_path)
+        self.papers_bson = stored_bson_papers
     
-    def _save_to_json_naive(self, papers, json_file_path):
+    def _save_to_bson_naive(self, papers, bson_file_path):
         time_start = time.time()
-        print(f"Saving {len(papers)} papers to {json_file_path}...")
-        with open(json_file_path, "wt", encoding="utf-8") as f:
-            json.dump(papers, f, indent=4)
-            # json.dump(papers, f)
+        print(f"Saving {len(papers)} papers to {bson_file_path}...")
+        with open(bson_file_path, "wb") as f:
+            for d in papers:
+                f.write(bson.encode(d))
         time_end = time.time()
         time_diff = time_end - time_start
-        print(f"Saved {len(papers)} papers to {json_file_path} in {time_diff:.2f} seconds.")
+        print(f"Saved {len(papers)} papers to {bson_file_path} in {time_diff:.2f} seconds.")
     
     def filter_by_categories(self, categories):
         filtered_papers = []
@@ -183,11 +192,11 @@ class ArXivRepository:
         self.papers_xml = filtered_papers
     
     def print_total_tokens_approx(self):
-        assert self.papers_json is not None, "You must load the JSON file first"
+        assert self.papers_bson is not None, "You must load the bson file first"
 
         max_words = 0
         total_words = 0
-        for paper in self.papers_json:
+        for paper in self.papers_bson:
             abstract = paper["metadata"]["arXivRaw"]["abstract"]
             num_words = len(abstract.split())
 
@@ -305,9 +314,9 @@ if __name__ == "__main__":
     # repo = ArXivRepository("data/arxiv/test_arxiv_cs_records.xml")
     repo = ArXivRepository(
         "data/arxiv/arxiv_cs_records.xml",
-        "data/arxiv/arxiv_ai_papers.json")
+        "data/arxiv/arxiv_ai_papers.bson")
 
     # repo.synchronise_ai_papers()
-    repo.load_from_json()
+    repo.load_from_bson()
     # repo.print_total_tokens_approx()
     repo.embed("models/gemini-embedding-001")
