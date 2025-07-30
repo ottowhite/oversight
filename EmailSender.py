@@ -43,14 +43,18 @@ class EmailSender:
 			logger.error(f"Incorrect gmail app password for {self.email}")
 		except Exception as e:
 			logger.error(f"Error sending email to {to}: {e}")
+	
+	def send_email_multiple_recipients(self, recipients, subject, lines):
+		for recipient in recipients:
+			self.send_email(recipient, subject, lines)
 
 	def __del__(self):
 		self.yag.close()
 
 if __name__ == "__main__":
 	email_sender = EmailSender("otto.white.apps@gmail.com")
-	email_sender.send_email(
-		to="otto.white20@imperial.ac.uk",
+	email_sender.send_email_multiple_recipients(
+		recipients=["otto.white20@imperial.ac.uk", "whiteotto4@gmail.com"],
 		subject="Another email from Python",
 		lines=[
 			"This is the body of the email.",
