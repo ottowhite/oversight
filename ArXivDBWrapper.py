@@ -85,6 +85,13 @@ class ArXivDBWrapper:
             AND pc.category IN {self.ai_categories_str}
         """).fetchall()
     
+    def update_embedding(self, paper_id: str, embedding: list[float]):
+        self.con.execute("""
+            UPDATE embedded_arxiv_documents_new
+            SET embedding_gemini_embedding_001 = ?::FLOAT[3072]
+            WHERE paper_id = ?::VARCHAR
+        """, [embedding, paper_id])
+    
     def count_rows_to_update_and_insert(self, papers: list[Paper]):
         total_updates = 0
         total_new = 0

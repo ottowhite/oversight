@@ -40,6 +40,9 @@ class EmbeddingModel:
             raise ValueError(f"Model {model_name} not supported")
     
     def embed_documents_rate_limited(self, texts):
+        if len(texts) == 0:
+            return
+        
         assert self.model is not None, "You must load the model first"
         assert self.model_name == "models/gemini-embedding-001", "Only gemini embeddings are supported for now"
 
