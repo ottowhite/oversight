@@ -2,6 +2,7 @@ import duckdb
 import json
 from tqdm import tqdm
 from Paper import Paper
+from datetime import datetime, timedelta
 
 class ArXivDBWrapper:
     def __init__(self, db_path):
@@ -100,6 +101,19 @@ class ArXivDBWrapper:
             total_new += self.is_new(paper)
         
         return total_updates, total_new
+    
+    def generate_daily_digest(self, embedding: list[float], limit: int = 10):
+        last_day = datetime.now() - timedelta(days=1)
+        rows = self.con.execute(f"""
+            SELECT document, array_distance(embedding_gemini_embedding_001, ?::FLOAT[3072]) AS similarity
+            FROM embedded_arxiv_documents_new
+            WHERE update_date > ?::DATE
+            ORDER BY similarity ASC
+            LIMIT ?
+        """, [embedding, last_day, limit]).fetchall()
+
+        return rows
+
 
     
 if __name__ == "__main__":

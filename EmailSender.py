@@ -32,22 +32,22 @@ class EmailSender:
 
 		self.yag = yagmail.SMTP(email, os.getenv("GMAIL_APP_PASSWORD"))
 
-	def send_email(self, to, subject, lines):
+	def send_email(self, to, subject, contents):
 		try:
 			self.yag.send(
 				to=to,
 				subject=subject,
-				contents="\n\n".join(lines)
+				contents=contents
 			)
 		except smtplib.SMTPAuthenticationError as e:
 			logger.error(f"Incorrect gmail app password for {self.email}")
 		except Exception as e:
 			logger.error(f"Error sending email to {to}: {e}")
 	
-	def send_email_multiple_recipients(self, recipients, subject, lines):
+	def send_email_multiple_recipients(self, recipients, subject, contents):
 		for recipient in recipients:
-			self.send_email(recipient, subject, lines)
-
+			self.send_email(recipient, subject, contents)
+	
 	def __del__(self):
 		self.yag.close()
 
@@ -56,8 +56,5 @@ if __name__ == "__main__":
 	email_sender.send_email_multiple_recipients(
 		recipients=["otto.white20@imperial.ac.uk", "whiteotto4@gmail.com"],
 		subject="Another email from Python",
-		lines=[
-			"This is the body of the email.",
-			"You can also include HTML if you want."
-		]
+		contents="This is the body of the email. You can also include HTML if you want."
 	)
