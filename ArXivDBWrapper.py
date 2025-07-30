@@ -1,6 +1,5 @@
 import duckdb
 import json
-from datetime import datetime
 from tqdm import tqdm
 from Paper import Paper
 
@@ -20,32 +19,32 @@ class ArXivDBWrapper:
         if self.con is not None:
             self.con.close()
             self.con = None
-    
+
     def insert_paper(self, paper: Paper):
         self.con.execute("""
-            INSERT INTO embedded_arxiv_documents (paper_id, document, update_date)
+            INSERT INTO embedded_arxiv_documents_new (paper_id, document, update_date)
             VALUES (?, ?, ?)
             ON CONFLICT (paper_id) DO UPDATE
             SET document = EXCLUDED.document,
                 update_date = EXCLUDED.update_date,
                 embedding_gemini_embedding_001 = NULL
-            WHERE embedded_arxiv_documents.update_date < EXCLUDED.update_date;
+            WHERE embedded_arxiv_documents_new.update_date < EXCLUDED.update_date;
         """, [paper.paper_id, json.dumps(paper.document), paper.paper_date.strftime(self.date_format)])
     
     def is_updated(self, paper: Paper):
         return self.con.execute("""
-            SELECT 1 FROM embedded_arxiv_documents
+            SELECT 1 FROM embedded_arxiv_documents_new
             WHERE paper_id = ?::VARCHAR AND update_date < ?::DATE
         """, [paper.paper_id, paper.paper_date.strftime(self.date_format)]).fetchone() is not None
     
     def is_new(self, paper: Paper):
         return self.con.execute("""
-            SELECT 1 FROM embedded_arxiv_documents
+            SELECT 1 FROM embedded_arxiv_documents_new
             WHERE paper_id = ?::VARCHAR
         """, [paper.paper_id]).fetchone() is None
 
     def get_newest_date(self):
-        return self.con.execute("SELECT MAX(update_date) FROM embedded_arxiv_documents").fetchone()[0]
+        return self.con.execute("SELECT MAX(update_date) FROM embedded_arxiv_documents_new").fetchone()[0]
     
     def try_update_categories(self, paper: Paper):
         stored_categories = self.con.execute("""
@@ -79,7 +78,7 @@ class ArXivDBWrapper:
     def get_unembedded_ai_papers(self):
         return self.con.execute(f"""
             SELECT DISTINCT ps.paper_id, ps.document
-            FROM embedded_arxiv_documents AS ps
+            FROM embedded_arxiv_documents_new AS ps
             JOIN paper_categories AS pc
             ON ps.paper_id = pc.paper_id
             WHERE ps.embedding_gemini_embedding_001 IS NULL
