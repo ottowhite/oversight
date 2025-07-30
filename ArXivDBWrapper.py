@@ -113,9 +113,22 @@ class ArXivDBWrapper:
         """, [embedding, last_day, limit]).fetchall()
 
         return rows
-
-
     
+    def time_filtered_k_nearest(self, embedding: list[float], timedelta: timedelta | None, limit: int):
+        if timedelta is not None:
+            oldest_time = (datetime.now() - timedelta).strftime("%Y-%m-%d")
+            time_filter = f"WHERE update_date > '{oldest_time}'"
+        else:
+            time_filter = ""
+
+        return self.con.execute(f"""
+            SELECT document, array_distance(embedding_gemini_embedding_001, ?::FLOAT[3072]) AS similarity
+            FROM embedded_arxiv_documents_new
+            {time_filter}
+            ORDER BY similarity ASC
+            LIMIT ?::INTEGER
+        """, [embedding, limit]).fetchall()
+
 if __name__ == "__main__":
     with ArXivDBWrapper("data/arxiv/arxiv_ai_papers.db") as db:
         print(len(db.get_unembedded_ai_papers()))

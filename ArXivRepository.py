@@ -1,4 +1,5 @@
 from datetime import timedelta, datetime
+import argparse
 from tqdm import tqdm
 from ResearchListener import research_listeners
 from SickleWrapper import SickleWrapper
@@ -72,9 +73,9 @@ class ArXivRepository:
         for embedding, paper_id in tqdm(zip(self.embedding_model.embed_documents_rate_limited(abstracts), paper_ids), desc="Embedding papers", total=len(paper_ids)):
             self.arxiv_db.update_embedding(paper_id, embedding)
 
-    def generate_digest_string(self, results, listener):
+    def generate_digest_string(self, results, include_time_since=False, include_similarity=True, include_date=True, include_link=True):
         output = ""
-        output += f"Showing top {listener.num_papers} most similar papers to {listener.title} from the last day\n\n"
+        # output += f"Showing top {num_papers} most similar papers to {title} from the last day\n\n"
         for document_str, similarity in results:
             result = json.loads(document_str)
             paper_id = result["metadata"]["arXivRaw"]["id"]
@@ -84,30 +85,66 @@ class ArXivRepository:
             abstract = result["metadata"]["arXivRaw"]["abstract"]
             link = f"https://arxiv.org/abs/{paper_id}"
 
-            # time_since_date = datetime.now() - datetime.strptime(date, "%Y-%m-%d")
-            # days_since_date = time_since_date.days
-            # if days_since_date < 30:
-            #     time_since_date_str = f"{days_since_date} days ago"
-            # elif days_since_date < 365:
-            #     time_since_date_str = f"{days_since_date // 30} months ago"
-            # else:
-            #     time_since_date_str = f"{days_since_date // 365} years ago"
+            time_since_date = datetime.now() - datetime.strptime(date, "%Y-%m-%d")
+            days_since_date = time_since_date.days
+            if days_since_date < 30:
+                time_since_date_str = f"{days_since_date} days ago"
+            elif days_since_date < 365:
+                time_since_date_str = f"{days_since_date // 30} months ago"
+            else:
+                time_since_date_str = f"{days_since_date // 365} years ago"
 
-            # output += f"{title} ({date}) (similarity: {similarity:.4f}) (time since date: {time_since_date_str})\n"
-            output += f"{title} (similarity: {similarity:.4f})\n"
+            output += f"{title}"
+            output += f" ({date})" if include_date else ""
+            output += f" (similarity: {similarity:.4f})" if include_similarity else ""
+            output += f" (time since date: {time_since_date_str})" if include_time_since else ""
+            output += f"\n"
             output += f"{abstract}\n"
-            output += f"{link}\n"
-            output += "\n"
+            output += f"{link}" if include_link else ""
+            output += "\n\n"
 
         return output
+    
+    def _print_time_filtered_digest(self, embedding, timedelta, limit):
+        results = self.arxiv_db.time_filtered_k_nearest(embedding, timedelta=timedelta, limit=limit)
+        digest = self.generate_digest_string(results, include_time_since=True, include_similarity=True, include_date=False, include_link=True)
+        print(f"Showing top {limit} most similar papers from the last {timedelta.days if timedelta is not None else 'all time'}")
+        print(digest)
+        print("\n")
+    
+    def print_time_filtered_digests(self, query):
+        embedding = self.embedding_model.model.embed_query(query)
 
-    def generate_daily_digest(self, research_listeners):
+        self._print_time_filtered_digest(embedding, timedelta(days=30), 5)
+        self._print_time_filtered_digest(embedding, timedelta(days=365*2), 30)
+        self._print_time_filtered_digest(embedding, None, 50)
+
+    def email_daily_digest(self, research_listeners):
         for listener in research_listeners:
             embedding = self.embedding_model.model.embed_query(listener.text)
             results = self.arxiv_db.generate_daily_digest(embedding, listener.num_papers)
-            digest_string = self.generate_digest_string(results, listener)
+            digest_string = self.generate_digest_string(results)
             self.email_sender.send_email_multiple_recipients(listener.email_recipients, f"Daily research digest for {listener.title}", digest_string)
 
 if __name__ == "__main__":
+    # parse flags for differnet modes
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--digest", action="store_true")
+    parser.add_argument("--query", action="store_true")
+    args = parser.parse_args()
+
+    if not args.digest and not args.query:
+        print("Must use either --digest or --query")
+        exit(1)
+
+    if args.digest and args.query:
+        print("Cannot use both digest and query mode at the same time")
+        exit(1)
+
     with ArXivRepository("data/arxiv/arxiv_ai_papers.db", "models/gemini-embedding-001", overlap_timedelta=timedelta(days=1)) as repo:
-        repo.generate_daily_digest(research_listeners)
+        if args.digest:
+            repo.sync()
+            repo.generate_daily_digest(research_listeners)
+        elif args.query:
+            query_str = "Large-scale language-model (LM) applications now resemble distributed programs whose interactive “agentic” workflows are governed by service-level objectives (SLOs) that users experience at sub-second granularity. Existing schedulers optimise only the end-to-end deadline of the entire LM program, ignoring the time-between-consumable chunks (TBC) that determines perceived responsiveness and opportunities to cancel misbehaving runs. We present SCALE (SLO-Conscious Adaptive Latency-and-Efficiency scheduler), the first runtime that jointly optimises throughput and fine-grained latency for LM programs. SCALE models each program component—including conditional branches—and predicts its execution time on heterogeneous accelerators. Given a per-component SLO budget, SCALE formulates scheduling as a constrained optimisation that maximises global throughput while guaranteeing that every TBC (and, optionally, the overall deadline) is met. A prototype of SCALE deployed on a 128-GPU cluster supports both inference-time agent workflows and training-time self-reflection loops. Across nine production-style LM workloads, SCALE sustains up to 2.3× higher job throughput than a latency-agnostic baseline while meeting 99.9 % of TBC SLOs; compared with an end-to-end-only SLO scheduler, it reduces median interactive latency by up to 4.7× without losing cluster utilisation. These results demonstrate that SLO-aware, mixed latency/throughput optimisation is essential for the next generation of LM systems, providing a complete picture for both end users and datacentre operators."
+            repo.print_time_filtered_digests(query_str)
