@@ -103,7 +103,7 @@ class ArXivDBWrapper:
         return total_updates, total_new
     
     def generate_daily_digest(self, embedding: list[float], limit: int = 10):
-        last_day = datetime.now() - timedelta(days=1)
+        last_day = datetime.now() - timedelta(days=2)
         rows = self.con.execute(f"""
             SELECT document, array_distance(embedding_gemini_embedding_001, ?::FLOAT[3072]) AS similarity
             FROM embedded_arxiv_documents_new

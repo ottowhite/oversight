@@ -1,12 +1,14 @@
 from datetime import timedelta, datetime
 import argparse
 from tqdm import tqdm
-from ResearchListener import research_listeners
+from ResearchListener import research_listener_group
 from SickleWrapper import SickleWrapper
 from ArXivDBWrapper import ArXivDBWrapper
 from EmbeddingModel import EmbeddingModel
 from EmailSender import EmailSender
+from utils import get_logger
 import json
+from Paper import Paper
 
 # Database backup example
 # EXPORT DATABASE 'target_directory' (
@@ -17,6 +19,7 @@ import json
 
 # IMPORT DATABASE 'source_directory';
 
+logger = get_logger()
 
 class ArXivRepository:
     def __init__(self, db_path, embedding_model_name, overlap_timedelta: timedelta = timedelta(days=1)):
@@ -44,7 +47,7 @@ class ArXivRepository:
     def sync(self):
         newest_date = self.arxiv_db.get_newest_date()
         from_date = newest_date - self.overlap_timedelta
-        print(f"Syncing from {from_date} to avoid missed papers")
+        logger.info(f"Syncing from {from_date} to avoid missed papers")
         self._sync_from_date(from_date)
         self._embed_missing_ai_papers()
 
@@ -52,7 +55,7 @@ class ArXivRepository:
         new_papers = self.sickle.get_new_papers(from_date)
 
         total_updates, total_new = self.arxiv_db.count_rows_to_update_and_insert(new_papers)
-        print(f"{total_updates} papers to update, and {total_new} new papers to insert")
+        logger.info(f"{total_updates} papers to update, and {total_new} new papers to insert")
 
         for paper in tqdm(new_papers, desc="Inserting new and updated papers", total=len(new_papers)):
             self.arxiv_db.insert_paper(paper)
@@ -60,7 +63,7 @@ class ArXivRepository:
     
     def _embed_missing_ai_papers(self):
         papers_to_embed = self.arxiv_db.get_unembedded_ai_papers()
-        print(f"Embedding {len(papers_to_embed)} papers")
+        logger.info(f"Embedding {len(papers_to_embed)} papers")
 
         paper_ids = []
         abstracts = []
@@ -77,30 +80,15 @@ class ArXivRepository:
         output = ""
         # output += f"Showing top {num_papers} most similar papers to {title} from the last day\n\n"
         for document_str, similarity in results:
-            result = json.loads(document_str)
-            paper_id = result["metadata"]["arXivRaw"]["id"]
-            title = result["metadata"]["arXivRaw"]["title"]
+            paper = Paper.from_document_str(document_str)
 
-            date = result["header"]["datestamp"]
-            abstract = result["metadata"]["arXivRaw"]["abstract"]
-            link = f"https://arxiv.org/abs/{paper_id}"
-
-            time_since_date = datetime.now() - datetime.strptime(date, "%Y-%m-%d")
-            days_since_date = time_since_date.days
-            if days_since_date < 30:
-                time_since_date_str = f"{days_since_date} days ago"
-            elif days_since_date < 365:
-                time_since_date_str = f"{days_since_date // 30} months ago"
-            else:
-                time_since_date_str = f"{days_since_date // 365} years ago"
-
-            output += f"{title}"
-            output += f" ({date})" if include_date else ""
+            output += f"{paper.title}"
+            output += f" ({paper.paper_date})" if include_date else ""
             output += f" (similarity: {similarity:.4f})" if include_similarity else ""
-            output += f" (time since date: {time_since_date_str})" if include_time_since else ""
+            output += f" (time since date: {paper.time_since_date_str})" if include_time_since else ""
             output += f"\n"
-            output += f"{abstract}\n"
-            output += f"{link}" if include_link else ""
+            output += f"{paper.abstract}\n"
+            output += f"{paper.link}" if include_link else ""
             output += "\n\n"
 
         return output
@@ -119,18 +107,45 @@ class ArXivRepository:
         self._print_time_filtered_digest(embedding, timedelta(days=365*2), 30)
         self._print_time_filtered_digest(embedding, None, 50)
 
-    def email_daily_digest(self, research_listeners):
-        for listener in research_listeners:
+    def email_daily_digest(self, research_listener_group):
+        paper_similarities = []
+        for listener in research_listener_group.research_listeners:
             embedding = self.embedding_model.model.embed_query(listener.text)
-            results = self.arxiv_db.generate_daily_digest(embedding, listener.num_papers)
-            digest_string = self.generate_digest_string(results)
-            self.email_sender.send_email_multiple_recipients(listener.email_recipients, f"Daily research digest for {listener.title}", digest_string)
+            rows = self.arxiv_db.generate_daily_digest(embedding, research_listener_group.num_papers)
+            for document_str, similarity in rows:
+                paper_similarities.append((listener.title, Paper.from_document_str(document_str), similarity))
+        
+        # sort by ascending similarity
+        paper_similarities.sort(key=lambda result: result[2])
+        seen_titles = set()
+        paper_similarities_unique = []
+        for listener_title_name, paper, similarity in paper_similarities:
+            if paper.title in seen_titles:
+                continue
+                
+            seen_titles.add(paper.title)
+            paper_similarities_unique.append((listener_title_name, paper, similarity))
+        
+        paper_similarities_truncated = paper_similarities_unique[:research_listener_group.num_papers]
+        
+        digest_string = self.generate_daily_digest_string(paper_similarities_truncated)
+        self.email_sender.send_email_multiple_recipients(research_listener_group.email_recipients, f"Daily research digest for {research_listener_group.title}", digest_string)
+    
+    def generate_daily_digest_string(self, paper_similarities):
+        digest_string = ""
+        for listener_title, paper, similarity in paper_similarities:
+            digest_string += f"{paper.title} (most related to {listener_title}): {similarity:.3f}\n"
+            digest_string += f"{paper.abstract}\n"
+            digest_string += f"{paper.link}\n\n"
+
+        return digest_string
 
 if __name__ == "__main__":
     # parse flags for differnet modes
     parser = argparse.ArgumentParser()
     parser.add_argument("--digest", action="store_true")
     parser.add_argument("--query", action="store_true")
+    parser.add_argument("--no-sync", action="store_true", default=False)
     args = parser.parse_args()
 
     if not args.digest and not args.query:
@@ -143,8 +158,11 @@ if __name__ == "__main__":
 
     with ArXivRepository("data/arxiv/arxiv_ai_papers.db", "models/gemini-embedding-001", overlap_timedelta=timedelta(days=1)) as repo:
         if args.digest:
-            repo.sync()
-            repo.email_daily_digest(research_listeners)
+            if not args.no_sync:
+                logger.info("Skipping sync")
+                repo.sync()
+
+            repo.email_daily_digest(research_listener_group)
         elif args.query:
             query_str = "Large-scale language-model (LM) applications now resemble distributed programs whose interactive “agentic” workflows are governed by service-level objectives (SLOs) that users experience at sub-second granularity. Existing schedulers optimise only the end-to-end deadline of the entire LM program, ignoring the time-between-consumable chunks (TBC) that determines perceived responsiveness and opportunities to cancel misbehaving runs. We present SCALE (SLO-Conscious Adaptive Latency-and-Efficiency scheduler), the first runtime that jointly optimises throughput and fine-grained latency for LM programs. SCALE models each program component—including conditional branches—and predicts its execution time on heterogeneous accelerators. Given a per-component SLO budget, SCALE formulates scheduling as a constrained optimisation that maximises global throughput while guaranteeing that every TBC (and, optionally, the overall deadline) is met. A prototype of SCALE deployed on a 128-GPU cluster supports both inference-time agent workflows and training-time self-reflection loops. Across nine production-style LM workloads, SCALE sustains up to 2.3× higher job throughput than a latency-agnostic baseline while meeting 99.9 % of TBC SLOs; compared with an end-to-end-only SLO scheduler, it reduces median interactive latency by up to 4.7× without losing cluster utilisation. These results demonstrate that SLO-aware, mixed latency/throughput optimisation is essential for the next generation of LM systems, providing a complete picture for both end users and datacentre operators."
             repo.print_time_filtered_digests(query_str)

@@ -2,22 +2,10 @@ import logging
 import yagmail
 import smtplib
 from dotenv import load_dotenv
+from utils import get_logger
 import os
 
-# Cron example
-# * * * * * python3 /home/ow20/code/open-router-test/EmailSender.py >> /home/ow20/code/open-router-test/logs/cron.log 2>&1
-
-# Configure logging to actually print
-logging.basicConfig(
-    level=logging.INFO,
-    # format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    format='[%(levelname)s] %(asctime)s - %(message)s',
-    handlers=[
-        logging.StreamHandler()
-    ]
-)
-
-logger = logging.getLogger(__name__)
+logger = get_logger()
 
 class EmailSender:
 	def __init__(self, email):
