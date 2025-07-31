@@ -9,6 +9,7 @@ from EmailSender import EmailSender
 from utils import get_logger
 import json
 from Paper import Paper
+from ResearchLLM import ResearchLLM
 
 # Database backup example
 # EXPORT DATABASE 'target_directory' (
@@ -22,11 +23,12 @@ from Paper import Paper
 logger = get_logger()
 
 class ArXivRepository:
-    def __init__(self, db_path, embedding_model_name, overlap_timedelta: timedelta = timedelta(days=1)):
+    def __init__(self, db_path, embedding_model_name, research_llm_model_name: str, overlap_timedelta: timedelta = timedelta(days=1)):
         self.db_path = db_path
         self.overlap_timedelta = overlap_timedelta
         self.arxiv_db = ArXivDBWrapper(db_path)
         self.embedding_model = EmbeddingModel(embedding_model_name)
+        self.research_llm = ResearchLLM(research_llm_model_name)
         self.sickle = SickleWrapper(
             base_url="https://oaipmh.arxiv.org/oai",
             arxiv_metadata_type="arXivRaw",
@@ -127,16 +129,19 @@ class ArXivRepository:
             paper_similarities_unique.append((listener_title_name, paper, similarity))
         
         paper_similarities_truncated = paper_similarities_unique[:research_listener_group.num_papers]
-        
+
         digest_string = self.generate_daily_digest_string(paper_similarities_truncated)
         self.email_sender.send_email_multiple_recipients(research_listener_group.email_recipients, f"Daily research digest for {research_listener_group.title}", digest_string)
     
     def generate_daily_digest_string(self, paper_similarities):
         digest_string = ""
         for listener_title, paper, similarity in paper_similarities:
-            digest_string += f"{paper.title} (most related to {listener_title}): {similarity:.3f}\n"
+            digest_string += f"{paper.title} (most related to {listener_title}): {similarity:.3f}\n\n"
             digest_string += f"{paper.abstract}\n"
             digest_string += f"{paper.link}\n\n"
+            digest_string += "LLM Relatedness Summary:\n"
+            digest_string += f"{self.research_llm.generate_relatedness_summary(paper.abstract)}\n\n"
+            digest_string += "------------------------------------------------\n\n"
 
         return digest_string
 
@@ -156,7 +161,12 @@ if __name__ == "__main__":
         print("Cannot use both digest and query mode at the same time")
         exit(1)
 
-    with ArXivRepository("data/arxiv/arxiv_ai_papers.db", "models/gemini-embedding-001", overlap_timedelta=timedelta(days=1)) as repo:
+    with ArXivRepository(
+        db_path="data/arxiv/arxiv_ai_papers.db",
+        embedding_model_name="models/gemini-embedding-001",
+        research_llm_model_name="google/gemini-2.5-flash",
+        overlap_timedelta=timedelta(days=1)
+    ) as repo:
         if args.digest:
             if not args.no_sync:
                 logger.info("Skipping sync")
