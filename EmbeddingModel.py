@@ -4,14 +4,8 @@ import os
 from dotenv import load_dotenv
 from math import floor
 import itertools
+from utils import chunked_iterable
 
-def chunked_iterable(iterable, size):
-    it = iter(iterable)
-    while True:
-        chunk = list(itertools.islice(it, size))
-        if not chunk:
-            break
-        yield chunk
 
 class EmbeddingModel:
     def __init__(self, model_name):
