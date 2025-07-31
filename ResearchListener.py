@@ -28,6 +28,6 @@ research_listeners = [
 research_listener_group = ResearchListenerGroup(
     research_listeners,
     10,
-    ["otto.white20@imperial.ac.uk", "whiteotto4@gmail.com", "marcelw@meta.com", "marcel.wagenlander19@imperial.ac.uk"],
+    ["otto.white20@imperial.ac.uk", "whiteotto4@gmail.com", "marcel.wagenlander19@imperial.ac.uk"],
     "Inference-time / agentic project"
 )
