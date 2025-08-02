@@ -10,14 +10,13 @@ class Paper:
             categories: set[str],
             abstract: str,
             title: str,
-            source: str,
+            source: str | None = None,
             embedding_gemini_embedding_001: list[float] | None = None,
             link: str | None = None,
             time_since_date_str: str | None = None,
     ):
         assert title is not None
         assert abstract is not None
-        assert source is not None
         assert paper_id is not None
         assert paper_date is not None
         assert document is not None
@@ -38,8 +37,7 @@ class Paper:
         return "%Y-%m-%d"
 
     @staticmethod
-    def from_document_str(document_str: str):
-        document = json.loads(document_str)
+    def from_document(document: object):
 
         categories = document["header"]["setSpec"]
         if isinstance(categories, str):

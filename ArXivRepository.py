@@ -80,8 +80,8 @@ class ArXivRepository:
     def generate_digest_string(self, results, include_time_since=False, include_similarity=True, include_date=True, include_link=True):
         output = ""
         # output += f"Showing top {num_papers} most similar papers to {title} from the last day\n\n"
-        for document_str, similarity in results:
-            paper = Paper.from_document_str(document_str)
+        for document, similarity in results:
+            paper = Paper.from_document(document)
 
             output += f"{paper.title}"
             output += f" ({paper.paper_date})" if include_date else ""
@@ -117,8 +117,8 @@ class ArXivRepository:
         for listener in research_listener_group.research_listeners:
             embedding = self.embedding_model.model.embed_query(listener.text)
             rows = self.arxiv_db.generate_daily_digest(embedding, research_listener_group.num_papers)
-            for document_str, similarity in rows:
-                paper_similarities.append((listener.title, Paper.from_document_str(document_str), similarity))
+            for document, similarity in rows:
+                paper_similarities.append((listener.title, Paper.from_document(document), similarity))
         
         # sort by ascending similarity
         paper_similarities.sort(key=lambda result: result[2])
