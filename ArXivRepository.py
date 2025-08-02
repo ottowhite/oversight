@@ -1,7 +1,7 @@
 from datetime import timedelta, datetime
 import argparse
 from tqdm import tqdm
-from ResearchListener import research_listener_group
+from ResearchListener import research_listener_group, test_research_listener_group
 from SickleWrapper import SickleWrapper
 from ArXivDBWrapper import ArXivDBWrapper
 from EmbeddingModel import EmbeddingModel
@@ -23,10 +23,9 @@ from ResearchLLM import ResearchLLM
 logger = get_logger()
 
 class ArXivRepository:
-    def __init__(self, db_path, embedding_model_name, research_llm_model_name: str, overlap_timedelta: timedelta = timedelta(days=1)):
-        self.db_path = db_path
+    def __init__(self, embedding_model_name, research_llm_model_name: str, overlap_timedelta: timedelta = timedelta(days=1)):
         self.overlap_timedelta = overlap_timedelta
-        self.arxiv_db = ArXivDBWrapper(db_path)
+        self.arxiv_db = ArXivDBWrapper()
         self.embedding_model = EmbeddingModel(embedding_model_name)
         self.research_llm = ResearchLLM(research_llm_model_name)
         self.sickle = SickleWrapper(
@@ -105,9 +104,13 @@ class ArXivRepository:
     def print_time_filtered_digests(self, query):
         embedding = self.embedding_model.model.embed_query(query)
 
-        self._print_time_filtered_digest(embedding, timedelta(days=30), 5)
-        self._print_time_filtered_digest(embedding, timedelta(days=365*2), 30)
-        self._print_time_filtered_digest(embedding, None, 50)
+        self._print_time_filtered_digest(embedding, timedelta(days=30), 10)
+        print("--------------------------------------------------------------------")
+        self._print_time_filtered_digest(embedding, timedelta(days=30*6), 15)
+        print("--------------------------------------------------------------------")
+        self._print_time_filtered_digest(embedding, timedelta(days=365), 20)
+        print("--------------------------------------------------------------------")
+        self._print_time_filtered_digest(embedding, None, 30)
 
     def email_daily_digest(self, research_listener_group):
         paper_similarities = []
@@ -162,7 +165,6 @@ if __name__ == "__main__":
         exit(1)
 
     with ArXivRepository(
-        db_path="data/arxiv/arxiv_ai_papers.db",
         embedding_model_name="models/gemini-embedding-001",
         research_llm_model_name="google/gemini-2.5-flash",
         overlap_timedelta=timedelta(days=1)
