@@ -34,3 +34,10 @@ research_listener_group = ResearchListenerGroup(
      "yt522@ic.ac.uk"],
     "Inference-time / agentic project"
 )
+
+test_research_listener_group = ResearchListenerGroup(
+    research_listeners,
+    10,
+    ["otto.white20@imperial.ac.uk"],
+    "Test project"
+)
