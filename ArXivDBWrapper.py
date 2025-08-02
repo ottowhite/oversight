@@ -40,7 +40,7 @@ class ArXivDBWrapper:
         with self.con.cursor() as cur:
             cur.execute("""
                 INSERT INTO paper (paper_id, document, update_date)
-                VALUES (%s, %s, %s)
+                VALUES (%s, %s::jsonb, %s)
                 ON CONFLICT (paper_id) DO UPDATE
                 SET document = EXCLUDED.document,
                     update_date = EXCLUDED.update_date,
