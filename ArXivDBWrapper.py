@@ -39,14 +39,23 @@ class ArXivDBWrapper:
     def insert_paper(self, paper: Paper):
         with self.con.cursor() as cur:
             cur.execute("""
-                INSERT INTO paper (paper_id, document, update_date)
-                VALUES (%s, %s::jsonb, %s)
+                INSERT INTO paper (paper_id, document, abstract, title, source, update_date)
+                VALUES (%s, %s::jsonb, %s, %s, %s, %s)
                 ON CONFLICT (paper_id) DO UPDATE
                 SET document = EXCLUDED.document,
+                    abstract = EXCLUDED.abstract,
+                    title = EXCLUDED.title,
+                    source = EXCLUDED.source,
                     update_date = EXCLUDED.update_date,
                     embedding_gemini_embedding_001 = NULL
                 WHERE paper.update_date < EXCLUDED.update_date;
-            """, [paper.paper_id, Jsonb(paper.document), paper.paper_date.strftime(self.date_format)])
+            """, [
+                paper.paper_id,
+                Jsonb(paper.document),
+                paper.abstract,
+                paper.title,
+                paper.source,
+                paper.paper_date.strftime(self.date_format)])
     
     def is_updated(self, paper: Paper):
         with self.con.cursor() as cur:

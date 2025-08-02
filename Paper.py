@@ -8,12 +8,20 @@ class Paper:
             document: object,
             paper_date: datetime,
             categories: set[str],
+            abstract: str,
+            title: str,
+            source: str,
             embedding_gemini_embedding_001: list[float] | None = None,
-            abstract: str | None = None,
             link: str | None = None,
             time_since_date_str: str | None = None,
-            title: str | None = None
     ):
+        assert title is not None
+        assert abstract is not None
+        assert source is not None
+        assert paper_id is not None
+        assert paper_date is not None
+        assert document is not None
+
         self.paper_id = paper_id
         self.document = document
         self.paper_date = paper_date
@@ -23,6 +31,7 @@ class Paper:
         self.link = link
         self.time_since_date_str = time_since_date_str
         self.title = title
+        self.source = source
 
     @staticmethod
     def date_format():

@@ -37,6 +37,9 @@ class SickleWrapper:
             paper = Paper(
                 paper_id=paper_id,
                 document=document,
+                abstract=document['metadata']['arXivRaw']['abstract'],
+                title=document['metadata']['arXivRaw']['title'],
+                source="arxiv",
                 paper_date=revision_submission_date,
                 categories=categories,
             )
