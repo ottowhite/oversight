@@ -6,6 +6,7 @@ import psycopg
 from dotenv import load_dotenv
 from pgvector.psycopg import register_vector
 import os
+from psycopg.types.json import Jsonb
 
 class ArXivDBWrapper:
     def __init__(self):
@@ -45,7 +46,7 @@ class ArXivDBWrapper:
                     update_date = EXCLUDED.update_date,
                     embedding_gemini_embedding_001 = NULL
                 WHERE paper.update_date < EXCLUDED.update_date;
-            """, [paper.paper_id, json.dumps(paper.document), paper.paper_date.strftime(self.date_format)])
+            """, [paper.paper_id, Jsonb(paper.document), paper.paper_date.strftime(self.date_format)])
     
     def is_updated(self, paper: Paper):
         with self.con.cursor() as cur:
