@@ -171,8 +171,9 @@ if __name__ == "__main__":
     ) as repo:
         if args.digest:
             if not args.no_sync:
-                logger.info("Skipping sync")
                 repo.sync()
+            else:
+                logger.info("Skipping sync")
 
             repo.email_daily_digest(research_listener_group)
         elif args.query:
