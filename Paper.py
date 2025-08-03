@@ -1,5 +1,6 @@
 from datetime import datetime
 import json
+import uuid
 
 class Paper:
     def __init__(
@@ -7,9 +8,9 @@ class Paper:
             paper_id: str,
             document: object,
             paper_date: datetime,
-            categories: set[str],
             abstract: str,
             title: str,
+            categories: set[str] | None = None,
             source: str | None = None,
             embedding_gemini_embedding_001: list[float] | None = None,
             link: str | None = None,
@@ -70,4 +71,15 @@ class Paper:
             time_since_date_str=time_since_date_str,
             title=document["metadata"]["arXivRaw"]["title"]
         )
-
+    
+    @staticmethod
+    def from_scraped_json(paper_json: dict):
+        return Paper(
+            paper_id=paper_json["paper_id"],
+            document=paper_json,
+            title=paper_json["title"],
+            abstract=paper_json["abstract"],
+            paper_date=datetime.strptime(paper_json["date"], Paper.date_format()),
+            link=paper_json["link"],
+            source=paper_json["conference_name"]
+        )

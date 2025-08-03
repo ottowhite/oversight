@@ -159,7 +159,19 @@ class ArXivDBWrapper:
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
             """, [embedding, limit]).fetchall()
+    
+    def add_scraped_papers(self, path: str):
+        with open(path, "r") as f:
+            papers_json = json.load(f)
+        
+        for paper_json in papers_json:
+            paper = Paper.from_scraped_json(paper_json)
+            self.insert_paper(paper)
+    
+    def add_scraped_papers_from_dir(self, path: str):
+        for filename in os.listdir(path):
+            self.add_scraped_papers(os.path.join(path, filename))
 
 if __name__ == "__main__":
     with ArXivDBWrapper() as db:
-        print(len(db.get_unembedded_ai_papers()))
+        db.add_scraped_papers_from_dir("data/systems_conferences")
