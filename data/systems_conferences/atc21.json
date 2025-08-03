@@ -1,0 +1,578 @@
+[
+  {
+    "title": "Naos: Serialization-free RDMA networking in Java",
+    "authors": "Konstantin Taranov,ETH Zurich;Rodrigo Bruno,INESC-ID / Técnico, ULisboa;Gustavo Alonso and Torsten Hoefler,ETH Zurich",
+    "abstract": "Managed languages such as Java and Scala do not allow developers to directly access heap objects. As a result, to send on-heap data over the network, it has to be explicitly converted to byte streams before sending and converted back to objects after receiving. The technique, also known as object serialization/deserialization, is an expensive procedure limiting the performance of JVM-based distributed systems as it induces additional memory copies and requires data transformation resulting in high CPU and memory bandwidth consumption. This paper presents Naos, a JVM-based technique bypassing heap serialization boundaries that allows objects to be directly sent from a local heap to a remote one with minimal CPU involvement and over RDMA networks. As Naos eliminates the need to copy and transform objects, and enables asynchronous communication, it offers significant speedups compared to state-of-the-art serialization libraries. Naos exposes a simple high level API hiding the complexity of the RDMA protocol that transparently allows JVM-based systems to take advantage of offloaded RDMA networking.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/taranov",
+    "session_title": "Peeking over the Fence: RDMA",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "One-sided RDMA-Conscious Extendible Hashing for Disaggregated Memory",
+    "authors": "Pengfei Zuo, Jiazhao Sun, Liu Yang, and Shuangwu Zhang,Huawei Cloud;Yu Hua,Huazhong University of Science and Technology",
+    "abstract": "Memory disaggregation is a promising technique in datacenters with the benefit of improving resource utilization, failure isolation, and elasticity. Hashing indexes have been widely used to provide fast lookup services in distributed memory systems. However, traditional hashing indexes become inefficient for disaggregated memory since the computing power in the memory pool is too weak to execute complex index requests. To provide efficient indexing services in disaggregated memory scenarios, this paper proposes RACE hashing, a one-sided RDMA-Conscious Extendible hashing index with lock-free remote concurrency control and efficient remote resizing. RACE hashing enables all index operations to be efficiently executed by using only one-sided RDMA verbs without involving any compute resource in the memory pool. To support remote concurrent access with high performance, RACE hashing leverages a lock-free remote concurrency control scheme to enable different clients to concurrently operate the same hashing index in the memory pool in a lock-free manner. To resize the hash table with low overheads, RACE hashing leverages an extendible remote resizing scheme to reduce extra RDMA accesses caused by extendible resizing and allow concurrent request execution during resizing. Extensive experimental results demonstrate that RACE hashing outperforms state-of-the-art distributed in-memory hashing indexes by 1.4 - 13.7× in YCSB hybrid workloads.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/zuo",
+    "session_title": "Peeking over the Fence: RDMA",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Characterizing and Optimizing Remote Persistent Memory with RDMA and NVM",
+    "authors": "Xingda Wei, Xiating Xie, Rong Chen, Haibo Chen, and Binyu Zang,Shanghai Jiao Tong University; Shanghai AI Laboratory; Engineering Research Center for Domain-specific Operating Systems",
+    "abstract": "The appealing properties of NVM including high performance, persistence, and byte-addressability, and a recent active thread of building remote memory systems with RDMA, have produced considerable interest in combining them for fast and persistent remote memory systems. However, many prior systems are either based on emulated NVM or have failed to fully exploit NVM characteristics, leading to suboptimal performance.\nThis paper conducts a systematic study to summarize optimization hints that the system designer can use to exploit NVM with RDMA better. Specifically, we demonstrate how system configurations, NVM access patterns, and RDMAaware optimizations affect the efficacy of RDMA-NVM systems. Based on the summarized hints, we empirically study the design of two existing RDMA-NVM systems, namely a distributed database (DrTM+H) and a distributed file system (Octopus). Both systems are designed when no production NVM is available, and neither of them achieves good performance on it. Our optimized systems achieve up to 2.4X (from 1.2X) better performance",
+    "link": "https://www.usenix.org/conference/atc21/presentation/wei",
+    "session_title": "Peeking over the Fence: RDMA",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "MigrOS: Transparent Live-Migration Support for Containerised RDMA Applications",
+    "authors": "Maksym Planeta and Jan Bierbaum,TU Dresden;Leo Sahaya Daphne Antony,AMOLF;Torsten Hoefler,ETH Zürich;Hermann Härtig,TU Dresden",
+    "abstract": "RDMA networks offload packet processing onto specialised circuitry of the network interface controllers (NICs) and bypass the OS to improve network latency and bandwidth. As a consequence, the OS forfeits control over active RDMA connections and loses the possibility to migrate RDMA applications transparently. This paper presents MigrOS, an OS-level architecture for transparent live migration of containerised RDMA applications. MigrOS shows that a set of minimal changes to the RDMA communication protocol reenables live migration without interposing the critical path operations. Our approach requires no changes to the user applications and maintains backwards compatibility at all levels of the network stack. Overall, MigrOS can achieve up to 33% lower network latency in comparison to software-only techniques.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/planeta",
+    "session_title": "Peeking over the Fence: RDMA",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Prediction-Based Power Oversubscription in Cloud Platforms",
+    "authors": "Alok Gautam Kumbhare, Reza Azimi, Ioannis Manousakis, Anand Bonde, Felipe Frujeri, Nithish Mahalingam, Pulkit A. Misra, Seyyed Ahmad Javadi, Bianca Schroeder, Marcus Fontoura, and Ricardo Bianchini,Microsoft Research and Microsoft Azure",
+    "abstract": "Prior work has used power capping to shave rare power peaks and add more servers to a datacenter, thereby oversubscribing its resources and lowering capital costs. This works well when the workloads and their server placements are known. Unfortunately, these factors are unknown in public clouds, forcing providers to limit the oversubscription and thus the potential performance loss from power capping. In this paper, we argue that providers can use predictions of workload performance criticality and virtual machine (VM) resource utilization to increase oversubscription. This poses many challenges, such as identifying the performance-critical workloads from opaque VMs, creating support for criticality-aware power management, and increasing oversubscription while limiting the impact of capping. We address these challenges for the hardware and software of Microsoft Azure. The results show that we enable a 2x increase in oversubscription with minimum impact to critical workloads. We describe lessons from deploying our work in production.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/kumbhare",
+    "session_title": "Dogs Never Get Tired: Power and Edge Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Proactive Energy-Aware Adaptive Video Streaming on Mobile Devices",
+    "authors": "Jiayi Meng, Qiang Xu, and Y. Charlie Hu,Purdue University",
+    "abstract": "Energy-aware app adaptation enables mobile apps to dynamically adjust data fidelity such as streaming video quality to meet a user-specified goal for battery duration. Traditional energy-aware app adaptation is reactive in nature where the operating system monitors the app energy drain and signals the app to adapt upon detecting energy drain deviation from the pre-specified energy budget which can cause high oscillation and poor quality-of-experience (QoE).\nIn this paper, we observe that modern power-hungry apps such as video streaming and offloading-based apps already come with sophisticated app adaptation to deal with resource changes such as network dynamics and propose proactive energy-aware adaptation where the user-specified energy budget is integrated with the app adaptation logic. The potential beneﬁt of such an approach is that app energy drain adaptation is no longer an “after-effect”, and hence the approach is likely to reduce the oscillation in app adaptation and improve the app QoE.\nIn this paper, we study the design, implementation and performance tradeoffs of reactive and proactive energy-aware app adaptation in the context of one of the most power-hungry classes of mobile apps, ABR-based video streaming. Our study shows that proactive energy-aware ABR video streaming is easy to implement by leveraging the built-in adaptation of modern apps and can improve the QoE of reactive approach by 44.8% and 19.2% in streaming 360-degree videos to Pixel 2 and Moto Z3 phones under low power budget.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/meng",
+    "session_title": "Dogs Never Get Tired: Power and Edge Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Video Analytics with Zero-streaming Cameras",
+    "authors": "Mengwei Xu,Peking University/Beijing University of Posts and Telecommunications;Tiantu Xu,Purdue ECE;Yunxin Liu,Institute for AI Industry Research (AIR), Tsinghua University;Felix Xiaozhu Lin,University of Virginia",
+    "abstract": "Low-cost cameras enable powerful analytics. An unexploited opportunity is that most captured videos remain “cold” without being queried. For efficiency, we advocate for these cameras to be zero streaming: capturing videos to local storage and communicating with the cloud only when analytics is requested.\nHow to query zero-streaming cameras efficiently? Our response is a camera/cloud runtime system called DIVA. It addresses two key challenges: to best use limited camera resource during video capture; to rapidly explore massive videos during query execution. DIVA contributes two unconventional techniques. (1) When capturing videos, a camera builds sparse yet accurate landmark frames, from which it learns reliable knowledge for accelerating future queries. (2) When executing a query, a camera processes frames in multiple passes with increasingly more expensive operators. As such, DIVA presents and keeps refining inexact query results throughout the query's execution. On diverse queries over 15 videos lasting 720 hours in total, DIVA runs at more than 100× video realtime and outperforms competitive alternative designs. To our knowledge, DIVA is the first system for querying large videos stored on low-cost remote cameras.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/xu",
+    "session_title": "Dogs Never Get Tired: Power and Edge Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "ASAP: Fast Mobile Application Switch via Adaptive Prepaging",
+    "authors": "Sam Son, Seung Yul Lee, Yunho Jin, and Jonghyun Bae,Seoul National University;Jinkyu Jeong,Sungkyunkwan University;Tae Jun Ham and Jae W. Lee,Seoul National University;Hongil Yoon,Google",
+    "abstract": "With mobile applications' ever-increasing demands for memory capacity, along with a steady increase in the number of applications running concurrently, memory capacity is becoming a scarce resource on mobile devices. When the memory pressure is high, current mobile OSes often kill application processes that have not been used recently to reclaim memory space. This leads to a long delay when a user relaunches the killed application, which degrades the user experience. Even if this mechanism is disabled to utilize a compression-based in-memory swap mechanism, relaunching the application still incurs a substantial latency penalty as it requires the decompression of compressed anonymous pages and a stream of I/O accesses to retrieve file-backed pages into memory. This paper identifies conventional demand paging as the primary source of this inefficiency and proposes ASAP, a mechanism for fast application switch via adaptive prepaging on mobile devices. ASAP performs prepaging by combining i) high-precision switch footprint estimators for both file-backed and anonymous pages, and ii) efficient implementation of the preparing mechanism to minimize resource waste for CPU cycles and disk bandwidth during an application switch. Our evaluation using eight real-world applications on Google Pixel 4 and Pixel 3a demonstrates that ASAP can reduce the switch time by 22.2% and 28.3% on average, respectively (with a maximum of 33.3% and 35.7%, respectively), over the vanilla android 10.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/son",
+    "session_title": "Dogs Never Get Tired: Power and Edge Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "PYLIVE: On-the-Fly Code Change for Python-based Online Services",
+    "authors": "Haochen Huang, Chengcheng Xiang, Li Zhong, and Yuanyuan Zhou,University of California, San Diego",
+    "abstract": "Python is becoming a popular language for building online web services in many companies. To improve online service robustness, this paper presents a new framework, called PYLIVE, to enable on-the-fly code change. PYLIVE leverages the unique language features of Python, meta-object protocol and dynamic typing, to support dynamic logging, profiling and bug-fixing without restarting online services. PYLIVE requires no modification to the underlying runtime systems (i.e., Python interpreters), making it easy to be adopted by online services with little portability concern.\nWe evaluated PYLIVE with seven Python-based web applications that are widely used for online services. From these applications, we collected 20 existing real-world cases, including bugs, performance issues and patches for evaluation. PYLIVE can help resolve all the cases by providing dynamic logging, profiling and patching with little overhead. Additionally, PYLIVE also helped diagnose two new performance issues in two widely-used open-source applications.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/huang-haochen",
+    "session_title": "Barking up the Wrong Tree: Correctness and Debugging",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "RIFF: Reduced Instruction Footprint for Coverage-Guided Fuzzing",
+    "authors": "Mingzhe Wang, Jie Liang, Chijin Zhou, and Yu Jiang,Tsinghua University;Rui Wang,Capital Normal University;Chengnian Sun,Waterloo University;Jiaguang Sun,Tsinghua University",
+    "abstract": "Coverage-guided fuzzers use program coverage measurements to explore different program paths efficiently. The coverage pipeline consists of runtime collection and post-execution processing procedures. First, the target program executes instrumentation code to collect coverage information. Then the fuzzer performs an expensive analysis on the collected data, yet most program executions lead to no increases in coverage. Inefficient implementations of these steps significantly reduce the fuzzer's overall throughput.\nIn this paper, we propose RIFF, a highly efficient program coverage measurement mechanism to reduce fuzzing overhead. For the target program, RIFF moves computations originally done at runtime to instrumentation-time through static program analysis, thus reducing instrumentation code to a bare minimum. For the fuzzer, RIFF processes coverage with different levels of granularity and utilizes vector instructions to improve throughput.\nWe implement RIFF in state-of-the-art fuzzers such as AFL and MOpt and evaluate its performance on real-world programs in Google's FuzzBench and fuzzer-test-suite. The results show that RIFF improves coverage measurement efficiency of fuzzers by 23× and 6× during runtime collection and post-execution processing, respectively. As a result, the fuzzers complete 147% more executions, and use only 6.53 hours to reach the 24-hour coverage of baseline fuzzers on average.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/wang-mingzhe",
+    "session_title": "Barking up the Wrong Tree: Correctness and Debugging",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "TCP-Fuzz: Detecting Memory and Semantic Bugs in TCP Stacks with Fuzzing",
+    "authors": "Yong-Hao Zou and Jia-Ju Bai,Tsinghua University;Jielong Zhou, Jianfeng Tan, and Chenggang Qin,Ant Group;Shi-Min Hu,Tsinghua University",
+    "abstract": "TCP stacks provide reliable data transmission in network, and thus they should be correctly implemented and well tested to ensure reliability and security. However, testing TCP stacks is difficult. First, a TCP stack accepts packets and system calls that have dependencies between each other, and thus generating effective test cases is challenging. Second, a TCP stack has various complex state transitions, but existing testing approaches target covering states instead of covering state transitions, and thus their testing coverage is limited. Finally, our study of TCP stack commits shows that 87% of bug-fixing commits are related to semantic bugs (such as RFC violations), but existing bug sanitizers can detect only memory bugs not semantic bugs.\nIn this paper, we design a novel fuzzing framework named TCP-Fuzz, to effectively test TCP stacks and detect bugs. TCP-Fuzz consists of three key techniques: (1) a dependency-based strategy that considers dependencies between packets and system calls, to generate effective test cases; (2) a transition-guided fuzzing approach that uses a new coverage metric named branch transition as program feedback, to improve the coverage of state transitions; (3) a differential checker that compares the outputs of multiple TCP stacks for the same inputs, to detect semantic bugs. We have evaluated TCP-Fuzz on five widely-used TCP stacks (TLDK, F-Stack, mTCP, FreeBSD TCP and Linux TCP), and find 56 real bugs (including 8 memory bugs and 48 semantic bugs). 40 of these bugs have been confirmed by related developers.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/zou",
+    "session_title": "Barking up the Wrong Tree: Correctness and Debugging",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "MLEE: Effective Detection of Memory Leaks on Early-Exit Paths in OS Kernels",
+    "authors": "Wenwen Wang,University of Georgia",
+    "abstract": "Memory leaks in operating system (OS) kernels can cause critical performance and security issues. However, it is quite challenging to detect memory leaks due to the inherent complexity and large-scale code base of real-world OS kernels. In this work, inspired by the observation that software bugs are often hidden in rarely-tested program paths, we focus on detecting memory leaks on early-exit (E-E) paths in OS kernels. To this end, we conduct a systematic study of memory management operations involved on E-E paths in OS kernels. Based on the findings, we design a novel leak detector for OS kernels: MLEE, which intelligently discovers memory leaks on E-E paths by cross-checking the presence of memory deallocations on different E-E paths and normal paths. MLEE successfully reports 120 new memory leak bugs in the Linux kernel. It is the first time these memory leaks are uncovered by a leak detector for OS kernels.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/wang-wenwen",
+    "session_title": "Barking up the Wrong Tree: Correctness and Debugging",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Argus: Debugging Performance Issues in Modern Desktop Applications with Annotated Causal Tracing",
+    "authors": "Lingmei Weng,Columbia University;Peng Huang,Johns Hopkins University;Jason Nieh and Junfeng Yang,Columbia University",
+    "abstract": "Modern desktop applications involve many asynchronous, concurrent interactions that make performance issues difficult to diagnose. Although prior work has used causal tracing for debugging performance issues in distributed systems, we find that these techniques suffer from high inaccuracies for desktop applications. We present Argus, a fast, effective causal tracing tool for debugging performance anomalies in desktop applications. Argus introduces a novel notion of strong and weak edges to explicitly model and annotate trace graph ambiguities, a new beam-search-based diagnosis algorithm to select the most likely causal paths in the presence of ambiguities, and a new way to compare causal paths across normal and abnormal executions. We have implemented Argus across multiple versions of macOS and evaluated it on 12 infamous spinning pinwheel issues in popular macOS applications. Argus diagnosed the root causes for all issues, 10 of which were previously unknown, some of which have been open for several years. Argus incurs less than 5% CPU overhead when its system-wide tracing is enabled, making always-on tracing feasible.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/weng",
+    "session_title": "Barking up the Wrong Tree: Correctness and Debugging",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "aDFS: An Almost Depth-First-Search Distributed Graph-Querying System",
+    "authors": "Vasileios Trigonakis and Jean-Pierre Lozi,Oracle Labs;Tomáš Faltín,Oracle Labs and Charles University;Nicholas P. Roth,KUNGFU.AI;Iraklis Psaroudakis, Arnaud Delamare, Vlad Haprian, Călin Iorgulescu, Petr Koupy, Jinsoo Lee, Sungpack Hong, and Hassan Chafi,Oracle Labs",
+    "abstract": "Graph processing is an invaluable tool for data analytics. In particular, pattern-matching queries enable flexible graph exploration and analysis, similar to what SQL provides for relational databases. Graph queries focus on following connections in the data; they are a challenging workload because even seemingly trivial queries can easily produce billions of intermediate results and irregular data access patterns.\nIn this paper, we introduce aDFS: A distributed graph-querying system that can process practically any query fully in memory, while maintaining bounded runtime memory consumption. To achieve this behavior, aDFS relies on (i) almost depth-first (aDFS) graph exploration with some breadth-first characteristics for performance, and (ii) non-blocking dispatching of intermediate results to remote edges. We evaluate aDFS against state-of-the-art graph-querying (Neo4J and GraphFrames for Apache Spark), graph-mining (G-Miner, Fractal, and Peregrine), as well as dataflow joins (BiGJoin), and show that aDFS significantly outperforms prior work on a diverse selection of workloads.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/trigonakis",
+    "session_title": "Searching for Tracks: Graphs",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "GLIST: Towards In-Storage Graph Learning",
+    "authors": "Cangyuan Li, Ying Wang, Cheng Liu, and Shengwen Liang,SKLCA, Institute of Computing Technology, Chinese Academy of Sciences, Beijing, China; University of Chinese Academy of Sciences, Beijing, China;Huawei Li,SKLCA, Institute of Computing Technology, Chinese Academy of Sciences, Beijing, China; University of Chinese Academy of Sciences, Beijing, China; Peng Cheng Laboratory, Shenzhen, China;Xiaowei Li,SKLCA, Institute of Computing Technology, Chinese Academy of Sciences, Beijing, China; University of Chinese Academy of Sciences, Beijing, China",
+    "abstract": "Graph learning is an emerging technique widely used in diverse applications such as recommender system and medicine design. Real-world graph learning applications typically operate on large attributed graphs with rich information, which do not fit in the memory. Consequently, the graph learning requests have to go across the deep I/O stack and move massive data from storage to host memory, which incurs considerable latency and power consumption. To address this problem, we developed GLIST, an efficient in-storage graph learning system, to process graph learning requests inside SSDs. It has a customized graph learning accelerator implemented in the storage and enables the storage to directly respond to the graph learning requests. Thus, GLIST greatly reduces the data movement overhead in contrast to conventional GPGPU based systems. In addition, GLIST offers a set of high-level graph learning APIs and allows developers to deploy their graph learning service conveniently. Experimental results on an FPGA-based prototype show that GLIST achieves 13.2× and 10.1× average speedup and reduces the power consumption by up to 98.7% and 98.0% respectively on a series of graph learning tasks when compared to CPU and GPU based solutions.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/li-cangyuan",
+    "session_title": "Searching for Tracks: Graphs",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "DART: A Scalable and Adaptive Edge Stream Processing Engine",
+    "authors": "Pinchao Liu,Florida International University;Dilma Da Silva,Texas A&M University;Liting Hu,Virginia Tech",
+    "abstract": "Many Internet of Things (IoT) applications are time-critical and dynamically changing. However, traditional data processing systems (e.g., stream processing systems, cloud-based IoT data processing systems, wide-area data analytics systems) are not well-suited for these IoT applications. These systems often do not scale well with a large number of concurrently running IoT applications, do not support low-latency processing under limited computing resources, and do not adapt to the level of heterogeneity and dynamicity commonly present at edge environments. This suggests a need for a new edge stream processing system that advances the stream processing paradigm to achieve efficiency and flexibility under the constraints presented by edge computing architectures.\nWe present Dart, a scalable and adaptive edge stream processing engine that enables fast processing of a large number of concurrent running IoT applications' queries in dynamic edge environments. The novelty of our work is the introduction of a dynamic dataflow abstraction by leveraging distributed hash table (DHT) based peer-to-peer (P2P) overlay networks, which can automatically place, chain, and scale stream operators to reduce query latency, adapt to edge dynamics, and recover from failures.\nWe show analytically and empirically that Dart outperforms Storm and EdgeWise on query latency and significantly improves scalability and adaptability when processing a large number of real-world IoT stream applications' queries. Dart significantly reduces application deployment setup times, becoming the first streaming engine to support DevOps for IoT applications on edge platforms.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/liu",
+    "session_title": "Searching for Tracks: Graphs",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "CrystalPerf: Learning to Characterize the Performance of Dataflow Computation through Code Analysis",
+    "authors": "Huangshi Tian,HKUST;Minchen Yu,HKUST and Huawei Technologies Ltd.;Wei Wang,HKUST",
+    "abstract": "Dataflow computation dominates the landscape of big data processing, in which a program is structured as a directed acyclic graph (DAG) of operations. As dataflow computation consumes extensive resources in clusters, making sense of its performance becomes critically important. This, however, can be difficult in practice due to the complexity of DAG execution. In this paper, we propose a new approach thatlearnsto characterize the performance of dataflow computation based oncode analysis. Unlike existing performance reasoning techniques, our approach requiresno code instrumentationandapplies to a wide variety of dataflow frameworks. Our key insight is that the source code of an operation contains learnable syntactic and semantic patterns that reveal how it uses resources. Our approach establishes a performance-resource model that, given a dataflow program, infers automatically how much time each operation has spent on each resource (e.g., CPU, network, disk) from past execution traces and the program source code, using machine learning techniques. We then use the model to predict the program runtime under varying resource configurations. We have implemented our solution as a CLI tool called CrystalPerf. Extensive evaluations in Spark, Flink, and TensorFlow show that CrystalPerf can predict job performance under configuration changes in multiple resources with high accuracy. Real-world case studies further demonstrate that CrystalPerf can accurately detect runtime bottlenecks of DAG jobs, simplifying performance debugging.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/tian",
+    "session_title": "Searching for Tracks: Graphs",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Controlling Memory Footprint of Stateful Streaming Graph Processing",
+    "authors": "Pourya Vaziri and Keval Vora,Simon Fraser University",
+    "abstract": "With growing interest in efficiently analyzing dynamic graphs, streaming graph processing systems rely on stateful iterative models where they track the intermediate state as execution progresses in order to incrementally adjust the results upon graph mutation. We observe that the intermediate state tracked by these stateful iterative models significantly increases the memory footprint of these systems, which limits their scalability on large graphs.\nIn this paper, we develop memory-efficient stateful iterative models that demand much less memory capacity to efficiently process streaming graphs and deliver the same results as provided by existing stateful iterative models. First, we propose aSelective Stateful Iterative Modelwhere the memory footprint is controlled by selecting a small portion of the intermediate state to be maintained throughout execution. Then, we propose aMinimal Stateful Iterative Modelthat further reduces the memory footprint by exploiting key properties of graph algorithms. We develop incremental processing strategies for both of our models in order to correctly compute the effects of graph mutations on the final results even when intermediate states are not available. Evaluation shows our memory-efficient models are effective in limiting the memory footprint while still retaining most of the performance benefits of traditional stateful iterative models, hence being able to scale on larger graphs that could not be handled by the traditional models.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/vaziri",
+    "session_title": "Searching for Tracks: Graphs",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Avocado: A Secure In-Memory Distributed Storage System",
+    "authors": "Maurice Bailleu, Dimitra Giantsidi, and Vasilis Gavrielatos,University of Edinburgh;Do Le Quoc,Huawei Research;Vijay Nagarajan,University of Edinburgh;Pramod Bhatotia,University of Edinburgh and TU Munich",
+    "abstract": "We introduce Avocado, a secure in-memory distributed storage system that provides strong security, fault-tolerance, consistency (linearizability) and performance for untrusted cloud environments. Avocado achieves these properties based on TEEs, which, however, are primarily designed for securing limited physical memory (enclave) within a single-node system. Avocado overcomes this limitation by extending the trust of a secure single-node enclave to the distributed environment over an untrusted network, while ensuring that replicas are kept consistent and fault-tolerant in a malicious environment. To achieve these goals, we design and implement Avocado underpinning on the cross-layer contributions involving the network stack, the replication protocol, scalable trust establishment, and memory management. Avocado is practical: In comparison to BFT, Avocado provides confidentiality with fewer replicas and is significantly faster—4.5× to 65× for YCSB read and write heavy workloads, respectively.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/bailleu",
+    "session_title": "Please Don't Chain Me Up: Blockchain and Security",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Accelerating Encrypted Deduplication via SGX",
+    "authors": "Yanjing Ren and Jingwei Li,University of Electronic Science and Technology of China;Zuoru Yang and Patrick P. C. Lee,The Chinese University of Hong Kong;Xiaosong Zhang,University of Electronic Science and Technology of China",
+    "abstract": "Encrypted deduplication preserves the deduplication effectiveness on encrypted data and is attractive for outsourced storage. However, existing encrypted deduplication approaches build on expensive cryptographic primitives that incur substantial performance slowdown. We present SGXDedup, which leverages Intel SGX to speed up encrypted deduplication based on server-aided message-locked encryption (MLE), while preserving security via SGX. SGXDedup implements a suite of secure interfaces to execute MLE key generation and proof-of ownership operations in SGX enclaves. It also proposes various designs to support secure and efficient enclave operations. Evaluation on synthetic and real-world workloads shows that SGXDedup achieves significant speedups and maintains high bandwidth and storage savings.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/ren-yanjing",
+    "session_title": "Please Don't Chain Me Up: Blockchain and Security",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "ICARUS: Attacking low Earth orbit satellite networks",
+    "authors": "Giacomo Giuliari, Tommaso Ciussani, Adrian Perrig, and Ankit Singla,ETH Zurich",
+    "abstract": "Internet service based on low Earth orbit satellites is generating immense excitement in the networking community due to its potential for global low-latency connectivity. Despite the promise of LEO satellite networks, the security of their operation has so far been largely neglected. In this context, we present ICARUS, a new class of denial of service attacks on LEO networks.\nICARUS turns these networks' key benefits into vulnerabilities: an adversary can leverage the direct global accessibility to launch an attack from numerous locations, while the quest for low latency constrains routing, and provides predictability to the adversary. We explore how the adversary can exploit other unique features, including the path structure of such networks, and the public knowledge of the locations and connectivity of the satellite-routers. We find that a small amount of attack bandwidth can hamper communications between large terrestrial areas. Finally, we lay out open problems in this direction, and provide a framework to enable further research on attacks and defenses in this context.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/giuliari",
+    "session_title": "Please Don't Chain Me Up: Blockchain and Security",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "RainBlock: Faster Transaction Processing in Public Blockchains",
+    "authors": "Soujanya Ponnapalli, Aashaka Shah, and Souvik Banerjee,University of Texas at Austin;Dahlia Malkhi,Diem Association and Novi Financial;Amy Tai,VMware Research;Vijay Chidambaram,University of Texas at Austin and VMware Research;Michael Wei,VMware Research",
+    "abstract": "We present RAINBLOCK, a public blockchain that achieves high transaction throughput without modifying the proof-of-work consensus. The chief insight behind RAINBLOCK is that while consensus controls the rate at which new blocks are added to the blockchain, the number of transactions in each block is limited by I/O bottlenecks. Public blockchains like Ethereum keep the number of transactions in each block low so that all participating servers (miners) have enough time to process a block before the next block is created. By removing the I/O bottlenecks in transaction processing, RAINBLOCK allows miners to process more transactions in the same amount of time. RAINBLOCK makes two novel contributions: the RAINBLOCK architecture that removes I/O from the critical path of processing transactions (txs), and the distributed, multi-versioned DSM-TREE data structure that stores the system state efficiently. We evaluate RAINBLOCK using workloads based on public Ethereum traces (including smart contracts). We show that a single RAINBLOCK miner processes 27.4K txs per second (27× higher than a single Ethereum miner). In a geo-distributed setting with four regions spread across three continents, RAINBLOCK miners process 20K txs per second.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/ponnapalli",
+    "session_title": "Please Don't Chain Me Up: Blockchain and Security",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "An Off-The-Chain Execution Environment for Scalable Testing and Profiling of Smart Contracts",
+    "authors": "Yeonsoo Kim and Seongho Jeong,Yonsei University;Kamil Jezek,The University of Sydney;Bernd Burgstaller,Yonsei University;Bernhard Scholz,The University of Sydney",
+    "abstract": "Smart contracts in Ethereum are executable programs deployed on the blockchain, which require a client for their execution. When a client executes a smart contract, a world state containing contract storage and account details is changed in a consistent fashion. Hence, the execution of smart contracts must be sequential to ensure a deterministic representation of the world state. Due to recent growth, the world state has been bloated, making testing and profiling of Ethereum transactions at scale very difficult.\nIn this work, we introduce a novel off-the-chain execution environment for scalable testing and profiling of smart contracts. We disconnect transactions from the world state by using substates to execute the transactions in isolation and in parallel. Compared to an Ethereum client, our execution environment reduces the space required to replay the transactions of the initial 9 M blocks from 700.11 GB to 285.39 GB. We increased throughput from 620.62 tx/s to 2,817.98 tx/s (single-threaded) and 30,168.76 tx/s (scaled to 44 cores). We demonstrate the scalability of our off-the-chain execution environment for hard-fork testing, metric evaluations of smart contracts, and contract fuzzing.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/kim-yeonsoo",
+    "session_title": "Please Don't Chain Me Up: Blockchain and Security",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Octo: INT8 Training with Loss-aware Compensation and Backward Quantization for Tiny On-device Learning",
+    "authors": "Qihua Zhou and Song Guo,Hong Kong Polytechnic University;Zhihao Qu,Hohai University;Jingcai Guo, Zhenda Xu, Jiewei Zhang, Tao Guo, and Boyuan Luo,Hong Kong Polytechnic University;Jingren Zhou,Alibaba Group",
+    "abstract": "On-device learning is an emerging technique to pave the last mile of enabling edge intelligence, which eliminates the limitations of conventional in-cloud computing where dozens of computational capacities and memories are needed. A high-performance on-device learning system requires breaking the constraints of limited resources and alleviating computational overhead. In this paper, we show that employing the 8-bit fixed-point (INT8) quantization in both forward and backward passes over a deep model is a promising way to enable tiny on-device learning in practice. The key to an efficient quantization-aware training method is to exploit the hardware-level enabled acceleration while preserving the training quality in each layer. However, off-the-shelf quantization methods cannot handle the on-device learning paradigm of fixed-point processing. To overcome these challenges, we propose a novel INT8 training method, which optimizes the computation of forward and backward passes via the delicately designed Loss-aware Compensation (LAC) and Parameterized Range Clipping (PRC), respectively. Specifically, we build a new network component, the compensation layer, to automatically counteract the quantization error of tensor arithmetic. We implement our method in Octo, a lightweight cross-platform system for tiny on-device learning. Evaluation on commercial AI chips shows that Octo holds higher training efficiency over state-of-the-art quantization training methods, while achieving adequate processing speedup and memory reduction over the full-precision training.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/zhou-qihua",
+    "session_title": "I'm Old But I Learned a New Trick: Machine Learning",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Fine-tuning giant neural networks on commodity hardware with automatic pipeline model parallelism",
+    "authors": "Saar Eliad, Ido Hakimi, and Alon De Jagger,Department of Computer Science, Technion - Israel Institute of Technology;Mark Silberstein,Department of Computer Science and Department of Electrical Engineering, Technion - Israel Institute of Technology;Assaf Schuster,Department of Computer Science, Technion - Israel Institute of Technology",
+    "abstract": "Fine-tuning is an increasingly common technique that leverages transfer learning to dramatically expedite the training of huge, high-quality models.\nCritically, fine-tuning holds the potential to make giant state-of-the-art models pre-trained on high-end super-computing-grade systems readily available for users that lack access to such costly resources.\nUnfortunately, this potential is still difficult to realize because the models often do not fit in the memory of a single commodity GPU, making fine-tuning a challenging problem.\nWe present FTPipe, a system that explores a new dimension of pipeline model parallelism, making multi-GPU execution of fine-tuning tasks for giant neural networks readily accessible on commodity hardware. A key idea is a novel approach to model partitioning and task allocation, called Mixed-pipe. Mixed-pipe partitions the model into arbitrary computational blocks rather than layers, and relaxes the model topology constraints when assigning blocks to GPUs, allowing non-adjacent blocks to be executed on the same GPU. More flexible partitioning affords a much better balance of the compute- and memory-load on the GPUs compared to prior works, yet does not increase the communication overheads. Moreover, and perhaps surprisingly, when applied to asynchronous training, Mixed-pipe has negligible or no effect on the end-to-end accuracy of fine-tuning tasks despite the addition of pipeline stages.\nOur extensive experiments on giant state-of-the-art NLP models (BERT-340M, GPT2-1.5B, and T5-3B) show that FTPipe achieves up to 3× speedup and state-of-the-art accuracy when fine-tuning giant transformers with billions of parameters. These models require from 12GB to 59GB of GPU memory, and FTPipe executes them on 8 commodity RTX2080-Ti GPUs, each with 11GB memory and standard PCIe.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/eliad",
+    "session_title": "I'm Old But I Learned a New Trick: Machine Learning",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "INFaaS: Automated Model-less Inference Serving",
+    "authors": "Francisco Romero, Qian Li, Neeraja J. Yadwadkar, and Christos Kozyrakis,Stanford University",
+    "abstract": "Despite existing work in machine learning inference serving,ease-of-useandcost efficiencyremain challenges at large scales. Developers must manually search through thousands ofmodel-variants—versions of already-trained models that differ in hardware, resource footprints, latencies, costs, and accuracies—to meet the diverse application requirements. Since requirements, query load, and applications themselves evolve over time, these decisions need to be made dynamically foreachinference query to avoid excessive costs through naive autoscaling. To avoid navigating through the large and complex trade-off space of model-variants, developers often fix a variant across queries, and replicate it when load increases. However, given the diversity across variants and hardware platforms in the cloud, a lack of understanding of the trade-off space can incur significant costs to developers.\nThis paper introduces INFaaS, an automatedmodel-lesssystem for distributed inference serving, where developers simply specify the performance and accuracy requirements for their applications without needing to specify a specific model-variant for each query. INFaaS generates model-variants from already trained models, and efficiently navigates the large trade-off space of model-variants on behalf of developers to meet application-specific objectives: (a) for each query, it selects a model, hardware architecture, and model optimizations, (b) it combines VM-level horizontal autoscaling with model-level autoscaling, where multiple, different model-variants are used to serve queries within each machine. By leveraging diverse variants and sharing hardware resources across models, INFaaS achieves 1.3× higher throughput, violates latency objectives 1.6× less often, and saves up to 21.6× in cost (8.5× on average) compared to state-of-the-art inference serving systems on AWS EC2.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/romero",
+    "session_title": "I'm Old But I Learned a New Trick: Machine Learning",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Jump-Starting Multivariate Time Series Anomaly Detection for Online Service Systems",
+    "authors": "Minghua Ma,Tsinghua University, BNRist;Shenglin Zhang,Nankai University;Junjie Chen,Tianjin University;Jim Xu,Georgia Tech;Haozhe Li and Yongliang Lin,Nankai University;Xiaohui Nie,Tsinghua University, BNRist;Bo Zhou and Yong Wang,CNCERT/CC;Dan Pei,Tsinghua University, BNRist",
+    "abstract": "With the booming of online service systems, anomaly detection on multivariate time series, such as a combination of CPU utilization, average response time, and requests per second, is increasingly important for system reliability. Although a collection of learning-based approaches have been designed for this purpose, our empirical study shows that these approaches suffer from long initialization time for sufficient training data. In this paper, we introduce the Compressed Sensing technique to multivariate time series anomaly detection for rapid initialization. To build a jump-starting anomaly detector, we propose an approach named JumpStarter. Based on domain-specific insights, we design a shape-based clustering algorithm as well as an outlier-resistant sampling algorithm for JumpStarter. With real-world multivariate time series datasets collected from two Internet companies, our results show that JumpStarter achieves an average F1 score of 94.12%, significantly outperforming the state-of-the-art anomaly detection algorithms, with a much shorter initialization time of twenty minutes. We have applied JumpStarter in online service systems and gained useful lessons in real-world scenarios.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/ma",
+    "session_title": "I'm Old But I Learned a New Trick: Machine Learning",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Palleon: A Runtime System for Efficient Video Processing toward Dynamic Class Skew",
+    "authors": "Boyuan Feng, Yuke Wang, Gushu Li, Yuan Xie, and Yufei Ding,University of California, Santa Barbara",
+    "abstract": "On par with the human classification accuracy, convolutional neural networks (CNNs) have fueled the deployment of many video processing systems on cloud-backed mobile platforms (e.g., cell phones and robotics). Nevertheless, these video processing systems often face a tension between intensive energy consumption from CNNs and limited resources on mobile platforms. To address this tension, we propose to accelerate video processing with a widely-available, but not yet well-explored runtime input-level information, namely class skew. Through such runtime-profiled information, it strives to automatically optimize CNNs toward the time-varying video stream. Specifically, we build Palleon, a runtime system that dynamically adapts and selects a CNN model with the least energy consumption based on the automatically detected class skews, while still achieving the desired accuracy. Extensive evaluations on state-of-the-art CNNs and real-world videos demonstrate that Palleon enables efficient video processing with up to 6.7x energy saving and 7.9x latency reduction.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/feng-boyuan",
+    "session_title": "I'm Old But I Learned a New Trick: Machine Learning",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "FaaSNet: Scalable and Fast Provisioning of Custom Serverless Container Runtimes at Alibaba Cloud Function Compute",
+    "authors": "Ao Wang,George Mason University;Shuai Chang,Alibaba Group;Huangshi Tian,Hong Kong University of Science and Technology;Hongqi Wang, Haoran Yang, Huiba Li, and Rui Du,Alibaba Group;Yue Cheng,George Mason University",
+    "abstract": "Serverless computing, or Function-as-a-Service (FaaS), enables a new way of building and scaling applications by allowing users to deploy fine-grained functions while providing fully-managed resource provisioning and auto-scaling. Custom FaaS container support is gaining traction as it enables better control over OSes, versioning, and tooling for modernizing FaaS applications. However, providing rapid container provisioning introduces non-trivial challenges for FaaS providers, since container provisioning is costly, and real-world FaaS workloads exhibit highly dynamic patterns.\nIn this paper, we design FaaSNet, a highly-scalable middleware system for accelerating FaaS container provisioning. FaaSNet is driven by the workload and infrastructure requirements of the FaaS platform at one of the world's largest cloud providers, Alibaba Cloud Function Compute.FaaSNet enables scalable container provisioning via a lightweight, adaptive function tree (FT) structure. FaaSNet uses an I/O efficient, on-demand fetching mechanism to further reduce provisioning costs at scale. We implement and integrate FaaSNet in Alibaba Cloud Function Compute. Evaluation results show that FaaSNet: (1) finishes provisioning 2,500 function containers on 1,000 virtual machines in 8.3 seconds, (2) scales 13.4× and 16.3× faster than Alibaba Cloud's current FaaS platform and a state-of-the-art P2P container registry (Kraken), respectively, and (3) sustains a bursty workload using 75.2% less time than an optimized baseline.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/wang-ao",
+    "session_title": "Can I Come In? It's Raining!: Cloud Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Experiences in Managing the Performance and Reliability of a Large-Scale Genomics Cloud Platform",
+    "authors": "Michael Hao Tong, Robert L. Grossman, and Haryadi S. Gunawi,University of Chicago",
+    "abstract": "We share our technical experiences in improving the performance of long-running jobs on the Genomic Data Commons (GDC), a large-scale cancer genomics cloud platform. We show how common bioinformatics workloads can cause VMs to age after several days, causing a large number of Extended Page Table (EPT) violations that significantly impact performance. We present host- and VM-level EPT monitoring and evaluate several possible mitigation scenarios. We highlight the long investigative process required for this research, with experiments requiring many days to complete.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/tong",
+    "session_title": "Can I Come In? It's Raining!: Cloud Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Scaling Large Production Clusters with Partitioned Synchronization",
+    "authors": "Yihui Feng,Alibaba Group;Zhi Liu, Yunjian Zhao, Tatiana Jin, and Yidi Wu,The Chinese University of Hong Kong;Yang Zhang,Alibaba Group;James Cheng,The Chinese University of Hong Kong;Chao Li and Tao Guan,Alibaba Group",
+    "abstract": "The scale of computer clusters has grown significantly in recent years. Today, a cluster may have 100 thousand machines and execute billions of tasks, especially short tasks, each day. As a result, the scheduler, which manages resource utilization in a cluster, also needs to be upgraded to work at a much larger scale. However, upgrading the scheduler—a central system component—in a large production cluster is a daunting task as we need to ensure the cluster's stability and robustness, e.g., user transparency should be guaranteed, and other cluster components and the existing scheduling policies need to remain unchanged. We investigated existing scheduler designs and found that most cannot handle the scale of our production clusters or may endanger their robustness. We analyzed one most suitable design that follows a shared-state architecture, and its limitations led us to a fine-grained staleness-aware state sharing design, called partitioned synchronization (ParSync). ParSync features the simplicity required for maintaining the robustness of a production cluster, while achieving high scheduling efficiency and quality in scaling. ParSync has been deployed and is running stably in our production clusters.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/feng-yihui",
+    "session_title": "Can I Come In? It's Raining!: Cloud Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Fighting the Fog of War: Automated Incident Detection for Cloud Systems",
+    "authors": "Liqun Li and Xu Zhang,Microsoft Research;Xin Zhao,University of Chinese Academy of Sciences;Hongyu Zhang,The University of Newcastle;Yu Kang, Pu Zhao, Bo Qiao, and Shilin He,Microsoft Research;Pochian Lee, Jeffrey Sun, Feng Gao, and Li Yang,Microsoft Azure;Qingwei Lin,Microsoft Research;Saravanakumar Rajmohan,Microsoft 365;Zhangwei Xu,Microsoft Azure;Dongmei Zhang,Microsoft Research",
+    "abstract": "Incidents and outages dramatically degrade the availability of large-scale cloud computing systems such as AWS, Azure, and GCP. In current incident response practice, each team has only a partial view of the entire system, which makes the detection of incidents like fighting in the \"fog of war\". As a result, prolonged mitigation time and more finance loss are incurred. In this work, we propose an automatic incident detection system, namely Warden, as a part of the Incident Management (IcM) platform. Warden collects alerts from different services and detects the occurrence of incidents from a global perspective. For each detected potential incident, Warden notifies relevant on-call engineers so that they could properly prioritize their tasks and initiate cross-team collaboration. We implemented and deployed Warden in the IcM platform of Azure. Our evaluation results based on data collected in an 18-month period from 26 major services show that Warden is effective and outperforms the baseline methods. For the majority of successfully detected incidents (∼68%), Warden is faster than human, and this is particularly the case for the incidents that take long time to detect manually.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/li-liqun",
+    "session_title": "Can I Come In? It's Raining!: Cloud Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Habitat: A Runtime-Based Computational Performance Predictor for Deep Neural Network Training",
+    "authors": "Geoffrey X. Yu,University of Toronto/Vector Institute;Yubo Gao,University of Toronto;Pavel Golikov and Gennady Pekhimenko,University of Toronto/Vector Institute",
+    "abstract": "Deep learning researchers and practitioners usually leverage GPUs to help train their deep neural networks (DNNs) faster. However, choosing which GPU to use is challenging both because (i) there are many options, and (ii) users grapple with competing concerns: maximizing compute performance while minimizing costs. In this work, we present a new practical technique to help users make informed and cost-efficient GPU selections: make performance predictions with the help of a GPU that the user already has. Our technique exploits the observation that, because DNN training consists of repetitive compute steps, predicting the execution time of a single iteration is usually enough to characterize the performance of an entire training process. We make predictions by scaling the execution time of each operation in a training iteration from one GPU to another using either (i) wave scaling, a technique based on a GPU's execution model, or (ii) pre-trained multilayer perceptrons. We implement our technique into a Python library called Habitat and find that it makes accurate iteration execution time predictions (with an average error of 11.8%) on ResNet-50, Inception v3, the Transformer, GNMT, and DCGAN across six different GPU architectures. Habitat supports PyTorch, is easy to use, and is open source.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/yu",
+    "session_title": "SIT, Fido!: Training Machine Learning Algorithms",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Zico: Efficient GPU Memory Sharing for Concurrent DNN Training",
+    "authors": "Gangmuk Lim,UNIST;Jeongseob Ahn,Ajou University;Wencong Xiao,Alibaba Group;Youngjin Kwon,KAIST;Myeongjae Jeon,UNIST",
+    "abstract": "GPUs are the workhorse in modern server infrastructure fueling advances in a number of compute-intensive workloads such as deep neural network (DNN) training. Several recent works propose solutions on sharing GPU resources across multiple concurrent DNN training jobs, but none of them address rapidly increasing memory footprint introduced by such job co-locations, which greatly limit the effectiveness of sharing GPU resources. In this paper, we present Zico, the first DNN system that aims at reducing the system-wide memory consumption for concurrent training. Zico keeps track of the memory usage pattern of individual training job by monitoring its progress on GPU computations and makes memory reclaimed from the job globally sharable. Based on this memory management scheme, Zico automatically decides a strategy to share memory among concurrent jobs with minimum delay on training while not exceeding a given memory budget such as GPU memory capacity. Our evaluation shows that Zico outperforms existing GPU sharing approaches and delivers benefits over a variety of job co-location scenarios.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/lim",
+    "session_title": "SIT, Fido!: Training Machine Learning Algorithms",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Refurbish Your Training Data: Reusing Partially Augmented Samples for Faster Deep Neural Network Training",
+    "authors": "Gyewon Lee,Seoul National University and FriendliAI;Irene Lee,Georgia Institute of Technology;Hyeonmin Ha, Kyunggeun Lee, and Hwarim Hyun,Seoul National University;Ahnjae Shin and Byung-Gon Chun,Seoul National University and FriendliAI",
+    "abstract": "Data augmentation is a widely adopted technique for improving the generalization of deep learning models. It provides additional diversity to the training samples by applying random transformations. Although it is useful, data augmentation often suffers from heavy CPU overhead, which can degrade the training speed. To solve this problem, we propose data refurbishing, a novel sample reuse mechanism that accelerates deep neural network training while preserving model generalization. Instead of considering data augmentation as a black-box operation, data refurbishing splits it into the partial and final augmentation. It reuses partially augmented samples to reduce CPU computation while further transforming them with the final augmentation to preserve the sample diversity obtained by data augmentation. We design and implement a new data loading system, Revamper, to realize data refurbishing. It maximizes the overlap between CPU and deep learning accelerators by keeping the CPU processing time of each training step constant. Our evaluation shows that Revamper can accelerate the training of computer vision models by 1.03×–2.04× while maintaining comparable accuracy.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/lee",
+    "session_title": "SIT, Fido!: Training Machine Learning Algorithms",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "ZeRO-Offload: Democratizing Billion-Scale Model Training",
+    "authors": "Jie Ren,UC Merced;Samyam Rajbhandari, Reza Yazdani Aminabadi, and Olatunji Ruwase,Microsoft;Shuangyan Yang,UC Merced;Minjia Zhang,Microsoft;Dong Li,UC Merced;Yuxiong He,Microsoft",
+    "abstract": "Large-scale model training has been a playing ground for a limited few requiring complex model refactoring and access to prohibitively expensive GPU clusters. ZeRO-Offload changes the large model training landscape by making large model training accessible to nearly everyone. It can train models with over 13 billion parameters on a single GPU, a 10x increase in size compared to popular framework such as PyTorch, and it does so without requiring any model change from the data scientists or sacrificing computational efficiency.\nZeRO-Offload enables large model training by offloading data and compute to CPU. To preserve compute efficiency, it is designed to minimize the data movement to/from GPU, and reduce CPU compute time while maximizing memory savings on GPU. As a result, ZeRO-Offload can achieve 40 TFlops/GPU on a single NVIDIA V100 GPU for 10B parameter model compared to 30TF using PyTorch alone for a 1.4B parameter model, the largest that can be trained without running out of memory. ZeRO-Offload is also designed to scale on multiple-GPUs when available, offering near linear speedup on up to 128 GPUs. Additionally, it can work together with model parallelism to train models with over 70 billion parameters on a single DGX-2 box, a 4.5x increase in model size compared to using model parallelism alone.\nBy combining compute and memory efficiency with ease-of-use, ZeRO-Offload democratizes large-scale model training making it accessible to even data scientists with access to just a single GPU.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/ren-jie",
+    "session_title": "SIT, Fido!: Training Machine Learning Algorithms",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Hashing Linearity Enables Relative Path Control in Data Centers",
+    "authors": "Zhehui Zhang,University of California, Los Angeles;Haiyang Zheng, Jiayao Hu, Xiangning Yu, Chenchen Qi, Xuemei Shi, and Guohui Wang,Alibaba Group",
+    "abstract": "A data center network is an environment with rich path diversity, where a large number of paths are available between end-host pairs across multiple tiers of switches. Traffic is split among these paths using ECMP (Equal-Cost Multi-Path routing) for load balancing and failure handling. Although it has been well studied that ECMP has its limitations in traffic polarization and path ambiguity, it remains the most popular multi-path routing mechanism in data centers because it is stateless, simple, and easy to implement in switch ASICs.\nIn this paper, we analyze the ECMP hash algorithms used in today's data center switch ASICs, aiming for lightweight path control solutions that can address the ECMP limitations without any changes to existing data center routing and transport protocols. Contrary to common perceptions about the randomness of ECMP hashing, we reveal the linear property in the hash algorithms (e.g. XOR and CRC) used in widely deployed switch ASICs in data centers. Based on the hashing linearity, we propose relative path control (RePaC), a new lightweight, and easy-to-deploy path control mechanism that can perform on-demand flow migration with deterministic path offsets. We use a few case studies to show that RePaC can be used to achieve orders of magnitude faster failover and better path planning with up to 3 times link utilization gain in hyper-scale data centers.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/zhang-zhehui",
+    "session_title": "I Can Smell That Fluffy Was Here: Networks",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Live in the Express Lane",
+    "authors": "Patrick Jahnke,TU Darmstadt and SAP;Vincent Riesop,SAP;Pierre-Louis Roman and Pavel Chuprikov,Università della Svizzera italiana;Patrick Eugster,Università della Svizzera italiana, TU Darmstadt, and Purdue University",
+    "abstract": "We introduce Express-Lane (X-Lane), a novel system for mitigating interference in data center infrastructure to improve the liveness of coordination services. X-Lane follows a novel design from the ground up to achieve interactions with ultra-low latency in the single-digit microsecond range and jitter in the nanosecond range, while the remaining interaction is treated as usual. To show X-Lane's applicability and genericity we implemented and evaluated two services atop it on commodity hardware in a production environment of SAP SE: a failure detector (X-FD) with detection time under 10 μs and a Raft implementation (X-Raft) with latencies under 20 μs. We further show the smooth integrability of X-Lane services by replacing the replication protocol of Redis with X-Raft, making it strongly consistent while improving latency 18x and write throughput 1.5x.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/jahnke",
+    "session_title": "I Can Smell That Fluffy Was Here: Networks",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Understanding Precision Time Protocol in Today's Wi-Fi Networks: A Measurement Study",
+    "authors": "Paizhuo Chen and Zhice Yang,ShanghaiTech University",
+    "abstract": "Emerging mobile applications involving distributed control and sensing call for accurate time synchronization over wireless links.\nThis paper systematically studies the performance of Precision Time Protocol (PTP) in today's Wi-Fi networks. We investigate both software and hardware PTP implementations.\nOur study uncovers the root causes of software PTP synchronization errors. We show that with fine-tuned system configurations and an online calibration procedure, software PTP can achieve reasonable accuracy with off-the-shelf Wi-Fi devices. Hardware PTP requires a PTP hardware timestamper clock not contained in Wi-Fi NICs. We propose a method to make use of the hardware TSF counter to emulate the PTP clock. Rigorous tests traversing various conditions show that both software and hardware PTP implementations can achieve a 1-µs level of accuracy in today's Wi-Fi networks.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/chen",
+    "session_title": "I Can Smell That Fluffy Was Here: Networks",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "AUTO: Adaptive Congestion Control Based on Multi-Objective Reinforcement Learning for the Satellite-Ground Integrated Network",
+    "authors": "Xu Li, Feilong Tang, and Jiacheng Liu,Shanghai Jiao Tong University;Laurence T. Yang,St. Francis Xavier University;Luoyi Fu and Long Chen,Shanghai Jiao Tong University",
+    "abstract": "The satellite-ground integrated network is highly heterogeneous with diversified applications. It requires congestion control (CC) to achieve consistent high performances in both long-latency satellite networks and large-bandwidth terrestrial networks and cope with different application requirements. However, existing schemes can hardly achieve these goals, for they cannot balance the objectives of CC (i.e., throughput, delay) adaptively and are not objective-configurable. To address these limitations, we propose and implement a novel adaptive CC scheme named AUTO, based on Multi-Objective Reinforcement Learning (MORL). It isenvironment-adaptiveby training a MORL agent and a preference adaptation model. The first can generate optimal policies for all possible preferences (i.e., the relative importance of objectives). The latter automatically selects an appropriate preference for each environment, by taking a state sequence as input to recognize the environment. Meanwhile, AUTOcan satisfy diversified application requirementsby letting applications determine the input preference at will. Evaluations on emulated networks and the real Internet show that AUTO consistently outperforms the state-of-the-art in representative network environments and is more robust to stochastic packet loss and rapid network changes. Moreover, AUTO can achieve fairness against different CC schemes.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/li-xu",
+    "session_title": "I Can Smell That Fluffy Was Here: Networks",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Hey, Lumi! Using Natural Language for Intent-Based Network Management",
+    "authors": "Arthur S. Jacobs, Ricardo J. Pfitscher, and Rafael H. Ribeiro,Federal University of Rio Grande do Sul (UFRGS);Ronaldo A. Ferreira,UFMS;Lisandro Z. Granville,Federal University of Rio Grande do Sul (UFRGS);Walter Willinger,NIKSUN, Inc.;Sanjay G. Rao,Purdue University",
+    "abstract": "In this work, we ask: what would it take for, say, a campus network operator to tell the network, using natural language, to \"Inspect traffic for the dorm\"? How could the network instantly and correctly translate the request into low-level configuration commands and deploy them in the network to accomplish the job it was \"asked\" to do? We answer these questions by presenting the design and implementation of Lumi, a new system that (i) allows operators to express intents in natural language, (ii) uses machine learning and operator feedback to ensure that the translated intents conform with the operator's goals, and (iii) compiles and deploys them correctly in the network. As part of Lumi, we rely on an abstraction layer between natural language intents and network configuration commands referred to as Nile (Network Intent LanguagE). We evaluate Lumi using synthetic and real campus network policies and show that Lumi extracts entities with high precision and compiles intents in a few milliseconds. We also report on a user study where 88.5% of participants state they would rather use Lumi exclusively or in conjunction with configuration commands.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/jacobs",
+    "session_title": "I Can Smell That Fluffy Was Here: Networks",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Boosting Full-Node Repair in Erasure-Coded Storage",
+    "authors": "Shiyao Lin, Guowen Gong, and Zhirong Shen,Xiamen University;Patrick P. C. Lee,The Chinese University of Hong Kong;Jiwu Shu,Xiamen University and Tsinghua University",
+    "abstract": "As a common choice for fault tolerance in today's storage systems, erasure coding is still hampered by the induced substantial traffic in repair. A variety of erasure codes and repair algorithms are designed in recent years to relieve the repair traffic, yet we unveil via careful analysis that they are still plagued by several limitations, which restrict or even negate the performance gains. We present RepairBoost, a scheduling framework that can assist existing linear erasure codes and repair algorithms to boost the full-node repair performance. RepairBoost builds on three design primitives: (i) repair abstraction, which employs a directed acyclic graph to characterize a single-chunk repair process; (ii) repair traffic balancing, which balances the upload and download repair traffic simultaneously; and (iii) transmission scheduling, which carefully dispatches the requested chunks to saturate the most unoccupied bandwidth. Extensive experiments on Amazon EC2 show that RepairBoost can accelerate the repair by 35.0-97.1% for various erasure codes and repair algorithms.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/lin",
+    "session_title": "I Buried That Bone Here Somewhere: Storage",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "KVIMR: Key-Value Store Aware Data Management Middleware for Interlaced Magnetic Recording Based Hard Disk Drive",
+    "authors": "Yuhong Liang, Tsun-Yu Yang, and Ming-Chang Yang,The Chinese University of Hong Kong",
+    "abstract": "Log-Structured Merge-Tree (LSM-tree) based key-value (KV) store provides write-intensive applications with high throughput on Hard Disk Drive (HDD). Recently, the emerging Interlaced Magnetic Recording (IMR) technology makes the IMR based HDD become another desirable option to construct a cost-effective KV store because of its high areal density. Nevertheless, we observe that deploying LSM-tree based KV store on IMR based HDD may suffer noticeable degradation on throughput of incoming reads/writes. Thus, this paper presents KVIMR, a data management for constructing a cost-effective yet high-throughput LSM-tree based KV store on IMR based HDD. KVIMR is architected as a middleware, interposed between LSM-tree based KV store and IMR based HDD, to embrace the compatibility for mainstream LSM-tree based KV store implementations with limited modifications. Technically, KVIMR adopts a novel Compaction-aware Track Allocation scheme, which leverages the special properties behind the compaction process to remedy the throughput degradation. KVIMR further utilizes a novel Merged RMW approach to improve the efficiency of persisting a multi-track-sized file of KV store into IMR tracks with the ensured crash consistency. Our evaluations on several well-known LSM-tree based KV store implementations reveal that KVIMR not only improves the overall throughput by up to 1.55× under write-intensive workloads but even achieves 2.17× higher throughput under high space usage of HDD, as compared with the state-of-the-art track allocation scheme for IMR.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/liang",
+    "session_title": "I Buried That Bone Here Somewhere: Storage",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Differentiated Key-Value Storage Management for Balanced I/O Performance",
+    "authors": "Yongkun Li and Zhen Liu,University of Science and Technology of China;Patrick P. C. Lee,The Chinese University of Hong Kong;Jiayu Wu,University of Science and Technology of China;Yinlong Xu,Anhui Province Key Laboratory of High Performance Computing, University of Science and Technology of China;Yi Wu, Liu Tang, Qi Liu, and Qiu Cui,PingCAP",
+    "abstract": "Modern key-value (KV) stores adopt the LSM-tree as the core data structure for managing KV pairs, but suffer from high write and read amplifications. Existing LSM-tree optimizations often make design trade-offs and are unable to simultaneously achieve high performance in writes, reads, and scans. To resolve the design tensions, we propose DiffKV, which builds on KV separation to carefully manage the ordering for keys and values. DiffKV manages keys using the conventional LSM-tree with fully-sorted ordering (within each level of the LSM-tree), while managing values with partially-sorted ordering with respect to the fully-sorted ordering of keys in a coordinated way for preserving high scan performance. We further propose fine-grained KV separation to differentiate KV pairs by size, so as to realize balanced performance under mixed workloads. Experimental results show that DiffKV can simultaneously achieve the best performance in all aspects among existing LSM-tree-optimized KV stores.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/li-yongkun",
+    "session_title": "I Buried That Bone Here Somewhere: Storage",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "ZNS: Avoiding the Block Interface Tax for Flash-based SSDs",
+    "authors": "Matias Bjørling,Western Digital;Abutalib Aghayev,The Pennsylvania State University;Hans Holmberg, Aravind Ramesh, and Damien Le Moal,Western Digital;Gregory R. Ganger and George Amvrosiadis,Carnegie Mellon University",
+    "abstract": "The Zoned Namespace (ZNS) interface represents a new division of functionality between host software and flash-based SSDs. Current flash-based SSDs maintain the decades-old block interface, which comes at substantial expense in terms of capacity over-provisioning, DRAM for page mapping tables, garbage collection overheads, and host software complexity attempting to mitigate garbage collection. ZNS offers shelter from this ever-rising block interface tax.\nThis paper describes the ZNS interface and explains how it affects both SSD hardware/firmware and host software. By exposing flash erase block boundaries and write-ordering rules, the ZNS interface requires the host software to address these issues while continuing to manage media reliability within the SSD. We describe how storage software can be specialized to the semantics of the ZNS interface, often resulting in significant efficiency benefits. We show the work required to enable support for ZNS SSDs, and show how modified versions of f2fs and RocksDB take advantage of a ZNS SSD to achieve higher throughput and lower tail latency as compared to running on a block-interface SSD with identical physical hardware. For example, we find that the 99.9th-percentile random-read latency for our zone-specialized RocksDB is at least 2–4× lower on a ZNS SSD compared to a block\u0002interface SSD, and the write throughput is 2× higher.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/bjorling",
+    "session_title": "I Buried That Bone Here Somewhere: Storage",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "MapperX: Adaptive Metadata Maintenance for Fast Crash Recovery of DM-Cache Based Hybrid Storage Devices",
+    "authors": "Lujia Yin,NUDT;Li Wang,Didi Chuxing;Yiming Zhang,NiceX Lab, NUDT;Yuxing Peng,NUDT",
+    "abstract": "DM-cache is a component of the device mapper of Linux kernel, which has been widely used to map SSDs and HDDs onto higher-level virtual block devices that take fast SSDs as a cache for slow HDDs to achieve high I/O performance at low monetary cost. While enjoying the benefit of persistent caching where SSDs accelerate normal I/O without worrying data loss, the current design of DM-cache suffers from long crash recovery times (at the scale of hours) and low availability. This is because its metadata of dirty bits has to be asynchronously persisted for performance purpose, which consequently causes all cached data on SSDs to be assumed dirty and to be recovered after the system is restarted.\nThis paper presents MapperX, a novel extension to DM-cache that uses an on-disk adaptive bit-tree (ABT) to synchronously maintain the metadata of dirty bits in a hierarchical manner. Leveraging spatial locality of block writes, MapperX achieves controlled metadata persistence overhead with fast crash recovery by adaptively adding/deleting leaves in the ABT where different levels represent the status of cached blocks with different granularity. We have implemented MapperX for Linux DM-cache module. Experimental results show that the MapperX based hybrid storage device outperforms the original DM-cache based hybrid device by orders of magnitude in crash recovery times while only introducing negligible metadata persistence overhead.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/yin",
+    "session_title": "I Buried That Bone Here Somewhere: Storage",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Exploring the Design Space of Page Management for Multi-Tiered Memory Systems",
+    "authors": "Jonghyeon Kim, Wonkyo Choe, and Jeongseob Ahn,Ajou University",
+    "abstract": "With the arrival of tiered memory systems comprising various types of memory, such as DRAM and SCM, the operating system support for memory management is becoming increasingly important. However, the way that operating systems currently manage pages was designed under the assumption that all the memory has the same capabilities based on DRAM. This oversimplification leads to non-optimal memory usage in tiered memory systems. This study performs an in-depth analysis of page management schemes in the current Linux design extending NUMA to support systems equipped with both DRAM and SCM (Intel's DCPMM). In such multi-tiered memory systems, we find that the critical factor in performance is not only the access locality but also the access tier of memory. When considering both characteristics, there are several alternatives to page placement. However, current operating systems only prioritize access locality. This paper explores the design space of page management schemes, called AutoTiering, to use multi-tiered memory systems effectively. Our evaluation results show that our proposed techniques can significantly improve performance for various workloads, compared to the stock Linux kernel, by unlocking the potential of the multi-tiered memory hierarchy.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/kim-jonghyeon",
+    "session_title": "My Tail Never Has Any Latency: OS & Hardware",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "A Fast and Flexible Hardware-based Virtualization Mechanism for Computational Storage Devices",
+    "authors": "Dongup Kwon, Dongryeong Kim, Junehyuk Boo, Wonsik Lee, and Jangwoo Kim,Seoul National University",
+    "abstract": "A computational storage device incorporating a computation unit inside or near its storage unit is a highly promising technology to maximize a storage server's performance. However, to apply such computational storage devices and take their full potential in virtualized environments, server architects must resolve a fundamental challenge: cost-effective virtualization. This critical challenge can be directly addressed by the following questions: (1) how to virtualize two different hardware units (i.e., computation and storage) and (2) how to integrate them to construct virtual computational storage devices, and (3) how to provide them to users. However, the existing methods for computational storage virtualization severely suffer from their low performance and high costs due to the lack of hardware-assisted virtualization support.\nIn this work, we propose FCSV-Engine, an FPGA card designed to maximize the performance and cost-effectiveness of computational storage virtualization. FCSV-Engine introduces three key ideas to achieve the design goals. First, it achieves high virtualization performance by applying hardware-assisted virtualization to both computation and storage units. Second, it further improves the performance by applying hardware-assisted resource orchestration for the virtualized units. Third, it achieves high cost-effectiveness by dynamically constructing and scheduling virtual computational storage devices. To the best of our knowledge, this is the first work to implement a hardware-assisted virtualization mechanism for modern computational storage devices.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/kwon",
+    "session_title": "My Tail Never Has Any Latency: OS & Hardware",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Fair Scheduling for AVX2 and AVX-512 Workloads",
+    "authors": "Mathias Gottschlag, Philipp Machauer, Yussuf Khalil, and Frank Bellosa,Karlsruhe Institute of Technology",
+    "abstract": "CPU schedulers such as the Linux Completely Fair Scheduler try to allocate equal shares of the CPU performance to tasks of equal priority by allocating equal CPU time as a technique to improve quality of service for individual tasks. Recently, CPUs have, however, become power-limited to the point where different subsets of the instruction set allow for different operating frequencies depending on the complexity of the instructions. In particular, Intel CPUs with support for AVX2 and AVX-512 instructions often reduce their frequency when these 256-bit and 512-bit SIMD instructions are used in order to prevent excessive power consumption. This frequency reduction often impacts other less power-intensive processes, in which case equal allocation of CPU time results in unequal performance and a substantial lack of performance isolation.\nWe describe a modification to existing schedulers to restore fairness for workloads involving tasks which execute complex power-intensive instructions. In particular, we present a technique to identify AVX2/AVX-512 tasks responsible for frequency reduction, and we modify CPU time accounting to increase the priority of other tasks slowed down by these AVX2/AVX-512 tasks. Whereas previously non-AVX applications running in parallel to AVX-512 applications were slowed down by 24.9% on average, our prototype reduces the performance difference between non-AVX tasks and AVX-512 tasks in such scenarios to 5.4% on average, with a similar improvement for workloads involving AVX2 applications.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/gottschlag",
+    "session_title": "My Tail Never Has Any Latency: OS & Hardware",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "SKQ: Event Scheduling for Optimizing Tail Latency in a Traditional OS Kernel",
+    "authors": "Siyao Zhao, Haoyu Gu, and Ali José Mashtizadeh,University of Waterloo",
+    "abstract": "This paper presents Schedulable Kqueue (SKQ), a new design to FreeBSD Kqueue that improves application tail latency and low-latency throughput. SKQ introduces a new scalable architecture and event scheduling. We provide multiple scheduling policies that improve cache locality and reduce workload imbalance. SKQ also enables applications to prioritize processing latency-sensitive requests over regular requests.\nIn the RocksDB benchmark, SKQ reduces tail latency by up to 1022× and extends the low-latency throughput by 27.4×. SKQ also closes the gap between traditional OS kernel networking and a state-of-the-art kernel-bypass networking system by 83.7% for an imbalanced workload.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/zhao-siyao",
+    "session_title": "My Tail Never Has Any Latency: OS & Hardware",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "A Linux Kernel Implementation of the Homa Transport Protocol",
+    "authors": "John Ousterhout,Stanford University",
+    "abstract": "Homa/Linux is a Linux kernel module that implements the Homa transport protocol. Measurements of Homa/Linux reconfirm Homa's superior performance compared to TCP and DCTCP. In a cluster benchmark with 40 nodes, Homa/Linux provided lower latency than both TCP and DCTCP for all message sizes; for short messages, Homa's 99th percentile tail latency was 7–83x lower than TCP and DCTCP. The benchmarks also show that Homa has eliminated network congestion as a significant performance limitation. Both tail latency and throughput are now limited by software overheads, particularly software congestion caused by imperfect load balancing of the protocol stack across cores. Another factor of 5–10x in performance can be achieved if software overheads can be eliminated in the future.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/ousterhout",
+    "session_title": "My Tail Never Has Any Latency: OS & Hardware",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Ayudante: A Deep Reinforcement Learning Approach to Assist Persistent Memory Programming",
+    "authors": "Hanxian Huang, Zixuan Wang, Juno Kim, Steven Swanson, and Jishen Zhao,University of California, San Diego",
+    "abstract": "Nonvolatile random-access memories (NVRAMs) are envisioned as a new tier of memory in future server systems. They enable a promising persistent memory (PM) technique, with comparable performance of DRAM and the persistence property of storage. However, programming PM imposes non-trivial labor effort on writing code to adopt new PM-aware libraries and APIs. In addition, non-expert PM code can be error-prone. In order to ease the burden of PM programmers, we propose Ayudante, a deep reinforcement learning (RL)-based PM programming assistant framework consisting of two key components: a deep RL-based PM code generator and a code refining pipeline. Given a piece of C, C++, or Java source code developed for conventional volatile memory systems, our code generator automatically generates the corresponding PM code and checks its data persistence. The code refining pipeline parses the generated code to provide a report for further program testing and performance optimization. Our evaluation on an Intel server equipped with Optane DC PM demonstrates that both microbenchmark programs and a key-value store application generated by Ayudante pass PMDK checkers. Performance evaluation on the microbenchmarks shows that the generated code achieves comparable speedup and memory access performance as PMDK code examples.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/huang-hanxian",
+    "session_title": "Friends Fur-Ever: Persistent Memory and In-Memory Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "TIPS: Making Volatile Index Structures Persistent with DRAM-NVMM Tiering",
+    "authors": "R. Madhava Krishnan, Wook-Hee Kim, Xinwei Fu, and Sumit Kumar Monga,Virginia Tech;Hee Won Lee,Samsung Electronics;Minsung Jang,Peraton Labs;Ajit Mathew and Changwoo Min,Virginia Tech",
+    "abstract": "We propose TIPS – a framework to systematically make volatile indexes persistent. TIPS neither places restrictions on the concurrency model nor requires in-depth knowledge of the volatile index. TIPS relies on novel DRAM-NVMM tiering to support an index-agnostic conversion, durable linearizability and its concurrency model called the tiered concurrency to achieve a good performance, scalability. TIPS proposes a hybrid low overhead logging technique called the UNO logging to guarantee crash consistency and to handle persistent memory leaks across crashes. We converted seven volatile indexes with different concurrency models and the Redis key-value store application using TIPS and evaluated them using YCSB. Our evaluations show that TIPS-enabled indexes outperform the state-of-the-art index conversion techniques PRONTO, NVTraverse, RECIPE, and the NVMM-optimized B+Tree (BzTree, FastFair), Hash (CCEH and Level Hash) and Trie (WOART) indexes by 3-10× while supporting strong consistency and index-agnostic conversion.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/krishnan",
+    "session_title": "Friends Fur-Ever: Persistent Memory and In-Memory Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Improving Performance of Flash Based Key-Value Stores Using Storage Class Memory as a Volatile Memory Extension",
+    "authors": "Hiwot Tadese Kassa,University of Michigan;Jason Akers, Mrinmoy Ghosh, and Zhichao Cao,Facebook Inc.;Vaibhav Gogte and Ronald Dreslinski,University of Michigan",
+    "abstract": "High-performance flash-based key-value stores in data-centers utilize large amounts of DRAM to cache hot data.However, motivated by the high cost and power consumption of DRAM, server designs with lower DRAM per compute ratios are becoming popular. These low-cost servers enable scale-out services by reducing server workload densities. This results in improvements to overall service reliability, leading to a decrease in the total cost of ownership (TCO) for scalable workloads. Nevertheless, for key-value stores with large memory footprints these reduced DRAM servers degrade performance due to an increase in both IO utilization and data access latency. In this scenario a standard practice to improve performance for sharded databases is to reduce the number of shards per machine, which degrades the TCO benefits of reduced DRAM low-cost servers. In this work, we explore a practical solution to improve performance and reduce costs of key-value stores running on DRAM constrained servers by using Storage Class Memories (SCM).SCM in a DIMM form factor, although slower than DRAM, are sufficiently faster than flash when serving as a large ex-tension to DRAM.\nIn this paper, we use Intel®Optane™PMem 100 Series SCMs (DCPMM) in AppDirect mode to extend the available memory of RocksDB, one of the largest key-value stores at Facebook. We first designed hybrid cache in RocksDB to harness both DRAM and SCM hierarchically.We then characterized the performance of the hybrid cache for 3 of the largest RocksDB use cases at Facebook (WhatsApp, Tectonic Metadata, and Laser). Our results demonstrate that we can achieve up to 80% improvement in throughput and 20% improvement in P95 latency over the existing small DRAM single-socket platform, while maintaining a 43-48% cost improvement over the large DRAM dual socket platform. To the best of our knowledge, this is the first study of the DCPMM platform in a commercial data center.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/kassa",
+    "session_title": "Friends Fur-Ever: Persistent Memory and In-Memory Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "First Responder: Persistent Memory Simultaneously as High Performance Buffer Cache and Storage",
+    "authors": "Hyunsub Song, Shean Kim, J. Hyun Kim, Ethan JH Park, and Sam H. Noh,UNIST",
+    "abstract": "Persistent Memory (PM) is a new media with favorable characteristics that can vastly improve storage I/O performance. While new PM based file systems have been developed to exploit PM, most work have not been successful in fully integrating PM media with traditional storage media such as SSDs and HDDs. We present First Responder (FR), a means to exploit the beneficial features of PM, while making use of modern and mature file systems such as Ext4 developed for traditional storage devices. Conceptually, FR is much like a buffer cache, but much more is involved such as maintaining consistency under failure and providing featherweight management overhead. FR brings about multiple benefits. First, we retain the maturity of existing file systems allowing deployment of FR at settings where traditional file systems are deployed. Second, traditional storage devices supported by these file systems can be used allowing easy integration of PM with traditional storage. Finally, FR allows in-order file system semantics at close to PM device latency. With experimental evaluations with the Intel DC PMM, we show that FR, when used in cache form, can outperform Ext4 by more than 9×, while providing durable in-order file system semantics, whereas Ext4 cannot. We also show that when used as part of a typical file system, performance is comparable with NOVA and Ext4-DAX.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/song",
+    "session_title": "Friends Fur-Ever: Persistent Memory and In-Memory Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "A Case Study of Processing-in-Memory in off-the-Shelf Systems",
+    "authors": "Joel Nider, Craig Mustard, Andrada Zoltan, John Ramsden, Larry Liu, Jacob Grossbard, and Mohammad Dashti,University of British Columbia;Romaric Jodin, Alexandre Ghiti, and Jordi Chauzi,UPMEM SAS;Alexandra Fedorova,University of British Columbia",
+    "abstract": "We evaluate a new processing-in-memory (PIM) architecture from UPMEM that was built and deployed in an off-the-shelf server. Systems designed to perform computing in or near memory have been proposed for decades to overcome the proverbial memory wall, yet most never made it past blueprints or simulations. When the hardware is actually built and integrated into a fully functioning system, it must address realistic constraints that may be overlooked in a simulation. Evaluating a real implementation can reveal valuable insights. Our experiments on five commonly used applications highlight the main strength of this architecture: computing capability and the internal memory bandwidth scale with memory size. This property helps some applications defy the von-Neumann bottleneck, while for others, architectural limitations stand in the way of reaching the hardware potential. Our analysis explains why.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/nider",
+    "session_title": "Friends Fur-Ever: Persistent Memory and In-Memory Computing",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "XFUSE: An Infrastructure for Running Filesystem Services in User Space",
+    "authors": "Qianbo Huai, Windsor Hsu, Jiwei Lu, Hao Liang, Haobo Xu, and Wei Chen,Alibaba Group",
+    "abstract": "Implementing the filesystem in user space reduces development complexity and decreases dependency on the underlying OS platform. Implementing the filesystem at the user level as opposed to inside the OS kernel, however, has traditionally meant lower performance. This performance overhead is increasingly limiting with high performance storage devices based on new persistent memory technology (e.g. 3D XPoint) and advanced networking techniques (e.g. RDMA). User space file systems have also been associated with poor reliability, availability and serviceability (RAS) characteristics. As a result, there is a tendency to consider user space filesystems as prototypes and proof-of-concepts. In this paper, we systematically analyze the concerns with deploying user space filesystem to provide production file storage services. We present XFUSE, a filesystem in user space framework that addresses the performance and RAS concerns, and that enables file storage services to be effectively deployed at the user level. Our performance analysis indicates that XFUSE enables filesystem requests made through standard kernel interfaces to be processed at the user level with latency in the 4 microseconds range, and offers throughput exceeding 8 GB/s.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/hsu",
+    "session_title": "Time to File the Claws: Files",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Max: A Multicore-Accelerated File System for Flash Storage",
+    "authors": "Xiaojian Liao, Youyou Lu, Erci Xu, and Jiwu Shu,Department of Computer Science and Technology, Tsinghua University, and Beijing National Research Center for Information Science and Technology (BNRist)",
+    "abstract": "The bandwidth of flash storage has been surging in recent years. Employing multicores to fully unleash its abundant bandwidth becomes a necessary step towards building high performance storage systems. This paper presents the design and implementation of Max, a multicore-friendly log-structured file system (LFS) for flash storage. With three main techniques, Max systematically improves the scalability of LFS while retaining the flash-friendly design. First, we propose a new reader-writer semaphore to scale the user I/Os with negligible impact on the internal operations of LFS. Second, we introduce file cell to scale the access to in-memory index and cache while delivering concurrency- and flash-friendly on-disk layout. Third, to fully exploit the flash parallelism, we advance the single log design with runtime-independent log partitions, and delay the ordering and consistency guarantees to crash recovery. We implement Max based on the F2FS in the Linux kernel. Evaluations show that Max significantly improves scalability, and achieves an order of magnitude higher throughput than existing Linux file systems.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/liao",
+    "session_title": "Time to File the Claws: Files",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Z-Journal: Scalable Per-Core Journaling",
+    "authors": "Jongseok Kim and Cassiano Campes,Sungkyunkwan University;Joo-Young Hwang,Samsung Electronics Co., Ltd.;Jinkyu Jeong and Euiseong Seo,Sungkyunkwan University",
+    "abstract": "File system journaling critically limits the scalability of a file system because all simultaneous write operations coming from multiple cores must be serialized to be written to the journal area. Although a few scalable journaling approaches have been proposed, they required the radical redesign of file systems, or tackled only a part of the scalability bottlenecks. Per-core journaling, in which a core has its own journal stack, can clearly provide scalability. However, it requires a journal coherence mechanism because two or more cores can write to a shared file system block, so write order on the shared block must be preserved across multiple journals. In this paper, we propose a novel scalable per-core journal design. The proposed design allows a core to commit independently to other cores. The journal transactions involved in shared blocks are linked together through order-preserving transaction chaining to form a transaction order graph. The ordering constraints later will be imposed during the checkpoint process. Because the proposed design is self-contained in the journal layer and does not rely on the file system, its implementation, Z-journal, can easily replace JBD2, the generic journal layer. Our evaluation with FxMark, SysBench and Filebench running on the ext4 file system in an 80-core server showed that it outperformed the current JBD2 by up to approx. 4000 %.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/kim-jongseok",
+    "session_title": "Time to File the Claws: Files",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "LODIC: Logical Distributed Counting for Scalable File Access",
+    "authors": "Jeoungahn Park,KAIST;Taeho Hwang,Hanyang University;Jongmoo Choi,Dankook University;Changwoo Min,Virginia Tech;Youjip Won,KAIST",
+    "abstract": "We develop a memory-efficient manycore-scalable distributed reference counter for scalable file access, Logical Distributed Counting (LODIC). In Logical Distributed Counting, we propose to allocate the local counter on a per-process basis. Our process-centric counter design saves the kernel from the excessive memory pressure and the counter query latency issues in the existing per-core based distributed counting schemes. The logical distributed counting is designed to dynamically incorporate the three characteristics for reference counting: i) the population of the object, ii) the reference brevity, and iii) the degree of sharing. The key ingredients of the logical distributed counting are Memory mapping, Counter Embedding, and Process-space based reverse mapping. Via mapping a file region to the process address space, LODIC can allocate the local counter at the process address space. With Counter Embedding, the logical distributed counting defines the local counters without the significant changes in the existing kernel code and without introducing significant memory overhead for the local counters. Exploiting the virtual memory segment allocation algorithm of the existing Linux kernel, the process-space based reverse mapping locates the local counter of the physical page without the substantial overhead. Logical Distributed Counting increases the throughput by 65× against stock Linux in reading the shared file block. LODIC exhibits as good performance as the ideal scalable reference counter when deployed in the RocksDB (key value storage) and NGINX (web server) applications.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/park",
+    "session_title": "Time to File the Claws: Files",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "UniStore: A fault-tolerant marriage of causal and strong consistency",
+    "authors": "Manuel Bravo, Alexey Gotsman, and Borja de Régil,IMDEA Software Institute;Hengfeng Wei,Nanjing University",
+    "abstract": "Modern online services rely on data stores that replicate their data across geographically distributed data centers. Providing strong consistency in such data stores results in high latencies and makes the system vulnerable to network partitions. The alternative of relaxing consistency violates crucial correctness properties. A compromise is to allow multiple consistency levels to coexist in the data store. In this paper we present UniStore, the first fault-tolerant and scalable data store that combines causal and strong consistency. The key challenge we address in UniStore is to maintain liveness despite data center failures: this could be compromised if a strong transaction takes a dependency on a causal transaction that is later lost because of a failure. UniStore ensures that such situations do not arise while paying the cost of durability for causal transactions only when necessary. We evaluate UniStore on Amazon EC2 using both microbenchmarks and a realistic RUBiS benchmark. Our results show that UniStore effectively and scalably combines causal and strong consistency.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/bravo",
+    "session_title": "But You Played with Me Yesterday: Serverless Computing and Consistency",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Optimistic Concurrency Control for Real-world Go Programs",
+    "authors": "Zhizhou Zhang,University of California, Santa Barbara;Milind Chabbi and Adam Welc,Uber Technologies;Timothy Sherwood,University of California, Santa Barbara",
+    "abstract": "We present a source-to-source transformation framework, Gocc, that consumes lock-based pessimistic concurrency programs in the Go language and transforms them into optimistic concurrency programs that use Hardware Transactional Memory (HTM). The choice of the Go language is motivated by the fact that concurrency is a first-class citizen in Go, and it is widely used in Go programs. Gocc performs rich inter-procedural program analysis to detect and filter lock-protected regions and performs AST-level code transformation of the surrounding locks when profitable. Profitability is driven by both static analyses of critical sections and dynamic analysis via execution profiles. A custom HTM library, using perceptron, learns concurrency behavior and dynamically decides whether to use HTM in the rewritten lock/unlock points. Given the rich history of transactional memory research but its lack of adoption in any industrial setting, we believe this workflow, which ultimately produces source-code patches, is more apt for industry-scale adoption. Results on widely adopted Go libraries and applications demonstrate significant (up to 10x) and scalable performance gains resulting from our automated transformation while avoiding major performance regressions.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/zhang-zhizhou",
+    "session_title": "But You Played with Me Yesterday: Serverless Computing and Consistency",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "Faastlane: Accelerating Function-as-a-Service Workflows",
+    "authors": "Swaroop Kotni, Ajay Nayak, Vinod Ganapathy, and Arkaprava Basu,Indian Institute of Science",
+    "abstract": "In FaaS workflows, a set of functions implement application logic by interacting and exchanging data among themselves. Contemporary FaaS platforms execute each function of a workflow in separate containers. When functions in a workflow interact, the resulting latency slows execution.\nFaastlane minimizes function interaction latency by striving to execute functions of a workflow as threads within a single process of a container instance, which eases data sharing via simple load/store instructions. For FaaS workflows that operate on sensitive data, Faastlane provides lightweight thread-level isolation domains using Intel Memory Protection Keys (MPK). While threads ease sharing, implementations of languages such as Python and Node.js (widely used in FaaS applications) disallow concurrent execution of threads. Faastlane dynamically identifies opportunities for parallelism in FaaS workflows and fork processes (instead of threads) or spawns new container instances to concurrently execute parallel functions of a workflow.\nWe implemented Faastlane atop Apache OpenWhisk and show that it accelerates workflow instances by up to 15X, and reduces function interaction latency by up to 99.95% compared to OpenWhisk.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/kotni",
+    "session_title": "But You Played with Me Yesterday: Serverless Computing and Consistency",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  },
+  {
+    "title": "SONIC: Application-aware Data Passing for Chained Serverless Applications",
+    "authors": "Ashraf Mahgoub,Purdue University;Karthick Shankar,Carnegie Mellon University;Subrata Mitra,Adobe Research;Ana Klimovic,ETH Zurich;Somali Chaterji and Saurabh Bagchi,Purdue University",
+    "abstract": "Data analytics applications are increasingly leveraging serverless execution environments for their ease-of-use and pay-as-you-go billing. The structure of such applications is usually composed of multiple functions that are chained together to form a workflow. The current approach of ex-changing intermediate (ephemeral) data between functions is through a remote storage (such as S3), which introduces significant performance overhead. We compare three data-passing methods, which we call VM-Storage, Direct-Passing, and state-of-practice Remote-Storage. Crucially, we show that no single data-passing method prevails under all scenarios and the optimal choice depends on dynamic factors such as the size of input data, the size of intermediate data, the application's degree of parallelism, and network bandwidth. We propose SONIC, a data-passing manager that optimizes application performance and cost, by transparently selecting the optimal data-passing method for each edge of a serverless workflow DAG and implementing communication-aware function placement. SONIC monitors application parameters and uses simple regression models to adapt its hybrid data passing accordingly. We integrate SONIC with Open-Lambda and evaluate the system on Amazon EC2 with three analytics applications, popular in the serverless environment. SONIC provides lower latency (raw performance) and higher performance/$ across diverse conditions, compared to four baselines: SAND, vanilla OpenLambda, OpenLambda with Pocket, and AWS Lambda.",
+    "link": "https://www.usenix.org/conference/atc21/presentation/mahgoub",
+    "session_title": "But You Played with Me Yesterday: Serverless Computing and Consistency",
+    "conference_name": "ATC",
+    "date": "2021-07-14"
+  }
+]

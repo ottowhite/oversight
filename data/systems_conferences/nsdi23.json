@@ -1,0 +1,866 @@
+[
+  {
+    "title": "SRNIC: A Scalable Architecture for RDMA NICs",
+    "authors": "Zilong Wang,Hong Kong University of Science and Technology;Layong Luo and Qingsong Ning,ByteDance;Chaoliang Zeng, Wenxue Li, and Xinchen Wan,Hong Kong University of Science and Technology;Peng Xie, Tao Feng, Ke Cheng, Xiongfei Geng, Tianhao Wang, Weicheng Ling, Kejia Huo, Pingbo An, Kui Ji, Shideng Zhang, Bin Xu, Ruiqing Feng, and Tao Ding,ByteDance;Kai Chen,Hong Kong University of Science and Technology;Chuanxiong Guo",
+    "abstract": "RDMA is expected to be highly scalable: to perform well in large-scale data center networks where packet losses are inevitable (i.e., high network scalability), and to support a large number of performant connections per server (i.e., high connection scalability). Commercial RoCEv2 NICs (RNICs) fall short on scalability as they rely on a lossless, limited-scale network fabric and support only a small number of performant connections. Recent work IRN improves the network scalability by relaxing the lossless network requirement, but the connection scalability issue remains unaddressed.\nIn this paper, we aim to address the connection scalability challenge, while maintaining high performance and low CPU overhead as commercial RNICs, and high network scalability as IRN, by designing SRNIC, a Scalable RDMA NIC architecture. Our key insight in SRNIC is that, on-chip data structures and their memory requirements in RNICs can be minimized with careful protocol and architecture co-designs to improve connection scalability. Guided by this insight, we analyze all data structures involved in an RDMA conceptual model, and remove them as many as possible with RDMA protocol header modifications and architectural innovations, including cache-free QP scheduler and memory-free selective repeat. We implement a fully functional SRNIC prototype using FPGA. Experiments show that, SRNIC achieves 10K performant connections on chip and outperforms commercial RNICs by 18x in terms of normalized connection scalability (i.e., the number of performant connections per 1MB memory), while achieving 97 Gbps throughput and 3.3 μs latency with less than 5% CPU overhead, and maintaining high network scalability.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/wang-zilong",
+    "session_title": "RDMA",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Hostping: Diagnosing Intra-host Network Bottlenecks in RDMA Servers",
+    "authors": "Kefei Liu,BUPT;Zhuo Jiang,ByteDance Inc.;Jiao Zhang,BUPT and Purple Mountain Laboratories;Haoran Wei,BUPT and ByteDance Inc.;Xiaolong Zhong,BUPT;Lizhuang Tan,ByteDance Inc.;Tian Pan and Tao Huang,BUPT and Purple Mountain Laboratories",
+    "abstract": "Intra-host networking was considered robust in the RDMA (Remote Direct Memory Access) network and received little attention. However, as the RNIC (RDMA NIC) line rate increases rapidly to multi-hundred gigabits, the intra-host network becomes a potential performance bottleneck for network applications. Intra-host network bottlenecks may result in degraded intra-host bandwidth and increased intra-host latency, which can severely impact network performance. However, when intra-host bottlenecks occur, they can hardly be noticed due to the lack of a monitoring system. Furthermore, existing bottleneck diagnosis mechanisms fail to diagnose intra-host bottlenecks efficiently. In this paper, we analyze the symptom of intra-host bottlenecks based on our longterm troubleshooting experience and propose Hostping, the first bottleneck monitoring and diagnosis system dedicated to intra-host networks. The core idea of Hostping is conducting loopback tests between RNICs and endpoints within the host to measure intra-host latency and bandwidth. Hostping not only discovers intra-host bottlenecks we already knew but also reveals six bottlenecks we did not notice before.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/liu-kefei",
+    "session_title": "RDMA",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Understanding RDMA Microarchitecture Resources for Performance Isolation",
+    "authors": "Xinhao Kong and Jingrong Chen,Duke University;Wei Bai,Microsoft;Yechen Xu,Shanghai Jiao Tong University;Mahmoud Elhaddad, Shachar Raindel, and Jitendra Padhye,Microsoft;Alvin R. Lebeck and Danyang Zhuo,Duke University",
+    "abstract": "Recent years have witnessed the wide adoption of RDMA in the cloud to accelerate first-party workloads and achieve cost savings by freeing up CPU cycles. Now cloud providers are working towards supporting RDMA in general-purpose guest VMs to benefit third-party workloads. To this end, cloud providers must provide strong performance isolation so that the RDMA workloads of one tenant do not adversely impact the RDMA performance of another tenant. Despite many efforts on network performance isolation in the public cloud, we find that RDMA brings unique challenges due to its complex NIC microarchitecture resources (e.g., the NIC cache).\nIn this paper, we aim to systematically understand the impact of RNIC microarchitecture resources on performance isolation. We present a model that represents how RDMA operations use RNIC resources. Using this model, we develop a test suite to evaluate RDMA performance isolation solutions. Our test suite can break all existing solutions in various scenarios. Our results are acknowledged and reproduced by one of the largest RDMA NIC vendors. Finally, based on the test results, we summarize new insights on designing future RDMA performance isolation solutions.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/kong",
+    "session_title": "RDMA",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Empowering Azure Storage with RDMA",
+    "authors": "Wei Bai, Shanim Sainul Abdeen, Ankit Agrawal, Krishan Kumar Attre, Paramvir Bahl, Ameya Bhagat, Gowri Bhaskara, Tanya Brokhman, Lei Cao, Ahmad Cheema, Rebecca Chow, Jeff Cohen, Mahmoud Elhaddad, Vivek Ette, Igal Figlin, Daniel Firestone, Mathew George, Ilya German, Lakhmeet Ghai, Eric Green, Albert Greenberg, Manish Gupta, Randy Haagens, Matthew Hendel, Ridwan Howlader, Neetha John, Julia Johnstone, Tom Jolly, Greg Kramer, David Kruse, Ankit Kumar, Erica Lan, Ivan Lee, Avi Levy, Marina Lipshteyn, Xin Liu, Chen Liu, Guohan Lu, Yuemin Lu, Xiakun Lu, Vadim Makhervaks, Ulad Malashanka, David A. Maltz, Ilias Marinos, Rohan Mehta, Sharda Murthi, Anup Namdhari, Aaron Ogus, Jitendra Padhye, Madhav Pandya, Douglas Phillips, Adrian Power, Suraj Puri, Shachar Raindel, Jordan Rhee, Anthony Russo, Maneesh Sah, Ali Sheriff, Chris Sparacino, Ashutosh Srivastava, Weixiang Sun, Nick Swanson, Fuhou Tian, Lukasz Tomczyk, Vamsi Vadlamuri, Alec Wolman, Ying Xie, Joyce Yom, Lihua Yuan, Yanzhao Zhang, and Brian Zill,Microsoft",
+    "abstract": "Given the wide adoption of disaggregated storage in public clouds, networking is the key to enabling high performance and high reliability in a cloud storage service. In Azure, we choose Remote Direct Memory Access (RDMA) as our transport and aim to enable it for both storage frontend traffic (between compute virtual machines and storage clusters) and backend traffic (within a storage cluster) to fully realize its benefits. As compute and storage clusters may be located in different datacenters within an Azure region, we need to support RDMA at regional scale.\nThis work presents our experience in deploying intra-region RDMA to support storage workloads in Azure. The high complexity and heterogeneity of our infrastructure bring a series of new challenges, such as the problem of interoperability between different types of RDMA network interface cards. We have made several changes to our network infrastructure to address these challenges. Today, around 70% of traffic in Azure is RDMA and intra-region RDMA is supported in all Azure public regions. RDMA helps us achieve significant disk I/O performance improvements and CPU core savings.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/bai",
+    "session_title": "RDMA",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Transparent GPU Sharing in Container Clouds for Deep Learning Workloads",
+    "authors": "Bingyang Wu and Zili Zhang,Peking University;Zhihao Bai,Johns Hopkins University;Xuanzhe Liu and Xin Jin,Peking University",
+    "abstract": "Containers are widely used for resource management in datacenters. A common practice to support deep learning (DL) training in container clouds is to statically bind GPUs to containers in entirety. Due to the diverse resource demands of DL jobs in production, a significant number of GPUs are underutilized. As a result, GPU clusters have low GPU utilization, which leads to a long job completion time because of queueing.\nWe present TGS (Transparent GPU Sharing), a system that provides transparent GPU sharing to DL training in container clouds. In stark contrast to recent application-layer solutions for GPU sharing, TGS operates at the OS layer beneath containers. Transparency allows users to use any software to develop models and run jobs in their containers. TGS leverages adaptive rate control and transparent unified memory to simultaneously achieve high GPU utilization and performance isolation. It ensures that production jobs are not greatly affected by opportunistic jobs on shared GPUs. We have built TGS and integrated it with Docker and Kubernetes. Experiments show that (i) TGS has little impact on the throughput of production jobs; (ii) TGS provides similar throughput for opportunistic jobs as the state-of-the-art application-layer solution AntMan, and improves their throughput by up to 15× compared to the existing OS-layer solution MPS.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/wu",
+    "session_title": "Learning with GPUs",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "ARK: GPU-driven Code Execution for Distributed Deep Learning",
+    "authors": "Changho Hwang,KAIST, Microsoft Research;KyoungSoo Park,KAIST;Ran Shu, Xinyuan Qu, Peng Cheng, and Yongqiang Xiong,Microsoft Research",
+    "abstract": "Modern state-of-the-art deep learning (DL) applications tend to scale out to a large number of parallel GPUs. Unfortunately, we observe that the collective communication overhead across GPUs is often the key limiting factor of performance for distributed DL. It under-utilizes the networking bandwidth by frequent transfers of small data chunks, which also incurs a substantial I/O overhead on GPU that interferes with computation on GPU. The root cause lies in the inefficiency of CPU-based communication event handling as well as the inability to control the GPU's internal DMA engine with GPU threads.\nTo address the problem, we propose a GPU-driven code execution system that leverages a GPU-controlled hardware DMA engine for I/O offloading. Our custom DMA engine pipelines multiple DMA requests to support efficient small data transfer while it eliminates the I/O overhead on GPU cores. Unlike existing GPU DMA engines initiated only by CPU, we let GPU threads to directly control DMA operations, which leads to a highly efficient system where GPUs drive their own execution flow and handle communication events autonomously without CPU intervention. Our prototype DMA engine achieves a line-rate from a message size as small as 8KB (3.9x better throughput) with only 4.3us of communication latency (9.1x faster) while it incurs little interference with computation on GPU, achieving 1.8x higher all-reduce throughput in a real training workload.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/hwang",
+    "session_title": "Learning with GPUs",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "BGL: GPU-Efficient GNN Training by Optimizing Graph Data I/O and Preprocessing",
+    "authors": "Tianfeng Liu,Tsinghua University, Zhongguancun Laboratory, ByteDance;Yangrui Chen,The University of Hong Kong, ByteDance;Dan Li,Tsinghua University, Zhongguancun Laboratory;Chuan Wu,The University of Hong Kong;Yibo Zhu, Jun He, and Yanghua Peng,ByteDance;Hongzheng Chen,ByteDance, Cornell University;Hongzhi Chen and Chuanxiong Guo,ByteDance",
+    "abstract": "Graph neural networks (GNNs) have extended the success of deep neural networks (DNNs) to non-Euclidean graph data, achieving ground-breaking performance on various tasks such as node classification and graph property prediction. Nonetheless, existing systems are inefficient to train large graphs with billions of nodes and edges with GPUs. The main bottlenecks are the process of preparing data for GPUs – subgraph sampling and feature retrieving. This paper proposes BGL, a distributed GNN training system designed to address the bottlenecks with a few key ideas. First, we propose a dynamic cache engine to minimize feature retrieving traffic. By co-designing caching policy and the order of sampling, we find a sweet spot of low overhead and a high cache hit ratio. Second, we improve the graph partition algorithm to reduce cross-partition communication during subgraph sampling. Finally, careful resource isolation reduces contention between different data preprocessing stages. Extensive experiments on various GNN models and large graph datasets show that BGL significantly outperforms existing GNN training systems by 1.9x on average.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/liu-tianfeng",
+    "session_title": "Learning with GPUs",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Zeus: Understanding and Optimizing GPU Energy Consumption of DNN Training",
+    "authors": "Jie You, Jae-Won Chung, and Mosharaf Chowdhury,University of Michigan",
+    "abstract": "Training deep neural networks (DNNs) is becoming increasingly more resource- and energy-intensive every year. Unfortunately, existing works primarily focus on optimizing DNN training for faster completion, often without considering the impact on energy efficiency.\nIn this paper, we observe that common practices to improve training performance can often lead to inefficient energy usage. More importantly, we demonstrate that there is a tradeoff between energy consumption and performance optimization. To this end, we propose Zeus, an optimization framework to navigate this tradeoff by automatically finding optimal job- and GPU-level configurations for recurring DNN training jobs. Zeus uses an online exploration-exploitation approach in conjunction with just-in-time energy profiling, averting the need for expensive offline measurements, while adapting to data drifts over time. Our evaluation shows that Zeus can improve the energy efficiency of DNN training by 15.3%–75.8% for diverse workloads.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/you",
+    "session_title": "Learning with GPUs",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Remote Procedure Call as a Managed System Service",
+    "authors": "Jingrong Chen, Yongji Wu, and Shihan Lin,Duke University;Yechen Xu,Shanghai Jiao Tong University;Xinhao Kong,Duke University;Thomas Anderson,University of Washington;Matthew Lentz, Xiaowei Yang, and Danyang Zhuo,Duke University",
+    "abstract": "Remote Procedure Call (RPC) is a widely used abstraction for cloud computing. The programmer specifies type information for each remote procedure, and a compiler generates stub code linked into each application to marshal and unmarshal arguments into message buffers. Increasingly, however, application and service operations teams need a high degree of visibility and control over the flow of RPCs between services, leading many installations to use sidecars or service mesh proxies for manageability and policy flexibility. These sidecars typically involve inspection and modification of RPC data that the stub compiler had just carefully assembled, adding needless overhead. Further, upgrading diverse application RPC stubs to use advanced hardware capabilities such as RDMA or DPDK is a long and involved process, and often incompatible with sidecar policy control.\nIn this paper, we propose, implement, and evaluate a novel approach, where RPC marshalling and policy enforcement are done as a system service rather than as a library linked into each application. Applications specify type information to the RPC system as before, while the RPC service executes policy engines and arbitrates resource use, and then marshals data customized to the underlying network hardware capabilities. Our system, mRPC, also supports live upgrades so that both policy and marshalling code can be updated transparently to application code. Compared with using a sidecar, mRPC speeds up a standard microservice benchmark, DeathStarBench, by up to 2.5× while having a higher level of policy flexibility and availability.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/chen-jingrong",
+    "session_title": "RPC and Remote Memory",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Canvas: Isolated and Adaptive Swapping for Multi-Applications on Remote Memory",
+    "authors": "Chenxi Wang, Yifan Qiao, Haoran Ma, and Shi Liu,UCLA;Yiying Zhang,UCSD;Wenguang Chen,Tsinghua University;Ravi Netravali,Princeton University;Miryung Kim and Guoqing Harry Xu,UCLA",
+    "abstract": "Remote memory techniques for datacenter applications have recently gained a great deal of popularity. Existing remote memory techniques focus on the efficiency of a single application setting only. However, when multiple applications co-run on a remote-memory system, significant interference could occur, resulting in unexpected slowdowns even if the same amounts of physical resources are granted to each application. This slowdown stems from massive sharing in applications' swap data paths. Canvas is a redesigned swap system that fully isolates swap paths for remote-memory applications. Canvas allows each application to possess its dedicated swap partition, swap cache, prefetcher, and RDMA bandwidth. Swap isolation lays a foundation for adaptive optimization techniques based on each application's own access patterns and needs. We develop three such techniques: (1) adaptive swap entry allocation, (2) semantics-aware prefetching, and (3) two-dimensional RDMA scheduling. A thorough evaluation with a set of widely-deployed applications demonstrates that Canvas minimizes performance variation and dramatically reduces performance degradation.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/wang-chenxi",
+    "session_title": "RPC and Remote Memory",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Hermit: Low-Latency, High-Throughput, and Transparent Remote Memory via Feedback-Directed Asynchrony",
+    "authors": "Yifan Qiao and Chenxi Wang,UCLA;Zhenyuan Ruan and Adam Belay,MIT CSAIL;Qingda Lu,Alibaba Group;Yiying Zhang,UCSD;Miryung Kim and Guoqing Harry Xu,UCLA",
+    "abstract": "Remote memory techniques are gaining traction in datacenters because they can significantly improve memory utilization. A popular approach is to use kernel-level, page-based memory swapping to deliver remote memory as it is transparent, enabling existing applications to benefit without modifications. Unfortunately, current implementations suffer from high software overheads, resulting in significantly worse tail latency and throughput relative to local memory.\nHermit is a redesigned swap system that overcomes this limitation through a novel technique called adaptive, feedback-directed asynchrony. It takes non-urgent but time-consuming operations (e.g., swap-out, cgroup charge, I/O deduplication, etc.) off the fault-handling path and executes them asynchronously. Different from prior work such as Fastswap, Hermit collects runtime feedback and uses it to direct how asynchrony should be performed—i.e., whether asynchronous operations should be enabled, the level of asynchrony, and how asynchronous operations should be scheduled. We implemented Hermit in Linux 5.14. An evaluation with a set of latency-critical applications shows that Hermit delivers low-latency remote memory. For example, it reduces the 99th percentile latency of Memcached by 99.7% from 36 ms to 91 µs. Running Hermit over batch applications improves their overall throughput by 1.24× on average. These results are achieved without changing a single line of user code.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/qiao",
+    "session_title": "RPC and Remote Memory",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "NetRPC: Enabling In-Network Computation in Remote Procedure Calls",
+    "authors": "Bohan Zhao,Tsinghua University;Wenfei Wu,Peking University;Wei Xu,Tsinghua Univesity",
+    "abstract": "People have shown that in-network computation (INC) significantly boosts performance in many application scenarios include distributed training, MapReduce, agreement, and network monitoring. However, existing INC programming is unfriendly to the normal application developers, demanding tedious network engineering details like flow control, packet organization, chip-specific programming language, and ASIC architecture with many limitations. We propose a general INC-enabled RPC system, NetRPC. NetRPC provides a set of familiar and lightweight interfaces for software developers to describe an INC application using a traditional RPC programming model. NetRPC also proposes a general-purpose INC implementation together with a set of optimization techniques to guarantee the efficiency of various types of INC applications running on a shared INC data plane. We conduct extensive experiments on different types of applications on the real testbed. Results show that using only about 5% or even fewer human-written lines of code, NetRPC can achieve performance similar to the state-of-the-art INC solutions.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhao-bohan",
+    "session_title": "RPC and Remote Memory",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Bolt: Sub-RTT Congestion Control for Ultra-Low Latency",
+    "authors": "Serhat Arslan,Stanford University;Yuliang Li, Gautam Kumar, and Nandita Dukkipati,Google LLC",
+    "abstract": "Data center networks are inclined towards increasing line rates to 200Gbps and beyond to satisfy the performance requirements of applications such as NVMe and distributed ML. With larger Bandwidth Delay Products (BDPs), an increasing number of transfers fit within a few BDPs. These transfers are not only more performance-sensitive to congestion, but also bring more challenges to congestion control (CC) as they leave little time for CC to make the right decisions. Therefore, CC is under more pressure than ever before to achieve minimal queuing and high link utilization, leaving no room for imperfect control decisions.\nWe identify that for CC to make quick and accurate decisions, the use of precise congestion signals and minimization of the control loop delay are vital. We address these issues by designing Bolt, an attempt to push congestion control to its theoretical limits by harnessing the power of programmable data planes. Bolt is founded on three core ideas, (i) Sub-RTT Control (SRC) reacts to congestionfasterthan RTT control loop delay, (ii) Proactive Ramp-Up (PRU)foreseesflow completions in the future to promptly occupy released bandwidth, and (iii) Supply matching (SM) explicitly matches bandwidth demand with supply to maximize utilization. Our experiments in testbed and simulations demonstrate that Bolt reduces 99th-p latency by 80% and improves 99th-p flow completion time by up to 3× compared to Swift and HPCC while maintaining near line-rate utilization even at 400Gbps.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/arslan",
+    "session_title": "Congestion Control",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Understanding the impact of host networking elements on traffic bursts",
+    "authors": "Erfan Sharafzadeh and Sepehr Abdous,Johns Hopkins University;Soudeh Ghorbani,Johns Hopkins University and Meta",
+    "abstract": "Conventional host networking features various traffic shaping layers (e.g., buffers, schedulers, and pacers) with complex interactions and wide implications for performance metrics. These interactions can lead to large bursts at various time scales. Understanding the nature of traffic bursts is important for optimal resource provisioning, congestion control, buffer sizing, and traffic prediction but is challenging due to the complexity and feature velocity in host networking.\nWe develop Valinor, a traffic measurement framework that consists of eBPF hooks and measurement modules in a programmable network. Valinor offers visibility into traffic burstiness over a wide span of timescales (nanosecond- to secondscale) at multiple vantage points. We deploy Valinor to analyze the burstiness of various classes of congestion control algorithms, qdiscs, Linux process scheduling, NIC packet scheduling, and hardware offloading. Our analysis counters the assumption that burstiness is primarily a function of the application layer and preserved by protocol stacks, and highlights the pronounced role of lower layers in the formation and suppression of bursts. We also show the limitations of canonical burst countermeasures (e.g., TCP pacing and qdisc scheduling) due to the intervening nature of segmentation offloading and fixed-function NIC scheduling. Finally, we demonstrate that, far from a universal invariant, burstiness varies significantly across host stacks. Our findings underscore the need for a measurement framework such as Valinor for regular burst analysis.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/sharafzadeh",
+    "session_title": "Congestion Control",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Poseidon: Efficient, Robust, and Practical Datacenter CC via Deployable INT",
+    "authors": "Weitao Wang,Google LLC and Rice University;Masoud Moshref, Yuliang Li, and Gautam Kumar,Google LLC;T. S. Eugene Ng,Rice University;Neal Cardwell and Nandita Dukkipati,Google LLC",
+    "abstract": "The difficulty in gaining visibility into the fine-timescale hop-level congestion state of networks has been a key challenge faced by congestion control (CC) protocols for decades. However, the emergence of commodity switches supporting in-network telemetry (INT) enables more advanced CC. In this paper, we present Poseidon, a novel CC protocol that exploits INT to address blind spots of CC algorithms and realize several fundamentally advantageous properties. First, Poseidon is efficient: it achieves low queuing delay, high throughput, and fast convergence. Furthermore, Poseidon decouples bandwidth fairness from the traditional AIMD control law, using a novel adaptive update scheme that converges quickly and smooths out oscillations. Second, Poseidon is robust: it realizes CC for the actual bottleneck hop, and achieves maxmin fairness across traffic patterns, including multi-hop and reverse-path congestion. Third, Poseidon is practical: it is amenable to incremental brownfield deployment in networks that mix INT and non-INT switches. We show, via testbed and simulation experiments, that Poseidon provides significant improvements over the state-of-the-art Swift CC algorithm across key metrics – RTT, throughput, fairness, and convergence – resulting in end-to-end application performance gains. Evaluated across several scenarios, Poseidon lowers fabric RTT by up to 50%, reduces time to converge up to 12×, and decreases throughput variation across flows by up to 70%. Collectively, these improvements reduce message transfer time by more than 61% on average and 14.5× at 99.9p.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/wang-weitao",
+    "session_title": "Congestion Control",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Rearchitecting the TCP Stack for I/O-Offloaded Content Delivery",
+    "authors": "Taehyun Kim and Deondre Martin Ng,KAIST;Junzhi Gong,Harvard University;Youngjin Kwon,KAIST;Minlan Yu,Harvard University;KyoungSoo Park,KAIST",
+    "abstract": "The recent advancement of high-bandwidth I/O devices enables scalable delivery of online content. Unfortunately, the traditional programming model for content servers has a tight dependency on the CPU, which severely limits the overall performance. Our experiments reveal that over 70% of CPU cycles are spent on simple tasks such as disk and network I/O operations in online content delivery.\nIn this work, we present IO-TCP, a split TCP stack design that drastically reduces the burden on CPU for online content delivery. IO-TCP offloads disk I/O and TCP packet transfer to SmartNIC while the rest of the operations are executed on the CPU side. This division of labor realizes the separation of control and data planes of a TCP stack where the CPU side assumes the full control of the stack operation while only the data plane operations are offloaded to SmartNIC for high performance. Our evaluation shows that IO-TCP-ported lighttpd with a single CPU core outperforms the Atlas server and lighttpd on Linux TCP for TLS file transfer by 1.8x and 2.1x, respectively, even if they use all 10 CPU cores.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/kim-taehyun",
+    "session_title": "Congestion Control",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Hydra: Serialization-Free Network Ordering for Strongly Consistent Distributed Applications",
+    "authors": "Inho Choi,National University of Singapore;Ellis Michael,University of Washington;Yunfan Li,National University of Singapore;Dan R. K. Ports,Microsoft Research;Jialin Li,National University of Singapore",
+    "abstract": "Many distributed systems, e.g., state machine replication and distributed databases, rely on establishing a consistent order of operations on groups of nodes in the system. Traditionally, this ordering has been established by application-level protocols like Paxos or two-phase locking. Recent work has shown significant performance improvements are attainable by making ordering a network service, but current network sequencing implementations require routing all requests through a single sequencer – leading to scalability, fault tolerance, and load balancing limitations.\nOur work, Hydra, overcomes these limitations by using a distributed set of network sequencers to provide network ordering. Hydra leverages loosely synchronized clocks on network sequencers to establish message ordering across them, per-sequencer sequence numbers to detect message drops, and periodic timestamp messages to enforce progress when some sequencers are idle. To demonstrate the benefit of Hydra, we co-designed a state machine replication protocol and a distributed transactional system using the Hydra network primitive. Compared to serialization-based network ordering systems, Hydra shows equivalent performance improvement over traditional approaches in both applications, but with significantly higher scalability, shorter sequencer failover time, and better network-level load balancing.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/choi",
+    "session_title": "Distributed Systems",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "The Benefit of Hindsight: Tracing Edge-Cases in Distributed Systems",
+    "authors": "Lei Zhang,Emory University and Princeton University;Zhiqiang Xie and Vaastav Anand,Max Planck Institute for Software Systems;Ymir Vigfusson,Emory University;Jonathan Mace,Max Planck Institute for Software Systems",
+    "abstract": "Today's distributed tracing frameworks are ill-equipped to troubleshoot rare edge-case requests. The crux of the problem is a trade-off between specificity and overhead. On the one hand, frameworks can indiscriminately select requests to trace when they enter the system (head sampling), but this is unlikely to capture a relevant edge-case trace because the framework cannot know which requests will be problematic until after-the-fact. On the other hand, frameworks can trace everything and later keep only the interesting edge-case traces (tail sampling), but this has high overheads on the traced application and enormous data ingestion costs.\nIn this paper we circumvent this trade-off for any edge-case with symptoms that can be programmatically detected, such as high tail latency, errors, and bottlenecked queues. We propose a lightweight and always-on distributed tracing system, Hindsight, which implements a retroactive sampling abstraction: instead of eagerly ingesting and processing traces, Hindsight lazily retrieves trace data only after symptoms of a problem are detected. Hindsight is analogous to a car dash-cam that, upon detecting a sudden jolt in momentum, persists the last hour of footage. Developers using Hindsight receive the exact edge-case traces they desire without undue overhead or dependence on luck. Our evaluation shows that Hindsight scales to millions of requests per second, adds nanosecondlevel overhead to generate trace data, handles GB/s of data per node, transparently integrates with existing distributed tracing systems, and successfully persists full, detailed traces in real-world use cases when edge-case problems are detected.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhang-lei",
+    "session_title": "Distributed Systems",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "DiSh: Dynamic Shell-Script Distribution",
+    "authors": "Tammam Mustafa,MIT;Konstantinos Kallas,University of Pennsylvania;Pratyush Das,Purdue University;Nikos Vasilakis,Brown University",
+    "abstract": "Shell scripting remains prevalent for automation and data-processing tasks, partly due to its dynamic features—e.g., expansion, substitution—and language agnosticism—i.e., the ability to combine third-party commands implemented in any programming language. Unfortunately, these characteristics hinder automated shell-script distribution, often necessary for dealing with large datasets that do not fit on a single computer. This paper introduces DiSh, a system that distributes the execution of dynamic shell scripts operating on distributed filesystems. DiSh is designed as a shim that applies program analyses and transformations to leverage distributed computing, while delegating all execution to the underlying shell available on each computing node. As a result, DiSh does not require modifications to shell scripts and maintains compatibility with existing shells and legacy functionality. We evaluate DiSh against several options available to users today: (i) Bash, a single-node shell-interpreter baseline, (ii) PaSh, a state-of-the-art automated-parallelization system, and (iii) Hadoop Streaming, a MapReduce system that supports language-agnostic third-party components. Combined, our results demonstrate that DiSh offers significant performance gains, requires no developer effort, and handles arbitrary dynamic behaviors pervasive in real-world shell scripts.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/mustafa",
+    "session_title": "Distributed Systems",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Waverunner: An Elegant Approach to Hardware Acceleration of State Machine Replication",
+    "authors": "Mohammadreza Alimadadi and Hieu Mai,Stony Brook University;Shenghsun Cho,Microsoft;Michael Ferdman, Peter Milder, and Shuai Mu,Stony Brook University",
+    "abstract": "State machine replication (SMR) is a core mechanism for building highly available and consistent systems. In this paper, we propose Waverunner, a new approach to accelerate SMR using FPGA-based SmartNICs. Our approach does not implement the entire SMR system in hardware; instead, it is a hybrid software/hardware system. We make the observation that, despite the complexity of SMR, the most common routine—the data replication—is actually simple. The complex parts (leader election, failure recovery, etc.) are rarely used in modern datacenters where failures are only occasional. These complex routines are not performance critical; their software implementations are fast enough and do not need acceleration. Therefore, our system uses FPGA assistance to accelerate data replication, and leaves the rest to the traditional software implementation of SMR.\nOur Waverunner approach is beneficial in both the common and the rare case situations. In the common case, the system runs at the speed of the network, with a 99th percentile latency of 1.8 μs achieved without batching on minimum-size packets at network line rate (85.5 Gbps in our evaluation). In rare cases, to handle uncommon situations such as leader failure and failure recovery, the system uses traditional software to guarantee correctness, which is much easier to develop and maintain than hardware-based implementations. Overall, our experience confirms Waverunner as an effective and practical solution for hardware accelerated SMR—achieving most of the benefits of hardware acceleration with minimum added complexity and implementation effort.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/alimadadi",
+    "session_title": "Distributed Systems",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "LeakyScatter: A Frequency-Agile Directional Backscatter Network Above 100 GHz",
+    "authors": "Atsutse Kludze and Yasaman Ghasempour,Princeton UniversityAwarded Best Paper!",
+    "abstract": "Wireless backscattering has been deemed suitable for various emerging energy-constrained applications given its low-power architectures. Although existing backscatter nodes often operate at sub-6 GHz frequency bands, moving to the sub-THz bands offers significant advantages in scaling low-power connectivity to dense user populations; as concurrent transmissions can be separated in both spectral and spatial domains given the large swath of available bandwidth and laser-shaped beam directionality in this frequency regime. However, the power consumption and complexity of wireless devices increase significantly with frequency. In this paper, we present LeakyScatter, the first backscatter system that enables directional, low-power, and frequency-agile wireless links above 100 GHz. LeakyScatter departs from conventional backscatter designs and introduces a novel architecture that relies on aperture reciprocity in leaky-wave devices. We have fabricated LeakyScatter and evaluated its performance through extensive simulations and over-the-air experiments. Our results demonstrate a scalable wireless link above 100 GHz that is retrodirective and operates at a large bandwidth (tens of GHz) and ultra-low-power (zero power consumed for directional steering and ≤1 mW for data modulation).",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/kludze",
+    "session_title": "Wireless",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "RF-Bouncer: A Programmable Dual-band Metasurface for Sub-6 Wireless Networks",
+    "authors": "Xinyi Li, Chao Feng, Xiaojing Wang, and Yangfan Zhang,Northwest University;Yaxiong Xie,University at Buffalo SUNY;Xiaojiang Chen,Northwest University",
+    "abstract": "Offloading the beamforming task from the endpoints to the metasurface installed in the propagation environment has attracted significant attention. Currently, most of the metasurface-based beamforming solutions are designed and optimized for operation on a single ISM band (either 2.4 GHz or 5 GHz). In this paper, we propose RF-Bouncer, a compact, low-cost, simple-structure programmable dual-band metasurface that supports concurrent beamforming on two Sub-6 ISM bands. By configuring the states of the meta-atoms, the metasurface is able to simultaneously steer the incident signals from two bands towards their desired departure angles. We fabricate the metasurface and validate its performance via extensive experiments. Experimental results demonstrate that RF-Bouncer achieves 15.4 dB average signal strength improvement and a 2.49× throughput improvement even with a relatively small 16 × 16 array of meta-atoms.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/li-xinyi",
+    "session_title": "Wireless",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Scalable Distributed Massive MIMO Baseband Processing",
+    "authors": "Junzhi Gong,Harvard University;Anuj Kalia,Microsoft;Minlan Yu,Harvard University",
+    "abstract": "Massive MIMO (multiple-in multiple-out) is a key wireless technique to get higher bandwidth in modern mobile networks such as 5G. The large amount of computation required for massive MIMO baseband processing poses a challenge to the ongoing softwarization of radio access networks (RAN), in which mobile network operators are replacing specialized baseband processing chips with commodity servers. Existing software-based systems for massive MIMO fail to scale to increasingly larger MIMO dimensions with an ever-increasing number of antennas and users. This paper presents a new scalable distributed system called Hydra, designed to parallelize massive MIMO baseband processing while minimizing the overhead of distributing computation over multiple machines. Hydra's high scalability comes from reducing inter-server and inter-core communication at different stages of baseband processing. To do so, among other techniques, we take advantage of hardware features in modern commodity radios in novel ways. Our evaluation shows that Hydra can support over four times larger MIMO configurations than prior state-of-the-art systems, handling for the first time, 150*32 massive MIMO with three servers.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/gong",
+    "session_title": "Wireless",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "DChannel: Accelerating Mobile Applications With Parallel High-bandwidth and Low-latency Channels",
+    "authors": "William Sentosa,University of Illinois Urbana-Champaign;Balakrishnan Chandrasekaran,Vrije Universiteit Amsterdam;P. Brighten Godfrey,University of Illinois Urbana-Champaign and VMware;Haitham Hassanieh,EPFL;Bruce Maggs,Duke University and Emerald Innovations",
+    "abstract": "Interactive mobile applications like web browsing and gaming are known to benefit significantly from low latency networking, as applications communicate with cloud servers and other users' devices. Emerging mobile channel standards have not met these needs: 5G's general-purpose eMBB channel has much higher bandwidth than 4G but empirically offers little improvement for common latency-sensitive applications, while its ultra-low-latency URLLC channel is targeted at only specific applications with very low bandwidth requirements.\nWe explore a different direction for wireless channel design to address the fundamental bandwidth-latency tradeoff: utilizing two channels—one high bandwidth, one low latency—simultaneously to improve performance of common Internet applications.  We design DChannel, a fine-grained packet-steering scheme that takes advantage of these parallel channels to transparently improve application performance.  With 5G channels, our trace-driven and live network experiments show that even though URLLC offers just 1% of the bandwidth of eMBB, using both channels can improve web page load time and responsiveness of common mobile apps by 16-40% compared to using exclusively eMBB. This approach may provide service providers important incentives to make low latency channels available for widespread use.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/sentosa",
+    "session_title": "Wireless",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "SkyPilot: An Intercloud Broker for Sky Computing",
+    "authors": "Zongheng Yang, Zhanghao Wu, Michael Luo, Wei-Lin Chiang, Romil Bhardwaj, Woosuk Kwon, Siyuan Zhuang, Frank Sifei Luan, and Gautam Mittal,UC Berkeley;Scott Shenker,UC Berkeley and ICSI;Ion Stoica,UC Berkeley",
+    "abstract": "To comply with the increasing number of government regulations about data placement and processing, and to protect themselves against major cloud outages, many users want the ability to easily migrate their workloads between clouds. In this paper we propose doing so not by imposing uniform and comprehensive standards, but by creating a fine-grained two-sided market via an intercloud broker. These brokers will allow users to view the cloud ecosystem not just as a collection of individual and largely incompatible clouds but as a more integrated Sky of Computing. We describe the design and implementation of an intercloud broker, named SkyPilot, evaluate its benefits, and report on its real-world usage.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/yang-zongheng",
+    "session_title": "Cloud",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Unlocking unallocated cloud capacity for long, uninterruptible workloads",
+    "authors": "Anup Agarwal,Carnegie Mellon University;Shadi Noghabi,Microsoft Research;Íñigo Goiri,Azure Systems Research;Srinivasan Seshan,Carnegie Mellon University;Anirudh Badam,Microsoft Research",
+    "abstract": "Cloud providers auction off unallocated resources at a low cost to avoid keeping hardware idle. One such mechanism is Harvest VMs (HVMs). These VMs grow and shrink as the unallocated resources in a server change. While HVMs are larger in size and less prone to eviction compared to other low-cost VMs, their resource variations severely slow down long-running, uninterruptible (hard to checkpoint/migrate) workloads. We characterize HVMs from a major cloud provider and discover large spatial variations in their stability and resources. We leverage this diversity by predicting which HVMs will be stable enough to run tasks without preemptions. We use the predictions to inform scheduling and resource acquisition decisions. Our evaluation with real workloads shows that we can reduce mean and tail (90th percentile) job completion times by 27% and 44% respectively, at 75% lower cost than regular VMs.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/agarwal-anup",
+    "session_title": "Cloud",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Invisinets: Removing Networking from Cloud Networks",
+    "authors": "Sarah McClure and Zeke Medley,UC Berkeley;Deepak Bansal and Karthick Jayaraman,Microsoft;Ashok Narayanan,Google;Jitendra Padhye,Microsoft;Sylvia Ratnasamy,UC Berkeley and Google;Anees Shaikh,Google;Rishabh Tewari,Microsoft",
+    "abstract": "Cloud tenant networks are complex to provision, configure, and manage. Tenants must figure out how to assemble, configure, test, etc. a large set of low-level building blocks in order to achieve their high-level goals. As these networks are increasingly spanning multiple clouds and on-premises infrastructure, the complexity scales poorly. We argue that the current cloud abstractions place an unnecessary burden on the tenant to become a seasoned network operator. We thus propose an alternative interface to the cloud provider's network resources in which a tenant's connectivity needs are reduced to a set of parameters associated with compute endpoints. Our API removes the tenant networking layer of cloud deployments altogether, placing its former duties primarily upon the cloud provider. We demonstrate that this API reduces the complexity experienced by tenants by 80-90% while maintaining a scalable and secure architecture. We provide a prototype of the underlying infrastructure changes necessary to support new functionality introduced by our interface and implement our API on top of current cloud APIs.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/mcclure",
+    "session_title": "Cloud",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Bamboo: Making Preemptible Instances Resilient for Affordable Training of Large DNNs",
+    "authors": "John Thorpe, Pengzhan Zhao, Jonathan Eyolfson, and Yifan Qiao,UCLA;Zhihao Jia,CMU;Minjia Zhang,Microsoft Research;Ravi Netravali,Princeton University;Guoqing Harry Xu,UCLA",
+    "abstract": "DNN models across many domains continue to grow in size, resulting in high resource requirements for effective training, and unpalatable (and often unaffordable) costs for organizations and research labs across scales. This paper aims to significantly reduce training costs with effective use of preemptible instances, i.e., those that can be obtained at a much cheaper price while idle, but may be preempted whenever requested by priority users. Doing so, however, requires new forms of resiliency and efficiency to cope with the possibility of frequent preemptions – a failure model that is drastically different from the occasional failures in normal cluster settings that existing checkpointing techniques target.\nWe present Bamboo, a distributed system that tackles these challenges by introducing redundant computations into the training pipeline, i.e., whereby one node performs computations over not only its own layers but also over some layers in its neighbor. Our key insight is that training large models often requires pipeline parallelism where \"pipeline bubbles\" naturally exist. Bamboo carefully fills redundant computations into these bubbles, providing resilience at a low cost. Across a variety of widely used DNN models, Bamboo outperforms traditional checkpointing by 3.7× in training throughput, and reduces costs by 2.4× compared to a setting where on-demand instances are used.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/thorpe",
+    "session_title": "Cloud",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "OneWAN is better than two: Unifying a split WAN architecture",
+    "authors": "Umesh Krishnaswamy,Microsoft;Rachee Singh,Microsoft and Cornell University;Paul Mattes, Paul-Andre C Bissonnette, Nikolaj Bjørner, Zahira Nasrin, Sonal Kothari, Prabhakar Reddy, John Abeln, Srikanth Kandula, Himanshu Raj, Luis Irun-Briz, Jamie Gaudette, and Erica Lan,Microsoft",
+    "abstract": "Many large cloud providers operate two wide-area networks (WANs) — a software-defined WAN to carry inter-datacenter traffic and a standards-based WAN for Internet traffic. Our experience with operating two heterogeneous planet-scale WANs has revealed the operational complexity and cost inefficiency of the split-WAN architecture. In this work, we present the unification of Microsoft's split-WAN architecture consisting of SWAN and CORE networks into ONEWAN. ONEWAN serves both Internet and inter-datacenter traffic using software-defined control. ONEWAN grappled with the order of magnitude increase in network and routing table sizes. We developed a new routing and forwarding paradigm called traffic steering to manage the increased network scale using existing network equipment. Increased network and traffic matrix size posed scaling challenges to SDN traffic engineering in ONEWAN. We developed techniques to find paths in the network and chain multiple TE optimization solvers to compute traffic allocations within a few seconds. ONEWAN is the first to apply software-defined techniques in an Internet backbone and scales to a network that is 10× larger than SWAN.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/krishnaswamy",
+    "session_title": "Internet-Scale Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "RHINE: Robust and High-performance Internet Naming with E2E Authenticity",
+    "authors": "Huayi Duan, Rubén Fischer, Jie Lou, Si Liu, David Basin, and Adrian Perrig,ETH Zürich",
+    "abstract": "The variety and severity of recent DNS-based attacks under- score the importance of a secure naming system. Although DNSSEC provides data authenticity in theory, practical deployments unfortunately are fragile, costly, and typically lacks end-to-end (E2E) guarantees. This motivates us to rethink authentication in DNS fundamentally and introduce RHINE, a secure-by-design Internet naming system.\nRHINE offloads the authentication of zone delegation to an end-entity PKI and tames the operational complexity in an offline manner, allowing the efficient E2E authentication of zone data during online name resolution. With a novel logging mechanism, Delegation Transparency, RHINE achieves a highly robust trust model that can tolerate the compromise of all but one trusted entities and, for the first time, counters threats from superordinate zones. We formally verify RHINE's security properties using the Tamarin prover. We also demonstrate its practicality and performance advantages with a prototype implementation.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/duan",
+    "session_title": "Internet-Scale Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Enabling Users to Control their Internet",
+    "authors": "Ammar Tahir and Radhika Mittal,University of Illinois at Urbana-Champaign",
+    "abstract": "Access link from the ISP tends to be the bottleneck for many users. However, users today have no control over how the access bandwidth (which is under the ISP's control) is divided across their incoming flows. In this paper, we present a system, CRAB, that runs at the receiver's devices – home routers and endpoints – and enforces user-specified weights across the incoming flows, without any explicit support from the ISP or the senders. It involves a novel control loop that continuously estimates available downlink capacity and flow demands by observing the incoming traffic, computes the max-min weighted fair share rates for the flows using these estimates, and throttles the flows to the computed rates. The key challenge that CRAB must tackle is that the demand and capacity estimated by observing the incoming traffic at the receiver (after the bottleneck) is inherently ambiguous – CRAB's control loop is designed to effectively avoid and correct these ambiguities. We implement CRAB on a Linux machine and Linksys WRT3200ACM home router. Our evaluation, involving real-world flows, shows how CRAB can enforce user preferences to achieve 2× lower web page load times and 3× higher video quality than the status quo.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/tahir",
+    "session_title": "Internet-Scale Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "xBGP: Faster Innovation in Routing Protocols",
+    "authors": "Thomas Wirtgen, Tom Rousseaux, Quentin De Coninck, and Nicolas Rybowski,ICTEAM, UCLouvain;Randy Bush,Internet Initiative Japan & Arrcus, Inc;Laurent Vanbever,NSG, ETH Zürich;Axel Legay and Olivier Bonaventure,ICTEAM, UCLouvain",
+    "abstract": "Internet Service Providers use routers from multiple vendors that support standardized routing protocols. Network operators deploy new services by tuning these protocols. Unfortunately, while standardization is necessary for interoperability, this is a slow process. As a consequence, new features appear very slowly in routing protocols.\nWe propose a new implementation model for BGP, called xBGP, that enables ISPs to innovate by easily deploying BGP extensions in their multivendor network. We define a vendor-neutral xBGP API which can be supported by any BGP implementation and an eBPF Virtual Machine that allows executing extension code within these BGP implementations. We demonstrate the feasibility of our approach by extending both FRRouting and BIRD.\nWe demonstrate seven different use cases showing the benefits that network operators can obtain using xBGP programs. We propose a verification toolchain that enables operators to compile and verify the safety properties of xBGP programs before deploying them. Our testbed measurements show that the performance impact of xBGP is reasonable compared to native code.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/wirtgen",
+    "session_title": "Internet-Scale Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "TACCL: Guiding Collective Algorithm Synthesis using Communication Sketches",
+    "authors": "Aashaka Shah,University of Texas at Austin;Vijay Chidambaram,University of Texas at Austin and VMware Research;Meghan Cowan, Saeed Maleki, Madan Musuvathi, Todd Mytkowicz, Jacob Nelson, and Olli Saarikivi,Microsoft Research;Rachee Singh,Microsoft and Cornell University",
+    "abstract": "Machine learning models are increasingly being trained across multiple GPUs and servers. In this setting, data is transferred between GPUs using communication collectives such as ALLTOALL and ALLREDUCE, which can become a significant bottleneck in training large models. Thus, it is important to use efficient algorithms for collective communication. We develop TACCL, a tool that enables algorithm designers to guide a synthesizer into automatically generating algorithms for a given hardware configuration and communication collective. TACCL uses a novel communication sketch abstraction to get crucial information from the designer to significantly reduce the search space and guide the synthesizer towards better algorithms. TACCL also uses a novel encoding of the problem that allows it to scale beyond single-node topologies. We use TACCL to synthesize algorithms for three collectives and two hardware topologies: DGX-2 and NDv2. We demonstrate that the algorithms synthesized by TACCL outperform the Nvidia Collective Communication Library (NCCL) by up to 6.7x. We also show that TACCL can speed up end-to-end training of Transformer-XL and BERT models by 11%–2.3x for different batch sizes.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/shah",
+    "session_title": "Synthesis and Formal Methods",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Synthesizing Runtime Programmable Switch Updates",
+    "authors": "Yiming Qiu,Rice University;Ryan Beckett,Microsoft;Ang Chen,Rice University",
+    "abstract": "We have witnessed a rapid growth of programmable switch applications, ranging from monitoring to security and offloading. Meanwhile, to safeguard the diverse network behaviors, researchers have developed formal verification techniques for high assurance. As a recent advance, network devices have become runtime programmable, supporting live program changes via partial reconfiguration. However, computing a runtime update plan that provides safety guarantees is a challenging task. FlexPlan is a tool that identifies step-by-step runtime update plans using program synthesis, guaranteeing that each transition state is correct with regard to a user specification and feasible within switch memory constraints. It develops novel, domain-specific techniques for this task, which scale to large, real-world programs with sizable changes.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/qiu",
+    "session_title": "Synthesis and Formal Methods",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Practical Intent-driven Routing Configuration Synthesis",
+    "authors": "Sivaramakrishnan Ramanathan, Ying Zhang, Mohab Gawish, Yogesh Mundada, Zhaodong Wang, Sangki Yun, Eric Lippert, and Walid Taha,Meta;Minlan Yu,Harvard University;Jelena Mirkovic,University of Southern California Information Sciences Institute",
+    "abstract": "Configuration of production datacenters is challenging due to their scale (many switches), complexity (specific policy requirements), and dynamism (need for many configuration changes). This paper introduces Aura, a production-level synthesis system for datacenter routing policies. It consists of a high-level language, called RPL, that expresses the desired behavior and a compiler that automatically generates switch configurations. Unlike existing approaches, which generate full network configuration for a static policy, Aura is built to support frequent policy and network changes. It generates and deploys multiple parallel policy collections, in a way that supports smooth transitions between them without disrupting live production traffic. Aura has been deployed for over two years in Meta datacenters and has greatly improved our management efficiency. We also share our operational requirements and experiences, which can potentially inspire future research.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/ramanathan",
+    "session_title": "Synthesis and Formal Methods",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Formal Methods for Network Performance Analysis",
+    "authors": "Mina Tahmasbi Arashloo,University of Waterloo;Ryan Beckett,Microsoft Research;Rachit Agarwal,Cornell University",
+    "abstract": "Accurate and thorough analysis of network performance is challenging. Network simulations and emulations can only cover a subset of the continuously evolving set of workloads networks can experience, leaving room for unexplored corner cases and bugs that can cause sub-optimal performance on live traffic. Techniques from queuing theory and network calculus can provide rigorous bounds on performance metrics, but typically require the behavior of network components and the arrival pattern of traffic to be approximated with concise and well-behaved mathematical functions. As such, they are not immediately applicable to emerging workloads and the new algorithms and protocols developed for handling them.\nWe explore a different approach: using formal methods to analyze network performance. We show that it is possible to accurately model network components and their queues in logic, and use techniques from program synthesis to automatically generate concise interpretable workloads as answers to queries about performance metrics. Our approach offers a new point in the space of existing tools for analyzing network performance: it is more exhaustive than simulation and emulation, and can be readily applied to algorithms and protocols that are expressible in first-order logic. We demonstrate the effectiveness of our approach by analyzing packet scheduling algorithms and a small leaf-spine network and generating concise workloads that can cause throughput, fairness, starvation, and latency problems.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/tahmasbi",
+    "session_title": "Synthesis and Formal Methods",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Flattened Clos: Designing High-performance Deadlock-free Expander Data Center Networks Using Graph Contraction",
+    "authors": "Shizhen Zhao, Qizhou Zhang, Peirui Cao, Xiao Zhang, and Xinbing Wang,Shanghai Jiao Tong University;Chenghu Zhou,Shanghai Jiao Tong University and Chinese Academy of Sciences",
+    "abstract": "Clos networks have witnessed the successful deployment of RoCE in production data centers. However, as DCN bandwidth keeps increasing, building Clos networks is becoming cost-prohibitive and thus the more cost-efficient expander graph has received much attention in recent literature. Unfortunately, the existing expander graphs' topology and routing designs may contain Cyclic Buffer Dependency (CBD) and incur deadlocks in PFC-enabled RoCE networks.\nWe propose Flattened Clos (FC), a topology/routing codesigned approach, to eliminate the PFC-induced deadlocks in expander networks. FC's topology and routing are designed in three steps: 1) logically divide each ToR switch into k virtual layers and establish connections only between adjacent virtual layers; 2) generate virtual up-down paths for routing; 3) flatten the virtual multi-layered network and the virtual up-down paths using graph contraction. We rigorously prove that FC's design is deadlock-free and validate this property using a real testbed and packet-level simulation. Compared to expander graphs with the edge-disjoint-spanning-tree (EDST) based routing (a state-of-art CBD-free routing algorithm for expander graphs), FC reduces the average hop count by at least 50% and improves network throughput by 2−10× or more. Compared to Clos networks with up-down routing, FC increases network throughput by 1.1−2× under all-to-all and uniform random traffic patterns.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhao-shizhen",
+    "session_title": "Data Centers",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Scalable Tail Latency Estimation for Data Center Networks",
+    "authors": "Kevin Zhao,University of Washington;Prateesh Goyal,Microsoft Research;Mohammad Alizadeh,MIT CSAIL;Thomas E. Anderson,University of Washington",
+    "abstract": "In this paper, we consider how to provide fast estimates of flow-level tail latency performance for very large scale data center networks. Network tail latency is often a crucial metric for cloud application performance that can be affected by a wide variety of factors, including network load, inter-rack traffic skew, traffic burstiness, flow size distributions, oversubscription, and topology asymmetry. Network simulators such as ns-3 and OMNeT++ can provide accurate answers, but are very hard to parallelize, taking hours or days to answer what if questions for a single configuration at even moderate scale. Recent work with MimicNet has shown how to use machine learning to improve simulation performance, but at a cost of including a long training step per configuration, and with assumptions about workload and topology uniformity that typically do not hold in practice.\nWe address this gap by developing a set of techniques to provide fast performance estimates for large scale networks with general traffic matrices and topologies. A key step is to decompose the problem into a large number of parallel independent single-link simulations; we carefully combine these link-level simulations to produce accurate estimates of end-to-end flow level performance distributions for the entire network. LikeMimicNet, we exploit symmetry where possible to gain additional speedups, but without relying on machine learning, so there is no training delay. On a large-scale network where ns-3 takes 11 to 27 hours to simulate five seconds of network behavior, our techniques runin one to two minutes with accuracy within 9% for tail flow completion times.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhao-kevin",
+    "session_title": "Data Centers",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Shockwave: Fair and Efficient Cluster Scheduling for Dynamic Adaptation in Machine Learning",
+    "authors": "Pengfei Zheng and Rui Pan,University of Wisconsin-Madison;Tarannum Khan,The University of Texas at Austin;Shivaram Venkataraman,University of Wisconsin-Madison;Aditya Akella,The University of Texas at Austin",
+    "abstract": "Dynamic adaptation has become an essential technique in accelerating distributed machine learning (ML) training. Recent studies have shown that dynamically adjusting model structure (e.g., lottery ticket hypothesis) or hyperparameters (e.g., batch size) can significantly accelerate training without sacrificing accuracy. However, existing ML cluster schedulers are not designed to handle dynamic adaptation. We show that existing schemes fail to provide fairness and degrade system efficiency when the training throughput changes over time under dynamic adaptation. We design Shockwave, a scheduler with future planning that builds on two key ideas. First, Shockwave extends classic market theory from static settings to dynamic settings to co-optimize efficiency and fairness. Second, Shockwave utilizes stochastic dynamic programming to handle dynamic changes. We build a system for Shockwave and validate its performance with both trace-driven simulation and cluster experiments. Results show that for traces of ML jobs with dynamic adaptation, Shockwave improves makespan by 1.3× and fairness by 2× when compared with existing fair scheduling schemes.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zheng",
+    "session_title": "Data Centers",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Protego: Overload Control for Applications with Unpredictable Lock Contention",
+    "authors": "Inho Cho,MIT CSAIL;Ahmed Saeed,Georgia Tech;Seo Jin Park, Mohammad Alizadeh, and Adam Belay,MIT CSAIL",
+    "abstract": "Modern datacenter applications are concurrent, so they require synchronization to control access to shared data. Requests can contend for different combinations of locks, depending on application and request state. In this paper, we show that locks, especially blocking synchronization, can squander throughput and harm tail latency, even when the CPU is underutilized. Moreover, the presence of a large number of contention points, and the unpredictability in knowing which locks a request will require, make it difficult to prevent contention through overload control using traditional signals such as queueing delay and CPU utilization.\nWe present Protego, a system that resolves these problems with two key ideas. First, it contributes a new admission control strategy that prevents compute congestion in the presence of lock contention. The key idea is to use marginal improvements in observed throughput, rather than CPU load or latency measurements, within a credit-based admission control algorithm that regulates the rate of incoming requests to a server. Second, it introduces a new latency-aware synchronization abstraction called Active Synchronization Queue Management (ASQM) that allows applications to abort requests if delays exceed latency objectives. We apply Protego to two real-world applications, Lucene and Memcached, and show that it achieves up to 3.3x more goodput and 12.2x lower 99th percentile latency than the state-of-the-art overload control systems while avoiding congestion collapse.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/cho-inho",
+    "session_title": "Data Centers",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "TopoOpt: Co-optimizing Network Topology and Parallelization Strategy for Distributed Training Jobs",
+    "authors": "Weiyang Wang, Moein Khazraee, Zhizhen Zhong, and Manya Ghobadi,Massachusetts Institute of Technology;Zhihao Jia,Meta and CMU;Dheevatsa Mudigere and Ying Zhang,Meta;Anthony Kewitsch,Telescent",
+    "abstract": "We propose TopoOpt, a novel direct-connect fabric for deep neural network (DNN) training workloads. TopoOpt co-optimizes the distributed training process across three dimensions: computation, communication, and network topology. We demonstrate the mutability of AllReduce traffic, and leverage this property to construct efficient network topologies for DNN training jobs. TopoOpt then uses an alternating optimization technique and a group theory-inspired algorithm called TotientPerms to find the best network topology and routing plan, together with a parallelization strategy. We build a fully functional 12-node direct-connect prototype with remote direct memory access (RDMA) forwarding at 100 Gbps. Large-scale simulations on real distributed training models show that, compared to similar-cost Fat-Tree interconnects, TopoOpt reduces DNN training time by up to 3.4x.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/wang-weiyang",
+    "session_title": "Systems for Learning",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "ModelKeeper: Accelerating DNN Training via Automated Training Warmup",
+    "authors": "Fan Lai, Yinwei Dai, Harsha V. Madhyastha, and Mosharaf Chowdhury,University of Michigan",
+    "abstract": "With growing deployment of machine learning (ML) models, ML developers are training or re-training increasingly more deep neural networks (DNNs). They do so to find the most suitable model that meets their accuracy requirement while satisfying the resource and timeliness constraints of the target environment. In large shared clusters, the growing number of neural architecture search (NAS) and training jobs often result in models sharing architectural similarities with others from the same or a different ML developer. However, existing solutions do not provide a systematic mechanism to identify and leverage such similarities.\nWe present ModelKeeper, the first automated training warmup system that accelerates DNN training by repurposing previously-trained models in a shared cluster. Our key insight is that initializing a training job's model by transforming an already-trained model's weights can jump-start it and reduce the total amount of training needed. However, models submitted over time can differ in their architectures and accuracy. Given a new model to train, ModelKeeper scalably identifies its architectural similarity with previously trained models, selects a parent model with high similarity and good model accuracy, and performs structure-aware transformation of weights to preserve maximal information from the parent model during the warmup of new model weights. Our evaluations across thousands of CV and NLP models show that ModelKeeper achieves 1.3×–4.3× faster training completion with little overhead and no reduction in model accuracy.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/lai-fan",
+    "session_title": "Systems for Learning",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "SHEPHERD: Serving DNNs in the Wild",
+    "authors": "Hong Zhang,University of Waterloo;Yupeng Tang and Anurag Khandelwal,Yale University;Ion Stoica,UC Berkeley",
+    "abstract": "Model serving systems observe massive volumes of inference requests for many emerging interactive web services. These systems need to be scalable, guarantee high system goodput and maximize resource utilization across compute units. However, achieving all three goals simultaneously is challenging since inference requests have very tight latency constraints (10 – 500 ms), and production workloads can be extremely unpredictable at such small time granularities.\nWe present SHEPHERD, a model serving system that achieves all three goals in the face of workload unpredictability. SHEPHERD uses a two-level design that decouples model serving into planning and serving modules. For planning, SHEPHERD exploits the insight that while individual request streams can be highly unpredictable, aggregating request streams into moderately-sized groups greatly improves predictability, permitting high resource utilization as well as scalability. For serving, SHEPHERD employs a novel online algorithm that provides guaranteed goodput under workload unpredictability by carefully leveraging preemptions and model-specific batching properties. Evaluation results over production workloads show that SHEPHERD achieves up to 18.1X higher goodput and 1.8X better utilization compared to prior state-of-the-art, while scaling to hundreds of workers.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhang-hong",
+    "session_title": "Systems for Learning",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Better Together: Jointly Optimizing ML Collective Scheduling and Execution Planning using SYNDICATE",
+    "authors": "Kshiteej Mahajan,University of Wisconsin - Madison;Ching-Hsiang Chu and Srinivas Sridharan,Facebook;Aditya Akella,UT Austin",
+    "abstract": "Emerging ML training deployments are trending towards larger models, and hybrid-parallel training that is not just dominated by compute-intensive all-reduce for gradient aggregation but also bandwidth-intensive collectives (e.g., all-to-all). These emerging collectives exacerbate the communication bottlenecks despite heterogeneous network interconnects with ample multipath opportunities. In this work, we propose SYNDICATE, a systematic, general framework to minimize communication bottlenecks and speed up training for both state-of-the-art and future large-scale models and interconnects. SYNDICATE proposes a novel abstraction, the motif, to break large communication work as smaller pieces as part of execution planning. SYNDICATE also does joint optimization of scheduling and execution planning by rethinking the interfaces in the networking systems stacks used for ML training. Motifs afford greater flexibility during scheduling and the joint optimizer exploits this flexibility by packing and ordering communication work so as to maximize both network utilization and overlap with compute. This improves the speed of training state-of-the-art large models by 21-74%.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/mahajan",
+    "session_title": "Systems for Learning",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Addax: A fast, private, and accountable ad exchange infrastructure",
+    "authors": "Ke Zhong, Yiping Ma, and Yifeng Mao,University of Pennsylvania;Sebastian Angel,University of Pennsylvania & Microsoft Research",
+    "abstract": "This paper proposes Addax, a fast, verifiable, and private online ad exchange. When a user visits an ad-supported site, Addax runs an auction similar to those of leading exchanges; Addax requests bids, selects the winner, collects payment, and displays the ad to the user. A key distinction is that bids in Addax's auctions are kept private and the outcome of the auction is publicly verifiable. Addax achieves these properties by adding public verifiability to the affine aggregatable encodings in Prio (NSDI'17) and by building an auction protocol out of them. Our implementation of Addax over WAN with hundreds of bidders can run roughly half the auctions per second as a non-private and non-verifiable exchange, while delivering ads to users in under 600 ms with little additional bandwidth requirements. This efficiency makes Addax the first architecture capable of bringing transparency to this otherwise opaque ecosystem.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhong",
+    "session_title": "Privacy and Security",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "SPEEDEX: A Scalable, Parallelizable, and Economically Efficient Decentralized EXchange",
+    "authors": "Geoffrey Ramseyer, Ashish Goel, and David Mazières,Stanford University",
+    "abstract": "SPEEDEX is a decentralized exchange (DEX) that lets participants securely trade assets without giving any single party undue control over the market. SPEEDEX offers several advantages over prior DEXes. It achieves high throughput—over 200,000 transactions per second on 48-core servers, even with tens of millions of open offers. SPEEDEX runs entirely within a Layer-1 blockchain, and thus achieves its scalability without fragmenting market liquidity between multiple blockchains or rollups. It eliminates internal arbitrage opportunities, so that a direct trade from asset A to asset B always receives as good a price as trading through some third asset such as USD. Finally, it prevents certain front-running attacks that would otherwise increase the effective bid-ask spread for small traders. SPEEDEX's key design insight is its use of an Arrow-Debreu exchange market structure that fixes the valuation of assets for all trades in a given block of transactions. We construct an algorithm, which is both asymptotically efficient and empirically practical, that computes these valuations while exactly preserving a DEX's financial correctness constraints. Not only does this market structure provide fairness across trades, but it also makes trade operations commutative and hence efficiently parallelizable. SPEEDEX is prototyped but not yet merged within the Stellar blockchain, one of the largest Layer-1 blockchains.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/ramseyer",
+    "session_title": "Privacy and Security",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Boomerang: Metadata-Private Messaging under Hardware Trust",
+    "authors": "Peipei Jiang,Wuhan University and City University of Hong Kong;Qian Wang and Jianhao Cheng,Wuhan University;Cong Wang,City University of Hong Kong;Lei Xu,Nanjing University of Science and Technology;Xinyu Wang,Tencent Inc.;Yihao Wu and Xiaoyuan Li,Wuhan University;Kui Ren,Zhejiang University",
+    "abstract": "In end-to-end encrypted (E2EE) messaging systems, protecting communication metadata, such as who is communicating with whom, at what time, etc., remains a challenging problem. Existing designs mostly fall into the balancing act among security, performance, and trust assumptions: 1) designs with cryptographic security often use hefty operations, incurring performance roadblocks and expensive operational costs for large-scale deployment; 2) more performant systems often follow a weaker security guarantee, like differential privacy, and generally demand more trust from the involved servers. So far, there has been no dominant solution. In this paper, we take a different technical route from prior art, and propose Boomerang, an alternative metadata-private messaging system leveraging the readily available trust assumption on secure enclaves (as those emerging in the cloud). Through a number of carefully tailored oblivious techniques on message shuffling, workload distribution, and proactive patching of the communication pattern, Boomerang brings together low latency, horizontal scalability, and cryptographic security, without prohibitive extra cost. With 32 machines, Boomerang achieves 99th percentile latency of 7.76 seconds for 220clients. We hope Boomerang offers attractive alternative options to the current landscape of metadata-private messaging designs.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/jiang",
+    "session_title": "Privacy and Security",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Hamilton: A High-Performance Transaction Processor for Central Bank Digital Currencies",
+    "authors": "James Lovejoy,Federal Reserve Bank of Boston;Madars Virza and Cory Fields,MIT Media Lab;Kevin Karwaski and Anders Brownworth,Federal Reserve Bank of Boston;Neha Narula,MIT Media Lab",
+    "abstract": "Over 80% of central banks around the world are investigating central bank digital currency (CBDC), a digital form of central bank money that would be made available to the public for payments. We present Hamilton, a transaction processor for CBDC that provides high throughput, low latency, and fault tolerance, and that minimizes data stored in the transaction processor and provides flexibility for multiple types of programmability and a variety of roles for financial intermediaries. Hamilton does so by decoupling the steps of transaction validation so only the validating layer needs to see the details of a transaction, and by co-designing the transaction format with a simple version of a two-phase-commit protocol, which efficiently applies state updates in parallel. An evaluation shows Hamilton achieves 1.7M transactions per second in a geo-distributed setting.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/lovejoy",
+    "session_title": "Privacy and Security",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "RECL: Responsive Resource-Efficient Continuous Learning for Video Analytics",
+    "authors": "Mehrdad Khani,MIT CSAIL and Microsoft;Ganesh Ananthanarayanan and Kevin Hsieh,Microsoft;Junchen Jiang,University of Chicago;Ravi Netravali,Princeton University;Yuanchao Shu,Zhejiang University;Mohammad Alizadeh,MIT CSAIL;Victor Bahl,Microsoft",
+    "abstract": "Continuous learning has recently shown promising results for video analytics by adapting a lightweight \"expert\" DNN model for each specific video scene to cope with the data drift in real time. However, current adaptation approaches either rely on periodic retraining and suffer its delay and significant compute costs or rely on selecting historical models and incur accuracy loss by not fully leveraging the potential of persistent retraining. Without dynamically optimizing the resource sharing among model selection and retraining, both approaches have a diminishing return at scale. RECL is a new video-analytics framework that carefully integrates model reusing and online model retraining, allowing it to quickly adapt the expert model given any video frame samples. To do this, RECL (i) shares across edge devices a (potentially growing) \"model zoo\" that comprises expert models previously trained for all edge devices, enabling history model reuse across video sessions, (ii) uses a fast procedure to online select a highly accurate expert model from this shared model zoo, and (iii) dynamically optimizes GPU allocation among model retraining, model selection, and timely updates of the model zoo. Our evaluation of RECL over 70 hours of real-world videos across two vision tasks (object detection and classification) shows substantial performance gains compared to prior work, further amplifying over the system lifetime.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/khani",
+    "session_title": "Video",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Boggart: Towards General-Purpose Acceleration of Retrospective Video Analytics",
+    "authors": "Neil Agarwal and Ravi Netravali,Princeton University",
+    "abstract": "Commercial retrospective video analytics platforms have increasingly adopted general interfaces to support the custom queries and convolutional neural networks (CNNs) that different applications require. However, existing optimizations were designed for settings where CNNs were platform- (not user-) determined, and fail to meet at least one of the following key platform goals when that condition is violated: reliable accuracy, low latency, and minimal wasted work.\nWe present Boggart, a system that simultaneously meets all three goals while supporting the generality that today's platforms seek. Prior to queries being issued, Boggart carefully employs traditional computer vision algorithms to generate indices that are imprecise, but are fundamentally comprehensive across different CNNs/queries. For each issued query, Boggart employs new techniques to quickly characterize the imprecision of its index, and sparingly run CNNs (and propagate results to other frames) in a way that bounds accuracy drops. Our results highlight that Boggart's improved generality comes at low cost, with speedups that match (and most often, exceed) prior, model-specific approaches.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/agarwal-neil",
+    "session_title": "Video",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Tambur: Efficient loss recovery for videoconferencing via streaming codes",
+    "authors": "Michael Rudow,Carnegie Mellon University;Francis Y. Yan,Microsoft Research;Abhishek Kumar,Carnegie Mellon University;Ganesh Ananthanarayanan and Martin Ellis,Microsoft;K.V. Rashmi,Carnegie Mellon University",
+    "abstract": "Packet loss degrades the quality of experience (QoE) of videoconferencing. The standard approach to recovering lost packets for long-distance communication where retransmission takes too long is forward error correction (FEC). Conventional approaches for FEC for real-time applications are inefficient at protecting against bursts of losses. Yet such bursts frequently arise in practice and can be better tamed with a new class of theoretical FEC schemes, called \"streaming codes,\" that require significantly less redundancy to recover bursts. However, existing streaming codes do not address the needs of videoconferencing, and their potential to improve the QoE for videoconferencing is largely untested. \\emph{Tambur} is a new streaming-codes-based approach to videoconferencing that overcomes the aforementioned limitations. We first evaluate Tambur in simulation over a large corpus of traces from Microsoft Teams. Tambur reduces the frequency of decoding failures for video frames by 26% and the bandwidth used for redundancy by 35% compared to the baseline. We implement Tambur in C++, integrate it with a videoconferencing application, and evaluate end-to-end QoE metrics over an emulated network showcasing substantial benefits for several key metrics. For example, Tambur reduces the frequency and cumulative duration of freezes by 26% and 29%, respectively.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/rudow",
+    "session_title": "Video",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Gemel: Model Merging for Memory-Efficient, Real-Time Video Analytics at the Edge",
+    "authors": "Arthi Padmanabhan,UCLA;Neil Agarwal,Princeton University;Anand Iyer and Ganesh Ananthanarayanan,Microsoft Research;Yuanchao Shu,Zhejiang University;Nikolaos Karianakis,Microsoft Research;Guoqing Harry Xu,UCLA;Ravi Netravali,Princeton University",
+    "abstract": "Video analytics pipelines have steadily shifted to edge deployments to reduce bandwidth overheads and privacy violations, but in doing so, face an ever-growing resource tension. Most notably, edge-box GPUs lack the memory needed to concurrently house the growing number of (increasingly complex) models for real-time inference. Unfortunately, existing solutions that rely on time/space sharing of GPU resources are insufficient as the required swapping delays result in unacceptable frame drops and accuracy loss. We present model merging, a new memory management technique that exploits architectural similarities between edge vision models by judiciously sharing their layers (including weights) to reduce workload memory costs and swapping delays. Our system, Gemel, efficiently integrates merging into existing pipelines by (1) leveraging several guiding observations about per-model memory usage and inter-layer dependencies to quickly identify fruitful and accuracy-preserving merging configurations, and (2) altering edge inference schedules to maximize merging benefits. Experiments across diverse workloads reveal that Gemel reduces memory usage by up to 60.7%, and improves overall accuracy by 8-39% relative to time or space sharing alone.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/padmanabhan",
+    "session_title": "Video",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Fast, Approximate Vector Queries on Very Large Unstructured Datasets",
+    "authors": "Zili Zhang and Chao Jin,Peking University;Linpeng Tang,Moqi;Xuanzhe Liu and Xin Jin,Peking University",
+    "abstract": "The breakthroughs in deep learning enable unstructured data to be represented as high-dimensional feature vectors for serving a wide range of applications. Processing vector queries (i.e., finding the nearest neighbor vectors for an input vector) for large unstructured datasets (with billions of items) is challenging, especially for applications with strict service level objectives (SLOs). Existing solutions trade query accuracy for latency, but without any guarantees, causing SLO violations.\nThis paper presents Auncel, a vector query engine for large unstructured datasets that provides bounded query errors and bounded query latencies. The core idea of Auncel is to exploit local geometric properties of individual query vectors to build a precise error-latency profile (ELP) for each query. This profile enables Auncel to sample the right amount of data to process a given query while satisfying its error or latency requirements. Auncel is a distributed solution that can scale out with multiple workers. We evaluate Auncel with a variety of benchmarking datasets. The experimental results show that Auncel outperforms state-of-the-art approximate solutions by up to 10× on query latency with the same error bound (≤ 10%). In particular, Auncel only takes 25 ms to process a vector query on the DEEP1B dataset that contains one billion items with four c5.metal EC2 instances.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhang-zili",
+    "session_title": "Data",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Arya: Arbitrary Graph Pattern Mining with Decomposition-based Sampling",
+    "authors": "Zeying Zhu,Boston University;Kan Wu,University of Wisconsin-Madison;Zaoxing Liu,Boston University",
+    "abstract": "Graph pattern mining is compute-intensive in processing massive amounts of graph-structured data. This paper presents Arya, an ultra-fast approximate graph pattern miner that can detect and count arbitrary patterns of a graph. Unlike all prior approximation systems, Arya combines novel graph decomposition theory with edge sampling-based approximation to reduce the complexity of mining complex patterns on graphs with up to tens of billions of edges, a scale that was only possible on supercomputers. Arya can run on a single machine or distributed machines with an Error-Latency Profile (ELP) for users to configure the running time of pattern mining tasks based on different error targets. Our evaluation demonstrates that Arya outperforms existing exact and approximate pattern mining solutions by up to five orders of magnitude. Arya supports graphs with 5 billion edges on a single machine and scales to 10-billion-edge graphs on a 32-server testbed.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhu",
+    "session_title": "Data",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "SECRECY: Secure collaborative analytics in untrusted clouds",
+    "authors": "John Liagouris, Vasiliki Kalavri, Muhammad Faisal, and Mayank Varia,Boston University",
+    "abstract": "We present SECRECY, a system for privacy-preserving collaborative analytics as a service. SECRECY allows multiple data holders to contribute their data towards a joint analysis in the cloud, while keeping the data siloed even from the cloud providers. At the same time, it enables cloud providers to offer their services to clients who would have otherwise refused to perform a computation altogether or insisted that it be done on private infrastructure. SECRECY ensures no information leakage and provides provable security guarantees by employing cryptographically secure Multi-Party Computation (MPC).\nIn SECRECY we take a novel approach to optimizing MPC execution by co-designing multiple layers of the system stack and exposing the MPC costs to the query engine. To achieve practical performance, SECRECY applies physical optimizations that amortize the inherent MPC overheads along with logical optimizations that dramatically reduce the computation, communication, and space requirements during query execution. Our multi-cloud experiments demonstrate that SECRECY improves query performance by over 1000x compared to existing approaches and computes complex analytics on millions of data records with modest use of resources.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/liagouris",
+    "session_title": "Data",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "FLASH: Towards a High-performance Hardware Acceleration Architecture for Cross-silo Federated Learning",
+    "authors": "Junxue Zhang and Xiaodian Cheng,iSINGLab at Hong Kong University of Science and Technology and Clustar;Wei Wang,Clustar;Liu Yang,iSINGLab at Hong Kong University of Science and Technology and Clustar;Jinbin Hu and Kai Chen,iSINGLab at Hong Kong University of Science and Technology",
+    "abstract": "Cross-silo federated learning (FL) adopts various cryptographic operations to preserve data privacy, which introduces significant performance overhead. In this paper, we identify nine widely-used cryptographic operations and design an efficient hardware architecture to accelerate them. However, directly offloading them on hardware statically leads to (1) inadequate hardware acceleration due to the limited resources allocated to each operation; (2) insufficient resource utilization, since different operations are used at different times. To address these challenges, we propose FLASH, a high-performance hardware acceleration architecture for cross-silo FL systems. At its heart, FLASH extracts two basic operators—modular exponentiation and multiplication— behind the nine cryptographic operations and implements them as highly-performant engines to achieve adequate acceleration. Furthermore, it leverages a dataflow scheduling scheme to dynamically compose different cryptographic operations based on these basic engines to obtain sufficient resource utilization. We have implemented a fully-functional FLASH prototype with Xilinx VU13P FPGA and integrated it with FATE, the most widely-adopted cross-silo FL framework. Experimental results show that, for the nine cryptographic operations, FLASH achieves up to 14.0× and 3.4× acceleration over CPU and GPU, translating to up to 6.8× and 2.0× speedup for realistic FL applications, respectively. We finally evaluate the FLASH design as an ASIC, and it achieves 23.6× performance improvement upon the FPGA prototype.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhang-junxue",
+    "session_title": "Data",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "On Modular Learning of Distributed Systems for Predicting End-to-End Latency",
+    "authors": "Chieh-Jan Mike Liang,Microsoft Research;Zilin Fang,Carnegie Mellon University;Yuqing Xie,Tsinghua University;Fan Yang,Microsoft Research;Zhao Lucis Li,University of Science and Technology of China;Li Lyna Zhang, Mao Yang, and Lidong Zhou,Microsoft Research",
+    "abstract": "An emerging trend in cloud deployments is to adopt machine learning (ML) models to characterize end-to-end system performance. Despite early success, such methods can incur significant costs when adapting to the deployment dynamics of distributed systems like service scaling-out and replacement. They require hours or even days for data collection and model training, otherwise models may drift to result in unacceptable inaccuracy. This problem arises from the practice of modeling the entire system with monolithic models. We propose Fluxion, a framework to model end-to-end system latency with modularized learning. Fluxion introduces learning assignment, a new abstraction that allows modeling individual sub-components. With a consistent interface, multiple learning assignments can then be dynamically composed into an inference graph, to model a complex distributed system on the fly. Changes in a system sub-component only involve updating the corresponding learning assignment, thus significantly reducing costs. Using three systems with up to 142 microservices on a 100-VM cluster, Fluxion shows a performance modeling MAE (mean absolute error) up to 68.41% lower than monolithic models. In turn, this lower MAE allows better system performance tuning, e.g., a speed up for 90-percentile end-to-end latency by up to 1.57×. All these are achieved under various system deployment dynamics.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/liang-chieh-jan",
+    "session_title": "Making Systems Learn",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "SelfTune: Tuning Cluster Managers",
+    "authors": "Ajaykrishna Karthikeyan and Nagarajan Natarajan,Microsoft Research;Gagan Somashekar,Stony Brook University;Lei Zhao,Microsoft;Ranjita Bhagwan,Microsoft Research;Rodrigo Fonseca, Tatiana Racheva, and Yogesh Bansal,Microsoft",
+    "abstract": "Large-scale cloud providers rely on cluster managers for container allocation and load balancing (e.g., Kubernetes), VM provisioning (e.g., Protean), and other management tasks. These cluster managers use algorithms or heuristics whose behavior depends upon multiple configuration parameters. Currently, operators manually set these parameters using a combination of domain knowledge and limited testing. In very large-scale and dynamic environments, these manually-set parameters may lead to sub-optimal cluster states, adversely affecting important metrics such as latency and throughput.\nIn this paper we describe SelfTune, a framework that automatically tunes such parameters in deployment. SelfTune piggybacks on the iterative nature of cluster managers which, through multiple iterations, drives a cluster to a desired state. Using a simple interface, developers integrate SelfTune into the cluster manager code, which then uses a principled reinforcement learning algorithm to tune important parameters over time. We have deployed SelfTune on tens of thousands of machines that run a large-scale background task scheduler at Microsoft. SelfTune has improved throughput by as much as 20% in this deployment by continuously tuning a key configuration parameter that determines the number of jobs concurrently accessing CPU and disk on every machine. We also evaluate SelfTune with two Azure FaaS workloads, the Kubernetes Vertical Pod Autoscaler, and the DeathStar microservice benchmark. In all cases, SelfTune significantly improves cluster performance.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/karthikeyan",
+    "session_title": "Making Systems Learn",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "CausalSim: A Causal Framework for Unbiased Trace-Driven Simulation",
+    "authors": "Abdullah Alomar, Pouya Hamadanian, Arash Nasr-Esfahany, Anish Agarwal, Mohammad Alizadeh, and Devavrat Shah,MITAwarded Best Paper!",
+    "abstract": "We present CausalSim, a causal framework for unbiased trace-driven simulation. Current trace-driven simulators assume that the interventions being simulated (e.g., a new algorithm) would not affect the validity of the traces. However, real-world traces are often biased by the choices algorithms make during trace collection, and hence replaying traces under an intervention may lead to incorrect results. CausalSim addresses this challenge by learning a causal model of the system dynamics and latent factors capturing the underlying system conditions during trace collection. It learns these models using an initial randomized control trial (RCT) under a fixed set of algorithms, and then applies them to remove biases from trace data when simulating new algorithms.\nKey to CausalSim is mapping unbiased trace-driven simulation to a tensor completion problem with extremely sparse observations. By exploiting a basic distributional invariance property present in RCT data, CausalSim enables a novel tensor completion method despite the sparsity of observations. Our extensive evaluation of CausalSim on both real and synthetic datasets, including more than ten months of real data from the Puffer video streaming system shows it improves simulation accuracy, reducing errors by 53% and 61% on average compared to expert-designed and supervised learning baselines. Moreover, CausalSim provides markedly different insights about ABR algorithms compared to the biased baseline simulator, which we validate with a real deployment.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/alomar",
+    "session_title": "Making Systems Learn",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "HALP: Heuristic Aided Learned Preference Eviction Policy for YouTube Content Delivery Network",
+    "authors": "Zhenyu Song,Princeton University;Kevin Chen, Νikhil Sarda, Deniz Altınbüken, Eugene Brevdo, Jimmy Coleman, Xiao Ju, Pawel Jurczyk, Richard Schooler, and Ramki Gummadi,Google",
+    "abstract": "Video streaming services are among the largest web applications in production, and a large source of downstream internet traffic. A large-scale video streaming service at Google, YouTube, leverages a Content Delivery Network (CDN) to serve its users. A key consideration in providing a seamless service is cache efficiency. In this work, we demonstrate machine learning techniques to improve the efficiency of YouTube's CDN DRAM cache. While many recently proposed learning-based caching algorithms show promising results, we identify and address three challenges blocking deployment of such techniques in a large-scale production environment: computation overhead for learning, robust byte miss ratio improvement, and measuring impact under production noise. We propose a novel caching algorithm, HALP, which achieves low CPU overhead and robust byte miss ratio improvement by augmenting a heuristic policy with machine learning. We also propose a production measurement method, impact distribution analysis, that can accurately measure the impact distribution of a new caching algorithm deployment in a noisy production environment.\nHALP has been running in YouTube CDN production as a DRAM level eviction algorithm since early 2022 and has reliably reduced the byte miss during peak by an average of 9.1% while expending a modest CPU overhead of 1.8%.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/song-zhenyu",
+    "session_title": "Making Systems Learn",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "OpenLoRa: Validating LoRa Implementations through an Extensible and Open-sourced Framework",
+    "authors": "Manan Mishra, Daniel Koch, Muhammad Osama Shahid, and Bhuvana Krishnaswamy,University of Wisconsin-Madison;Krishna Chintalapudi,Microsoft Research;Suman Banerjee,University of Wisconsin-Madison",
+    "abstract": "LoRa is one of the most widely used LPWAN communication techniques operating in the unlicensed sub-GHz ISM bands. Its long range however also results in increased interference from other LoRa and non-LoRa networks, undermining network throughput due to packet collisions. This has motivated extensive research in the area of collision resolution techniques for concurrent LoRa transmissions and continues to be a topic of interest. In this paper, we verify the implementation and efficacy of four of the most recent works on LoRa packet collisions, in addition to standard LoRa. We implement OpenLoRa, an open-source, unified platform to evaluate these works and is extensible for future researchers to compare against existing works. We implement each of the four techniques in Python as well as separate the demodulator and decoder to provide benchmarks for future demodulators that can be plugged into the framework for fair and easy comparison against existing works. Our evaluation indicates that existing contention resolution techniques fall short in their throughput performance,  especially due to poor packet detection in low and ultra-low SNR regimes.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/mishra",
+    "session_title": "IoT Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "VeCare: Statistical Acoustic Sensing for Automotive In-Cabin Monitoring",
+    "authors": "Yi Zhang,The University of Hong Kong and Tsinghua University;Weiying Hou,The University of Hong Kong;Zheng Yang,Tsinghua University;Chenshu Wu,The University of Hong Kong",
+    "abstract": "On average, every 10 days a child dies from in-vehicle heatstroke. The life-threatening situation calls for an automatic Child Presence Detection (CPD) solution to prevent these tragedies. In this paper, we present VECARE, the first CPD system that leverages existing in-car audio without any hardware changes. To achieve so, we explore the fundamental properties of acoustic reflection signals and develop a novel paradigm of statistical acoustic sensing, which allows to detect motion, track breathing, and estimate speed in a unified model. Based on this, we build an accurate and robust CPD system by introducing a set of techniques that overcome multiple challenges concerning sound interference and sensing coverage. We implement VECARE using commodity speakers and a single microphone and conduct experiments with infant simulators and adults, as well as 15 young children for the real-world in-car study. The results demonstrate that VECARE achieves an average detection rate of 98.8% with a false alarm rate of 2.1% for 15 children in various cars, boosting the coverage by over 2.3× compared to state-of-the-art and achieving whole-car detection with no blind spot.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhang-yi",
+    "session_title": "IoT Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "SlimWiFi: Ultra-Low-Power IoT Radio Architecture Enabled by Asymmetric Communication",
+    "authors": "Renjie Zhao,University of California San Diego;Kejia Wang,Baylor University;Kai Zheng and Xinyu Zhang,University of California San Diego;Vincent Leung,Baylor University",
+    "abstract": "To communicate with existing wireless infrastructures such as Wi-Fi, an Internet of Things (IoT) radio device needs to adopt a compatible PHY layer which entails sophisticated hardware and high power consumption. This paper breaks the tension for the first time through a system called SlimWiFi. A SlimWiFi radio transmits on-off keying (OOK) modulated signals. But through a novelasymmetric communicationscheme, it can be directly decoded by off-the-shelf Wi-Fi devices. With this measure, SlimWiFi radically simplifies the radio architecture, evading power hungry components such as data converters and high-stability carrier generators. In addition, it can cut the transmit power requirement by around 18 dB, while keeping a similar link budget as standard Wi-Fi. We have implemented SlimWiFi through PCB prototype and IC tape-out. Our experiments demonstrate that SlimWiFi can reach around 100 kbps goodput at up to 60 m, while reducing power consumption by around 3 orders of magnitude compared to a standard Wi-Fi transmitter.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhao-renjie",
+    "session_title": "IoT Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "SLNet: A Spectrogram Learning Neural Network for Deep Wireless Sensing",
+    "authors": "Zheng Yang and Yi Zhang,Tsinghua University;Kun Qian,University of California San Diego;Chenshu Wu,The University of Hong Kong",
+    "abstract": "Advances in wireless technologies have transformed wireless networks from a pure communication medium to a pervasive sensing platform, enabling many sensorless and contactless applications. After years of effort, wireless sensing approaches centering around conventional signal processing are approaching their limits, and meanwhile, deep learning-based methods become increasingly popular and have seen remarkable progress. In this paper, we explore an unseen opportunity to push the limit of wireless sensing by jointly employing learning-based spectrogram generation and spectrogram learning. To this end, we present SLNet, a new deep wireless sensing architecture with spectrogram analysis and deep learning co-design. SLNet employs neural networks to generate super-resolution spectrogram, which overcomes the limitation of the time-frequency uncertainty. It then utilizes a novel polarized convolutional network that modulates the phase of the spectrograms for learning both local and global features. Experiments with four applications, i.e., gesture recognition, human identification, fall detection, and breathing estimation, show that SLNet achieves the highest accuracy with the smallest model and lowest computation among the state-of-the-art models. We believe the techniques in SLNet can be widely applied to fields beyond WiFi sensing.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/yang-zheng",
+    "session_title": "IoT Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "A High-Speed Stateful Packet Processing Approach for Tbps Programmable Switches",
+    "authors": "Mariano Scazzariello and Tommaso Caiazzi,KTH Royal Institute of Technology and Roma Tre University;Hamid Ghasemirahni,KTH Royal Institute of Technology;Tom Barbette,UCLouvain;Dejan Kostić and Marco Chiesa,KTH Royal Institute of Technology",
+    "abstract": "High-speed ASIC switches hold great promise for offloading complex packet processing pipelines directly in the highspeed data-plane. Yet, a large variety of today's packet processing pipelines, including stateful network functions and packet schedulers, require storing some (or all the) packets for short amount of times in a programmatic manner. Such a programmable buffer feature is missing on today's high-speed ASIC switches.\nIn this work, we present RIBOSOME, a system that extends programmable switches with external memory (to store packets) and external general-purpose packet processing devices such as CPUs or FPGAs (to perform stateful operations). As today's packet processing devices are bottlenecked by their network interface speeds, RIBOSOME carefully transmits only the relevant bits to these devices. RIBOSOME leverages spare bandwidth from any directly connected servers to store the incoming payloads through RDMA. Our evaluation shows that RIBOSOME can process 300G of traffic through a stateful packet processing pipeline (e.g., firewall, load balancer, packet scheduler) by running the pipeline logic on a single server equipped with one 100G interface.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/scazzariello",
+    "session_title": "Programming the Network",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "ExoPlane: An Operating System for On-Rack Switch Resource Augmentation",
+    "authors": "Daehyeok Kim,Microsoft and University of Texas at Austin;Vyas Sekar and Srinivasan Seshan,Carnegie Mellon University",
+    "abstract": "The promise of in-network computing continues to be unrealized in realistic deployments (e.g., clouds and ISPs) as serving concurrent stateful applications on a programmable switch is challenging today due to limited switch's on-chip resources. In this paper, we argue that an on-rack switch resource augmentation architecture that augments a programmable switch with other programmable network hardware, such as smart NICs, on the same rack can be a pragmatic and incrementally scalable solution. To realize this vision, we design and implement ExoPlane, an operating system for on-rack switch resource augmentation to support multiple concurrent applications. In designing ExoPlane, we propose a practical runtime operating model and state abstraction to address challenges in managing application states correctly across multiple devices with minimal performance and resource overheads. Our evaluation with various P4 applications shows that ExoPlane can provide applications with low latency, scalable throughput, and fast failover while achieving these with small resource overheads and no or little modifications on applications.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/kim-daehyeok",
+    "session_title": "Programming the Network",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Sketchovsky: Enabling Ensembles of Sketches on Programmable Switches",
+    "authors": "Hun Namkung,Carnegie Mellon University;Zaoxing Liu,Boston University;Daehyeok Kim,Microsoft Research;Vyas Sekar and Peter Steenkiste,Carnegie Mellon University",
+    "abstract": "Network operators need to run diverse measurement tasks on programmable switches to support management decisions (e.g., traffic engineering or anomaly detection). While prior work has shown the viability of running a single sketch instance, they largely ignore the problem of running an ensemble of sketch instances for a collection of measurement tasks. As such, existing efforts fall short of efficiently supporting a general ensemble of sketch instances. In this work, we present the design and implementation of Sketchovsky, a novel cross-sketch optimization and composition framework. We identify five new cross-sketch optimization building blocks to reduce critical switch hardware resources. We design efficient heuristics to select and apply these building blocks for arbitrary ensembles. To simplify developer effort, Sketchovsky automatically generates the composed code to be input to the hardware compiler. Our evaluation shows that Sketchovsky makes ensembles with up to 18 sketch instances become feasible and can reduce up to 45% of the critical hardware resources.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/namkung",
+    "session_title": "Programming the Network",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "RingLeader: Efficiently Offloading Intra-Server Orchestration to NICs",
+    "authors": "Jiaxin Lin, Adney Cardoza, Tarannum Khan, and Yeonju Ro,UT Austin;Brent E. Stephens,University of Utah;Hassan Wassel,Google;Aditya Akella,UT Austin",
+    "abstract": "Careful orchestration of requests at a datacenter server is crucial to meet tight tail latency requirements and ensure high throughput and optimal CPU utilization. Orchestration is multi-pronged and involves load balancing and scheduling requests belonging to different services across CPU resources, and adapting CPU allocation to request bursts. Centralized intra-server orchestration offers ideal load balancing performance, scheduling precision, and burst-tolerant CPU re-allocation. However, existing software-only approaches fail to achieve ideal orchestration because they have limited scalability and waste CPU resources. We argue for a new approach that offloads intra-server orchestration entirely to the NIC. We present RingLeader, a new programmable NIC with novel hardware units for software-informed request load balancing and programmable scheduling and a new light-weight OS-NIC interface that enables close NIC-CPU coordination and supports NIC-assisted CPU scheduling. Detailed experiments with a 100 Gbps FPGA-based prototype show that we obtain better scalability, efficiency, latency, and throughput than state-of-the-art software-only orchestrators including Shinjuku and Caladan.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/lin",
+    "session_title": "Programming the Network",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "StarryNet: Empowering Researchers to Evaluate Futuristic Integrated Space and Terrestrial Networks",
+    "authors": "Zeqi Lai and Hewu Li,Tsinghua University and Zhongguancun Laboratory;Yangtao Deng,Tsinghua University;Qian Wu, Jun Liu, and Yuanjie Li,Tsinghua University and Zhongguancun Laboratory;Jihao Li, Lixin Liu, and Weisen Liu,Tsinghua University;Jianping Wu,Tsinghua University and Zhongguancun Laboratory",
+    "abstract": "Futuristic integrated space and terrestrial networks (ISTN) not only hold new opportunities for pervasive, low-latency Internet services, but also face new challenges caused by satellite dynamics on a global scale. It should be useful for researchers to run various experiments to systematically explore new problems in ISTNs. However, existing experimentation methods either attain realism but lack flexibility (e.g. live satellites), or achieve flexibility but lack realism (e.g. ISTN simulators).\nThis paper presents StarryNet, a novel experimentation framework that enables researchers to conveniently build credible and flexible experimental network environments (ENE) mimicking satellite dynamics and network behaviors of large-scale ISTNs. StarryNet simultaneously achieves constellation-consistency, networked system realism and flexibility, by adopting a real-data-driven, lightweight-emulation-aided approach to build a digital twin of physical ISTNs in the terrestrial virtual environment. Driven by public and real constellation-relevant information, we show StarryNet's acceptable fidelity and demonstrate its flexibility to support various ISTN experiments, such as evaluating different inter-networking mechanisms for space-ground integration, and assessing the network resilience of futuristic ISTNs.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/lai-zeqi",
+    "session_title": "Alternative Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "POLYCORN: Data-driven Cross-layer Multipath Networking for High-speed Railway through Composable Schedulerlets",
+    "authors": "Yunzhe Ni,Peking University;Feng Qian,University of Minnesota – Twin Cities;Taide Liu, Yihua Cheng, Zhiyao Ma, and Jing Wang,Peking University;Zhongfeng Wang,China Railway Gecent Technology Co., Ltd;Gang Huang and Xuanzhe Liu,Key Laboratory of High Confidence Software Technologies, Ministry of Education, Peking University;Chenren Xu,Zhongguancun Laboratory and Key Laboratory of High Confidence Software Technologies, Ministry of Education, Peking University",
+    "abstract": "Modern high-speed railway (HSR) systems offer a speed of more than 250 km/h, making on-board Internet access through track-side cellular base stations extremely challenging. We conduct extensive measurements on commercial HSR trains, and collect a massive 1.79 TB GPS-labeled TCP-LTE dataset covering a total travel distance of 28,800 km. Leveraging the new insights from the measurement, we de-sign, implement, and evaluate POLYCORN, a first-of-its-kind networking system that can significantly boost Internet performance for HSR passengers. The core design of POLYCORN consists of a suite of composable multipath schedulerlets that intelligently determine what, when, and how to schedule user traffic over multiple highly fluctuating cellular links between HSR and track-side base stations. POLYCORN is specially designed for HSR environments through a cross-layer and data-driven proactive approach. We deploy POLYCORN on the operational LTE gateway of the popular Beijing-Shanghai HSR route at 300 km/h. Real-world experiments demonstrate that POLYCORN outperforms the state-of-the-art multipath schedulers by up to 242% in goodput, and reduces the delivery time by 45% for instant messaging applications.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/ni",
+    "session_title": "Alternative Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Augmenting Augmented Reality with Non-Line-of-Sight Perception",
+    "authors": "Tara Boroushaki, Maisy Lam, and Laura Dodds,Massachusetts Institute of Technology;Aline Eid,Massachusetts Institute of Technology and University of Michigan;Fadel Adib,Massachusetts Institute of Technology",
+    "abstract": "We present the design, implementation, and evaluation of X-AR, an augmented reality (AR) system with non-line-of-sight perception. X-AR augments AR headsets with RF sensing to enable users to see things that are otherwise invisible to the human eye or to state-of-the-art AR systems. Our design introduces three main innovations: the first is an AR-conformal antenna that tightly matches the shape of the AR headset visor while providing excellent radiation and bandwidth capabilities for RF sensing. The second is an RF-visual synthetic aperture localization algorithm that leverages natural human mobility to localize RF-tagged objects in line-of-sight and non-line-of-sight settings. Finally, the third is an RF-visual verification primitive that fuses RF and vision to deliver actionable tasks to end users such as picking verification. We built an end-to-end prototype of our design by integrating it into a Microsoft Hololens 2 AR headset and evaluated it in line-of-sight and non-line-of-sight environments. Our results demonstrate that X-AR achieves decimeter-level RF localization (median of 9.8 cm) of fully-occluded items and can perform RFvisual picking verification with over 95% accuracy (FScore) when extracting RFID-tagged items. These results show that X-AR is successful in extending AR systems to non-line-of-sight perception, with important implications to manufacturing, warehousing, and smart home applications. Demo video: y2u.be/bdUN21ft7G0",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/boroushaki",
+    "session_title": "Alternative Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Acoustic Sensing and Communication Using Metasurface",
+    "authors": "Yongzhao Zhang, Yezhou Wang, and Lanqing Yang,Shanghai Jiao Tong University;Mei Wang,UT Austin;Yi-Chao Chen,Shanghai Jiao Tong University and Microsoft Research Asia;Lili Qiu,UT Austin and Microsoft Research Asia;Yihong Liu,University of Glasgow;Guangtao Xue and Jiadi Yu,Shanghai Jiao Tong University",
+    "abstract": "Acoustic sensing is increasingly popular owing to widely available devices that support them. Yet the sensing resolution and range are still limited due to limited bandwidth and sharp decay in the signal at inaudible frequencies. Inspired by recent development in acoustic metasurfaces, in this paper, we first perform an in-depth study of acoustic metasurface (AMS) and compare it with the phased array speaker. Our results show that AMS is attractive as it achieves a significant SNR increase while maintaining a compact size. A major limitation of existing AMS is its static configuration. Since our target may be at any possible location, it is important to support scanning in different directions. We develop a novel acoustic system that leverages a metasurface and a small number of speakers. We jointly optimize the configuration of metasurface and transmission signals from the speakers to achieve low-cost dynamic steering. Using a prototype implementation and extensive evaluation, we demonstrate its effectiveness in improving SNR, acoustic sensing accuracy, and acoustic communication reliability over a wide range of scenarios.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhang-yongzhao",
+    "session_title": "Alternative Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Skyplane: Optimizing Transfer Cost and Throughput Using Cloud-Aware Overlays",
+    "authors": "Paras Jain, Sam Kumar, Sarah Wooders, Shishir G. Patil, Joseph E. Gonzalez, and Ion Stoica,University of California, Berkeley",
+    "abstract": "Cloud applications are increasingly distributing data across multiple regions and cloud providers. Unfortunately, widearea bulk data transfers are often slow, bottlenecking applications. We demonstrate that it is possible to significantly improve inter-region cloud bulk transfer throughput by adapting network overlays to the cloud setting—that is, by routing data through indirect paths at the application layer. However, directly applying network overlays in this setting can result in unacceptable increases in cloud egress prices. We present Skyplane, a system for bulk data transfer between cloud object stores that uses cloud-aware network overlays to optimally navigate the trade-off between price and performance. Skyplane's planner uses mixed-integer linear programming to determine the optimal overlay path and resource allocation for data transfer, subject to user-provided constraints on price or performance. Skyplane outperforms public cloud transfer services by up to 4.6× for transfers within one cloud and by up to 5.0× across clouds.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/jain",
+    "session_title": "Performance",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Electrode: Accelerating Distributed Protocols with eBPF",
+    "authors": "Yang Zhou,Harvard University;Zezhou Wang,Peking University;Sowmya Dharanipragada,Cornell University;Minlan Yu,Harvard University",
+    "abstract": "Implementing distributed protocols under a standard Linux kernel networking stack enjoys the benefits of load-aware CPU scaling, high compatibility, and robust security and isolation. However, it suffers from low performance because of excessive user-kernel crossings and kernel networking stack traversing. We present Electrode with a set of eBPF-based performance optimizations designed for distributed protocols. These optimizations get executed in the kernel before the networking stack but achieve similar functionalities as were implemented in user space (e.g., message broadcasting, collecting quorum of acknowledgments), thus avoiding the overheads incurred by user-kernel crossings and kernel networking stack traversing. We show that when applied to a classic Multi-Paxos state machine replication protocol, Electrode improves its throughput by up to 128.4% and latency by up to 41.7%.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/zhou",
+    "session_title": "Performance",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Nu: Achieving Microsecond-Scale Resource Fungibility with Logical Processes",
+    "authors": "Zhenyuan Ruan and Seo Jin Park,MIT CSAIL;Marcos K. Aguilera,VMware Research;Adam Belay,MIT CSAIL;Malte Schwarzkopf,Brown University",
+    "abstract": "Datacenters waste significant compute and memory resources today because they lack resource fungibility: the ability to reassign resources quickly and without disruption. We propose logical processes, a new abstraction that splits the classic UNIX process into units of state called proclets. Proclets can be migrated quickly within datacenter racks, to provide fungibility and adapt to the memory and compute resource needs of the moment. We prototype logical processes in Nu, and use it to build three different applications: a social network application, a MapReduce system, and a scalable key-value store. We evaluate Nu with 32 servers. Our evaluation shows that Nu achieves high efficiency and fungibility: it migrates proclets in ≈100μs; under intense resource pressure, migration causes small disruptions to tail latency—the 99.9th percentile remains below or around 1ms—for a duration of 0.54–2.1s, or a modest disruption to throughput (<6%) for a duration of 24–37ms, depending on the application.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/ruan",
+    "session_title": "Performance",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Enabling High Quality Real-Time Communications with Adaptive Frame-Rate",
+    "authors": "Zili Meng,Tsinghua University and Tencent Inc.;Tingfeng Wang,Tsinghua University, Tencent Inc., and Beijing University of Posts and Telecommunications;Yixin Shen,Tsinghua University;Bo Wang and Mingwei Xu,Tsinghua University and Zhongguancun Laboratory;Rui Han and Honghao Liu,Tencent Inc.;Venkat Arun,Massachusetts Institute of Technology;Hongxin Hu,University at Buffalo, SUNY;Xue Wei,Tencent Inc.",
+    "abstract": "Emerging high quality real-time communication (RTC) applications stream ultra-high-definition (UHD) videos with high frame rate (HFR). They use edge computing, which enables high bandwidth and low latency streaming. Our measurements, from the cloud gaming platform of one of the largest gaming companies, show that, in this setting, the client-side decoder is often the cause for high latency that hurts user's experience. We therefore propose an Adaptive Frame Rate (AFR) controller that helps achieve ultra-low latency by coordinating the frame rate with network fluctuation and decoder capacity. AFR's design addresses two key challenges: (1) queue measurements do not provide timely feedback for the control loop and (2) multiple factors control the decoder queue, and different actions must be taken depending on why the queue accumulates. Trace-driven simulations and large-scale deployments in the wild demonstrate that AFR can reduce the tail queuing delay by up to 7.4× and the stuttering events measured by end-to-end delay by 34% on average. AFR has been deployed in production in our cloud gaming service for over one year.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/meng",
+    "session_title": "Performance",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "LemonNFV: Consolidating Heterogeneous Network Functions at Line Speed",
+    "authors": "Hao Li and Yihan Dang,Xi'an Jiaotong University;Guangda Sun,Xi'an Jiaotong University and National University of Singapore;Guyue Liu,New York University Shanghai;Danfeng Shan and Peng Zhang,Xi'an Jiaotong University",
+    "abstract": "NFV has entered into a new era that heterogeneous frameworks coexist. NFs built upon those frameworks are thus not interoperable, obstructing operators from getting the best of the breed. Traditional interoperation solutions either incur large overhead, e.g., virtualizing NFs into containers, or require huge code modification, e.g., rewriting NFs with specific abstractions. We present LemonNFV, a novel NFV framework that can consolidate heterogeneous NFs without code modification. LemonNFV loads NFs into a single process down to the binary level, schedules them using an intercepted I/O, and isolates them with the help of a restricted memory allocator. Experiments show that LemonNFV can consolidate 5 complex NFs without modifying the native code while achieving comparable performance to the ideal and state-of-the-art pure consolidation approaches with only 0.7–4.3% overhead.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/li-hao",
+    "session_title": "Serverless and Network Functions",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Disaggregating Stateful Network Functions",
+    "authors": "Deepak Bansal, Gerald DeGrace, Rishabh Tewari, Michal Zygmunt, and James Grantham,Microsoft;Silvano Gai, Mario Baldi, Krishna Doddapaneni, Arun Selvarajan, Arunkumar Arumugam, and Balakrishnan Raman,AMD Pensando;Avijit Gupta, Sachin Jain, Deven Jagasia, Evan Langlais, Pranjal Srivastava, Rishiraj Hazarika, Neeraj Motwani, Soumya Tiwari, Stewart Grant, Ranveer Chandra, and Srikanth Kandula,Microsoft",
+    "abstract": "For security, isolation, metering and other purposes, public clouds today implement complex network functions at every server. Today's implementations, in software or on FPGAs and ASICs that are attached to each host, are becoming increasingly complex, costly and bottlenecks to scalability. We present a different design that disaggregates network function processing off the host and into shared resource pools by making novel use of appliances which tightly integrate general-purpose ARM cores with high-speed stateful match processing ASICs. When work is skewed across VMs, such disaggregation can offer better reliability and performance over the state-of-art at a lower per-server cost. We describe our solutions to the consequent challenges and present results from a production deployment at a large public cloud.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/bansal",
+    "session_title": "Serverless and Network Functions",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Following the Data, Not the Function: Rethinking Function Orchestration in Serverless Computing",
+    "authors": "Minchen Yu,Hong Kong University of Science and Technology;Tingjia Cao,University of Wisconsin-Madison;Wei Wang,Hong Kong University of Science and Technology;Ruichuan Chen,Nokia Bell Labs",
+    "abstract": "Serverless applications are typically composed of function workflows in which multiple short-lived functions are triggered to exchange data in response to events or state changes. Current serverless platforms coordinate and trigger functions by following high-level invocation dependencies but are oblivious to the underlying data exchanges between functions. This design is neither efficient nor easy to use in orchestrating complex workflows – developers often have to manage complex function interactions by themselves, with customized implementation and unsatisfactory performance.\nIn this paper, we argue that function orchestration should follow a data-centric approach. In our design, the platform provides a data bucket abstraction to hold the intermediate data generated by functions. Developers can use a rich set of data trigger primitives to control when and how the output of each function should be passed to the next functions in a workflow. By making data consumption explicit and allowing it to trigger functions and drive the workflow, complex function interactions can be easily and efﬁciently supported. We present Pheromone – a scalable, low-latency serverless platform following this data-centric design. Compared to well-established commercial and open-source platforms, Pheromone cuts the latencies of function interactions and data exchanges by orders of magnitude, scales to large workflows, and enables easy implementation of complex applications.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/yu",
+    "session_title": "Serverless and Network Functions",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Doing More with Less: Orchestrating Serverless Applications without an Orchestrator",
+    "authors": "David H. Liu and Amit Levy,Princeton University;Shadi Noghabi and Sebastian Burckhardt,Microsoft Research",
+    "abstract": "Standalone orchestrators simplify the development of serverless applications by providing higher-level programming interfaces, coordinating function interactions and ensuring exactly-once execution. However, they limit application flexibility and are expensive to use. We show that these specialized orchestration services are unnecessary. Instead, application-level orchestration, deployed as a library, can support the same programming interfaces, complex interactions and execution guarantees, utilizing only basic serverless components that are already universally supported and billed at a fine-grained per-use basis. Furthermore, application-level orchestration affords applications more flexibility and reduces costs for both providers and users.\nTo demonstrate this, we present Unum, an application-level serverless orchestration system. Unum introduces an intermediate representation that partitions higher-level application definitions at compile-time and provides orchestration as a runtime library that executes in-situ with user-defined FaaS functions. On unmodified serverless infrastructures, Unum functions coordinate and ensure correctness in a decentralized manner by leveraging strongly consistent data stores.\nCompared with AWS Step Functions, a state-of-the-art standalone orchestrator, our evaluation shows that Unum performs well, costs significantly less and grants applications greater flexibility to employ application-specific patterns and optimizations. For a representative set of applications, Unum runs as much as 2x faster and costs 9x cheaper.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/liu-david",
+    "session_title": "Serverless and Network Functions",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Enhancing Global Network Monitoring with Magnifier",
+    "authors": "Tobias Bühler and Romain Jacob,ETH Zürich;Ingmar Poese,BENOCS;Laurent Vanbever,ETH Zürich",
+    "abstract": "Monitoring where traffic enters and leaves a network is a routine task for network operators. In order to scale with Tbps of traffic, large Internet Service Providers (ISPs) mainly use traffic sampling for such global monitoring. Sampling either provides a sparse view or generates unreasonable overhead. While sampling can be tailored and optimized to specific contexts, this coverage–overhead trade-off is unavoidable.\nRather than optimizing sampling, we propose to \"magnify\" the sampling coverage by complementing it with mirroring. Magnifier enhances the global network view using a two-step approach: based on sampling data, it first infers traffic ingress and egress points using a heuristic, then it uses mirroring to validate these inferences efficiently. The key idea behind Magnifier is to use negativemirroring rules; i.e., monitor where traffic should not go. We implement Magnifier on commercial routers and demonstrate that it indeed enhances the global network view with negligible traffic overhead. Finally, we observe that monitoring based on our heuristics also allows to detect other events, such as certain failures and DDoS attacks.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/buhler",
+    "session_title": "Real Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "NetPanel: Traffic Measurement of Exchange Online Service",
+    "authors": "Yu Chen,Microsoft 365, China;Liqun Li and Yu Kang,Microsoft Research, China;Boyang Zheng, Yehan Wang, More Zhou, Yuchao Dai, and Zhenguo Yang,Microsoft 365, China;Brad Rutkowski and Jeff Mealiffe,Microsoft 365, USA;Qingwei Lin,Microsoft Research, China",
+    "abstract": "Global cloud applications are composed of thousands of components. These components are constantly generating large volumes of network traffic, which is a major cost of cloud applications. Identifying the traffic contributors is a critical step before reducing the traffic cost. However, this is challenging because the measurement has to be component-level, cost-effective, and under strict resource restrictions. In this paper, we introduce NetPanel, which is a traffic measurement platform for the Exchange Online (EXO) service of Microsoft. NetPanel fuses three data sources, namely IPFIX, Event Tracing for Windows (ETW), and application logs, to jointly measure the service traffic at the component level, where each component is owned by a service team. NetPanel uses several schemes to reduce the measurement overhead.\nNetPanel has been in operation for more than one year. It has been used to profile network traffic characteristics and traffic cost composition of EXO. With the insights obtained through NetPanel, we have saved millions of dollars in network resources. The overhead of running NetPanel is relatively small, which requires less than 1% CPU and disk I/O on production servers and less than 0.01% of EXO computation cores to process the data in our big-data platform.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/chen-yu",
+    "session_title": "Real Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "DOTE: Rethinking (Predictive) WAN Traffic Engineering",
+    "authors": "Yarin Perry,Hebrew University of Jerusalem;Felipe Vieira Frujeri,Microsoft Research;Chaim Hoch,Hebrew University of Jerusalem;Srikanth Kandula and Ishai Menache,Microsoft Research;Michael Schapira,Hebrew University of Jerusalem;Aviv Tamar,TechnionAwarded Best Paper!",
+    "abstract": "We explore a new design point for traffic engineering on wide-area networks (WANs): directly optimizing traffic flow on the WAN using only historical data about traffic demands. Doing so obviates the need to explicitly estimate, or predict, future demands. Our method, which utilizes stochastic optimization, provably converges to the global optimum in well-studied theoretical models. We employ deep learning to scale to large WANs and real-world traffic. Our extensive empirical evaluation on real-world traffic and network topologies establishes that our approach's TE quality almost matches that of an (infeasible) omniscient oracle, outperforming previously proposed approaches, and also substantially lowers runtimes.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/perry",
+    "session_title": "Real Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Dashlet: Taming Swipe Uncertainty for Robust Short Video Streaming",
+    "authors": "Zhuqi Li, Yaxiong Xie, Ravi Netravali, and Kyle Jamieson,Princeton University",
+    "abstract": "Short video streaming applications have recently gained substantial traction, but the non-linear video presentation they afford swiping users fundamentally changes the problem of maximizing user quality of experience in the face of the vagaries of network throughput and user swipe timing. This paper describes the design and implementation of Dashlet, a system tailored for high quality of experience in short video streaming applications. With the insights we glean from an in-the-wild TikTok performance study and a user study focused on swipe patterns, Dashlet proposes a novel out-of-order video chunk pre-buffering mechanism that leverages a simple, non machine learning-based model of users' swipe statistics to determine the pre-buffering order and bitrate. The net result is a system that outperforms TikTok by 28-101%, while also reducing by 30% the number of bytes wasted on downloaded video that is never watched.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/li-zhuqi",
+    "session_title": "Real Networks",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "CellDAM: User-Space, Rootless Detection and Mitigation for 5G Data Plane",
+    "authors": "Zhaowei Tan, Jinghao Zhao, Boyan Ding, and Songwu Lu,University of California, Los Angeles",
+    "abstract": "Despite all deployed security fences in 5G, attacks against its data plane are still feasible. A smart attacker can fabricate data packets or intelligently forge/drop/modify data-plane signaling messages between the 5G infrastructure and the device to inflict damage. In this work, we propose CellDAM, a new solution that is used at the device without any infrastructure upgrades or standard changes. CellDAM exploits the key finding that such data-plane attacks by the adversary would trigger unexpected data signaling operations. It thus detects all known and even currently unreported attacks via verifying data signaling correctness with novel state-dependent model checking. CellDAM could work with or without firmware access at the device using inference on low-level 5G signaling and configurations. It mitigates the damage upon detection by inducing frequency band switches at the device via the existing handover procedure. The prototype and empirical evaluation in our testbed confirm the viability of CellDAM.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/tan",
+    "session_title": "Cellular",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "LOCA: A Location-Oblivious Cellular Architecture",
+    "authors": "Zhihong Luo, Silvery Fu, and Natacha Crooks,UC Berkeley;Shaddi Hasan,Virginia Tech;Christian Maciocco,Intel;Sylvia Ratnasamy,UC Berkeley;Scott Shenker,UC Berkeley and ICSI",
+    "abstract": "Cellular operators today know both the identity and location of their mobile subscribers and hence can easily profile users based on this information. Given this status quo, we aim to design a cellular architecture that protects the location privacy of users from their cellular providers. The fundamental challenge in this is reconciling privacy with an operator's need to provide services based on a user's identity (e.g., post-pay, QoS and service classes, lawful intercept, emergency services, forensics).\nWe present LOCA, a novel cellular design that, for the first time, provides location privacy to users without compromising on identity-based services. LOCA is applicable to emerging MVNO-based cellular architectures in which a virtual operator acts as a broker between users and infrastructure operators. Using a combination of formal analysis, simulation, prototype implementation, and wide-area experiments, we show that LOCA provides provable privacy guarantees and scales to realistic deployment figures.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/luo",
+    "session_title": "Cellular",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "mmWall: A Steerable, Transflective Metamaterial Surface for NextG mmWave Networks",
+    "authors": "Kun Woo Cho,Princeton University;Mohammad H. Mazaheri,UCLA;Jeremy Gummeson,University of Massachusetts Amherst;Omid Abari,UCLA;Kyle Jamieson,Princeton University",
+    "abstract": "Mobile operators are poised to leverage millimeter wave technology as 5G evolves, but despite efforts to bolster their reliability indoors and outdoors, mmWave links remain vulnerable to blockage by walls, people, and obstacles. Further, there is significant interest in bringing outdoor mmWave coverage indoors, which for similar reasons remains challenging today. This paper presents the design, hardware implementation, and experimental evaluation of mmWall, the first electronically almost-360-degree steerable metamaterial surface that operates above 24 GHz and both refracts or reflects incoming mmWave transmissions. Our metamaterial design consists of arrays of varactor-split ring resonator unit cells, miniaturized for mmWave. Custom control circuitry drives each resonator, overcoming coupling challenges that arise at scale. Leveraging beam steering algorithms, we integrate mmWall into the link layer discovery protocols of common mmWave networks. We have fabricated a 10 cm by 20 cm mmWall prototype consisting of a 28 by 76 unit cell array and evaluated it in indoor, outdoor-to-indoor, and multi-beam scenarios. Indoors, mmWall guarantees 91% of locations outage-free under 128-QAM mmWave data rates and boosts SNR by up to 15 dB. Outdoors, mmWall reduces the probability of complete link failure by a ratio of up to 40% under 0–80% path blockage and boosts SNR by up to 30 dB.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/cho-kun-woo",
+    "session_title": "Cellular",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Building Flexible, Low-Cost Wireless Access Networks With Magma",
+    "authors": "Shaddi Hasan,Virginia Tech;Amar Padmanabhan,Databricks;Bruce Davie,Systems Approach;Jennifer Rexford,Princeton University;Ulas Kozat, Hunter Gatewood, Shruti Sanadhya, Nick Yurchenko, Tariq Al-Khasib, Oriol Batalla, Marie Bremner, Andrei Lee, Evgeniy Makeev, Scott Moeller, Alex Rodriguez, Pravin Shelar, Karthik Subraveti, Sudarshan Kandi, Alejandro Xoconostle, and Praveen Kumar Ramakrishnan,Meta;Xiaochen Tian,Indepenent;Anoop Tomar,MetaCommunity Award Winner!",
+    "abstract": "Billions of people remain without Internet access due to availability or affordability of service. In this paper, we present Magma, an open and flexible system for building low-cost wireless access networks. Magma aims to connect users where operator economics are difficult due to issues such as low population density or income levels while preserving features expected in cellular networks such as authentication and billing policies. To achieve this, and in contrast to traditional cellular networks, Magma adopts an approach that extensively leverages Internet design patterns, terminating access network-specific protocols at the edge and abstracting the access network from the core architecture. This decision allows Magma to refactor the wireless core using SDN (software-defined networking) principles and leverage other techniques from modern distributed systems. In doing so, Magma lowers cost and operational complexity for network operators while achieving resilience, scalability, and rich policy support.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/hasan",
+    "session_title": "Cellular",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "LinkLab 2.0: A Multi-tenant Programmable IoT Testbed for Experimentation with Edge-Cloud Integration",
+    "authors": "Wei Dong, Borui Li, Haoyu Li, Hao Wu, Kaijie Gong, Wenzhao Zhang, and Yi Gao,Zhejiang University",
+    "abstract": "In this paper, we present LinkLab 2.0, a completely programmable and controllable IoT testbed with the support of edge devices and cloud infrastructures. To be more specific, LinkLab 2.0 leverages a tiered architecture for the programmable devices and the management system to achieve scalability. To better support the integrated experiment among IoT, edge and cloud, LinkLab 2.0 provides one-site programming support and leverages the customizable offloading with serverless functions. Moreover, LinkLab 2.0 proposes a device-involved multi-tenancy approach to ensure responsiveness for concurrent requests. Furthermore, targeting 24/7 availability for experimenters, LinkLab 2.0 leverages proactive and reactive anomaly detection to improve the reliability of the testbed. Finally, we describe the supported research experiments and the outreach usage by external users. We also report lessons learned from the four-year operation. LinkLab 2.0 has supported experiments for 2,100+ users. The accumulated usage time across all the devices exceeds 17,300 hours.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/dong",
+    "session_title": "Testing",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Push-Button Reliability Testing for Cloud-Backed Applications with Rainmaker",
+    "authors": "Yinfang Chen and Xudong Sun,University of Illinois at Urbana-Champaign;Suman Nath,Microsoft Research;Ze Yang and Tianyin Xu,University of Illinois at Urbana-Champaign",
+    "abstract": "Modern applications have been emerging towards a cloud-based programming model where applications depend on cloud services for various functionalities. Such “cloud native” practice greatly simplifies application deployment and realizes cloud benefits (e.g., availability). Meanwhile, it imposes emerging reliability challenges for addressing fault models of the opaque cloud and less predictable Internet connections.\nIn this paper, we discuss these reliability challenges. We develop a taxonomy of bugs that render cloud-backed applications vulnerable to common transient faults. We show that (mis)handling transient error(s) of even one REST call interaction can adversely affect application correctness.\nWe take a first step to address the challenges by building a “push-button” reliability testing tool named Rainmaker, as a basic SDK utility for any cloud-backed application. Rainmaker helps developers anticipate the myriad of errors under the cloud-based fault model, without a need to write new policies, oracles, or test cases. Rainmaker directly works with existing test suites and is a plug-and-play tool for existing test environments. Rainmaker injects faults in the interactions between the application and cloud services. It does so at the REST layer, and thus is transparent to applications under test. More importantly, it encodes automatic fault injection policies to cover the various taxonomized bug patterns, and automatic oracles that embrace existing in-house software tests. To date, Rainmaker has detected 73 bugs (55 confirmed and 51 fixed) in 11 popular cloud-backed applications.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/chen-yinfang",
+    "session_title": "Testing",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Test Coverage for Network Configurations",
+    "authors": "Xieyang Xu and Weixin Deng,University of Washington;Ryan Beckett,Microsoft;Ratul Mahajan,University of Washington;David Walker,Princeton University",
+    "abstract": "We develop NetCov, the first tool to reveal which network configuration lines are tested by a suite of network tests. It helps network engineers improve test suites and thus increase network reliability. A key challenge in developing a tool like NetCov is that many network tests test the data plane instead of testing the configurations (control plane) directly. We must be able to efficiently infer which configuration elements contribute to tested data plane elements, even when such contributions are non-local (on remote devices) or non-deterministic. NetCov uses an information flow graph based model that precisely captures various forms of contributions and a scalable method to infer contributions. Using NetCov, we show that an existing test suite for Internet2, a nation-wide backbone network in the USA, covers only 26% of the configuration lines. The feedback from NetCov makes it easy to define new tests that improve coverage. For Internet2, adding just three such tests covers an additional 17% of the lines.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/xu",
+    "session_title": "Testing",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Norma: Towards Practical Network Load Testing",
+    "authors": "Yanqing Chen,State Key Laboratory for Novel Software Technology, Nanjing University and Alibaba Group;Bingchuan Tian,Alibaba Group;Chen Tian,State Key Laboratory for Novel Software Technology, Nanjing University;Li Dai, Yu Zhou, Mengjing Ma, and Ming Tang,Alibaba Group;Hao Zheng, Zhewen Yang, and Guihai Chen,State Key Laboratory for Novel Software Technology, Nanjing University;Dennis Cai and Ennan Zhai,Alibaba Group",
+    "abstract": "Network load tester is important to daily network operation. Motivated by our experience with a major cloud provider, a practical load tester should satisfy two important requirements: (R1) stateful protocol customization, and (R2) real network traffic emulation (including high-throughput traffic generation and precise rate control). Despite the success of recent load testers, we found they fail to meet both above requirements. This paper presents Norma, a practical network load tester built upon programmable switch ASICs. To achieve the above requirements, Norma addresses three challenges: (1) modeling stateful protocols on the pipelined architecture of the ASIC, (2) generating replying packets with customized payload for stateful protocols, and (3) controlling mimicked traffic in a precise way. Specifically, first, Norma introduces a stateful protocol abstraction that allows us to program the logic of the state machine (e.g., control flow and memory access) on the programmable switch ASIC. Second, Norma proposes a novel multi-queue structure to generate replying packets and customize the payload of packets. Third and finally, Norma coordinates meters and registers to construct a multi-stage rate control mechanism capable of offering precise rate and burst control. Norma has been used to test the performance of our production network devices for over two years and detected tens of performance issues. Norma can generate up to 3 Tbps TCP traffic and 1 Tbps HTTP traffic.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/chen-yanqing",
+    "session_title": "Testing",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "μMote: Enabling Passive Chirp De-spreading and μW-level Long-Range Downlink for Backscatter Devices",
+    "authors": "Yihang Song and Li Lu,University of Electronic Science and Technology of China;Jiliang Wang,Tsinghua University;Chong Zhang, Hui Zheng, and Shen Yang,University of Electronic Science and Technology of China;Jinsong Han,Zhejiang University;Jian Li,University of Electronic Science and Technology of China",
+    "abstract": "The downlink range of backscatter devices is commonly considered to be very limited, compared to tremendous long-range and low-power backscatter uplink designs that leverage the chirp spread spectrum (CSS) principle. Recently, some efforts are devoted to enhancing the downlink, but they are unable to achieve long-range receiving and low power consumption simultaneously. In this paper, we propose µMote, a µW-level long-range receiver for backscatter devices. µMote achieves the first passive chirp de-spreading scheme for negative SINR in long-range receiving scenarios. Further, without consuming external energy, µMote magnifies the demodulated signal by accumulating temporal energy of the signal itself in a resonator container, and meanwhile it preserves signal information during this signal accumulation. µMote then leverages a µW-level sampling-less decoding scheme to discriminate symbols, avoiding the high-power ADC-sampling. We prototype µMote with COTS components, and conduct extensive experiments. The result shows that µMote spends an overall power consumption of 62.07µW to achieve a 400m receiving range at a 2kbps data rate with 1% BER, under −2dB SINR",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/song-yihang",
+    "session_title": "Physical Layer",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Channel-Aware 5G RAN Slicing with Customizable Schedulers",
+    "authors": "Yongzhou Chen and Ruihao Yao,UIUC;Haitham Hassanieh,EPFL;Radhika Mittal,UIUC",
+    "abstract": "This paper focuses on 5G RAN slicing, where the 5G radio resources must be divided across slices (or enterprises) so as to achieve high spectrum efficiency, fairness and isolation across slices, and the ability for each slice to customize how the radio resources are divided across its own users. Realizing these goals requires accounting for the channel quality for each user (that varies over time and frequency domain) at both levels – inter-slice scheduling (i.e. dividing resources across slices) and enterprise scheduling (i.e. dividing resources within a slice). However, a cyclic dependency between the inter-slice and enterprise schedulers makes it difficult to incorporate channel awareness at both levels. We observe that the cyclic dependency can be broken if both the inter-slice and enterprise schedulers are greedy. Armed with this insight, we design RadioSaber, the first RAN slicing mechanism to do channel-aware inter-slice and enterprise scheduling. We implement RadioSaber on an open-source RAN simulator, and our evaluation shows how RadioSaber can achieve 17%-72% better throughput than the state-of-theart RAN slicing technique (that performs channel-agnostic inter-slice scheduling), while meeting the primary goals of fairness across slices and the ability to support a wide variety of customizable enterprise scheduling policies.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/chen-yongzhou",
+    "session_title": "Physical Layer",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "RF-Chord: Towards Deployable RFID Localization System for Logistic Networks",
+    "authors": "Bo Liang,Peking University and Alibaba Group;Purui Wang,Massachusetts Institute of Technology;Renjie Zhao,University of California San Diego;Heyu Guo,Peking University;Pengyu Zhang and Junchen Guo,Alibaba Group;Shunmin Zhu,Tsinghua University and Alibaba Group;Hongqiang Harry Liu,Alibaba Group;Xinyu Zhang,University of California San Diego;Chenren Xu,Peking University, Zhongguancun Laboratory, and Key Laboratory of High Confidence Software Technologies, Ministry of Education (PKU)",
+    "abstract": "RFID localization is considered the key enabler of automating the process of inventory tracking and management for the high-performance logistic network. A practical and deployable RFID localization system needs to meet reliability, throughput, and range requirements. This paper presents RF-CHORD, the first RFID localization system that simultaneously meets all three requirements. RF-CHORD features a multisine-constructed wideband design that can process RF signals with a 200 MHz bandwidth in real-time to facilitate one-shot localization at scale. In addition, multiple SINR enhancement techniques are designed for range extension. On top of that, a kernel-layer near-field localization framework and a multipath-suppression algorithm are proposed to reduce the 99th long-tail errors. Our empirical results show that RF-CHORD can localize up to 180 tags 6 m away from a reader within 1 second and with 99th longtail error of 0.786 m, achieving a 0% miss reading rate and ~0.01% cross-reading rate in the warehouse and fresh food delivery store deployment.",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/liang-bo",
+    "session_title": "Physical Layer",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  },
+  {
+    "title": "Exploring Practical Vulnerabilities of Machine Learning-based Wireless Systems",
+    "authors": "Zikun Liu, Changming Xu, and Emerson Sie,University of Illinois Urbana-Champaign;Gagandeep Singh,University of Illinois Urbana-Champaign and VMware Research;Deepak Vasisht,University of Illinois Urbana-Champaign",
+    "abstract": "Machine Learning (ML) is an increasingly popular tool for designing wireless systems, both for communication and sensing applications. We design and evaluate the impact of practically feasible adversarial attacks against such ML-based wireless systems. In doing so, we solve challenges that are unique to the wireless domain: lack of synchronization between a benign device and the adversarial device, and the effects of the wireless channel on adversarial noise. We build, RAFA (RAdio Frequency Attack), the first hardware-implemented adversarial attack platform against ML-based wireless systems, and evaluate it against two state-of-the-art communication and sensing approaches at the physical layer. Our results show that both these systems experience a significant performance drop in response to the adversarial attack",
+    "link": "https://www.usenix.org/conference/nsdi23/presentation/liu-zikun",
+    "session_title": "Physical Layer",
+    "conference_name": "NSDI",
+    "date": "2023-04-17"
+  }
+]

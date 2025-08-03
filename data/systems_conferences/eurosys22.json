@@ -1,0 +1,407 @@
+[
+  {
+    "title": "DAMYSUS: Streamlined BFT Consensus Leveraging Trusted Components",
+    "authors": "Jeremie Decouchant (Delft University of Technology), David Kozhaya (ABB Corporate Research), Vincent Rahli (University of Birmingham), Jiangshan Yu (Monash University)",
+    "abstract": "Recently, streamlined Byzantine Fault Tolerant (BFT) consensus protocols, such as HotStuff, have been proposed as a means to circumvent the inefficient view-changes of traditional BFT protocols, such as PBFT. Several works have detailed trusted components, and BFT protocols that leverage them to tolerate a minority of faulty nodes and use a reduced number of communication rounds. Inspired by these works we identify two basic trusted services, respectively called the Checker and Accumulator services, which can be leveraged by streamlined protocols. Based on these services, we design Damysus, a streamlined protocol that improves upon HotStuff's resilience and uses less communication rounds. In addition, we show how the Checker and Accumulator services can be adapted to develop Chained-Damysus, a chained version of Damysus where operations are pipelined for efficiency. We prove the correctness of Damysus and Chained-Damysus, and evaluate their performance showcasing their superiority compared to previous protocols.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519568",
+    "session_title": "BFT",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "State Machine Replication Scalability Made Simple",
+    "authors": "Chrysoula Stathakopoulou (IBM Research – Zurich, ETH Zurich), Matej Pavlovic (IBM Research – Zurich), Marko Vukolic (Protocol Labs)",
+    "abstract": "Consensus, state machine replication (SMR) and total order broadcast (TOB) protocols are notorious for being poorly scalable with the number of participating nodes. Despite the recent race to reduce overall message complexity of leader-driven SMR/TOB protocols, scalability remains poor and the throughput is typically inversely proportional to the number of nodes. We present Insanely Scalable State Machine Replication, a generic construction to turn leader-driven protocols into scalable multi-leader ones. For our scalable SMR construction we use a novel primitive called Sequenced (Total Order) Broadcast (SB) which we wrap around PBFT, HotStuff and Raft leader-driven protocols to make them scale. Our construction is general enough to accommodate most leader-driven ordering protocols (BFT or CFT) and make them scale. Our implementation improves the peak throughput of PBFT, HotStuff, and Raft by 37x, 56x, and 55x, respectively, at a scale of 128 nodes.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519579",
+    "session_title": "BFT",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Narwhal and Tusk: A DAG-based Mempool and Efficient BFT Consensus",
+    "authors": "George Danezis (MystenLabs / University College London), Lefteris Kokoris-Kogias (IST Austria), Alberto Sonnino (MystenLabs), Alexander Spiegelman (Novi Research)",
+    "abstract": "We propose separating the task of reliable transaction dissemination from transaction ordering, to enable high-performance Byzantine fault-tolerant quorum-based consensus. We design and evaluate a mempool protocol, Narwhal, specializing in high-throughput reliable dissemination and storage of causal histories of transactions. Narwhal tolerates an asynchronous network and maintains high performance despite failures. Narwhal is designed to easily scale-out using multiple workers at each validator, and we demonstrate that there is no foreseeable limit to the throughput we can achieve. Composing Narwhal with a partially synchronous consensus protocol (Narwhal-HotStuff) yields significantly better throughput even in the presence of faults or intermittent loss of liveness due to asynchrony. However, loss of liveness can result in higher latency. To achieve overall good performance when faults occur we design Tusk, a zero-message overhead asynchronous consensus protocol, to work with Narwhal. We demonstrate its high performance under a variety of configurations and faults. As a summary of results, on a WAN, Narwhal-Hotstuff achieves over 130,000 tx/sec at less than 2-sec latency compared with 1,800 tx/sec at 1-sec latency for Hotstuff. Additional workers increase throughput linearly to 600,000 tx/sec without any latency increase. Tusk achieves 160,000 tx/sec with about 3 seconds latency. Under faults, both protocols maintain high throughput, but Narwhal-HotStuff suffers from increased latency.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519594",
+    "session_title": "BFT",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Building an Efficient Key-Value Store in a Flexible Address Space",
+    "authors": "Chen Chen and Wenshao Zhong (University of Illinois at Chicago), Xingbo Wu (Microsoft Research)",
+    "abstract": "Data management applications store their data using structured files in which data are usually sorted to serve indexing and queries. However, in-place insertions and removals of data are not naturally supported in a file's address space. To avoid repeatedly rewriting existing data in a sorted file to admit changes in place, applications usually employ extra layers of indirections, such as mapping tables and logs, to admit changes out of place. However, this approach leads to increased access cost and excessive complexity. This paper presents a novel storage abstraction that provides a flexible address space, where in-place updates of arbitrary-sized data, such as insertions and removals, can be performed efficiently. With these mechanisms, applications can manage sorted data in a linear address space with minimal complexity. Extensive evaluations show that a key-value store built on top of it can achieve high performance and efficiency with a simple implementation.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519555",
+    "session_title": "Concurrency",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Rolis: a software approach to efficiently replicating multi-core transactions",
+    "authors": "Weihai Shen and Ansh Khanna (Stony Brook University), Sebastian Angel (University of Pennsylvania and Microsoft Research), Siddhartha Sen (Microsoft Research), Shuai Mu (Stony Brook University)",
+    "abstract": "This paper presents Rolis, a new speedy and fault-tolerant replicated multi-core transactional database system. Rolis's aim is to mask the high cost of replication by ensuring that cores are always doing useful work and not waiting for each other or for other replicas. Rolis achieves this by not mixing the multi-core concurrency control with multi-machine replication, as is traditionally done by systems that use Paxos to replicate the transaction commit protocol. Instead, Rolis takes an \"execute-replicate-replay\" approach. Rolis first speculatively executes the transaction on the leader machine, and then replicates the per-thread transaction log to the followers using a novel protocol that leverages independent Paxos instances to avoid coordination, while still allowing followers to safely replay. The execution, replication, and replay are carefully designed to be scalable and have nearly zero coordination overhead across cores. Our evaluation shows that Rolis can achieve 1.03M TPS (transactions per second) on the TPC-C workload, using a 3-replica setup where each server has 32 cores. This throughput result is orders of magnitude higher than traditional software approaches we tested (e.g., 2PL), and is comparable to state-of-the-art, fault-tolerant, in-memory storage systems built using kernel bypass and advanced networking hardware, even though Rolis runs on commodity machines.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519561",
+    "session_title": "Concurrency",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Tebis: Index Shipping for Efficient Replication in LSM Key-Value Stores",
+    "authors": "Michalis Vardoulakis (Univ. of Crete and FORTH, Greece), Giorgos Saloustros (FORTH), Pilar González-Férez (University of Murcia, Spain), Angelos Bilas (Univ. of Crete and FORTH, Greece)",
+    "abstract": "Key-value (KV) stores based on LSM tree have become a foundational layer in the storage stack of datacenters and cloud services. Current approaches for achieving reliability and availability favor reducing network traffic and send to replicas only new KV pairs. As a result, they perform costly compactions to reorganize data in both the primary and backup nodes, which increases device I/O traffic and CPU overhead, and eventually hurts overall system performance. In this paper we describe Tebis, an efficient LSM-based KV store that reduces I/O amplification and CPU overhead for maintaining the replica index. We use a primary-backup replication scheme that performs compactions only on the primary nodes and sends pre-built indexes to backup nodes, avoiding all compactions in backup nodes. Our approach includes an efficient mechanism to deal with pointer translation across nodes in the pre-built region index. Our results show that Tebis reduces pressure on backup nodes compared to performing full compactions: Throughput is increased by 1.1 -- 1.48×, CPU efficiency is increased by 1.06 -- 1.54×, and I/O amplification is reduced by 1.13 -- 1.81×, without increasing server to server network traffic excessively (by up to 1.09 -- 1.82×).",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519572",
+    "session_title": "Concurrency",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Sharing is Caring: Secure and Efficient Shared Memory Support for MVEEs",
+    "authors": "Jonas Vinck (imec-DistriNet, KU Leuven), Bert Abrath and Bart Coppens (Ghent University), Alexios Voulimeneas (imec-DistriNet, KU Leuven), Bjorn De Sutter (Ghent University), Stijn Volckaert (imec-DistriNet, KU Leuven)",
+    "abstract": "Multi-Variant Execution Environments (MVEEs) are a powerful tool for protecting legacy software against memory corruption attacks. MVEEs employ software diversity to run multiple variants of the same program in lockstep, whilst providing them with the same inputs and comparing their behavior. Well-constructed variants will behave equivalently under normal operating conditions but diverge when under attack. The MVEE detects these divergences and takes action before compromised variants can damage the host system. Existing MVEEs replicate inputs at the system call boundary, and therefore do not support programs that use shared-memory IPC with other processes, since shared memory pages can be read from and written to directly without system calls. We analyzed modern applications, ranging from web servers, over media players, to browsers, and observe that they rely heavily on shared memory, in some cases for their basic functioning and in other cases for enabling more advanced functionality. It follows that modern applications cannot enjoy the security provided by MVEEs unless those MVEEs support shared-memory IPC. This paper first identifies the requirements for supporting shared-memory IPC in an MVEE. We propose a design that involves techniques to identify and instrument accesses to shared memory pages, as well as techniques to replicate I/O through shared-memory IPC. We implemented these techniques in a prototype MVEE and report our findings through an evaluation of a range of benchmark programs. Our contributions enable the use of MVEEs on a far wider range of programs than previously supported. By overcoming one of the major remaining limitations of MVEEs, our contributions can help to bolster their real-world adoption.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519558",
+    "session_title": "Software security",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Hardening Binaries against More Memory Errors",
+    "authors": "Gregory J. Duck, Yuntong Zhang, and Roland H.C. Yap (National University of Singapore)",
+    "abstract": "Memory errors, such as buffer overflows and use-after-free, remain the root cause of many security vulnerabilities in modern software. The use of closed source software further exacerbates the problem, as source-based memory error mitigation cannot be applied. While many memory error detection tools exist, most are based on a single error detection methodology with resulting known limitations, such as incomplete memory error detection (redzones) or false error detections (low-fat pointers). In this paper we introduce RedFat, a memory error hardening tool for stripped binaries that is fast, practical and scalable. The core idea behind RedFat is to combine complementary error detection methodologies---redzones and low-fat pointers---in order to detect more memory errors that can be detected by each individual methodology alone. However, complementary error detection also inherits the limitations of each approach, such as false error detections from low-fat pointers. To mitigate this, we introduce a profile-based analysis that automatically determines the strongest memory error protection possible without negative side effects. We implement RedFat on top of a scalable binary rewriting framework, and demonstrate low overheads compared to the current state-of-the-art. We show RedFat to be language agnostic on C/C++/Fortran binaries with minimal requirements, and works with stripped binaries for both position independent/dependent code. We also show that the RedFat instrumentation can scale to very large/complex binaries, such as Google Chrome.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519580",
+    "session_title": "Software security",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "PKRU-Safe: Automatically Locking Down the Heap Between Safe and Unsafe Languages",
+    "authors": "Paul Kirth (Univeristy of California, Irvine), Mitchel Dickerson (University of California, Irvine), Stephen Crane and Per Larsen (Immunant, Inc.), Adrian Dabrowski, David Gens, and Yeoul Na (University of California, Irvine), Stijn Volckaert (imec-DistriNet, KU Leuven), Michael Franz (University of California, Irvine, USA)",
+    "abstract": "After more than twenty-five years of research, memory safety violations remain one of the major causes of security vulnerabilities in real-world software. Memory-safe languages, like Rust, have demonstrated that compiler technology can assist developers in writing efficient low-level code without the risk of memory corruption. However, many memory-safe languages still have to interface with unsafe code to some extent, which opens up the possibility for attackers to exploit memory-corruption vulnerabilities in the unsafe part of the system and subvert the safety guarantees provided by the memory-safe language. In this paper, we present PKRU-Safe, an automated method for enforcing the principle of least privilege on unsafe components in mixed-language environments. PKRU-Safe ensures that unsafe (external) code cannot corrupt or otherwise abuse memory used exclusively by the safe-language components. Our approach is automated using traditional compiler infrastructure to limit memory accesses for developer-designated components efficiently. PKRU-Safe does not require any modifications to the program's original data flows or execution model. It can be adopted by projects containing legacy code with minimal effort, requiring only a small number of changes to a project's build files and dependencies, and a few lines of annotations for each untrusted library. We apply PKRU-Safe to Servo, one of the largest Rust projects with approximately two million lines of Rust code (including dependencies) to automatically partition and protect the browser's heap from its JavaScript engine written in unsafe C/C++. Our detailed evaluation shows that PKRU-Safe is able to thwart real-world exploits, often without measurable overhead, and with a mean overhead under 11.55% in our most pessimistic benchmark suite. As the method is language agnostic and major prototype components operate directly on LLVM IR, applying our techniques to other languages is straightforward.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519582",
+    "session_title": "Software security",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "KASLR in the age of MicroVMs",
+    "authors": "Benjamin Holmes and Jason Waterman (Vassar College), Dan Williams (Virginia Tech)",
+    "abstract": "Address space layout randomization (ASLR) is a widely used component of computer security aimed at preventing code reuse and/or data-only attacks. Modern kernels utilize kernel ASLR (KASLR) and finer-grained forms, such as functional granular KASLR (FGKASLR), but do so as part of an inefficient bootstrapping process we call bootstrap self-randomization. Meanwhile, under increasing pressure to optimize their boot times, microVM architectures such as AWS Firecracker have resorted to eliminating bootstrapping steps, particularly decompression and relocation from the guest kernel boot process, leaving them without KASLR. In this paper, we present in-monitor KASLR, in which the virtual machine monitor efficiently implements KASLR for the guest kernel by skipping the expensive kernel self-relocation steps. We prototype in-monitor KASLR and FGKASLR in the open-source Firecracker virtual machine monitor demonstrating, on a microVM configured kernel, boot times 22% and 16% faster than bootstrapped KASLR and FGKASLR methods, respectively. We also show the low overhead of in-monitor KASLR, with only 4% (2 ms) increase in boot times on average compared to a kernel without KASLR. We also discuss the implications and future opportunities for in-monitor approaches.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519578",
+    "session_title": "Software security",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Nyx-Net: Network Fuzzing with Incremental Snapshots",
+    "authors": "Sergej Schumilo and Cornelius Aschermann (Ruhr University Bochum), Andrea Jemmett (Vrije Universiteit Amsterdam), Ali Abbasi (Ruhr University Bochum), Thorsten Holz (CISPA Helmholtz Center for Information Security)",
+    "abstract": "Coverage-guided fuzz testing (\"fuzzing\") has become mainstream and we have observed lots of progress in this research area recently. However, it is still challenging to efficiently test network services with existing coverage-guided fuzzing methods. In this paper, we introduce the design and implementation of Nyx-Net, a novel snapshot-based fuzzing approach that can successfully fuzz a wide range of targets spanning servers, clients, games, and even Firefox's Inter-Process Communication (IPC) interface. Compared to state-of-the-art methods, Nyx-Net improves test throughput by up to 300x and coverage found by up to 70%. Additionally, Nyx-Net is able to find crashes in two of ProFuzzBench's targets that no other fuzzer found previously. When using Nyx-Net to play the game Super Mario, Nyx-Net shows speedups of 10--30x compared to existing work. Moreover, Nyx-Net is able to find previously unknown bugs in servers such as Lighttpd, clients such as MySQL client, and even Firefox's IPC mechanism---demonstrating the strength and versatility of the proposed approach. Lastly, our prototype implementation was awarded a $20.000 bug bounty for enabling fuzzing on previously unfuzzable code in Firefox and solving a long-standing problem at Mozilla.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519591",
+    "session_title": "Software security",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "DeepRest: Deep Resource Estimation for Interactive Microservices",
+    "authors": "Ka-Ho Chow (Georgia Institute of Technology), Umesh Deshpande and Sangeetha Seshadri (IBM Research – Almaden), Ling Liu (Georgia Institute of Technology)",
+    "abstract": "Interactive microservices expose API endpoints to be invoked by users. For such applications, precisely estimating the resources required to serve specific API traffic is challenging. This is because an API request can interact with different components and consume different resources for each component. The notion of API traffic is vital to application owners since the API endpoints often reflect business logic, e.g., a customer transaction. The existing systems that simply rely on historical resource utilization are not API-aware and thus cannot estimate the resource requirement accurately. This paper presents DeepRest, a deep learning-driven resource estimation system. DeepRest formulates resource estimation as a function of API traffic and learns the causality between user interactions and resource utilization directly in a production environment. Our evaluation shows that DeepRest can estimate resource requirements with over 90% accuracy, even if the API traffic to be estimated has never been observed (e.g., 3× more users than ever or unseen traffic shape). We further apply resource estimation for application sanity checks. DeepRest identifies system anomalies by verifying whether the resource utilization is justifiable by how the application is being used. It can successfully identify two major cyber threats: ransomware and cryptojacking attacks.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519564",
+    "session_title": "ML for Systems",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Unicorn: Reasoning about Configurable System Performance through the lens of Causality",
+    "authors": "Md Shahriar Iqbal (University of South Carolina), Rahul Krishna (Columbia University), Mohammad Ali Javidian (Purdue University), Baishakhi Ray (Columbia University), Pooyan Jamshidi (University of South Carolina)",
+    "abstract": "Modern computer systems are highly configurable, with the total variability space sometimes larger than the number of atoms in the universe. Understanding and reasoning about the performance behavior of highly configurable systems, over a vast and variable space, is challenging. State-of-the-art methods for performance modeling and analyses rely on predictive machine learning models, therefore, they become (i) unreliable in unseen environments (e.g., different hardware, workloads), and (ii) may produce incorrect explanations. To tackle this, we propose a new method, called Unicorn, which (i) captures intricate interactions between configuration options across the software-hardware stack and (ii) describes how such interactions can impact performance variations via causal inference. We evaluated Unicorn on six highly configurable systems, including three on-device machine learning systems, a video encoder, a database management system, and a data analytics pipeline. The experimental results indicate that Unicorn outperforms state-of-the-art performance debugging and optimization methods in finding effective repairs for performance faults and finding configurations with near-optimal performance. Further, unlike the existing methods, the learned causal performance models reliably predict performance for new environments.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519575",
+    "session_title": "ML for Systems",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Multi-Objective Congestion Control",
+    "authors": "Yiqing Ma, Han Tian, Xudong Liao, Junxue Zhang, Weiyan Wang, and Kai Chen (Hong Kong University of Science and Technology), Xin Jin (Peking University)",
+    "abstract": "Decades of research on Internet congestion control (CC) have produced a plethora of algorithms that optimize for different performance objectives. Applications face the challenge of choosing the most suitable algorithm based on their needs, and it takes tremendous efforts and expertise to customize CC algorithms when new demands emerge. In this paper, we explore a basic question: can we design a single CC algorithm to satisfy different objectives? We propose MOCC, the first multi-objective congestion control algorithm that attempts to address this question. The core of MOCC is a novel multi-objective reinforcement learning framework for CC to automatically learn the correlations between different application requirements and the corresponding optimal control policies. Under this framework, MOCC further applies transfer learning to transfer the knowledge from past experience to new applications, quickly adapting itself to a new objective even if it is unforeseen. We provide both user-space and kernel-space implementation of MOCC. Real-world Internet experiments and extensive simulations show that MOCC supports well multi-objective, competing or outperforming the best existing CC algorithms on each individual objectives, and quickly adapting to new application objectives in 288 seconds (14.2× faster than prior work) without compromising old ones.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519593",
+    "session_title": "ML for Systems",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Hybrid Anomaly Detection and Prioritization for Network Logs at Cloud Scale",
+    "authors": "David Ohana, Bruno Wassermann, Nicolas Dupuis, Elliot Kolodner, Eran Raichstein, and Michal Malka (IBM Research)",
+    "abstract": "Monitoring the health of large-scale systems requires significant manual effort, usually through the continuous curation of alerting rules based on keywords, thresholds and regular expressions, which might generate a flood of mostly irrelevant alerts and obscure the actual information operators would like to see. Existing approaches try to improve the observability of systems by intelligently detecting anomalous situations. Such solutions surface anomalies that are statistically significant, but may not represent events that reliability engineers consider relevant. We propose ADEPTUS, a practical approach for detection of relevant health issues in an established system. ADEPTUS combines statistics and unsupervised learning to detect anomalies with supervised learning and heuristics to determine which of the detected anomalies are likely to be relevant to the Site Reliability Engineers (SREs). ADEPTUS overcomes the labor-intensive prerequisite of obtaining anomaly labels for supervised learning by automatically extracting information from historic alerts and incident tickets. We leverage ADEPTUS for observability in the network infrastructure of IBM Cloud. We perform an extensive real-world evaluation on 10 months of logs generated by tens of thousands of network devices across 11 data centers and demonstrate that ADEPTUS achieves higher alerting accuracy than the rule-based log alerting solution, curated by domain experts, used by SREs daily.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519566",
+    "session_title": "ML for Systems",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Performance Evolution of Mitigating Transient Execution Attacks",
+    "authors": "Jonathan Behrens, Adam Belay, and M. Frans Kaashoek (MIT CSAIL)",
+    "abstract": "Today's applications pay a performance penalty for mitigations to protect against transient execution attacks such as Meltdown [32] and Spectre [25]. Such a reduction in performance directly translates to higher operating costs and degraded user experience. This paper measures the performance impact of these mitigations across a range of processors from multiple vendors and across several security boundaries to identify trends over successive generations of processors and to attribute how much of the overall slowdown is caused by each individual mitigation. We find that overheads for operating system intensive workloads have declined by as much as 10×, down to about 3% on modern CPUs, due to hardware changes that eliminate the need for the most expensive mitigations. Meanwhile, a JavaScript benchmark reveals approximately 20% overhead persists today because mitigations for Spectre V1 and Speculative Store Bypass have not become more efficient. Other workloads like virtual machines and single-process, compute-intensive applications did not show significant slowdowns on any of the processors we measured.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519559",
+    "session_title": "Trusted Execution",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "You Shall Not (by)Pass! Practical, Secure, and Fast PKU-based Sandboxing",
+    "authors": "Alexios Voulimeneas, Jonas Vinck, Ruben Mechelinck, and Stijn Volckaert (imec-DistriNet, KU Leuven)",
+    "abstract": "Memory Protection Keys for Userspace (PKU) is a recent hardware feature that allows programs to assign virtual memory pages to protection domains, and to change domain access permissions using inexpensive, unprivileged instructions. Several in-process memory isolation approaches leverage this feature to prevent untrusted code from accessing sensitive program state and data. Typically, PKU-based isolation schemes need to be used in conjunction with mitigations such as CFI because untrusted code, when compromised, can otherwise bypass the PKU access permissions using unprivileged instructions or operating system APIs. Recently, researchers proposed fully self-contained PKU-based memory isolation schemes that do not rely on other mitigations. These systems use exploit-proof call gates to transfer control between trusted and untrusted code, as well as a sandbox that prevents tampering with the PKU infrastructure from untrusted code. In this paper, we show that these solutions are not complete. We first develop two proof-of-concept attacks against a state-of-the-art PKU-based memory isolation scheme. We then present Cerberus, a PKU-based sandboxing framework that can overcome limitations of existing sandboxes. We apply Cerberus to several memory isolation schemes, and show that it is practical, efficient, and secure.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519560",
+    "session_title": "Trusted Execution",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Verified Programs Can Party: Optimizing Kernel Extensions via Post-Verification In-Kernel Merging",
+    "authors": "Hsuan-Chi Kuo, Kai-Hsun Chen, and Yicheng Lu (University of Illinois at Urbana-Champaign), Dan Williams (Virginia Tech), Sibin Mohan (Oregon State University), Tianyin Xu (University of Illinois at Urbana-Champaign)",
+    "abstract": "Operating system (OS) extensions are more popular than ever. For example, Linux BPF is marketed as a \"superpower\" that allows user programs to be downloaded into the kernel, verified to be safe and executed at kernel hook points. So, BPF extensions have high performance and are often placed at performance-critical paths for tracing and filtering. However, although BPF extension programs execute in a shared kernel environment and are already individually verified, they are often executed independently in chains. We observe that the chain pattern has large performance overhead, due to indirect jumps penalized by security mitigations (e.g., Spectre), loops, and memory accesses. In this paper, we argue for a separation of concerns. We propose to decouple the execution of BPF extensions from their verification requirements---BPF extension programs can be collectively optimized, after each BPF extension program is individually verified and loaded into the shared kernel. We present KFuse, a framework that dynamically and automatically merges chains of BPF programs by transforming indirect jumps into direct jumps, unrolling loops, and saving memory accesses, without loss of security or flexibility. KFuse can merge BPF programs that are (1) installed by multiple principals, (2) maintained to be modular and separate, (3) installed at different points of time, and (4) split into smaller, verifiable programs via BPF tail calls. KFuse demonstrates 85% performance improvement of BPF chain execution and 7% of application performance improvement over existing BPF use cases (systemd's Seccomp BPF filters). It achieves more significant benefits for longer chains.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519562",
+    "session_title": "Trusted Execution",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Minimum Viable Device Drivers for ARM TrustZone",
+    "authors": "Liwei Guo and Felix Xiaozhu Lin (University of Virginia)",
+    "abstract": "While TrustZone can isolate IO hardware, it lacks drivers for modern IO devices. Rather than porting drivers, we propose a novel approach to deriving minimum viable drivers: developers exercise a full driver and record the driver/device interactions; the processed recordings, dubbed driverlets, are replayed in the TEE at run time to access IO devices. Driverlets address two key challenges: correctness and expressiveness, for which they build on a key construct called interaction template. The interaction template ensures faithful reproduction of recorded IO jobs (albeit on new IO data); it accepts dynamic input values; it tolerates nondeterministic device behaviors. We demonstrate driverlets on a series of sophisticated devices, making them accessible to Trust-Zone for the first time to our knowledge. Our experiments show that driverlets are secure, easy to build, and incur acceptable overhead (1.4×-2.7× compared to native drivers). Driverlets fill a critical gap in the TrustZone TEE, realizing its long-promised vision of secure IO.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519565",
+    "session_title": "Trusted Execution",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "OPEC: Operation-based Security Isolation for Bare-metal Embedded Systems",
+    "authors": "Xia Zhou, Jiaqi Li, Wenlong Zhang, and Yajin Zhou (Zhejiang University), Wenbo Shen (Zhejing University), Kui Ren (Zhejiang University)",
+    "abstract": "Bare-metal embedded systems usually lack security isolation. Attackers can subvert the whole system with a single vulnerability. Previous research intends to enforce both privilege isolation (to run application code at the unprivileged level) and resource isolation for global variables and peripherals. However, it suffers from partition-time and execution-time over-privilege issues, due to the limited hardware resources (MPU regions) and the improper way to partition a program. In this paper, we propose operation-based isolation for bare-metal embedded systems. An operation is a logically independent task composed of an entry function and all functions reachable from it. To solve the partition-time over-privilege issue, we utilize the global variables shadowing technique to reduce the needed MPU regions to confine the access of the global variables. To mitigate the execution-time over-privilege issue, we split programs into code compartments (called operation) that only contain necessary functions to perform specific tasks, thereby removing the resources needed by unnecessary functions. We implement a prototype called OPEC, which contains an LLVM-based compiler and a reference monitor. The compiler partitions a program and analyzes the resource dependency for each operation. With the hardware-supported privilege levels and MPU, the reference monitor is responsible for enforcing the privilege and resource isolation at runtime. Our evaluation shows that OPEC can achieve the security guarantees for the privilege and resource isolation with negligible runtime overhead (average 0.23%), moderate Flash overhead (average 1.79%), and acceptable SRAM overhead (average 5.35%).",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519573",
+    "session_title": "Edge, Embedded",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "LiteReconfig: Cost and Content Aware Reconfiguration of Video Object Detection Systems for Mobile GPUs",
+    "authors": "Ran Xu, Jayoung Lee, Pengcheng Wang, and Saurabh Bagchi (Purdue University), Yin Li (University of Wisconsin – Madison), Somali Chaterji (Purdue University)",
+    "abstract": "An adaptive video object detection system selects different execution paths at runtime, based on video content and available resources, so as to maximize accuracy under a target latency objective (e.g., 30 frames per second). Such a system is well suited to mobile devices with limited computing resources, and often running multiple contending applications. Existing solutions suffer from two major drawbacks. First, collecting feature values to decide on an execution branch is expensive. Second, there is a switching overhead for transitioning between branches and this overhead depends on the transition pair. LiteReconfig, an efficient and adaptive video object detection framework, addresses these challenges. LiteReconfig features a cost-benefit analyzer to decide which features to use, and which execution branch to run, at inference time. Furthermore, LiteReconfig has a content-aware accuracy prediction model, to select an execution branch tailored for frames in a video stream. We demonstrate that LiteReconfig achieves significantly improved accuracy under a set of varying latency objectives than existing systems, while maintaining up to 50 fps on an NVIDIA AGX Xavier board. Our code, with DOI, is available at https://doi.org/10.5281/zenodo.6345733.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519577",
+    "session_title": "Edge, Embedded",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Slashing the Disaggregation Tax in Heterogeneous Data Centers with FractOS",
+    "authors": "Lluís Vilanova (Imperial College London), Lina Maudlej and Shai Bergman (Technion), Till Miemietz (Barkhausen Institut), Matthias Hille (TU Dresden), Nils Asmussen and Michael Roitzsch (Barkhausen Institut), Hermann Härtig (TU Dresden), Mark Silberstein (Technion)",
+    "abstract": "Disaggregated heterogeneous data centers promise higher efficiency, lower total costs of ownership, and more flexibility for data-center operators. However, current software stacks can levy a high tax on application performance. Applications and OSes are designed for systems where local PCIe-connected devices are centrally managed by CPUs, but this centralization introduces unnecessary messages through the shared data-center network in a disaggregated system. We present FractOS, a distributed OS that is designed to minimize the network overheads of disaggregation in heterogeneous data centers. FractOS elevates devices to be first-class citizens, enabling direct peer-to-peer data transfers and task invocations among them, without centralized application and OS control. FractOS achieves this through: (1) new abstractions to express distributed applications across services and disaggregated devices, (2) new mechanisms that enable devices to securely interact with each other and other data-center services, (3) a distributed and isolated OS layer that implements these abstractions and mechanisms, and can run on host CPUs and SmartNICs. Our prototype shows that FractOS accelerates real-world heterogeneous applications by 47%, while reducing their network traffic by 3×.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519569",
+    "session_title": "Operating Systems",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "OS Scheduling with Nest: Keeping Tasks Close Together on Warm Cores",
+    "authors": "Julia Lawall and Himadri Chhaya-Shailesh (Inria), Jean-Pierre Lozi (Oracle Labs), Baptiste Lepers and Willy Zwaenepoel (University of Sydney), Gilles Muller (Inria)",
+    "abstract": "To best support highly parallel applications, Linux's CFS scheduler tends to spread tasks across the machine on task creation and wakeup. It has been observed, however, that in a server environment, such a strategy leads to tasks being unnecessarily placed on long-idle cores that are running at lower frequencies, reducing performance, and to tasks being unnecessarily distributed across sockets, consuming more energy. In this paper, we propose to exploit the principle of core reuse, by constructing a nest of cores to be used in priority for task scheduling, thus obtaining higher frequencies and using fewer sockets. We implement the Nest scheduler in the Linux kernel. While performance and energy usage are comparable to CFS for highly parallel applications, for a range of applications using fewer tasks than cores, Nest improves performance 10%--2× and can reduce energy usage.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519585",
+    "session_title": "Operating Systems",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Kite: Lightweight Critical Service Domains",
+    "authors": "A K M Fazla Mehrab (Virginia Tech), Ruslan Nikolaev (The Pennsylvania State University), Binoy Ravindran (Virginia Tech)",
+    "abstract": "Converged multi-level secure (MLS) systems, such as Qubes OS or SecureView, heavily rely on virtualization and service virtual machines (VMs). Traditionally, driver domains - isolated VMs that run device drivers - and daemon VMs use full-blown general-purpose OSs. It seems that specialized lightweight OSs, known as unikernels, would be a better fit for those. Surprisingly, to this day, driver domains can only be built from Linux. We discuss how unikernels can be beneficial in this context - they improve security and isolation, reduce memory overheads, and simplify software configuration and deployment. We specifically propose to use unikernels that borrow device drivers from existing general-purpose OSs. We present Kite which implements network and storage unikernel-based VMs and serve two essential classes of devices. We compare our approach against Linux using a number of typical micro- and macrobenchmarks used for networking and storage. Our approach achieves performance similar to that of Linux. However, we demonstrate that the number of system calls and ROP gadgets can be greatly reduced with our approach compared to Linux. We also demonstrate that our approach has resilience to an array of CVEs (e.g., CVE-2021-35039, CVE-2016-4963, and CVE-2013-2072), smaller image size, and improved startup time. Finally, unikernelizing is doable for the remaining (non-driver) service VMs as evidenced by our unikernelized DHCP server.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519586",
+    "session_title": "Operating Systems",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Fleche: An Efficient GPU Embedding Cache for Personalized Recommendations",
+    "authors": "Minhui Xie, Youyou Lu, Jiazhen Lin, Qing Wang, and Jian Gao (Tsinghua University), Kai Ren (Kuaishou Technology), Jiwu Shu (Tsinghua University)",
+    "abstract": "Deep learning based models have dominated current production recommendation systems. However, the gap between CPU-side DRAM data accessing and GPU processing still impedes their inference performance. GPU-resident cache can bridge this gap, but we find that existing systems leave the benefits to cache the embedding table, a huge sparse structure, on GPU unexploited. In this paper, we present Fleche, a holistic cache scheme with detailed designs for efficient GPU-resident embedding caching. Fleche (1) uses one cache backend for all embedding tables to improve the total cache utilization, and (2) merges small kernel calls into one unitary call to reduce the overhead of kernel maintenance (e.g., kernel launching and synchronizing). Furthermore, we carefully design the cache query workflow for finer-grain parallelism. Evaluations with real-world datasets show that compared with the prior art, Fleche significantly improves the throughput of embedding layer by 2.0 -- 5.4×, and gets up to 2.4× speedup of end-to-end inference throughput.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519554",
+    "session_title": "Systems for ML (small)",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "GNNLab: A Factored System for Sample-based GNN Training over GPUs",
+    "authors": "Jianbang Yang (IPADS, Shanghai Jiao Tong University), Dahai Tang (Hunan University), Xiaoniu Song (IPADS, Shanghai Jiao Tong University, Shanghai AI Laboratory), Lei Wang (Alibaba Group), Qiang Yin (BASICS, Shanghai Jiao Tong University), Rong Chen (IPADS, Shanghai Jiao Tong University, Shanghai AI Laboratory), Wenyuan Yu and Jingren Zhou (Alibaba Group)",
+    "abstract": "We propose GNNLab, a sample-based GNN training system in a single machine multi-GPU setup. GNNLab adopts a factored design for multiple GPUs, where each GPU is dedicated to the task of graph sampling or model training. It accelerates both tasks by eliminating GPU memory contention. To balance GPU workloads, GNNLab applies a global queue to bridge GPUs asynchronously and adopts a simple yet effective method to adaptively allocate GPUs for different tasks. GNNLab further leverages temporarily switching to avoid idle waiting on GPUs. Furthermore, GNNLab proposes a new pre-sampling based caching policy that takes both sampling algorithms and GNN datasets into account, and shows an efficient and robust caching performance. Evaluations on three representative GNN models and four real-life graphs show that GNNLab outperforms the state-of-the-art GNN systems DGL and PyG by up to 9.1× (from 2.4×) and 74.3× (from 10.2×), respectively. In addition, our pre-sampling based caching policy achieves 90% -- 99% of the optimal cache hit rate in all experiments.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519557",
+    "session_title": "Systems for ML (small)",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Out-Of-Order BackProp: An Effective Scheduling Technique for Deep Learning",
+    "authors": "Hyungjun Oh, Junyeol Lee, Hyeongju Kim, and Jiwon Seo (Hanyang University)",
+    "abstract": "Neural network training requires a large amount of computation and thus GPUs are often used for the acceleration. While they improve the performance, GPUs are underutilized during the training. This paper proposes out-of-order (ooo) back-prop, an effective scheduling technique for neural network training. By exploiting the dependencies of gradient computations, ooo backprop enables to reorder their executions to make the most of the GPU resources. We show that the GPU utilization in single- and multi-GPU training can be commonly improve by applying ooo backprop and prioritizing critical operations. We propose three scheduling algorithms based on ooo backprop. For single-GPU training, we schedule with multi-stream ooo computation to mask the kernel launch overhead. In data-parallel training, we reorder the gradient computations to maximize the overlapping of computation and parameter communication; in pipeline-parallel training, we prioritize critical gradient computations to reduce the pipeline stalls. We evaluate our optimizations with twelve neural networks and five public datasets. Compared to the respective state of the art training systems, our algorithms improve the training throughput by 1.03--1.58× for single-GPU training, by 1.10--1.27× for data-parallel training, and by 1.41--1.99× for pipeline-parallel training.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519563",
+    "session_title": "Systems for ML (small)",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "D3: A Dynamic Deadline-Driven Approach for Building Autonomous Vehicles",
+    "authors": "Ionel Gog, Sukrit Kalra, Peter Schafhalter, Joseph Gonzalez, and Ion Stoica (UC Berkeley)",
+    "abstract": "Autonomous vehicles (AVs) must drive across a variety of challenging environments that impose continuously-varying deadlines and runtime-accuracy tradeoffs on their software pipelines. A deadline-driven execution of such AV pipelines requires a new class of systems that enable the computation to maximize accuracy under dynamically-varying deadlines. Designing these systems presents interesting challenges that arise from combining ease-of-development of AV pipelines with deadline specification and enforcement mechanisms. Our work addresses these challenges through D3 (Dynamic Deadline-Driven), a novel execution model that centralizes the deadline management, and allows applications to adjust their computation by modeling missed deadlines as exceptions. Further, we design and implement ERDOS, an open-source realization of D3 for AV pipelines that exposes finegrained execution events to applications, and provides mechanisms to speculatively execute computation and enforce deadlines between an arbitrary set of events. Finally, we address the crucial lack of AV benchmarks through our state-of-the-art open-source AV pipeline, Pylot, that works seamlessly across simulators and real AVs. We evaluate the efficacy of D3 and ERDOS by driving Pylot across challenging driving scenarios spanning 50km, and observe a 68% reduction in collisions as compared to prior execution models.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519576",
+    "session_title": "Systems for ML (large)",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Varuna: Scalable, Low-cost Training of Massive Deep Learning Models",
+    "authors": "Sanjith Athlur, Nitika Saran, Muthian Sivathanu, Ramachandran Ramjee, Nipun Kwatra (Microsoft Research India)",
+    "abstract": "Systems for training massive deep learning models (billions of parameters) today assume and require specialized \"hyperclusters\": hundreds or thousands of GPUs wired with specialized high-bandwidth interconnects such as NV-Link and Infiniband. Besides being expensive, such dependence on hyperclusters and custom high-speed inter-connects limits the size of such clusters, creating (a) scalability limits on job parallelism; (b) resource fragmentation across hyperclusters. In this paper, we present Varuna a new system that enables training massive deep learning models on commodity networking. Varuna makes thrifty use of networking resources and automatically configures the user's training job to efficiently use any given set of resources. Therefore, Varuna is able to leverage \"low-priority\" VMs that cost about 5x cheaper than dedicated GPUs, thus significantly reducing the cost of training massive models. We demonstrate the efficacy of Varuna by training massive models, including a 200 billion parameter model, on 5x cheaper \"spot VMs\", while maintaining high training throughput. Varuna improves end-to-end training time for language models like BERT and GPT-2 by up to 18x compared to other model-parallel approaches and up to 26% compared to other pipeline parallel approaches on commodity VMs. The code for Varuna is available at https://github.com/microsoft/varuna.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519584",
+    "session_title": "Systems for ML (large)",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Characterizing the Performance of Intel Optane Persistent Memory — A Close Look at its On-DIMM Buffering",
+    "authors": "Lingfeng Xiang (The University of Texas at Arlington), Xingsheng Zhao (University of texas at arlington), Jia Rao (The University of Texas at Arlington), Song Jiang (University of Texas at Arlington), Hong Jiang (UT Arlington)",
+    "abstract": "We present a comprehensive and in-depth study of Intel Optane DC persistent memory (DCPMM). Our focus is on exploring the internal design of Optane's on-DIMM read-write buffering and its impacts on application-perceived performance, read and write amplifications, the overhead of different types of persists, and the tradeoffs between persistency models. While our measurements confirm the results of the existing profiling studies, we have new discoveries and offer new insights. Notably, we find that read and write are managed differently in separate on-DIMM read and write buffers. Comparable in size, the two buffers serve distinct purposes. The read buffer offers higher concurrency and effective on-DIMM prefetching, leading to high read bandwidth and superior sequential performance. However, it does not help hide media access latency. In contrast, the write buffer offers limited concurrency but is a critical stage in a pipeline that supports asynchronous write in the DDR-T protocol. Surprisingly, in addition to write coalescing, the write buffer delivers lower than read and consistent write latency regardless of the working set size, the type of write, the access pattern, or the persistency model. Furthermore, we discover that the mismatch between cacheline access granularity and the 3D-Xpoint media access granularity negatively impacts the effectiveness of CPU cache prefetching and leads to wasted persistent memory bandwidth. Our proposition is to decouple read and write in the performance analysis and optimization of persistent programs. We present three case studies based on this insight and demonstrate considerable performance improvements. We verify the results on two generations of Optane DCPMM.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519556",
+    "session_title": "Persistent Memory",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "SafePM: A Sanitizer for Persistent Memory",
+    "authors": "Kartal Kaan Bozdoğan (Technical University of Munich), Dimitrios Stavrakakis (Technical University of Munich & University of Edinburgh), Shady Issa and Pramod Bhatotia (Technical University of Munich)",
+    "abstract": "Memory safety violation is a major root cause of reliability and security issues in software systems. Byte-addressable persistent memory (PM), just like its volatile counterpart, is also susceptible to memory safety violations. While there is a couple of decades of work in ensuring memory safety for programs based on volatile memory, the existing approaches are incompatible for PM since the PM programming model introduces a persistent pointer representation for persistent memory objects and allocators, where it is imperative to design a crash consistent safety mechanism. We introduce SafePM, a memory safety mechanism that transparently and comprehensively detects both spatial and temporal memory safety violations for PM-based applications. SafePM's design builds on a shadow memory approach, and augments it with crash consistent data structures and system operations to ensure memory safety even across system reboots and crashes. We implement SafePM based on the AddressSanitizer compiler pass, and integrate it with the PM development kit (PMDK) runtime library. We evaluate SafePM across three dimensions: overheads, effectiveness, and crash consistency. SafePM overall incurs reasonable overheads while providing comprehensive memory safety, and has uncovered real-world bugs in the widely-used PMDK library.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519574",
+    "session_title": "Persistent Memory",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "ResPCT: Fast Checkpointing in Non-Volatile Memory for Multi-Threaded Applications",
+    "authors": "Ana Khorguani, Thomas Ropars, and Noel De Palma (Univ. Grenoble Alpes, CNRS, Grenoble INP, LIG)",
+    "abstract": "Non-volatile memory (NVMM) technologies are a great opportunity to build fast fault-tolerant programs, as they provide persistent storage in main memory. However, since the processor caches remain volatile, solutions are needed to recover a consistent state from NVMM after a crash. This paper presents ResPCT, a checkpointing approach to make multi-threaded programs fault tolerant, by flushing persistent data structures to NVMM periodically. ResPCT uses In-Cache-Line logging to efficiently track modifications during failure-free execution, and to restore a consistent state after a crash. The ResPCT API enables programmers to position restart points in their program, which simplifies the identification of the persistent program state and can also help improving performance. Experiments with representative benchmarks and applications, show that ResPCT can outperform state-of-the-art solutions by up to 2.7×, and that its overhead can be as low as 4% at large core count.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519590",
+    "session_title": "Persistent Memory",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Optimizing the Interval-centric Distributed Computing Model for Temporal Graph Algorithms",
+    "authors": "Animesh Baranawal and Yogesh Simmhan (IISc, Bangalore)",
+    "abstract": "Temporal graphs assign lifespans to their vertices, edges and attributes. Large temporal graphs are common for finding the shortest paths in transit networks and contact tracing for COVID-19. Graph programming abstractions like Interval-centric Computing Model (ICM) extend Google's Pregel model to intuitively compose and execute time-dependent graph algorithms in a distributed environment. However, the benefits of easier algorithmic design in ICM are offset by performance bottlenecks in its TimeWarp shuffle and messaging phases. Here, we design several optimizations to ICM to reduce these overheads. We propose local optimizations within a vertex execution by unrolling messages before TimeWarp (LU), and deferring messaging till all local computations complete (DS). We also temporally partition the interval graph into windows (WICM) to flatten the execution load. We offer a proof of equivalence between ICM and these techniques. Our detailed empirical evaluation for six real-world graphs with up to 133M vertices, 5.5B edges and 365 time-points, for six temporal traversal algorithms executing on a commodity cluster with 8 nodes, shows that LU, DS and WICM together significantly reduce the average algorithm runtime by ≈ 61% (≈ 15 mins) over ICM, and reduce message communication by ≈ 38%(≈ 3.2B) on average.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519588",
+    "session_title": "Big Data",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "A New Benchmark Harness for Systematic and Robust Evaluation of Streaming State Stores",
+    "authors": "Esmail Asyabi, Yuanli Wang, John Liagouris, Vasiliki Kalavri, and Azer Bestavros (Boston University)",
+    "abstract": "Modern stream processing systems often rely on embedded key-value stores, like RocksDB, to manage the state of long-running computations. Evaluating the performance of these stores when used for streaming workloads is cumbersome as it requires the configuration and deployment of a stream processing system that integrates the respective store, and the execution of representative queries to collect measurements. To address this issue, in this paper, we start with an empirical characterization of streaming state access workloads collected from Apache Flink and RocksDB, using three publicly available datasets, and we show that the characteristics of real traces cannot be approximated with existing benchmarks. Next, we present Gadget, a new benchmark harness that generates realistic streaming state access workloads to enable easy and thorough performance evaluation of standalone KV stores through accurate simulation of streaming operator logic. Finally, we use Gadget to investigate the suitability of RocksDB as the de facto kv store for stream processing systems. Interestingly, we find that, although RocksDB provides robust results, it is outperformed by FASTER and BerkeleyDB in six out of eleven workloads. Our results reveal a wide performance gap between the current performance of streaming state stores and what could be achieved with workload-aware approaches.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519592",
+    "session_title": "Big Data",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "p2KVS: a Portable 2-Dimensional Parallelizing Framework to Improve Scalability of Key-value Stores on SSDs",
+    "authors": "Ziyi Lu and Qiang Cao (Huazhong University of Science and Technology), Hong Jiang (University of Texas at Arlington), Shucheng Wang (Huazhong University of Science and Technology), Yuanyuan Dong (Alibaba Group)",
+    "abstract": "Attempts to improve the performance of key-value stores (KVS) by replacing the slow Hard Disk Drives (HDDs) with much faster Solid-State Drives (SSDs) have consistently fallen short of the performance gains implied by the large speed gap between SSDs and HDDs, especially for small KV items. We experimentally and holistically explore the root causes of performance inefficiency of existing LSM-tree based KVSs running on powerful modern hardware with multicore processors and fast SSDs. Our findings reveal that the global write-ahead-logging (WAL) and index-updating (MemTable) can become bottlenecks that are as fundamental and severe as the commonly known LSM-tree compaction bottleneck, under both the single-threaded and multi-threaded execution environments. To fully exploit the performance potentials of full-fledged KVS and the underlying high-performance hardware, we propose a portable 2-dimensional KVS parallelizing framework, referred to as p2KVS. In the horizontal inter-KVS-instance dimension, p2KVS partitions a global KV space into a set of independent subspaces, each of which is maintained by an LSM-tree instance and a dedicated worker thread pinned to a dedicated core, thus eliminating structural competition on shared data structures. In the vertical intra-KVS-instancedimension, p2KVS separates user threads from KVS-workers and presents a runtime queue-based opportunistic batch mechanism on each worker, thus boosting process efficiency. Since p2KVS is designed and implemented as a user-space request scheduler, viewing WAL, MemTables, and LSM-trees as black boxes, it is nonintrusive and highly portable. Under micro and macro-benchmarks, p2KVS is shown to gain up to 4.6× write and 5.4× read speedups over the state-of-the-art RocksDB.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519567",
+    "session_title": "SSDs & I/O",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Improving Scalability of Database Systems by Reshaping User Parallel I/O",
+    "authors": "Ning Li (Dept. of Computer Science and Engineering, University of Texas at Arlington, USA), Hong Jiang (UT Arlington), Hao Che (Department of Computer Science and Engineering, The University of Texas at Arlington), Zhijun Wang (Dept. of Computer Science and Engineering, University of Texas at Arlington, USA), Minh Q. Nguyen (Faculty of IT, Ho Chi Minh City University of Transport)",
+    "abstract": "Modern database systems suffer from compromised throughput, persistent unfair I/O processing and unpredictable, high latency variability of user requests as a result of mismatches between highly scaled user parallel I/O and the I/O capacity afforded by the database and its underlying storage I/O stack. To address this problem, we introduce an efficient user-centric QoS-aware scheduling shim, called AppleS, for user-level fine-grained I/O regulation that delivers the right amount and pattern of user parallel I/O requests to the database system and supports user SLOs with high-level performance isolation and reduced I/O resource contention. It is designed to enable database systems to proactively regulate user request behaviors based on runtime conditions to reshape user access pattern to hide excessive user parallelism from the I/O stack that has a limited concurrent processing capability. This helps achieve scalable throughput for multi-user workloads in a fair and stable manner. AppleS is implemented as a user-space shim for transparent user-differentiated I/O scheduling, making it highly flexible and portable. Our extensive evaluation, run on real databases (MySQL and MongoDB), demonstrates that, by incorporating AppleS in the existing database systems, our solution can not only improve the throughput (up to 39.2%) in a fairer (3.2× to 40.6× fairness improvement) and more stable (up to 2× lower latency variability) manner, but also support user SLOs with less I/O provisioning.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519570",
+    "session_title": "SSDs & I/O",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "BetrFS: A Compleat File System for Commodity SSDs",
+    "authors": "Yizheng Jiao (The University of North Carolina at Chapel Hill), Simon Bertron (Katana Graph), Sagar Patel and Luke Zeller (The University of North Carolina at Chapel Hill), Rory Bennett (Stony Brook University), Nirjhar Mukherjee (Carnegie Mellon University), Michael Bender (Stony Brook University), Michael Condict (unaffiliated), Alex Conway (Vmware Research), Martin Farach-Colton (Rutgers University), XIONGZI GE (NetApp Inc.), William Jannen (Williams College), Rob Johnson (VMWare Research), Donald Porter (The University of North Carolina at Chapel Hill), Jun Yuan (Pace University)",
+    "abstract": "Despite the existence of file systems tailored for flash and over a decade of research into flash file systems, this paper shows that no single Linux file system performs consistently well on a commodity SSD across different workloads. We define a compleat file system as one where no workloads realize less than 30% of the best file system's performance, and most, if not all, workloads realize at least 85% of the best file system's performance, across a diverse set of microbenchmarks and applications. No file system is compleat on commodity SSDs. This paper demonstrates that one can construct a single compleat file system for commodity SSDs by introducing a set of optimizations over BetrFS. BetrFS is a compleat file system on HDDs, matching the fastest Linux file systems in its worst cases, and, in its best cases, improving performance by up to two orders of magnitude. Our optimized BetrFS (i.e., v0.6) is not only compleat, it is either the fastest or within 15% of the fastest general-purpose Linux file system on a range of microbenchmarks. At best, these optimizations improve random write throughput by 6× compared to the fastest SSD file system. At worst, our file system is competitive with the other baseline file systems. These improvements translate to application-level gains; for instance, compared to other commodity file systems, the Dovecot mailserver and an rsync of the Linux source on BetrFS show speedups of 1.13 × and 1.8 ×, respectively.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519571",
+    "session_title": "SSDs & I/O",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Beating the I/O bottleneck: A case for log-structured virtual disks",
+    "authors": "Mohammad Hossein Hajkazemi (NetApp), Vojtech Aschenbrenner (EPFL), Mania Abdi (Northeastern University), Emine Ugur Kaynar, Amin Mossayebzadeh, Orran Krieger (Boston University), Peter Desnoyers (Northeastern University)",
+    "abstract": "With the increasing dominance of SSDs for local storage, today's network mounted virtual disks can no longer offer competitive performance. We propose a Log-Structured Virtual Disk (LSVD) that couples log-structured approaches at both the cache and storage layer to provide a virtual disk on top of S3-like storage. Both cache and backend store are order-preserving, enabling LSVD to provide strong consistency guarantees in case of failure. Our prototype demonstrates that the approach preserves all the advantages of virtual disks, while offering dramatic performance improvements over not only commonly used virtual disks, but the same disks combined with inconsistent (i.e. unsafe) local caching.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3524271",
+    "session_title": "SSDs & I/O",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Isolating Functions at the Hardware Limit with Virtines",
+    "authors": "Nicholas Wanninger (Northwestern University), Joshua Bowden, Kirtankumar Shetty, Ayush Garg, and Kyle Hale (Illinois Institute of Technology)",
+    "abstract": "An important class of applications, including programs that leverage third-party libraries, programs that use user-defined functions in databases, and serverless applications, benefit from isolating the execution of untrusted code at the granularity of individual functions or function invocations. However, existing isolation mechanisms were not designed for this use case; rather, they have been adapted to it. We introduce virtines, a new abstraction designed specifically for function granularity isolation, and describe how we build virtines from the ground up by pushing hardware virtualization to its limits. Virtines give developers fine-grained control in deciding which functions should run in isolated environments, and which should not. The virtine abstraction is a general one, and we demonstrate a prototype that adds extensions to the C language. We present a detailed analysis of the overheads of running individual functions in isolated VMs, and guided by those findings, we present Wasp, an embeddable hypervisor that allows programmers to easily use virtines. We describe several representative scenarios that employ individual function isolation, and demonstrate that virtines can be applied in these scenarios with only a few lines of changes to existing codebases and with acceptable slowdowns.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519553",
+    "session_title": "FaaS 1",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Fireworks: A Fast, Efficient, and Safe Serverless Framework using VM-level post-JIT Snapshot",
+    "authors": "Wonseok Shin (SK Telecom), Wook-Hee Kim (Konkuk University), Changwoo Min (Virginia Tech)",
+    "abstract": "Serverless computing is a new paradigm that is rapidly gaining popularity in Cloud computing. One unique property in serverless computing is that the unit of deployment and execution is a serverless function, which is much smaller than a typical server program. Serverless computing introduces a new pay-as-you-go billing model and provides a high economic benefit from highly elastic resource provisioning. However, serverless computing also brings new challenges such as (1) long start-up times compared to relatively short function execution times, (2) security risks from a highly consolidated environment, and (3) memory efficiency problems from unpredictable function invocations. These problems not only degrade performance but also lower the economic benefits of Cloud providers. To address these challenges without any compromises, we propose a novel VM-level post-JIT snapshot approach and develop a new serverless framework, Fireworks. Our key idea is to synergistically leverage a virtual machine (VM)-level snapshot with a language runtime-level just-in-time (JIT) compilation in tandem. Fireworks leverages JITted serverless function code to reduce both start-up time and execution time of functions and improves memory efficiency by sharing the JITted code. Also, Fireworks can provide a high level of isolation by using a VM as a sandbox to execute a serverless function. Our evaluation results show that Fireworks outperforms state-of-art serverless platforms by 20.6× and provides higher memory efficiency of up to 7.3×.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519581",
+    "session_title": "FaaS 1",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "VMSH: Hypervisor-agnostic Guest Overlays for VMs",
+    "authors": "Jörg Thalheim (TU Munich / University of Edinburgh), Peter Okelmann, Harshavardhan Unnibhavi, Redha Gouicem, and Pramod Bhatotia (TU Munich)",
+    "abstract": "Lightweight virtual machines (VMs) are prominently adopted for improved performance and dependability in cloud environments. To reduce boot up times and resource utilisation, they are usually \"pre-baked\" with only the minimal kernel and userland strictly required to run an application. This introduces a fundamental trade-off between the advantages of lightweight VMs and available services within a VM, usually leaning towards the former. We propose VMSH, a hypervisor-agnostic abstraction that enables on-demand attachment of services to a running VM---allowing developers to provide minimal, lightweight images without compromising their functionality. The additional applications are made available to the guest via a file system image. To ensure that the newly added services do not affect the original applications in the VM, VMSH uses lightweight isolation mechanisms based on containers. We evaluate VMSH on multiple KVM-based hypervisors and Linux LTS kernels and show that: (i) VMSH adds no overhead for the applications running in the VM, (ii) de-bloating images from the Docker registry can save up to 60% of their size on average, and (iii) VMSH enables cloud providers to offer services to customers, such as recovery shells, without interfering with their VM's execution.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519589",
+    "session_title": "FaaS 1",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Jiffy: Elastic Far-Memory for Stateful Serverless Analytics",
+    "authors": "Anurag Khandelwal and Yupeng Tang (Yale University), Rachit Agarwal (Cornell University), Aditya Akella (UT Austin), Ion Stoica (UC Berkeley)",
+    "abstract": "Stateful serverless analytics can be enabled using a remote memory system for inter-task communication, and for storing and exchanging intermediate data. However, existing systems allocate memory resources at job granularity---jobs specify their memory demands at the time of the submission; and, the system allocates memory equal to the job's demand for the entirety of its lifetime. This leads to resource underutilization and/or performance degradation when intermediate data sizes vary during job execution. This paper presents Jiffy, an elastic far-memory system for stateful serverless analytics that meets the instantaneous memory demand of a job at seconds timescales. Jiffy efficiently multiplexes memory capacity across concurrently running jobs, reducing the overheads of reads and writes to slower persistent storage, resulting in 1.6 -- 2.5× improvements in job execution time over production workloads. Jiffy implementation currently runs on Amazon EC2, enables a wide variety of distributed programming models including MapReduce, Dryad, StreamScope, and Piccolo, and natively supports a large class of analytics applications on AWS Lambda.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3527539",
+    "session_title": "FaaS 1",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "Memory Deduplication for Serverless with Medes",
+    "authors": "Divyanshu Saxena, Tao Ji (UT Austin), Arjun Singhvi, Junaid Khalid (UW-Madison), Aditya Akella (UT Austin)",
+    "abstract": "Serverless platforms today impose rigid trade-offs between resource use and user-perceived performance. Limited controls, provided via toggling sandboxes between warm and cold states and keep-alives, force operators to sacrifice significant resources to achieve good performance. We present a serverless framework, Medes, that breaks the rigid trade-off and allows operators to navigate the trade-off space smoothly. Medes leverages the fact that the warm sandboxes running on serverless platforms have a high fraction of duplication in their memory footprints. We exploit these redundant chunks to develop a new sandbox state, called a dedup state, that is more memory-efficient than the warm state and faster to restore from than the cold state. We develop novel mechanisms to identify memory redundancy at minimal overhead while ensuring that the dedup containers' memory footprint is small. Finally, we develop a simple sandbox management policy that exposes a narrow, intuitive interface for operators to trade-off performance for memory by jointly controlling warm and dedup sandboxes. Detailed experiments with a prototype using real-world serverless workloads demonstrate that Medes can provide up to 1×-2.75× improvements in the end-to-end latencies. The benefits of Medes are enhanced in memory pressure situations, where Medes can provide up to 3.8× improvements in end-to-end latencies. Medes achieves this by reducing the number of cold starts incurred by 10--50% against the state-of-the-art baselines.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3524272",
+    "session_title": "Faas 2",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "FaaSnap: FaaS Made Fast Using Snapshot-based VMs",
+    "authors": "Lixiang Ao, George Porter, Geoffrey M. Voelker (UC San Diego)",
+    "abstract": "FaaSnap is a VM snapshot-based platform that uses a set of complementary optimizations to improve function cold-start performance for Function-as-a-Service (FaaS) applications. Compact loading set files take better advantage of prefetching. Per-region memory mapping tailors page fault handling depending on the contents of different guest VM memory regions. Hierarchical overlapping memory-mapped regions simplify the mapping process. Concurrent paging allows the guest VM to start execution immediately, rather than pausing until the working set is loaded. Altogether, FaaSnap significantly reduces guest VM page fault handling time on the critical path and improves overall function loading performance. Experiments on serverless benchmarks show that it reduces end-to-end function execution by up to 3.5x compared to state-of-the-art, and on average is only 3.5% slower than snapshots cached in memory. Moreover, we show that FaaSnap is resilient to changes of working set and remains efficient under bursty workloads and when snapshots are located in remote storage.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3524270",
+    "session_title": "Faas 2",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  },
+  {
+    "title": "APT-GET: Profile-Guided Timely Software Prefetching",
+    "authors": "Saba Jamilan (University of California, Santa Cruz), Tanvir Ahmed Khan (University of Michigan), Grant Ayers (Google), Baris Kasikci (University of Michigan), Heiner Litz (University of California, Santa Cruz)",
+    "abstract": "Prefetching which predicts future memory accesses and preloads them from main memory, is a widely-adopted technique to overcome the processor-memory performance gap. Unfortunately, hardware prefetchers implemented in today's processors cannot identify complex and irregular memory access patterns exhibited by modern data-driven applications and hence developers need to rely on software prefetching techniques. We investigate the challenges of enabling effective, automated software data prefetching. Our investigation reveals that the state-of-the-art compiler-based prefetching mechanism falls short in achieving high performance due to its static nature. Based on this insight, we design APT-GET, a novel profile-guided technique that ensures prefetch timeliness by leveraging dynamic execution time information. APT-GET leverages efficient hardware support such as Intel's Last Branch Record (LBR), for collecting application execution profiles with negligible overhead to characterize the execution time of loads. APT-GET then introduces a novel analytical model to find the optimal prefetch-distance and prefetch injection site based on the collected profile to enable timely prefetches. We study APT-GET in the context of 10 real-world applications and demonstrate that it achieves a speedup of up to 1.98× and of 1.30× on average. By ensuring prefetch timeliness, APT-GET improves the performance by 1.25× over the state-of-the-art software data prefetching mechanism.",
+    "link": "https://dl.acm.org/doi/pdf/10.1145/3492321.3519583",
+    "session_title": "Misc",
+    "conference_name": "EuroSys",
+    "date": "2022-04-05"
+  }
+]
