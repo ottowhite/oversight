@@ -27,7 +27,7 @@ class EmbeddingModel:
             self.max_requests_per_minute = floor(100_000 * 0.75) # 75% of the max requests per minute
             # Takes around 25s to serve 1000 requests, so that's around 2000 rpm (way, way below the number that 100,000 threshold)
             # So don't worry about sleeping, just go 1000 at a time
-            self.batch_size = 500
+            self.batch_size = 10
 
             self.inter_batch_sleep_time = 60
         else:
@@ -49,7 +49,22 @@ class EmbeddingModel:
             human_readable_time = time.strftime("%H:%M:%S", time.localtime())
             print(f"Embedding {len(texts_chunk)} texts at {human_readable_time}.")
             time_start = time.time()
-            new_embeddings = self.model.embed_documents(texts_chunk)
+
+            for i in range(5):
+                try:
+                    new_embeddings = self.model.embed_documents(texts_chunk)
+                    break
+                except Exception as e:
+                    print(max_texts_tokens)
+                    print(f"Error embedding {len(texts_chunk)} texts: {e}")
+                    for i, text in enumerate(texts_chunk):
+                        print(f"text {i}: {text}")
+
+                    print(f"Sleeping for 10 seconds")
+                    time.sleep(10)
+                    print(f"Retrying {i+1} of 5")
+
+
             time_end = time.time()
             time_diff = time_end - time_start
             print(f"Done embedding {len(texts_chunk)} texts in {time_diff:.2f} seconds.")

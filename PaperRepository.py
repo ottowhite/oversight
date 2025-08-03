@@ -4,10 +4,12 @@ from tqdm import tqdm
 
 from ArXivDBWrapper import ArXivDBWrapper
 from Paper import Paper
+from EmbeddingModel import EmbeddingModel
 
 class PaperRepository:
-    def __init__(self):
+    def __init__(self, embedding_model_name: str):
         self.db = ArXivDBWrapper()
+        self.embedding_model = EmbeddingModel(embedding_model_name)
 
     def __enter__(self):
         self.db.__enter__()
@@ -48,7 +50,27 @@ class PaperRepository:
 
             self.add_openreview_papers(os.path.join(path, filename), api_version)
 
+    def embed_missing_conference_papers(self):
+        papers_to_embed = self.db.get_unembedded_conference_papers()
+        print(f"Embedding {len(papers_to_embed)} papers")
+
+        paper_ids = []
+        abstracts = []
+        for paper_id, abstract in papers_to_embed:
+            paper_ids.append(paper_id)
+            abstracts.append(abstract)
+            if abstract is None or abstract == "":
+                breakpoint()
+
+        for i, (embedding, paper_id) in tqdm(enumerate(zip(self.embedding_model.embed_documents_rate_limited(abstracts), paper_ids)), desc="Embedding papers", total=len(paper_ids)):
+            self.db.update_embedding(paper_id, embedding)
+
+            if i % 10 == 0:
+                self.db.con.commit()
+
 if __name__ == "__main__":
-    with PaperRepository() as repo:
-        # repo.add_scraped_papers_from_dir("data/systems_conferences")
-        # repo.add_openreview_papers_from_dir("data/openreview_conferences")
+    # repo.add_scraped_papers_from_dir("data/systems_conferences")
+    # repo.add_openreview_papers_from_dir("data/openreview_conferences")
+
+    with PaperRepository(embedding_model_name="models/gemini-embedding-001") as repo:
+        repo.embed_missing_conference_papers()

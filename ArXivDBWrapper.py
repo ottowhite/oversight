@@ -122,7 +122,7 @@ class ArXivDBWrapper:
     def get_unembedded_conference_papers(self):
         with self.con.cursor() as cur:
             return cur.execute("""
-                SELECT DISTINCT ps.paper_id, ps.document
+                SELECT DISTINCT ps.paper_id, ps.abstract
                 FROM paper AS ps
                 WHERE ps.embedding_gemini_embedding_001 IS NULL
                 AND ps.source != 'arxiv'
