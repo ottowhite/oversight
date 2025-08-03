@@ -3,22 +3,25 @@ from pathlib import Path
 import json
 
 class OpenReviewHarvester:
-    def __init__(self, name, year, output_path):
+    def __init__(self, basic_name, year, date, full_name, output_path):
         self.output_path = Path(output_path)
         self.venue_id = {
             "icml": f"ICML.cc/{year}/Conference",
             "iclr":   f"ICLR.cc/{year}/Conference",
             "neurips": f"NeurIPS.cc/{year}/Conference",
             "mlsys":  f"MLSys.org/{year}/Conference",
-        }[name]
-        self.name = name
+        }[basic_name]
+        self.name = basic_name
         self.year = year
+        self.date = date
+        self.full_name = full_name
 
         # Initial version to try with
         self.version = 2
     
     def harvest(self):
         notes = self.get_notes()
+        self.add_metadata_to_notes(notes)
         self.save_conference(notes)
     
     def get_notes(self):
@@ -59,6 +62,13 @@ class OpenReviewHarvester:
 
             return accepted_notes
     
+    def add_metadata_to_notes(self, notes):
+        for note in notes:
+            note["oversight_metadata"] = {
+                "conference_name": self.full_name,
+                "conference_date": self.date
+            }
+
     def save_conference(self, notes):
         if len(notes) == 0:
             print(f"No notes found for {self.name} ({self.year})")
@@ -67,20 +77,49 @@ class OpenReviewHarvester:
             print(f"Harvested {len(notes)} notes for {self.name} ({self.year})")
             path = self.output_path / f"{self.name}{self.year}_v{self.version}.json"
             print(f"Saving to {path}")
-
+        
         with open(path, "w", encoding="utf-8") as f:
             json.dump(notes, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
-    conferences = [
-        "icml",
-        "neurips",
-        "mlsys",
-        "iclr"
-    ]
-    years = [2025, 2024, 2023, 2022, 2021, 2020]
+    conferences = {
+        "icml": {
+            "name": "ICML",
+            "year_and_dates": [
+                (2025, "2025-07-19"),
+                (2024, "2024-07-27"),
+                (2023, "2023-07-23")
+            ]
+        },
+        "neurips": {
+            "name": "NeurIPS",
+            "year_and_dates": [
+                (2024, "2024-12-10"),
+                (2023, "2023-12-10"),
+                (2022, "2022-11-28"),
+                (2021, "2021-12-06")
+            ]
+        },
+        "mlsys": {
+            "name": "MLSys",
+            "year_and_dates": [
+                (2025, "2025-05-12")
+            ]
+        },
+        "iclr": {
+            "name": "ICLR",
+            "year_and_dates": [
+                (2025, "2025-04-24"),
+                (2024, "2024-05-07"),
+                (2023, "2023-05-01"),
+                (2022, "2022-04-25"),
+                (2021, "2021-05-03"),
+                (2020, "2020-04-26")
+            ]
+        }
+    }
 
-    for conference in conferences:
-        for year in years:
-            harvester = OpenReviewHarvester(conference, year, "data/ai_conferences/")
+    for conference, details in conferences.items():
+        for (year, date) in details["year_and_dates"]:
+            harvester = OpenReviewHarvester(conference, year, date, details["name"], "data/ai_conferences/")
             harvester.harvest()
