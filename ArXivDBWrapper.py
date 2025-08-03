@@ -108,7 +108,7 @@ class ArXivDBWrapper:
 
         return True
     
-    def get_unembedded_ai_papers(self):
+    def get_unembedded_arxiv_ai_papers(self):
         with self.con.cursor() as cur:
             return cur.execute(f"""
                 SELECT DISTINCT ps.paper_id, ps.document
@@ -117,6 +117,15 @@ class ArXivDBWrapper:
                 ON ps.paper_id = pc.paper_id
                 WHERE ps.embedding_gemini_embedding_001 IS NULL
                 AND pc.category IN {self.ai_categories_str}
+            """).fetchall()
+    
+    def get_unembedded_conference_papers(self):
+        with self.con.cursor() as cur:
+            return cur.execute("""
+                SELECT DISTINCT ps.paper_id, ps.document
+                FROM paper AS ps
+                WHERE ps.embedding_gemini_embedding_001 IS NULL
+                AND ps.source != 'arxiv'
             """).fetchall()
     
     def update_embedding(self, paper_id: str, embedding: list[float]):
@@ -164,40 +173,8 @@ class ArXivDBWrapper:
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
             """, [embedding, limit]).fetchall()
-    
-    def add_scraped_papers(self, path: str):
-        with open(path, "r") as f:
-            papers_json = json.load(f)
-        
-        for paper_json in papers_json:
-            paper = Paper.from_scraped_json(paper_json)
-            self.insert_paper(paper)
-    
-    def add_openreview_papers(self, path: str, api_version: int):
-        with open(path, "r") as f:
-            papers_json = json.load(f)
-        
-        for paper_json in papers_json:
-            paper = Paper.from_openreview_json(paper_json, api_version)
-            self.insert_paper(paper)
-    
-    def add_scraped_papers_from_dir(self, path: str):
-        for filename in tqdm(os.listdir(path), desc="Adding scraped conferences", total=len(os.listdir(path))):
-            self.add_scraped_papers(os.path.join(path, filename))
-
-    def add_openreview_papers_from_dir(self, path: str):
-        for filename in tqdm(os.listdir(path), desc="Adding openreview conferences", total=len(os.listdir(path))):
-            filename_no_ext = filename.split(".")[0]
-            if filename_no_ext.endswith("_v1"):
-                api_version = 1
-            elif filename_no_ext.endswith("_v2"):
-                api_version = 2
-            else:
-                raise ValueError(f"Invalid filename: {filename}")
-
-            self.add_openreview_papers(os.path.join(path, filename), api_version)
 
 if __name__ == "__main__":
     with ArXivDBWrapper() as db:
-        # db.add_scraped_papers_from_dir("data/systems_conferences")
-        db.add_openreview_papers_from_dir("data/openreview_conferences")
+        papers = db.get_unembedded_conference_papers()
+        print(len(papers))

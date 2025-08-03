@@ -38,7 +38,6 @@ class ArXivRepository:
 
     def __enter__(self):
         self.arxiv_db.__enter__()
-
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -63,7 +62,7 @@ class ArXivRepository:
             self.arxiv_db.try_update_categories(paper)
     
     def _embed_missing_ai_papers(self):
-        papers_to_embed = self.arxiv_db.get_unembedded_ai_papers()
+        papers_to_embed = self.arxiv_db.get_unembedded_arxiv_ai_papers()
         logger.info(f"Embedding {len(papers_to_embed)} papers")
 
         paper_ids = []
