@@ -68,9 +68,8 @@ class ArXivRepository:
 
         paper_ids = []
         abstracts = []
-        for paper_id, document_str in tqdm(papers_to_embed, desc="Parsing papers", total=len(papers_to_embed)):
+        for paper_id, document in tqdm(papers_to_embed, desc="Parsing papers", total=len(papers_to_embed)):
             paper_ids.append(paper_id)
-            document = json.loads(document_str)
             abstract = document["metadata"]["arXivRaw"]["abstract"]
             abstracts.append(abstract)
 
