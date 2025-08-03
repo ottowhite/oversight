@@ -83,3 +83,36 @@ class Paper:
             link=paper_json["link"],
             source=paper_json["conference_name"]
         )
+    
+    @staticmethod
+    def from_openreview_json(paper_json: dict, api_version: int):
+        if api_version == 1:
+            abstract = Paper.remove_null_bytes(paper_json["content"]["abstract"])
+            title = Paper.remove_null_bytes(paper_json["content"]["title"])
+        elif api_version == 2:
+            abstract = Paper.remove_null_bytes(paper_json["content"]["abstract"]["value"])
+            title = Paper.remove_null_bytes(paper_json["content"]["title"]["value"])
+        else:
+            raise ValueError(f"Invalid API version: {api_version}")
+        
+        paper_date = datetime.strptime(paper_json["oversight_metadata"]["conference_date"], Paper.date_format())
+        source = paper_json["oversight_metadata"]["conference_name"]
+        return Paper(
+            paper_id=paper_json["id"],
+            document=Paper.remove_null_bytes(paper_json),
+            title=title,
+            abstract=abstract,
+            paper_date=paper_date,
+            source=source
+        )
+    
+    @staticmethod
+    def remove_null_bytes(obj):
+        if isinstance(obj, str):
+            return obj.replace('\x00', '')
+        elif isinstance(obj, dict):
+            return {k: Paper.remove_null_bytes(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [Paper.remove_null_bytes(v) for v in obj]
+        else:
+            return obj
