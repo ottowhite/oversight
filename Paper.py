@@ -32,6 +32,26 @@ class Paper:
         self.time_since_date_str = time_since_date_str
         self.title = title
         self.source = source
+    
+    def __str__(self):
+        time_since_date = datetime.now().date() - self.paper_date
+        days_since_date = time_since_date.days
+
+        years_since_date = days_since_date // 365
+        months_since_date = (days_since_date % 365) // 30
+        days_since_date = days_since_date % 30
+
+        years_str = f"{years_since_date} years " if years_since_date > 0 else ""
+        months_str = f"{months_since_date} months " if months_since_date > 0 else ""
+        days_str = f"{days_since_date} days " if months_str == "" and years_str == "" else ""
+
+        time_since_date_str = f"{years_str}{months_str}{days_str}ago"
+
+        output = f"{self.title} ({time_since_date_str}, {self.source}) \n"
+        output += f"{self.abstract} \n"
+        output += f"{self.link} \n"
+
+        return output
 
     @staticmethod
     def date_format():
@@ -106,6 +126,19 @@ class Paper:
             source=source
         )
     
+    @staticmethod
+    def from_database_row(row: tuple):
+        (uuid, created_at, paper_id, document, update_date, embedding_gemini_embedding_001, source, abstract, title, link, similarity) = row
+        return Paper(
+            paper_id=paper_id,
+            document=document,
+            title=title,
+            abstract=abstract,
+            paper_date=update_date,
+            source=source,
+            link=link
+        )
+
     @staticmethod
     def remove_null_bytes(obj):
         if isinstance(obj, str):

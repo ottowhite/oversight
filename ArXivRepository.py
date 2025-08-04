@@ -3,7 +3,7 @@ import argparse
 from tqdm import tqdm
 from ResearchListener import research_listener_group, test_research_listener_group
 from SickleWrapper import SickleWrapper
-from ArXivDBWrapper import ArXivDBWrapper
+from PaperDatabase import PaperDatabase
 from EmbeddingModel import EmbeddingModel
 from EmailSender import EmailSender
 from utils import get_logger
@@ -25,7 +25,7 @@ logger = get_logger()
 class ArXivRepository:
     def __init__(self, embedding_model_name, research_llm_model_name: str, overlap_timedelta: timedelta = timedelta(days=1)):
         self.overlap_timedelta = overlap_timedelta
-        self.arxiv_db = ArXivDBWrapper()
+        self.arxiv_db = PaperDatabase()
         self.embedding_model = EmbeddingModel(embedding_model_name)
         self.research_llm = ResearchLLM(research_llm_model_name)
         self.sickle = SickleWrapper(

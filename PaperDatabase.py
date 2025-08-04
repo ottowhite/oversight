@@ -8,7 +8,7 @@ from pgvector.psycopg import register_vector
 import os
 from psycopg.types.json import Jsonb
 
-class ArXivDBWrapper:
+class PaperDatabase:
     def __init__(self):
         load_dotenv()
         assert os.getenv("POSTGRES_USER") is not None, "Postgres user is not set"
@@ -173,8 +173,47 @@ class ArXivDBWrapper:
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
             """, [embedding, limit]).fetchall()
+    
+    def get_newest_conference_papers(self, embedding: list[float], timedelta: timedelta):
+        limit = 10
+        if timedelta is None:
+            timedelta = timedelta(days=365*50)
+
+        oldest_time = (datetime.now() - timedelta).strftime("%Y-%m-%d")
+
+        with self.con.cursor() as cur:
+            return cur.execute(f"""
+                SELECT *, embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                FROM paper
+                WHERE update_date > %s::DATE
+                AND source != 'arxiv'
+                AND embedding_gemini_embedding_001 IS NOT NULL
+                ORDER BY similarity ASC
+                LIMIT %s::INTEGER
+            """, [embedding, oldest_time, limit]).fetchall()
+    
+    def get_newest_papers(self, embedding: list[float], timedelta: timedelta, filter_list: list[str]):
+        limit = 10
+        if timedelta is None:
+            timedelta = timedelta(days=365*50)
+        
+        oldest_time = (datetime.now() - timedelta).strftime("%Y-%m-%d")
+
+        filter_str = "\n".join(f"AND {filter}" for filter in filter_list) + "\n"
+
+        with self.con.cursor() as cur:
+            return cur.execute(f"""
+                SELECT *, embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                FROM paper
+                WHERE update_date > %s::DATE
+                {filter_str}
+                AND embedding_gemini_embedding_001 IS NOT NULL
+                ORDER BY similarity ASC
+                LIMIT %s::INTEGER
+            """, [embedding, oldest_time, limit]).fetchall()
+        
 
 if __name__ == "__main__":
-    with ArXivDBWrapper() as db:
+    with PaperDatabase() as db:
         papers = db.get_unembedded_conference_papers()
         print(len(papers))
