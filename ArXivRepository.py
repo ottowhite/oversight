@@ -140,7 +140,6 @@ class ArXivRepository:
             digest_string += f"{paper.title} (most related to {listener_title}): {similarity:.3f}\n\n"
             digest_string += f"{paper.abstract}\n"
             digest_string += f"{paper.link}\n\n"
-            digest_string += "LLM Relatedness Summary:\n"
             digest_string += f"{self.research_llm.generate_relatedness_summary(paper.abstract)}\n\n"
             digest_string += "------------------------------------------------\n\n"
 

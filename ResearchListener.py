@@ -39,7 +39,7 @@ research_listener_group = ResearchListenerGroup(
 
 test_research_listener_group = ResearchListenerGroup(
     research_listeners,
-    10,
+    3,
     ["otto.white20@imperial.ac.uk"],
     "Test project"
 )

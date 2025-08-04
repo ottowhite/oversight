@@ -15,7 +15,7 @@ class ResearchLLM:
         )
 
         importance_rankings_dict = {
-            "Focus on optimising agentic applications/LLM applications rather than single LLM inference": 20,
+            "Focus on optimising agentic applications/LLM applications rather than single LLM inference. For partial points they may only talk about agentic applications without optimising them": 20,
             "Making improvements to specifically to LLM Scheduling, primarily for agentic applications": 10,
             "Supports dynamic LLM applications with control flow (loops/conditionals), could be implied by mentioning inference-time scaling/LLM searches/self-refinement for half points": 10,
             "Efficient sharing of hardware between multiple locally hosted LLMs, must be about multiple LLMs but could be outside the context of agentic applications": 10,
@@ -43,14 +43,14 @@ class ResearchLLM:
 
         Present the breakdown like this:
 
-        Category 1 [X/Y points]
-        
-            Justification
-        
-        Category 2 [X/Y points]
+		----*---- Similarity Breakdown ----*----
 
-            Justification
+        Justification
+        --> Category 1 [X/Y points]
 
+        Justification
+        --> Category 2 [X/Y points]
+        
         ...
 
         Final score: X/Y points (X/Y%)
