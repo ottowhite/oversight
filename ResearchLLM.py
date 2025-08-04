@@ -33,16 +33,27 @@ class ResearchLLM:
         Our project context is:
         \"{self.project_context}\"
 
-        Our project is not related to:
-        \"{self.not_project_context}\"
-
         The importance rankings of the different aspects of the abstract are:
         \"{self.importance_rankings_string}\"
 
         The abstract of the paper is:
         \"{abstract}\"
 
-        Generate a 80 word summary about the how the different aspects of this abstract could relate to the project context. Finish your answer by scoring the abstract on the importance rankings with individual X/Y scores on new lines with few word but specific to LLM application category names (and single-sentence justification on newline and indented), and generating a final score out of {self.importance_rankings_total_score} with a percentage. Add newlines between each category and justification.
+        Score the abstract on the importance rankings with individual X/Y scores for each category. Make few word category names but specific to LLM applications. Add a single-sentence justification for each category, and generate a final score out of {self.importance_rankings_total_score} with a percentage.
+
+        Present the breakdown like this:
+
+        Category 1 [X/Y points]
+        
+            Justification
+        
+        Category 2 [X/Y points]
+
+            Justification
+
+        ...
+
+        Final score: X/Y points (X/Y%)
         """
 
         return self.llm.invoke(prompt).content
