@@ -8,6 +8,7 @@ from relevant_abstracts import *
 from PaperDatabase import PaperDatabase
 from Paper import Paper
 from EmbeddingModel import EmbeddingModel
+from ResearchLLM import ResearchLLM
 
 class PaperRepository:
     def __init__(self, embedding_model_name: str):
@@ -79,12 +80,29 @@ class PaperRepository:
             paper = Paper.from_database_row(paper_row)
             papers.append(paper)
         return papers
-
+    
 if __name__ == "__main__":
     # repo.add_scraped_papers_from_dir("data/systems_conferences")
     # repo.add_openreview_papers_from_dir("data/openreview_conferences")
 
+    if False:
+        research_llm = ResearchLLM(model_name="openai/o3-mini")
+        abstract = research_llm.generate_fake_abstract(
+            "Inference-time scaling techniques for large language models, different types of searches such as beam search, MCTS, others, and their characteristics",
+            "AI",
+            "Paper"
+        )
+        print("Generated fake abstract:")
+        print(abstract)
+        print()
+        print()
+    else:
+        abstract = "Recent advancements in large language models have spurred interest in inference-time scaling techniques to balance efficiency and performance. In this work, we analyze and integrate several search strategies—including beam search, Monte Carlo Tree Search (MCTS), and alternative approaches—to enhance the inference process. Our key contribution lies in a unified framework that dynamically selects optimal search techniques based on model characteristics and contextual constraints. Extensive experimentation on established benchmarks demonstrates significant improvements in both speed and output accuracy compared to standard search methods. We discuss theoretical underpinnings, implementation challenges, and potential avenues for future research in scalable inference algorithms via evaluation."
+
     with PaperRepository(embedding_model_name="models/gemini-embedding-001") as repo:
-        papers = repo.get_newest_related_papers(sglang_abstract, timedelta(days=365), ["source = 'ICML' or source = 'NeurIPS' or source = 'ICLR'"])
+        ai_conference_filter = ["source = 'ICML' or source = 'NeurIPS' or source = 'ICLR'"]
+        arxiv_filter = ["source = 'arxiv'"]
+
+        papers = repo.get_newest_related_papers(abstract, timedelta(days=365*2), ai_conference_filter)
         for paper in papers:
             print(paper)

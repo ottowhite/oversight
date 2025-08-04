@@ -33,12 +33,38 @@ class ResearchLLM:
         """
 
         return self.llm.invoke(prompt).content
+    
+    def generate_fake_abstract(self, input_string: str, conference_type, output_type):
+        assert output_type in ["Paper", "Survey"]
+
+        if conference_type == "Systems":
+            abstract_style = "conferences like OSDI, SOSP, ASPLOS"
+        elif conference_type == "AI":
+            abstract_style = "conferences like ICLR, ICML, NeurIPS"
         
+        necessary_inclusions = """
+        - key contributions
+        - realistic results (if not a survey)
+        - background
+        - key related technologies used or examined
+        """
+        prompt = f"""You are an academic research assistant that generates a fake but realistic abstract for a research paper in the style of {abstract_style}.
+        You must include at least these aspects to the abstract:
+        {necessary_inclusions}
+        Make an 100 word abstract of the following type: {output_type}
+
+        The input string to generate the abstract from is:
+        \"{input_string}\"
+
+        Output only the abstract and no comments. Don't make up any information outside the scope of the provided text.
+        """
+
+        return self.llm.invoke(prompt).content
+
 
 if __name__ == "__main__":
     research_llm = ResearchLLM(model_name="google/gemini-2.5-flash")
 
     sample_abstract = "Large Language Models (LLMs) have enabled remarkable progress in natural language processing, yet their high computational and memory demands pose challenges for deployment in resource-constrained environments. Although recent low-rank decomposition methods offer a promising path for structural compression, they often suffer from accuracy degradation, expensive calibration procedures, and result in inefficient model architectures that hinder real-world inference speedups. In this paper, we propose FLAT-LLM, a fast and accurate, training-free structural compression method based on fine-grained low-rank transformations in the activation space. Specifically, we reduce the hidden dimension by transforming the weights using truncated eigenvectors computed via head-wise Principal Component Analysis, and employ a greedy budget redistribution strategy to adaptively allocate ranks across decoders. FLAT-LLM achieves efficient and effective weight compression without recovery fine-tuning, which could complete the calibration within a few minutes. Evaluated across 5 models and 11 datasets, FLAT-LLM outperforms structural pruning baselines in generalization and downstream performance, while delivering inference speedups over decomposition-based methods."
-
 
     print(research_llm.generate_relatedness_summary(sample_abstract))
