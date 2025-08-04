@@ -211,9 +211,34 @@ class PaperDatabase:
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
             """, [embedding, oldest_time, limit]).fetchall()
+    
+    def summarise_current_conferences(self):
+        """Print a summary of the conference papers that are currently in the
+        database. For every non-arxiv paper source (e.g. ICML, NeurIPS, …)
+        print the list of years for which we have papers.
+        Example output::
+            ICML      : [2022, 2023, 2024]
+            NeurIPS   : [2021, 2022, 2023]
+        """
+        with self.con.cursor() as cur:
+            rows = cur.execute(
+                """
+                SELECT source,
+                       array_agg(DISTINCT EXTRACT(YEAR FROM update_date)::INT) AS years
+                FROM paper
+                WHERE source != 'arxiv'
+                GROUP BY source
+                ORDER BY source
+                """
+            ).fetchall()
+
+        # Sort the years inside each list for nicer presentation and print
+        for source, years in rows:
+            years_sorted = sorted(years)
+            print(f"{source:<10}: {years_sorted}")
         
 
 if __name__ == "__main__":
     with PaperDatabase() as db:
-        papers = db.get_unembedded_conference_papers()
-        print(len(papers))
+        # papers = db.get_unembedded_conference_papers()
+        db.summarise_current_conferences()
