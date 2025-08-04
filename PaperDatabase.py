@@ -212,6 +212,7 @@ class PaperDatabase:
                 LIMIT %s::INTEGER
             """, [embedding, oldest_time, limit]).fetchall()
     
+    # TODO: Add a way of finding the next conference date for each source
     def summarise_current_conferences(self):
         """Print a summary of the conference papers that are currently in the
         database. For every non-arxiv paper source (e.g. ICML, NeurIPS, …)

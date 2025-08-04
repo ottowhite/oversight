@@ -1,6 +1,7 @@
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
+import relevant_abstracts
 
 class ResearchLLM:
     def __init__(self, model_name: str):
@@ -13,8 +14,17 @@ class ResearchLLM:
             api_key=os.environ["OPENROUTER_API_KEY"]
         )
 
-        self.project_context = "How to improve efficiency of LLM-Applications / agentic workflows, as traditional LLM frameworks only optimise for individual invocations, whereas more complex LLM-applications such as RAG, tool-use, and inference-time scaling are becoming commonplace. We are particularly looking at scheduling improvements that can be made with a graph representing such high-level LLM-Applications. Interesting future directions include how to predict the future execution latency of the graph, better support for dynamic control flow such as loops and conditionals, how to share hardware efficiently between a combination of locally hosted models, and remote models."
+        importance_rankings_dict = {
+            "Focus on optimising agentic applications/LLM applications rather than single LLM inference": 20,
+            "Making improvements to specifically to LLM Scheduling, primarily for agentic applications": 10,
+            "Supports dynamic LLM applications with control flow (loops/conditionals), could be implied by mentioning inference-time scaling/LLM searches/self-refinement for half points": 10,
+            "Efficient sharing of hardware between multiple locally hosted LLMs, must be about multiple LLMs but could be outside the context of agentic applications": 10,
+            "Supporting a combination of local and remote LLMs, could be outside the context of agentic applications": 10
+        }
+        self.importance_rankings_total_score = sum(importance_rankings_dict.values())
+        self.importance_rankings_string = "\n".join([f"{i+1}. {k} [{v} points]" for i, (k, v) in enumerate(importance_rankings_dict.items())])
 
+        self.project_context = "How to improve efficiency of LLM-Applications / agentic workflows, as traditional LLM frameworks only optimise for individual invocations, whereas more complex LLM-applications such as RAG, tool-use, and inference-time scaling are becoming commonplace. We are particularly looking at scheduling improvements that can be made with a graph representing such high-level LLM-Applications. Interesting future directions include how to predict the future execution latency of the graph, better support for dynamic control flow such as loops and conditionals, how to share hardware efficiently between a combination of locally hosted models, and remote models."
         self.not_project_context = "LLM Training, Quantisation, Compression, optimisation of individual LLM inference"
 
     def generate_relatedness_summary(self, abstract: str):
@@ -26,10 +36,13 @@ class ResearchLLM:
         Our project is not related to:
         \"{self.not_project_context}\"
 
+        The importance rankings of the different aspects of the abstract are:
+        \"{self.importance_rankings_string}\"
+
         The abstract of the paper is:
         \"{abstract}\"
 
-        Generate a 80 word summary about the how the different aspects of this abstract could relate to the project context. Finish your answer with a score between 0 and 100, where 100 is the most related.
+        Generate a 80 word summary about the how the different aspects of this abstract could relate to the project context. Finish your answer by scoring the abstract on the importance rankings with individual X/Y scores on new lines with few word but specific to LLM application category names (and single-sentence justification on newline and indented), and generating a final score out of {self.importance_rankings_total_score} with a percentage. Add newlines between each category and justification.
         """
 
         return self.llm.invoke(prompt).content
@@ -64,7 +77,4 @@ class ResearchLLM:
 
 if __name__ == "__main__":
     research_llm = ResearchLLM(model_name="google/gemini-2.5-flash")
-
-    sample_abstract = "Large Language Models (LLMs) have enabled remarkable progress in natural language processing, yet their high computational and memory demands pose challenges for deployment in resource-constrained environments. Although recent low-rank decomposition methods offer a promising path for structural compression, they often suffer from accuracy degradation, expensive calibration procedures, and result in inefficient model architectures that hinder real-world inference speedups. In this paper, we propose FLAT-LLM, a fast and accurate, training-free structural compression method based on fine-grained low-rank transformations in the activation space. Specifically, we reduce the hidden dimension by transforming the weights using truncated eigenvectors computed via head-wise Principal Component Analysis, and employ a greedy budget redistribution strategy to adaptively allocate ranks across decoders. FLAT-LLM achieves efficient and effective weight compression without recovery fine-tuning, which could complete the calibration within a few minutes. Evaluated across 5 models and 11 datasets, FLAT-LLM outperforms structural pruning baselines in generalization and downstream performance, while delivering inference speedups over decomposition-based methods."
-
-    print(research_llm.generate_relatedness_summary(sample_abstract))
+    print(research_llm.generate_relatedness_summary(relevant_abstracts.tempo_abstract))
