@@ -81,6 +81,10 @@ class PaperRepository:
             papers.append(paper)
         return papers
     
+    @staticmethod
+    def build_filter_string(sources: list[str]):
+        return " OR ".join([f"source = '{source}'" for source in sources])
+    
 if __name__ == "__main__":
     # repo.add_scraped_papers_from_dir("data/systems_conferences")
     # repo.add_openreview_papers_from_dir("data/openreview_conferences")
@@ -100,9 +104,10 @@ if __name__ == "__main__":
         abstract = "Recent advancements in large language models have spurred interest in inference-time scaling techniques to balance efficiency and performance. In this work, we analyze and integrate several search strategies—including beam search, Monte Carlo Tree Search (MCTS), and alternative approaches—to enhance the inference process. Our key contribution lies in a unified framework that dynamically selects optimal search techniques based on model characteristics and contextual constraints. Extensive experimentation on established benchmarks demonstrates significant improvements in both speed and output accuracy compared to standard search methods. We discuss theoretical underpinnings, implementation challenges, and potential avenues for future research in scalable inference algorithms via evaluation."
 
     with PaperRepository(embedding_model_name="models/gemini-embedding-001") as repo:
-        ai_conference_filter = ["source = 'ICML' or source = 'NeurIPS' or source = 'ICLR'"]
-        arxiv_filter = ["source = 'arxiv'"]
+        ai_conference_filter = repo.build_filter_string(["ICML", "NeurIPS", "ICLR"])
+        arxiv_filter = repo.build_filter_string(["arxiv"])
+        systems_filter = repo.build_filter_string(["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys"])
 
-        papers = repo.get_newest_related_papers(abstract, timedelta(days=365*2), ai_conference_filter)
+        papers = repo.get_newest_related_papers(abstract, timedelta(days=365*5), [ai_conference_filter])
         for paper in papers:
             print(paper)
