@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Start/Restart Oversight: Flask backend + Next.js frontend (dev)
-# - Exports NEXT_PUBLIC_BACKEND_URL for the frontend
-# - Restarts any existing instances
-# - Streams logs to ./logs/
+# Oversight dev orchestrator: Flask backend + Next.js frontend (dev)
+# Usage:
+#   ./start_oversight.sh up   # export env, restart both services
+#   ./start_oversight.sh down # stop both services
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_DIR="$BASE_DIR/logs"
@@ -23,6 +23,13 @@ kill_matching() {
     # Force kill if still alive
     pkill -KILL -f "$pattern" || true
   fi
+}
+
+kill_all() {
+  kill_matching "flask_app.py"
+  kill_matching "next dev"
+  # Also catch next binary directly if launched via node_modules
+  kill_matching "node .*next.*dev"
 }
 
 start_flask() {
@@ -53,21 +60,28 @@ start_next_dev() {
 }
 
 main() {
-  echo "Exported NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL"
-
-  # Kill any existing Flask/Next dev processes
-  kill_matching "flask_app.py"
-  kill_matching "next dev"
-  # Also catch next binary directly if launched via node_modules
-  kill_matching "node .*next.*dev"
-
-  # Start fresh instances
-  start_flask
-  start_next_dev
-
-  echo "Logs: $LOG_DIR"
-  echo "Flask:   http://localhost:$FLASK_PORT  (logs: $LOG_DIR/flask_app.log)"
-  echo "Next.js: http://localhost:3000        (logs: $LOG_DIR/next_dev.log)"
+  local cmd="${1:-up}"
+  case "$cmd" in
+    up)
+      echo "Exported NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL"
+      # Restart both
+      kill_all
+      start_flask
+      start_next_dev
+      echo "Logs: $LOG_DIR"
+      echo "Flask:   http://localhost:$FLASK_PORT  (logs: $LOG_DIR/flask_app.log)"
+      echo "Next.js: http://localhost:3000        (logs: $LOG_DIR/next_dev.log)"
+      ;;
+    down)
+      echo "Stopping Oversight services..."
+      kill_all
+      echo "Stopped."
+      ;;
+    *)
+      echo "Usage: $0 {up|down}" >&2
+      exit 1
+      ;;
+  esac
 }
 
-main "$@"
+main "${1:-up}"
