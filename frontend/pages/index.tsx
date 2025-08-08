@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type Paper = {
   paper_id: string;
@@ -14,6 +14,7 @@ const API_BASE = ""; // use Next.js rewrite to proxy to backend
 export default function HomePage() {
   const [text, setText] = useState("");
   const [timeDays, setTimeDays] = useState<number>(365 * 5);
+  const [limit, setLimit] = useState<number>(10);
   const [sources, setSources] = useState<{ arxiv: boolean; ai: boolean; systems: boolean }>(
     { arxiv: true, ai: true, systems: true }
   );
@@ -51,6 +52,7 @@ export default function HomePage() {
         body: JSON.stringify({
           text,
           time_window_days: timeDays,
+          limit,
           sources,
         }),
       });
@@ -111,6 +113,28 @@ export default function HomePage() {
                 <span>1m</span>
                 <span>1y</span>
                 <span>10y</span>
+              </div>
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Max results</span>
+                <span className="label-text-alt text-primary font-medium">{limit}</span>
+              </label>
+              <input
+                type="range"
+                min={1}
+                max={100}
+                step={1}
+                value={limit}
+                onChange={(e) => setLimit(parseInt((e.target as HTMLInputElement).value, 10))}
+                className="range range-primary"
+              />
+              <div className="flex justify-between px-2 text-xs opacity-60">
+                <span>1</span>
+                <span>25</span>
+                <span>50</span>
+                <span>100</span>
               </div>
             </div>
 

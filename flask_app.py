@@ -72,6 +72,13 @@ def search() -> tuple[dict, int]:
     except Exception:
         return {"error": "time_window_days must be an integer"}, 400
 
+    limit = body.get("limit")
+    try:
+        limit_int = int(limit) if limit is not None else 10
+        limit_int = max(1, min(100, limit_int))
+    except Exception:
+        return {"error": "limit must be an integer between 1 and 100"}, 400
+
     sources_flags: Dict[str, bool] = body.get("sources", {}) or {}
 
     # Use repository in a context so connections are properly managed
@@ -81,6 +88,7 @@ def search() -> tuple[dict, int]:
             query_text,
             timedelta(days=time_window_days_int),
             filters,
+            limit=limit_int,
         )
 
     results = []

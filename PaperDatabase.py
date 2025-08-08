@@ -192,8 +192,7 @@ class PaperDatabase:
                 LIMIT %s::INTEGER
             """, [embedding, oldest_time, limit]).fetchall()
     
-    def get_newest_papers(self, embedding: list[float], timedelta: timedelta, filter_list: list[str]):
-        limit = 10
+    def get_newest_papers(self, embedding: list[float], timedelta: timedelta, filter_list: list[str], limit: int = 10):
         if timedelta is None:
             timedelta = timedelta(days=365*50)
         
