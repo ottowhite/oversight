@@ -79,10 +79,10 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
           <div className="avatar placeholder">
             <div className="w-8 rounded bg-primary text-primary-content">
-              <span className="text-sm font-bold">PS</span>
+              <span className="text-sm font-bold">O</span>
             </div>
           </div>
-          <h1 className="text-lg font-semibold">Paper Search</h1>
+          <h1 className="text-lg font-semibold">Oversight</h1>
           <span className="ml-auto text-xs text-base-content/60">Embeddings-backed search</span>
         </div>
       </header>
