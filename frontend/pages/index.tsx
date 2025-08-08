@@ -169,7 +169,7 @@ export default function HomePage() {
               {/* Results as assistant responses */}
               {results.map((p) => (
                 <div key={p.paper_id} className="chat chat-start">
-                  <div className="chat-bubble w-full max-w-3xl bg-base-100 text-base-content">
+                  <div className="chat-bubble w-full max-w-3xl bg-base-300 text-base-content border-0">
                     <div className="mb-2 flex items-baseline justify-between gap-3">
                       <h3 className="font-semibold">{p.title}</h3>
                       <small className="opacity-60">
