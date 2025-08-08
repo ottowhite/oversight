@@ -153,7 +153,7 @@ export default function HomePage() {
                       onChange={(e) => setText(e.target.value)}
                       rows={6}
                       placeholder="Paste related abstract(s) here..."
-                      className="textarea textarea-bordered textarea-primary w-full"
+                      className="textarea textarea-bordered textarea-primary w-full text-base-content placeholder:text-base-content/60"
                       required
                     />
                     <div className="flex items-center justify-between">

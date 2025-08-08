@@ -14,13 +14,13 @@ module.exports = {
     themes: [
       {
         chatgpt: {
-          "primary": "#10a37f",
+          "primary": "#16a085",
           "secondary": "#1f2937",
-          "accent": "#22c55e",
+          "accent": "#34d399",
           "neutral": "#111827",
           "base-100": "#0b0f16",
           "info": "#38bdf8",
-          "success": "#22c55e",
+          "success": "#34d399",
           "warning": "#f59e0b",
           "error": "#ef4444",
         },
