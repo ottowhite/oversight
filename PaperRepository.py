@@ -72,9 +72,9 @@ class PaperRepository:
             if i % 10 == 0:
                 self.db.con.commit()
     
-    def get_newest_related_papers(self, text: str, timedelta: timedelta, filter_list: list[str] = []):
+    def get_newest_related_papers(self, text: str, timedelta: timedelta, filter_list: list[str] | None = None):
         embedding = self.embedding_model.model.embed_query(text)
-        paper_rows = self.db.get_newest_papers(embedding, timedelta, filter_list)
+        paper_rows = self.db.get_newest_papers(embedding, timedelta, filter_list or [])
         papers = []
         for paper_row in paper_rows:
             paper = Paper.from_database_row(paper_row)
@@ -83,7 +83,9 @@ class PaperRepository:
     
     @staticmethod
     def build_filter_string(sources: list[str]):
-        return " OR ".join([f"source = '{source}'" for source in sources])
+        # Prefer a compact IN clause to avoid precedence issues
+        sources_sql = ", ".join([f"'{s}'" for s in sources])
+        return f"source IN ({sources_sql})"
     
 if __name__ == "__main__":
     # repo.add_scraped_papers_from_dir("data/systems_conferences")

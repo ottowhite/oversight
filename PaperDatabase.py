@@ -199,7 +199,8 @@ class PaperDatabase:
         
         oldest_time = (datetime.now() - timedelta).strftime("%Y-%m-%d")
 
-        filter_str = "\n".join(f"AND {filter}" for filter in filter_list) + "\n"
+        # Wrap OR-expressions in parentheses so time filter applies to all
+        filter_str = "\n".join(f"AND ({filter})" for filter in filter_list) + "\n"
 
         with self.con.cursor() as cur:
             return cur.execute(f"""
