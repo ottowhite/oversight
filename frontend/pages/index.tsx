@@ -71,81 +71,131 @@ export default function HomePage() {
   }
 
   return (
-    <main style={{ maxWidth: 960, margin: "0 auto", padding: 24 }}>
-      <h1 style={{ marginBottom: 8 }}>Paper Search</h1>
-      <p style={{ marginTop: 0, color: "#666" }}>
-        Enter one or more related abstracts. The backend wraps the existing repository and queries Postgres using embeddings.
-      </p>
-
-      <form onSubmit={onSubmit} style={{ display: "grid", gap: 16 }}>
-        <label style={{ display: "grid", gap: 8 }}>
-          <span>Related abstracts</span>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            rows={8}
-            placeholder="Paste related abstract(s) here..."
-            style={{ width: "100%", padding: 12, fontFamily: "inherit", fontSize: 14 }}
-            required
-          />
-        </label>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <label style={{ display: "grid", gap: 4, flex: 1 }}>
-            <span>Lookback window: {timeLabel}</span>
-            <input
-              type="range"
-              min={7}
-              max={3650}
-              step={1}
-              value={timeDays}
-              onChange={(e) => setTimeDays(parseInt((e.target as HTMLInputElement).value, 10))}
-            />
-          </label>
-          <div style={{ display: "flex", gap: 16 }}>
-            <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-              <input type="checkbox" checked={sources.arxiv} onChange={() => toggleSource("arxiv")} />
-              arXiv
-            </label>
-            <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-              <input type="checkbox" checked={sources.ai} onChange={() => toggleSource("ai")} />
-              AI conferences
-            </label>
-            <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-              <input type="checkbox" checked={sources.systems} onChange={() => toggleSource("systems")} />
-              Systems conferences
-            </label>
-          </div>
-        </div>
-
-        <div style={{ display: "flex", gap: 12 }}>
-          <button type="submit" disabled={loading} style={{ padding: "8px 14px" }}>
-            {loading ? "Searching…" : "Search"}
-          </button>
-          {error && <span style={{ color: "red" }}>{error}</span>}
-        </div>
-      </form>
-
-      <section style={{ marginTop: 24, display: "grid", gap: 16 }}>
-        {results.map((p) => (
-          <article key={p.paper_id} style={{ border: "1px solid #e5e7eb", padding: 16, borderRadius: 8 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "baseline" }}>
-              <h3 style={{ margin: 0 }}>{p.title}</h3>
-              <small style={{ color: "#666" }}>
-                {p.source || ""}
-                {p.paper_date ? ` • ${new Date(p.paper_date).toLocaleDateString()}` : ""}
-              </small>
+    <main className="grid h-screen grid-rows-[auto,1fr]">
+      {/* Header */}
+      <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
+        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
+          <div className="avatar placeholder">
+            <div className="w-8 rounded bg-primary text-primary-content">
+              <span className="text-sm font-bold">PS</span>
             </div>
-            <p style={{ whiteSpace: "pre-wrap" }}>{p.abstract}</p>
-            {p.link && (
-              <a href={p.link} target="_blank" rel="noreferrer">View</a>
-            )}
-          </article>
-        ))}
-        {results.length === 0 && !loading && (
-          <p style={{ color: "#666" }}>No results yet. Submit a query above.</p>
-        )}
-      </section>
+          </div>
+          <h1 className="text-lg font-semibold">Paper Search</h1>
+          <span className="ml-auto text-xs text-base-content/60">Embeddings-backed search</span>
+        </div>
+      </header>
+
+      {/* Main area: sidebar + chat */}
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 px-4 py-4 md:grid-cols-[320px,1fr]">
+        {/* Sidebar / Controls */}
+        <aside className="card bg-base-200 shadow-sm">
+          <div className="card-body gap-4">
+            <h2 className="card-title text-base">Filters</h2>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Lookback window</span>
+                <span className="label-text-alt text-primary font-medium">{timeLabel}</span>
+              </label>
+              <input
+                type="range"
+                min={7}
+                max={3650}
+                step={1}
+                value={timeDays}
+                onChange={(e) => setTimeDays(parseInt((e.target as HTMLInputElement).value, 10))}
+                className="range range-primary"
+              />
+              <div className="flex justify-between px-2 text-xs opacity-60">
+                <span>1w</span>
+                <span>1m</span>
+                <span>1y</span>
+                <span>10y</span>
+              </div>
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Sources</span>
+              </label>
+              <label className="label cursor-pointer justify-start gap-3">
+                <input type="checkbox" className="checkbox checkbox-sm" checked={sources.arxiv} onChange={() => toggleSource("arxiv")} />
+                <span className="label-text">arXiv</span>
+              </label>
+              <label className="label cursor-pointer justify-start gap-3">
+                <input type="checkbox" className="checkbox checkbox-sm" checked={sources.ai} onChange={() => toggleSource("ai")} />
+                <span className="label-text">AI conferences</span>
+              </label>
+              <label className="label cursor-pointer justify-start gap-3">
+                <input type="checkbox" className="checkbox checkbox-sm" checked={sources.systems} onChange={() => toggleSource("systems")} />
+                <span className="label-text">Systems conferences</span>
+              </label>
+            </div>
+
+            <button onClick={onSubmit as any} className={`btn btn-primary ${loading ? 'btn-disabled loading' : ''}`} disabled={loading}>
+              {loading ? 'Searching…' : 'Search'}
+            </button>
+            {error && <div className="alert alert-error py-2 text-sm">{error}</div>}
+          </div>
+        </aside>
+
+        {/* Chat-like panel */}
+        <section className="card bg-base-200 shadow-sm overflow-hidden">
+          <div className="card-body p-0">
+            {/* Messages area */}
+            <div className="flex h-[calc(100vh-200px)] flex-col gap-4 overflow-y-auto p-4">
+              {/* User input bubble */}
+              <div className="chat chat-end">
+                <div className="chat-bubble chat-bubble-primary w-full max-w-3xl">
+                  <form onSubmit={onSubmit} className="flex flex-col gap-2">
+                    <textarea
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                      rows={6}
+                      placeholder="Paste related abstract(s) here..."
+                      className="textarea textarea-bordered textarea-primary w-full"
+                      required
+                    />
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs opacity-70">The backend wraps the repository and queries Postgres using embeddings.</span>
+                      <button type="submit" className={`btn btn-sm btn-primary ${loading ? 'btn-disabled loading' : ''}`} disabled={loading}>
+                        {loading ? 'Searching…' : 'Search'}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              {/* Results as assistant responses */}
+              {results.map((p) => (
+                <div key={p.paper_id} className="chat chat-start">
+                  <div className="chat-bubble w-full max-w-3xl bg-base-100 text-base-content">
+                    <div className="mb-2 flex items-baseline justify-between gap-3">
+                      <h3 className="font-semibold">{p.title}</h3>
+                      <small className="opacity-60">
+                        {p.source || ''}
+                        {p.paper_date ? ` • ${new Date(p.paper_date).toLocaleDateString()}` : ''}
+                      </small>
+                    </div>
+                    <p className="whitespace-pre-wrap leading-relaxed">{p.abstract}</p>
+                    {p.link && (
+                      <a className="link link-primary mt-2 inline-block" href={p.link} target="_blank" rel="noreferrer">View paper</a>
+                    )}
+                  </div>
+                </div>
+              ))}
+
+              {results.length === 0 && !loading && (
+                <div className="chat chat-start">
+                  <div className="chat-bubble w-full max-w-3xl bg-base-100 text-base-content opacity-70">
+                    No results yet. Submit a query above.
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }
