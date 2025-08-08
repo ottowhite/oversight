@@ -169,10 +169,10 @@ export default function HomePage() {
               {/* Results as assistant responses */}
               {results.map((p) => (
                 <div key={p.paper_id} className="chat chat-start">
-                  <div className="chat-bubble w-full max-w-3xl bg-base-300 text-base-content border-0">
+                  <div className="w-full max-w-3xl rounded-2xl bg-gray-700 text-gray-100 p-4">
                     <div className="mb-2 flex items-baseline justify-between gap-3">
                       <h3 className="font-semibold">{p.title}</h3>
-                      <small className="opacity-60">
+                      <small className="opacity-70">
                         {p.source || ''}
                         {p.paper_date ? ` • ${new Date(p.paper_date).toLocaleDateString()}` : ''}
                       </small>
