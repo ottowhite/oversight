@@ -7,6 +7,9 @@ from dotenv import load_dotenv
 from pgvector.psycopg import register_vector
 import os
 from psycopg.types.json import Jsonb
+from utils import get_logger
+
+logger = get_logger()
 
 class PaperDatabase:
     def __init__(self):
@@ -51,6 +54,7 @@ class PaperDatabase:
                 breakpoint()
 
             # First, try to update an existing paper if the incoming record is newer
+            logger.info(f"Attempting to update paper {paper.paper_id} with incoming date {paper.paper_date.strftime(self.date_format)}")
             updated_rows = cur.execute(
                 """
                 UPDATE paper
@@ -77,6 +81,7 @@ class PaperDatabase:
 
             if updated_rows == 0:
                 # If no update happened, try to insert (noop if already exists with newer/same date)
+                logger.info(f"No update happened for paper {paper.paper_id}, inserting")
                 cur.execute(
                     """
                     INSERT INTO paper (paper_id, document, abstract, title, source, update_date, link)
@@ -87,6 +92,7 @@ class PaperDatabase:
                 )
             else:
                 # Paper content changed; reset embedding for this paper so it gets re-embedded
+                logger.info(f"Update happened for paper {paper.paper_id}, resetting gemini embedding")
                 cur.execute(
                     """
                     UPDATE embedding
