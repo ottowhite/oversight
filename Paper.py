@@ -129,7 +129,8 @@ class Paper:
     @staticmethod
     def from_database_row(row: tuple):
         (uuid, created_at, paper_id, document, update_date, embedding_gemini_embedding_001, source, abstract, title, link, similarity) = row
-        return Paper(
+
+        paper = Paper(
             paper_id=paper_id,
             document=document,
             title=title,
@@ -138,6 +139,8 @@ class Paper:
             source=source,
             link=link
         )
+
+        return paper, similarity
 
     @staticmethod
     def remove_null_bytes(obj):

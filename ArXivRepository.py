@@ -115,8 +115,9 @@ class ArXivRepository:
         for listener in research_listener_group.research_listeners:
             embedding = self.embedding_model.model.embed_query(listener.text)
             rows = self.arxiv_db.generate_daily_digest(embedding, research_listener_group.num_papers)
-            for document, similarity in rows:
-                paper_similarities.append((listener.title, Paper.from_document(document), similarity))
+            for row in rows:
+                paper, similarity = Paper.from_database_row(row)
+                paper_similarities.append((listener.title, paper, similarity))
         
         # sort by ascending similarity
         paper_similarities.sort(key=lambda result: result[2])

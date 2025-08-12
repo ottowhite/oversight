@@ -44,21 +44,23 @@ class PaperDatabase:
                 paper.abstract,
                 paper.title,
                 paper.source,
-                paper.paper_date.strftime(self.date_format)]
+                paper.paper_date.strftime(self.date_format),
+                paper.link]
             
             if any(v is None for v in to_insert):
                 breakpoint()
 
             cur.execute("""
-                INSERT INTO paper (paper_id, document, abstract, title, source, update_date)
-                VALUES (%s, %s::jsonb, %s, %s, %s, %s)
+                INSERT INTO paper (paper_id, document, abstract, title, source, update_date, link)
+                VALUES (%s, %s::jsonb, %s, %s, %s, %s, %s)
                 ON CONFLICT (paper_id) DO UPDATE
                 SET document = EXCLUDED.document,
                     abstract = EXCLUDED.abstract,
                     title = EXCLUDED.title,
                     source = EXCLUDED.source,
                     update_date = EXCLUDED.update_date,
-                    embedding_gemini_embedding_001 = NULL
+                    embedding_gemini_embedding_001 = NULL,
+                    link = EXCLUDED.link
                 WHERE paper.update_date < EXCLUDED.update_date;
             """, to_insert)
     
@@ -149,7 +151,7 @@ class PaperDatabase:
         last_day = datetime.now() - timedelta(days=2)
         with self.con.cursor() as cur:
             rows = cur.execute(f"""
-                SELECT document, embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                SELECT *, embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
                 FROM paper
                 WHERE update_date > %s::DATE
                 ORDER BY similarity ASC

@@ -26,6 +26,7 @@ class SickleWrapper:
             document = xmltodict.parse(new_record.raw)['record']
             paper_id = document['metadata']['arXivRaw']['id']
             revision_submission_date = datetime.strptime(document['header']['datestamp'], self.date_format)
+            link=f"https://arxiv.org/abs/{paper_id}"
 
             categories = document['header']['setSpec']
             if type(categories) == str:
@@ -40,6 +41,7 @@ class SickleWrapper:
                 abstract=document['metadata']['arXivRaw']['abstract'],
                 title=document['metadata']['arXivRaw']['title'],
                 source="arxiv",
+                link=link,
                 paper_date=revision_submission_date,
                 categories=categories,
             )
