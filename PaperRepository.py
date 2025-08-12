@@ -28,7 +28,7 @@ class PaperRepository:
         
         for paper_json in papers_json:
             paper = Paper.from_scraped_json(paper_json)
-            self.db.insert_paper(paper)
+            updated_rows, new_rows, skipped_rows = self.db.insert_paper(paper)
     
     def add_openreview_papers(self, path: str, api_version: int):
         with open(path, "r") as f:
@@ -36,7 +36,7 @@ class PaperRepository:
         
         for paper_json in papers_json:
             paper = Paper.from_openreview_json(paper_json, api_version)
-            self.db.insert_paper(paper)
+            updated_rows, new_rows, skipped_rows = self.db.insert_paper(paper)
     
     def add_scraped_papers_from_dir(self, path: str):
         for filename in tqdm(os.listdir(path), desc="Adding scraped conferences", total=len(os.listdir(path))):

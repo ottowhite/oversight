@@ -54,7 +54,6 @@ class PaperDatabase:
                 breakpoint()
 
             # First, try to update an existing paper if the incoming record is newer
-            logger.info(f"Attempting to update paper {paper.paper_id} with incoming date {paper.paper_date.strftime(self.date_format)}")
             updated_rows = cur.execute(
                 """
                 UPDATE paper
@@ -79,20 +78,20 @@ class PaperDatabase:
                 ],
             ).rowcount
 
+            new_rows = 0
+            skipped_rows = 0
             if updated_rows == 0:
                 # If no update happened, try to insert (noop if already exists with newer/same date)
-                logger.info(f"No update happened for paper {paper.paper_id}, inserting")
-                cur.execute(
+                new_rows = cur.execute(
                     """
                     INSERT INTO paper (paper_id, document, abstract, title, source, update_date, link)
                     VALUES (%s, %s::jsonb, %s, %s, %s, %s, %s)
                     ON CONFLICT (paper_id) DO NOTHING;
                     """,
                     to_insert,
-                )
+                ).rowcount
             else:
                 # Paper content changed; reset embedding for this paper so it gets re-embedded
-                logger.info(f"Update happened for paper {paper.paper_id}, resetting gemini embedding")
                 cur.execute(
                     """
                     UPDATE embedding
@@ -101,6 +100,12 @@ class PaperDatabase:
                     """,
                     [paper.paper_id],
                 )
+            
+            skipped_rows = 1 - (updated_rows + new_rows)
+
+            assert new_rows + updated_rows + skipped_rows == 1, f"Updated {updated_rows} rows, inserted {new_rows} rows, and skipped {skipped_rows} rows for paper {paper.paper_id}"
+            
+            return updated_rows, new_rows, skipped_rows
     
     def is_updated(self, paper: Paper):
         with self.con.cursor() as cur:

@@ -57,9 +57,17 @@ class ArXivRepository:
         total_updates, total_new = self.arxiv_db.count_rows_to_update_and_insert(new_papers)
         logger.info(f"{total_updates} papers to update, and {total_new} new papers to insert")
 
+        updated_rows_total = 0
+        new_rows_total = 0
+        skipped_rows_total = 0
         for paper in tqdm(new_papers, desc="Inserting new and updated papers", total=len(new_papers)):
-            self.arxiv_db.insert_paper(paper)
+            updated_rows, new_rows, skipped_rows = self.arxiv_db.insert_paper(paper)
+            updated_rows_total += updated_rows
+            new_rows_total += new_rows
+            skipped_rows_total += skipped_rows
             self.arxiv_db.try_update_categories(paper)
+
+        logger.info(f"Updated {updated_rows_total} rows, inserted {new_rows_total} rows, and skipped {skipped_rows_total} rows")
     
     def _embed_missing_ai_papers(self):
         papers_to_embed = self.arxiv_db.get_unembedded_arxiv_ai_papers()
