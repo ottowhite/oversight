@@ -77,7 +77,7 @@ class PaperRepository:
         paper_rows = self.db.get_newest_papers(embedding, timedelta, filter_list or [], limit)
         papers: list[Paper] = []
         for paper_row in paper_rows:
-            paper = Paper.from_database_row(paper_row)
+            paper, similarity = Paper.from_database_row(paper_row)
             papers.append(paper)
         return papers
     
