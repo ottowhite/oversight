@@ -50,19 +50,51 @@ class PaperDatabase:
             if any(v is None for v in to_insert):
                 breakpoint()
 
-            cur.execute("""
-                INSERT INTO paper (paper_id, document, abstract, title, source, update_date, link)
-                VALUES (%s, %s::jsonb, %s, %s, %s, %s, %s)
-                ON CONFLICT (paper_id) DO UPDATE
-                SET document = EXCLUDED.document,
-                    abstract = EXCLUDED.abstract,
-                    title = EXCLUDED.title,
-                    source = EXCLUDED.source,
-                    update_date = EXCLUDED.update_date,
-                    embedding_gemini_embedding_001 = NULL,
-                    link = EXCLUDED.link
-                WHERE paper.update_date < EXCLUDED.update_date;
-            """, to_insert)
+            # First, try to update an existing paper if the incoming record is newer
+            updated_rows = cur.execute(
+                """
+                UPDATE paper
+                SET document = %s::jsonb,
+                    abstract = %s,
+                    title = %s,
+                    source = %s,
+                    update_date = %s,
+                    link = %s
+                WHERE paper_id = %s::VARCHAR
+                  AND update_date < %s::DATE
+                """,
+                [
+                    Jsonb(paper.document),
+                    paper.abstract,
+                    paper.title,
+                    paper.source,
+                    paper.paper_date.strftime(self.date_format),
+                    paper.link,
+                    paper.paper_id,
+                    paper.paper_date.strftime(self.date_format),
+                ],
+            ).rowcount
+
+            if updated_rows == 0:
+                # If no update happened, try to insert (noop if already exists with newer/same date)
+                cur.execute(
+                    """
+                    INSERT INTO paper (paper_id, document, abstract, title, source, update_date, link)
+                    VALUES (%s, %s::jsonb, %s, %s, %s, %s, %s)
+                    ON CONFLICT (paper_id) DO NOTHING;
+                    """,
+                    to_insert,
+                )
+            else:
+                # Paper content changed; reset embedding for this paper so it gets re-embedded
+                cur.execute(
+                    """
+                    UPDATE embedding
+                    SET embedding_gemini_embedding_001 = NULL
+                    WHERE paper_id = %s::VARCHAR
+                    """,
+                    [paper.paper_id],
+                )
     
     def is_updated(self, paper: Paper):
         with self.con.cursor() as cur:
@@ -116,9 +148,11 @@ class PaperDatabase:
                 SELECT DISTINCT ps.paper_id, ps.document
                 FROM paper AS ps
                 JOIN arxiv_paper_categories AS pc
-                ON ps.paper_id = pc.paper_id
-                WHERE ps.embedding_gemini_embedding_001 IS NULL
-                AND pc.category IN {self.ai_categories_str}
+                  ON ps.paper_id = pc.paper_id
+                LEFT JOIN embedding AS se
+                  ON se.paper_id = ps.paper_id
+                WHERE se.embedding_gemini_embedding_001 IS NULL
+                  AND pc.category IN {self.ai_categories_str}
             """).fetchall()
     
     def get_unembedded_conference_papers(self):
@@ -126,17 +160,23 @@ class PaperDatabase:
             return cur.execute("""
                 SELECT DISTINCT ps.paper_id, ps.abstract
                 FROM paper AS ps
-                WHERE ps.embedding_gemini_embedding_001 IS NULL
-                AND ps.source != 'arxiv'
+                LEFT JOIN embedding AS emb
+                  ON emb.paper_id = ps.paper_id
+                WHERE emb.embedding_gemini_embedding_001 IS NULL
+                  AND ps.source != 'arxiv'
             """).fetchall()
     
     def update_embedding(self, paper_id: str, embedding: list[float]):
         with self.con.cursor() as cur:
-            cur.execute("""
-                UPDATE paper
-                SET embedding_gemini_embedding_001 = %s::vector(3072)
-                WHERE paper_id = %s::VARCHAR
-            """, [embedding, paper_id])
+            cur.execute(
+                """
+                INSERT INTO embedding (paper_id, embedding_gemini_embedding_001)
+                VALUES (%s::VARCHAR, %s::vector(3072))
+                ON CONFLICT (paper_id) DO UPDATE
+                SET embedding_gemini_embedding_001 = EXCLUDED.embedding_gemini_embedding_001
+                """,
+                [paper_id, embedding],
+            )
     
     def count_rows_to_update_and_insert(self, papers: list[Paper]):
         total_updates = 0
@@ -151,9 +191,11 @@ class PaperDatabase:
         last_day = datetime.now() - timedelta(days=2)
         with self.con.cursor() as cur:
             rows = cur.execute(f"""
-                SELECT *, embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
-                FROM paper
-                WHERE update_date > %s::DATE
+                SELECT ps.*, emb.embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                FROM paper AS ps
+                LEFT JOIN embedding AS emb
+                  ON emb.paper_id = ps.paper_id
+                WHERE ps.update_date > %s::DATE
                 ORDER BY similarity ASC
                 LIMIT %s
             """, [embedding, last_day, limit]).fetchall()
@@ -169,8 +211,10 @@ class PaperDatabase:
 
         with self.con.cursor() as cur:
             return cur.execute(f"""
-                SELECT document, embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
-                FROM paper
+                SELECT ps.document, emb.embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                FROM paper AS ps
+                LEFT JOIN embedding AS emb
+                  ON emb.paper_id = ps.paper_id
                 {time_filter}
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
@@ -185,11 +229,13 @@ class PaperDatabase:
 
         with self.con.cursor() as cur:
             return cur.execute(f"""
-                SELECT *, embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
-                FROM paper
-                WHERE update_date > %s::DATE
-                AND source != 'arxiv'
-                AND embedding_gemini_embedding_001 IS NOT NULL
+                SELECT ps.*, emb.embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                FROM paper AS ps
+                JOIN embedding AS emb
+                  ON emb.paper_id = ps.paper_id
+                WHERE ps.update_date > %s::DATE
+                  AND ps.source != 'arxiv'
+                  AND emb.embedding_gemini_embedding_001 IS NOT NULL
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
             """, [embedding, oldest_time, limit]).fetchall()
@@ -208,11 +254,13 @@ class PaperDatabase:
 
         with self.con.cursor() as cur:
             return cur.execute(f"""
-                SELECT *, embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
-                FROM paper
-                WHERE update_date > %s::DATE
+                SELECT ps.*, emb.embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                FROM paper AS ps
+                JOIN embedding AS emb
+                  ON emb.paper_id = ps.paper_id
+                WHERE ps.update_date > %s::DATE
+                  AND emb.embedding_gemini_embedding_001 IS NOT NULL
                 {filter_str}
-                AND embedding_gemini_embedding_001 IS NOT NULL
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
             """, [embedding, oldest_time, limit]).fetchall()
