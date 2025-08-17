@@ -1,0 +1,63 @@
+# Ubuntu 22.04 LTS: Stable, long-term support base with Python 3.10 pre-installed
+# Chosen over Alpine for better compatibility with scientific Python packages
+FROM ubuntu:22.04
+
+# Set environment variables for optimal Python and container behavior
+# Prevents interactive prompts during package installation (required for automated builds)
+ENV DEBIAN_FRONTEND=noninteractive
+# Ensures Python output is sent straight to terminal without buffering (better for Docker logs)
+ENV PYTHONUNBUFFERED=1
+# Prevents Python from writing .pyc files (reduces container size and improves security)
+ENV PYTHONDONTWRITEBYTECODE=1
+# Adds user's local bin to PATH for pip-installed executables (needed for non-root user setup)
+ENV PATH="/home/app/.local/bin:$PATH"
+
+# Install system dependencies required by the Python packages in requirements.txt
+RUN apt-get update && apt-get install -y \
+	# Core Python runtime and package management
+	python3 \
+	python3-pip \
+	python3-dev \
+	# Build tools required for compiling Python packages with C extensions
+	build-essential \
+	# Network utilities for health checks and API calls
+	curl \
+	wget \
+	# Version control (may be needed by some Python packages during installation)
+	git \
+	# Package configuration tool (required by some native dependencies)
+	pkg-config \
+	# SSL/TLS support (required by requests, urllib3, and HTTPS connections)
+	libssl-dev \
+	# Foreign Function Interface library (required by cryptography and other security packages)
+	libffi-dev \
+	# XML processing libraries (required by xmltodict and web scraping functionality)
+	libxml2-dev \
+	libxslt1-dev \
+	# Compression library (required by various Python packages)
+	zlib1g-dev \
+	# PostgreSQL client library (required by psycopg package for database connections)
+	libpq-dev \
+	# Clean up apt cache to reduce image size
+	&& rm -rf /var/lib/apt/lists/*
+
+# Create non-root user for security best practices (prevents privilege escalation attacks)
+RUN useradd -m -s /bin/bash app && \
+	mkdir -p /app && \
+	chown -R app:app /app
+USER app
+WORKDIR /app
+
+# Copy requirements first for better Docker layer caching
+# (if requirements don't change, we can reuse the pip install layer)
+COPY --chown=app:app requirements.txt .
+
+RUN python3 -m pip install --user --upgrade pip setuptools wheel && \
+	python3 -m pip install --user -r requirements.txt
+
+# Copy the application code (done after pip install for better layer caching)
+COPY --chown=app:app . .
+
+RUN mkdir -p logs
+
+CMD ["python3", "flask_app.py"]
