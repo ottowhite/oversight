@@ -71,7 +71,7 @@ class PaperRepository:
 
             if i % 10 == 0:
                 self.db.con.commit()
-    
+
     def get_newest_related_papers(self, text: str, timedelta: timedelta, filter_list: list[str] | None = None, limit: int = 10):
         embedding = self.embedding_model.model.embed_query(text)
         paper_rows = self.db.get_newest_papers(embedding, timedelta, filter_list or [], limit)
@@ -80,7 +80,22 @@ class PaperRepository:
             paper, similarity = Paper.from_database_row(paper_row)
             papers.append(paper)
         return papers
-    
+
+    def compute_similarity_over_time(self, text: str, similarity_threshold: float, filter_list: list[str] | None = None):
+        embedding = self.embedding_model.model.embed_query(text)
+        rows = self.db.compute_similarity_over_time(embedding, similarity_threshold, filter_list or [])
+        cumulative_similar = 0
+        cumulative_similarities = []
+        cumulative_similarities_weighted = []
+        dates = []
+        for i, (update_date, is_similar) in enumerate(rows):
+            dates.append(update_date)
+            cumulative_similar += is_similar
+            cumulative_similarities.append(cumulative_similar)
+            cumulative_similarities_weighted.append(cumulative_similar / (i + 1))
+
+        return dates, cumulative_similarities, cumulative_similarities_weighted
+
     @staticmethod
     def build_filter_string(sources: list[str]):
         # Prefer a compact IN clause to avoid precedence issues
