@@ -182,7 +182,7 @@ class PaperDatabase:
             cur.execute(
                 """
                 INSERT INTO embedding (paper_id, embedding_gemini_embedding_001)
-                VALUES (%s::VARCHAR, %s::vector(3072))
+                VALUES (%s::VARCHAR, %s::halfvec(3072))
                 ON CONFLICT (paper_id) DO UPDATE
                 SET embedding_gemini_embedding_001 = EXCLUDED.embedding_gemini_embedding_001
                 """,
@@ -202,7 +202,7 @@ class PaperDatabase:
         last_day = datetime.now() - timedelta(days=2)
         with self.con.cursor() as cur:
             rows = cur.execute(f"""
-                SELECT ps.*, emb.embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                SELECT ps.*, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity
                 FROM paper AS ps
                 LEFT JOIN embedding AS emb
                   ON emb.paper_id = ps.paper_id
@@ -222,7 +222,7 @@ class PaperDatabase:
 
         with self.con.cursor() as cur:
             return cur.execute(f"""
-                SELECT ps.document, emb.embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                SELECT ps.document, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity
                 FROM paper AS ps
                 LEFT JOIN embedding AS emb
                   ON emb.paper_id = ps.paper_id
@@ -240,7 +240,7 @@ class PaperDatabase:
 
         with self.con.cursor() as cur:
             return cur.execute(f"""
-                SELECT ps.*, emb.embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                SELECT ps.*, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity
                 FROM paper AS ps
                 JOIN embedding AS emb
                   ON emb.paper_id = ps.paper_id
@@ -265,7 +265,7 @@ class PaperDatabase:
 
         with self.con.cursor() as cur:
             return cur.execute(f"""
-                SELECT ps.*, emb.embedding_gemini_embedding_001 <-> %s::vector(3072) AS similarity
+                SELECT ps.*, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity
                 FROM paper AS ps
                 JOIN embedding AS emb
                   ON emb.paper_id = ps.paper_id
@@ -310,7 +310,7 @@ class PaperDatabase:
 
         with self.con.cursor() as cur:
             rows = cur.execute(f"""
-                SELECT ps.update_date, (emb.embedding_gemini_embedding_001 <-> %s::vector(3072)) < %s AS is_similar
+                SELECT ps.update_date, (emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072)) < %s AS is_similar
                 FROM paper AS ps
                 JOIN embedding AS emb
                   ON emb.paper_id = ps.paper_id
