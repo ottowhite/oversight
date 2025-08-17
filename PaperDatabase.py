@@ -14,17 +14,15 @@ logger = get_logger()
 class PaperDatabase:
     def __init__(self):
         load_dotenv()
-        assert os.getenv("POSTGRES_USER") is not None, "Postgres user is not set"
-        assert os.getenv("POSTGRES_PASSWORD") is not None, "Postgres password is not set"
         self.ai_categories = ["cs:cs:AI", "cs:cs:CL", "cs:cs:LG", "cs:cs:MA"]
         self.ai_categories_str = "(" + ",".join(f"'{category}'" for category in self.ai_categories) + ")"
         self.con = None
         self.date_format = "%Y-%m-%d"
 
     def __enter__(self):
-        self.con = psycopg.connect(
-            f"host=localhost dbname=oversight user={os.getenv('POSTGRES_USER')} password={os.getenv('POSTGRES_PASSWORD')}"
-        )
+        database_url = os.getenv("DATABASE_URL")
+        assert database_url is not None, "Database URL is not set"
+        self.con = psycopg.connect(database_url)
         register_vector(self.con)
         return self
 
