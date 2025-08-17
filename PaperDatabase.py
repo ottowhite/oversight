@@ -300,6 +300,10 @@ class PaperDatabase:
             years_sorted = sorted(years)
             print(f"{source:<10}: {years_sorted}")
 
+    def commit(self):
+        if self.con is not None:
+            self.con.commit()
+
     def compute_similarity_over_time(self, embedding: list[float], similarity_threshold: float, filter_list: list[str]):
         filter_str = ""
         if filter_list:

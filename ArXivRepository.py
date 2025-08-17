@@ -80,8 +80,11 @@ class ArXivRepository:
             abstract = document["metadata"]["arXivRaw"]["abstract"]
             abstracts.append(abstract)
 
-        for embedding, paper_id in tqdm(zip(self.embedding_model.embed_documents_rate_limited(abstracts), paper_ids), desc="Embedding papers", total=len(paper_ids)):
+        for i, (embedding, paper_id) in tqdm(enumerate(zip(self.embedding_model.embed_documents_rate_limited(abstracts), paper_ids)), desc="Embedding papers", total=len(paper_ids)):
             self.arxiv_db.update_embedding(paper_id, embedding)
+
+            if i % 100 == 0:
+                self.arxiv_db.commit()
 
     def generate_digest_string(self, results, include_time_since=False, include_similarity=True, include_date=True, include_link=True):
         output = ""
