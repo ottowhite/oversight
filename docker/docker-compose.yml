@@ -1,0 +1,14 @@
+services:
+  oversight-backend:
+    image: oversight-backend
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_PORT=5001
+      - FLASK_ENV=production
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5001/api/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
