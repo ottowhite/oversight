@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 from PaperRepository import PaperRepository
 from ArXivRepository import ArXivRepository
-from ResearchListener import test_research_listener_group
+from ResearchListener import research_listener_group
 
 # Load environment variables early so repo/db can connect
 load_dotenv()
@@ -142,7 +142,7 @@ def digest() -> tuple[dict, int]:
             research_llm_model_name="google/gemini-2.5-flash"
         ) as arxiv_repo:
             # Send email digest without syncing (same as --digest --no-sync)
-            arxiv_repo.email_weekly_digest(test_research_listener_group)
+            arxiv_repo.email_weekly_digest(research_listener_group)
 
         return {"status": "success", "message": "Email digest sent successfully"}, 200
 
