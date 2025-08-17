@@ -250,11 +250,11 @@ class PaperDatabase:
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
             """, [embedding, oldest_time, limit]).fetchall()
-    
+
     def get_newest_papers(self, embedding: list[float], timedelta: timedelta, filter_list: list[str], limit: int = 10):
         if timedelta is None:
             timedelta = timedelta(days=365*50)
-        
+
         oldest_time = (datetime.now() - timedelta).strftime("%Y-%m-%d")
 
         # Combine multiple filters with OR (union of sources), wrapped to preserve precedence
@@ -301,7 +301,25 @@ class PaperDatabase:
         for source, years in rows:
             years_sorted = sorted(years)
             print(f"{source:<10}: {years_sorted}")
-        
+
+    def compute_similarity_over_time(self, embedding: list[float], similarity_threshold: float, filter_list: list[str]):
+        filter_str = ""
+        if filter_list:
+            or_group = " OR ".join(f"({flt})" for flt in filter_list)
+            filter_str = f"AND ({or_group})\n"
+
+        with self.con.cursor() as cur:
+            rows = cur.execute(f"""
+                SELECT ps.update_date, (emb.embedding_gemini_embedding_001 <-> %s::vector(3072)) < %s AS is_similar
+                FROM paper AS ps
+                JOIN embedding AS emb
+                  ON emb.paper_id = ps.paper_id
+                WHERE emb.embedding_gemini_embedding_001 IS NOT NULL
+                  {filter_str}
+                ORDER BY update_date ASC
+            """, [embedding, similarity_threshold]).fetchall()
+
+        return rows
 
 if __name__ == "__main__":
     with PaperDatabase() as db:
