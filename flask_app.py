@@ -7,6 +7,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 
 from PaperRepository import PaperRepository
+from ArXivRepository import ArXivRepository
 
 # Load environment variables early so repo/db can connect
 load_dotenv()
@@ -104,6 +105,28 @@ def search() -> tuple[dict, int]:
         })
 
     return {"results": results}, 200
+
+
+@app.post("/api/sync")
+def sync() -> tuple[dict, int]:
+    """
+    Synchronize ArXiv repository by fetching new papers and embedding them.
+    This endpoint initializes an ArXivRepository and calls its sync method.
+    """
+    try:
+        # Initialize ArXivRepository with same model configurations as used elsewhere
+        with ArXivRepository(
+            embedding_model_name="models/gemini-embedding-001",
+            research_llm_model_name="google/gemini-2.5-flash"
+        ) as arxiv_repo:
+            arxiv_repo.sync()
+        
+        return {"status": "success", "message": "ArXiv repository sync completed successfully"}, 200
+    
+    except Exception as e:
+        # Log the error for debugging but return a safe error message
+        app.logger.error(f"Error during ArXiv sync: {str(e)}")
+        return {"status": "error", "message": f"Sync failed: {str(e)}"}, 500
 
 
 if __name__ == "__main__":
