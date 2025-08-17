@@ -196,8 +196,8 @@ class PaperDatabase:
         
         return total_updates, total_new
     
-    def generate_daily_digest(self, embedding: list[float], limit: int = 10):
-        last_day = datetime.now() - timedelta(days=2)
+    def generate_weekly_digest(self, embedding: list[float], limit: int = 10):
+        last_day = datetime.now() - timedelta(days=7)
         with self.con.cursor() as cur:
             rows = cur.execute(f"""
                 SELECT ps.*, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity

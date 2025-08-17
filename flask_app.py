@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 from PaperRepository import PaperRepository
 from ArXivRepository import ArXivRepository
+from ResearchListener import test_research_listener_group
 
 # Load environment variables early so repo/db can connect
 load_dotenv()
@@ -128,6 +129,27 @@ def sync() -> tuple[dict, int]:
         app.logger.error(f"Error during ArXiv sync: {str(e)}")
         return {"status": "error", "message": f"Sync failed: {str(e)}"}, 500
 
+@app.post("/api/digest")
+def digest() -> tuple[dict, int]:
+    """
+    Send email digest to research listener group without updating the repository.
+    This endpoint initializes an ArXivRepository and calls email_daily_digest method.
+    """
+    try:
+        # Initialize ArXivRepository with same model configurations as used elsewhere
+        with ArXivRepository(
+            embedding_model_name="models/gemini-embedding-001",
+            research_llm_model_name="google/gemini-2.5-flash"
+        ) as arxiv_repo:
+            # Send email digest without syncing (same as --digest --no-sync)
+            arxiv_repo.email_weekly_digest(test_research_listener_group)
+
+        return {"status": "success", "message": "Email digest sent successfully"}, 200
+
+    except Exception as e:
+        # Log the error for debugging but return a safe error message
+        app.logger.error(f"Error during digest email: {str(e)}")
+        return {"status": "error", "message": f"Digest email failed: {str(e)}"}, 500
 
 if __name__ == "__main__":
     # Bind to all interfaces for local dev; port can be overridden via FLASK_PORT
