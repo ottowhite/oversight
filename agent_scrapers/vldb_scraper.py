@@ -3,6 +3,8 @@ from cached_webpage_retriever import get_cached_webpage
 from collections import namedtuple
 from bs4 import BeautifulSoup
 import re
+import json
+from typing import Any
 
 # Create a named tuple for authors to make them hashable
 Author = namedtuple('Author', ['Name', 'Affiliation'])
@@ -37,13 +39,9 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
     
     papers = set()
     current_session = ""
-    paper_count = 0
-    
-    print(f"Starting to extract papers from {schedule_url}")
     
     # Find all session headers and paper entries
     all_elements = soup.find_all(['h3', 'h4', 'h5', 'strong'])
-    print(f"Found {len(all_elements)} total elements to process")
     
     for element in all_elements:
         element_text = element.get_text().strip()
@@ -51,7 +49,6 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
         # Check if this is a session header
         if element.name in ['h3', 'h4', 'h5'] and any(keyword in element_text for keyword in ['Research', 'Industry', 'Panel', 'Tutorial', 'Demo']):
             current_session = element_text
-            print(f"Found new session: {current_session}")
             continue
         
         # Check if this is a paper entry (strong tag with links)
@@ -106,14 +103,6 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                 
                 # If we have the necessary information, extract the abstract
                 if conference_link and pdf_link and title and current_session:
-                    paper_count += 1
-                    print(f"\nProcessing paper #{paper_count}: {title}")
-                    print(f"  Session: {current_session}")
-                    print(f"  Conference link: {conference_link}")
-                    print(f"  PDF link: {pdf_link}")
-                    author_list = ", ".join([f"{author.Name} ({author.Affiliation})" for author in authors])
-                    print(f"  Authors: {author_list}")
-                    
                     abstract = extract_abstract_from_conference_page(conference_link)
                     
                     paper = Paper(
@@ -126,20 +115,8 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                         date="2025-09-01",
                         conference="VLDB"
                     )
-                    
-                    print(f"  Abstract: {abstract}")
-                    print(f"  Constructed paper: {paper.title} in {paper.session}")
                     papers.add(paper)
-                else:
-                    missing = []
-                    if not conference_link: missing.append("conference_link")
-                    if not pdf_link: missing.append("pdf_link") 
-                    if not title: missing.append("title")
-                    if not current_session: missing.append("current_session")
-                    if missing:
-                        print(f"Skipping potential paper - missing: {', '.join(missing)}")
     
-    print(f"\nFinished processing. Found {len(papers)} papers total.")
     return papers
 
 
@@ -186,8 +163,48 @@ def extract_abstract_from_conference_page(conference_url: str) -> str:
         return ""
 
 
-vldb_schedule_link: str = "https://vldb.org/2025/?program-schedule-2025"
+
+def paper_to_dict(paper: Any) -> dict:
+    """Convert a Paper object to a serializable dictionary."""
+    return {
+        "title": paper.title,
+        "abstract": paper.abstract,
+        "conference_link": paper.conference_link,
+        "pdf_link": paper.pdf_link,
+        "session": paper.session,
+        "authors": [
+            {"Name": author.Name, "Affiliation": author.Affiliation}
+            for author in getattr(paper, "authors", [])
+        ],
+        "date": paper.date,
+        "conference": paper.conference,
+    }
+
+def save_papers_to_json(papers, filename: str) -> None:
+    """Save a set of Paper objects to a JSON file."""
+    papers_list = [paper_to_dict(p) for p in papers]
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(papers_list, f, ensure_ascii=False, indent=2)
+
+# Simple test: Check that the file exists and is valid JSON
+def test_json_file_valid(filename: str) -> None:
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        assert isinstance(data, list), "JSON root should be a list"
+        print(f"Test passed: {filename} is valid JSON with {len(data)} entries.")
+    except Exception as e:
+        print(f"Test failed: Could not validate {filename}: {e}")
     
 if __name__ == "__main__":
-    print(get_cached_webpage(vldb_schedule_link))
+    vldb_schedule_link: str = "https://vldb.org/2025/?program-schedule-2025"
+    output_filename = "data/vldb/vldb_25_papers.json"
+
+    papers = extract_papers(vldb_schedule_link)
+    # Save papers to JSON
+    save_papers_to_json(papers, output_filename)
+    print(f"Saved {len(papers)} papers to {output_filename}")
+
+
+    test_json_file_valid(output_filename)
 
