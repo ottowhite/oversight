@@ -1,4 +1,4 @@
-from typing import Set, Tuple
+from typing import Set, Tuple, List, Dict
 from cached_webpage_retriever import get_cached_webpage
 from collections import namedtuple
 from bs4 import BeautifulSoup
@@ -11,6 +11,9 @@ Author = namedtuple('Author', ['Name', 'Affiliation'])
 
 # Create a named tuple for papers to make them hashable
 Paper = namedtuple('Paper', ['title', 'abstract', 'conference_link', 'pdf_link', 'session', 'authors', 'date', 'conference'])
+
+# Create a named tuple for tracking skipped papers
+SkippedPaper = namedtuple('SkippedPaper', ['element_text', 'session', 'links_found', 'title', 'conference_link', 'pdf_link', 'authors', 'reason', 'error_details'])
 
 
 def extract_papers(schedule_url: str) -> Set[Paper]:
@@ -38,6 +41,7 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
     soup = BeautifulSoup(html_content, 'html.parser')
     
     papers = set()
+    skipped_papers = []
     current_session = ""
     
     # Find all session headers and paper entries
@@ -47,33 +51,54 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
         element_text = element.get_text().strip()
         
         # Check if this is a session header
-        if element.name in ['h3', 'h4', 'h5'] and any(keyword in element_text for keyword in ['Research', 'Industry', 'Panel', 'Tutorial', 'Demo']):
+        if hasattr(element, 'name') and element.name in ['h3', 'h4', 'h5'] and any(keyword in element_text for keyword in ['Research', 'Industry', 'Panel', 'Tutorial', 'Demo']):  # type: ignore
             current_session = element_text
             continue
         
         # Check if this is a paper entry (strong tag with links)
-        if element.name == 'strong':
-            links = element.find_all('a', href=True)
-            if len(links) >= 2:  # Should have at least 2 links (PDF/conference and title)
-                
+        if hasattr(element, 'name') and element.name == 'strong':  # type: ignore
+            links = element.find_all('a', href=True) if hasattr(element, 'find_all') else []  # type: ignore
+            
+            # Track potential paper data for error reporting
+            title = ""
+            conference_link = ""
+            pdf_link = ""
+            authors = []
+            skip_reason = ""
+            error_details = ""
+            
+            # Check if we have enough links
+            if len(links) < 2:
+                skip_reason = "Insufficient links"
+                error_details = f"Found {len(links)} links, expected at least 2"
+                skipped_papers.append(SkippedPaper(
+                    element_text=element_text,
+                    session=current_session,
+                    links_found=[link.get('href', '') if hasattr(link, 'get') else '' for link in links],  # type: ignore
+                    title="",
+                    conference_link="",
+                    pdf_link="",
+                    authors=[],
+                    reason=skip_reason,
+                    error_details=error_details
+                ))
+                continue
+            
+            try:
                 # Extract links and determine which is which
-                title = ""
-                conference_link = ""
-                pdf_link = ""
-                
                 for link in links:
-                    href = link['href']
-                    link_text = link.get_text().strip()
+                    href = link.get('href', '') if hasattr(link, 'get') else ''  # type: ignore
+                    link_text = link.get_text().strip() if hasattr(link, 'get_text') else ''
                     
                     # Distinguish between conference link and PDF link
-                    if 'vldb.org/pvldb/volumes' in href and 'paper' in href:
+                    if href and 'vldb.org/pvldb/volumes' in str(href) and 'paper' in str(href):  # type: ignore
                         conference_link = href
                         if link_text == "PDF":
                             # If link text is "PDF", we need to find the title elsewhere
                             pass
                         else:
                             title = link_text
-                    elif 'vldb.org/pvldb/vol' in href and '.pdf' in href:
+                    elif href and 'vldb.org/pvldb/vol' in str(href) and '.pdf' in str(href):  # type: ignore
                         pdf_link = href
                         if link_text != "PDF":
                             title = link_text
@@ -84,10 +109,9 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                     title = element_text.replace("PDF", "").strip()
                 
                 # Extract authors from the next paragraph
-                authors = []
                 next_element = element.next_sibling
                 while next_element:
-                    if hasattr(next_element, 'name') and next_element.name == 'p':
+                    if hasattr(next_element, 'name') and next_element.name == 'p':  # type: ignore
                         author_text = next_element.get_text().strip()
                         if author_text:
                             # Parse authors - format: "Name (Affiliation);Name (Affiliation);..."
@@ -101,21 +125,98 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                         break
                     next_element = next_element.next_sibling
                 
-                # If we have the necessary information, extract the abstract
-                if conference_link and pdf_link and title and current_session:
-                    abstract = extract_abstract_from_conference_page(conference_link)
-                    
-                    paper = Paper(
+                # Validate required fields
+                missing_fields = []
+                if not conference_link:
+                    missing_fields.append("conference_link")
+                if not pdf_link:
+                    missing_fields.append("pdf_link")
+                if not title:
+                    missing_fields.append("title")
+                if not current_session:
+                    missing_fields.append("current_session")
+                
+                if missing_fields:
+                    skip_reason = "Missing required fields"
+                    error_details = f"Missing: {', '.join(missing_fields)}"
+                    skipped_papers.append(SkippedPaper(
+                        element_text=element_text,
+                        session=current_session,
+                        links_found=[link.get('href', '') if hasattr(link, 'get') else '' for link in links],  # type: ignore
                         title=title,
-                        abstract=abstract,
                         conference_link=conference_link,
                         pdf_link=pdf_link,
-                        session=current_session,
-                        authors=tuple(authors),
-                        date="2025-09-01",
-                        conference="VLDB"
-                    )
-                    papers.add(paper)
+                        authors=authors,
+                        reason=skip_reason,
+                        error_details=error_details
+                    ))
+                    continue
+                
+                # Try to extract the abstract
+                try:
+                    abstract = extract_abstract_from_conference_page(str(conference_link))
+                except Exception as e:
+                    # Still create the paper but note the abstract extraction failed
+                    abstract = ""
+                    print(f"Warning: Failed to extract abstract for '{title}': {e}")
+                
+                # Create the paper
+                paper = Paper(
+                    title=title,
+                    abstract=abstract,
+                    conference_link=conference_link,
+                    pdf_link=pdf_link,
+                    session=current_session,
+                    authors=tuple(authors),
+                    date="2025-09-01",
+                    conference="VLDB"
+                )
+                papers.add(paper)
+                
+            except Exception as e:
+                skip_reason = "Processing error"
+                error_details = str(e)
+                skipped_papers.append(SkippedPaper(
+                    element_text=element_text,
+                    session=current_session,
+                    links_found=[link.get('href', '') if hasattr(link, 'get') else '' for link in links] if links else [],
+                    title=title,
+                    conference_link=conference_link,
+                    pdf_link=pdf_link,
+                    authors=authors,
+                    reason=skip_reason,
+                    error_details=error_details
+                ))
+    
+    # Print detailed summary
+    print(f"\n=== PAPER EXTRACTION SUMMARY ===")
+    print(f"Successfully extracted: {len(papers)} papers")
+    print(f"Skipped/Errored: {len(skipped_papers)} papers")
+    
+    if skipped_papers:
+        print(f"\n=== DETAILED SKIPPED PAPERS REPORT ===")
+        
+        # Group by reason for better readability
+        reasons_count: Dict[str, int] = {}
+        for skipped in skipped_papers:
+            reasons_count[skipped.reason] = reasons_count.get(skipped.reason, 0) + 1
+        
+        print(f"\nSkipped papers by reason:")
+        for reason, count in reasons_count.items():
+            print(f"  - {reason}: {count} papers")
+        
+        print(f"\nDetailed information for each skipped paper:")
+        for i, skipped in enumerate(skipped_papers, 1):
+            print(f"\n--- Skipped Paper #{i} ---")
+            print(f"Reason: {skipped.reason}")
+            print(f"Error Details: {skipped.error_details}")
+            print(f"Session: {skipped.session or 'Unknown'}")
+            print(f"Element Text: {skipped.element_text[:100]}{'...' if len(skipped.element_text) > 100 else ''}")
+            print(f"Title Found: {skipped.title or 'None'}")
+            print(f"Conference Link: {skipped.conference_link or 'None'}")
+            print(f"PDF Link: {skipped.pdf_link or 'None'}")
+            print(f"Authors Found: {len(skipped.authors)} authors")
+            print(f"Links Found: {len(skipped.links_found)} - {skipped.links_found}")
     
     return papers
 
