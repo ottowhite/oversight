@@ -28,6 +28,28 @@ class TestVLDBScraper:
 
         extracted_papers: Set[Paper] = extract_papers(vldb_schedule_link)
         assert example_paper in extracted_papers, "different_paper should be in the extracted papers set"
+    
+    def test_subset_of_sessions_present(self) -> None:
+        sessions_sublist = [
+            "Panel 1: Neural Relational Data: Tabular Foundation Models, LLMs... or both?",
+            "Tutorial 1: Property Graph Standards: State of the Art & Open Challenges",
+            "Industry 1: Distributed Systems",
+            "Research 1: Cloud Data Management",
+            "Research 2: Applied ML and AI for Data Management I",
+            "Research 26: Distributed Transactions I",
+            "Research 40: Time Series and Vector Data",
+            "Demo C2:"
+        ]
+
+        extracted_papers: Set[Paper] = extract_papers(vldb_schedule_link)
+        
+        # Extract unique session names from the papers
+        extracted_sessions: Set[str] = {paper.session for paper in extracted_papers}
+        
+        # Assert that each session in the subset is present in the extracted sessions
+        for session in sessions_sublist:
+            assert session in extracted_sessions, f"Session '{session}' should be present in extracted sessions"
+
 
 if __name__ == "__main__":
     pytest.main([__file__])
