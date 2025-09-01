@@ -8,6 +8,7 @@ class TestVLDBScraper:
     
     def test_extract_papers_contains_different_paper(self) -> None:
         """Test that extract_papers function extracts papers and different_paper is a member."""
+        print("\n=== Testing extract_papers_contains_different_paper ===")
 
         example_paper: Paper = Paper(
             title="Ursa: A Lakehouse-Native Data Streaming Engine for Kafka",
@@ -26,10 +27,55 @@ class TestVLDBScraper:
             conference="VLDB"
         )
 
+        print(f"Looking for paper: {example_paper.title}")
+        print(f"Expected session: {example_paper.session}")
+        print(f"Expected conference_link: {example_paper.conference_link}")
+        print(f"Expected pdf_link: {example_paper.pdf_link}")
+        print(f"Expected authors: {len(example_paper.authors)} authors")
+        
+        print("\nExtracting papers from schedule...")
         extracted_papers: Set[Paper] = extract_papers(vldb_schedule_link)
+        
+        print(f"\nExtracted {len(extracted_papers)} papers total")
+        
+        # Show some extracted papers for debugging
+        print("\nFirst 5 extracted papers:")
+        for i, paper in enumerate(list(extracted_papers)[:5]):
+            print(f"{i+1}. Title: {paper.title}")
+            print(f"   Session: {paper.session}")
+            print(f"   Conference Link: {paper.conference_link}")
+            print(f"   PDF Link: {paper.pdf_link}")
+            print(f"   Authors: {len(paper.authors)} authors")
+            print(f"   Abstract length: {len(paper.abstract)} chars")
+            print()
+        
+        # Check if our target paper is in the set
+        found_paper = None
+        for paper in extracted_papers:
+            if paper.title == example_paper.title:
+                found_paper = paper
+                break
+        
+        if found_paper:
+            print(f"✓ Found target paper: {found_paper.title}")
+            print(f"  Session matches: {found_paper.session == example_paper.session}")
+            print(f"  Conference link matches: {found_paper.conference_link == example_paper.conference_link}")
+            print(f"  PDF link matches: {found_paper.pdf_link == example_paper.pdf_link}")
+            print(f"  Authors count matches: {len(found_paper.authors) == len(example_paper.authors)}")
+            print(f"  Abstract length: {len(found_paper.abstract)}")
+        else:
+            print("✗ Target paper not found in extracted papers")
+            # Show titles that might be similar
+            print("Papers with 'Ursa' in title:")
+            for paper in extracted_papers:
+                if 'Ursa' in paper.title:
+                    print(f"  - {paper.title}")
+        
         assert example_paper in extracted_papers, "different_paper should be in the extracted papers set"
     
     def test_subset_of_sessions_present(self) -> None:
+        print("\n=== Testing subset_of_sessions_present ===")
+        
         sessions_sublist = [
             "Panel 1: Neural Relational Data: Tabular Foundation Models, LLMs... or both?",
             "Tutorial 1: Property Graph Standards: State of the Art & Open Challenges",
@@ -41,13 +87,32 @@ class TestVLDBScraper:
             "Demo C2:"
         ]
 
+        print(f"Expected sessions to find ({len(sessions_sublist)}):")
+        for session in sessions_sublist:
+            print(f"  - {session}")
+
+        print("\nExtracting papers from schedule...")
         extracted_papers: Set[Paper] = extract_papers(vldb_schedule_link)
         
         # Extract unique session names from the papers
         extracted_sessions: Set[str] = {paper.session for paper in extracted_papers}
         
+        print(f"\nFound {len(extracted_sessions)} unique sessions:")
+        for session in sorted(extracted_sessions):
+            print(f"  - {session}")
+        
+        print(f"\nChecking if expected sessions are present:")
+        
         # Assert that each session in the subset is present in the extracted sessions
         for session in sessions_sublist:
+            is_present = session in extracted_sessions
+            status = "✓" if is_present else "✗"
+            print(f"  {status} {session}")
+            if not is_present:
+                # Look for similar sessions
+                similar_sessions = [s for s in extracted_sessions if any(word in s for word in session.split()[:3])]
+                if similar_sessions:
+                    print(f"    Similar sessions found: {similar_sessions}")
             assert session in extracted_sessions, f"Session '{session}' should be present in extracted sessions"
 
 

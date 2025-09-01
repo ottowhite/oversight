@@ -57,10 +57,8 @@ def get_cached_webpage(
 
     # Wait 2s on the retrieve path to avoid being blocked by the server
     if target_url == "semantic_scholar":
-        print(f"Sleeping for {semantic_scholar_rate_limit_sleep_time}s...")
         time.sleep(semantic_scholar_rate_limit_sleep_time)
     else:
-        print(f"Sleeping for {other_rate_limit_sleep_time}s...")
         time.sleep(other_rate_limit_sleep_time)
     
     # Download the webpage if cache doesn't exist
