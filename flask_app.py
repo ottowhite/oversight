@@ -35,7 +35,7 @@ def _build_filters(repo: PaperRepository, sources_flags: Dict[str, bool]) -> Lis
         filters.append(repo.build_filter_string(["ICML", "NeurIPS", "ICLR"]))
 
     if sources_flags.get("systems", False):
-        filters.append(repo.build_filter_string(["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys"]))
+        filters.append(repo.build_filter_string(["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys", "VLDB"]))
 
     # If nothing selected, default to everything
     if len(filters) == 0:
