@@ -8,6 +8,28 @@ import re
 import json
 from dataclasses import dataclass
 
+unlinked_titles = [
+    "Locator: Local Stability for Rankings",
+    "OmniTune: A universal framework for query refinement via LLMs",
+    "Sentence to Model: Cost‑Effective Data Collection LLM Agent",
+    "SWOOP: Top-k Similarity Joins over Set Streams",
+    "SHARQ: Explainability Framework for Association Rules on Relational Data",
+    "A Survey of Multimodal Event Detection Based on Data Fusion",
+    "Grouping, subsumption, and disjunctive join optimisations in Oracle",
+    "Model Reusability in Reinforcement Learning",
+    "GRELA: Exploiting Graph Representation Learning in Effective Approximate Query Processing",
+    "In-Database Query Optimization on SQL with ML Predicates",
+    "SunStorm: Geographically distributed transactions over Aurora-style systems",
+    "Join Optimization Revisited: A Novel DP Algorithm for Join & Sort Order Selection",
+    "How Good Are Multi-dimensional Learned Indices? An Experimental Survey",
+    "Languages and Systems for RDF Stream Processing, a Survey",
+    "LIST: Learning to Index Spatio-Textual Data for Embedding based Spatial Keyword Queries",
+    "Optimizing Navigational Graph Queries",
+    "MINE GRAPH RULE: A New GQL Operator for Mining Association Rules in Property Graph Databases",
+    "Survey of Vector Database Management Systems",
+    "OLTP in the Cloud: Architectures, Tradeoffs, and Cost"
+]
+
 
 @dataclass(frozen=True)
 class Author:
@@ -304,7 +326,7 @@ def extract_papers(schedule_url: str) -> Tuple[Set[Paper], List[SkippedPaper]]:
         print(f"  - Flagged papers (with issues): {len(flagged_papers)} papers")
         print(f"Skipped/Errored: {len(skipped_papers)} papers")
     
-    if flagged_papers and False:
+    if flagged_papers and True:
         print(f"\n=== FLAGGED PAPERS SUMMARY ===")
         flag_counts: Dict[str, int] = {}
         for paper in flagged_papers:
@@ -442,6 +464,7 @@ if __name__ == "__main__":
     save_papers_to_json(papers, output_filename)
     print(f"Saved {len(papers)} papers to {output_filename}")
     print(f"Skipped {len(skipped_papers)} papers due to various issues")
+    print(f"Expected {len(unlinked_titles)} unlinked titles")
 
 
     test_json_file_valid(output_filename)

@@ -1,7 +1,6 @@
 from typing import Set
 import pytest
-from vldb_scraper import extract_papers, Paper, Author, vldb_schedule_link
-
+from vldb_scraper import extract_papers, Paper, Author, vldb_schedule_link, unlinked_titles
 
 class TestVLDBScraper:
     """Test class for VLDB scraper functionality."""
@@ -69,27 +68,6 @@ class TestVLDBScraper:
         Test that papers known to be unlinked (e.g., missing conference_link or pdf_link)
         are present in the skipped papers set and not in the extracted papers set.
         """
-        unlinked_titles = [
-            "Locator: Local Stability for Rankings",
-            "OmniTune: A universal framework for query refinement via LLMs",
-            "Sentence to Model: Cost‑Effective Data Collection LLM Agent",
-            "SWOOP: Top-k Similarity Joins over Set Streams",
-            "SHARQ: Explainability Framework for Association Rules on Relational Data",
-            "A Survey of Multimodal Event Detection Based on Data Fusion",
-            "Grouping, subsumption, and disjunctive join optimisations in Oracle",
-            "Model Reusability in Reinforcement Learning",
-            "GRELA: Exploiting Graph Representation Learning in Effective Approximate Query Processing",
-            "In-Database Query Optimization on SQL with ML Predicates",
-            "SunStorm: Geographically distributed transactions over Aurora-style systems",
-            "Join Optimization Revisited: A Novel DP Algorithm for Join & Sort Order Selection",
-            "How Good Are Multi-dimensional Learned Indices? An Experimental Survey",
-            "Languages and Systems for RDF Stream Processing, a Survey",
-            "LIST: Learning to Index Spatio-Textual Data for Embedding based Spatial Keyword Queries",
-            "Optimizing Navigational Graph Queries",
-            "MINE GRAPH RULE: A New GQL Operator for Mining Association Rules in Property Graph Databases",
-            "Survey of Vector Database Management Systems",
-            "OLTP in the Cloud: Architectures, Tradeoffs, and Cost"
-        ]
 
 
 
@@ -131,16 +109,52 @@ class TestVLDBScraper:
             else:
                 unlinked_not_found.append(title)
 
-
-
-        # Check for papers that were skipped but shouldn't have been
-        unexpected_skipped = []
+        # Check that ALL skipped papers are covered by unlinked_titles
+        # This ensures our unlinked_titles list is comprehensive
+        skipped_not_in_unlinked = []
         for skipped in skipped_papers:
-            if skipped.paper.title and skipped.paper.title not in unlinked_titles:
-                unexpected_skipped.append(skipped)
+            # Check if this skipped paper is accounted for in unlinked_titles
+            found_in_unlinked = False
+            
+            # First check by title if it exists
+            if skipped.paper.title and skipped.paper.title in unlinked_titles:
+                found_in_unlinked = True
+            else:
+                # Check if any unlinked title is contained in the element text
+                for unlinked_title in unlinked_titles:
+                    if unlinked_title in skipped.element_text:
+                        found_in_unlinked = True
+                        break
+            
+            if not found_in_unlinked:
+                skipped_not_in_unlinked.append({
+                    'title': skipped.paper.title if skipped.paper.title else '<No Title>',
+                    'element_text': skipped.element_text[:200] + '...' if len(skipped.element_text) > 200 else skipped.element_text,
+                    'session': skipped.paper.session if skipped.paper.session else '<No Session>',
+                    'reason': skipped.reason,
+                    'error_details': skipped.error_details,
+                    'links_found': skipped.links_found,
+                    'num_links': len(skipped.links_found),
+                    'conference_link': skipped.paper.conference_link if skipped.paper.conference_link else '<No Conference Link>',
+                    'pdf_link': skipped.paper.pdf_link if skipped.paper.pdf_link else '<No PDF Link>',
+                    'authors': [author.name for author in skipped.paper.authors] if skipped.paper.authors else []
+                })
 
-        if unexpected_skipped:
-            assert False, f"Unexpected papers were skipped: {[s.paper.title for s in unexpected_skipped]}"
+        if skipped_not_in_unlinked:
+            error_msg = f"The unlinked_titles list does not cover all skipped papers. "
+            error_msg += f"Found {len(skipped_not_in_unlinked)} skipped papers not in unlinked_titles:\n\n"
+            for i, paper in enumerate(skipped_not_in_unlinked, 1):
+                error_msg += f"  {i}. Title: '{paper['title']}'\n"
+                error_msg += f"     Session: '{paper['session']}'\n"
+                error_msg += f"     Reason: '{paper['reason']}'\n"
+                error_msg += f"     Error Details: '{paper['error_details']}'\n"
+                error_msg += f"     Links Found ({paper['num_links']}): {paper['links_found']}\n"
+                error_msg += f"     Conference Link: '{paper['conference_link']}'\n"
+                error_msg += f"     PDF Link: '{paper['pdf_link']}'\n"
+                error_msg += f"     Authors: {paper['authors']}\n"
+                error_msg += f"     Element Text: '{paper['element_text']}'\n"
+                error_msg += f"     {'-' * 80}\n"
+            assert False, error_msg
 
 
 if __name__ == "__main__":
