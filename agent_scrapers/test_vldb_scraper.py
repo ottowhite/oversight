@@ -8,7 +8,6 @@ class TestVLDBScraper:
     
     def test_extract_papers_contains_different_paper(self) -> None:
         """Test that extract_papers function extracts papers and different_paper is a member."""
-        print("\n=== Testing extract_papers_contains_different_paper ===")
 
         example_paper: Paper = Paper(
             title="Ursa: A Lakehouse-Native Data Streaming Engine for Kafka",
@@ -27,27 +26,9 @@ class TestVLDBScraper:
             conference="VLDB"
         )
 
-        print(f"Looking for paper: {example_paper.title}")
-        print(f"Expected session: {example_paper.session}")
-        print(f"Expected conference_link: {example_paper.conference_link}")
-        print(f"Expected pdf_link: {example_paper.pdf_link}")
-        print(f"Expected authors: {len(example_paper.authors)} authors")
-        
-        print("\nExtracting papers from schedule...")
-        extracted_papers: Set[Paper] = extract_papers(vldb_schedule_link)
-        
-        print(f"\nExtracted {len(extracted_papers)} papers total")
-        
-        # Show some extracted papers for debugging
-        print("\nFirst 5 extracted papers:")
-        for i, paper in enumerate(list(extracted_papers)[:5]):
-            print(f"{i+1}. Title: {paper.title}")
-            print(f"   Session: {paper.session}")
-            print(f"   Conference Link: {paper.conference_link}")
-            print(f"   PDF Link: {paper.pdf_link}")
-            print(f"   Authors: {len(paper.authors)} authors")
-            print(f"   Abstract length: {len(paper.abstract)} chars")
-            print()
+
+        extracted_papers, skipped_papers = extract_papers(vldb_schedule_link)
+
         
         # Check if our target paper is in the set
         found_paper = None
@@ -56,25 +37,11 @@ class TestVLDBScraper:
                 found_paper = paper
                 break
         
-        if found_paper:
-            print(f"✓ Found target paper: {found_paper.title}")
-            print(f"  Session matches: {found_paper.session == example_paper.session}")
-            print(f"  Conference link matches: {found_paper.conference_link == example_paper.conference_link}")
-            print(f"  PDF link matches: {found_paper.pdf_link == example_paper.pdf_link}")
-            print(f"  Authors count matches: {len(found_paper.authors) == len(example_paper.authors)}")
-            print(f"  Abstract length: {len(found_paper.abstract)}")
-        else:
-            print("✗ Target paper not found in extracted papers")
-            # Show titles that might be similar
-            print("Papers with 'Ursa' in title:")
-            for paper in extracted_papers:
-                if 'Ursa' in paper.title:
-                    print(f"  - {paper.title}")
+
         
         assert example_paper in extracted_papers, "different_paper should be in the extracted papers set"
     
     def test_subset_of_sessions_present(self) -> None:
-        print("\n=== Testing subset_of_sessions_present ===")
         
         sessions_sublist = [
             "Panel 1: Neural Relational Data: Tabular Foundation Models, LLMs... or both?",
@@ -87,33 +54,93 @@ class TestVLDBScraper:
             "Demo C2:"
         ]
 
-        print(f"Expected sessions to find ({len(sessions_sublist)}):")
-        for session in sessions_sublist:
-            print(f"  - {session}")
 
-        print("\nExtracting papers from schedule...")
-        extracted_papers: Set[Paper] = extract_papers(vldb_schedule_link)
+        extracted_papers, skipped_papers = extract_papers(vldb_schedule_link)
         
         # Extract unique session names from the papers
         extracted_sessions: Set[str] = {paper.session for paper in extracted_papers}
         
-        print(f"\nFound {len(extracted_sessions)} unique sessions:")
-        for session in sorted(extracted_sessions):
-            print(f"  - {session}")
-        
-        print(f"\nChecking if expected sessions are present:")
-        
         # Assert that each session in the subset is present in the extracted sessions
         for session in sessions_sublist:
-            is_present = session in extracted_sessions
-            status = "✓" if is_present else "✗"
-            print(f"  {status} {session}")
-            if not is_present:
-                # Look for similar sessions
-                similar_sessions = [s for s in extracted_sessions if any(word in s for word in session.split()[:3])]
-                if similar_sessions:
-                    print(f"    Similar sessions found: {similar_sessions}")
             assert session in extracted_sessions, f"Session '{session}' should be present in extracted sessions"
+    
+    def test_unlinked_papers_not_in_result(self):
+        """
+        Test that papers known to be unlinked (e.g., missing conference_link or pdf_link)
+        are present in the skipped papers set and not in the extracted papers set.
+        """
+        unlinked_titles = [
+            "Locator: Local Stability for Rankings",
+            "OmniTune: A universal framework for query refinement via LLMs",
+            "Sentence to Model: Cost‑Effective Data Collection LLM Agent",
+            "SWOOP: Top-k Similarity Joins over Set Streams",
+            "SHARQ: Explainability Framework for Association Rules on Relational Data",
+            "A Survey of Multimodal Event Detection Based on Data Fusion",
+            "Grouping, subsumption, and disjunctive join optimisations in Oracle",
+            "Model Reusability in Reinforcement Learning",
+            "GRELA: Exploiting Graph Representation Learning in Effective Approximate Query Processing",
+            "In-Database Query Optimization on SQL with ML Predicates",
+            "SunStorm: Geographically distributed transactions over Aurora-style systems",
+            "Join Optimization Revisited: A Novel DP Algorithm for Join & Sort Order Selection",
+            "How Good Are Multi-dimensional Learned Indices? An Experimental Survey",
+            "Languages and Systems for RDF Stream Processing, a Survey",
+            "LIST: Learning to Index Spatio-Textual Data for Embedding based Spatial Keyword Queries",
+            "Optimizing Navigational Graph Queries",
+            "MINE GRAPH RULE: A New GQL Operator for Mining Association Rules in Property Graph Databases",
+            "Survey of Vector Database Management Systems",
+            "OLTP in the Cloud: Architectures, Tradeoffs, and Cost"
+        ]
+
+
+
+        # Extract papers from the schedule
+        extracted_papers, skipped_papers = extract_papers(vldb_schedule_link)
+        extracted_titles = {paper.title for paper in extracted_papers}
+        skipped_titles = {skipped.paper.title for skipped in skipped_papers}
+
+
+
+        # Check that none of the unlinked paper titles are in extracted papers
+        unlinked_in_extracted = []
+        for title in unlinked_titles:
+            if title in extracted_titles:
+                unlinked_in_extracted.append(title)
+
+        if unlinked_in_extracted:
+            assert False, f"Unlinked papers should not be in extracted results: {unlinked_in_extracted}"
+
+        # Check that all unlinked titles are in skipped papers (check element text since titles may be empty)
+        unlinked_in_skipped = []
+        unlinked_not_found = []
+        skipped_element_texts = [skipped.element_text for skipped in skipped_papers]
+        
+        for title in unlinked_titles:
+            found = False
+            # Check if title is in the skipped papers' titles
+            if title in skipped_titles:
+                found = True
+            else:
+                # Check if title is in the element text of any skipped paper
+                for element_text in skipped_element_texts:
+                    if title in element_text:
+                        found = True
+                        break
+            
+            if found:
+                unlinked_in_skipped.append(title)
+            else:
+                unlinked_not_found.append(title)
+
+
+
+        # Check for papers that were skipped but shouldn't have been
+        unexpected_skipped = []
+        for skipped in skipped_papers:
+            if skipped.paper.title and skipped.paper.title not in unlinked_titles:
+                unexpected_skipped.append(skipped)
+
+        if unexpected_skipped:
+            assert False, f"Unexpected papers were skipped: {[s.paper.title for s in unexpected_skipped]}"
 
 
 if __name__ == "__main__":

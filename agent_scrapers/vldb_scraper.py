@@ -1,9 +1,11 @@
-from typing import Set, Tuple, List, Dict
-from cached_webpage_retriever import get_cached_webpage
-from bs4 import BeautifulSoup
+from typing import Set, Tuple, List, Dict, Any, cast
+try:
+    from .cached_webpage_retriever import get_cached_webpage
+except ImportError:
+    from cached_webpage_retriever import get_cached_webpage
+from bs4 import BeautifulSoup, Tag, ResultSet
 import re
 import json
-from typing import Any
 from dataclasses import dataclass
 
 
@@ -28,6 +30,7 @@ class Paper:
     authors: Tuple[Author, ...]
     date: str
     conference: str
+    flags: Tuple[str, ...] = tuple()
     
     def __str__(self) -> str:
         authors_str = "; ".join(str(author) for author in self.authors)
@@ -64,7 +67,7 @@ class SkippedPaper:
         )
 
 
-def extract_papers(schedule_url: str) -> Set[Paper]:
+def extract_papers(schedule_url: str) -> Tuple[Set[Paper], List[SkippedPaper]]:
     """Extract papers from the VLDB schedule webpage.
 
     Requirements:
@@ -82,7 +85,7 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
         schedule_url: URL of the VLDB schedule page
         
     Returns:
-        Set of Paper objects extracted from the webpage
+        Tuple of (Set of Paper objects extracted from the webpage, List of SkippedPaper objects)
     """
     # Get the webpage HTML
     html_content = get_cached_webpage(schedule_url)
@@ -96,9 +99,12 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
     schedule_divs = soup.find_all('div', class_='schedule-head')
     
     for schedule_div in schedule_divs:
-        # Extract session name from h3 element
+        # Extract session name from h3 element (ensure we have a Tag)
+        if not isinstance(schedule_div, Tag):
+            continue
+            
         h3_element = schedule_div.find('h3')
-        current_session = h3_element.get_text().strip() if h3_element else "Unknown Session"
+        current_session = h3_element.get_text().strip() if h3_element and isinstance(h3_element, Tag) else "Unknown Session"
         
         # Find all strong elements (papers) within this schedule div
         paper_elements = schedule_div.find_all('strong')
@@ -107,7 +113,7 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
             element_text = element.get_text().strip()
             
             # All elements here are already strong tags, so process directly
-            links = element.find_all('a', href=True) if hasattr(element, 'find_all') else []  # type: ignore
+            links = element.find_all('a', href=True) if isinstance(element, Tag) else []
             
             # Track potential paper data for error reporting
             title = ""
@@ -117,10 +123,10 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
             skip_reason = ""
             error_details = ""
             
-            # Check if we have enough links
-            if len(links) < 2:
-                skip_reason = "Insufficient links"
-                error_details = f"Found {len(links)} links, expected at least 2"
+            # Check if we have enough links - skip only if no links found
+            if len(links) == 0:
+                skip_reason = "No links found"
+                error_details = f"Found {len(links)} links, expected at least 1"
                 # Create a partial paper with available data
                 partial_paper = Paper(
                     title="",
@@ -135,7 +141,7 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                 skipped_papers.append(SkippedPaper(
                     paper=partial_paper,
                     element_text=element_text,
-                    links_found=[str(link.get('href', '')) if hasattr(link, 'get') else '' for link in links],
+                    links_found=[str(link.get('href', '')) if isinstance(link, Tag) else '' for link in links],
                     reason=skip_reason,
                     error_details=error_details
                 ))
@@ -147,18 +153,23 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                 # Pattern 1: Conference link with round-button class (volumes URL) + PDF link (.pdf URL)
                 # Pattern 2: PDF link with round-button class (.pdf URL) + Conference link (volumes URL)
                 for link in links:
-                    href = link.get('href', '') if hasattr(link, 'get') else ''  # type: ignore
-                    link_text = link.get_text().strip() if hasattr(link, 'get_text') else ''
-                    has_round_button_class = 'round-button' in str(link.get('class', []) if hasattr(link, 'get') else [])  # type: ignore
+                    if isinstance(link, Tag):
+                        href = str(link.get('href', ''))
+                        link_text = link.get_text().strip()
+                        has_round_button_class = 'round-button' in str(link.get('class', ''))
+                    else:
+                        href = ''
+                        link_text = ''
+                        has_round_button_class = False
                     
                     # Determine link type by URL pattern, not just class
-                    if href and '.pdf' in str(href) and 'vldb.org/pvldb/vol' in str(href):  # type: ignore
+                    if href and '.pdf' in str(href) and 'vldb.org/pvldb/vol' in str(href):
                         # This is a PDF link (actual PDF file)
                         pdf_link = href
                         # If the text is not "PDF", it might be the title
                         if link_text and link_text != "PDF":
                             title = link_text
-                    elif href and 'vldb.org/pvldb/volumes' in str(href) and 'paper' in str(href):  # type: ignore
+                    elif href and 'vldb.org/pvldb/volumes' in str(href) and 'paper' in str(href):
                         # This is a conference link (paper page)
                         conference_link = href
                         # If the text is not "PDF", it's the title
@@ -173,7 +184,7 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                 # Extract authors from the next paragraph after the strong element
                 next_element = element.next_sibling
                 while next_element:
-                    if hasattr(next_element, 'name') and next_element.name == 'p':  # type: ignore
+                    if isinstance(next_element, Tag) and next_element.name == 'p':
                         author_text = next_element.get_text().strip()
                         if author_text:
                             # Parse authors - format: "Name (Affiliation);Name (Affiliation);..."
@@ -187,20 +198,20 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                         break
                     next_element = next_element.next_sibling
                 
-                # Validate required fields
-                missing_fields = []
-                if not conference_link:
-                    missing_fields.append("conference_link")
-                if not pdf_link:
-                    missing_fields.append("pdf_link")
+                # Validate required fields - only skip if title or session is missing, or both links are missing
+                critical_missing_fields = []
                 if not title:
-                    missing_fields.append("title")
+                    critical_missing_fields.append("title")
                 if not current_session:
-                    missing_fields.append("current_session")
+                    critical_missing_fields.append("current_session")
                 
-                if missing_fields:
-                    skip_reason = "Missing required fields"
-                    error_details = f"Missing: {', '.join(missing_fields)}"
+                # Check if both links are missing (this should skip the paper)
+                if not conference_link and not pdf_link:
+                    critical_missing_fields.append("both conference_link and pdf_link")
+                
+                if critical_missing_fields:
+                    skip_reason = "Missing critical fields"
+                    error_details = f"Missing: {', '.join(critical_missing_fields)}"
                     # Create a partial paper with available data
                     partial_paper = Paper(
                         title=title or "",
@@ -215,21 +226,38 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                     skipped_papers.append(SkippedPaper(
                         paper=partial_paper,
                         element_text=element_text,
-                        links_found=[str(link.get('href', '')) if hasattr(link, 'get') else '' for link in links],
+                        links_found=[str(link.get('href', '')) if isinstance(link, Tag) else '' for link in links],
                         reason=skip_reason,
                         error_details=error_details
                     ))
                     continue
                 
-                # Try to extract the abstract
-                try:
-                    abstract = extract_abstract_from_conference_page(str(conference_link))
-                except Exception as e:
-                    # Still create the paper but note the abstract extraction failed
-                    abstract = ""
-                    print(f"Warning: Failed to extract abstract for '{title}': {e}")
+                # Try to extract the abstract (only if we have conference link)
+                abstract = ""
+                if conference_link:
+                    try:
+                        abstract = extract_abstract_from_conference_page(str(conference_link))
+                    except Exception as e:
+                        print(f"Warning: Failed to extract abstract for '{title}': {e}")
                 
-                # Create the paper
+                # Create flags for any issues
+                flags = []
+                
+                # Flag missing links
+                if not conference_link:
+                    flags.append("Missing conference link")
+                    # print(f"🚩 FLAGGED: Paper '{title}' is missing the conference link (conference page URL)")
+                
+                if not pdf_link:
+                    flags.append("Missing PDF link")
+                    # print(f"🚩 FLAGGED: Paper '{title}' is missing the PDF link (direct PDF URL)")
+                
+                # Flag empty abstract
+                if not abstract or abstract.strip() == "":
+                    flags.append("Empty or missing abstract")
+                    # print(f"🚩 FLAGGED: Paper '{title}' has an empty or missing abstract - no content could be extracted from the conference page")
+                
+                # Create the paper (with flags if any)
                 paper = Paper(
                     title=title,
                     abstract=abstract,
@@ -238,9 +266,9 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                     session=current_session,
                     authors=tuple(authors),
                     date="2025-09-01",
-                    conference="VLDB"
+                    conference="VLDB",
+                    flags=tuple(flags)
                 )
-                print(paper)
                 papers.add(paper)
                 
             except Exception as e:
@@ -260,42 +288,71 @@ def extract_papers(schedule_url: str) -> Set[Paper]:
                 skipped_papers.append(SkippedPaper(
                     paper=partial_paper,
                     element_text=element_text,
-                    links_found=[str(link.get('href', '')) if hasattr(link, 'get') else '' for link in links] if links else [],
+                    links_found=[str(link.get('href', '')) if isinstance(link, Tag) else '' for link in links] if links else [],
                     reason=skip_reason,
                     error_details=error_details
                 ))
     
-    # Print detailed summary
-    print(f"\n=== PAPER EXTRACTION SUMMARY ===")
-    print(f"Successfully extracted: {len(papers)} papers")
-    print(f"Skipped/Errored: {len(skipped_papers)} papers")
+    # Count flagged papers
+    flagged_papers = [paper for paper in papers if paper.flags]
     
-    if skipped_papers:
-        print(f"\n=== DETAILED SKIPPED PAPERS REPORT ===")
+    # Print detailed summary
+    if False:
+        print(f"\n=== PAPER EXTRACTION SUMMARY ===")
+        print(f"Successfully extracted: {len(papers)} papers")
+        print(f"  - Clean papers (no issues): {len(papers) - len(flagged_papers)} papers")
+        print(f"  - Flagged papers (with issues): {len(flagged_papers)} papers")
+        print(f"Skipped/Errored: {len(skipped_papers)} papers")
+    
+    if flagged_papers and False:
+        print(f"\n=== FLAGGED PAPERS SUMMARY ===")
+        flag_counts: Dict[str, int] = {}
+        for paper in flagged_papers:
+            for flag in paper.flags:
+                flag_counts[flag] = flag_counts.get(flag, 0) + 1
+        
+        print(f"Papers with issues by type:")
+        for flag_type, count in flag_counts.items():
+            print(f"  - {flag_type}: {count} papers")
+        
+        print(f"\nDetailed flagged papers:")
+        for i, paper in enumerate(flagged_papers, 1):
+            flags_str = ", ".join(paper.flags)
+            print(f"  {i}. '{paper.title}' - Issues: {flags_str}")
+            print(f"     Session: {paper.session}")
+            print(f"     Conference Link: {'✓' if paper.conference_link else '✗'}")
+            print(f"     PDF Link: {'✓' if paper.pdf_link else '✗'}")
+            print(f"     Abstract: {'✓' if paper.abstract else '✗'}")
+            print()
+    
+    if skipped_papers and False:
+        print(f"\n=== SKIPPED/ERRORED PAPERS SUMMARY ===")
         
         # Group by reason for better readability
         reasons_count: Dict[str, int] = {}
         for skipped in skipped_papers:
             reasons_count[skipped.reason] = reasons_count.get(skipped.reason, 0) + 1
         
-        print(f"\nSkipped papers by reason:")
+        print(f"Skipped papers by reason:")
         for reason, count in reasons_count.items():
             print(f"  - {reason}: {count} papers")
         
-        print(f"\nDetailed information for each skipped paper:")
+        print(f"\nDetailed skipped papers:")
         for i, skipped in enumerate(skipped_papers, 1):
-            print(f"\n--- Skipped Paper #{i} ---")
-            print(f"Reason: {skipped.reason}")
-            print(f"Error Details: {skipped.error_details}")
-            print(f"Session: {skipped.paper.session or 'Unknown'}")
-            print(f"Element Text: {skipped.element_text[:100]}{'...' if len(skipped.element_text) > 100 else ''}")
-            print(f"Title Found: {skipped.paper.title or 'None'}")
-            print(f"Conference Link: {skipped.paper.conference_link or 'None'}")
-            print(f"PDF Link: {skipped.paper.pdf_link or 'None'}")
-            print(f"Authors Found: {len(skipped.paper.authors)} authors")
-            print(f"Links Found: {len(skipped.links_found)} - {skipped.links_found}")
+            title = skipped.paper.title or "Unknown Title"
+            print(f"  {i}. '{title}' - Reason: {skipped.reason}")
+            print(f"     Session: {skipped.paper.session or 'Unknown'}")
+            print(f"     Error: {skipped.error_details}")
+            print(f"     Conference Link: {'✓' if skipped.paper.conference_link else '✗'}")
+            print(f"     PDF Link: {'✓' if skipped.paper.pdf_link else '✗'}")
+            print(f"     Authors Found: {len(skipped.paper.authors)} authors")
+            print(f"     Links Found: {len(skipped.links_found)} - {skipped.links_found[:2]}{'...' if len(skipped.links_found) > 2 else ''}")
+            if skipped.element_text and len(skipped.element_text.strip()) > 0:
+                element_preview = skipped.element_text[:80] + "..." if len(skipped.element_text) > 80 else skipped.element_text
+                print(f"     Element Text: {element_preview}")
+            print()
     
-    return papers
+    return papers, skipped_papers
 
 
 def extract_abstract_from_conference_page(conference_url: str) -> str:
@@ -337,7 +394,6 @@ def extract_abstract_from_conference_page(conference_url: str) -> str:
             return ""
             
     except Exception as e:
-        print(f"Error extracting abstract from {conference_url}: {e}")
         return ""
 
 
@@ -356,6 +412,7 @@ def paper_to_dict(paper: Any) -> dict:
         ],
         "date": paper.date,
         "conference": paper.conference,
+        "flags": list(getattr(paper, "flags", [])),
     }
 
 def save_papers_to_json(papers, filename: str) -> None:
@@ -380,10 +437,11 @@ if __name__ == "__main__":
     
     output_filename = "data/vldb/vldb_25_papers.json"
 
-    papers = extract_papers(vldb_schedule_link)
+    papers, skipped_papers = extract_papers(vldb_schedule_link)
     # Save papers to JSON
     save_papers_to_json(papers, output_filename)
     print(f"Saved {len(papers)} papers to {output_filename}")
+    print(f"Skipped {len(skipped_papers)} papers due to various issues")
 
 
     test_json_file_valid(output_filename)
