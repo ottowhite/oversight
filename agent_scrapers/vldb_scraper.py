@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup, Tag, ResultSet
 import re
 import json
 from dataclasses import dataclass
+import uuid
 
 unlinked_titles = [
     "Locator: Local Stability for Rankings",
@@ -423,6 +424,7 @@ def extract_abstract_from_conference_page(conference_url: str) -> str:
 def paper_to_dict(paper: Any) -> dict:
     """Convert a Paper object to a serializable dictionary."""
     return {
+        "id": str(uuid.uuid4()),
         "title": paper.title,
         "abstract": paper.abstract,
         "conference_link": paper.conference_link,
