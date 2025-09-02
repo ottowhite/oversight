@@ -6,7 +6,7 @@ from typing import Optional, Dict, Any, Union
 from requests_html import HTMLSession
 
 semantic_scholar_rate_limit_sleep_time: int = 2
-other_rate_limit_sleep_time: int = 5
+other_rate_limit_sleep_time: int = 1
 
 DEBUG: bool = False
 
@@ -79,6 +79,9 @@ def get_cached_webpage(
         response_text: str = response_text_raw.decode('utf-8') if isinstance(response_text_raw, bytes) else str(response_text_raw)
     else:
         response = requests.get(url, headers=headers, params=params)
+        # Force UTF-8 encoding to prevent ISO-8859-1 misdetection
+        # which causes UTF-8 characters to be incorrectly interpreted
+        response.encoding = 'utf-8'
         response_text = response.text
 
 

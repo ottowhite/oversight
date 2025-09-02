@@ -17,11 +17,11 @@ class TestVLDBScraper:
             pdf_link="https://www.vldb.org/pvldb/vol18/p5184-guo.pdf",
             session="Industry 1: Distributed Systems",
             authors=(
-                Author(Name="Sijie Guo", Affiliation="StreamNative"),
-                Author(Name="Matteo Merli", Affiliation="StreamNative"),
-                Author(Name="Hang Chen", Affiliation="StreamNative"),
-                Author(Name="Neng Lu", Affiliation="StreamNative"),
-                Author(Name="Penghui Li", Affiliation="StreamNative")
+                Author(name="Sijie Guo", affiliation="StreamNative"),
+                Author(name="Matteo Merli", affiliation="StreamNative"),
+                Author(name="Hang Chen", affiliation="StreamNative"),
+                Author(name="Neng Lu", affiliation="StreamNative"),
+                Author(name="Penghui Li", affiliation="StreamNative")
             ),
             date="2025-09-01",
             conference="VLDB"
