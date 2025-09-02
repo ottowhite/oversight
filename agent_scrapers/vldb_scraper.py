@@ -424,19 +424,18 @@ def extract_abstract_from_conference_page(conference_url: str) -> str:
 def paper_to_dict(paper: Any) -> dict:
     """Convert a Paper object to a serializable dictionary."""
     return {
-        "id": str(uuid.uuid4()),
+        "paper_id": str(uuid.uuid4()),
         "title": paper.title,
         "abstract": paper.abstract,
         "conference_link": paper.conference_link,
-        "pdf_link": paper.pdf_link,
+        "link": paper.pdf_link,
         "session": paper.session,
         "authors": [
             {"Name": author.name, "Affiliation": author.affiliation}
             for author in getattr(paper, "authors", [])
         ],
         "date": paper.date,
-        "conference": paper.conference,
-        "flags": list(getattr(paper, "flags", [])),
+        "conference_name": paper.conference
     }
 
 def save_papers_to_json(papers, filename: str) -> None:
