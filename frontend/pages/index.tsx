@@ -15,9 +15,22 @@ export default function HomePage() {
   const [text, setText] = useState("");
   const [timeDays, setTimeDays] = useState<number>(365 * 5);
   const [limit, setLimit] = useState<number>(10);
-  const [sources, setSources] = useState<{ arxiv: boolean; ai: boolean; systems: boolean }>(
-    { arxiv: true, ai: true, systems: true }
-  );
+  const [sources, setSources] = useState({
+    arxiv: true,
+    // AI conferences
+    ICML: true,
+    NeurIPS: true,
+    ICLR: true,
+    // Systems conferences
+    OSDI: true,
+    SOSP: true,
+    ASPLOS: true,
+    ATC: true,
+    NSDI: true,
+    MLSys: true,
+    EuroSys: true,
+    VLDB: true
+  });
   const [loading, setLoading] = useState(false);
   const lastRequestIdRef = useRef<number>(0);
   const [error, setError] = useState<string | null>(null);
@@ -68,8 +81,38 @@ export default function HomePage() {
     }
   }
 
+  // Conference categories
+  const aiConferences = ['ICML', 'NeurIPS', 'ICLR'];
+  const systemsConferences = ['OSDI', 'SOSP', 'ASPLOS', 'ATC', 'NSDI', 'MLSys', 'EuroSys', 'VLDB'];
+
+  // Check if all conferences in a category are selected
+  const isAllAISelected = aiConferences.every(conf => sources[conf as keyof typeof sources]);
+  const isAllSystemsSelected = systemsConferences.every(conf => sources[conf as keyof typeof sources]);
+
   function toggleSource(key: keyof typeof sources) {
     setSources((s) => ({ ...s, [key]: !s[key] }));
+  }
+
+  function toggleAllAI() {
+    const newValue = !isAllAISelected;
+    setSources((s) => {
+      const updated = { ...s };
+      aiConferences.forEach(conf => {
+        updated[conf as keyof typeof sources] = newValue;
+      });
+      return updated;
+    });
+  }
+
+  function toggleAllSystems() {
+    const newValue = !isAllSystemsSelected;
+    setSources((s) => {
+      const updated = { ...s };
+      systemsConferences.forEach(conf => {
+        updated[conf as keyof typeof sources] = newValue;
+      });
+      return updated;
+    });
   }
 
   return (
@@ -142,18 +185,66 @@ export default function HomePage() {
               <label className="label">
                 <span className="label-text">Sources</span>
               </label>
+
+              {/* arXiv */}
               <label className="label cursor-pointer justify-start gap-3">
                 <input type="checkbox" className="checkbox checkbox-sm" checked={sources.arxiv} onChange={() => toggleSource("arxiv")} />
                 <span className="label-text">arXiv</span>
               </label>
+
+              {/* AI conferences */}
               <label className="label cursor-pointer justify-start gap-3">
-                <input type="checkbox" className="checkbox checkbox-sm" checked={sources.ai} onChange={() => toggleSource("ai")} />
-                <span className="label-text">AI conferences</span>
+                <input
+                  type="checkbox"
+                  className="checkbox checkbox-sm"
+                  checked={isAllAISelected}
+                  onChange={toggleAllAI}
+                  ref={(el) => {
+                    if (el) {
+                      el.indeterminate = aiConferences.some(conf => sources[conf as keyof typeof sources]) && !isAllAISelected;
+                    }
+                  }}
+                />
+                <span className="label-text font-medium">AI conferences</span>
               </label>
+              {aiConferences.map(conf => (
+                <label key={conf} className="label cursor-pointer justify-start gap-3 ml-6">
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-sm"
+                    checked={sources[conf as keyof typeof sources]}
+                    onChange={() => toggleSource(conf as keyof typeof sources)}
+                  />
+                  <span className="label-text text-sm">{conf}</span>
+                </label>
+              ))}
+
+              {/* Systems conferences */}
               <label className="label cursor-pointer justify-start gap-3">
-                <input type="checkbox" className="checkbox checkbox-sm" checked={sources.systems} onChange={() => toggleSource("systems")} />
-                <span className="label-text">Systems conferences</span>
+                <input
+                  type="checkbox"
+                  className="checkbox checkbox-sm"
+                  checked={isAllSystemsSelected}
+                  onChange={toggleAllSystems}
+                  ref={(el) => {
+                    if (el) {
+                      el.indeterminate = systemsConferences.some(conf => sources[conf as keyof typeof sources]) && !isAllSystemsSelected;
+                    }
+                  }}
+                />
+                <span className="label-text font-medium">Systems conferences</span>
               </label>
+              {systemsConferences.map(conf => (
+                <label key={conf} className="label cursor-pointer justify-start gap-3 ml-6">
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-sm"
+                    checked={sources[conf as keyof typeof sources]}
+                    onChange={() => toggleSource(conf as keyof typeof sources)}
+                  />
+                  <span className="label-text text-sm">{conf}</span>
+                </label>
+              ))}
             </div>
 
             <button onClick={onSubmit as any} className={`btn btn-primary ${loading ? 'btn-disabled loading' : ''}`} disabled={loading}>

@@ -260,7 +260,7 @@ class PaperDatabase:
         if filter_list:
             or_group = " OR ".join(f"({flt})" for flt in filter_list)
             filter_str = f"AND ({or_group})\n"
-
+        
         with self.con.cursor() as cur:
             return cur.execute(f"""
                 SELECT ps.*, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity

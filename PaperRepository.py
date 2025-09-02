@@ -29,7 +29,7 @@ class PaperRepository:
         for paper_json in papers_json:
             paper = Paper.from_scraped_json(paper_json)
             updated_rows, new_rows, skipped_rows = self.db.insert_paper(paper)
-    
+
     def add_openreview_papers(self, path: str, api_version: int):
         with open(path, "r") as f:
             papers_json = json.load(f)
@@ -98,12 +98,17 @@ class PaperRepository:
 
     @staticmethod
     def build_filter_string(sources: list[str]):
+        if len(sources) == 1:
+            return f"ps.source = '{sources[0]}'"
         # Prefer a compact IN clause to avoid precedence issues
         sources_sql = ", ".join([f"'{s}'" for s in sources])
-        return f"source IN ({sources_sql})"
+        return f"ps.source IN ({sources_sql})"
     
 if __name__ == "__main__":
-    # repo.add_scraped_papers_from_dir("data/systems_conferences")
+    # with PaperRepository(embedding_model_name="models/gemini-embedding-001") as repo:
+    #     repo.add_scraped_papers_from_dir("data/vldb")
+    #     repo.embed...
+
     # repo.add_openreview_papers_from_dir("data/openreview_conferences")
 
     if False:
@@ -125,6 +130,6 @@ if __name__ == "__main__":
         arxiv_filter = repo.build_filter_string(["arxiv"])
         systems_filter = repo.build_filter_string(["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys"])
 
-        papers = repo.get_newest_related_papers(abstract, timedelta(days=365*5), [ai_conference_filter])
+        papers = repo.get_newest_related_papers(abstract, timedelta(days=365*5), [repo.build_filter_string(["VLDB"])])
         for paper in papers:
             print(paper)

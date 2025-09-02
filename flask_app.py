@@ -26,23 +26,35 @@ def health() -> tuple[dict, int]:
 
 def _build_filters(repo: PaperRepository, sources_flags: Dict[str, bool]) -> List[str]:
     filters: List[str] = []
-
-    # Map flags to source lists
+    
+    # Collect individual sources
+    selected_sources = []
+    
+    # Handle arXiv
     if sources_flags.get("arxiv", False):
-        filters.append(repo.build_filter_string(["arxiv"]))
-
-    if sources_flags.get("ai", False):
-        filters.append(repo.build_filter_string(["ICML", "NeurIPS", "ICLR"]))
-
-    if sources_flags.get("systems", False):
-        filters.append(repo.build_filter_string(["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys", "VLDB"]))
-
-    # If nothing selected, default to everything
-    if len(filters) == 0:
+        selected_sources.append("arxiv")
+    
+    # Handle individual AI conferences
+    ai_conferences = ["ICML", "NeurIPS", "ICLR"]
+    for conf in ai_conferences:
+        if sources_flags.get(conf, False):
+            selected_sources.append(conf)
+    
+    # Handle individual Systems conferences  
+    systems_conferences = ["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys", "VLDB"]
+    for conf in systems_conferences:
+        if sources_flags.get(conf, False):
+            selected_sources.append(conf)
+    
+    # Build filter from selected sources
+    if selected_sources:
+        filters.append(repo.build_filter_string(selected_sources))
+    else:
+        # If nothing selected, default to everything
         filters.append(repo.build_filter_string([
             "arxiv",
-            "ICML", "NeurIPS", "ICLR",
-            "OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys",
+            "ICML", "NeurIPS", "ICLR", 
+            "OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys", "VLDB"
         ]))
 
     return filters
@@ -54,14 +66,25 @@ def search() -> tuple[dict, int]:
     body = request.get_json(silent=True) or {}
     # Support query params for GET as well
     if request.method == "GET" and not body:
+        # Create sources dict from individual conference params
+        sources = {
+            "arxiv": request.args.get("arxiv", "false").lower() == "true",
+        }
+        
+        # Add individual AI conferences
+        ai_conferences = ["ICML", "NeurIPS", "ICLR"]
+        for conf in ai_conferences:
+            sources[conf] = request.args.get(conf, "false").lower() == "true"
+            
+        # Add individual Systems conferences
+        systems_conferences = ["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys", "VLDB"]  
+        for conf in systems_conferences:
+            sources[conf] = request.args.get(conf, "false").lower() == "true"
+        
         body = {
             "text": request.args.get("text", ""),
             "time_window_days": request.args.get("time_window_days"),
-            "sources": {
-                "arxiv": request.args.get("arxiv", "false").lower() == "true",
-                "ai": request.args.get("ai", "false").lower() == "true",
-                "systems": request.args.get("systems", "false").lower() == "true",
-            }
+            "sources": sources
         }
 
     query_text: str = body.get("text", "").strip()
