@@ -130,25 +130,50 @@ def extract_abstract(content):
     return "Abstract not found in document"
 
 
+def get_abstract_from_pdf_url(pdf_url: str) -> str:
+    """
+    Top-level function to retrieve an abstract from a PDF URL.
+    
+    Args:
+        pdf_url: URL of the PDF to extract abstract from
+        
+    Returns:
+        str: The extracted abstract, or empty string if extraction fails
+    """
+
+    # Force to use CPU mode
+    os.environ['CUDA_VISIBLE_DEVICES'] = ""  # Disable CUDA for testing
+
+    try:
+        # Download PDF with caching
+        pdf_path = download_pdf_with_cache(pdf_url)
+        if not pdf_path:
+            return ""
+        
+        # Parse PDF with caching
+        parsed_content = parse_pdf_with_cache(pdf_path)
+        if not parsed_content:
+            return ""
+        
+        # Extract abstract
+        abstract = extract_abstract(parsed_content)
+        return abstract if abstract != "Abstract not found in document" else ""
+        
+    except Exception as e:
+        print(f"Error extracting abstract from PDF {pdf_url}: {e}")
+        return ""
+
+
 def main():
     """Main function to download, parse, and extract abstract."""
     paper_pdf_url = "https://www.vldb.org/2025/Workshops/VLDB-Workshops-2025/DEC/DEC25_5.pdf"
     
-    # Download PDF with caching
-    pdf_path = download_pdf_with_cache(paper_pdf_url)
-    if not pdf_path:
-        print("Failed to download PDF")
-        return
-    
-    # Parse PDF with caching
-    parsed_content = parse_pdf_with_cache(pdf_path)
-    if not parsed_content:
-        print("Failed to parse PDF")
-        return
-    
-    # Extract abstract
-    abstract = extract_abstract(parsed_content)
-    print(abstract)
+    # Use the top-level function
+    abstract = get_abstract_from_pdf_url(paper_pdf_url)
+    if abstract:
+        print(abstract)
+    else:
+        print("Failed to extract abstract from PDF")
 
 
 if __name__ == "__main__":

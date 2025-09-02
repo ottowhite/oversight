@@ -3,6 +3,10 @@ try:
     from .cached_webpage_retriever import get_cached_webpage
 except ImportError:
     from cached_webpage_retriever import get_cached_webpage
+try:
+    from .retrieve_abstract_from_pdf import get_abstract_from_pdf_url
+except ImportError:
+    from retrieve_abstract_from_pdf import get_abstract_from_pdf_url
 from bs4 import BeautifulSoup, Tag, ResultSet
 import re
 import json
@@ -63,8 +67,8 @@ class Paper:
             f"  Session: {self.session}\n"
             f"  Conference: {self.conference} ({self.date})\n"
             f"  Abstract: {self.abstract}\n"
-            f"  Conference: {self.conference_link}\n"
-            f"  PDF: {self.pdf_link}\n"
+            f"  Conference Link: {self.conference_link}\n"
+            f"  PDF Link: {self.pdf_link}\n"
         )
 
 
@@ -186,14 +190,17 @@ def extract_papers(schedule_url: str) -> Tuple[Set[Paper], List[SkippedPaper]]:
                         has_round_button_class = False
                     
                     # Determine link type by URL pattern, not just class
-                    if href and '.pdf' in str(href) and 'vldb.org/pvldb/vol' in str(href):
-                        # This is a PDF link (actual PDF file)
-                        pdf_link = href
-                        # If the text is not "PDF", it might be the title
-                        if link_text and link_text != "PDF":
-                            title = link_text
+                    if href and '.pdf' in str(href):
+                        # Check for different PDF URL patterns
+                        if ('vldb.org/pvldb/vol' in str(href) or 
+                            'vldb.org/2025/Workshops' in str(href)):
+                            # This is a PDF link (actual PDF file)
+                            pdf_link = href
+                            # If the text is not "PDF", it might be the title
+                            if link_text and link_text != "PDF":
+                                title = link_text
                     elif href and 'vldb.org/pvldb/volumes' in str(href) and 'paper' in str(href):
-                        # This is a conference link (paper page)
+                        # This is a conference link (paper page) - main conference only
                         conference_link = href
                         # If the text is not "PDF", it's the title
                         if link_text and link_text != "PDF":
@@ -210,14 +217,20 @@ def extract_papers(schedule_url: str) -> Tuple[Set[Paper], List[SkippedPaper]]:
                     if isinstance(next_element, Tag) and next_element.name == 'p':
                         author_text = next_element.get_text().strip()
                         if author_text:
-                            # Parse authors - format: "Name (Affiliation);Name (Affiliation);..."
+                            # Parse authors - format: "Name (Affiliation);Name (Affiliation);..." or just "Name;Name;..."
                             author_entries = author_text.split(';')
                             for author_entry in author_entries:
                                 author_entry = author_entry.strip()
                                 if '(' in author_entry and ')' in author_entry:
+                                    # Author with affiliation: "Name (Affiliation)"
                                     name = author_entry.split('(')[0].strip()
                                     affiliation = author_entry.split('(')[1].split(')')[0].strip()
                                     authors.append(Author(name=name, affiliation=affiliation))
+                                elif author_entry:
+                                    # Author without affiliation: just "Name"
+                                    name = author_entry.strip()
+                                    if name:  # Only add if name is not empty
+                                        authors.append(Author(name=name, affiliation=""))
                         break
                     next_element = next_element.next_sibling
                 
@@ -255,13 +268,24 @@ def extract_papers(schedule_url: str) -> Tuple[Set[Paper], List[SkippedPaper]]:
                     ))
                     continue
                 
-                # Try to extract the abstract (only if we have conference link)
+                # Try to extract the abstract (first from conference link, then from PDF if needed)
                 abstract = ""
                 if conference_link:
                     try:
                         abstract = extract_abstract_from_conference_page(str(conference_link))
                     except Exception as e:
                         print(f"Warning: Failed to extract abstract for '{title}': {e}")
+                
+                # If no abstract found from conference page but we have a PDF link, try extracting from PDF
+                if (not abstract or abstract.strip() == "") and pdf_link:
+                    try:
+                        print(f"No abstract from conference page for '{title}', trying PDF extraction...")
+                        pdf_abstract = get_abstract_from_pdf_url(str(pdf_link))
+                        if pdf_abstract and pdf_abstract.strip():
+                            abstract = pdf_abstract
+                            print(f"Successfully extracted abstract from PDF for '{title}'")
+                    except Exception as e:
+                        print(f"Warning: Failed to extract abstract from PDF for '{title}': {e}")
                 
                 # Create flags for any issues
                 flags = []
@@ -292,6 +316,7 @@ def extract_papers(schedule_url: str) -> Tuple[Set[Paper], List[SkippedPaper]]:
                     conference="VLDB",
                     flags=tuple(flags)
                 )
+                print(paper)
                 papers.add(paper)
                 
             except Exception as e:
@@ -348,7 +373,7 @@ def extract_papers(schedule_url: str) -> Tuple[Set[Paper], List[SkippedPaper]]:
             print(f"     Abstract: {'✓' if paper.abstract else '✗'}")
             print()
     
-    if skipped_papers and False:
+    if skipped_papers and True:
         print(f"\n=== SKIPPED/ERRORED PAPERS SUMMARY ===")
         
         # Group by reason for better readability
@@ -455,17 +480,20 @@ def test_json_file_valid(filename: str) -> None:
         print(f"Test failed: Could not validate {filename}: {e}")
     
 vldb_schedule_link: str = "https://vldb.org/2025/?program-schedule-2025"
+vldb_workshops_schedule_link: str = "https://vldb.org/2025/?program-workshop-schedule-2025"
 
 if __name__ == "__main__":
     
     output_filename = "data/vldb/vldb_25_papers.json"
+    workshops_output_filename = "data/vldb/vldb_25_workshops_papers.json"
 
-    papers, skipped_papers = extract_papers(vldb_schedule_link)
-    # Save papers to JSON
-    save_papers_to_json(papers, output_filename)
+    # papers, skipped_papers = extract_papers(vldb_schedule_link)
+    # save_papers_to_json(papers, output_filename)
+    papers, skipped_papers = extract_papers(vldb_workshops_schedule_link)
+    save_papers_to_json(papers, workshops_output_filename)
+
     print(f"Saved {len(papers)} papers to {output_filename}")
     print(f"Skipped {len(skipped_papers)} papers due to various issues")
     print(f"Expected {len(unlinked_titles)} unlinked titles")
 
-
-    test_json_file_valid(output_filename)
+    # test_json_file_valid(output_filename)
