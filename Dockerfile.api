@@ -14,10 +14,6 @@ ENV PATH="/home/app/.local/bin:$PATH"
 
 # Install system dependencies required by the Python packages in requirements.txt
 RUN apt-get update && apt-get install -y \
-	# Core Python runtime and package management
-	python3 \
-	python3-pip \
-	python3-dev \
 	# Build tools required for compiling Python packages with C extensions
 	build-essential \
 	# Network utilities for health checks and API calls
@@ -48,16 +44,19 @@ RUN useradd -m -s /bin/bash app && \
 USER app
 WORKDIR /app
 
-# Copy requirements first for better Docker layer caching
-# (if requirements don't change, we can reuse the pip install layer)
-COPY --chown=app:app requirements.txt .
+# Install UV (https://docs.astral.sh/uv/getting-started/installation/)
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
-RUN python3 -m pip install --user --upgrade pip setuptools wheel && \
-	python3 -m pip install --user -r requirements.txt
+ENV PATH="/home/app/.local/bin:$PATH"
+
+# (if requirements don't change, we can reuse the pip install layer)
+COPY --chown=app:app .python-version README.md pyproject.toml uv.lock .
+
+RUN uv sync
 
 # Copy the application code (done after pip install for better layer caching)
 COPY --chown=app:app . .
 
 RUN mkdir -p logs
 
-CMD ["python3", "flask_app.py"]
+CMD ["uv", "run", "python", "flask_app.py"]
