@@ -50,7 +50,10 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH="/home/app/.local/bin:$PATH"
 
 # (if requirements don't change, we can reuse the pip install layer)
-COPY --chown=app:app .python-version README.md pyproject.toml uv.lock .
+COPY --chown=app:app .python-version .
+COPY --chown=app:app README.md .
+COPY --chown=app:app pyproject.toml .
+COPY --chown=app:app uv.lock .
 
 RUN uv sync
 
