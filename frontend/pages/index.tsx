@@ -115,6 +115,14 @@ export default function HomePage() {
     });
   }
 
+  function navigateToAbstract(abstract: string) {
+    setText(abstract);
+    // Trigger search automatically after setting the text
+    setTimeout(() => {
+      onSubmit(new Event('submit') as any);
+    }, 100);
+  }
+
   return (
     <main className="grid h-screen grid-rows-[auto,1fr]">
       {/* Header */}
@@ -293,9 +301,24 @@ export default function HomePage() {
                       </small>
                     </div>
                     <p className="whitespace-pre-wrap leading-relaxed">{p.abstract}</p>
-                    {p.link && (
-                      <a className="link link-primary mt-2 inline-block" href={p.link} target="_blank" rel="noreferrer">View paper</a>
-                    )}
+                    <div className="flex gap-3 mt-2">
+                      <button
+                        onClick={() => navigateToAbstract(p.abstract)}
+                        className="btn btn-sm btn-outline btn-primary"
+                      >
+                        Navigate to abstract
+                      </button>
+                      {p.link && (
+                        <a
+                          className="btn btn-sm btn-outline btn-primary"
+                          href={p.link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View paper
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
