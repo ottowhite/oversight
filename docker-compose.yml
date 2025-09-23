@@ -1,14 +1,37 @@
 services:
   oversight-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
     image: oversight-backend
     ports:
       - "5001:5001"
     environment:
       - FLASK_PORT=5001
       - FLASK_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+      - CORS_ORIGINS=http://localhost:3000,http://oversight-frontend:3000
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:5001/api/health" ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+
+  oversight-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:5001
+    image: oversight-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:5001
+    depends_on:
+      - oversight-backend
+
+networks:
+  default:
+    name: oversight-network
