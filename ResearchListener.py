@@ -1,4 +1,4 @@
-from relevant_abstracts import autellix_abstract, tempo_abstract, sglang_abstract
+from relevant_abstracts import autellix_abstract, muxserve_abstract, parrot_abstract
 
 class ResearchListenerGroup:
     def __init__(self, research_listeners, num_papers, email_recipients, title):
@@ -18,13 +18,13 @@ research_listeners = [
         autellix_abstract,
     ),
     ResearchListener(
-        "Tempo",
-        tempo_abstract
+        "MuxServe",
+        muxserve_abstract,
     ),
     ResearchListener(
-        "SGLang",
-        sglang_abstract
-    )
+        "Parrot",
+        parrot_abstract,
+    ),
 ]
 
 research_listener_group = ResearchListenerGroup(
