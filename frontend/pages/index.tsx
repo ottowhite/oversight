@@ -16,7 +16,15 @@ export default function HomePage() {
   const [text, setText] = useState("");
   const [timeDays, setTimeDays] = useState<number>(365 * 5);
   const [limit, setLimit] = useState<number>(10);
-  const [efSearch, setEfSearch] = useState<number>(40);
+  const [efSearch, setEfSearch] = useState<number>(50);
+
+  // Exponential mapping for ef_search slider: position 0–100 maps to 10–500
+  const EF_MIN = 10;
+  const EF_MAX = 500;
+  const efToSlider = (ef: number) =>
+    Math.round((Math.log(ef / EF_MIN) / Math.log(EF_MAX / EF_MIN)) * 100);
+  const sliderToEf = (pos: number) =>
+    Math.round(EF_MIN * Math.pow(EF_MAX / EF_MIN, pos / 100));
   const [sources, setSources] = useState({
     arxiv: true,
     // AI conferences
@@ -244,16 +252,17 @@ export default function HomePage() {
               </label>
               <input
                 type="range"
-                min={40}
-                max={500}
+                min={0}
+                max={100}
                 step={1}
-                value={efSearch}
-                onChange={(e) => setEfSearch(parseInt((e.target as HTMLInputElement).value, 10))}
+                value={efToSlider(efSearch)}
+                onChange={(e) => setEfSearch(sliderToEf(parseInt((e.target as HTMLInputElement).value, 10)))}
                 className="range range-primary"
               />
               <div className="flex justify-between px-2 text-xs opacity-60">
-                <span>40</span>
-                <span>100</span>
+                <span>10</span>
+                <span>50</span>
+                <span>200</span>
                 <span>500</span>
               </div>
             </div>

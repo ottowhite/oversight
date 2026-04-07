@@ -147,10 +147,10 @@ def search() -> tuple[dict[str, Any], int]:
 
     ef_search = body.get("ef_search")
     try:
-        ef_search_int = int(ef_search) if ef_search is not None else 40
-        ef_search_int = max(40, min(500, ef_search_int))
+        ef_search_int = int(ef_search) if ef_search is not None else 50
+        ef_search_int = max(10, min(500, ef_search_int))
     except Exception:
-        return {"error": "ef_search must be an integer between 40 and 500"}, 400
+        return {"error": "ef_search must be an integer between 10 and 500"}, 400
 
     sources_flags: dict[str, bool] = body.get("sources") or {}
 
