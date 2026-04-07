@@ -1,16 +1,16 @@
 import logging
 import itertools
 
-def get_logger():
-	logging.basicConfig(
-	    level=logging.INFO,
-	    format='[%(levelname)s] %(asctime)s - %(message)s',
-	    handlers=[
-	        logging.StreamHandler()
-	    ]
-	)
 
-	return logging.getLogger(__name__)
+def get_logger():
+    logging.basicConfig(
+        level=logging.INFO,
+        format="[%(levelname)s] %(asctime)s - %(message)s",
+        handlers=[logging.StreamHandler()],
+    )
+
+    return logging.getLogger(__name__)
+
 
 def chunked_iterable(iterable, size):
     it = iter(iterable)

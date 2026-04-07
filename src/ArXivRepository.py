@@ -1,13 +1,12 @@
-from datetime import timedelta, datetime
+from datetime import timedelta
 import argparse
 from tqdm import tqdm
-from ResearchListener import research_listener_group, test_research_listener_group
+from ResearchListener import research_listener_group
 from SickleWrapper import SickleWrapper
 from PaperDatabase import PaperDatabase
 from EmbeddingModel import EmbeddingModel
 from EmailSender import EmailSender
 from utils import get_logger
-import json
 from Paper import Paper
 from ResearchLLM import ResearchLLM
 
@@ -22,8 +21,14 @@ from ResearchLLM import ResearchLLM
 
 logger = get_logger()
 
+
 class ArXivRepository:
-    def __init__(self, embedding_model_name, research_llm_model_name: str, overlap_timedelta: timedelta = timedelta(days=1)):
+    def __init__(
+        self,
+        embedding_model_name,
+        research_llm_model_name: str,
+        overlap_timedelta: timedelta = timedelta(days=1),
+    ):
         self.overlap_timedelta = overlap_timedelta
         self.arxiv_db = PaperDatabase()
         self.embedding_model = EmbeddingModel(embedding_model_name)
@@ -32,7 +37,7 @@ class ArXivRepository:
             base_url="https://oaipmh.arxiv.org/oai",
             arxiv_metadata_type="arXivRaw",
             cs_set="cs:cs",
-            date_format="%Y-%m-%d"
+            date_format="%Y-%m-%d",
         )
         self.email_sender = EmailSender("otto.white.apps@gmail.com")
 
@@ -43,7 +48,7 @@ class ArXivRepository:
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.arxiv_db.__exit__(exc_type, exc_val, exc_tb)
         del self.email_sender
-    
+
     def sync(self):
         newest_date = self.arxiv_db.get_newest_date()
         from_date = newest_date - self.overlap_timedelta
@@ -54,39 +59,65 @@ class ArXivRepository:
     def _sync_from_date(self, from_date):
         new_papers = self.sickle.get_new_papers(from_date)
 
-        total_updates, total_new = self.arxiv_db.count_rows_to_update_and_insert(new_papers)
-        logger.info(f"{total_updates} papers to update, and {total_new} new papers to insert")
+        total_updates, total_new = self.arxiv_db.count_rows_to_update_and_insert(
+            new_papers
+        )
+        logger.info(
+            f"{total_updates} papers to update, and {total_new} new papers to insert"
+        )
 
         updated_rows_total = 0
         new_rows_total = 0
         skipped_rows_total = 0
-        for paper in tqdm(new_papers, desc="Inserting new and updated papers", total=len(new_papers)):
+        for paper in tqdm(
+            new_papers, desc="Inserting new and updated papers", total=len(new_papers)
+        ):
             updated_rows, new_rows, skipped_rows = self.arxiv_db.insert_paper(paper)
             updated_rows_total += updated_rows
             new_rows_total += new_rows
             skipped_rows_total += skipped_rows
             self.arxiv_db.try_update_categories(paper)
 
-        logger.info(f"Updated {updated_rows_total} rows, inserted {new_rows_total} rows, and skipped {skipped_rows_total} rows")
-    
+        logger.info(
+            f"Updated {updated_rows_total} rows, inserted {new_rows_total} rows, and skipped {skipped_rows_total} rows"
+        )
+
     def _embed_missing_ai_papers(self):
         papers_to_embed = self.arxiv_db.get_unembedded_arxiv_ai_papers()
         logger.info(f"Embedding {len(papers_to_embed)} papers")
 
         paper_ids = []
         abstracts = []
-        for paper_id, document in tqdm(papers_to_embed, desc="Parsing papers", total=len(papers_to_embed)):
+        for paper_id, document in tqdm(
+            papers_to_embed, desc="Parsing papers", total=len(papers_to_embed)
+        ):
             paper_ids.append(paper_id)
             abstract = document["metadata"]["arXivRaw"]["abstract"]
             abstracts.append(abstract)
 
-        for i, (embedding, paper_id) in tqdm(enumerate(zip(self.embedding_model.embed_documents_rate_limited(abstracts), paper_ids)), desc="Embedding papers", total=len(paper_ids)):
+        for i, (embedding, paper_id) in tqdm(
+            enumerate(
+                zip(
+                    self.embedding_model.embed_documents_rate_limited(abstracts),
+                    paper_ids,
+                )
+            ),
+            desc="Embedding papers",
+            total=len(paper_ids),
+        ):
             self.arxiv_db.update_embedding(paper_id, embedding)
 
             if i % 100 == 0:
                 self.arxiv_db.commit()
 
-    def generate_digest_string(self, results, include_time_since=False, include_similarity=True, include_date=True, include_link=True):
+    def generate_digest_string(
+        self,
+        results,
+        include_time_since=False,
+        include_similarity=True,
+        include_date=True,
+        include_link=True,
+    ):
         output = ""
         # output += f"Showing top {num_papers} most similar papers to {title} from the last day\n\n"
         for document, similarity in results:
@@ -95,27 +126,41 @@ class ArXivRepository:
             output += f"{paper.title}"
             output += f" ({paper.paper_date})" if include_date else ""
             output += f" (similarity: {similarity:.4f})" if include_similarity else ""
-            output += f" (time since date: {paper.time_since_date_str})" if include_time_since else ""
-            output += f"\n"
+            output += (
+                f" (time since date: {paper.time_since_date_str})"
+                if include_time_since
+                else ""
+            )
+            output += "\n"
             output += f"{paper.abstract}\n"
             output += f"{paper.link}" if include_link else ""
             output += "\n\n"
 
         return output
-    
+
     def _print_time_filtered_digest(self, embedding, timedelta, limit):
-        results = self.arxiv_db.time_filtered_k_nearest(embedding, timedelta=timedelta, limit=limit)
-        digest = self.generate_digest_string(results, include_time_since=True, include_similarity=True, include_date=False, include_link=True)
-        print(f"Showing top {limit} most similar papers from the last {timedelta.days if timedelta is not None else 'all time'}")
+        results = self.arxiv_db.time_filtered_k_nearest(
+            embedding, timedelta=timedelta, limit=limit
+        )
+        digest = self.generate_digest_string(
+            results,
+            include_time_since=True,
+            include_similarity=True,
+            include_date=False,
+            include_link=True,
+        )
+        print(
+            f"Showing top {limit} most similar papers from the last {timedelta.days if timedelta is not None else 'all time'}"
+        )
         print(digest)
         print("\n")
-    
+
     def print_time_filtered_digests(self, query):
         embedding = self.embedding_model.model.embed_query(query)
 
         self._print_time_filtered_digest(embedding, timedelta(days=30), 10)
         print("--------------------------------------------------------------------")
-        self._print_time_filtered_digest(embedding, timedelta(days=30*6), 15)
+        self._print_time_filtered_digest(embedding, timedelta(days=30 * 6), 15)
         print("--------------------------------------------------------------------")
         self._print_time_filtered_digest(embedding, timedelta(days=365), 20)
         print("--------------------------------------------------------------------")
@@ -125,12 +170,14 @@ class ArXivRepository:
         paper_similarities = []
         for listener in research_listener_group.research_listeners:
             embedding = self.embedding_model.model.embed_query(listener.text)
-            rows = self.arxiv_db.generate_weekly_digest(embedding, research_listener_group.num_papers)
+            rows = self.arxiv_db.generate_weekly_digest(
+                embedding, research_listener_group.num_papers
+            )
             print(f"Found {len(rows)} papers for {listener.title}")
             for row in rows:
                 paper, similarity = Paper.from_database_row(row)
                 paper_similarities.append((listener.title, paper, similarity))
-        
+
         # sort by ascending similarity
         paper_similarities.sort(key=lambda result: result[2])
         seen_titles = set()
@@ -138,14 +185,20 @@ class ArXivRepository:
         for listener_title_name, paper, similarity in paper_similarities:
             if paper.title in seen_titles:
                 continue
-                
+
             seen_titles.add(paper.title)
             paper_similarities_unique.append((listener_title_name, paper, similarity))
-        
-        paper_similarities_truncated = paper_similarities_unique[:research_listener_group.num_papers]
+
+        paper_similarities_truncated = paper_similarities_unique[
+            : research_listener_group.num_papers
+        ]
 
         digest_string = self.generate_weekly_digest_string(paper_similarities_truncated)
-        self.email_sender.send_email_multiple_recipients(research_listener_group.email_recipients, f"Rolling weekly research digest for {research_listener_group.title}", digest_string)
+        self.email_sender.send_email_multiple_recipients(
+            research_listener_group.email_recipients,
+            f"Rolling weekly research digest for {research_listener_group.title}",
+            digest_string,
+        )
 
     def generate_weekly_digest_string(self, paper_similarities):
         digest_string = ""
@@ -153,10 +206,13 @@ class ArXivRepository:
             digest_string += f"{paper.title} (most related to {listener_title}): {similarity:.3f}\n\n"
             digest_string += f"{paper.abstract}\n"
             digest_string += f"{paper.link}\n\n"
-            digest_string += f"{self.research_llm.generate_relatedness_summary(paper.abstract)}\n\n"
+            digest_string += (
+                f"{self.research_llm.generate_relatedness_summary(paper.abstract)}\n\n"
+            )
             digest_string += "------------------------------------------------\n\n"
 
         return digest_string
+
 
 if __name__ == "__main__":
     # parse flags for differnet modes
@@ -177,7 +233,7 @@ if __name__ == "__main__":
     with ArXivRepository(
         embedding_model_name="models/gemini-embedding-001",
         research_llm_model_name="google/gemini-2.5-flash",
-        overlap_timedelta=timedelta(days=1)
+        overlap_timedelta=timedelta(days=1),
     ) as repo:
         if args.digest:
             if not args.no_sync:

@@ -2,7 +2,7 @@ from datetime import timedelta
 import os
 from typing import Dict, List
 
-from flask import Flask, jsonify, request
+from flask import Flask, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 
@@ -26,36 +26,58 @@ def health() -> tuple[dict, int]:
 
 def _build_filters(repo: PaperRepository, sources_flags: Dict[str, bool]) -> List[str]:
     filters: List[str] = []
-    
+
     # Collect individual sources
     selected_sources = []
-    
+
     # Handle arXiv
     if sources_flags.get("arxiv", False):
         selected_sources.append("arxiv")
-    
+
     # Handle individual AI conferences
     ai_conferences = ["ICML", "NeurIPS", "ICLR"]
     for conf in ai_conferences:
         if sources_flags.get(conf, False):
             selected_sources.append(conf)
-    
-    # Handle individual Systems conferences  
-    systems_conferences = ["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys", "VLDB"]
+
+    # Handle individual Systems conferences
+    systems_conferences = [
+        "OSDI",
+        "SOSP",
+        "ASPLOS",
+        "ATC",
+        "NSDI",
+        "MLSys",
+        "EuroSys",
+        "VLDB",
+    ]
     for conf in systems_conferences:
         if sources_flags.get(conf, False):
             selected_sources.append(conf)
-    
+
     # Build filter from selected sources
     if selected_sources:
         filters.append(repo.build_filter_string(selected_sources))
     else:
         # If nothing selected, default to everything
-        filters.append(repo.build_filter_string([
-            "arxiv",
-            "ICML", "NeurIPS", "ICLR", 
-            "OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys", "VLDB"
-        ]))
+        filters.append(
+            repo.build_filter_string(
+                [
+                    "arxiv",
+                    "ICML",
+                    "NeurIPS",
+                    "ICLR",
+                    "OSDI",
+                    "SOSP",
+                    "ASPLOS",
+                    "ATC",
+                    "NSDI",
+                    "MLSys",
+                    "EuroSys",
+                    "VLDB",
+                ]
+            )
+        )
 
     return filters
 
@@ -70,21 +92,30 @@ def search() -> tuple[dict, int]:
         sources = {
             "arxiv": request.args.get("arxiv", "false").lower() == "true",
         }
-        
+
         # Add individual AI conferences
         ai_conferences = ["ICML", "NeurIPS", "ICLR"]
         for conf in ai_conferences:
             sources[conf] = request.args.get(conf, "false").lower() == "true"
-            
+
         # Add individual Systems conferences
-        systems_conferences = ["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys", "VLDB"]  
+        systems_conferences = [
+            "OSDI",
+            "SOSP",
+            "ASPLOS",
+            "ATC",
+            "NSDI",
+            "MLSys",
+            "EuroSys",
+            "VLDB",
+        ]
         for conf in systems_conferences:
             sources[conf] = request.args.get(conf, "false").lower() == "true"
-        
+
         body = {
             "text": request.args.get("text", ""),
             "time_window_days": request.args.get("time_window_days"),
-            "sources": sources
+            "sources": sources,
         }
 
     query_text: str = body.get("text", "").strip()
@@ -93,7 +124,9 @@ def search() -> tuple[dict, int]:
 
     time_window_days = body.get("time_window_days")
     try:
-        time_window_days_int = int(time_window_days) if time_window_days is not None else 365 * 5
+        time_window_days_int = (
+            int(time_window_days) if time_window_days is not None else 365 * 5
+        )
     except Exception:
         return {"error": "time_window_days must be an integer"}, 400
 
@@ -118,15 +151,19 @@ def search() -> tuple[dict, int]:
 
     results = []
     for p in papers:
-        results.append({
-            "paper_id": p.paper_id,
-            "title": p.title,
-            "abstract": p.abstract,
-            "source": p.source,
-            "link": p.link,
-            # paper_date is a datetime.date or datetime; convert to ISO string
-            "paper_date": p.paper_date.isoformat() if hasattr(p.paper_date, "isoformat") else str(p.paper_date),
-        })
+        results.append(
+            {
+                "paper_id": p.paper_id,
+                "title": p.title,
+                "abstract": p.abstract,
+                "source": p.source,
+                "link": p.link,
+                # paper_date is a datetime.date or datetime; convert to ISO string
+                "paper_date": p.paper_date.isoformat()
+                if hasattr(p.paper_date, "isoformat")
+                else str(p.paper_date),
+            }
+        )
 
     return {"results": results}, 200
 
@@ -141,16 +178,20 @@ def sync() -> tuple[dict, int]:
         # Initialize ArXivRepository with same model configurations as used elsewhere
         with ArXivRepository(
             embedding_model_name="models/gemini-embedding-001",
-            research_llm_model_name="google/gemini-2.5-flash"
+            research_llm_model_name="google/gemini-2.5-flash",
         ) as arxiv_repo:
             arxiv_repo.sync()
-        
-        return {"status": "success", "message": "ArXiv repository sync completed successfully"}, 200
-    
+
+        return {
+            "status": "success",
+            "message": "ArXiv repository sync completed successfully",
+        }, 200
+
     except Exception as e:
         # Log the error for debugging but return a safe error message
         app.logger.error(f"Error during ArXiv sync: {str(e)}")
         return {"status": "error", "message": f"Sync failed: {str(e)}"}, 500
+
 
 @app.post("/api/digest")
 def digest() -> tuple[dict, int]:
@@ -162,7 +203,7 @@ def digest() -> tuple[dict, int]:
         # Initialize ArXivRepository with same model configurations as used elsewhere
         with ArXivRepository(
             embedding_model_name="models/gemini-embedding-001",
-            research_llm_model_name="google/gemini-2.5-flash"
+            research_llm_model_name="google/gemini-2.5-flash",
         ) as arxiv_repo:
             # Send email digest without syncing (same as --digest --no-sync)
             arxiv_repo.email_weekly_digest(research_listener_group)
@@ -173,6 +214,7 @@ def digest() -> tuple[dict, int]:
         # Log the error for debugging but return a safe error message
         app.logger.error(f"Error during digest email: {str(e)}")
         return {"status": "error", "message": f"Digest email failed: {str(e)}"}, 500
+
 
 if __name__ == "__main__":
     # Bind to all interfaces for local dev; port can be overridden via FLASK_PORT
