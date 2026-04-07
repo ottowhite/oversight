@@ -1,10 +1,16 @@
+from __future__ import annotations
+
+from typing import Any
 import openreview
+import openreview.api
 from pathlib import Path
 import json
 
 
 class OpenReviewHarvester:
-    def __init__(self, basic_name, year, date, full_name, output_path):
+    def __init__(
+        self, basic_name: str, year: int, date: str, full_name: str, output_path: str
+    ) -> None:
         self.output_path = Path(output_path)
         self.venue_id = {
             "icml": f"ICML.cc/{year}/Conference",
@@ -20,12 +26,12 @@ class OpenReviewHarvester:
         # Initial version to try with
         self.version = 2
 
-    def harvest(self):
+    def harvest(self) -> None:
         notes = self.get_notes()
         self.add_metadata_to_notes(notes)
         self.save_conference(notes)
 
-    def get_notes(self):
+    def get_notes(self) -> list[dict[str, Any]]:
         notes = self._get_notes_versioned(2)
         if len(notes) == 0:
             # Fall back to the version 1 client
@@ -34,7 +40,7 @@ class OpenReviewHarvester:
 
         return [note.to_json() for note in notes]
 
-    def _get_notes_versioned(self, version):
+    def _get_notes_versioned(self, version: int) -> list[Any]:
         if version == 2:
             invitation = self.venue_id + "/-/Submission"
             client = openreview.api.OpenReviewClient(
@@ -49,9 +55,9 @@ class OpenReviewHarvester:
             notes = client.get_all_notes(
                 invitation=invitation, details="directReplies,original"
             )
-            accepted_notes = []
-            accept_messages = set()
-            reject_messages = set()
+            accepted_notes: list[Any] = []
+            accept_messages: set[str] = set()
+            reject_messages: set[str] = set()
             for note in notes:
                 decisions = [
                     reply
@@ -74,15 +80,16 @@ class OpenReviewHarvester:
             print(f"Reject messages: {reject_messages}")
 
             return accepted_notes
+        return []
 
-    def add_metadata_to_notes(self, notes):
+    def add_metadata_to_notes(self, notes: list[dict[str, Any]]) -> None:
         for note in notes:
             note["oversight_metadata"] = {
                 "conference_name": self.full_name,
                 "conference_date": self.date,
             }
 
-    def save_conference(self, notes):
+    def save_conference(self, notes: list[dict[str, Any]]) -> None:
         if len(notes) == 0:
             print(f"No notes found for {self.name} ({self.year})")
             return
@@ -96,7 +103,7 @@ class OpenReviewHarvester:
 
 
 if __name__ == "__main__":
-    conferences = {
+    conferences: dict[str, dict[str, Any]] = {
         "icml": {
             "name": "ICML",
             "year_and_dates": [
@@ -129,8 +136,10 @@ if __name__ == "__main__":
     }
 
     for conference, details in conferences.items():
-        for year, date in details["year_and_dates"]:
+        year_and_dates: list[tuple[int, str]] = details["year_and_dates"]
+        name: str = details["name"]
+        for year, date in year_and_dates:
             harvester = OpenReviewHarvester(
-                conference, year, date, details["name"], "data/ai_conferences/"
+                conference, year, date, name, "data/ai_conferences/"
             )
             harvester.harvest()

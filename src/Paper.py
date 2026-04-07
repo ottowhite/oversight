@@ -1,11 +1,14 @@
+from __future__ import annotations
+
 from datetime import datetime
+from typing import Any
 
 
 class Paper:
     def __init__(
         self,
         paper_id: str,
-        document: object,
+        document: dict[str, Any],
         paper_date: datetime,
         abstract: str,
         title: str,
@@ -32,8 +35,8 @@ class Paper:
         self.title = title
         self.source = source
 
-    def __str__(self):
-        time_since_date = datetime.now().date() - self.paper_date
+    def __str__(self) -> str:
+        time_since_date = datetime.now().date() - self.paper_date.date()
         days_since_date = time_since_date.days
 
         years_since_date = days_since_date // 365
@@ -55,11 +58,11 @@ class Paper:
         return output
 
     @staticmethod
-    def date_format():
+    def date_format() -> str:
         return "%Y-%m-%d"
 
     @staticmethod
-    def from_document(document: object):
+    def from_document(document: dict[str, Any]) -> Paper:
 
         categories = document["header"]["setSpec"]
         if isinstance(categories, str):
@@ -100,7 +103,7 @@ class Paper:
         )
 
     @staticmethod
-    def from_scraped_json(paper_json: dict):
+    def from_scraped_json(paper_json: dict[str, Any]) -> Paper:
         return Paper(
             paper_id=paper_json["paper_id"],
             document=paper_json,
@@ -112,7 +115,7 @@ class Paper:
         )
 
     @staticmethod
-    def from_openreview_json(paper_json: dict, api_version: int):
+    def from_openreview_json(paper_json: dict[str, Any], api_version: int) -> Paper:
         if api_version == 1:
             abstract = Paper.remove_null_bytes(paper_json["content"]["abstract"])
             title = Paper.remove_null_bytes(paper_json["content"]["title"])
@@ -138,7 +141,7 @@ class Paper:
         )
 
     @staticmethod
-    def from_database_row(row: tuple):
+    def from_database_row(row: tuple[Any, ...]) -> tuple[Paper, Any]:
         (
             uuid,
             created_at,
@@ -166,7 +169,7 @@ class Paper:
         return paper, similarity
 
     @staticmethod
-    def remove_null_bytes(obj):
+    def remove_null_bytes(obj: Any) -> Any:
         if isinstance(obj, str):
             return obj.replace("\x00", "")
         elif isinstance(obj, dict):

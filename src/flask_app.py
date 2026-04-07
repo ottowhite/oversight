@@ -1,10 +1,13 @@
+from __future__ import annotations
+
 from datetime import timedelta
 import os
-from typing import Dict, List
+from typing import Any
 
 from flask import Flask, request
 from flask_cors import CORS
 from dotenv import load_dotenv
+from psycopg import sql
 
 from PaperRepository import PaperRepository
 from ArXivRepository import ArXivRepository
@@ -20,15 +23,17 @@ CORS(app, resources={r"/api/*": {"origins": cors_origins}})
 
 
 @app.get("/api/health")
-def health() -> tuple[dict, int]:
+def health() -> tuple[dict[str, str], int]:
     return {"status": "ok"}, 200
 
 
-def _build_filters(repo: PaperRepository, sources_flags: Dict[str, bool]) -> List[str]:
-    filters: List[str] = []
+def _build_filters(
+    repo: PaperRepository, sources_flags: dict[str, bool]
+) -> list[sql.Composable]:
+    filters: list[sql.Composable] = []
 
     # Collect individual sources
-    selected_sources = []
+    selected_sources: list[str] = []
 
     # Handle arXiv
     if sources_flags.get("arxiv", False):
@@ -57,11 +62,11 @@ def _build_filters(repo: PaperRepository, sources_flags: Dict[str, bool]) -> Lis
 
     # Build filter from selected sources
     if selected_sources:
-        filters.append(repo.build_filter_string(selected_sources))
+        filters.append(repo.build_filter_sql(selected_sources))
     else:
         # If nothing selected, default to everything
         filters.append(
-            repo.build_filter_string(
+            repo.build_filter_sql(
                 [
                     "arxiv",
                     "ICML",
@@ -84,12 +89,12 @@ def _build_filters(repo: PaperRepository, sources_flags: Dict[str, bool]) -> Lis
 
 @app.post("/api/search")
 @app.get("/api/search")
-def search() -> tuple[dict, int]:
-    body = request.get_json(silent=True) or {}
+def search() -> tuple[dict[str, Any], int]:
+    body: dict[str, Any] = request.get_json(silent=True) or {}
     # Support query params for GET as well
     if request.method == "GET" and not body:
         # Create sources dict from individual conference params
-        sources = {
+        sources: dict[str, bool] = {
             "arxiv": request.args.get("arxiv", "false").lower() == "true",
         }
 
@@ -118,7 +123,9 @@ def search() -> tuple[dict, int]:
             "sources": sources,
         }
 
-    query_text: str = body.get("text", "").strip()
+    query_text_raw: Any = body.get("text", "")
+    assert isinstance(query_text_raw, str), "text must be a string"
+    query_text: str = query_text_raw.strip()
     if not query_text:
         return {"error": "text is required"}, 400
 
@@ -137,7 +144,7 @@ def search() -> tuple[dict, int]:
     except Exception:
         return {"error": "limit must be an integer between 1 and 100"}, 400
 
-    sources_flags: Dict[str, bool] = body.get("sources", {}) or {}
+    sources_flags: dict[str, bool] = body.get("sources") or {}
 
     # Use repository in a context so connections are properly managed
     with PaperRepository(embedding_model_name="models/gemini-embedding-001") as repo:
@@ -169,7 +176,7 @@ def search() -> tuple[dict, int]:
 
 
 @app.post("/api/sync")
-def sync() -> tuple[dict, int]:
+def sync() -> tuple[dict[str, str], int]:
     """
     Synchronize ArXiv repository by fetching new papers and embedding them.
     This endpoint initializes an ArXivRepository and calls its sync method.
@@ -194,7 +201,7 @@ def sync() -> tuple[dict, int]:
 
 
 @app.post("/api/digest")
-def digest() -> tuple[dict, int]:
+def digest() -> tuple[dict[str, str], int]:
     """
     Send email digest to research listener group without updating the repository.
     This endpoint initializes an ArXivRepository and calls email_daily_digest method.

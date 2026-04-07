@@ -1,7 +1,12 @@
+from __future__ import annotations
+
+from typing import Any
+
 from tqdm import tqdm
 from Paper import Paper
 from datetime import datetime, timedelta
 import psycopg
+from psycopg import sql
 from dotenv import load_dotenv
 from pgvector.psycopg import register_vector
 import os
@@ -12,23 +17,25 @@ logger = get_logger()
 
 
 class PaperDatabase:
-    def __init__(self):
+    def __init__(self) -> None:
         load_dotenv()
         self.ai_categories = ["cs:cs:AI", "cs:cs:CL", "cs:cs:LG", "cs:cs:MA"]
-        self.ai_categories_str = (
-            "(" + ",".join(f"'{category}'" for category in self.ai_categories) + ")"
-        )
-        self.con = None
+        self.con: psycopg.Connection[tuple[Any, ...]] | None = None
         self.date_format = "%Y-%m-%d"
 
-    def __enter__(self):
+    def __enter__(self) -> PaperDatabase:
         database_url = os.getenv("DATABASE_URL")
         assert database_url is not None, "Database URL is not set"
         self.con = psycopg.connect(database_url)
         register_vector(self.con)
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_value: BaseException | None,
+        traceback: Any,
+    ) -> None:
         # NOTE: The commit only happens at the very end, and if there was an error, we will not commit.
         if self.con is not None:
             if exc_type is None:
@@ -39,8 +46,14 @@ class PaperDatabase:
             self.con.close()
             self.con = None
 
-    def insert_paper(self, paper: Paper):
-        with self.con.cursor() as cur:
+    def _get_con(self) -> psycopg.Connection[tuple[Any, ...]]:
+        assert self.con is not None, (
+            "Database connection not established. Use 'with' statement."
+        )
+        return self.con
+
+    def insert_paper(self, paper: Paper) -> tuple[int, int, int]:
+        with self._get_con().cursor() as cur:
             to_insert = [
                 paper.paper_id,
                 Jsonb(paper.document),
@@ -110,8 +123,8 @@ class PaperDatabase:
 
             return updated_rows, new_rows, skipped_rows
 
-    def is_updated(self, paper: Paper):
-        with self.con.cursor() as cur:
+    def is_updated(self, paper: Paper) -> bool:
+        with self._get_con().cursor() as cur:
             return (
                 cur.execute(
                     """
@@ -123,8 +136,8 @@ class PaperDatabase:
                 is not None
             )
 
-    def is_new(self, paper: Paper):
-        with self.con.cursor() as cur:
+    def is_new(self, paper: Paper) -> bool:
+        with self._get_con().cursor() as cur:
             return (
                 cur.execute(
                     """
@@ -136,12 +149,14 @@ class PaperDatabase:
                 is None
             )
 
-    def get_newest_date(self):
-        with self.con.cursor() as cur:
-            return cur.execute("SELECT MAX(update_date) FROM paper").fetchone()[0]
+    def get_newest_date(self) -> datetime:
+        with self._get_con().cursor() as cur:
+            row = cur.execute("SELECT MAX(update_date) FROM paper").fetchone()
+            assert row is not None, "No papers in database"
+            return row[0]
 
-    def try_update_categories(self, paper: Paper):
-        with self.con.cursor() as cur:
+    def try_update_categories(self, paper: Paper) -> bool:
+        with self._get_con().cursor() as cur:
             stored_categories = cur.execute(
                 """
                 SELECT category FROM arxiv_paper_categories
@@ -149,9 +164,9 @@ class PaperDatabase:
             """,
                 [paper.paper_id],
             ).fetchall()
-            stored_categories = {c[0] for c in stored_categories}
+            stored_categories_set = {c[0] for c in stored_categories}
 
-            if stored_categories == paper.categories:
+            if stored_categories_set == paper.categories:
                 return False
 
             # Delete the existing categories
@@ -164,6 +179,7 @@ class PaperDatabase:
             )
 
             # Add the new categories
+            assert paper.categories is not None
             bulk_insertions = []
             for category in paper.categories:
                 bulk_insertions.append((paper.paper_id, category))
@@ -177,9 +193,8 @@ class PaperDatabase:
 
         return True
 
-    def get_unembedded_arxiv_ai_papers(self):
-        with self.con.cursor() as cur:
-            return cur.execute(f"""
+    def get_unembedded_arxiv_ai_papers(self) -> list[tuple[Any, ...]]:
+        query = sql.SQL("""
                 SELECT DISTINCT ps.paper_id, ps.document
                 FROM paper AS ps
                 JOIN arxiv_paper_categories AS pc
@@ -187,11 +202,15 @@ class PaperDatabase:
                 LEFT JOIN embedding AS se
                   ON se.paper_id = ps.paper_id
                 WHERE se.embedding_gemini_embedding_001 IS NULL
-                  AND pc.category IN {self.ai_categories_str}
-            """).fetchall()
+                  AND pc.category IN ({categories})
+            """).format(
+            categories=sql.SQL(",").join(sql.Literal(c) for c in self.ai_categories)
+        )
+        with self._get_con().cursor() as cur:
+            return cur.execute(query).fetchall()
 
-    def get_unembedded_conference_papers(self):
-        with self.con.cursor() as cur:
+    def get_unembedded_conference_papers(self) -> list[tuple[Any, ...]]:
+        with self._get_con().cursor() as cur:
             return cur.execute("""
                 SELECT DISTINCT ps.paper_id, ps.abstract
                 FROM paper AS ps
@@ -201,8 +220,8 @@ class PaperDatabase:
                   AND ps.source != 'arxiv'
             """).fetchall()
 
-    def update_embedding(self, paper_id: str, embedding: list[float]):
-        with self.con.cursor() as cur:
+    def update_embedding(self, paper_id: str, embedding: list[float]) -> None:
+        with self._get_con().cursor() as cur:
             cur.execute(
                 """
                 INSERT INTO embedding (paper_id, embedding_gemini_embedding_001)
@@ -213,7 +232,7 @@ class PaperDatabase:
                 [paper_id, embedding],
             )
 
-    def count_rows_to_update_and_insert(self, papers: list[Paper]):
+    def count_rows_to_update_and_insert(self, papers: list[Paper]) -> tuple[int, int]:
         total_updates = 0
         total_new = 0
         for paper in tqdm(
@@ -224,9 +243,11 @@ class PaperDatabase:
 
         return total_updates, total_new
 
-    def generate_weekly_digest(self, embedding: list[float], limit: int = 10):
+    def generate_weekly_digest(
+        self, embedding: list[float], limit: int = 10
+    ) -> list[tuple[Any, ...]]:
         last_day = datetime.now() - timedelta(days=7)
-        with self.con.cursor() as cur:
+        with self._get_con().cursor() as cur:
             rows = cur.execute(
                 """
                 SELECT ps.*, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity
@@ -244,16 +265,16 @@ class PaperDatabase:
 
     def time_filtered_k_nearest(
         self, embedding: list[float], timedelta: timedelta | None, limit: int
-    ):
+    ) -> list[tuple[Any, ...]]:
         if timedelta is not None:
             oldest_time = (datetime.now() - timedelta).strftime("%Y-%m-%d")
-            time_filter = f"WHERE update_date > '{oldest_time}'"
+            time_filter = sql.SQL("WHERE update_date > {oldest_time}").format(
+                oldest_time=sql.Literal(oldest_time)
+            )
         else:
-            time_filter = ""
+            time_filter = sql.SQL("")
 
-        with self.con.cursor() as cur:
-            return cur.execute(
-                f"""
+        query = sql.SQL("""
                 SELECT ps.document, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity
                 FROM paper AS ps
                 LEFT JOIN embedding AS emb
@@ -261,20 +282,20 @@ class PaperDatabase:
                 {time_filter}
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
-            """,
-                [embedding, limit],
-            ).fetchall()
+            """).format(time_filter=time_filter)
+        with self._get_con().cursor() as cur:
+            return cur.execute(query, [embedding, limit]).fetchall()
 
     def get_newest_conference_papers(
         self, embedding: list[float], timedelta: timedelta
-    ):
+    ) -> list[tuple[Any, ...]]:
         limit = 10
         if timedelta is None:
             timedelta = timedelta(days=365 * 50)
 
         oldest_time = (datetime.now() - timedelta).strftime("%Y-%m-%d")
 
-        with self.con.cursor() as cur:
+        with self._get_con().cursor() as cur:
             return cur.execute(
                 """
                 SELECT ps.*, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity
@@ -294,23 +315,24 @@ class PaperDatabase:
         self,
         embedding: list[float],
         timedelta: timedelta,
-        filter_list: list[str],
+        filter_list: list[sql.Composable],
         limit: int = 10,
-    ):
+    ) -> list[tuple[Any, ...]]:
         if timedelta is None:
             timedelta = timedelta(days=365 * 50)
 
         oldest_time = (datetime.now() - timedelta).strftime("%Y-%m-%d")
 
         # Combine multiple filters with OR (union of sources), wrapped to preserve precedence
-        filter_str = ""
         if filter_list:
-            or_group = " OR ".join(f"({flt})" for flt in filter_list)
-            filter_str = f"AND ({or_group})\n"
+            or_group = sql.SQL(" OR ").join(
+                sql.SQL("({})").format(flt) for flt in filter_list
+            )
+            filter_composed = sql.SQL("AND ({})").format(or_group)
+        else:
+            filter_composed = sql.SQL("")
 
-        with self.con.cursor() as cur:
-            return cur.execute(
-                f"""
+        query = sql.SQL("""
                 SELECT ps.*, emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072) AS similarity
                 FROM paper AS ps
                 JOIN embedding AS emb
@@ -320,12 +342,12 @@ class PaperDatabase:
                 {filter_str}
                 ORDER BY similarity ASC
                 LIMIT %s::INTEGER
-            """,
-                [embedding, oldest_time, limit],
-            ).fetchall()
+            """).format(filter_str=filter_composed)
+        with self._get_con().cursor() as cur:
+            return cur.execute(query, [embedding, oldest_time, limit]).fetchall()
 
     # TODO: Add a way of finding the next conference date for each source
-    def summarise_current_conferences(self):
+    def summarise_current_conferences(self) -> None:
         """Print a summary of the conference papers that are currently in the
         database. For every non-arxiv paper source (e.g. ICML, NeurIPS, …)
         print the list of years for which we have papers.
@@ -333,7 +355,7 @@ class PaperDatabase:
             ICML      : [2022, 2023, 2024]
             NeurIPS   : [2021, 2022, 2023]
         """
-        with self.con.cursor() as cur:
+        with self._get_con().cursor() as cur:
             rows = cur.execute(
                 """
                 SELECT source,
@@ -350,7 +372,7 @@ class PaperDatabase:
             years_sorted = sorted(years)
             print(f"{source:<10}: {years_sorted}")
 
-    def commit(self):
+    def commit(self) -> None:
         if self.con is not None:
             self.con.commit()
 
@@ -358,16 +380,17 @@ class PaperDatabase:
         self,
         embedding: list[float],
         similarity_threshold: float,
-        filter_list: list[str],
-    ):
-        filter_str = ""
+        filter_list: list[sql.Composable],
+    ) -> list[tuple[Any, ...]]:
         if filter_list:
-            or_group = " OR ".join(f"({flt})" for flt in filter_list)
-            filter_str = f"AND ({or_group})\n"
+            or_group = sql.SQL(" OR ").join(
+                sql.SQL("({})").format(flt) for flt in filter_list
+            )
+            filter_composed = sql.SQL("AND ({})").format(or_group)
+        else:
+            filter_composed = sql.SQL("")
 
-        with self.con.cursor() as cur:
-            rows = cur.execute(
-                f"""
+        query = sql.SQL("""
                 SELECT ps.update_date, (emb.embedding_gemini_embedding_001 <=> %s::halfvec(3072)) < %s AS is_similar
                 FROM paper AS ps
                 JOIN embedding AS emb
@@ -375,9 +398,9 @@ class PaperDatabase:
                 WHERE emb.embedding_gemini_embedding_001 IS NOT NULL
                   {filter_str}
                 ORDER BY update_date ASC
-            """,
-                [embedding, similarity_threshold],
-            ).fetchall()
+            """).format(filter_str=filter_composed)
+        with self._get_con().cursor() as cur:
+            rows = cur.execute(query, [embedding, similarity_threshold]).fetchall()
 
         return rows
 
