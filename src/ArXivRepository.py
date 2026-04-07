@@ -231,17 +231,18 @@ class ArXivRepository:
 if __name__ == "__main__":
     # parse flags for differnet modes
     parser = argparse.ArgumentParser()
+    parser.add_argument("--sync", action="store_true")
     parser.add_argument("--digest", action="store_true")
     parser.add_argument("--query", action="store_true")
     parser.add_argument("--no-sync", action="store_true", default=False)
     args = parser.parse_args()
 
-    if not args.digest and not args.query:
-        print("Must use either --digest or --query")
+    if not args.digest and not args.query and not args.sync:
+        print("Must use either --sync, --digest or --query")
         exit(1)
 
-    if args.digest and args.query:
-        print("Cannot use both digest and query mode at the same time")
+    if sum([args.digest, args.query, args.sync]) > 1:
+        print("Cannot use multiple modes at the same time")
         exit(1)
 
     with ArXivRepository(
@@ -249,7 +250,9 @@ if __name__ == "__main__":
         research_llm_model_name="google/gemini-2.5-flash",
         overlap_timedelta=timedelta(days=1),
     ) as repo:
-        if args.digest:
+        if args.sync:
+            repo.sync()
+        elif args.digest:
             if not args.no_sync:
                 repo.sync()
             else:
