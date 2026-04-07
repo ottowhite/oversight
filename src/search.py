@@ -1,10 +1,13 @@
+from __future__ import annotations
+
 import os
+from typing import Any
 
 from dotenv import load_dotenv
 from ConferenceSearchEngine import ConferenceSearchEngine
 
 
-def pretty_print_doc(doc):
+def pretty_print_doc(doc: Any) -> None:
     title_str = ""
     title_str += doc.metadata["title"]
     title_str += f" ({','.join(doc.metadata['conference'])}"
@@ -21,7 +24,7 @@ def pretty_print_doc(doc):
     print()
 
 
-def main():
+def main() -> None:
     load_dotenv()
 
     # TODO: Make support many different embedding models + experiment with different embedding models. Add multiple named embeddings for each document.

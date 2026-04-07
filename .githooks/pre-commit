@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Running ruff formatter check..."
+uv run ruff format --check src/
+
+echo "Running ty type checker..."
+uv run ty check src/
+
+echo "All pre-commit checks passed."

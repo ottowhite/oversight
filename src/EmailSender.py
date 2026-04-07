@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import yagmail
 import smtplib
 from dotenv import load_dotenv
@@ -8,7 +10,7 @@ logger = get_logger()
 
 
 class EmailSender:
-    def __init__(self, email):
+    def __init__(self, email: str) -> None:
         load_dotenv()
         logger.info(f"Initialising email sender for {email}")
 
@@ -20,7 +22,7 @@ class EmailSender:
 
         self.yag = yagmail.SMTP(email, os.getenv("GMAIL_APP_PASSWORD"))
 
-    def send_email(self, to, subject, contents):
+    def send_email(self, to: str, subject: str, contents: str) -> None:
         try:
             self.yag.send(to=to, subject=subject, contents=contents)
         except smtplib.SMTPAuthenticationError:
@@ -28,11 +30,13 @@ class EmailSender:
         except Exception as e:
             logger.error(f"Error sending email to {to}: {e}")
 
-    def send_email_multiple_recipients(self, recipients, subject, contents):
+    def send_email_multiple_recipients(
+        self, recipients: list[str], subject: str, contents: str
+    ) -> None:
         for recipient in recipients:
             self.send_email(recipient, subject, contents)
 
-    def __del__(self):
+    def __del__(self) -> None:
         self.yag.close()
 
 
