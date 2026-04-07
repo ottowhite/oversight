@@ -18,7 +18,7 @@ def get_logger() -> logging.Logger:
     return logging.getLogger(__name__)
 
 
-def chunked_iterable(iterable: Iterable[T], size: int) -> int:
+def chunked_iterable(iterable: Iterable[T], size: int) -> Iterator[list[T]]:
     it = iter(iterable)
     while True:
         chunk = list(itertools.islice(it, size))
