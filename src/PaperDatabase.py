@@ -337,18 +337,36 @@ class PaperDatabase:
             rows = cur.execute(
                 """
                 SELECT source,
-                       array_agg(DISTINCT EXTRACT(YEAR FROM update_date)::INT) AS years
+                       EXTRACT(YEAR FROM update_date)::INT AS year,
+                       COUNT(*) AS cnt
                 FROM paper
                 WHERE source != 'arxiv'
+                GROUP BY source, year
+                ORDER BY source, year
+                """
+            ).fetchall()
+
+        result: dict[str, dict[int, int]] = {}
+        for source, year, cnt in rows:
+            result.setdefault(source, {})[year] = cnt
+
+        return result
+
+    def count_papers_by_source(self):
+        """Return a dict mapping each source to its paper count, plus a total."""
+        with self.con.cursor() as cur:
+            rows = cur.execute(
+                """
+                SELECT source, COUNT(*) AS cnt
+                FROM paper
                 GROUP BY source
                 ORDER BY source
                 """
             ).fetchall()
 
-        # Sort the years inside each list for nicer presentation and print
-        for source, years in rows:
-            years_sorted = sorted(years)
-            print(f"{source:<10}: {years_sorted}")
+        result = {source: cnt for source, cnt in rows}
+        result["total"] = sum(result.values())
+        return result
 
     def commit(self):
         if self.con is not None:

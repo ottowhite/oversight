@@ -6,6 +6,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 
+from PaperDatabase import PaperDatabase
 from PaperRepository import PaperRepository
 from ArXivRepository import ArXivRepository
 from ResearchListener import research_listener_group
@@ -166,6 +167,16 @@ def search() -> tuple[dict, int]:
         )
 
     return {"results": results}, 200
+
+
+@app.get("/api/inventory")
+def inventory() -> tuple[dict, int]:
+    """Return a summary of conferences/years and paper counts in the database."""
+    with PaperDatabase() as db:
+        conferences = db.summarise_current_conferences()
+        counts = db.count_papers_by_source()
+
+    return {"conferences": conferences, "counts": counts}, 200
 
 
 @app.post("/api/sync")
