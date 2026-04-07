@@ -29,3 +29,6 @@ format/check:
 
 typecheck:
 	uv run ty check src/
+
+oversight/sync:
+	cd src && uv run python ArXivRepository.py --sync

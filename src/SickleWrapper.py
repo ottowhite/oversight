@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from datetime import datetime
 from tqdm import tqdm
 from sickle import Sickle
@@ -8,7 +10,7 @@ from Paper import Paper
 class SickleWrapper:
     def __init__(
         self, base_url: str, arxiv_metadata_type: str, cs_set: str, date_format: str
-    ):
+    ) -> None:
         self.base_url = base_url
         self.arxiv_metadata_type = arxiv_metadata_type
         self.cs_set = cs_set
@@ -29,20 +31,20 @@ class SickleWrapper:
         new_papers: list[Paper] = []
         for new_record in tqdm(records, desc="Parsing potentially new papers"):
             document = xmltodict.parse(new_record.raw)["record"]
-            paper_id = document["metadata"]["arXivRaw"]["id"]
+            paper_id: str = document["metadata"]["arXivRaw"]["id"]
             revision_submission_date = datetime.strptime(
                 document["header"]["datestamp"], self.date_format
             )
             link = f"https://arxiv.org/abs/{paper_id}"
 
             categories = document["header"]["setSpec"]
-            if type(categories) is str:
-                categories = set([categories])
+            if isinstance(categories, str):
+                categories_set: set[str] = {categories}
             else:
-                assert type(categories) is list, (
+                assert isinstance(categories, list), (
                     f"Categories is not a list: {categories}"
                 )
-                categories = set(categories)
+                categories_set = {str(c) for c in categories}
 
             paper = Paper(
                 paper_id=paper_id,
@@ -52,7 +54,7 @@ class SickleWrapper:
                 source="arxiv",
                 link=link,
                 paper_date=revision_submission_date,
-                categories=categories,
+                categories=categories_set,
             )
 
             new_papers.append(paper)
