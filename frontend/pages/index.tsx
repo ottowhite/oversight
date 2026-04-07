@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type Paper = {
@@ -124,6 +125,10 @@ export default function HomePage() {
   }
 
   return (
+    <>
+    <Head>
+      <title>Oversight</title>
+    </Head>
     <main className="grid h-screen grid-rows-[auto,1fr]">
       {/* Header */}
       <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
@@ -134,7 +139,22 @@ export default function HomePage() {
             </div>
           </div>
           <h1 className="text-lg font-semibold">Oversight</h1>
-          <span className="ml-auto text-xs text-base-content/60">Embeddings-backed search</span>
+          <a
+            href="https://github.com/ottowhite/oversight"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto flex items-center gap-2 text-base text-base-content/60 transition-colors hover:text-base-content"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-7 w-7"
+            >
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+            GitHub
+          </a>
         </div>
       </header>
 
@@ -275,12 +295,11 @@ export default function HomePage() {
                       value={text}
                       onChange={(e) => setText(e.target.value)}
                       rows={6}
-                      placeholder="Paste related abstract(s) here..."
+                      placeholder="Enter arbitrary search queries, abstracts, ideas or text snippets here..."
                       className="textarea textarea-bordered textarea-primary w-full text-base-content placeholder:text-base-content/60"
                       required
                     />
                     <div className="flex items-center justify-between">
-                      <span className="text-xs opacity-70">The backend wraps the repository and queries Postgres using embeddings.</span>
                       <button type="submit" className={`btn btn-sm btn-primary ${loading ? 'btn-disabled loading' : ''}`} disabled={loading}>
                         {loading ? 'Searching…' : 'Search'}
                       </button>
@@ -306,7 +325,7 @@ export default function HomePage() {
                         onClick={() => navigateToAbstract(p.abstract)}
                         className="btn btn-sm btn-outline btn-primary"
                       >
-                        Navigate to abstract
+                        Find Similar
                       </button>
                       {p.link && (
                         <a
@@ -335,5 +354,6 @@ export default function HomePage() {
         </section>
       </div>
     </main>
+    </>
   );
 }
