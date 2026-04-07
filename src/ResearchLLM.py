@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+from typing import Any
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
@@ -5,17 +8,18 @@ import relevant_abstracts
 
 
 class ResearchLLM:
-    def __init__(self, model_name: str):
+    def __init__(self, model_name: str) -> None:
         load_dotenv()
 
         assert os.environ["OPENROUTER_API_KEY"] is not None, (
             "OPENROUTER_API_KEY is not set"
         )
-        self.llm = ChatOpenAI(
-            model=model_name,
-            base_url="https://openrouter.ai/api/v1",
-            api_key=os.environ["OPENROUTER_API_KEY"],
-        )
+        chat_kwargs: dict[str, Any] = {
+            "model": model_name,
+            "base_url": "https://openrouter.ai/api/v1",
+            "api_key": os.environ["OPENROUTER_API_KEY"],
+        }
+        self.llm = ChatOpenAI(**chat_kwargs)
 
         importance_rankings_dict = {
             "Focus on optimising agentic applications/LLM applications rather than single LLM inference. For partial points they may only talk about agentic applications without optimising them": 20,
@@ -35,8 +39,8 @@ class ResearchLLM:
         self.project_context = "How to improve efficiency of LLM-Applications / agentic workflows, as traditional LLM frameworks only optimise for individual invocations, whereas more complex LLM-applications such as RAG, tool-use, and inference-time scaling are becoming commonplace. We are particularly looking at scheduling improvements that can be made with a graph representing such high-level LLM-Applications. Interesting future directions include how to predict the future execution latency of the graph, better support for dynamic control flow such as loops and conditionals, how to share hardware efficiently between a combination of locally hosted models, and remote models."
         self.not_project_context = "LLM Training, Quantisation, Compression, optimisation of individual LLM inference"
 
-    def generate_relatedness_summary(self, abstract: str):
-        prompt = f"""You are an academic research assistant that concisely and accurately determines relatedness of a research abstract to our given project context. 
+    def generate_relatedness_summary(self, abstract: str) -> Any:
+        prompt = f"""You are an academic research assistant that concisely and accurately determines relatedness of a research abstract to our given project context.
 
         Our project context is:
         \"{self.project_context}\"
@@ -58,7 +62,7 @@ class ResearchLLM:
 
         Justification
         --> Category 2 [X/Y points]
-        
+
         ...
 
         Final score: X/Y points (X/Y%)
@@ -66,7 +70,9 @@ class ResearchLLM:
 
         return self.llm.invoke(prompt).content
 
-    def generate_fake_abstract(self, input_string: str, conference_type, output_type):
+    def generate_fake_abstract(
+        self, input_string: str, conference_type: str, output_type: str
+    ) -> Any:
         assert output_type in ["Paper", "Survey"]
 
         if conference_type == "Systems":

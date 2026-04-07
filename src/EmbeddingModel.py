@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+from typing import Any, Generator
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import time
 import os
@@ -7,7 +10,7 @@ from utils import chunked_iterable
 
 
 class EmbeddingModel:
-    def __init__(self, model_name):
+    def __init__(self, model_name: str) -> None:
         load_dotenv()
 
         self.model_name = model_name
@@ -16,9 +19,11 @@ class EmbeddingModel:
             assert os.getenv("GOOGLE_API_KEY") is not None, (
                 "GOOGLE_API_KEY is not set in the .env file or environment variables"
             )
-            self.model = GoogleGenerativeAIEmbeddings(
-                model=model_name, api_key=os.getenv("GOOGLE_API_KEY")
-            )
+            embeddings_kwargs: dict[str, Any] = {
+                "model": model_name,
+                "api_key": os.getenv("GOOGLE_API_KEY"),
+            }
+            self.model = GoogleGenerativeAIEmbeddings(**embeddings_kwargs)
 
             # https://cloud.google.com/vertex-ai/docs/quotas#model-region-quotas
             # NOTE: can only do 1 text per request but this handled transparently by langchain
@@ -34,7 +39,9 @@ class EmbeddingModel:
         else:
             raise ValueError(f"Model {model_name} not supported")
 
-    def embed_documents_rate_limited(self, texts):
+    def embed_documents_rate_limited(
+        self, texts: list[str]
+    ) -> Generator[list[float], None, None]:
         if len(texts) == 0:
             return
 
@@ -57,6 +64,7 @@ class EmbeddingModel:
             print(f"Embedding {len(texts_chunk)} texts at {human_readable_time}.")
             time_start = time.time()
 
+            new_embeddings: list[list[float]] = []
             for i in range(5):
                 try:
                     new_embeddings = self.model.embed_documents(texts_chunk)
@@ -64,8 +72,8 @@ class EmbeddingModel:
                 except Exception as e:
                     print(max_texts_tokens)
                     print(f"Error embedding {len(texts_chunk)} texts: {e}")
-                    for i, text in enumerate(texts_chunk):
-                        print(f"text {i}: {text}")
+                    for j, text in enumerate(texts_chunk):
+                        print(f"text {j}: {text}")
 
                     print("Sleeping for 10 seconds")
                     time.sleep(10)

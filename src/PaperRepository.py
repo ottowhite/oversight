@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 import json
 import os
 from tqdm import tqdm
 from datetime import timedelta
+from psycopg import sql
 
 from PaperDatabase import PaperDatabase
 from Paper import Paper
@@ -10,18 +13,23 @@ from ResearchLLM import ResearchLLM
 
 
 class PaperRepository:
-    def __init__(self, embedding_model_name: str):
+    def __init__(self, embedding_model_name: str) -> None:
         self.db = PaperDatabase()
         self.embedding_model = EmbeddingModel(embedding_model_name)
 
-    def __enter__(self):
+    def __enter__(self) -> PaperRepository:
         self.db.__enter__()
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: object,
+    ) -> None:
         self.db.__exit__(exc_type, exc_val, exc_tb)
 
-    def add_scraped_papers(self, path: str):
+    def add_scraped_papers(self, path: str) -> None:
         with open(path, "r") as f:
             papers_json = json.load(f)
 
@@ -29,7 +37,7 @@ class PaperRepository:
             paper = Paper.from_scraped_json(paper_json)
             updated_rows, new_rows, skipped_rows = self.db.insert_paper(paper)
 
-    def add_openreview_papers(self, path: str, api_version: int):
+    def add_openreview_papers(self, path: str, api_version: int) -> None:
         with open(path, "r") as f:
             papers_json = json.load(f)
 
@@ -37,7 +45,7 @@ class PaperRepository:
             paper = Paper.from_openreview_json(paper_json, api_version)
             updated_rows, new_rows, skipped_rows = self.db.insert_paper(paper)
 
-    def add_scraped_papers_from_dir(self, path: str):
+    def add_scraped_papers_from_dir(self, path: str) -> None:
         for filename in tqdm(
             os.listdir(path),
             desc="Adding scraped conferences",
@@ -45,7 +53,7 @@ class PaperRepository:
         ):
             self.add_scraped_papers(os.path.join(path, filename))
 
-    def add_openreview_papers_from_dir(self, path: str):
+    def add_openreview_papers_from_dir(self, path: str) -> None:
         for filename in tqdm(
             os.listdir(path),
             desc="Adding openreview conferences",
@@ -61,12 +69,12 @@ class PaperRepository:
 
             self.add_openreview_papers(os.path.join(path, filename), api_version)
 
-    def embed_missing_conference_papers(self):
+    def embed_missing_conference_papers(self) -> None:
         papers_to_embed = self.db.get_unembedded_conference_papers()
         print(f"Embedding {len(papers_to_embed)} papers")
 
-        paper_ids = []
-        abstracts = []
+        paper_ids: list[str] = []
+        abstracts: list[str] = []
         for paper_id, abstract in papers_to_embed:
             paper_ids.append(paper_id)
             abstracts.append(abstract)
@@ -86,15 +94,15 @@ class PaperRepository:
             self.db.update_embedding(paper_id, embedding)
 
             if i % 10 == 0:
-                self.db.con.commit()
+                self.db.commit()
 
     def get_newest_related_papers(
         self,
         text: str,
         timedelta: timedelta,
-        filter_list: list[str] | None = None,
+        filter_list: list[sql.Composable] | None = None,
         limit: int = 10,
-    ):
+    ) -> list[Paper]:
         embedding = self.embedding_model.model.embed_query(text)
         paper_rows = self.db.get_newest_papers(
             embedding, timedelta, filter_list or [], limit
@@ -109,16 +117,16 @@ class PaperRepository:
         self,
         text: str,
         similarity_threshold: float,
-        filter_list: list[str] | None = None,
-    ):
+        filter_list: list[sql.Composable] | None = None,
+    ) -> tuple[list[object], list[int], list[float]]:
         embedding = self.embedding_model.model.embed_query(text)
         rows = self.db.compute_similarity_over_time(
             embedding, similarity_threshold, filter_list or []
         )
         cumulative_similar = 0
-        cumulative_similarities = []
-        cumulative_similarities_weighted = []
-        dates = []
+        cumulative_similarities: list[int] = []
+        cumulative_similarities_weighted: list[float] = []
+        dates: list[object] = []
         for i, (update_date, is_similar) in enumerate(rows):
             dates.append(update_date)
             cumulative_similar += is_similar
@@ -128,12 +136,12 @@ class PaperRepository:
         return dates, cumulative_similarities, cumulative_similarities_weighted
 
     @staticmethod
-    def build_filter_string(sources: list[str]):
+    def build_filter_sql(sources: list[str]) -> sql.Composed:
         if len(sources) == 1:
-            return f"ps.source = '{sources[0]}'"
-        # Prefer a compact IN clause to avoid precedence issues
-        sources_sql = ", ".join([f"'{s}'" for s in sources])
-        return f"ps.source IN ({sources_sql})"
+            return sql.SQL("ps.source = {}").format(sql.Literal(sources[0]))
+        return sql.SQL("ps.source IN ({})").format(
+            sql.SQL(", ").join(sql.Literal(s) for s in sources)
+        )
 
 
 if __name__ == "__main__":
@@ -158,14 +166,14 @@ if __name__ == "__main__":
         abstract = "Recent advancements in large language models have spurred interest in inference-time scaling techniques to balance efficiency and performance. In this work, we analyze and integrate several search strategies—including beam search, Monte Carlo Tree Search (MCTS), and alternative approaches—to enhance the inference process. Our key contribution lies in a unified framework that dynamically selects optimal search techniques based on model characteristics and contextual constraints. Extensive experimentation on established benchmarks demonstrates significant improvements in both speed and output accuracy compared to standard search methods. We discuss theoretical underpinnings, implementation challenges, and potential avenues for future research in scalable inference algorithms via evaluation."
 
     with PaperRepository(embedding_model_name="models/gemini-embedding-001") as repo:
-        ai_conference_filter = repo.build_filter_string(["ICML", "NeurIPS", "ICLR"])
-        arxiv_filter = repo.build_filter_string(["arxiv"])
-        systems_filter = repo.build_filter_string(
+        ai_conference_filter = repo.build_filter_sql(["ICML", "NeurIPS", "ICLR"])
+        arxiv_filter = repo.build_filter_sql(["arxiv"])
+        systems_filter = repo.build_filter_sql(
             ["OSDI", "SOSP", "ASPLOS", "ATC", "NSDI", "MLSys", "EuroSys"]
         )
 
         papers = repo.get_newest_related_papers(
-            abstract, timedelta(days=365 * 5), [repo.build_filter_string(["VLDB"])]
+            abstract, timedelta(days=365 * 5), [repo.build_filter_sql(["VLDB"])]
         )
         for paper in papers:
             print(paper)

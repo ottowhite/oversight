@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 from datetime import timedelta
 import argparse
+from typing import Any
 from tqdm import tqdm
-from ResearchListener import research_listener_group
+from ResearchListener import ResearchListenerGroup, research_listener_group
 from SickleWrapper import SickleWrapper
 from PaperDatabase import PaperDatabase
 from EmbeddingModel import EmbeddingModel
@@ -25,10 +28,10 @@ logger = get_logger()
 class ArXivRepository:
     def __init__(
         self,
-        embedding_model_name,
+        embedding_model_name: str,
         research_llm_model_name: str,
         overlap_timedelta: timedelta = timedelta(days=1),
-    ):
+    ) -> None:
         self.overlap_timedelta = overlap_timedelta
         self.arxiv_db = PaperDatabase()
         self.embedding_model = EmbeddingModel(embedding_model_name)
@@ -41,22 +44,27 @@ class ArXivRepository:
         )
         self.email_sender = EmailSender("otto.white.apps@gmail.com")
 
-    def __enter__(self):
+    def __enter__(self) -> ArXivRepository:
         self.arxiv_db.__enter__()
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: object,
+    ) -> None:
         self.arxiv_db.__exit__(exc_type, exc_val, exc_tb)
         del self.email_sender
 
-    def sync(self):
+    def sync(self) -> None:
         newest_date = self.arxiv_db.get_newest_date()
         from_date = newest_date - self.overlap_timedelta
         logger.info(f"Syncing from {from_date} to avoid missed papers")
         self._sync_from_date(from_date)
         self._embed_missing_ai_papers()
 
-    def _sync_from_date(self, from_date):
+    def _sync_from_date(self, from_date: Any) -> None:
         new_papers = self.sickle.get_new_papers(from_date)
 
         total_updates, total_new = self.arxiv_db.count_rows_to_update_and_insert(
@@ -82,12 +90,12 @@ class ArXivRepository:
             f"Updated {updated_rows_total} rows, inserted {new_rows_total} rows, and skipped {skipped_rows_total} rows"
         )
 
-    def _embed_missing_ai_papers(self):
+    def _embed_missing_ai_papers(self) -> None:
         papers_to_embed = self.arxiv_db.get_unembedded_arxiv_ai_papers()
         logger.info(f"Embedding {len(papers_to_embed)} papers")
 
-        paper_ids = []
-        abstracts = []
+        paper_ids: list[str] = []
+        abstracts: list[str] = []
         for paper_id, document in tqdm(
             papers_to_embed, desc="Parsing papers", total=len(papers_to_embed)
         ):
@@ -112,12 +120,12 @@ class ArXivRepository:
 
     def generate_digest_string(
         self,
-        results,
-        include_time_since=False,
-        include_similarity=True,
-        include_date=True,
-        include_link=True,
-    ):
+        results: list[tuple[Any, ...]],
+        include_time_since: bool = False,
+        include_similarity: bool = True,
+        include_date: bool = True,
+        include_link: bool = True,
+    ) -> str:
         output = ""
         # output += f"Showing top {num_papers} most similar papers to {title} from the last day\n\n"
         for document, similarity in results:
@@ -138,7 +146,9 @@ class ArXivRepository:
 
         return output
 
-    def _print_time_filtered_digest(self, embedding, timedelta, limit):
+    def _print_time_filtered_digest(
+        self, embedding: list[float], timedelta: timedelta | None, limit: int
+    ) -> None:
         results = self.arxiv_db.time_filtered_k_nearest(
             embedding, timedelta=timedelta, limit=limit
         )
@@ -155,7 +165,7 @@ class ArXivRepository:
         print(digest)
         print("\n")
 
-    def print_time_filtered_digests(self, query):
+    def print_time_filtered_digests(self, query: str) -> None:
         embedding = self.embedding_model.model.embed_query(query)
 
         self._print_time_filtered_digest(embedding, timedelta(days=30), 10)
@@ -166,8 +176,10 @@ class ArXivRepository:
         print("--------------------------------------------------------------------")
         self._print_time_filtered_digest(embedding, None, 30)
 
-    def email_weekly_digest(self, research_listener_group):
-        paper_similarities = []
+    def email_weekly_digest(
+        self, research_listener_group: ResearchListenerGroup
+    ) -> None:
+        paper_similarities: list[tuple[str, Paper, Any]] = []
         for listener in research_listener_group.research_listeners:
             embedding = self.embedding_model.model.embed_query(listener.text)
             rows = self.arxiv_db.generate_weekly_digest(
@@ -180,8 +192,8 @@ class ArXivRepository:
 
         # sort by ascending similarity
         paper_similarities.sort(key=lambda result: result[2])
-        seen_titles = set()
-        paper_similarities_unique = []
+        seen_titles: set[str] = set()
+        paper_similarities_unique: list[tuple[str, Paper, Any]] = []
         for listener_title_name, paper, similarity in paper_similarities:
             if paper.title in seen_titles:
                 continue
@@ -200,7 +212,9 @@ class ArXivRepository:
             digest_string,
         )
 
-    def generate_weekly_digest_string(self, paper_similarities):
+    def generate_weekly_digest_string(
+        self, paper_similarities: list[tuple[str, Paper, Any]]
+    ) -> str:
         digest_string = ""
         for listener_title, paper, similarity in paper_similarities:
             digest_string += f"{paper.title} (most related to {listener_title}): {similarity:.3f}\n\n"
@@ -243,5 +257,5 @@ if __name__ == "__main__":
 
             repo.email_weekly_digest(research_listener_group)
         elif args.query:
-            query_str = "Large-scale language-model (LM) applications now resemble distributed programs whose interactive “agentic” workflows are governed by service-level objectives (SLOs) that users experience at sub-second granularity. Existing schedulers optimise only the end-to-end deadline of the entire LM program, ignoring the time-between-consumable chunks (TBC) that determines perceived responsiveness and opportunities to cancel misbehaving runs. We present SCALE (SLO-Conscious Adaptive Latency-and-Efficiency scheduler), the first runtime that jointly optimises throughput and fine-grained latency for LM programs. SCALE models each program component—including conditional branches—and predicts its execution time on heterogeneous accelerators. Given a per-component SLO budget, SCALE formulates scheduling as a constrained optimisation that maximises global throughput while guaranteeing that every TBC (and, optionally, the overall deadline) is met. A prototype of SCALE deployed on a 128-GPU cluster supports both inference-time agent workflows and training-time self-reflection loops. Across nine production-style LM workloads, SCALE sustains up to 2.3× higher job throughput than a latency-agnostic baseline while meeting 99.9 % of TBC SLOs; compared with an end-to-end-only SLO scheduler, it reduces median interactive latency by up to 4.7× without losing cluster utilisation. These results demonstrate that SLO-aware, mixed latency/throughput optimisation is essential for the next generation of LM systems, providing a complete picture for both end users and datacentre operators."
+            query_str = "Large-scale language-model (LM) applications now resemble distributed programs whose interactive \u201cagentic\u201d workflows are governed by service-level objectives (SLOs) that users experience at sub-second granularity. Existing schedulers optimise only the end-to-end deadline of the entire LM program, ignoring the time-between-consumable chunks (TBC) that determines perceived responsiveness and opportunities to cancel misbehaving runs. We present SCALE (SLO-Conscious Adaptive Latency-and-Efficiency scheduler), the first runtime that jointly optimises throughput and fine-grained latency for LM programs. SCALE models each program component\u2014including conditional branches\u2014and predicts its execution time on heterogeneous accelerators. Given a per-component SLO budget, SCALE formulates scheduling as a constrained optimisation that maximises global throughput while guaranteeing that every TBC (and, optionally, the overall deadline) is met. A prototype of SCALE deployed on a 128-GPU cluster supports both inference-time agent workflows and training-time self-reflection loops. Across nine production-style LM workloads, SCALE sustains up to 2.3\u00d7 higher job throughput than a latency-agnostic baseline while meeting 99.9 % of TBC SLOs; compared with an end-to-end-only SLO scheduler, it reduces median interactive latency by up to 4.7\u00d7 without losing cluster utilisation. These results demonstrate that SLO-aware, mixed latency/throughput optimisation is essential for the next generation of LM systems, providing a complete picture for both end users and datacentre operators."
             repo.print_time_filtered_digests(query_str)

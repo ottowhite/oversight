@@ -1,8 +1,16 @@
+from __future__ import annotations
+
 from relevant_abstracts import autellix_abstract, muxserve_abstract, parrot_abstract
 
 
 class ResearchListenerGroup:
-    def __init__(self, research_listeners, num_papers, email_recipients, title):
+    def __init__(
+        self,
+        research_listeners: list[ResearchListener],
+        num_papers: int,
+        email_recipients: list[str],
+        title: str,
+    ) -> None:
         self.research_listeners = research_listeners
         self.num_papers = num_papers
         self.email_recipients = email_recipients
@@ -10,7 +18,7 @@ class ResearchListenerGroup:
 
 
 class ResearchListener:
-    def __init__(self, title, text):
+    def __init__(self, title: str, text: str) -> None:
         self.title = title
         self.text = text
 
