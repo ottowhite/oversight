@@ -12,10 +12,18 @@ type Paper = {
 
 const API_BASE = ""; // use Next.js rewrite to proxy to backend
 
+const TIME_STEPS = [7, 14, 30, 90, 180, 365, 730, 1095, 1825, 2555, 3650];
+const DEFAULT_TIME_INDEX = 7; // 1095 days = 3 years
+
+const LIMIT_STEPS = [10, 15, 20, 25, 30, 40, 50];
+const DEFAULT_LIMIT_INDEX = 0; // 10 results
+
 export default function HomePage() {
   const [text, setText] = useState("");
-  const [timeDays, setTimeDays] = useState<number>(365 * 5);
-  const [limit, setLimit] = useState<number>(10);
+  const [timeIndex, setTimeIndex] = useState<number>(DEFAULT_TIME_INDEX);
+  const timeDays = TIME_STEPS[timeIndex];
+  const [limitIndex, setLimitIndex] = useState<number>(DEFAULT_LIMIT_INDEX);
+  const limit = LIMIT_STEPS[limitIndex];
   const [efSearch, setEfSearch] = useState<number>(50);
 
   // Exponential mapping for ef_search slider: position 0–100 maps to 10–500
@@ -208,17 +216,18 @@ export default function HomePage() {
               </label>
               <input
                 type="range"
-                min={7}
-                max={3650}
+                min={0}
+                max={TIME_STEPS.length - 1}
                 step={1}
-                value={timeDays}
-                onChange={(e) => setTimeDays(parseInt((e.target as HTMLInputElement).value, 10))}
+                value={timeIndex}
+                onChange={(e) => setTimeIndex(parseInt((e.target as HTMLInputElement).value, 10))}
                 className="range range-primary"
               />
               <div className="flex justify-between px-2 text-xs opacity-60">
                 <span>1w</span>
-                <span>1m</span>
+                <span>3m</span>
                 <span>1y</span>
+                <span>5y</span>
                 <span>10y</span>
               </div>
             </div>
@@ -230,18 +239,18 @@ export default function HomePage() {
               </label>
               <input
                 type="range"
-                min={1}
-                max={100}
+                min={0}
+                max={LIMIT_STEPS.length - 1}
                 step={1}
-                value={limit}
-                onChange={(e) => setLimit(parseInt((e.target as HTMLInputElement).value, 10))}
+                value={limitIndex}
+                onChange={(e) => setLimitIndex(parseInt((e.target as HTMLInputElement).value, 10))}
                 className="range range-primary"
               />
               <div className="flex justify-between px-2 text-xs opacity-60">
-                <span>1</span>
-                <span>25</span>
+                <span>10</span>
+                <span>20</span>
+                <span>30</span>
                 <span>50</span>
-                <span>100</span>
               </div>
             </div>
 
