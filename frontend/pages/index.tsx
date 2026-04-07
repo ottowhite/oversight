@@ -219,7 +219,7 @@ export default function HomePage() {
               <input
                 type="range"
                 min={40}
-                max={200}
+                max={500}
                 step={1}
                 value={efSearch}
                 onChange={(e) => setEfSearch(parseInt((e.target as HTMLInputElement).value, 10))}
@@ -228,7 +228,7 @@ export default function HomePage() {
               <div className="flex justify-between px-2 text-xs opacity-60">
                 <span>40</span>
                 <span>100</span>
-                <span>200</span>
+                <span>500</span>
               </div>
             </div>
 
