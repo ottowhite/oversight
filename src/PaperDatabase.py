@@ -347,7 +347,7 @@ class PaperDatabase:
             return cur.execute(query, [embedding, oldest_time, limit]).fetchall()
 
     # TODO: Add a way of finding the next conference date for each source
-    def summarise_current_conferences(self) -> None:
+    def summarise_current_conferences(self) -> dict[str, dict[int, int]]:
         """Print a summary of the conference papers that are currently in the
         database. For every non-arxiv paper source (e.g. ICML, NeurIPS, …)
         print the list of years for which we have papers.
@@ -376,7 +376,7 @@ class PaperDatabase:
 
     def count_papers_by_source(self):
         """Return a dict mapping each source to its paper count, plus a total."""
-        with self.con.cursor() as cur:
+        with self._get_con().cursor() as cur:
             rows = cur.execute(
                 """
                 SELECT source, COUNT(*) AS cnt
