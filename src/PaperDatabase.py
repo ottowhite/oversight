@@ -4,7 +4,7 @@ from typing import Any
 
 from tqdm import tqdm
 from Paper import Paper
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 import psycopg
 from psycopg import sql
 from dotenv import load_dotenv
@@ -350,8 +350,20 @@ class PaperDatabase:
             )
             return cur.execute(query, [embedding, oldest_time, limit]).fetchall()
 
-    # TODO: Add a way of finding the next conference date for each source
-    def summarise_current_conferences(self) -> None:
+    def latest_conference_dates(self) -> dict[str, date]:
+        """Return the most recent paper date for each non-arxiv source."""
+        with self._get_con().cursor() as cur:
+            rows = cur.execute(
+                """
+                SELECT source, MAX(update_date)::DATE
+                FROM paper
+                WHERE source != 'arxiv'
+                GROUP BY source
+                """
+            ).fetchall()
+        return {source: d for source, d in rows}
+
+    def summarise_current_conferences(self) -> dict[str, dict[int, int]]:
         """Print a summary of the conference papers that are currently in the
         database. For every non-arxiv paper source (e.g. ICML, NeurIPS, …)
         print the list of years for which we have papers.
@@ -363,18 +375,36 @@ class PaperDatabase:
             rows = cur.execute(
                 """
                 SELECT source,
-                       array_agg(DISTINCT EXTRACT(YEAR FROM update_date)::INT) AS years
+                       EXTRACT(YEAR FROM update_date)::INT AS year,
+                       COUNT(*) AS cnt
                 FROM paper
                 WHERE source != 'arxiv'
+                GROUP BY source, year
+                ORDER BY source, year
+                """
+            ).fetchall()
+
+        result: dict[str, dict[int, int]] = {}
+        for source, year, cnt in rows:
+            result.setdefault(source, {})[year] = cnt
+
+        return result
+
+    def count_papers_by_source(self):
+        """Return a dict mapping each source to its paper count, plus a total."""
+        with self._get_con().cursor() as cur:
+            rows = cur.execute(
+                """
+                SELECT source, COUNT(*) AS cnt
+                FROM paper
                 GROUP BY source
                 ORDER BY source
                 """
             ).fetchall()
 
-        # Sort the years inside each list for nicer presentation and print
-        for source, years in rows:
-            years_sorted = sorted(years)
-            print(f"{source:<10}: {years_sorted}")
+        result = {source: cnt for source, cnt in rows}
+        result["total"] = sum(result.values())
+        return result
 
     def commit(self) -> None:
         if self.con is not None:

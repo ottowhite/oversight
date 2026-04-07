@@ -38,6 +38,16 @@ export default function HomePage() {
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<Paper[]>([]);
 
+  // Inventory state
+  const [inventoryLoading, setInventoryLoading] = useState(false);
+  const [inventory, setInventory] = useState<{
+    conferences: Record<string, Record<number, number>>;
+    counts: Record<string, number>;
+    next_dates: Record<string, { date: string; passed: boolean }>;
+  } | null>(null);
+  const [inventoryError, setInventoryError] = useState<string | null>(null);
+  const [inventoryOpen, setInventoryOpen] = useState(false);
+
   const timeLabel = useMemo(() => {
     if (timeDays >= 365) {
       const years = Math.round(timeDays / 365);
@@ -116,6 +126,22 @@ export default function HomePage() {
       });
       return updated;
     });
+  }
+
+  async function fetchInventory() {
+    setInventoryOpen(true);
+    setInventoryError(null);
+    setInventoryLoading(true);
+    try {
+      const resp = await fetch(`/api/inventory`);
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data?.error || `Request failed: ${resp.status}`);
+      setInventory(data);
+    } catch (err: any) {
+      setInventoryError(err.message || String(err));
+    } finally {
+      setInventoryLoading(false);
+    }
   }
 
   function navigateToAbstract(abstract: string) {
@@ -302,6 +328,15 @@ export default function HomePage() {
               {loading ? 'Searching…' : 'Search'}
             </button>
             {error && <div className="alert alert-error py-2 text-sm">{error}</div>}
+
+            <div className="divider my-1"></div>
+
+            <button
+              onClick={fetchInventory}
+              className={`btn btn-outline btn-secondary btn-sm`}
+            >
+              Database Inventory
+            </button>
           </div>
         </aside>
 
@@ -376,6 +411,106 @@ export default function HomePage() {
           </div>
         </section>
       </div>
+
+      {/* Inventory modal */}
+      {inventoryOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="relative flex flex-col bg-base-200 rounded-xl shadow-2xl" style={{ width: '75vw', height: '75vh' }}>
+            {/* Header with close button */}
+            <div className="flex items-center justify-between border-b border-base-300 px-6 py-4">
+              <h2 className="text-lg font-semibold">Database Inventory</h2>
+              <button
+                onClick={() => setInventoryOpen(false)}
+                className="btn btn-sm btn-circle btn-ghost"
+              >
+                X
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="flex-1 overflow-y-auto p-6">
+              {inventoryLoading && (
+                <div className="flex items-center justify-center h-full">
+                  <span className="loading loading-spinner loading-lg"></span>
+                </div>
+              )}
+              {inventoryError && (
+                <div className="alert alert-error">{inventoryError}</div>
+              )}
+              {inventory && !inventoryLoading && (() => {
+                // Compute the full year range across all conferences
+                const allYears = Object.values(inventory.conferences).flatMap(m => Object.keys(m).map(Number));
+                const minYear = Math.min(...allYears);
+                const maxYear = Math.max(...allYears);
+                const yearColumns: number[] = [];
+                for (let y = minYear; y <= maxYear; y++) yearColumns.push(y);
+
+                // Build rows: conferences first, then arxiv
+                const sources = Object.keys(inventory.conferences);
+                if (inventory.counts.arxiv != null && !sources.includes('arxiv')) {
+                  sources.push('arxiv');
+                }
+
+                return (
+                  <>
+                    <div className="text-xl font-medium mb-4">
+                      Total papers: {inventory.counts.total?.toLocaleString() ?? '—'}
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="table table-zebra w-full">
+                        <thead>
+                          <tr>
+                            <th className="sticky left-0 bg-base-200 z-10">Source</th>
+                            <th>Papers</th>
+                            <th className="text-center">Next Conference</th>
+                            {yearColumns.map(y => (
+                              <th key={y} className="text-center">{y}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {sources.map(source => {
+                            const yearCounts = inventory.conferences[source] ?? {};
+                            const isArxiv = source === 'arxiv';
+                            return (
+                              <tr key={source}>
+                                <td className="font-mono text-base sticky left-0 bg-base-200 z-10">{source}</td>
+                                <td>{inventory.counts[source]?.toLocaleString() ?? '—'}</td>
+                                <td className="text-center whitespace-nowrap">
+                                  {(() => {
+                                    const nd = inventory.next_dates[source];
+                                    if (!nd) return <span className="opacity-30">—</span>;
+                                    return nd.passed
+                                      ? <span className="text-error font-bold">&#10007; {nd.date}</span>
+                                      : <span className="text-success">{nd.date}</span>;
+                                  })()}
+                                </td>
+                                {yearColumns.map(y => {
+                                  const count = yearCounts[y];
+                                  return (
+                                    <td key={y} className="text-center whitespace-nowrap">
+                                      {isArxiv
+                                        ? <span className="opacity-30">—</span>
+                                        : count != null
+                                          ? <span className="text-success font-bold">&#10003; ({count})</span>
+                                          : <span className="text-error font-bold">&#10007;</span>
+                                      }
+                                    </td>
+                                  );
+                                })}
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                );
+              })()}
+            </div>
+          </div>
+        </div>
+      )}
     </main>
     </>
   );
