@@ -64,7 +64,7 @@ class EmbeddingModel:
             print(f"Embedding {len(texts_chunk)} texts at {human_readable_time}.")
             time_start = time.time()
 
-            new_embeddings: list[list[float]] = []
+            new_embeddings: list[list[float]]
             for i in range(5):
                 try:
                     new_embeddings = self.model.embed_documents(texts_chunk)
@@ -72,8 +72,8 @@ class EmbeddingModel:
                 except Exception as e:
                     print(max_texts_tokens)
                     print(f"Error embedding {len(texts_chunk)} texts: {e}")
-                    for j, text in enumerate(texts_chunk):
-                        print(f"text {j}: {text}")
+                    for i, text in enumerate(texts_chunk):
+                        print(f"text {i}: {text}")
 
                     print("Sleeping for 10 seconds")
                     time.sleep(10)

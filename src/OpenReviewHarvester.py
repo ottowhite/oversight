@@ -80,8 +80,7 @@ class OpenReviewHarvester:
             print(f"Reject messages: {reject_messages}")
 
             return accepted_notes
-        else:
-            return []
+        return []
 
     def add_metadata_to_notes(self, notes: list[dict[str, Any]]) -> None:
         for note in notes:

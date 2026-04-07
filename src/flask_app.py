@@ -123,7 +123,9 @@ def search() -> tuple[dict[str, Any], int]:
             "sources": sources,
         }
 
-    query_text: str = str(body.get("text", "")).strip()
+    query_text_raw: Any = body.get("text", "")
+    assert isinstance(query_text_raw, str), "text must be a string"
+    query_text: str = query_text_raw.strip()
     if not query_text:
         return {"error": "text is required"}, 400
 

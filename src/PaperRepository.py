@@ -94,7 +94,7 @@ class PaperRepository:
             self.db.update_embedding(paper_id, embedding)
 
             if i % 10 == 0:
-                self.db.commit()
+                self.db._get_con().commit()
 
     def get_newest_related_papers(
         self,
