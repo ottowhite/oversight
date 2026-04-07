@@ -15,6 +15,12 @@ api/down:
 compose/down:
 	docker compose down
 
+dev:
+	./dev.sh
+
+dev/down:
+	docker compose -f docker-compose.dev.yml down
+
 lint:
 	uv run ruff check src/
 

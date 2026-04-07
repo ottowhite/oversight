@@ -177,11 +177,15 @@ export default function HomePage() {
       {/* Header */}
       <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-          <div className="avatar placeholder">
-            <div className="w-8 rounded bg-primary text-primary-content">
-              <span className="text-sm font-bold">O</span>
-            </div>
-          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-8 w-8">
+            {/* Material Design visibility (eye) icon */}
+            <path
+              d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+              fill="currentColor"
+            />
+            {/* Pupil */}
+            <circle cx="12" cy="12" r="3" fill="black" />
+          </svg>
           <h1 className="text-lg font-semibold">Oversight</h1>
           <a
             href="https://github.com/ottowhite/oversight"
@@ -203,7 +207,7 @@ export default function HomePage() {
       </header>
 
       {/* Main area: sidebar + chat */}
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 px-4 py-4 md:grid-cols-[320px,1fr]">
+      <div className="mx-auto grid min-h-0 w-full max-w-6xl grid-cols-1 gap-4 px-4 py-4 md:grid-cols-[320px,1fr]">
         {/* Sidebar / Controls */}
         <aside className="card bg-base-200 shadow-sm">
           <div className="card-body gap-4">
@@ -359,10 +363,10 @@ export default function HomePage() {
         </aside>
 
         {/* Chat-like panel */}
-        <section className="card bg-base-200 shadow-sm overflow-hidden">
-          <div className="card-body p-0">
+        <section className="card bg-base-200 shadow-sm overflow-hidden min-h-0">
+          <div className="card-body min-h-0 p-0">
             {/* Messages area */}
-            <div className="flex h-[calc(100vh-200px)] flex-col gap-4 overflow-y-auto p-4">
+            <div className="flex flex-1 min-h-0 flex-col gap-4 overflow-y-auto p-4">
               {/* User input bubble */}
               <div className="chat chat-end">
                 <div className="chat-bubble chat-bubble-primary w-full max-w-3xl">
@@ -370,6 +374,14 @@ export default function HomePage() {
                     <textarea
                       value={text}
                       onChange={(e) => setText(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          if (text.trim() && !loading) {
+                            onSubmit(e as any);
+                          }
+                        }
+                      }}
                       rows={6}
                       placeholder="Enter arbitrary search queries, abstracts, ideas or text snippets here..."
                       className="textarea textarea-bordered textarea-primary w-full text-base-content placeholder:text-base-content/60"
