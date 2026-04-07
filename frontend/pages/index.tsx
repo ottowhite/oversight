@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type Paper = {
@@ -124,6 +125,10 @@ export default function HomePage() {
   }
 
   return (
+    <>
+    <Head>
+      <title>Oversight</title>
+    </Head>
     <main className="grid h-screen grid-rows-[auto,1fr]">
       {/* Header */}
       <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
@@ -320,7 +325,7 @@ export default function HomePage() {
                         onClick={() => navigateToAbstract(p.abstract)}
                         className="btn btn-sm btn-outline btn-primary"
                       >
-                        Navigate to abstract
+                        Find Similar
                       </button>
                       {p.link && (
                         <a
@@ -349,5 +354,6 @@ export default function HomePage() {
         </section>
       </div>
     </main>
+    </>
   );
 }
