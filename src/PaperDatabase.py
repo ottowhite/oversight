@@ -4,7 +4,7 @@ from typing import Any
 
 from tqdm import tqdm
 from Paper import Paper
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 import psycopg
 from psycopg import sql
 from dotenv import load_dotenv
@@ -346,7 +346,19 @@ class PaperDatabase:
         with self._get_con().cursor() as cur:
             return cur.execute(query, [embedding, oldest_time, limit]).fetchall()
 
-    # TODO: Add a way of finding the next conference date for each source
+    def latest_conference_dates(self) -> dict[str, date]:
+        """Return the most recent paper date for each non-arxiv source."""
+        with self._get_con().cursor() as cur:
+            rows = cur.execute(
+                """
+                SELECT source, MAX(update_date)::DATE
+                FROM paper
+                WHERE source != 'arxiv'
+                GROUP BY source
+                """
+            ).fetchall()
+        return {source: d for source, d in rows}
+
     def summarise_current_conferences(self) -> dict[str, dict[int, int]]:
         """Print a summary of the conference papers that are currently in the
         database. For every non-arxiv paper source (e.g. ICML, NeurIPS, …)

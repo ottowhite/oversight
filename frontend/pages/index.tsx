@@ -41,6 +41,7 @@ export default function HomePage() {
   const [inventory, setInventory] = useState<{
     conferences: Record<string, Record<number, number>>;
     counts: Record<string, number>;
+    next_dates: Record<string, { date: string; passed: boolean }>;
   } | null>(null);
   const [inventoryError, setInventoryError] = useState<string | null>(null);
   const [inventoryOpen, setInventoryOpen] = useState(false);
@@ -419,6 +420,7 @@ export default function HomePage() {
                           <tr>
                             <th className="sticky left-0 bg-base-200 z-10">Source</th>
                             <th>Papers</th>
+                            <th className="text-center">Next Conference</th>
                             {yearColumns.map(y => (
                               <th key={y} className="text-center">{y}</th>
                             ))}
@@ -432,6 +434,15 @@ export default function HomePage() {
                               <tr key={source}>
                                 <td className="font-mono text-base sticky left-0 bg-base-200 z-10">{source}</td>
                                 <td>{inventory.counts[source]?.toLocaleString() ?? '—'}</td>
+                                <td className="text-center whitespace-nowrap">
+                                  {(() => {
+                                    const nd = inventory.next_dates[source];
+                                    if (!nd) return <span className="opacity-30">—</span>;
+                                    return nd.passed
+                                      ? <span className="text-error font-bold">&#10007; {nd.date}</span>
+                                      : <span className="text-success">{nd.date}</span>;
+                                  })()}
+                                </td>
                                 {yearColumns.map(y => {
                                   const count = yearCounts[y];
                                   return (

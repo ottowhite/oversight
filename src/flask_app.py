@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import date, timedelta
 import os
 from typing import Any
 
@@ -176,14 +176,38 @@ def search() -> tuple[dict[str, Any], int]:
     return {"results": results}, 200
 
 
+def _next_conference_dates(
+    latest: dict[str, date],
+) -> dict[str, dict[str, Any]]:
+    """Project the next conference date for each source by adding one year.
+
+    Returns a dict keyed by source name with ``date`` (ISO string) and
+    ``passed`` (bool – True when that projected date is in the past).
+    """
+    today = date.today()
+    result: dict[str, dict[str, Any]] = {}
+    for source, last_date in latest.items():
+        next_date = last_date.replace(year=last_date.year + 1)
+        result[source] = {
+            "date": next_date.isoformat(),
+            "passed": next_date < today,
+        }
+    return result
+
+
 @app.get("/api/inventory")
 def inventory() -> tuple[dict, int]:
     """Return a summary of conferences/years and paper counts in the database."""
     with PaperDatabase() as db:
         conferences = db.summarise_current_conferences()
         counts = db.count_papers_by_source()
+        latest = db.latest_conference_dates()
 
-    return {"conferences": conferences, "counts": counts}, 200
+    return {
+        "conferences": conferences,
+        "counts": counts,
+        "next_dates": _next_conference_dates(latest),
+    }, 200
 
 
 @app.post("/api/sync")
