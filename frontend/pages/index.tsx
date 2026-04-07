@@ -49,6 +49,10 @@ export default function HomePage() {
     EuroSys: true,
     VLDB: true
   });
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [eyeSpinning, setEyeSpinning] = useState(false);
+  const [systemsExpanded, setSystemsExpanded] = useState(false);
+  const [aiExpanded, setAiExpanded] = useState(false);
   const [loading, setLoading] = useState(false);
   const lastRequestIdRef = useRef<number>(0);
   const [error, setError] = useState<string | null>(null);
@@ -172,20 +176,39 @@ export default function HomePage() {
     <>
     <Head>
       <title>Oversight</title>
+      <style>{`
+        @keyframes eye-spin-cw { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes eye-spin-ccw { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+      `}</style>
     </Head>
     <main className="grid h-screen grid-rows-[auto,1fr]">
       {/* Header */}
       <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-8 w-8">
-            {/* Material Design visibility (eye) icon */}
-            <path
-              d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-              fill="currentColor"
-            />
-            {/* Pupil */}
-            <circle cx="12" cy="12" r="3" fill="black" />
-          </svg>
+          <button
+            onClick={() => {
+              setSidebarOpen((v) => !v);
+              setEyeSpinning(true);
+            }}
+            className="btn btn-ghost btn-sm btn-circle"
+            title={sidebarOpen ? 'Hide filters' : 'Show filters'}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              className="h-8 w-8"
+              onAnimationEnd={() => setEyeSpinning(false)}
+              style={eyeSpinning ? { animation: `${sidebarOpen ? 'eye-spin-cw' : 'eye-spin-ccw'} 300ms ease-in-out` } : undefined}
+            >
+              {/* Material Design visibility (eye) icon */}
+              <path
+                d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                fill="currentColor"
+              />
+              {/* Pupil */}
+              <circle cx="12" cy="12" r="3" fill="black" />
+            </svg>
+          </button>
           <h1 className="text-lg font-semibold">Oversight</h1>
           <a
             href="https://github.com/ottowhite/oversight"
@@ -207,9 +230,21 @@ export default function HomePage() {
       </header>
 
       {/* Main area: sidebar + chat */}
-      <div className="mx-auto grid min-h-0 w-full max-w-6xl grid-cols-1 gap-4 px-4 py-4 md:grid-cols-[320px,1fr]">
+      <div
+        className="mx-auto grid min-h-0 w-full max-w-6xl grid-cols-1 gap-4 px-4 py-4"
+        style={{
+          gridTemplateColumns: sidebarOpen ? '320px 1fr' : '0px 1fr',
+          transition: 'grid-template-columns 200ms ease-in-out',
+        }}
+      >
         {/* Sidebar / Controls */}
-        <aside className="card bg-base-200 shadow-sm">
+        <aside
+          className="card bg-base-200 shadow-sm overflow-y-auto overflow-x-hidden min-w-0 min-h-0"
+          style={{
+            opacity: sidebarOpen ? 1 : 0,
+            transition: 'opacity 150ms ease-in-out',
+          }}
+        >
           <div className="card-body gap-4">
             <h2 className="card-title text-base">Filters</h2>
 
@@ -285,79 +320,98 @@ export default function HomePage() {
                 <span className="label-text">Sources</span>
               </label>
 
+              {/* Systems conferences */}
+              <div>
+                <label className="label cursor-pointer justify-start gap-3 py-2">
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-sm"
+                    checked={isAllSystemsSelected}
+                    onChange={toggleAllSystems}
+                    ref={(el) => {
+                      if (el) {
+                        el.indeterminate = systemsConferences.some(conf => sources[conf as keyof typeof sources]) && !isAllSystemsSelected;
+                      }
+                    }}
+                  />
+                  <span className="label-text font-medium flex-1">Systems conferences</span>
+                  <button
+                    type="button"
+                    className="btn btn-ghost btn-xs btn-circle"
+                    onClick={() => setSystemsExpanded((v) => !v)}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`h-4 w-4 transition-transform duration-150 ${systemsExpanded ? 'rotate-180' : ''}`}>
+                      <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </label>
+                {systemsExpanded && systemsConferences.map(conf => (
+                  <label key={conf} className="label cursor-pointer justify-start gap-3 py-1 ml-6">
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-sm"
+                      checked={sources[conf as keyof typeof sources]}
+                      onChange={() => toggleSource(conf as keyof typeof sources)}
+                    />
+                    <span className="label-text text-sm">{conf}</span>
+                  </label>
+                ))}
+              </div>
+
+              {/* AI conferences */}
+              <div>
+                <label className="label cursor-pointer justify-start gap-3 py-2">
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-sm"
+                    checked={isAllAISelected}
+                    onChange={toggleAllAI}
+                    ref={(el) => {
+                      if (el) {
+                        el.indeterminate = aiConferences.some(conf => sources[conf as keyof typeof sources]) && !isAllAISelected;
+                      }
+                    }}
+                  />
+                  <span className="label-text font-medium flex-1">AI conferences</span>
+                  <button
+                    type="button"
+                    className="btn btn-ghost btn-xs btn-circle"
+                    onClick={() => setAiExpanded((v) => !v)}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`h-4 w-4 transition-transform duration-150 ${aiExpanded ? 'rotate-180' : ''}`}>
+                      <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </label>
+                {aiExpanded && aiConferences.map(conf => (
+                  <label key={conf} className="label cursor-pointer justify-start gap-3 py-1 ml-6">
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-sm"
+                      checked={sources[conf as keyof typeof sources]}
+                      onChange={() => toggleSource(conf as keyof typeof sources)}
+                    />
+                    <span className="label-text text-sm">{conf}</span>
+                  </label>
+                ))}
+              </div>
+
               {/* arXiv */}
-              <label className="label cursor-pointer justify-start gap-3">
+              <label className="label cursor-pointer justify-start gap-3 py-2">
                 <input type="checkbox" className="checkbox checkbox-sm" checked={sources.arxiv} onChange={() => toggleSource("arxiv")} />
                 <span className="label-text">arXiv</span>
               </label>
-
-              {/* AI conferences */}
-              <label className="label cursor-pointer justify-start gap-3">
-                <input
-                  type="checkbox"
-                  className="checkbox checkbox-sm"
-                  checked={isAllAISelected}
-                  onChange={toggleAllAI}
-                  ref={(el) => {
-                    if (el) {
-                      el.indeterminate = aiConferences.some(conf => sources[conf as keyof typeof sources]) && !isAllAISelected;
-                    }
-                  }}
-                />
-                <span className="label-text font-medium">AI conferences</span>
-              </label>
-              {aiConferences.map(conf => (
-                <label key={conf} className="label cursor-pointer justify-start gap-3 ml-6">
-                  <input
-                    type="checkbox"
-                    className="checkbox checkbox-sm"
-                    checked={sources[conf as keyof typeof sources]}
-                    onChange={() => toggleSource(conf as keyof typeof sources)}
-                  />
-                  <span className="label-text text-sm">{conf}</span>
-                </label>
-              ))}
-
-              {/* Systems conferences */}
-              <label className="label cursor-pointer justify-start gap-3">
-                <input
-                  type="checkbox"
-                  className="checkbox checkbox-sm"
-                  checked={isAllSystemsSelected}
-                  onChange={toggleAllSystems}
-                  ref={(el) => {
-                    if (el) {
-                      el.indeterminate = systemsConferences.some(conf => sources[conf as keyof typeof sources]) && !isAllSystemsSelected;
-                    }
-                  }}
-                />
-                <span className="label-text font-medium">Systems conferences</span>
-              </label>
-              {systemsConferences.map(conf => (
-                <label key={conf} className="label cursor-pointer justify-start gap-3 ml-6">
-                  <input
-                    type="checkbox"
-                    className="checkbox checkbox-sm"
-                    checked={sources[conf as keyof typeof sources]}
-                    onChange={() => toggleSource(conf as keyof typeof sources)}
-                  />
-                  <span className="label-text text-sm">{conf}</span>
-                </label>
-              ))}
             </div>
 
-            <button onClick={onSubmit as any} className={`btn btn-primary ${loading ? 'btn-disabled loading' : ''}`} disabled={loading}>
-              {loading ? 'Searching…' : 'Search'}
-            </button>
             {error && <div className="alert alert-error py-2 text-sm">{error}</div>}
 
             <div className="divider my-1"></div>
 
             <button
               onClick={fetchInventory}
-              className={`btn btn-outline btn-secondary btn-sm`}
+              className="btn btn-primary"
             >
-              Database Inventory
+              Show Database Inventory
             </button>
           </div>
         </aside>
