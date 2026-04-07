@@ -317,6 +317,7 @@ class PaperDatabase:
         timedelta: timedelta,
         filter_list: list[sql.Composable],
         limit: int = 10,
+        ef_search: int = 40,
     ) -> list[tuple[Any, ...]]:
         if timedelta is None:
             timedelta = timedelta(days=365 * 50)
@@ -344,6 +345,9 @@ class PaperDatabase:
                 LIMIT %s::INTEGER
             """).format(filter_str=filter_composed)
         with self._get_con().cursor() as cur:
+            cur.execute(
+                sql.SQL("SET hnsw.ef_search = {}").format(sql.Literal(ef_search))
+            )
             return cur.execute(query, [embedding, oldest_time, limit]).fetchall()
 
     # TODO: Add a way of finding the next conference date for each source

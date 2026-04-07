@@ -16,6 +16,7 @@ export default function HomePage() {
   const [text, setText] = useState("");
   const [timeDays, setTimeDays] = useState<number>(365 * 5);
   const [limit, setLimit] = useState<number>(10);
+  const [efSearch, setEfSearch] = useState<number>(40);
   const [sources, setSources] = useState({
     arxiv: true,
     // AI conferences
@@ -67,6 +68,7 @@ export default function HomePage() {
           text,
           time_window_days: timeDays,
           limit,
+          ef_search: efSearch,
           sources,
         }),
       });
@@ -206,6 +208,27 @@ export default function HomePage() {
                 <span>25</span>
                 <span>50</span>
                 <span>100</span>
+              </div>
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Search precision (ef_search)</span>
+                <span className="label-text-alt text-primary font-medium">{efSearch}</span>
+              </label>
+              <input
+                type="range"
+                min={40}
+                max={200}
+                step={1}
+                value={efSearch}
+                onChange={(e) => setEfSearch(parseInt((e.target as HTMLInputElement).value, 10))}
+                className="range range-primary"
+              />
+              <div className="flex justify-between px-2 text-xs opacity-60">
+                <span>40</span>
+                <span>100</span>
+                <span>200</span>
               </div>
             </div>
 

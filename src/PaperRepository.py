@@ -102,10 +102,11 @@ class PaperRepository:
         timedelta: timedelta,
         filter_list: list[sql.Composable] | None = None,
         limit: int = 10,
+        ef_search: int = 40,
     ) -> list[Paper]:
         embedding = self.embedding_model.model.embed_query(text)
         paper_rows = self.db.get_newest_papers(
-            embedding, timedelta, filter_list or [], limit
+            embedding, timedelta, filter_list or [], limit, ef_search=ef_search
         )
         papers: list[Paper] = []
         for paper_row in paper_rows:
