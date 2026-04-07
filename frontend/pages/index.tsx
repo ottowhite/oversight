@@ -447,18 +447,25 @@ export default function HomePage() {
                 <div className="alert alert-error">{inventoryError}</div>
               )}
               {inventory && !inventoryLoading && (() => {
-                // Compute the full year range across all conferences
+                // Compute the full year range, extending to at least the current year
+                const currentYear = new Date().getFullYear();
                 const allYears = Object.values(inventory.conferences).flatMap(m => Object.keys(m).map(Number));
                 const minYear = Math.min(...allYears);
-                const maxYear = Math.max(...allYears);
+                const maxYear = Math.max(...allYears, currentYear);
                 const yearColumns: number[] = [];
                 for (let y = minYear; y <= maxYear; y++) yearColumns.push(y);
 
-                // Build rows: conferences first, then arxiv
-                const sources = Object.keys(inventory.conferences);
-                if (inventory.counts.arxiv != null && !sources.includes('arxiv')) {
-                  sources.push('arxiv');
-                }
+                // Fixed display order: systems, AI, then arxiv
+                const SOURCE_ORDER = [
+                  'OSDI', 'SOSP', 'ASPLOS', 'ATC', 'NSDI', 'EuroSys', 'VLDB',
+                  'ICML', 'NeurIPS', 'ICLR', 'MLSys',
+                  'arxiv',
+                ];
+                const knownSources = new Set(SOURCE_ORDER);
+                const sources = [
+                  ...SOURCE_ORDER.filter(s => s in inventory.conferences || s in inventory.counts),
+                  ...Object.keys(inventory.conferences).filter(s => !knownSources.has(s)),
+                ];
 
                 return (
                   <>
@@ -471,7 +478,8 @@ export default function HomePage() {
                           <tr>
                             <th className="sticky left-0 bg-base-200 z-10">Source</th>
                             <th>Papers</th>
-                            <th className="text-center">Next Conference</th>
+                            <th className="text-center">Missing</th>
+                            <th className="text-center">Predicted Next</th>
                             {yearColumns.map(y => (
                               <th key={y} className="text-center">{y}</th>
                             ))}
@@ -487,6 +495,19 @@ export default function HomePage() {
                                 <td>{inventory.counts[source]?.toLocaleString() ?? '—'}</td>
                                 <td className="text-center whitespace-nowrap">
                                   {(() => {
+                                    if (isArxiv) return <span className="opacity-30">—</span>;
+                                    const nd = inventory.next_dates[source];
+                                    const missing = yearColumns.filter(y => {
+                                      if (y < 2020) return false;
+                                      const isFuture = nd && y >= new Date(nd.date).getFullYear();
+                                      return !isFuture && yearCounts[y] == null;
+                                    });
+                                    if (missing.length === 0) return <span className="text-success">0</span>;
+                                    return <span className="text-error font-bold">{missing.join(', ')}</span>;
+                                  })()}
+                                </td>
+                                <td className="text-center whitespace-nowrap">
+                                  {(() => {
                                     const nd = inventory.next_dates[source];
                                     if (!nd) return <span className="opacity-30">—</span>;
                                     return nd.passed
@@ -496,13 +517,19 @@ export default function HomePage() {
                                 </td>
                                 {yearColumns.map(y => {
                                   const count = yearCounts[y];
+                                  const nd = inventory.next_dates[source];
+                                  const isFuture = nd && y >= new Date(nd.date).getFullYear();
                                   return (
                                     <td key={y} className="text-center whitespace-nowrap">
                                       {isArxiv
-                                        ? <span className="opacity-30">—</span>
+                                        ? (count != null
+                                          ? <span>({count.toLocaleString()})</span>
+                                          : <span className="opacity-30">—</span>)
                                         : count != null
                                           ? <span className="text-success font-bold">&#10003; ({count})</span>
-                                          : <span className="text-error font-bold">&#10007;</span>
+                                          : isFuture
+                                            ? <span className="opacity-50">&#8230;</span>
+                                            : <span className="text-error font-bold">&#10007;</span>
                                       }
                                     </td>
                                   );

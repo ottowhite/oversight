@@ -378,7 +378,6 @@ class PaperDatabase:
                        EXTRACT(YEAR FROM update_date)::INT AS year,
                        COUNT(*) AS cnt
                 FROM paper
-                WHERE source != 'arxiv'
                 GROUP BY source, year
                 ORDER BY source, year
                 """

@@ -187,18 +187,21 @@ def search() -> tuple[dict[str, Any], int]:
 def _next_conference_dates(
     latest: dict[str, date],
 ) -> dict[str, dict[str, Any]]:
-    """Project the next conference date for each source by adding one year.
+    """Project the next conference date for each source.
 
-    Returns a dict keyed by source name with ``date`` (ISO string) and
-    ``passed`` (bool – True when that projected date is in the past).
+    Keeps adding one year to the last known date until the projected date
+    is in the future (or today).  Returns a dict keyed by source name with
+    ``date`` (ISO string) and ``passed`` (bool).
     """
     today = date.today()
     result: dict[str, dict[str, Any]] = {}
     for source, last_date in latest.items():
         next_date = last_date.replace(year=last_date.year + 1)
+        while next_date < today:
+            next_date = next_date.replace(year=next_date.year + 1)
         result[source] = {
             "date": next_date.isoformat(),
-            "passed": next_date < today,
+            "passed": False,
         }
     return result
 
