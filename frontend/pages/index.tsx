@@ -57,6 +57,8 @@ export default function HomePage() {
   const lastRequestIdRef = useRef<number>(0);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<Paper[]>([]);
+  const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Inventory state
   const [inventoryLoading, setInventoryLoading] = useState(false);
@@ -80,11 +82,17 @@ export default function HomePage() {
     return `${timeDays} day${timeDays === 1 ? "" : "s"}`;
   }, [timeDays]);
 
+  // Scroll to bottom when results change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [results, loading]);
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     setLoading(true);
     setResults([]);
+    setSubmittedQuery(text);
 
     const reqId = Date.now();
     lastRequestIdRef.current = reqId;
@@ -410,86 +418,120 @@ export default function HomePage() {
               </label>
             </div>
 
-            {error && <div className="alert alert-error py-2 text-sm">{error}</div>}
           </div>
         </aside>
 
         {/* Chat-like panel */}
-        <section className="card bg-base-200 shadow-sm overflow-hidden min-h-0">
-          <div className="card-body min-h-0 p-0">
-            {/* Messages area */}
-            <div className="flex flex-1 min-h-0 flex-col gap-4 overflow-y-auto p-4">
-              {/* User input bubble */}
-              <div className="chat chat-end">
-                <div className="chat-bubble chat-bubble-primary w-full max-w-3xl">
-                  <form onSubmit={onSubmit} className="flex flex-col gap-2">
-                    <textarea
-                      value={text}
-                      onChange={(e) => setText(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' && !e.shiftKey) {
-                          e.preventDefault();
-                          if (text.trim() && !loading) {
-                            onSubmit(e as any);
-                          }
-                        }
-                      }}
-                      rows={6}
-                      placeholder="Enter arbitrary search queries, abstracts, ideas or text snippets here..."
-                      className="textarea textarea-bordered textarea-primary w-full text-base-content placeholder:text-base-content/60"
-                      required
-                    />
-                    <div className="flex items-center justify-end">
-                      <button type="submit" className={`btn btn-sm btn-primary ${loading ? 'btn-disabled loading' : ''}`} disabled={loading}>
-                        {loading ? 'Searching…' : 'Search'}
-                      </button>
-                    </div>
-                  </form>
+        <section className="card bg-base-200 shadow-sm overflow-hidden min-h-0 flex flex-col">
+          {/* Messages area */}
+          <div className="flex-1 min-h-0 overflow-y-auto p-4 flex flex-col gap-4">
+            {/* Empty state */}
+            {results.length === 0 && !loading && !submittedQuery && (
+              <div className="flex-1 flex items-center justify-center">
+                <p className="text-base-content/40 text-lg">Search for papers below</p>
+              </div>
+            )}
+
+            {/* Submitted query as sent message */}
+            {submittedQuery && (
+              <div className="flex justify-end">
+                <div className="max-w-[75%] rounded-2xl rounded-br-sm bg-primary text-primary-content px-4 py-3">
+                  <p className="whitespace-pre-wrap text-sm leading-relaxed">{submittedQuery}</p>
                 </div>
               </div>
+            )}
 
-              {/* Results as assistant responses */}
-              {results.map((p) => (
-                <div key={p.paper_id} className="chat chat-start">
-                  <div className="w-full max-w-3xl rounded-2xl bg-gray-700 text-gray-100 p-4">
-                    <div className="mb-2 flex items-baseline justify-between gap-3">
-                      <h3 className="font-semibold">{p.title}</h3>
-                      <small className="opacity-70">
-                        {p.source || ''}
-                        {p.paper_date ? ` • ${new Date(p.paper_date).toLocaleDateString()}` : ''}
-                      </small>
-                    </div>
-                    <p className="whitespace-pre-wrap leading-relaxed">{p.abstract}</p>
-                    <div className="flex gap-3 mt-2">
-                      <button
-                        onClick={() => navigateToAbstract(p.abstract)}
-                        className="btn btn-sm btn-outline btn-primary"
+            {/* Loading indicator */}
+            {loading && (
+              <div className="flex justify-start">
+                <div className="rounded-2xl rounded-bl-sm bg-base-300 px-4 py-3">
+                  <span className="loading loading-dots loading-sm"></span>
+                </div>
+              </div>
+            )}
+
+            {/* Results as received messages */}
+            {results.map((p) => (
+              <div key={p.paper_id} className="flex justify-start">
+                <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-base-300 text-base-content px-4 py-3">
+                  <div className="mb-1 flex items-baseline justify-between gap-3">
+                    <h3 className="font-semibold text-sm">{p.title}</h3>
+                    <small className="text-xs opacity-60 whitespace-nowrap shrink-0">
+                      {p.source || ''}
+                      {p.paper_date ? ` · ${new Date(p.paper_date).toLocaleDateString()}` : ''}
+                    </small>
+                  </div>
+                  <p className="whitespace-pre-wrap text-sm leading-relaxed opacity-80">{p.abstract}</p>
+                  <div className="flex gap-2 mt-2">
+                    <button
+                      onClick={() => navigateToAbstract(p.abstract)}
+                      className="btn btn-xs btn-ghost text-primary hover:bg-primary/10"
+                    >
+                      Find Similar
+                    </button>
+                    {p.link && (
+                      <a
+                        className="btn btn-xs btn-ghost text-primary hover:bg-primary/10"
+                        href={p.link}
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        Find Similar
-                      </button>
-                      {p.link && (
-                        <a
-                          className="btn btn-sm btn-outline btn-primary"
-                          href={p.link}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          View paper
-                        </a>
-                      )}
-                    </div>
+                        View Paper
+                      </a>
+                    )}
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
 
-              {results.length === 0 && !loading && (
-                <div className="chat chat-start">
-                  <div className="chat-bubble w-full max-w-3xl bg-base-100 text-base-content opacity-70">
-                    No results yet. Submit a query above.
-                  </div>
+            {/* No results message */}
+            {results.length === 0 && !loading && submittedQuery && (
+              <div className="flex justify-start">
+                <div className="rounded-2xl rounded-bl-sm bg-base-300 text-base-content/60 px-4 py-3 text-sm">
+                  No results found. Try a different query.
                 </div>
-              )}
-            </div>
+              </div>
+            )}
+
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input bar at the bottom */}
+          <div className="border-t border-base-300/60 p-3">
+            {error && <div className="alert alert-error py-2 text-sm mb-2">{error}</div>}
+            <form onSubmit={onSubmit} className="flex items-end gap-2">
+              <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    if (text.trim() && !loading) {
+                      onSubmit(e as any);
+                    }
+                  }
+                }}
+                rows={1}
+                placeholder="Search for papers..."
+                className="textarea textarea-bordered flex-1 min-h-[2.5rem] max-h-32 resize-none text-sm leading-relaxed"
+                style={{ fieldSizing: 'content' } as any}
+                required
+              />
+              <button
+                type="submit"
+                className={`btn btn-primary btn-circle btn-sm ${loading ? 'btn-disabled' : ''}`}
+                disabled={loading || !text.trim()}
+                title="Send"
+              >
+                {loading ? (
+                  <span className="loading loading-spinner loading-xs"></span>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+                    <path d="M3.105 2.29a.75.75 0 00-.826.95l1.414 4.925A1.5 1.5 0 005.135 9.25h6.115a.75.75 0 010 1.5H5.135a1.5 1.5 0 00-1.442 1.086l-1.414 4.926a.75.75 0 00.826.95 28.897 28.897 0 0015.293-7.155.75.75 0 000-1.114A28.897 28.897 0 003.105 2.289z" />
+                  </svg>
+                )}
+              </button>
+            </form>
           </div>
         </section>
       </div>

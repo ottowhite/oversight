@@ -3,6 +3,8 @@
 pkgs.mkShell {
   packages = [
     pkgs.uv
+    pkgs.nodejs
+    pkgs.nodePackages.npm
   ];
 
   shellHook = ''
