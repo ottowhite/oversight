@@ -9,5 +9,7 @@ pkgs.mkShell {
 
   shellHook = ''
     git config core.hooksPath .githooks
+    uv sync --quiet
+    source .venv/bin/activate
   '';
 }
