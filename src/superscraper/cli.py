@@ -43,7 +43,7 @@ async def main() -> None:
         listener=lambda: AgentListener(StreamLogger(on_chunk=callback)),
     )
 
-    papers: list[SimplePaper] = await agent.call(
+    initial_papers: list[SimplePaper] = await agent.call(
         list[SimplePaper],
         "Scrape the webpage at the provided URL.",
         url=args.url,
@@ -52,7 +52,15 @@ async def main() -> None:
         lookup_abstract_from_acm_link=lookup_abstract_from_acm_link,
     )
 
-    for paper in papers:
+    validated_papers: list[SimplePaper] = await agent.call(
+        list[SimplePaper],
+        "Validate all extracted information is correct, finding any issues with your previous approach. If you did do issues, adapt scrapers and re-generate the papers, validating that the issues are fixed across all papers.",
+        SimplePaper=SimplePaper,
+        Author=SimplePaper.Author,
+        initial_papers=initial_papers,
+    )
+
+    for paper in validated_papers:
         print(f"{paper.title} ({paper.uid})")
         for author in paper.authors:
             print(f"  - {author.first_name} {author.last_name} ({author.institution})")
@@ -62,13 +70,13 @@ async def main() -> None:
 
         print()
 
-    print(f"Found {len(papers)} papers.")
+    print(f"Found {len(validated_papers)} papers.")
 
     # Save the papers
     output_path = Path(args.output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as f:
-        f.write(json.dumps([asdict(paper) for paper in papers], indent=2))
+        f.write(json.dumps([asdict(paper) for paper in validated_papers], indent=2))
 
 
 def entrypoint() -> None:
