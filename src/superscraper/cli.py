@@ -2,7 +2,7 @@ from __future__ import annotations
 from superscraper.tools.semantic_scholar import lookup_abstract_from_acm_link
 import json
 from pathlib import Path
-from attr import dataclass
+from attr import asdict, dataclass
 import asyncio
 from agentica.logging.loggers.stream_logger import StreamLogger
 from agentica.logging import AgentListener
@@ -68,7 +68,7 @@ async def main() -> None:
     output_path = Path(args.output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as f:
-        f.write(json.dumps([paper.__dict__ for paper in papers], indent=2))
+        f.write(json.dumps([asdict(paper) for paper in papers], indent=2))
 
 
 def entrypoint() -> None:
