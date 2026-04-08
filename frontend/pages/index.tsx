@@ -204,6 +204,7 @@ export default function HomePage() {
     <>
     <Head>
       <title>Oversight</title>
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <style>{`
         @keyframes eye-spin-cw { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes eye-spin-ccw { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
