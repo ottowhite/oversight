@@ -50,6 +50,7 @@ export default function HomePage() {
     VLDB: true
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarRef = useRef<HTMLElement>(null);
   const [eyeSpinning, setEyeSpinning] = useState(false);
   const [systemsExpanded, setSystemsExpanded] = useState(false);
   const [aiExpanded, setAiExpanded] = useState(false);
@@ -69,6 +70,17 @@ export default function HomePage() {
   } | null>(null);
   const [inventoryError, setInventoryError] = useState<string | null>(null);
   const [inventoryOpen, setInventoryOpen] = useState(false);
+
+  useEffect(() => {
+    if (!sidebarOpen) return;
+    function handleClick(e: MouseEvent) {
+      if (sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
+        setSidebarOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [sidebarOpen]);
 
   const timeLabel = useMemo(() => {
     if (timeDays >= 365) {
@@ -191,7 +203,7 @@ export default function HomePage() {
     <main className="grid h-screen grid-rows-[auto,1fr]">
       {/* Header */}
       <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
-        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
+        <div className="flex items-center gap-3 px-4 py-3">
           <button
             onClick={() => {
               setSidebarOpen((v) => !v);
@@ -236,20 +248,16 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Main area: sidebar + chat */}
-      <div
-        className="mx-auto grid min-h-0 w-full max-w-6xl grid-cols-1 gap-4 px-4 py-4"
-        style={{
-          gridTemplateColumns: sidebarOpen ? '320px 1fr' : '0px 1fr',
-          transition: 'grid-template-columns 200ms ease-in-out',
-        }}
-      >
-        {/* Sidebar / Controls */}
+      {/* Main area: sidebar overlay + chat */}
+      <div className="relative min-h-0 w-full px-4 py-4">
+        {/* Sidebar / Controls — overlays on top of chat */}
         <aside
-          className="card bg-base-200 shadow-sm overflow-y-auto overflow-x-hidden min-w-0 min-h-0"
+          ref={sidebarRef}
+          className="absolute top-4 left-4 z-20 w-[320px] card bg-base-200 shadow-lg border border-[#333333] overflow-y-auto overflow-x-hidden"
           style={{
-            opacity: sidebarOpen ? 1 : 0,
-            transition: 'opacity 150ms ease-in-out',
+            height: 'calc(100% - 2rem)',
+            transform: sidebarOpen ? 'translateX(0)' : 'translateX(calc(-100% - 1rem))',
+            transition: 'transform 200ms ease-in-out',
           }}
         >
           <div className="card-body gap-4">
@@ -421,7 +429,7 @@ export default function HomePage() {
         </aside>
 
         {/* Chat-like panel */}
-        <section className="card bg-base-200 shadow-sm overflow-hidden min-h-0 flex flex-col">
+        <section className="card bg-base-200 shadow-sm overflow-hidden flex flex-col h-full">
           {/* Messages area */}
           <div className="flex-1 min-h-0 overflow-y-auto p-4 flex flex-col gap-4">
             {/* Empty state */}
