@@ -39,36 +39,25 @@ def _write_cache(doi: str, data: dict) -> None:
     path.write_text(json.dumps(data, indent=2))
 
 
-def _paper_from_cache(data: dict) -> SemanticScholarPaper:
-    return SemanticScholarPaper(data)
-
-
-async def lookup_paper_by_doi(doi: str) -> SemanticScholarPaper:
+async def lookup_paper_by_doi(doi: str, *, cached: bool = True) -> SemanticScholarPaper:
     """Look up a paper on Semantic Scholar by DOI and return its metadata."""
+    if cached:
+        hit = _read_cache(doi)
+        if hit is not None:
+            return SemanticScholarPaper(hit)
+
     semantic_scholar = AsyncSemanticScholar()
-    return await semantic_scholar.get_paper(doi, fields=PAPER_FIELDS)
+    paper = await semantic_scholar.get_paper(doi, fields=PAPER_FIELDS)
 
+    if cached:
+        _write_cache(doi, paper.raw_data)
 
-async def lookup_paper_by_doi_cached(doi: str) -> SemanticScholarPaper:
-    """Cached version of lookup_paper_by_doi."""
-    cached = _read_cache(doi)
-    if cached is not None:
-        return _paper_from_cache(cached)
-
-    paper = await lookup_paper_by_doi(doi)
-    _write_cache(doi, paper.raw_data)
     return paper
 
 
-async def lookup_abstract_by_doi(doi: str) -> str:
+async def lookup_abstract_by_doi(doi: str, *, cached: bool = True) -> str:
     """Look up a paper on Semantic Scholar by DOI and return its abstract."""
-    paper = await lookup_paper_by_doi(doi)
-    return paper.abstract
-
-
-async def lookup_abstract_by_doi_cached(doi: str) -> str:
-    """Cached version of lookup_abstract_by_doi."""
-    paper = await lookup_paper_by_doi_cached(doi)
+    paper = await lookup_paper_by_doi(doi, cached=cached)
     return paper.abstract
 
 
@@ -81,11 +70,8 @@ def _extract_doi_from_acm_link(acm_link: str) -> str:
 
 
 # https://dl.acm.org/doi/10.1145/3731569.3764800
-async def lookup_abstract_from_acm_link(acm_link: str) -> str:
+async def lookup_abstract_from_acm_link(acm_link: str, *, cached: bool = True) -> str:
     """Look up a paper on Semantic Scholar by ACM DOI link and return its abstract."""
-    return await lookup_abstract_by_doi(_extract_doi_from_acm_link(acm_link))
-
-
-async def lookup_abstract_from_acm_link_cached(acm_link: str) -> str:
-    """Cached version of lookup_abstract_from_acm_link."""
-    return await lookup_abstract_by_doi_cached(_extract_doi_from_acm_link(acm_link))
+    return await lookup_abstract_by_doi(
+        _extract_doi_from_acm_link(acm_link), cached=cached
+    )
