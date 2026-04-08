@@ -28,6 +28,7 @@ dependencies = [
     "wheel>=0.45.1",
     "xmltodict>=1.0.2",
     "yagmail>=0.15.293",
+    "agentica",
 ]
 
 [build-system]
@@ -45,3 +46,12 @@ dev = [
     "ruff>=0.11.0",
     "ty>=0.0.1a7",
 ]
+
+[tool.ruff]
+exclude = ["src/agentica-mini"]
+
+[tool.ty.src]
+exclude = ["src/agentica-mini"]
+
+[tool.uv.sources]
+agentica = { path = "./src/agentica-mini", editable = true }
