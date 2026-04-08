@@ -26,11 +26,6 @@ make lint           # ruff linter
 make lint/fix       # auto-fix lint issues
 make typecheck      # ty type checker (runs in pre-commit hook)
 
-# Frontend (from frontend/ directory)
-npm run dev         # next.js dev server on port 3000
-npm run build       # production build
-npm run lint        # eslint
-
 # Data sync
 make oversight/sync # sync papers from ArXiv
 ```
