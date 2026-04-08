@@ -58,6 +58,7 @@ export default function HomePage() {
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<Paper[]>([]);
   const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
+  const [searchDuration, setSearchDuration] = useState<number | null>(null);
 
   // Inventory state
   const [inventoryLoading, setInventoryLoading] = useState(false);
@@ -85,11 +86,13 @@ export default function HomePage() {
     setError(null);
     setLoading(true);
     setResults([]);
+    setSearchDuration(null);
     setSubmittedQuery(query);
     setText(query);
 
     const reqId = Date.now();
     lastRequestIdRef.current = reqId;
+    const startTime = performance.now();
 
     try {
       const resp = await fetch(`/api/search`, {
@@ -108,6 +111,7 @@ export default function HomePage() {
       const data = await resp.json();
       if (!resp.ok) throw new Error(data?.error || `Request failed: ${resp.status}`);
       if (lastRequestIdRef.current !== reqId) return;
+      setSearchDuration((performance.now() - startTime) / 1000);
       setResults(data.results || []);
     } catch (err: any) {
       setError(err.message || String(err));
@@ -436,11 +440,22 @@ export default function HomePage() {
               </div>
             )}
 
-            {/* Loading indicator */}
+            {/* Typing indicator */}
             {loading && (
               <div className="flex justify-start">
-                <div className="rounded-2xl rounded-bl-sm bg-base-300 px-4 py-3">
-                  <span className="loading loading-dots loading-sm"></span>
+                <div className="rounded-2xl rounded-bl-sm bg-[#111111] px-4 py-3 flex items-center gap-[3px]">
+                  <span className="typing-dot" style={{ animationDelay: '0ms' }} />
+                  <span className="typing-dot" style={{ animationDelay: '150ms' }} />
+                  <span className="typing-dot" style={{ animationDelay: '300ms' }} />
+                </div>
+              </div>
+            )}
+
+            {/* Search duration */}
+            {searchDuration !== null && results.length > 0 && (
+              <div className="flex justify-start">
+                <div className="rounded-2xl rounded-bl-sm bg-[#111111] text-base-content/50 px-4 py-2 text-xs">
+                  Search took {searchDuration.toFixed(1)}s
                 </div>
               </div>
             )}
