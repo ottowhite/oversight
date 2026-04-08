@@ -32,7 +32,7 @@ class CacheHandler:
                 f"Invalid FILE_CACHE value: {self.file_cache_mode}. Must be '', 'read', or 'write'"
             )
 
-        FILE_CACHE_DIR.mkdir(exist_ok=True)  # Ensure file cache directory exists
+        FILE_CACHE_DIR.mkdir(parents=True, exist_ok=True)  # Ensure file cache directory exists
 
     async def initialize(self):
         """Initialize the database connection"""
