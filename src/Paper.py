@@ -3,6 +3,8 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
+from AuthorExtractor import extract_authors
+
 
 class Paper:
     def __init__(
@@ -34,6 +36,10 @@ class Paper:
         self.time_since_date_str = time_since_date_str
         self.title = title
         self.source = source
+
+        author_info = extract_authors(document, source)
+        self.authors = author_info.authors
+        self.institutions = author_info.institutions
 
     def __str__(self) -> str:
         time_since_date = datetime.now().date() - self.paper_date.date()

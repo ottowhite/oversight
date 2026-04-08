@@ -8,6 +8,8 @@ type Paper = {
   source?: string | null;
   link?: string | null;
   paper_date?: string | null;
+  authors?: string[];
+  institutions?: string[];
 };
 
 const API_BASE = ""; // use Next.js rewrite to proxy to backend
@@ -479,6 +481,12 @@ export default function HomePage() {
                       {p.paper_date ? ` · ${new Date(p.paper_date).toLocaleDateString()}` : ''}
                     </small>
                   </div>
+                  {p.authors && p.authors.length > 0 && (
+                    <p className="text-xs text-base-content/60 leading-relaxed">{p.authors.join(', ')}</p>
+                  )}
+                  {p.institutions && p.institutions.length > 0 && (
+                    <p className="text-xs text-base-content/40 leading-relaxed mb-1">{p.institutions.join(' · ')}</p>
+                  )}
                   <p className="whitespace-pre-wrap text-sm leading-relaxed opacity-80">{p.abstract}</p>
                   <div className="flex gap-2 mt-2">
                     <button

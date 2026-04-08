@@ -174,6 +174,8 @@ def search() -> tuple[dict[str, Any], int]:
                 "abstract": p.abstract,
                 "source": p.source,
                 "link": p.link,
+                "authors": p.authors,
+                "institutions": p.institutions,
                 # paper_date is a datetime.date or datetime; convert to ISO string
                 "paper_date": p.paper_date.isoformat()
                 if hasattr(p.paper_date, "isoformat")
