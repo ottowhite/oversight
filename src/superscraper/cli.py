@@ -76,7 +76,31 @@ async def main() -> None:
     output_path = Path(args.output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as f:
-        f.write(json.dumps([asdict(paper) for paper in validated_papers], indent=2))
+        if output_path.suffix == ".json":
+            f.write(json.dumps([asdict(paper) for paper in validated_papers], indent=2))
+        elif output_path.suffix == ".txt":
+            f.write(f"Found {len(validated_papers)} papers.\n\n")
+            for paper in validated_papers:
+                f.write(f"{paper.title} ({paper.uid})\n")
+                for author in paper.authors:
+                    f.write(
+                        f"  - {author.first_name} {author.last_name} ({author.institution})\n"
+                    )
+                f.write(f"  Link: {paper.link}\n")
+                f.write(f"  Abstract: {paper.abstract}\n\n")
+        elif output_path.suffix == ".md":
+            f.write(f"# {len(validated_papers)} Papers\n\n")
+            for paper in validated_papers:
+                f.write(f"## [{paper.title}]({paper.link})\n\n")
+                f.write(f"**DOI:** `{paper.uid}`\n\n")
+                f.write(f"**Authors:**\n\n")
+                for author in paper.authors:
+                    f.write(
+                        f"- {author.first_name} {author.last_name} (*{author.institution}*)\n"
+                    )
+                f.write(f"\n**Abstract:**\n\n> {paper.abstract}\n\n---\n\n")
+        else:
+            raise ValueError(f"Unsupported output format: {output_path.suffix}")
 
 
 def entrypoint() -> None:
