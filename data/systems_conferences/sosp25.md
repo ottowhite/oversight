@@ -447,7 +447,7 @@
 **Authors:**
 
 - Jiacheng Ma (*EPFL*)
-- Jonas Kaufmann (Max Planck Institute for Software Systems (MPI-SWS)) (*EPFL*)
+- Jonas Kaufmann (*Max Planck Institute for Software Systems (MPI-SWS)*)
 - Emilien Guandalino (*EPFL*)
 - Rishabh Iyer (*UC Berkeley*)
 - Thomas Bourgeat (*EPFL*)
@@ -472,7 +472,7 @@
 - Guoyao Xu (*University of Macau*)
 - Liping Zhang (*University of Macau*)
 - Guodong Yang (*Alibaba Group*)
-- Huanle Xu (*Alibaba Group*)
+- Huanle Xu (*University of Macau*)
 - Chengzhong Xu (*University of Macau*)
 
 **Abstract:**
@@ -992,6 +992,14 @@
 
 **Authors:**
 
+- Vivien Rindisbacher (*University of California, San Diego*)
+- Evan Johnson (*University of California, San Diego*)
+- Nico Lehmann (*University of California, San Diego*)
+- Tyler Potyondy (*University of California, San Diego*)
+- Pat Pannuto (*University of California, San Diego*)
+- Stefan Savage (*University of California, San Diego*)
+- Deian Stefan (*University of California, San Diego*)
+- Ranjit Jhala (*University of California, San Diego*)
 
 **Abstract:**
 
@@ -1123,34 +1131,25 @@
 
 **Authors:**
 
-- Jiahao Li (University of Science and Technology of China (*University of Science and Technology of China*)
-- Baidu (China) Co. (*University of Science and Technology of China*)
--  Ltd) (*University of Science and Technology of China*)
-- Biao Cao (*University of Science and Technology of China*)
-- Jielong Jian (Baidu (China) Co. (*University of Science and Technology of China*)
--  Ltd) (*University of Science and Technology of China*)
-- Cheng Li (The University of Science and Technology of China (*University of Science and Technology of China*)
-- Institute of Artificial Intelligence (*University of Science and Technology of China*)
-- Hefei Comprehensive National Science Center) (*University of Science and Technology of China*)
+- Jiahao Li (*University of Science and Technology of China; Baidu (China) Co., Ltd*)
+- Biao Cao (*Baidu (China) Co., Ltd*)
+- Jielong Jian (*Baidu (China) Co., Ltd*)
+- Cheng Li (*The University of Science and Technology of China; Institute of Artificial Intelligence, Hefei Comprehensive National Science Center*)
 - Sen Han (*University of Science and Technology of China*)
 - Yiduo Wang (*University of Science and Technology of China*)
 - Yufei Wu (*University of Science and Technology of China*)
 - Kang Chen (*Tsinghua University*)
-- Zhihui Yin (*Tsinghua University*)
-- Qiushi Chen (*Tsinghua University*)
-- Jiwei Xiong (*Tsinghua University*)
-- Jie Zhao (*Tsinghua University*)
-- Fengyuan Liu (*Tsinghua University*)
-- Yan Xing (*Tsinghua University*)
-- Liguo Duan (*Tsinghua University*)
-- Miao Yu (*Tsinghua University*)
-- Ran Zheng (Baidu (China) Co. (*Tsinghua University*)
--  Ltd) (*Tsinghua University*)
-- Feng Wu (University of Science and Technology of China (*Tsinghua University*)
-- Institute of Artificial Intelligence (*Tsinghua University*)
-- Hefei Comprehensive National Science Center) (*Tsinghua University*)
-- Xianjun Meng (Baidu (China) Co. (*Tsinghua University*)
--  Ltd) (*Tsinghua University*)
+- Zhihui Yin (*Baidu (China) Co., Ltd*)
+- Qiushi Chen (*Baidu (China) Co., Ltd*)
+- Jiwei Xiong (*Baidu (China) Co., Ltd*)
+- Jie Zhao (*Baidu (China) Co., Ltd*)
+- Fengyuan Liu (*Baidu (China) Co., Ltd*)
+- Yan Xing (*Baidu (China) Co., Ltd*)
+- Liguo Duan (*Baidu (China) Co., Ltd*)
+- Miao Yu (*Baidu (China) Co., Ltd*)
+- Ran Zheng (*Baidu (China) Co., Ltd*)
+- Feng Wu (*University of Science and Technology of China; Institute of Artificial Intelligence, Hefei Comprehensive National Science Center*)
+- Xianjun Meng (*Baidu (China) Co., Ltd*)
 
 **Abstract:**
 
@@ -1191,8 +1190,8 @@
 - Nicolaas Kaashoek (*Princeton University*)
 - Oleg A. Golev (*Sentient Foundation*)
 - Austin T. Li (*Cornell University*)
-- Amit Levy (*Cornell University*)
-- Wyatt Lloyd (Princeton University). (*Cornell University*)
+- Amit Levy (*Princeton University*)
+- Wyatt Lloyd (*Princeton University*)
 
 **Abstract:**
 
