@@ -49,7 +49,7 @@ export default function HomePage() {
     EuroSys: true,
     VLDB: true
   });
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [eyeSpinning, setEyeSpinning] = useState(false);
   const [systemsExpanded, setSystemsExpanded] = useState(false);
   const [aiExpanded, setAiExpanded] = useState(false);
@@ -58,7 +58,6 @@ export default function HomePage() {
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<Paper[]>([]);
   const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Inventory state
   const [inventoryLoading, setInventoryLoading] = useState(false);
@@ -81,11 +80,6 @@ export default function HomePage() {
     }
     return `${timeDays} day${timeDays === 1 ? "" : "s"}`;
   }, [timeDays]);
-
-  // Scroll to bottom when results change
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [results, loading]);
 
   async function doSearch(query: string) {
     setError(null);
@@ -209,13 +203,13 @@ export default function HomePage() {
               onAnimationEnd={() => setEyeSpinning(false)}
               style={eyeSpinning ? { animation: `${sidebarOpen ? 'eye-spin-cw' : 'eye-spin-ccw'} 300ms ease-in-out` } : undefined}
             >
-              {/* Material Design visibility (eye) icon */}
+              {/* Eye outline */}
               <path
-                d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
                 fill="currentColor"
               />
               {/* Pupil */}
-              <circle cx="12" cy="12" r="3" fill="black" />
+              <circle cx="12" cy="12" r="5" className="fill-primary" />
             </svg>
           </button>
           <h1 className="text-lg font-semibold">Oversight</h1>
@@ -454,7 +448,7 @@ export default function HomePage() {
             {/* Results as received messages */}
             {results.map((p) => (
               <div key={p.paper_id} className="flex justify-start">
-                <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-base-300 text-base-content px-4 py-3">
+                <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-sky-900/40 text-base-content px-4 py-3">
                   <div className="mb-1 flex items-baseline justify-between gap-3">
                     <h3 className="font-semibold text-sm">{p.title}</h3>
                     <small className="text-xs opacity-60 whitespace-nowrap shrink-0">
@@ -494,13 +488,12 @@ export default function HomePage() {
               </div>
             )}
 
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Input bar at the bottom */}
           <div className="border-t border-base-300/60 p-3">
             {error && <div className="alert alert-error py-2 text-sm mb-2">{error}</div>}
-            <form onSubmit={onSubmit} className="flex items-end gap-2">
+            <form onSubmit={onSubmit} className="flex items-center gap-3">
               <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -519,16 +512,29 @@ export default function HomePage() {
                 required
               />
               <button
+                type="button"
+                className="btn btn-ghost btn-circle btn-sm"
+                title={sidebarOpen ? 'Hide filters' : 'Show filters'}
+                onClick={() => {
+                  setSidebarOpen((v) => !v);
+                  setEyeSpinning(true);
+                }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                  <path fillRule="evenodd" d="M7.84 1.804A1 1 0 018.82 1h2.36a1 1 0 01.98.804l.331 1.652a6.993 6.993 0 011.929 1.115l1.598-.54a1 1 0 011.186.447l1.18 2.044a1 1 0 01-.205 1.251l-1.267 1.113a7.047 7.047 0 010 2.228l1.267 1.113a1 1 0 01.206 1.25l-1.18 2.045a1 1 0 01-1.187.447l-1.598-.54a6.993 6.993 0 01-1.929 1.115l-.33 1.652a1 1 0 01-.98.804H8.82a1 1 0 01-.98-.804l-.331-1.652a6.993 6.993 0 01-1.929-1.115l-1.598.54a1 1 0 01-1.186-.447l-1.18-2.044a1 1 0 01.205-1.251l1.267-1.114a7.05 7.05 0 010-2.227L1.821 7.773a1 1 0 01-.206-1.25l1.18-2.045a1 1 0 011.187-.447l1.598.54A6.993 6.993 0 017.51 3.456l.33-1.652zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <button
                 type="submit"
                 className={`btn btn-primary btn-circle btn-sm ${loading ? 'btn-disabled' : ''}`}
                 disabled={loading || !text.trim()}
                 title="Send"
               >
                 {loading ? (
-                  <span className="loading loading-spinner loading-xs"></span>
+                  <span className="loading loading-spinner loading-sm"></span>
                 ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
-                    <path d="M3.105 2.29a.75.75 0 00-.826.95l1.414 4.925A1.5 1.5 0 005.135 9.25h6.115a.75.75 0 010 1.5H5.135a1.5 1.5 0 00-1.442 1.086l-1.414 4.926a.75.75 0 00.826.95 28.897 28.897 0 0015.293-7.155.75.75 0 000-1.114A28.897 28.897 0 003.105 2.289z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                    <path d="M18 10L2 2l4 8-4 8L18 10z" />
                   </svg>
                 )}
               </button>
