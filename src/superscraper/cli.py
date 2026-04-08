@@ -24,6 +24,8 @@ class SimplePaper:
     abstract: str
     link: str
     uid: str
+    date: str
+    conference_name: str
 
 
 async def main() -> None:
@@ -32,6 +34,10 @@ async def main() -> None:
     parser.add_argument(
         "--output-path", required=True, help="Output file path for scraped data"
     )
+    parser.add_argument("--date", required=True, help="Date of the conference")
+    parser.add_argument(
+        "--conference-name", required=True, help="Name of the conference"
+    )
     args = parser.parse_args()
 
     async def callback(chunk):
@@ -39,14 +45,16 @@ async def main() -> None:
 
     agent = await spawn(
         premise="You are a web-scraping agent. You extract information from webpages with beautifulsoup, and return well-typed outputs. You scrape the information that is available on the webpage, and retrieve missing information from other tools you have access to. Populate the uid field with the DOI if it's available on the page.",
-        model="openai:gpt-5.4",
+        model="anthropic/claude-opus-4.6",
         listener=lambda: AgentListener(StreamLogger(on_chunk=callback)),
     )
 
     initial_papers: list[SimplePaper] = await agent.call(
         list[SimplePaper],
-        "Scrape the webpage at the provided URL.",
+        "Scrape the webpage at the provided URL. Set the date field to the provided date (in YYYY-MM-DD format) and the conference_name field to the provided conference_name directly on all papers.",
         url=args.url,
+        date=args.date,
+        conference_name=args.conference_name,
         SimplePaper=SimplePaper,
         Author=SimplePaper.Author,
         lookup_abstract_from_acm_link=lookup_abstract_from_acm_link,
