@@ -53,6 +53,8 @@ export default function HomePage() {
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLElement>(null);
+  const eyeToggleRef = useRef<HTMLButtonElement>(null);
+  const cogToggleRef = useRef<HTMLButtonElement>(null);
   const [eyeSpinning, setEyeSpinning] = useState(false);
   const [systemsExpanded, setSystemsExpanded] = useState(false);
   const [aiExpanded, setAiExpanded] = useState(false);
@@ -76,7 +78,12 @@ export default function HomePage() {
   useEffect(() => {
     if (!sidebarOpen) return;
     function handleClick(e: MouseEvent) {
-      if (sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (
+        sidebarRef.current && !sidebarRef.current.contains(target) &&
+        !(eyeToggleRef.current && eyeToggleRef.current.contains(target)) &&
+        !(cogToggleRef.current && cogToggleRef.current.contains(target))
+      ) {
         setSidebarOpen(false);
       }
     }
@@ -207,6 +214,7 @@ export default function HomePage() {
       <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
         <div className="flex items-center gap-3 px-4 py-3">
           <button
+            ref={eyeToggleRef}
             onClick={() => {
               setSidebarOpen((v) => !v);
               setEyeSpinning(true);
@@ -543,6 +551,7 @@ export default function HomePage() {
                 required
               />
               <button
+                ref={cogToggleRef}
                 type="button"
                 className="btn btn-ghost btn-circle btn-sm"
                 title={sidebarOpen ? 'Hide filters' : 'Show filters'}
