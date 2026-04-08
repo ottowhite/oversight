@@ -1,6 +1,7 @@
 from __future__ import annotations
 from superscraper.tools.semantic_scholar import lookup_abstract_from_acm_link
 import json
+from pathlib import Path
 from attr import dataclass
 import asyncio
 from agentica.logging.loggers.stream_logger import StreamLogger
@@ -20,20 +21,24 @@ class SimplePaper:
 
     title: str
     authors: list[SimplePaper.Author]
-    abstract: str | None
+    abstract: str
     link: str
+    uid: str
 
 
 async def main() -> None:
     parser = argparse.ArgumentParser(description="Superscraper CLI")
-    parser.add_argument("url", help="URL of the webpage to scrape")
+    parser.add_argument("--url", required=True, help="URL of the webpage to scrape")
+    parser.add_argument(
+        "--output-path", required=True, help="Output file path for scraped data"
+    )
     args = parser.parse_args()
 
     async def callback(chunk):
         print(chunk.content, end="", flush=True)
 
     agent = await spawn(
-        premise="You are a web-scraping agent. You extract information from webpages with beautifulsoup, and return well-typed outputs. You scrape the information that is available on the webpage, and retrieve missing information from other tools you have access to.",
+        premise="You are a web-scraping agent. You extract information from webpages with beautifulsoup, and return well-typed outputs. You scrape the information that is available on the webpage, and retrieve missing information from other tools you have access to. Populate the uid field with the DOI if it's available on the page.",
         model="openai:gpt-5.4",
         listener=lambda: AgentListener(StreamLogger(on_chunk=callback)),
     )
@@ -48,17 +53,22 @@ async def main() -> None:
     )
 
     for paper in papers:
-        print(paper.title)
+        print(f"{paper.title} ({paper.uid})")
         for author in paper.authors:
             print(f"  - {author.first_name} {author.last_name} ({author.institution})")
+        print(
+            f"  Abstract: {paper.abstract[:200]}..."
+        )  # Print the first 200 characters of the abstract
 
         print()
 
     print(f"Found {len(papers)} papers.")
 
-    # Save the ppaers
-    with open("papers.json", "w") as f:
-        json.dump([paper.__dict__ for paper in papers], f, indent=2)
+    # Save the papers
+    output_path = Path(args.output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w") as f:
+        f.write(json.dumps([paper.__dict__ for paper in papers], indent=2))
 
 
 def entrypoint() -> None:
