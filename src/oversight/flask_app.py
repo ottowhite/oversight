@@ -9,10 +9,10 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 from psycopg import sql
 
-from PaperDatabase import PaperDatabase
-from PaperRepository import PaperRepository
-from ArXivRepository import ArXivRepository
-from ResearchListener import research_listener_group
+from .PaperDatabase import PaperDatabase
+from .PaperRepository import PaperRepository
+from .ArXivRepository import ArXivRepository
+from .ResearchListener import research_listener_group
 
 # Load environment variables early so repo/db can connect
 load_dotenv()

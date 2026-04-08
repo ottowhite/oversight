@@ -4,7 +4,7 @@ import os
 from typing import Any
 
 from dotenv import load_dotenv
-from ConferenceSearchEngine import ConferenceSearchEngine
+from .ConferenceSearchEngine import ConferenceSearchEngine
 
 
 def pretty_print_doc(doc: Any) -> None:

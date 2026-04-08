@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
-from AuthorExtractor import extract_authors
+from .AuthorExtractor import extract_authors
 
 
 class Paper:

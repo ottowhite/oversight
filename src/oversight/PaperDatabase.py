@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from tqdm import tqdm
-from Paper import Paper
+from .Paper import Paper
 from datetime import date, datetime, timedelta
 import psycopg
 from psycopg import sql
@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from pgvector.psycopg import register_vector
 import os
 from psycopg.types.json import Jsonb
-from utils import get_logger
+from .utils import get_logger
 
 logger = get_logger()
 

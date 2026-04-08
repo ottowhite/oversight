@@ -6,10 +6,10 @@ from tqdm import tqdm
 from datetime import timedelta
 from psycopg import sql
 
-from PaperDatabase import PaperDatabase
-from Paper import Paper
-from EmbeddingModel import EmbeddingModel
-from ResearchLLM import ResearchLLM
+from .PaperDatabase import PaperDatabase
+from .Paper import Paper
+from .EmbeddingModel import EmbeddingModel
+from .ResearchLLM import ResearchLLM
 
 
 class PaperRepository:

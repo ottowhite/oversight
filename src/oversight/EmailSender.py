@@ -3,7 +3,7 @@ from __future__ import annotations
 import yagmail
 import smtplib
 from dotenv import load_dotenv
-from utils import get_logger
+from .utils import get_logger
 import os
 
 logger = get_logger()

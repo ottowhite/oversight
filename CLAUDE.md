@@ -34,7 +34,7 @@ make oversight/sync # sync papers from ArXiv
 
 **Two-service app: Python backend + Next.js frontend, connected via Docker networking.**
 
-### Backend (`src/`)
+### Backend (`src/oversight/`)
 - **Flask REST API** (`flask_app.py`) — routes: `/api/search`, `/api/health`, `/api/inventory`, `/api/sync`, `/api/digest`
 - **Layered data access**: `flask_app.py` → `PaperRepository.py` (business logic + embeddings) → `PaperDatabase.py` (PostgreSQL/pgvector queries)
 - **Embeddings**: Google Generative AI (Gemini) via `EmbeddingModel.py`

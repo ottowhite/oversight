@@ -4,14 +4,14 @@ from datetime import timedelta
 import argparse
 from typing import Any
 from tqdm import tqdm
-from ResearchListener import ResearchListenerGroup, research_listener_group
-from SickleWrapper import SickleWrapper
-from PaperDatabase import PaperDatabase
-from EmbeddingModel import EmbeddingModel
-from EmailSender import EmailSender
-from utils import get_logger
-from Paper import Paper
-from ResearchLLM import ResearchLLM
+from .ResearchListener import ResearchListenerGroup, research_listener_group
+from .SickleWrapper import SickleWrapper
+from .PaperDatabase import PaperDatabase
+from .EmbeddingModel import EmbeddingModel
+from .EmailSender import EmailSender
+from .utils import get_logger
+from .Paper import Paper
+from .ResearchLLM import ResearchLLM
 
 # Database backup example
 # EXPORT DATABASE 'target_directory' (
