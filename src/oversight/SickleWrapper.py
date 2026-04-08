@@ -4,7 +4,7 @@ from datetime import datetime
 from tqdm import tqdm
 from sickle import Sickle
 import xmltodict
-from Paper import Paper
+from .Paper import Paper
 
 
 class SickleWrapper:

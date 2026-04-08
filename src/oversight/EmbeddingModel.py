@@ -6,7 +6,7 @@ import time
 import os
 from dotenv import load_dotenv
 from math import floor
-from utils import chunked_iterable
+from .utils import chunked_iterable
 
 
 class EmbeddingModel:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from relevant_abstracts import autellix_abstract, muxserve_abstract, parrot_abstract
+from .relevant_abstracts import autellix_abstract, muxserve_abstract, parrot_abstract
 
 
 class ResearchListenerGroup:
