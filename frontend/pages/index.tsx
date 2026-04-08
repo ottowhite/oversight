@@ -209,7 +209,7 @@ export default function HomePage() {
                 fill="currentColor"
               />
               {/* Pupil */}
-              <circle cx="12" cy="12" r="5" className="fill-primary" />
+              <circle cx="12" cy="12" r="5" fill="black" />
             </svg>
           </button>
           <h1 className="text-lg font-semibold">Oversight</h1>
@@ -430,7 +430,7 @@ export default function HomePage() {
             {/* Submitted query as sent message */}
             {submittedQuery && (
               <div className="flex justify-end">
-                <div className="max-w-[75%] rounded-2xl rounded-br-sm bg-primary text-primary-content px-4 py-3">
+                <div className="max-w-[75%] rounded-2xl rounded-br-sm bg-[#1a1a1a] text-base-content px-4 py-3 border border-[#333333]">
                   <p className="whitespace-pre-wrap text-sm leading-relaxed">{submittedQuery}</p>
                 </div>
               </div>
@@ -448,7 +448,7 @@ export default function HomePage() {
             {/* Results as received messages */}
             {results.map((p) => (
               <div key={p.paper_id} className="flex justify-start">
-                <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-sky-900/40 text-base-content px-4 py-3">
+                <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-[#111111] text-base-content px-4 py-3">
                   <div className="mb-1 flex items-baseline justify-between gap-3">
                     <h3 className="font-semibold text-sm">{p.title}</h3>
                     <small className="text-xs opacity-60 whitespace-nowrap shrink-0">
@@ -460,13 +460,13 @@ export default function HomePage() {
                   <div className="flex gap-2 mt-2">
                     <button
                       onClick={() => navigateToAbstract(p.abstract)}
-                      className="btn btn-xs btn-ghost text-primary hover:bg-primary/10"
+                      className="btn btn-xs btn-ghost text-accent hover:bg-accent/10"
                     >
                       Find Similar
                     </button>
                     {p.link && (
                       <a
-                        className="btn btn-xs btn-ghost text-primary hover:bg-primary/10"
+                        className="btn btn-xs btn-ghost text-accent hover:bg-accent/10"
                         href={p.link}
                         target="_blank"
                         rel="noreferrer"

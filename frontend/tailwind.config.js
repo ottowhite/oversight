@@ -13,20 +13,24 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        chatgpt: {
-          "primary": "#16a085",
-          "secondary": "#1f2937",
-          "accent": "#34d399",
-          "neutral": "#111827",
-          "base-100": "#0b0f16",
-          "info": "#38bdf8",
-          "success": "#34d399",
-          "warning": "#f59e0b",
-          "error": "#ef4444",
+        vercel: {
+          "primary": "#ffffff",        // White accent (Vercel style)
+          "primary-content": "#000000",
+          "secondary": "#333333",
+          "accent": "#0070f3",         // Vercel blue for links/highlights
+          "neutral": "#111111",
+          "neutral-content": "#ededed",
+          "base-100": "#000000",       // Pure black background
+          "base-200": "#0a0a0a",       // Near-black
+          "base-300": "#111111",       // Subtle border/elevated
+          "base-content": "#ededed",   // Light gray text
+          "info": "#0070f3",
+          "success": "#0070f3",
+          "warning": "#f5a623",
+          "error": "#ee0000",
         },
       },
-      "dark",
     ],
-    darkTheme: "chatgpt",
+    darkTheme: "vercel",
   },
 };
