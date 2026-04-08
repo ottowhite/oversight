@@ -87,12 +87,12 @@ export default function HomePage() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [results, loading]);
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function doSearch(query: string) {
     setError(null);
     setLoading(true);
     setResults([]);
-    setSubmittedQuery(text);
+    setSubmittedQuery(query);
+    setText(query);
 
     const reqId = Date.now();
     lastRequestIdRef.current = reqId;
@@ -103,7 +103,7 @@ export default function HomePage() {
         headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
         cache: "no-store",
         body: JSON.stringify({
-          text,
+          text: query,
           time_window_days: timeDays,
           limit,
           ef_search: efSearch,
@@ -113,13 +113,18 @@ export default function HomePage() {
 
       const data = await resp.json();
       if (!resp.ok) throw new Error(data?.error || `Request failed: ${resp.status}`);
-      if (lastRequestIdRef.current !== reqId) return; // a newer request finished; ignore this one
+      if (lastRequestIdRef.current !== reqId) return;
       setResults(data.results || []);
     } catch (err: any) {
       setError(err.message || String(err));
     } finally {
       setLoading(false);
     }
+  }
+
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (text.trim() && !loading) doSearch(text);
   }
 
   // Conference categories
@@ -173,11 +178,7 @@ export default function HomePage() {
   }
 
   function navigateToAbstract(abstract: string) {
-    setText(abstract);
-    // Trigger search automatically after setting the text
-    setTimeout(() => {
-      onSubmit(new Event('submit') as any);
-    }, 100);
+    doSearch(abstract);
   }
 
   return (
@@ -520,7 +521,7 @@ export default function HomePage() {
               <button
                 type="submit"
                 className={`btn btn-primary btn-circle btn-sm ${loading ? 'btn-disabled' : ''}`}
-                disabled={loading}
+                disabled={loading || !text.trim()}
                 title="Send"
               >
                 {loading ? (
