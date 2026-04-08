@@ -520,7 +520,7 @@ export default function HomePage() {
               <button
                 type="submit"
                 className={`btn btn-primary btn-circle btn-sm ${loading ? 'btn-disabled' : ''}`}
-                disabled={loading || !text.trim()}
+                disabled={loading}
                 title="Send"
               >
                 {loading ? (
