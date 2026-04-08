@@ -318,6 +318,13 @@ export default function HomePage() {
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Sources</span>
+                <button
+                  type="button"
+                  onClick={fetchInventory}
+                  className="label-text-alt underline opacity-50 hover:opacity-70 transition-opacity cursor-pointer"
+                >
+                  show all
+                </button>
               </label>
 
               {/* Systems conferences */}
@@ -404,15 +411,6 @@ export default function HomePage() {
             </div>
 
             {error && <div className="alert alert-error py-2 text-sm">{error}</div>}
-
-            <div className="divider my-1"></div>
-
-            <button
-              onClick={fetchInventory}
-              className="btn btn-primary"
-            >
-              Show Database Inventory
-            </button>
           </div>
         </aside>
 
@@ -441,7 +439,7 @@ export default function HomePage() {
                       className="textarea textarea-bordered textarea-primary w-full text-base-content placeholder:text-base-content/60"
                       required
                     />
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-end">
                       <button type="submit" className={`btn btn-sm btn-primary ${loading ? 'btn-disabled loading' : ''}`} disabled={loading}>
                         {loading ? 'Searching…' : 'Search'}
                       </button>
