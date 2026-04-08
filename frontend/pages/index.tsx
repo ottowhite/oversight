@@ -445,7 +445,7 @@ export default function HomePage() {
             {/* Empty state */}
             {results.length === 0 && !loading && !submittedQuery && (
               <div className="flex-1 flex items-center justify-center">
-                <p className="text-base-content/40 text-lg">Search for papers below</p>
+                <p className="text-base-content/40 text-lg">Find papers with arbitrary search queries, abstracts, ideas or text snippets below</p>
               </div>
             )}
 
