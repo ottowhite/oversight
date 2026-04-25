@@ -104,7 +104,7 @@ class PaperRepository:
         limit: int = 10,
         ef_search: int = 40,
     ) -> list[Paper]:
-        embedding = self.embedding_model.model.embed_query(text)
+        embedding = self.embedding_model.embed_query(text)
         paper_rows = self.db.get_newest_papers(
             embedding, timedelta, filter_list or [], limit, ef_search=ef_search
         )
@@ -120,7 +120,7 @@ class PaperRepository:
         similarity_threshold: float,
         filter_list: list[sql.Composable] | None = None,
     ) -> tuple[list[object], list[int], list[float]]:
-        embedding = self.embedding_model.model.embed_query(text)
+        embedding = self.embedding_model.embed_query(text)
         rows = self.db.compute_similarity_over_time(
             embedding, similarity_threshold, filter_list or []
         )

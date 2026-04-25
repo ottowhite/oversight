@@ -10,6 +10,10 @@ from .utils import chunked_iterable
 
 
 class EmbeddingModel:
+    # Shared across all instances so repeated queries within the same process
+    # skip the remote Gemini API call entirely.
+    _query_cache: dict[str, list[float]] = {}
+
     def __init__(self, model_name: str) -> None:
         load_dotenv()
 
@@ -38,6 +42,13 @@ class EmbeddingModel:
             self.inter_batch_sleep_time = 60
         else:
             raise ValueError(f"Model {model_name} not supported")
+
+    def embed_query(self, text: str) -> list[float]:
+        """Return the embedding for *text*, using a class-level cache so that
+        repeated queries within the same process avoid a redundant API call."""
+        if text not in EmbeddingModel._query_cache:
+            EmbeddingModel._query_cache[text] = self.model.embed_query(text)
+        return EmbeddingModel._query_cache[text]
 
     def embed_documents_rate_limited(
         self, texts: list[str]
