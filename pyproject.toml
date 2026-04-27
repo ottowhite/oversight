@@ -3,7 +3,7 @@ name = "oversight"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.13"
 dependencies = [
     "duckdb>=1.4.0",
     "faiss-cpu>=1.12.0",
@@ -28,6 +28,9 @@ dependencies = [
     "wheel>=0.45.1",
     "xmltodict>=1.0.2",
     "yagmail>=0.15.293",
+    "agentica",
+    "beautifulsoup4>=4.14.3",
+    "semanticscholar>=0.12.0",
 ]
 
 [build-system]
@@ -38,10 +41,19 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 
 [project.scripts]
-superscrape = "superscraper.cli:main"
+superscrape = "superscraper.cli:entrypoint"
 
 [dependency-groups]
 dev = [
     "ruff>=0.11.0",
     "ty>=0.0.1a7",
 ]
+
+[tool.ruff]
+exclude = ["src/agentica-mini"]
+
+[tool.ty.src]
+exclude = ["src/agentica-mini"]
+
+[tool.uv.sources]
+agentica = { path = "./src/agentica-mini", editable = true }
