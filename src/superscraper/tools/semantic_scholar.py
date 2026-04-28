@@ -7,8 +7,11 @@ import os
 import time
 from pathlib import Path
 
+from dotenv import load_dotenv
 from semanticscholar.Paper import Paper as SemanticScholarPaper
 from semanticscholar import AsyncSemanticScholar
+
+load_dotenv()
 
 CACHE_DIR = Path(__file__).parent / ".cache" / "semantic_scholar"
 NAME_CACHE_DIR = Path(__file__).parent / ".cache" / "semantic_scholar_by_name"
