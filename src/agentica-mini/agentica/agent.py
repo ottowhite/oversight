@@ -25,7 +25,7 @@ from .stubs import clean_type_name, emit_stubs
 
 T = TypeVar("T")
 
-MAX_TOOL_USES = 25
+MAX_TOOL_USES = 100
 
 NONE_FUTURE = asyncio.Future()
 NONE_FUTURE.set_result(None)
