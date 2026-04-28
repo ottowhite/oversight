@@ -148,6 +148,7 @@ class Paper:
             abstract=abstract,
             paper_date=paper_date,
             source=source,
+            link=f"https://openreview.net/forum?id={paper_json['id']}",
         )
 
     @staticmethod
