@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+import os
 import time
 from pathlib import Path
 
@@ -72,7 +73,9 @@ async def lookup_paper_by_doi(doi: str, *, cached: bool = True) -> SemanticSchol
         if hit is not None:
             return SemanticScholarPaper(hit)
 
-    semantic_scholar = AsyncSemanticScholar()
+    api_key = os.environ.get("SEMANTIC_SCHOLAR_API_KEY")
+    assert api_key, "SEMANTIC_SCHOLAR_API_KEY is not set"
+    semantic_scholar = AsyncSemanticScholar(api_key=api_key)
     async with _get_semaphore():
         await _throttle()
         paper = await semantic_scholar.get_paper(doi, fields=PAPER_FIELDS)
@@ -110,7 +113,9 @@ async def lookup_paper_by_name(
         if hit is not None:
             return SemanticScholarPaper(hit)
 
-    semantic_scholar = AsyncSemanticScholar()
+    api_key = os.environ.get("SEMANTIC_SCHOLAR_API_KEY")
+    assert api_key, "SEMANTIC_SCHOLAR_API_KEY is not set"
+    semantic_scholar = AsyncSemanticScholar(api_key=api_key)
     async with _get_semaphore():
         await _throttle()
         results = await semantic_scholar.search_paper(name, fields=PAPER_FIELDS)
