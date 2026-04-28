@@ -1,8 +1,5 @@
 from __future__ import annotations
-from superscraper.tools.semantic_scholar import (
-    lookup_abstract_from_acm_link,
-    lookup_paper_by_name,
-)
+from superscraper.tools.semantic_scholar import lookup_abstract_from_acm_link
 import json
 from pathlib import Path
 from attr import asdict, dataclass
@@ -47,22 +44,20 @@ async def main() -> None:
         print(chunk.content, end="", flush=True)
 
     agent = await spawn(
-        premise="You are a web-scraping agent. You extract information from webpages with beautifulsoup, and return well-typed outputs. You scrape the information that is available on the webpage, and retrieve missing information from other tools you have access to.",
+        premise="You are a web-scraping agent. You extract information from webpages with beautifulsoup, and return well-typed outputs. You scrape the information that is available on the webpage, and retrieve missing information from other tools you have access to. Populate the uid field with the DOI if it's available on the page.",
         model="anthropic/claude-opus-4.6",
         listener=lambda: AgentListener(StreamLogger(on_chunk=callback)),
     )
 
     initial_papers: list[SimplePaper] = await agent.call(
         list[SimplePaper],
-        "Scrape the webpage at the provided URL. Set the date field to the provided date (in YYYY-MM-DD format) and the conference_name field to the provided conference_name directly on all papers. Links and abstracts are not available on this page, so you can retrieve these by looking up on semantic scholar by paper name, and cross referencing the authors. Also note that there are two table formats as the morning schedules are single track, and the afternoon sessions are multi-track.",
+        "Scrape the webpage at the provided URL. Set the date field to the provided date (in YYYY-MM-DD format) and the conference_name field to the provided conference_name directly on all papers.",
         url=args.url,
         date=args.date,
         conference_name=args.conference_name,
         SimplePaper=SimplePaper,
-        SemanticScholarPaper=SemanticScholarPaper,
         Author=SimplePaper.Author,
         lookup_abstract_from_acm_link=lookup_abstract_from_acm_link,
-        lookup_paper_by_name=lookup_paper_by_name,
     )
 
     validated_papers: list[SimplePaper] = await agent.call(
