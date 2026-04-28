@@ -110,8 +110,9 @@ class Paper:
 
     @staticmethod
     def from_scraped_json(paper_json: dict[str, Any]) -> Paper:
-        return Paper(
-            paper_id=paper_json["paper_id"],
+        paper_id = paper_json.get("paper_id") or paper_json["uid"]
+        paper = Paper(
+            paper_id=paper_id,
             document=paper_json,
             title=paper_json["title"],
             abstract=paper_json["abstract"],
@@ -119,6 +120,9 @@ class Paper:
             link=paper_json["link"],
             source=paper_json["conference_name"],
         )
+        paper.document["parsed_authors"] = paper.authors
+        paper.document["parsed_institutions"] = paper.institutions
+        return paper
 
     @staticmethod
     def from_openreview_json(paper_json: dict[str, Any], api_version: int) -> Paper:

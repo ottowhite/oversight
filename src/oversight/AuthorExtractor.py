@@ -26,7 +26,7 @@ def extract_authors(document: dict[str, Any], source: str | None) -> AuthorInfo:
     if source in ("ICLR", "NeurIPS", "ICML"):
         return _extract_openreview(document)
     if source == "VLDB":
-        return _extract_vldb(document)
+        return _extract_dict_authors(document)
     if source == "MLSys":
         return _extract_mlsys(document)
 
@@ -34,7 +34,7 @@ def extract_authors(document: dict[str, Any], source: str | None) -> AuthorInfo:
     if raw is None:
         return AuthorInfo()
     if isinstance(raw, list):
-        return _extract_vldb(document)
+        return _extract_dict_authors(document)
     if not isinstance(raw, str):
         return AuthorInfo()
 
@@ -84,8 +84,11 @@ def _extract_openreview(document: dict[str, Any]) -> AuthorInfo:
     return AuthorInfo()
 
 
-def _extract_vldb(document: dict[str, Any]) -> AuthorInfo:
-    """VLDB: authors is a list of {"Name": str, "Affiliation": str}."""
+def _extract_dict_authors(document: dict[str, Any]) -> AuthorInfo:
+    """Authors as a list of dicts. Two key shapes are recognised:
+    - {"Name": str, "Affiliation": str}                              (e.g. VLDB)
+    - {"first_name": str, "last_name": str, "institution": str}      (e.g. superscraper)
+    """
     raw = document.get("authors", [])
     if not isinstance(raw, list):
         return AuthorInfo()
@@ -93,14 +96,21 @@ def _extract_vldb(document: dict[str, Any]) -> AuthorInfo:
     institutions = []
     seen_institutions: set[str] = set()
     for entry in raw:
-        if isinstance(entry, dict):
+        if not isinstance(entry, dict):
+            continue
+        if "Name" in entry or "Affiliation" in entry:
             name = entry.get("Name", "").strip()
             affil = entry.get("Affiliation", "").strip()
-            if name:
-                authors.append(name)
-            if affil and affil not in seen_institutions:
-                seen_institutions.add(affil)
-                institutions.append(affil)
+        else:
+            first = entry.get("first_name", "").strip()
+            last = entry.get("last_name", "").strip()
+            name = f"{first} {last}".strip()
+            affil = entry.get("institution", "").strip()
+        if name:
+            authors.append(name)
+        if affil and affil not in seen_institutions:
+            seen_institutions.add(affil)
+            institutions.append(affil)
     return AuthorInfo(authors=authors, institutions=institutions)
 
 

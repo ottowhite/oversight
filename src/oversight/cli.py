@@ -58,6 +58,65 @@ def cmd_serve(args: argparse.Namespace) -> None:
     app.run(host="0.0.0.0", port=port, debug=args.debug)
 
 
+def cmd_consume(args: argparse.Namespace) -> None:
+    if args.dry_run:
+        _consume_dry_run(args)
+        return
+
+    from .PaperRepository import PaperRepository
+
+    is_dir = os.path.isdir(args.path)
+
+    with PaperRepository(embedding_model_name="models/gemini-embedding-001") as repo:
+        if args.format == "scraped":
+            if is_dir:
+                repo.add_scraped_papers_from_dir(args.path)
+            else:
+                repo.add_scraped_papers(args.path)
+        else:
+            api_version = 1 if args.format == "openreview-api-v1" else 2
+            if is_dir:
+                for filename in os.listdir(args.path):
+                    repo.add_openreview_papers(
+                        os.path.join(args.path, filename), api_version
+                    )
+            else:
+                repo.add_openreview_papers(args.path, api_version)
+
+        repo.embed_missing_conference_papers()
+
+
+def _consume_dry_run(args: argparse.Namespace) -> None:
+    import json
+
+    from .Paper import Paper
+
+    if os.path.isdir(args.path):
+        paths = [os.path.join(args.path, f) for f in sorted(os.listdir(args.path))]
+    else:
+        paths = [args.path]
+
+    total = 0
+    for path in paths:
+        with open(path, "r") as f:
+            items = json.load(f)
+        print(f"\n=== {path} ({len(items)} papers) ===")
+        for item in items:
+            if args.format == "scraped":
+                paper = Paper.from_scraped_json(item)
+            else:
+                api_version = 1 if args.format == "openreview-api-v1" else 2
+                paper = Paper.from_openreview_json(item, api_version)
+            title = paper.title if len(paper.title) <= 80 else paper.title[:77] + "..."
+            print(
+                f"  [{paper.source}] {paper.paper_date.date()} {paper.paper_id}  "
+                f"{title}  ({len(paper.authors)} authors, {len(paper.institutions)} institutions)"
+            )
+            total += 1
+
+    print(f"\nDry run: {total} papers would be upserted (no DB writes performed).")
+
+
 def cmd_inventory(args: argparse.Namespace) -> None:
     from .PaperDatabase import PaperDatabase
 
@@ -113,6 +172,26 @@ def main() -> None:
         "--debug", action="store_true", help="Enable Flask debug mode"
     )
     sp_serve.set_defaults(func=cmd_serve)
+
+    # oversight consume
+    sp_consume = subparsers.add_parser(
+        "consume", help="Load papers from a JSON file (or directory) into the database"
+    )
+    sp_consume.add_argument(
+        "path", help="Path to a JSON file or directory of JSON files"
+    )
+    sp_consume.add_argument(
+        "--format",
+        choices=["scraped", "openreview-api-v1", "openreview-api-v2"],
+        default="scraped",
+        help="Input format (default: scraped)",
+    )
+    sp_consume.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Parse and print what would be inserted without writing to the database",
+    )
+    sp_consume.set_defaults(func=cmd_consume)
 
     # oversight inventory
     sp_inventory = subparsers.add_parser(
