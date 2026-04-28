@@ -8,6 +8,7 @@ from agentica.logging.loggers.stream_logger import StreamLogger
 from agentica.logging import AgentListener
 import argparse
 from agentica import spawn
+from oversight.OpenReviewHarvester import OpenReviewHarvester
 from semanticscholar.Paper import Paper as SemanticScholarPaper
 
 
@@ -28,18 +29,7 @@ class SimplePaper:
     conference_name: str
 
 
-async def main() -> None:
-    parser = argparse.ArgumentParser(description="Superscraper CLI")
-    parser.add_argument("--url", required=True, help="URL of the webpage to scrape")
-    parser.add_argument(
-        "--output-path", required=True, help="Output file path for scraped data"
-    )
-    parser.add_argument("--date", required=True, help="Date of the conference")
-    parser.add_argument(
-        "--conference-name", required=True, help="Name of the conference"
-    )
-    args = parser.parse_args()
-
+async def run_agentic(args: argparse.Namespace) -> None:
     async def callback(chunk):
         print(chunk.content, end="", flush=True)
 
@@ -109,6 +99,73 @@ async def main() -> None:
                 f.write(f"\n**Abstract:**\n\n> {paper.abstract}\n\n---\n\n")
         else:
             raise ValueError(f"Unsupported output format: {output_path.suffix}")
+
+
+async def run_openreview(args: argparse.Namespace) -> None:
+    output_dir = Path(args.output_path)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    harvester = OpenReviewHarvester(
+        basic_name=args.venue,
+        year=args.year,
+        date=args.date,
+        full_name=args.conference_name,
+        output_path=str(output_dir),
+    )
+    harvester.harvest()
+
+
+async def main() -> None:
+    parser = argparse.ArgumentParser(description="Superscraper CLI")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    agentic_parser = subparsers.add_parser(
+        "agentic", help="Scrape a webpage with an LLM agent + BeautifulSoup"
+    )
+    agentic_parser.add_argument(
+        "--url", required=True, help="URL of the webpage to scrape"
+    )
+    agentic_parser.add_argument(
+        "--output-path", required=True, help="Output file path for scraped data"
+    )
+    agentic_parser.add_argument("--date", required=True, help="Date of the conference")
+    agentic_parser.add_argument(
+        "--conference-name", required=True, help="Name of the conference"
+    )
+
+    openreview_parser = subparsers.add_parser(
+        "openreview", help="Harvest a conference from the OpenReview API"
+    )
+    openreview_parser.add_argument(
+        "--venue",
+        required=True,
+        choices=["icml", "iclr", "neurips", "mlsys"],
+        help="Conference venue identifier",
+    )
+    openreview_parser.add_argument(
+        "--year", required=True, type=int, help="Conference year"
+    )
+    openreview_parser.add_argument(
+        "--date", required=True, help="Conference date (YYYY-MM-DD)"
+    )
+    openreview_parser.add_argument(
+        "--conference-name",
+        required=True,
+        help="Human-readable conference name (e.g. ICML)",
+    )
+    openreview_parser.add_argument(
+        "--output-path",
+        required=True,
+        help="Output directory; harvester writes {venue}{year}_v{version}.json",
+    )
+
+    args = parser.parse_args()
+
+    if args.command == "agentic":
+        await run_agentic(args)
+    elif args.command == "openreview":
+        await run_openreview(args)
+    else:
+        parser.error(f"Unknown command: {args.command}")
 
 
 def entrypoint() -> None:

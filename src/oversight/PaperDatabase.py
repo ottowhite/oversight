@@ -65,7 +65,27 @@ class PaperDatabase:
             ]
 
             if any(v is None for v in to_insert):
-                breakpoint()
+                print(f"Paper {paper.paper_id} has missing fields")
+                print(
+                    "Missing fields:",
+                    [
+                        k
+                        for k, v in zip(
+                            [
+                                "paper_id",
+                                "document",
+                                "abstract",
+                                "title",
+                                "source",
+                                "paper_date",
+                                "link",
+                            ],
+                            to_insert,
+                        )
+                        if v is None
+                    ],
+                )
+                exit(1)
 
             # First, try to update an existing paper if the incoming record is newer
             updated_rows = cur.execute(
