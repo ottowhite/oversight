@@ -3,11 +3,13 @@ Vibe coded stub printer for showing python values to LLMs.
 """
 
 import inspect
+import re
 import typing as _t
 from collections.abc import Collection, Mapping
 
 _SENTINEL = object()
 _DEFAULT_PREVIEW_LEN = 40
+_MEMORY_ADDRESS_RE = re.compile(r"0x[0-9a-fA-F]+")
 
 
 def _safe_repr(obj: object, max_len: int = _DEFAULT_PREVIEW_LEN) -> str:
@@ -17,6 +19,8 @@ def _safe_repr(obj: object, max_len: int = _DEFAULT_PREVIEW_LEN) -> str:
     except Exception as exc:
         r = f"<unrepresentable {type(obj).__name__}: {exc}>"
     r = r.replace("\n", " ").strip()
+    # Strip memory addresses so repeated runs produce identical stubs (cache-hit friendly).
+    r = _MEMORY_ADDRESS_RE.sub("0x...", r)
     return (r[: max_len - 1] + "…") if len(r) > max_len else r
 
 
