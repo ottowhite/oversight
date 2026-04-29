@@ -3,6 +3,7 @@ services:
     image: pgvector/pgvector:pg17
     container_name: oversight-db
     restart: unless-stopped
+    shm_size: 16gb
     ports:
       - "5432:5432"
     environment:
