@@ -34,7 +34,8 @@ services:
       - /app/node_modules
       - /app/.next
     depends_on:
-      - oversight-backend
+      oversight-backend:
+        condition: service_healthy
 
 networks:
   default:

@@ -30,7 +30,8 @@ services:
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:5001
     depends_on:
-      - oversight-backend
+      oversight-backend:
+        condition: service_healthy
 
 networks:
   default:

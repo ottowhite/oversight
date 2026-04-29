@@ -13,8 +13,14 @@ services:
     volumes:
       - /var/lib/oversight/postgres:/var/lib/postgresql/data
       - ./db/init:/docker-entrypoint-initdb.d:ro
+    networks:
+      - oversight-network
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U oversight -d oversight" ]
       interval: 10s
       timeout: 5s
       retries: 5
+
+networks:
+  oversight-network:
+    external: true
