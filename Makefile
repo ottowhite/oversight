@@ -21,6 +21,16 @@ dev:
 dev/down:
 	docker compose -f docker-compose.dev.yml down
 
+db/up:
+	docker compose -f docker-compose.db.yml up -d
+
+db/down:
+	docker compose -f docker-compose.db.yml down
+
+db/enable:
+	sudo systemctl enable --now docker
+	docker compose -f docker-compose.db.yml up -d
+
 lint:
 	uv run ruff check src/
 

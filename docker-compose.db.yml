@@ -1,0 +1,19 @@
+services:
+  oversight-db:
+    image: pgvector/pgvector:pg17
+    container_name: oversight-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: oversight
+      POSTGRES_PASSWORD: ${OVERSIGHT_DB_PASSWORD:?OVERSIGHT_DB_PASSWORD must be set}
+      POSTGRES_DB: oversight
+    volumes:
+      - /var/lib/oversight/postgres:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U oversight -d oversight" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
