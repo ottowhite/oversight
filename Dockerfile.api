@@ -54,6 +54,7 @@ COPY --chown=app:app .python-version .
 COPY --chown=app:app README.md .
 COPY --chown=app:app pyproject.toml .
 COPY --chown=app:app uv.lock .
+COPY --chown=app:app src/agentica-mini/pyproject.toml src/agentica-mini/pyproject.toml
 
 RUN uv sync
 
