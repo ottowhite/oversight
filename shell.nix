@@ -4,6 +4,7 @@ pkgs.mkShell {
   packages = [
     pkgs.uv
     pkgs.nodejs
+    pkgs.postgresql
   ];
 
   shellHook = ''
