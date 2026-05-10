@@ -755,7 +755,7 @@ class PLConferenceHarvester:
         else:
             authors = _dblp_authors(entry)
 
-        date = publication_date or self._fallback_date()
+        date = self._normalise_publication_date(publication_date)
         link = _doi_link(doi)
 
         return {
@@ -776,6 +776,33 @@ class PLConferenceHarvester:
         # Jan-1 of the volume year — stable, sortable, and within the right
         # year for downstream date filters.
         return f"{self.year}-01-01"
+
+    def _normalise_publication_date(self, publication_date: str | None) -> str:
+        """Return a date string anchored to the conference year.
+
+        OpenAlex's ``publication_date`` for journal-published proceedings is
+        the *journal* release date, which for January-conference PACMPL
+        volumes (POPL is the textbook case) lands in late December of the
+        prior calendar year. Pre-PACMPL POPL 2015 has the same shape: ACM's
+        DL records the proceedings as published 2014-12-19 even though the
+        symposium ran in January 2015.
+
+        When the harvester then writes this date through to the DB's
+        ``update_date`` column, the year-bucketing query sees POPL 2018
+        papers as 2017 papers — making whole conference years appear to be
+        missing. (PLDI/ICFP/OOPSLA happen mid-year so OpenAlex's date is in
+        the right calendar year and the bug is invisible there.)
+
+        Snap any out-of-year date back to ``YYYY-01-01`` for the conference
+        year. In-year dates are preserved (most non-POPL volumes).
+        """
+        if not publication_date:
+            return self._fallback_date()
+        if not publication_date[:4].isdigit():
+            return self._fallback_date()
+        if int(publication_date[:4]) != self.year:
+            return self._fallback_date()
+        return publication_date
 
     # ------------------------------------------------------------------
     # OpenAlex
