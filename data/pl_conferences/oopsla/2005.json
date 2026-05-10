@@ -1,0 +1,898 @@
+[
+  {
+    "paper_id": "10.1145/1094811.1094827",
+    "title": "Interaction-based programming with classages",
+    "abstract": "This paper presents Classages, a novel interaction-centric object-oriented language. Classes and objects in Classages are fully encapsulated, with explicit interfaces for all interactions they might be involved in. The design of Classages touches upon a wide range of language design topics, including encapsulation, object relationship representation, and object confinement. An encoding of Java's OO model in Classages is provided, showing how standard paradigms are supported. A prototype Classages compiler is described.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094827",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yu David",
+        "last_name": "Liu",
+        "institution": "Johns Hopkins University"
+      },
+      {
+        "first_name": "Scott F.",
+        "last_name": "Smith",
+        "institution": "Johns Hopkins University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/LiuS05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094832",
+    "title": "Refactoring support for class library migration",
+    "abstract": "As object-oriented class libraries evolve, classes are occasionally deprecated in favor of others with roughly the same functionality. In Java's standard libraries, for example, class Hashtable has been superseded by HashMap, and Iterator is now preferred over Enumeration. Migrating client applications to use the new idioms is often desirable, but making the required changes to declarations and allocation sites can be quite labor-intensive. Moreover, migration becomes complicated---and sometimes impossible---if an application interacts with external components, if a legacy class is not completely equivalent to its replacement, or if multiple interdependent classes must be migrated simultaneously. We present an approach in which mappings between legacy classes and their replacements are specified by the programmer. Then, an analysis based on type constraints determines where declarations and allocation sites can be updated. The method was implemented in Eclipse, and evaluated on a number of Java applications. On average, our tool could migrate more than 90% of the references to legacy classes.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094832",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ittai",
+        "last_name": "Balaban",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Robert M.",
+        "last_name": "Fuhrer",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BalabanTF05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094823",
+    "title": "Parametric polymorphism for software component architectures",
+    "abstract": "Parametric polymorphism has become a common feature of mainstream programming languages, but software component architectures have lagged behind and do not support it. We examine the problem of providing parametric polymorphism with components combined from different programming languages. We have investigated how to resolve different binding times and parametrization semantics in a range of representative languages and have identified a common ground that can be suitably mapped to different language bindings. We present a generic component architecture extension that provides support for parameterized components and that can be easily adapted to work on top of various software component architectures in use today (e.g., corba, dcom, jni). We have implemented and tested this architecture on top of corba. We also present Generic Interface Definition Language (gidl), an extension to corba-idl supporting generic types and we describe language bindings for C++, Java and Aldor. We explain our implementation of gidl, consisting of a gidl to idl compiler and tools for generating linkage code under the language bindings. We demonstrate how this architecture can be used to access C++'s stl and Aldor's BasicMath libraries in a multi-language environment and discuss our mappings in the context of automatic library interface generation.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094823",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Cosmin E.",
+        "last_name": "Oancea",
+        "institution": "Western University"
+      },
+      {
+        "first_name": "Stephen M.",
+        "last_name": "Watt",
+        "institution": "Western University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/OanceaW05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094830",
+    "title": "Fine-grained interoperability through mirrors and contracts",
+    "abstract": "As a value flows across the boundary between interoperating languages, it must be checked and converted to fit the types and representations of the target language. For simple forms of data, the checks and coercions can be immediate; for higher order data, such as functions and objects, some must be delayed until the value is used in a particular way. Typically, these coercions and checks are implemented by an ad-hoc mixture of wrappers, reflection, and dynamic predicates. We observe that 1) the wrapper and reflection operations fit the profile of mirrors, 2) the checks correspond to contracts, and 3) the timing and shape of mirror operations coincide with the timing and shape of contract operations. Based on these insights, we present a new model of interoperability that builds on the ideas of mirrors and contracts, and we describe an interoperable implementation of Java and Scheme that is guided by the model.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094830",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Kathryn E.",
+        "last_name": "Gray",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Flatt",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/oopsla/GrayFF05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094831",
+    "title": "Pluggable AOP: designing aspect mechanisms for third-party composition",
+    "abstract": "Studies of Aspect-Oriented Programming (AOP) usually focus on a language in which a specific aspect extension is integrated with a base language. Languages specified in this manner have a fixed, non-extensible AOP functionality. In this paper we consider the more general case of integrating a base language with a set of domain specific third-party aspect extensions for that language. We present a general mixin-based method for implementing aspect extensions in such a way that multiple, independently developed, dynamic aspect extensions can be subject to third-party composition and work collaboratively.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094831",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sergei",
+        "last_name": "Kojarski",
+        "institution": "University of Virginia"
+      },
+      {
+        "first_name": "David H.",
+        "last_name": "Lorenz",
+        "institution": "University of Virginia"
+      }
+    ],
+    "dblp_key": "conf/oopsla/KojarskiL05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094821",
+    "title": "ArchMatE: from architectural styles to object-oriented models through exploratory tool support",
+    "abstract": "Given the difficulties of conventional object technologies to deal with quality-attribute concerns, software architectures appear as an interesting approach to manage them better. A problem to make this approach feasible is the gap between architectural and object models. Succeeding in bridging these two worlds implies that those design decisions about quality attributes made at the architectural level should be reflected at the object level. Nonetheless, a given architecture usually admits multiple, different materializations. Furthermore, any materialization requires considerable design background and experience from the developer. In this paper, we describe a tool approach, called ArchMatE, to assist developers in the exploration of object-oriented solutions for grounding specific architectural models. An important aspect of the approach is that the materializations are accomplished by means of quality-oriented strategies, so that those concerns prescribed by the original architecture are mostly preserved.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094821",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "J. Andrés",
+        "last_name": "Díaz‐Pace",
+        "institution": "Consejo Nacional de Investigaciones Científicas y Técnicas"
+      },
+      {
+        "first_name": "Marcelo",
+        "last_name": "Campo",
+        "institution": "Consejo Nacional de Investigaciones Científicas y Técnicas"
+      }
+    ],
+    "dblp_key": "conf/oopsla/PaceC05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094814",
+    "title": "Generalized algebraic data types and object-oriented programming",
+    "abstract": "Generalized algebraic data types (GADTs) have received much attention recently in the functional programming community. They generalize the (type) parameterized algebraic datatypes (PADTs) of ML and Haskell by permitting value constructors to return specific, rather than parametric, typeinstantiations of their own datatype. GADTs have a number of applications, including strongly-typed evaluators, generic pretty-printing, generic traversals and queries, and typed LR parsing. We show that existing object-oriented programming languages such as Java and C ♯ can express GADT definitions, and a large class of GADT-manipulating programs, through the use of generics, subclassing, and virtual dispatch. However, some programs can be written only through the use of redundant runtime casts. Moreover, instantiationspecific, yet safe, operations on ordinary PADTs only admit indirect cast-free implementations, via higher-order encodings. We propose a generalization of the type constraint mechanisms of C ♯ and Java to both avoid the need for casts in GADT programs and higher-order contortions in PADT programs; we present a Visitor pattern for GADTs, and describe a refined switch construct as an alternative to virtual dispatch on datatypes. We formalize both extensions and prove type soundness.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094814",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Andrew",
+        "last_name": "Kennedy",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Claudio",
+        "last_name": "Russo",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/KennedyR05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094818",
+    "title": "Deriving object typestates in the presence of inter-object references",
+    "abstract": "We are interested in static analysis of Java classes with the goal of discovering the preconditions under which a certain program point within a method may be reached, taking into account the effects of previous method calls on an object of that class. The information pertinent to this computation is represented as the object's typestate, which is a finite set of relevant predicates that abstract the object's actual state. The execution of a method depends on an object's current typestate as well as other input parameters; the object may transition to a different typestate during the method's execution.It is common for objects to contain references to other ob-jects. In such cases, an object's behavior may depend on, in addition to its own state, the state of objects it has a refer-ence to. The main contribution of this paper is to discover relevant object typestates, as well as transitions between typestates, in the presence of inter-object references. Our analysis first performs a combined predicate discovery and predicate abstraction to derive \"boolean\" versions of Java classes given as input. It then uses abstract interpretation to compute the typestate transitions caused by method calls. A novel aspect of this work is that a set of Java classes is analyzed in isolation, without any client program being pro-vided. To do this, the analysis simulates all possible client's actions via a synthetic heap, all of whose interesting config-urations are explored by our analysis.The information we compute can be put to use in several ways. It can be used in checking whether a given client code erroneously uses a set of Java classes in a way that can throw an exception. It can also be used in creating test drivers for Java classes in order to exercise all relevant code paths in the corresponding methods.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094818",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mangala Gowri",
+        "last_name": "Nanda",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Grothoff",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Satish",
+        "last_name": "Chandra",
+        "institution": "IBM Research - India"
+      }
+    ],
+    "dblp_key": "conf/oopsla/NandaGC05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094819",
+    "title": "Micro patterns in Java code",
+    "abstract": "Micro patterns are similar to design patterns, except that micro patterns are stand at a lower, closer to the implementation, level of abstraction. Micro patterns are also unique in that they are mechanically recognizable, since each such pattern can be expressed as a formal condition on the structure of a class.This paper presents a catalog of 27 micro-patterns defined on Java classes and interfaces. The catalog captures a wide spectrum of common programming practices, including a particular and (intentionally restricted) use of inheritance, immutability, data management and wrapping, restricted creation, and emulation of procedural-, modular-, and even functional- programming paradigms with object oriented constructs. Together, the patterns present a set of prototypes after which a large portion of all Java classes and interfaces are modeled. We provide empirical indication that this portion is as high as 75%.A statistical analysis of occurrences of micro patterns in a large software corpus, spanning some 70,000 Java classes drawn from a rich set of application domains, shows, with high confidence level that the use of these patterns is not random. These results indicate consciousness and discernible design decisions, which are sustained in the software evolution. With high confidence level, we can also show that the use of these patterns is tied to the specification, or the purpose, that the software realizes.The traceability, abundance and the statistical significance of micro pattern occurrence raise the hope of using the classification of software into these patterns for a more founded appreciation of its design and code quality.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094819",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Joseph",
+        "last_name": "Gil",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Itay",
+        "last_name": "Maman",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/GilM05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094828",
+    "title": "Javari: adding reference immutability to Java",
+    "abstract": "This paper describes a type system that is capable of expressing and enforcing immutability constraints. The specific constraint expressed is that the abstract state of the object to which an immutable reference refers cannot be modified using that reference. The abstract state is (part of) the transitively reachable state: that is, the state of the object and all state reachable from it by following references. The type system permits explicitly excluding fields from the abstract state of an object. For a statically type-safe language, the type system guarantees reference immutability. If the language is extended with immutability downcasts, then run-time checks enforce the reference immutability constraints.This research builds upon previous research in language support for reference immutability. Improvements that are new in this paper include distinguishing the notions of assignability and mutability; integration with Java 5's generic types and with multi-dimensional arrays; a mutability polymorphism approach to avoiding code duplication; type-safe support for reflection and serialization; and formal type rules and type soundness proof for a core calculus. Furthermore, it retains the valuable features of the previous dialect, including usability by humans (as evidenced by experience with 160,000 lines of Javari code) and interoperability with Java and existing JVMs.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094828",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Matthew S.",
+        "last_name": "Tschantz",
+        "institution": "IIT@MIT"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Ernst",
+        "institution": "IIT@MIT"
+      }
+    ],
+    "dblp_key": "conf/oopsla/TschantzE05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094826",
+    "title": "Classbox/J: controlling the scope of change in Java",
+    "abstract": "Unanticipated changes to complex software systems can introduce anomalies such as duplicated code, suboptimal inheritance relationships and a proliferation of run-time downcasts. Refactoring to eliminate these anomalies may not be an option, at least in certain stages of software evolution. Classboxes are modules that restrict the visibility of changes to selected clients only, thereby offering more freedom in the way unanticipated changes may be implemented, and thus reducing the need for convoluted design anomalies. In this paper we demonstrate how classboxes can be implemented in statically-typed languages like Java. We also present an extended case study of Swing, a Java GUI package built on top of AWT, and we document the ensuing anomalies that Swing introduces. We show how Classbox/J, a prototype implementation of classboxes for Java, is used to provide a cleaner implementation of Swing using local refinement rather than subclassing.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094826",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Alexandre",
+        "last_name": "Bergel",
+        "institution": "University of Bern"
+      },
+      {
+        "first_name": "Sté́phane",
+        "last_name": "Ducasse",
+        "institution": "University of Bern"
+      },
+      {
+        "first_name": "Oscar",
+        "last_name": "Nierstrasz",
+        "institution": "University of Bern"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BergelDN05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094813",
+    "title": "Associated types and constraint propagation for mainstream object-oriented generics",
+    "abstract": "Support for object-oriented programming has become an integral part of mainstream languages, and more recently generic programming has gained widespread acceptance as well. A natural question is how these two paradigms, and their underlying language mechanisms, should interact. One particular design option, that of using subtyping to constrain the type parameters of generic functions, has been chosen in the generics of Java and those planned for a future revision of C#.Certain shortcomings have previously been identified in using subtyping for constraining parametric polymorphism in the context of generic programming.To address these, we propose extending object-oriented interfaces and subtyping to include associated types and constraint propagation.Associated types are type members of interfaces and classes. Constraint propagation allows certain constraints on type parameters to be inferred from other constraints on those parameters and their use in base class type expressions.The paper demonstrates these extensions in the context of C# (with generics), describes a translation of the extended features to C#, and presents a formalism proving their safety. The formalism is applicable to other mainstream object-oriented languages supporting F-bounded polymorphism, such as Java.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094813",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jaakko",
+        "last_name": "Järvi",
+        "institution": "Texas A&M University"
+      },
+      {
+        "first_name": "Jeremiah",
+        "last_name": "Willcock",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Lumsdaine",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/oopsla/JarviWL05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094815",
+    "title": "Scalable component abstractions",
+    "abstract": "We identify three programming language abstractions for the construction of re-usable components: abstract type members, explicit selftypes and symmetric mixin composition. Together, these abstractions enable us to transform an arbitrary assembly of static program parts with hard references between them into a system of re-usable components. The transformation maintains the structure of the original system. We demonstrate this approach in two case studies, a subject/observer framework and a compiler front-end.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094815",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Odersky",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Zenger",
+        "institution": "Google (Switzerland)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/OderskyZ05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094817",
+    "title": "Demand-driven points-to analysis for Java",
+    "abstract": "We present a points-to analysis technique suitable for environments with small time and memory budgets, such as just-in-time (JIT) compilers and interactive development environments (IDEs). Our technique is demand-driven, performing only the work necessary to answer each query (a request for a variable's points-to information) issued by a client. In cases where even the demand-driven approach exceeds the time budget for a query, we employ early termination, i.e., stopping the analysis prematurely and returning an over-approximated result to the client. Our technique improves on previous demand-driven points-to analysis algorithms [17, 33] by achieving much higher precision under small time budgets and early termination.We formulate Andersen's analysis [5] for Java as a CFL-reachability problem [33]. This formulation shows that Andersen's analysis for Java is a balanced-parentheses problem, an insight that enables our new techniques. We exploit the balanced parentheses structure to approximate Andersen's analysis by regularizing the CFL-reachability problem, yielding an asymptotically cheaper algorithm. We also show how to regain most of the precision lost in the regular approximation as needed through refinement. Our evaluation shows that our regularization and refinement approach achieves nearly the precision of field-sensitive Andersen's analysis in time budgets as small as 2ms per query. Our technique can yield speedups of up to 16x over computing an exhaustive Andersen's analysis for some clients, with little to no precision loss.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094817",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Manu",
+        "last_name": "Sridharan",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Denis",
+        "last_name": "Gopan",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Lexin",
+        "last_name": "Shan",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/oopsla/SridharanGSB05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094822",
+    "title": "Modeling architectural patterns using architectural primitives",
+    "abstract": "Architectural patterns are a key point in architectural documentation. Regrettably, there is poor support for modeling architectural patterns, because the pattern elements are not directly matched by elements in modeling languages, and, at the same time, patterns support an inherent variability that is hard to model using a single modeling solution. This paper proposes tackling this problem by finding and representing architectural primitives, as the participants in the solutions that patterns convey. In particular, we examine a number of architectural patterns to discover those primitive abstractions that are common among the patterns, and at the same time demonstrate a degree of variability in each pattern. These abstractions belong in the components and connectors architectural view, though more abstractions can be found in other views. We have selected UML 2 as the language for representing these primitive abstractions as extensions of the standard UML elements. The added value of this approach is twofold: it proposes a generic and extensible approach for modeling architectural patterns by means of architectural primitives; it demonstrates an initial set of primitives that participate in several well-known architectural patterns.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094822",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Uwe",
+        "last_name": "Zdun",
+        "institution": "Vienna University of Economics and Business"
+      },
+      {
+        "first_name": "Paris",
+        "last_name": "Avgeriou",
+        "institution": "Fraunhofer Institute for Secure Information Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ZdunA05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094824",
+    "title": "Using dependency models to manage complex software architecture",
+    "abstract": "An approach to managing the architecture of large software systems is presented. Dependencies are extracted from the code by a conventional static analysis, and shown in a tabular form known as the 'Dependency Structure Matrix' (DSM). A variety of algorithms are available to help organize the matrix in a form that reflects the architecture and highlights patterns and problematic dependencies. A hierarchical structure obtained in part by such algorithms, and in part by input from the user, then becomes the basis for 'design rules' that capture the architect's intent about which dependencies are acceptable. The design rules are applied repeatedly as the system evolves, to identify violations, and keep the code and its architecture in conformance with one another. The analysis has been implemented in a tool called LDM which has been applied in several commercial projects; in this paper, a case study application to Haystack, an information retrieval system, is described.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094824",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Neeraj",
+        "last_name": "Sangal",
+        "institution": ""
+      },
+      {
+        "first_name": "Ev",
+        "last_name": "Jordan",
+        "institution": ""
+      },
+      {
+        "first_name": "Vineet",
+        "last_name": "Sinha",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Jackson",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/SangalJSJ05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094841",
+    "title": "Relational queries over program traces",
+    "abstract": "Instrumenting programs with code to monitor runtime behavior is a common technique for profiling and debugging. In practice, instrumentation is either inserted manually by programmers, or automatically by specialized tools that monitor particular properties. We propose Program Trace Query Language (PTQL), a language based on relational queries over program traces, in which programmers can write expressive, declarative queries about program behavior. We also describe our compiler, Partiqle. Given a PTQL query and a Java program, Partiqle instruments the program to execute the query on-line. We apply several PTQL queries to a set of benchmark programs, including the Apache Tomcat Web server. Our queries reveal significant performance bugs in the jack SpecJVM98 benchmark, in Tomcat, and in the IBM Java class library, as well as some correct though uncomfortably subtle code in the Xerces XML parser. We present performance measurements demonstrating that our prototype system has usable performance.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094841",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Simon F.",
+        "last_name": "Goldsmith",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "O'Callahan",
+        "institution": "Micro Focus (United States)"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/GoldsmithOA05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094834",
+    "title": "Automating vertical profiling",
+    "abstract": "Last year at OOPSLA we presented a methodology, vertical profiling, for understanding the performance of object-oriented programs. The key insight behind this methodology is that modern programs run on top of many layers (virtual machine, middleware, etc) and thus we need to collect and combine information from all layers in order to understand system performance. Although our methodology was able to explain previously unexplained performance phenomena, it was extremely labor intensive. In this paper we describe and evaluate techniques for automating two significant activities of vertical profiling: trace alignment and correlation. Trace alignment aligns traces obtained from separate runs so that one can reason across the traces. We are not aware of any prior approach that effectively and automatically aligns traces. Correlation sifts through hundreds of metrics to find ones that have a bearing on a performance anomaly of interest. In prior work we found that statistical correlation was only sometimes effective. We have identified highly-effective approaches for both activities.For aligning traces we explore dynamic time warping, and for correlation we explore eight correlators based on statistical correlation, distance measures, and piecewise linear segmentation. Although we explore these activities in the context of vertical profiling, both activities are widely applicable in the performance analysis area.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094834",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Hauswirth",
+        "institution": "University of Colorado System"
+      },
+      {
+        "first_name": "Amer",
+        "last_name": "Diwan",
+        "institution": "University of Colorado System"
+      },
+      {
+        "first_name": "Peter F.",
+        "last_name": "Sweeney",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Michael C.",
+        "last_name": "Mozer",
+        "institution": "University of Colorado System"
+      }
+    ],
+    "dblp_key": "conf/oopsla/HauswirthDSM05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094849",
+    "title": "PolyD: a flexible dispatching framework",
+    "abstract": "The standard dispatching mechanisms built into programming languages are sometimes inadequate to the needs of the programmer. In the case of Java, the need for more flexibility has led to the development of a number of tools, including visitors and multi-method extensions, that each add some particular functionality, but lack the generality necessary to support user-defined dispatching mechanisms. In this paper we advocate a more modular approach to dispatching, and we present a tool, PolyD, that allows the programmer to design custom dispatching strategies and to parametrize many aspects of the dispatching process. PolyD exhibits excellent performance and compares well against existing tools.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094849",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Antonio",
+        "last_name": "Cunei",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/oopsla/CuneiV05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094843",
+    "title": "Formalising Java RMI with explicit code mobility",
+    "abstract": "This paper presents a Java-like core language with primitives for object-oriented distribution and explicit code mobility. We apply our formulation to prove the correctness of several optimisations for distributed programs. Our language captures crucial but often hidden aspects of distributed object-oriented programming, including object serialisation, dynamic class downloading and remote method invocation. It is defined in terms of an operational semantics that concisely models the behaviour of distributed programs using machinery from calculi of mobile processes. Type safety is established using invariant properties for distributed runtime configurations. We argue that primitives for explicit code mobility offer a programmer fine-grained control of type-safe code distribution, which is crucial for improving the performance and safety of distributed object-oriented applications.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094843",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Alexander",
+        "last_name": "Ahern",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/oopsla/AhernY05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094844",
+    "title": "Lifting sequential graph algorithms for distributed-memory parallel computation",
+    "abstract": "This paper describes the process used to extend the Boost Graph Library (BGL) for parallel operation with distributed memory. The BGL consists of a rich set of generic graph algorithms and supporting data structures, but it was not originally designed with parallelism in mind. In this paper, we revisit the abstractions comprising the BGL in the context of distributed-memory parallelism, lifting away the implicit requirements of sequential execution and a single shared address space. We illustrate our approach by describing the process as applied to one of the core algorithms in the BGL, breadth-first search. The result is a generic algorithm that is unchanged from the sequential algorithm, requiring only the introduction of external (distributed) data structures for parallel execution. More importantly, the generic implementation retains its interface and semantics, such that other distributed algorithms can be built upon it, just as algorithms are layered in the sequential case. By characterizing these extensions as well as the extension process, we develop general principles and patterns for using (and reusing) generic, object-oriented parallel software libraries. We demonstrate that the resulting algorithm implementations are both efficient and scalable with performance results for several algorithms.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094844",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Douglas",
+        "last_name": "Gregor",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Lumsdaine",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/oopsla/GregorL05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094835",
+    "title": "Improving virtual machine performance using a cross-run profile repository",
+    "abstract": "Virtual machines for languages such as the Java programming language make extensive use of online profiling and dynamic optimization to improve program performance. But despite the important role that profiling plays in achieving high performance, current virtual machines discard a program's profile data at the end of execution, wasting the opportunity to use past knowledge to improve future performance. In this paper, we present a fully automated architecture for exploiting cross-run profile data in virtual machines. Our work addresses a number of challenges that previously limited the practicality of such an approach.We apply this architecture to address the problem of selective optimization, and describe our implementation in IBM's J9 Java virtual machine. Our results demonstrate substantial performance improvements on a broad suite of Java programs, with the average performance ranging from 8.8% -- 16.6% depending on the execution scenario.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094835",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Arnold",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Welc",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "V. T.",
+        "last_name": "Rajan",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ArnoldWR05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094837",
+    "title": "Runtime specialization with optimistic heap analysis",
+    "abstract": "We describe a highly practical program specializer for Java programs. The specializer is powerful, because it specializes optimistically, using (potentially transient) constants in the heap; it is precise, because it specializes using data structures that are only partially invariant; it is deployable, because it is hidden in a JIT compiler and does not require any user annotations or offline preprocessing; it is simple, because it uses existing JIT compiler ingredients; and it is fast, because it specializes programs in under 1s.These properties are the result of (1) a new algorithm for selecting specializable code fragments, based on a notion of influence; (2) a precise store profile for identifying constant heap locations; and (3) an efficient invalidation mechanism for monitoring optimistic assumptions about heap constants. Our implementation of the specializer in the Jikes RVM has low overhead, selects specialization points that would be chosen manually, and produces speedups ranging from a factor of 1.2 to 6.4, comparable with annotation-guided specializers.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094837",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ajeet",
+        "last_name": "Shankar",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Shiva",
+        "last_name": "Sastry",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "James E.",
+        "last_name": "Smith",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ShankarSBS05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094851",
+    "title": "Subtext: uncovering the simplicity of programming",
+    "abstract": "Representing programs as text strings makes programming harder then it has to be. The source text of a program is far removed from its behavior. Bridging this conceptual gulf is what makes programming so inhumanly difficult -- we are not compilers. Subtext is a new medium in which the representation of a program is the same thing as its execution. Like a spreadsheet, a program is visible and alive, constantly executing even as it is edited. Program edits are coherent semantic transformations.The essence of this new medium is copying. Programs are constructed by copying and executed by copy flow: the projection of changes through copies. The simple idea of copying develops into a rich theory of higher-order continual copying of trees. Notably absent are symbolic names, the workhorse of textual notation, replaced by immediately-bound explicit relationships. Subtext unifies traditionally distinct programming tools and concepts, and enables some novel ones. Ancestral structures are a new primitive data type that combines the features of lists and records, along with unproblematic multiple inheritance. Adaptive conditionals use first-class program edits to dynamically adapt behavior.A prototype implementation shows promise, but calls for much further research. Subtext suggests that we can make programming radically easier, if we are willing to be radical.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094851",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jonathan",
+        "last_name": "Edwards",
+        "institution": "IIT@MIT"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Edwards05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094854",
+    "title": "A simple model of agile software processes - or - extreme programming annealed",
+    "abstract": "Article Share on A simple model of agile software processes -- or -- extreme programming annealed Author: Glenn Vanderburg Plano, TX Plano, TXView Profile Authors Info & Claims OOPSLA '05: Proceedings of the 20th annual ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applicationsOctober 2005Pages 539–545https://doi.org/10.1145/1094811.1094854Published:12 October 2005Publication History 6citation3,363DownloadsMetricsTotal Citations6Total Downloads3,363Last 12 Months12Last 6 weeks1 Get Citation AlertsNew Citation Alert added!This alert has been successfully added and will be sent to:You will be notified whenever a record that you have chosen has been cited.To manage your alert preferences, click on the button below.Manage my AlertsNew Citation Alert!Please log in to your account Save to BinderSave to BinderCreate a New BinderNameCancelCreateExport CitationPublisher SiteGet Access",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094854",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Glenn",
+        "last_name": "Vanderburg",
+        "institution": "Plano Cancer Institute"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Vanderburg05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094836",
+    "title": "Quantifying the performance of garbage collection vs. explicit memory management",
+    "abstract": "Garbage collection yields numerous software engineering benefits, but its quantitative impact on performance remains elusive. One can compare the cost of conservative garbage collection to explicit memory management in C/C++ programs by linking in an appropriate collector. This kind of direct comparison is not possible for languages designed for garbage collection (e.g., Java), because programs in these languages naturally do not contain calls to free. Thus, the actual gap between the time and space performance of explicit memory management and precise, copying garbage collection remains unknown.We introduce a novel experimental methodology that lets us quantify the performance of precise garbage collection versus explicit memory management. Our system allows us to treat unaltered Java programs as if they used explicit memory management by relying on oracles to insert calls to free. These oracles are generated from profile information gathered in earlier application runs. By executing inside an architecturally-detailed simulator, this \"oracular\" memory manager eliminates the effects of consulting an oracle while measuring the costs of calling malloc and free. We evaluate two different oracles: a liveness-based oracle that aggressively frees objects immediately after their last use, and a reachability-based oracle that conservatively frees objects just after they are last reachable. These oracles span the range of possible placement of explicit deallocation calls.We compare explicit memory management to both copying and non-copying garbage collectors across a range of benchmarks using the oracular memory manager, and present real (non-simulated) runs that lend further validity to our results. These results quantify the time-space tradeoff of garbage collection: with five times as much memory, an Appel-style generational collector with a non-copying mature space matches the performance of reachability-based explicit memory management. With only three times as much memory, the collector runs on average 17% slower than explicit memory management. However, with only twice as much memory, garbage collection degrades performance by nearly 70%. When physical memory is scarce, paging causes garbage collection to run an order of magnitude slower than explicit memory management.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094836",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Hertz",
+        "institution": "Canisius College"
+      },
+      {
+        "first_name": "Emery D.",
+        "last_name": "Berger",
+        "institution": "University of Massachusetts Amherst"
+      }
+    ],
+    "dblp_key": "conf/oopsla/HertzB05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094839",
+    "title": "Adding trace matching with free variables to AspectJ",
+    "abstract": "An aspect observes the execution of a base program; when certain actions occur, the aspect runs some extra code of its own. In the AspectJ language, the observations that an aspect can make are confined to the current action: it is not possible to directly observe the history of a computation.Recently, there have been several interesting proposals for new history-based language features, most notably by Douence et al. and by Walker and Viggers. In this paper, we present a new history-based language feature called tracematches that enables the programmer to trigger the execution of extra code by specifying a regular pattern of events in a computation trace. We have fully designed and implemented tracematches as a seamless extension of AspectJ.A key innovation in our tracematch approach is the introduction of free variables in the matching patterns. This enhancement enables a whole new class of applications in which events can be matched not only by the event kind, but also by the values associated with the free variables. We provide several examples of applications enabled by this feature.After introducing and motivating the idea of tracematches via examples, we present a detailed semantics of our language design, and we derive an implementation from that semantics. The implementation has been realised as an extension of the abc compiler for AspectJ.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094839",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Allan",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Pavel",
+        "last_name": "Avgustinov",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Aske Simon",
+        "last_name": "Christensen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Laurie",
+        "last_name": "Hendren",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Sascha",
+        "last_name": "Kuzins",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Oege de",
+        "last_name": "Moor",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Damien",
+        "last_name": "Sereni",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Ganesh",
+        "last_name": "Sittampalam",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Julian",
+        "last_name": "Tibble",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/oopsla/AllanACHKLMSST05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094848",
+    "title": "Incrementalization across object abstraction",
+    "abstract": "Object abstraction supports the separation of what operations are provided by systems and components from how the operations are implemented, and is essential in enabling the construction of complex systems from components. Unfortunately, clear and modular implementations have poor performance when expensive query operations are repeated, while efficient implementations that incrementally maintain these query results are much more difficult to develop and to understand, because the code blows up significantly, and is no longer clear or modular.This paper describes a powerful and systematic method that first allows the \"what\" of each component to be specified in a clear and modular fashion and implemented straightforwardly in an object-oriented language; then analyzes the queries and updates, across object abstraction, in the straightforward implementation; and finally derives the sophisticated and efficient \"how\" of each component by incrementally maintaining the results of repeated expensive queries with respect to updates to their parameters. Our implementation and experimental results for example applications in query optimization, role-based access control, etc. demonstrate the effectiveness and benefit of the method.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094848",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yanhong A.",
+        "last_name": "Liu",
+        "institution": "Stony Brook University"
+      },
+      {
+        "first_name": "Scott D.",
+        "last_name": "Stoller",
+        "institution": "State University of New York"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Gorbovitski",
+        "institution": "State University of New York"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Rothamel",
+        "institution": "State University of New York"
+      },
+      {
+        "first_name": "Yanni Ellen",
+        "last_name": "Liu",
+        "institution": "State University of New York"
+      }
+    ],
+    "dblp_key": "conf/oopsla/LiuSGRL05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094840",
+    "title": "Finding application errors and security flaws using PQL: a program query language",
+    "abstract": "A number of effective error detection tools have been built in recent years to check if a program conforms to certain design rules. An important class of design rules deals with sequences of events asso-ciated with a set of related objects. This paper presents a language called PQL (Program Query Language) that allows programmers to express such questions easily in an application-specific context. A query looks like a code excerpt corresponding to the shortest amount of code that would violate a design rule. Details of the tar-get application's precise implementation are abstracted away. The programmer may also specify actions to perform when a match is found, such as recording relevant information or even correcting an erroneous execution on the fly.We have developed both static and dynamic techniques to find solutions to PQL queries. Our static analyzer finds all potential matches conservatively using a context-sensitive, flow-insensitive, inclusion-based pointer alias analysis. Static results are also use-ful in reducing the number of instrumentation points for dynamic analysis. Our dynamic analyzer instruments the source program to catch all violations precisely as the program runs and to optionally perform user-specified actions.We have implemented the techniques described in this paper and found 206 errors in 6 large real-world open-source Java applica-tions containing a total of nearly 60,000 classes. These errors are important security flaws, resource leaks, and violations of consis-tency invariants. The combination of static and dynamic analysis proves effective at addressing a wide range of debugging and pro-gram comprehension queries. We have found that dynamic analysis is especially suitable for preventing errors such as security vulner-abilities at runtime.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094840",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Michael C.",
+        "last_name": "Martin",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Livshits",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Monica S.",
+        "last_name": "Lam",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/MartinLL05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094845",
+    "title": "Safe futures for Java",
+    "abstract": "A future is a simple and elegant abstraction that allows concurrency to be expressed often through a relatively small rewrite of a sequential program. In the absence of side-effects, futures serve as benign annotations that mark potentially concurrent regions of code. Unfortunately, when computation relies heavily on mutation as is the case in Java, its meaning is less clear, and much of its intended simplicity lost.This paper explores the definition and implementation of safe futures for Java. One can think of safe futures as truly transparent annotations on method calls, which designate opportunities for concurrency. Serial programs can be made concurrent simply by replacing standard method calls with future invocations. Most significantly, even though some parts of the program are executed concurrently and may indeed operate on shared data, the semblance of serial execution is nonetheless preserved. Thus, program reasoning is simplified since data dependencies present in a sequential program are not violated in a version augmented with safe futures.Besides presenting a programming model and API for safe futures, we formalize the safety conditions that must be satisfied to ensure equivalence between a sequential Java program and its future-annotated counterpart. A detailed implementation study is also provided. Our implementation exploits techniques such as object versioning and task revocation to guarantee necessary safety conditions. We also present an extensive experimental evaluation of our implementation to quantify overheads and limitations. Our experiments indicate that for programs with modest mutation rates on shared data, applications can use futures to profitably exploit parallelism, without sacrificing safety.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094845",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Adam",
+        "last_name": "Welc",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Antony L.",
+        "last_name": "Hosking",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/oopsla/WelcJH05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094847",
+    "title": "Combining the robustness of checked exceptions with the flexibility of unchecked exceptions using anchored exception declarations",
+    "abstract": "Ever since their invention 30 years ago, checked exceptions have been a point of much discussion. On the one hand, they increase the robustness of software by preventing the manifestation of unanticipated checked exceptions at run-time. On the other hand, they decrease the adaptability of software because they must be propagated explicitly, and must often be handled even if they cannot be signalled.We show that the problems with checked exceptions are caused by a lack of expressiveness of the exceptional return type of a method, which currently dictates a copy & paste style. We add the required expressiveness by introducing anchored exception declarations, which allow the exceptional behavior of a method to be declared relative to that of others. We present the formal semantics of anchored exception declarations, along with the necessary rules for ensuring compile-time safety, and give a proof of soundness. We show that anchored exception declarations do not violate the principle of information hiding when used properly, and provide a guideline for when to use them.We have implemented anchored exception declarations in Cappuccino, which is an extension to the ClassicJava programming language.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094847",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Marko van",
+        "last_name": "Dooren",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Steegmans",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/oopsla/DoorenS05",
+    "venue": "oopsla",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1094811.1094852",
+    "title": "X10: an object-oriented approach to non-uniform cluster computing",
+    "abstract": "It is now well established that the device scaling predicted by Moore's Law is no longer a viable option for increasing the clock frequency of future uniprocessor systems at the rate that had been sustained during the last two decades. As a result, future systems are rapidly moving from uniprocessor to multiprocessor configurations, so as to use parallelism instead of frequency scaling as the foundation for increased compute capacity. The dominant emerging multiprocessor structure for the future is a Non-Uniform Cluster Computing (NUCC) system with nodes that are built out of multi-core SMP chips with non-uniform memory hierarchies, and interconnected in horizontally scalable cluster configurations such as blade servers. Unlike previous generations of hardware evolution, this shift will have a major impact on existing software. Current OO language facilities for concurrent and distributed programming are inadequate for addressing the needs of NUCC systems because they do not support the notions of non-uniform data access within a node, or of tight coupling of distributed nodes.We have designed a modern object-oriented programming language, X10, for high performance, high productivity programming of NUCC systems. A member of the partitioned global address space family of languages, X10 highlights the explicit reification of locality in the form of places}; lightweight activities embodied in async, future, foreach, and ateach constructs; a construct for termination detection (finish); the use of lock-free synchronization (atomic blocks); and the manipulation of cluster-wide global data structures. We present an overview of the X10 programming model and language, experience with our reference implementation, and results from some initial productivity comparisons between the X10 and Java™ languages.",
+    "date": "2005-10-12",
+    "link": "https://doi.org/10.1145/1094811.1094852",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Philippe",
+        "last_name": "Charles",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Grothoff",
+        "institution": "UCLA Health"
+      },
+      {
+        "first_name": "Vijay",
+        "last_name": "Saraswat",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "Donawa",
+        "institution": "IBM (Canada)"
+      },
+      {
+        "first_name": "Allan",
+        "last_name": "Kielstra",
+        "institution": "IBM (Canada)"
+      },
+      {
+        "first_name": "Kemal",
+        "last_name": "Ebci̇oğlu",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Christoph von",
+        "last_name": "Praun",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/oopsla/CharlesGSDKEPS05",
+    "venue": "oopsla",
+    "year": 2005
+  }
+]
