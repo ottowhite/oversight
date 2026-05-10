@@ -814,10 +814,18 @@ class PLConferenceHarvester:
 
         url = f"https://api.semanticscholar.org/graph/v1/paper/DOI:{doi}"
         params = {"fields": "abstract,authors,year"}
+        # Cap SS retries tightly: their unauthenticated API throttles to a
+        # few RPS and pre-2010 Springer LNCS abstracts are mostly missing
+        # anyway. Burning ~90s of backoff per paper to discover that a
+        # given DOI is unavailable wedges the bulk run to a crawl.
         try:
             with _SEMSCHOLAR_CONCURRENCY:
                 resp = _request_with_retries(
-                    self._thread_session(), url, params=params, timeout=30
+                    self._thread_session(),
+                    url,
+                    params=params,
+                    timeout=30,
+                    max_attempts=2,
                 )
         except requests.RequestException as exc:
             logger.warning("Semantic Scholar request failed for %s: %s", doi, exc)
