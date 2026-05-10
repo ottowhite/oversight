@@ -572,6 +572,14 @@ export default function HomePage() {
                     >
                       Find Similar
                     </button>
+                    <a
+                      className="btn btn-xs btn-ghost text-accent hover:bg-accent/10"
+                      href={`/graph?seed=${encodeURIComponent(p.paper_id)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Graph
+                    </a>
                     {p.link && (
                       <a
                         className="btn btn-xs btn-ghost text-accent hover:bg-accent/10"
