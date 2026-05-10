@@ -561,36 +561,58 @@ class PLConferenceHarvester:
                 yield info
 
     def _fetch_dblp_toc_papers(self, toc: TOCEntry) -> Iterator[dict[str, Any]]:
-        """Yield raw DBLP ``info`` dicts for a single TOC entry."""
+        """Yield raw DBLP ``info`` dicts for a single TOC entry.
+
+        Tries the static ``.xml`` TOC file first (it's served from a CDN
+        with no rate-limiting). Falls back to the search API only if the
+        static fetch fails — historically the search API is the first
+        thing DBLP throttles under load, so we keep it as a backup not
+        the primary path.
+        """
         cache_key = self._dblp_toc_cache_key(toc)
         cached = self._cache_load(cache_key)
         if cached is not None:
             payload = cached
-        else:
-            # Query the search API faceted on the TOC. Add the PACMPL
-            # ``number`` token (e.g. "POPL") to disambiguate when the same
-            # TOC bundles several venues.
-            query_terms = [f"toc:{toc.bht}:"]
-            if toc.pacmpl_number is not None:
-                query_terms.append(toc.pacmpl_number)
-            url = "https://dblp.org/search/publ/api"
-            params = {
-                "q": " ".join(query_terms),
-                "format": "json",
-                "h": 1000,
-                "f": 0,
-            }
-            with _DBLP_CONCURRENCY:
-                _pace_dblp()
-                resp = _request_with_retries(
-                    self._thread_session(), url, params=params, timeout=30
-                )
-            resp.raise_for_status()
-            if self.request_delay_s:
-                time.sleep(self.request_delay_s)
-            payload = resp.json()
-            self._cache_store(cache_key, payload)
+            yield from self._iter_search_api_hits(toc, payload)
+            return
 
+        # Primary path: static XML TOC. Same DOIs, faster, no rate limit.
+        try:
+            yield from self._fetch_dblp_toc_papers_via_xml(toc)
+            return
+        except requests.RequestException as exc:
+            logger.warning(
+                "Static XML fetch failed for %s (%s); falling back to search API",
+                toc.bht,
+                exc,
+            )
+
+        # Fallback: search API.
+        query_terms = [f"toc:{toc.bht}:"]
+        if toc.pacmpl_number is not None:
+            query_terms.append(toc.pacmpl_number)
+        url = "https://dblp.org/search/publ/api"
+        params = {
+            "q": " ".join(query_terms),
+            "format": "json",
+            "h": 1000,
+            "f": 0,
+        }
+        with _DBLP_CONCURRENCY:
+            _pace_dblp()
+            resp = _request_with_retries(
+                self._thread_session(), url, params=params, timeout=30
+            )
+        resp.raise_for_status()
+        if self.request_delay_s:
+            time.sleep(self.request_delay_s)
+        payload = resp.json()
+        self._cache_store(cache_key, payload)
+        yield from self._iter_search_api_hits(toc, payload)
+
+    def _iter_search_api_hits(
+        self, toc: TOCEntry, payload: dict[str, Any]
+    ) -> Iterator[dict[str, Any]]:
         hits = payload.get("result", {}).get("hits", {})
         total = int(hits.get("@total", 0))
         sent = int(hits.get("@sent", 0))
@@ -598,7 +620,6 @@ class PLConferenceHarvester:
             raise RuntimeError(
                 f"DBLP returned {sent}/{total} hits for {toc.bht} — bump 'h' parameter."
             )
-
         for hit in hits.get("hit", []):
             info = hit.get("info", {})
             # Defensive filter: PACMPL TOCs cover multiple venues, so the
@@ -612,6 +633,39 @@ class PLConferenceHarvester:
                 if info.get("type") == "Editorship":
                     continue
             yield info
+
+    def _fetch_dblp_toc_papers_via_xml(self, toc: TOCEntry) -> Iterator[dict[str, Any]]:
+        """Fetch the static ``<bht>.xml`` and yield search-API-shaped dicts.
+
+        DBLP's static TOC XML files (``db/conf/.../*.xml`` and
+        ``db/journals/pacmpl/*.xml``) are not behind the search API's
+        rate limiter and are nearly always available even when the
+        search API is throttling.
+        """
+        # The cache key is the same one the search-API path uses; store
+        # the converted entries under it so cache lookups on subsequent
+        # runs short-circuit either path.
+        xml_url = f"https://dblp.org/{toc.bht.removesuffix('.bht')}.xml"
+        with _DBLP_CONCURRENCY:
+            _pace_dblp()
+            resp = _request_with_retries(self._thread_session(), xml_url, timeout=30)
+        resp.raise_for_status()
+        if self.request_delay_s:
+            time.sleep(self.request_delay_s)
+        entries = list(_parse_dblp_toc_xml(resp.text, toc))
+        # Convert to a search-API-shaped payload so the on-disk cache is
+        # interchangeable between the two paths.
+        synthetic_payload = {
+            "result": {
+                "hits": {
+                    "@total": str(len(entries)),
+                    "@sent": str(len(entries)),
+                    "hit": [{"info": e} for e in entries],
+                }
+            }
+        }
+        self._cache_store(self._dblp_toc_cache_key(toc), synthetic_payload)
+        yield from entries
 
     def _dblp_toc_cache_key(self, toc: TOCEntry) -> str:
         bht_safe = _safe_filename(toc.bht)
@@ -812,6 +866,88 @@ def _reconstruct_abstract(inverted_index: dict[str, list[int]]) -> str:
             positions.append((loc, word))
     positions.sort(key=lambda p: p[0])
     return " ".join(word for _, word in positions)
+
+
+# Match a complete <inproceedings ...>...</inproceedings> or
+# <article ...>...</article> block. Pure regex (rather than ET) because
+# the wrapper document is not strict XML — it embeds raw HTML elements
+# like ``<h1>``, ``<h2>`` outside any namespace.
+_DBLP_PAPER_RE = re.compile(
+    r"<(?P<tag>inproceedings|article)\s+([^>]*?)>(?P<body>.*?)</(?P=tag)>",
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def _parse_dblp_toc_xml(xml_text: str, toc: TOCEntry) -> Iterator[dict[str, Any]]:
+    """Convert a DBLP static TOC XML into search-API-shaped ``info`` dicts.
+
+    The static XML at ``db/conf/<slug>/<slug><year>.xml`` and
+    ``db/journals/pacmpl/pacmpl<vol>.xml`` carries the same fields
+    we need (title, DOI, authors, key, year), but is served as files
+    rather than through the search API and is therefore not throttled.
+
+    For PACMPL volumes, ``toc.pacmpl_number`` filters the multi-venue
+    bundle down to the requested venue (POPL/PLDI/ICFP/OOPSLA[12]).
+
+    Returns dicts with the same shape ``_build_paper`` expects:
+    ``{title, doi, key, authors: {author: [{text}]}, year, number?}``.
+    """
+    for m in _DBLP_PAPER_RE.finditer(xml_text):
+        attrs = _parse_xml_attrs(m.group(2))
+        body = m.group("body")
+
+        title_match = re.search(
+            r"<title>(.*?)</title>", body, re.DOTALL | re.IGNORECASE
+        )
+        title = (title_match.group(1).strip() if title_match else "").rstrip(".")
+
+        # Year/number/booktitle inform PACMPL discrimination.
+        year_match = re.search(r"<year>(\d{4})</year>", body, re.IGNORECASE)
+        year = year_match.group(1) if year_match else ""
+        number_match = re.search(r"<number>([^<]+)</number>", body, re.IGNORECASE)
+        number = number_match.group(1).strip() if number_match else None
+        booktitle_match = re.search(
+            r"<booktitle>([^<]+)</booktitle>", body, re.IGNORECASE
+        )
+        booktitle = booktitle_match.group(1).strip() if booktitle_match else None
+
+        # PACMPL TOCs bundle multiple venues. Restrict to the one we asked for.
+        if toc.pacmpl_number is not None and number != toc.pacmpl_number:
+            continue
+
+        # First DOI <ee>, if any.
+        doi: str | None = None
+        for ee_match in re.finditer(r"<ee[^>]*>([^<]+)</ee>", body, re.IGNORECASE):
+            ee_url = ee_match.group(1).strip()
+            if ee_url.startswith("https://doi.org/"):
+                doi = ee_url[len("https://doi.org/") :]
+                break
+            if ee_url.startswith("http://doi.org/"):
+                doi = ee_url[len("http://doi.org/") :]
+                break
+
+        authors: list[dict[str, str]] = []
+        for author_match in re.finditer(
+            r"<author[^>]*>([^<]+)</author>", body, re.IGNORECASE
+        ):
+            name = author_match.group(1).strip()
+            if name:
+                authors.append({"text": name})
+
+        info: dict[str, Any] = {
+            "key": attrs.get("key", ""),
+            "title": title,
+            "year": year,
+            "authors": {"author": authors} if authors else {},
+        }
+        if doi is not None:
+            info["doi"] = doi
+        if number is not None:
+            info["number"] = number
+        if booktitle is not None:
+            info["venue"] = booktitle
+
+        yield info
 
 
 def _openalex_authors(work: dict[str, Any]) -> list[dict[str, str]]:
