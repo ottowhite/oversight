@@ -61,6 +61,21 @@ def _build_filters(
         if sources_flags.get(conf, False):
             selected_sources.append(conf)
 
+    # Handle individual PL conferences
+    pl_conferences = [
+        "POPL",
+        "PLDI",
+        "ICFP",
+        "OOPSLA",
+        "ESOP",
+        "ECOOP",
+        "CC",
+        "Haskell",
+    ]
+    for conf in pl_conferences:
+        if sources_flags.get(conf, False):
+            selected_sources.append(conf)
+
     # Build filter from selected sources
     if selected_sources:
         filters.append(repo.build_filter_sql(selected_sources))
@@ -81,6 +96,14 @@ def _build_filters(
                     "MLSys",
                     "EuroSys",
                     "VLDB",
+                    "POPL",
+                    "PLDI",
+                    "ICFP",
+                    "OOPSLA",
+                    "ESOP",
+                    "ECOOP",
+                    "CC",
+                    "Haskell",
                 ]
             )
         )
@@ -116,6 +139,20 @@ def search() -> tuple[dict[str, Any], int]:
             "VLDB",
         ]
         for conf in systems_conferences:
+            sources[conf] = request.args.get(conf, "false").lower() == "true"
+
+        # Add individual PL conferences
+        pl_conferences = [
+            "POPL",
+            "PLDI",
+            "ICFP",
+            "OOPSLA",
+            "ESOP",
+            "ECOOP",
+            "CC",
+            "Haskell",
+        ]
+        for conf in pl_conferences:
             sources[conf] = request.args.get(conf, "false").lower() == "true"
 
         body = {
