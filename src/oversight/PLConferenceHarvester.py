@@ -379,7 +379,18 @@ def _request_with_retries(
             continue
         if resp.status_code in (429, 500, 502, 503, 504) and attempt < max_attempts:
             retry_after = resp.headers.get("Retry-After")
-            wait = float(retry_after) if retry_after else backoff
+            # OpenAlex's quota-exhaustion 429 sends Retry-After = remaining
+            # seconds in the day (often 7+ hours). That's not a useful wait
+            # for an interactive harvest run; clamp to ``backoff`` so we
+            # fail fast on the second attempt and let the caller move on.
+            if retry_after:
+                try:
+                    requested = float(retry_after)
+                except ValueError:
+                    requested = backoff
+                wait = min(requested, max(backoff, 60.0))
+            else:
+                wait = backoff
             logger.warning(
                 "Request to %s returned %s; retry %d/%d in %.1fs",
                 target,
