@@ -156,7 +156,9 @@ class PLVenueIndex:
 
         url = f"https://dblp.org/db/conf/{self.venue.slug}/index.xml"
         logger.info("Fetching DBLP venue index %s", url)
-        resp = _request_with_retries(self._session, url, timeout=30)
+        with _DBLP_CONCURRENCY:
+            _pace_dblp()
+            resp = _request_with_retries(self._session, url, timeout=30)
         resp.raise_for_status()
         time.sleep(self.request_delay_s)
 
@@ -284,6 +286,36 @@ def _parse_xml_attrs(attr_str: str) -> dict[str, str]:
 _USER_AGENT = "oversight/0.1 (https://github.com/charlielidbury/oversight)"
 _OPENALEX_MAILTO = "charlie.lidbury@icloud.com"
 
+# Per-process semaphores so we never hammer a single host with the full
+# pool. DBLP and Semantic Scholar are the two services known to reset
+# connections under load; OpenAlex with ``mailto`` happily handles 100
+# concurrent requests so we leave it ungated.
+#
+# DBLP at concurrency=1 with a small inter-request delay sustains. At
+# concurrency=2 it starts returning ``Connection reset by peer`` after a
+# couple of seconds.
+_DBLP_CONCURRENCY = threading.BoundedSemaphore(1)
+_DBLP_MIN_INTERVAL_S = 1.5
+_DBLP_LAST_CALL_LOCK = threading.Lock()
+_DBLP_LAST_CALL_AT = [0.0]
+_SEMSCHOLAR_CONCURRENCY = threading.BoundedSemaphore(4)
+
+
+def _pace_dblp() -> None:
+    """Block briefly so consecutive DBLP calls are at least
+    ``_DBLP_MIN_INTERVAL_S`` apart, regardless of which thread is calling.
+    """
+    with _DBLP_LAST_CALL_LOCK:
+        now = time.monotonic()
+        delta = now - _DBLP_LAST_CALL_AT[0]
+        if delta < _DBLP_MIN_INTERVAL_S:
+            sleep_for = _DBLP_MIN_INTERVAL_S - delta
+        else:
+            sleep_for = 0.0
+        _DBLP_LAST_CALL_AT[0] = now + sleep_for
+    if sleep_for:
+        time.sleep(sleep_for)
+
 
 def _request_with_retries(
     session: requests.Session,
@@ -291,11 +323,11 @@ def _request_with_retries(
     *,
     params: dict[str, Any] | None = None,
     timeout: int = 30,
-    max_attempts: int = 4,
+    max_attempts: int = 6,
 ) -> requests.Response:
-    """GET with exponential backoff on transient errors (429/503/connection)."""
+    """GET with exponential backoff on transient errors (429/5xx/connection)."""
     attempt = 0
-    backoff = 2.0
+    backoff = 3.0
     while True:
         attempt += 1
         try:
@@ -314,7 +346,7 @@ def _request_with_retries(
             time.sleep(backoff)
             backoff *= 2
             continue
-        if resp.status_code in (429, 502, 503, 504) and attempt < max_attempts:
+        if resp.status_code in (429, 500, 502, 503, 504) and attempt < max_attempts:
             retry_after = resp.headers.get("Retry-After")
             wait = float(retry_after) if retry_after else backoff
             logger.warning(
@@ -548,9 +580,14 @@ class PLConferenceHarvester:
                 "h": 1000,
                 "f": 0,
             }
-            resp = _request_with_retries(self._session, url, params=params, timeout=30)
+            with _DBLP_CONCURRENCY:
+                _pace_dblp()
+                resp = _request_with_retries(
+                    self._thread_session(), url, params=params, timeout=30
+                )
             resp.raise_for_status()
-            time.sleep(self.request_delay_s)
+            if self.request_delay_s:
+                time.sleep(self.request_delay_s)
             payload = resp.json()
             self._cache_store(cache_key, payload)
 
@@ -693,9 +730,10 @@ class PLConferenceHarvester:
         url = f"https://api.semanticscholar.org/graph/v1/paper/DOI:{doi}"
         params = {"fields": "abstract,authors,year"}
         try:
-            resp = _request_with_retries(
-                self._thread_session(), url, params=params, timeout=30
-            )
+            with _SEMSCHOLAR_CONCURRENCY:
+                resp = _request_with_retries(
+                    self._thread_session(), url, params=params, timeout=30
+                )
         except requests.RequestException as exc:
             logger.warning("Semantic Scholar request failed for %s: %s", doi, exc)
             return None
