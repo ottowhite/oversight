@@ -811,25 +811,31 @@ function DistributionStrip({
 
   return (
     <div className="rounded-md bg-base-300/60 px-2 py-2">
-      <div className="relative h-7">
+      {/* Tall enough to fit the rotated label text below the tick marks
+          without overlap. Three of the six percentiles (p99/p99.5/p99.9)
+          cluster very close together, so labels must rotate to read. */}
+      <div className="relative h-14">
         {/* baseline */}
-        <div className="absolute left-0 right-0 top-1/2 h-px bg-base-content/15" />
+        <div className="absolute left-0 right-0 top-2 h-px bg-base-content/15" />
         {/* percentile ticks */}
         {ticks.map((t) => (
           <div
             key={t.label}
-            className="absolute -translate-x-1/2 flex flex-col items-center"
+            className="absolute top-0 flex flex-col items-center"
             style={{ left: pos(t.value) }}
           >
-            <div className="h-2 w-px bg-base-content/30" />
-            <div className="mt-0.5 text-[9px] text-base-content/40 font-mono">
-              {t.label}
+            <div className="h-3 w-px bg-base-content/30" />
+            <div
+              className="mt-1 text-[9px] text-base-content/50 font-mono whitespace-nowrap origin-top-left"
+              style={{ transform: "rotate(45deg)" }}
+            >
+              {t.label} ({t.value.toFixed(2)})
             </div>
           </div>
         ))}
         {/* current threshold marker */}
         <div
-          className="absolute -translate-x-1/2 top-0 bottom-0 flex flex-col items-center"
+          className="absolute -translate-x-1/2 top-0 bottom-0 flex flex-col items-center pointer-events-none"
           style={markerStyle}
         >
           <div className="h-full w-px bg-primary" />
