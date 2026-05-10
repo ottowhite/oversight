@@ -1,0 +1,840 @@
+[
+  {
+    "paper_id": "10.1145/1040305.1040314",
+    "title": "Synthesis of interface specifications for Java classes",
+    "abstract": "While a typical software component has a clearly specified (static) interface in terms of the methods and the input/output types they support, information about the correct sequencing of method calls the client must invoke is usually undocumented. In this paper, we propose a novel solution for automatically extracting such temporal specifications for Java classes. Given a Java class, and a safety property such as “the exception E should not be raised”, the corresponding (dynamic) interface is the most general way of invoking the methods in the class so that the safety property is not violated. Our synthesis method first constructs a symbolic representation of the finite state-transition system obtained from the class using predicate abstraction. Constructingthe interface then corresponds to solving a partial-information two-player game on this symbolic graph. We present a sound approach to solve this computationally-hard problem approximately using algorithms for learning finite automata and symbolic model checking for branching-time logics. We describe an implementation of the proposed techniques in the tool JIST — Java Interface Synthesis Tool—and demonstrate that the tool can construct interfaces accurately and efficiently for sample Java2SDK library classes. Categories and Subject Descriptors: D.2.4 [Software Engineering] Software/Program Verification-formal methods, model checking; D.2.1 [Software Engineering] Requirements/Specification-methodologies, tools; D.2.2 [Software",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040314",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Rajeev",
+        "last_name": "Alur",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Pavol",
+        "last_name": "Černý",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Madhusudan",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Wonhong",
+        "last_name": "Nam",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/AlurCMN05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040332",
+    "title": "Precise interprocedural analysis using random interpretation",
+    "abstract": "We describe a unified framework for random interpretation that generalizes previous randomized intraprocedural analyses, and also extends naturally to efficient interprocedural analyses. There is no such natural extension known for deterministic algorithms. We present a general technique for extending any intraprocedural random interpreter to perform a context-sensitive interprocedural analysis with only polynomial increase in running time. This technique involves computing random summaries of procedures, which are complete and probabilistically sound.As an instantiation of this general technique, we obtain the first polynomial-time randomized algorithm that discovers all linear relationships interprocedurally in a linear program. We also obtain the first polynomial-time randomized algorithm for precise interprocedural value numbering over a program with unary uninterpreted functions.We present experimental evidence that quantifies the precision and relative speed of the analysis for discovering linear relationships along two dimensions: intraprocedural vs. interprocedural, and deterministic vs. randomized. We also present results that show the variation of the error probability in the randomized analysis with changes in algorithm parameters. These results suggest that the error probability is much lower than the existing conservative theoretical bounds.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040332",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "George C.",
+        "last_name": "Necula",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/popl/GulwaniN05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040323",
+    "title": "Theoretical foundations for compensations in flow composition languages",
+    "abstract": "A key aspect when aggregating business processes and web services is to assure transactional properties of process ex-ecutions. Since transactions in this context may require long periods of time to complete, traditional mechanisms for guaranteeing atomicity are not always appropriate. Gen-erally the concept of long running transactions relies on a weaker notion of atomicity based on compensations. For this reason, programming languages for service composition cannot leave out two key aspects: compensations, i.e. ad hoc activities that can undo the effects of a process that fails to complete, and transactional boundaries to delimit the scope of a transactional flow. This paper presents a hierarchy of transactional calculi with increasing expressiveness. We start from a very small language in which activities can only be composed sequentially. Then, we progressively introduce parallel composition, nesting, programmable compensations and exception handling. A running example illustrates the main features of each calculus in the hierarchy.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040323",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Roberto",
+        "last_name": "Bruni",
+        "institution": "University of Pisa"
+      },
+      {
+        "first_name": "Hernán",
+        "last_name": "Melgratti",
+        "institution": "University of Pisa"
+      },
+      {
+        "first_name": "Ugo",
+        "last_name": "Montanari",
+        "institution": "University of Pisa"
+      }
+    ],
+    "dblp_key": "conf/popl/BruniMM05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040313",
+    "title": "Slot games: a quantitative model of computation",
+    "abstract": "We present a games-based denotational semantics for a quantitative analysis of programming languages. We define a Hyland-Ong-style games framework called slot games, which consists of HO games augmented with a new action called token. We develop a slot-game model for the language Idealised Concurrent Algol by instrumenting the strategies in its HO game model with token actions. We show that the slot-game model is a denotational semantics induced by a notion of observation formalised in the operational theory of improvement of Sands, and we give a full abstraction result. A quantitative analysis of programs has many potential applications, from compiler optimisations to resource-constrained execution and static performance profiling. We illustrate several such applications with putative examples that would be nevertheless difficult, if not impossible, to handle using known operational techniques.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040313",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Dan R.",
+        "last_name": "Ghica",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/popl/Ghica05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040308",
+    "title": "Polymorphic bytecode: compositional compilation for Java-like languages",
+    "abstract": "We define compositional compilation as the ability to typecheck source code fragments in isolation, generate We define compositional compilation as the ability to typecheck source code fragments in isolation, generate corresponding binaries,and link together fragments whose mutual assumptions are satisfied, without reinspecting the code. Even though compositional compilation is a highly desirable feature, in Java-like languages it can hardly be achieved. This is due to the fact that the bytecode generated for a fragment (say, a class) is not uniquely determined by its source code, but also depends on the compilation context.We propose a way to obtain compositional compilation for Java, by introducing a polymorphic form of bytecode containing type variables (ranging over class names) and equipped with a set of constraints involving type variables. Thus, polymorphic bytecode provides a representation for all the (standard) bytecode that can be obtained by replacing type variables with classes satisfying the associated constraints.We illustrate our proposal by developing a typing and a linking algorithm. The typing algorithm compiles a class in isolation generating the corresponding polymorphic bytecode fragment and constraints on the classes it depends on. The linking algorithm takes a collection of polymorphic bytecode fragments, checks their mutual consistency, and possibly simplifies and specializes them. In particular, linking a self-contained collection of fragments either fails, or produces standard bytecode (the same as would have been produced by standard compilation of all fragments).",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040308",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Davide",
+        "last_name": "Ancona",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Ferruccio",
+        "last_name": "Damiani",
+        "institution": "University of Turin"
+      },
+      {
+        "first_name": "Sophia",
+        "last_name": "Drossopoulou",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Zucca",
+        "institution": "University of Genoa"
+      }
+    ],
+    "dblp_key": "conf/popl/AnconaDDZ05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040309",
+    "title": "A simple typed intermediate language for object-oriented languages",
+    "abstract": "Traditional class and object encodings are difficult to use in practical type-preserving compilers because of the complexity of the encodings. We propose a simple typed intermediate language for compiling object-oriented languages and prove its soundness. The key ideas are to preserve lightweight notions of classes and objects instead of compiling them away and to separate name-based subclassing from structure-based subtyping. The language can express standard implementation techniques for both dynamic dispatch and runtime type tests. It has decidable type checking even with subtyping between quantified types with different bounds. Because of its simplicity, the language is a more suitable starting point for a practical type-preserving compiler than traditional encoding techniques.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040309",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Chen",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Tarditi",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/ChenT05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040307",
+    "title": "Environmental acquisition revisited",
+    "abstract": "In 1996, Gil and Lorenz proposed programming language constructs for specifying environmental acquisition in addition to inheritance acquisition for objects. They noticed that in many programs, objects are arranged in containment hierarchies and need to obtain information from their container objects. Therefore, if languages allowed programmers to specify such relationships directly, type systems and run-time environments could enforce the invariants that make these programming patterns work.In this paper, we present a formal version of environmental acquisition for class-based languages. Specifically, we introduce an extension of the ClassicJava model with constructs for environmental acquisition of fields and methods, a type system for the model, a reduction semantics, and a type soundness proof. We also discuss how to scale the model to a full-scale Java-like programming language.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040307",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Richard",
+        "last_name": "Cobbe",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/popl/CobbeF05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040312",
+    "title": "A syntactic approach to eta equality in type theory",
+    "abstract": "This paper outlines an elementary approach for showing the decidability of type checking for type theories with βη-equality, relevant to foundations for modules systems and type theory-based proof systems. The key to the approach is a syntactic translation mapping terms in the βη presentation into their full η-expansions in the β presentation. Decidability of type checking is lifted from the target β presentation to the βη presentation. The approach extends to other inductive kinds with a single constructor, and is demonstrated for singletons and dependent pairs.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040312",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Healfdene",
+        "last_name": "Goguen",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/Goguen05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040322",
+    "title": "Transactors: a programming model for maintaining globally consistent distributed state in unreliable environments",
+    "abstract": "We introduce transactors, a fault-tolerant programming model for composing loosely-coupled distributed components running in an unreliable environment such as the internet into systems that reliably maintain globally consistent distributed state. The transactor model incorporates certain elements of traditional transaction processing, but allows these elements to be composed in different ways without the need for central coordination, thus facilitating the study of distributed fault-tolerance from a semantic point of view. We formalize our approach via the τ-calculus, an extended lambda-calculus based on the actor model, and illustrate its usage through a number of examples. The τ-calculus incorporates constructs which distributed processes can use to create globally-consistent checkpoints. We provide an operational semantics for the τ-calculus, and formalize the following safety and liveness properties: first, we show that globally-consistent checkpoints have equivalent execution traces without any node failures or application-level failures, and second, we show that it is possible to reach globally-consistent checkpoints provided that there is some bounded failure-free interval during which checkpointing can occur.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040322",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John K.",
+        "last_name": "Field",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Carlos A.",
+        "last_name": "Varela",
+        "institution": "Rensselaer Polytechnic Institute"
+      }
+    ],
+    "dblp_key": "conf/popl/FieldV05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040318",
+    "title": "Communicating quantum processes",
+    "abstract": "We define a language CQP (Communicating Quantum Processes) for modelling systems which combine quantum and classical communication and computation. CQP combines the communication primitives of the pi-calculus with primitives for measurement and transformation of quantum state; in particular, quantum bits (qubits) can be transmitted from process to process along communication channels. CQP has a static type system which classifies channels, distinguishes between quantum and classical data, and controls the use of quantum state. We formally define the syntax, operational semantics and type system of CQP, prove that the semantics preserves typing, and prove that typing guarantees that each qubit is owned by a unique process within a system. We illustrate CQP by defining models of several quantum communication systems, and outline our plans for using CQP as the foundation for formal analysis and verification of combined quantum and classical systems.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040318",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Simon J.",
+        "last_name": "Gay",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Rajagopal",
+        "last_name": "Nagarajan",
+        "institution": "University of Warwick"
+      }
+    ],
+    "dblp_key": "conf/popl/GayN05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040333",
+    "title": "A framework for numeric analysis of array operations",
+    "abstract": "Automatic discovery of relationships among values of array elements is a challenging problem due to the unbounded nature of arrays. We present a framework for analyzing array operations that is capable of capturing numeric properties of array elements.In particular, the analysis is able to establish that all array elements are initialized by an array-initialization loop, as well as to discover numeric constraints on the values of initialized elements.The analysis is based on the combination of canonical abstraction and summarizing numeric domains. We describe a prototype implementation of the analysis and discuss our experience with applying the prototype to several examples, including the verification of correctness of an insertion-sort procedure.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040333",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Denis",
+        "last_name": "Gopan",
+        "institution": ""
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": ""
+      },
+      {
+        "first_name": "Mooly",
+        "last_name": "Sagiv",
+        "institution": "Tel Aviv University"
+      }
+    ],
+    "dblp_key": "conf/popl/GopanRS05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040325",
+    "title": "Combinators for bi-directional tree transformations: a linguistic approach to the view update problem",
+    "abstract": "We propose a novel approach to the well-known view update problem for the case of tree-structured data: a domain-specific programming language in which all expressions denote bi-directional transformations on trees. In one direction, these transformations---dubbed lenses---map a \"concrete\" tree into a simplified \"abstract view\"; in the other, they map a modified abstract view, together with the original concrete tree, to a correspondingly modified concrete tree. Our design emphasizes both robustness and ease of use, guaranteeing strong well-behavedness and totality properties for well-typed lenses.We identify a natural space of well-behaved bi-directional transformations over arbitrary structures, study definedness and continuity in this setting, and state a precise connection with the classical theory of \"update translation under a constant complement\" from databases. We then instantiate this semantic framework in the form of a collection of lens combinators that can be assembled to describe transformations on trees. These combinators include familiar constructs from functional programming (composition, mapping, projection, conditionals, recursion) together with some novel primitives for manipulating trees (splitting, pruning, copying, merging, etc.). We illustrate the expressiveness of these combinators by developing a number of bi-directional list-processing transformations as derived forms.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040325",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "J. Nathan",
+        "last_name": "Foster",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Michael B.",
+        "last_name": "Greenwald",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Jonathan T.",
+        "last_name": "Moore",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Alan",
+        "last_name": "Schmitt",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/FosterGMPS05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040319",
+    "title": "Downgrading policies and relaxed noninterference",
+    "abstract": "In traditional information-flow type systems, the security policy is often formalized as noninterference properties. However, noninterference alone is too strong to express security properties useful in practice. If we allow downgrading in such systems, it is challenging to formalize the security policy as an extensional property of the system.This paper presents a generalized framework of downgrading policies. Such policies can be specified in a simple and tractable language and can be statically enforced by mechanisms such as type systems. The security guarantee is then formalized as a concise extensional property using program equivalences. This relaxed noninterference generalizes traditional pure noninterference and precisely characterizes the information released due to downgrading.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040319",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Peng",
+        "last_name": "Li",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/LiZ05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040315",
+    "title": "Dynamic partial-order reduction for model checking software",
+    "abstract": "We present a new approach to partial-order reduction for model checking software. This approach is based on initially exploring an arbitrary interleaving of the various concurrent processes/threads, and dynamically tracking interactions between these to identify backtracking points where alternative paths in the state space need to be explored. We present examples of multi-threaded programs where our new dynamic partial-order reduction technique significantly reduces the search space, even though traditional partial-order algorithms are helpless.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040315",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Patrice",
+        "last_name": "Godefroid",
+        "institution": "Alcatel Lucent (Germany)"
+      }
+    ],
+    "dblp_key": "conf/popl/FlanaganG05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040316",
+    "title": "Proof-guided underapproximation-widening for multi-process systems",
+    "abstract": "This paper presents a procedure for the verification of multi-process systems based on considering a series of underapproximated models. The procedure checks models with an increasing set of allowed interleavings of the given set of processes, starting from a single interleaving. The procedure relies on SAT solvers' ability to produce proofs of unsatisfiability: from these proofs it derives information that guides the process of adding interleavings on the one hand, and determines termination on the other. The presented approach is integrated in a SAT-based Bounded Model Checking (BMC) framework. Thus, a BMC formulation of a multi-process system is introduced, which allows controlling which interleavings are considered. Preliminary experimental results demonstrate the practical impact of the presented method.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040316",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Orna",
+        "last_name": "Grümberg",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Flavio",
+        "last_name": "Lerda",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Ofer",
+        "last_name": "Strichman",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Theobald",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/GrumbergLST05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040324",
+    "title": "From sequential programs to multi-tier applications by program transformation",
+    "abstract": "Modern applications are designed in multiple tiers to separate concerns. Since each tier may run at a separate location, middleware is required to mediate access between tiers. However, introducing this middleware is tiresome and error-prone.We propose a multi-tier calculus and a splitting transformation to address this problem. The multi-tier calculus serves as a sequential core programming language for constructing a multi-tier application. The application can be developed in the sequential setting. Splitting extracts one process per tier from the sequential program such that their concurrent execution behaves like the original program.The splitting transformation starts from an assignment of primitive operations to tiers. A program analysis determines communication requirements and inserts remote procedure calls. The next transformation step performs resource pooling: it optimizes the communication behavior by transforming sequences of remote procedure calls to a stream-based protocol. The final transformation step splits the resulting program into separate communicating processes.The multi-tier calculus is also applicable to the construction of interactive Web applications. It facilitates their development by providing a uniform programming framework for client-side and server-side programming.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040324",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Neubauer",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Freiburg"
+      }
+    ],
+    "dblp_key": "conf/popl/NeubauerT05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040306",
+    "title": "Associated types with class",
+    "abstract": "Haskell's type classes allow ad-hoc overloading, or type-indexing, of functions. A natural generalisation is to allow type-indexing of data types as well. It turns out that this idea directly supports a powerful form of abstraction called associated types, which are available in C++ using traits classes. Associated types are useful in many applications, especially for self-optimising libraries that adapt their data representations and algorithms in a type-directed manner.In this paper, we introduce and motivate associated types as a rather natural generalisation of Haskell's existing type classes. Formally, we present a type system that includes a type-directed translation into an explicitly typed target language akin to System F; the existence of this translation ensures that the addition of associated data types to an existing Haskell compiler only requires changes to the front end.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040306",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Gabriele",
+        "last_name": "Keller",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/ChakravartyKJM05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040331",
+    "title": "Region-based shape analysis with tracked locations",
+    "abstract": "This paper proposes a novel approach to shape analysis: using local reasoning about individual heap locations instead of global reasoning about entire heap abstractions. We present an inter-procedural shape analysis algorithm for languages with destructive updates. The key feature is a novel memory abstraction that differs from traditional abstractions in two ways. First, we build the shape abstraction and analysis on top of a pointer analysis. Second, we decompose the shape abstraction into a set of independent configurations, each of which characterizes one single heap location. Our approach: 1) leads to simpler algorithm specifications, because of local reasoning about the single location; 2) leads to efficient algorithms, because of the smaller granularity of the abstraction; and 3) makes it easier to develop context-sensitive, demand-driven, and incremental shape analyses.We also show that the analysis can be used to enable the static detection of memory errors in programs with explicit deallocation. We have built a prototype tool that detects memory leaks and accesses through dangling pointers in C programs. The experiments indicate that the analysis is sufficiently precise to detect errors with low false positive rates; and is sufficiently lightweight to scale to larger programs. For a set of three popular C programs, the tool has analyzed about 70K lines of code in less than 2 minutes and has produced 97 warnings, 38 of which were actual errors.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040331",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Brian",
+        "last_name": "Hackett",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Radu",
+        "last_name": "Rugina",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/HackettR05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040328",
+    "title": "Context logic and tree update",
+    "abstract": "Spatial logics have been used to describe properties of tree-like structures (Ambient Logic) and in a Hoare style to reason about dynamic updates of heap-like structures (Separation Logic). We integrat this work by analyzing dynamic updates to tree-like structures with pointers (such as XML with identifiers and idrefs). Naíve adaptations of the Ambient Logic are not expressive enough to capture such local updates. Instead we must explicitly reason about arbitrary tree contexts in order to capture updates throughout the tree. We introduce Context Logic, study its proof theory and models, and show how it generalizes Separation Logic and its general theory BI. We use it to reason locally about a small imperative programming language for updating trees, using a Hoare logic in the style of O'Hearn, Reynolds and Yang, and show that weakest preconditions are derivable. We demonstrate the robustness of our approach by using Context Logic to capture the locality of term rewrite systems.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040328",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Cristiano",
+        "last_name": "Calcagno",
+        "institution": "University of London"
+      },
+      {
+        "first_name": "Philippa",
+        "last_name": "Gardner",
+        "institution": "University of London"
+      },
+      {
+        "first_name": "Uri",
+        "last_name": "Zarfaty",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/popl/CalcagnoGZ05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040327",
+    "title": "Permission accounting in separation logic",
+    "abstract": "A lightweight logical approach to race-free sharing of heap storage between concurrent threads is described, based on the notion of permission to access. Transfer of permission between threads, subdivision and combination of permission is discussed. The roots of the approach are in Boyland's [3] demonstration of the utility of fractional permissions in specifying non-interference between concurrent threads. We add the notion of counting permission, which mirrors the programming technique called permission counting. Both fractional and counting permissions permit passivity, the specification that a program can be permitted to access a heap cell yet prevented from altering it. Models of both mechanisms are described. The use of two different mechanisms is defended. Some interesting problems are acknowledged and some intriguing possibilities for future development, including the notion of resourcing as a step beyond typing, are paraded.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040327",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Richard",
+        "last_name": "Bornat",
+        "institution": "Middlesex University"
+      },
+      {
+        "first_name": "Cristiano",
+        "last_name": "Calcagno",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Peter W.",
+        "last_name": "O’Hearn",
+        "institution": "Queen Mary University of London"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Parkinson",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/BornatCOP05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040329",
+    "title": "Connecting effects and uniqueness with adoption",
+    "abstract": "In a previous paper, we discussed how the concepts of uniqueness and effects are interdependent. In this paper, we show how &amp;quot;Adoption and Focus,&amp;quot; a proposal for handling linear pointers in shared variables can be extended to connect the two concepts. Our innovations include the ability to define adoption relations between individual fields rather than whole objects, and the ability to &amp;quot;focus&amp;quot; on more than one adoptee at a time. The resulting system uses recursive alias types, &amp;quot;permission closures&amp;quot; and &amp;quot;conditional permissions.&amp;quot; Then we show how previously proposed effect and uniqueness annotations can be represented in the type system.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040329",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Boyland",
+        "institution": "University of Wisconsin–Milwaukee"
+      },
+      {
+        "first_name": "William",
+        "last_name": "Retert",
+        "institution": "University of Wisconsin–Milwaukee"
+      }
+    ],
+    "dblp_key": "conf/popl/BoylandR05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040326",
+    "title": "Separation logic and abstraction",
+    "abstract": "In this paper we address the problem of writing specifications for programs that use various forms of modularity, including procedures and Java-like classes. We build on the formalism of separation logic and introduce the new notion of an abstract predicate and, more generally, abstract predicate families. This provides a flexible mechanism for reasoning about the different forms of abstraction found in modern programming languages, such as abstract datatypes and objects. As well as demonstrating the soundness of our proof system, we illustrate its utility with a series of examples.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040326",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Parkinson",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Gavin",
+        "last_name": "Bierman",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/ParkinsonB05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040320",
+    "title": "A probabilistic language based upon sampling functions",
+    "abstract": "As probabilistic computations play an increasing role in solving various problems, researchers have designed probabilistic languages that treat probability distributions as primitive datatypes. Most probabilistic languages, however, focus only on discrete distributions and have limited expressive power. In this paper, we present a probabilistic language, called λο, which uniformly supports all kinds of probability distributions -- discrete distributions, continuous distributions, and even those belonging to neither group. Its mathematical basis is sampling functions, i.e., mappings from the unit interval (0.0,1.0] to probability domains.We also briefly describe the implementation of λο as an extension of Objective CAML and demonstrate its practicality with three applications in robotics: robot localization, people tracking, and robotic mapping. All experiments have been carried out with real robots.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040320",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sungwoo",
+        "last_name": "Park",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Pfenning",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Thrun",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/ParkPT05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040336",
+    "title": "The Java memory model",
+    "abstract": "This paper describes the new Java memory model, which has been revised as part of Java 5.0. The model specifies the legal behaviors for a multithreaded program; it defines the semantics of multithreaded Java programs and partially determines legal implementations of Java virtual machines and compilers.The new Java model provides a simple interface for correctly synchronized programs -- it guarantees sequential consistency to data-race-free programs. Its novel contribution is requiring that the behavior of incorrectly synchronized programs be bounded by a well defined notion of causality. The causality requirement is strong enough to respect the safety and security properties of Java and weak enough to allow standard compiler and hardware optimizations. To our knowledge, other models are either too weak because they do not provide for sufficient safety/security, or are too strong because they rely on a strong notion of data and control dependences that precludes some standard compiler transformations.Although the majority of what is currently done in compilers is legal, the new model introduces significant differences, and clearly defines the boundaries of legal transformations. For example, the commonly accepted definition for control dependence is incorrect for Java, and transformations based on it may be invalid.In addition to providing the official memory model for Java, we believe the model described here could prove to be a useful basis for other programming languages that currently lack well-defined models, such as C++ and C#.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040336",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jeremy",
+        "last_name": "Manson",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "William",
+        "last_name": "Pugh",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Sarita V.",
+        "last_name": "Adve",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/popl/MansonPA05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040335",
+    "title": "Automated soundness proofs for dataflow analyses and transformations via local rules",
+    "abstract": "We present Rhodium, a new language for writing compiler optimizations that can be automatically proved sound. Unlike our previous work on Cobalt, Rhodium expresses optimizations using explicit dataflow facts manipulated by local propagation and transformation rules. This new style allows Rhodium optimizations to be mutually recursively defined, to be automatically composed, to be interpreted in both flow-sensitive and -insensitive ways, and to be applied interprocedurally given a separate context-sensitivity strategy, all while retaining soundness. Rhodium also supports infinite analysis domains while guaranteeing termination of analysis. We have implemented a soundness checker for Rhodium and have specified and automatically proven the soundness of all of Cobalt's optimizations plus a variety of optimizations not expressible in Cobalt, including Andersen's points-to analysis, arithmetic-invariant detection, loop-induction-variable strength reduction, and redundant array load elimination.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040335",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sorin",
+        "last_name": "Lerner",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Todd",
+        "last_name": "Millstein",
+        "institution": "UCLA Health"
+      },
+      {
+        "first_name": "Erika",
+        "last_name": "Rice",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/popl/LernerMRC05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040311",
+    "title": "A bisimulation for type abstraction and recursion",
+    "abstract": "We present a sound, complete, and elementary proof method, based on bisimulation, for contextual equivalence in a λ-calculus with full universal, existential, and recursive types. Unlike logical relations (either semantic or syntactic), our development is elementary, using only sets and relations and avoiding advanced machinery such as domain theory, admissibility, and ΤΤ-closure. Unlike other bisimulations, ours is complete even for existential types. The key idea is to consider sets of relations---instead of just relations---as bisimulations.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040311",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Eijiro",
+        "last_name": "Sumii",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/SumiiP05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040321",
+    "title": "Mutatis mutandis: safe and predictable dynamic software updating",
+    "abstract": "Dynamic software updates can be used to fix bugs or add features to a running program without downtime. Essential for some applications and convenient for others, low-level dynamic updating has been used for many years. Perhaps surprisingly, there is little high-level understanding or language support to help programmers write dynamic updates effectively.To bridge this gap, we present Proteus, a core calculus for dynamic software updating in C-like languages that is flexible, safe, and predictable. Proteus supports dynamic updates to functions (even active ones), to named types and to data, allowing on-line evolution to match source-code evolution as we have observed it in practice. We ensure updates are type-safe by checking for a property we call \"con-freeness\" for updated types t at the point of update. This means that non-updated code will not use t concretely beyond that point (concrete usages are via explicit coercions) and thus t's representation can safely change. We show how con-freeness can be enforced dynamically for a particular program state. We additionally define a novel and efficient static updateability analysis to establish con-freeness statically, and can thus automatically infer program points at which all future (well-formed) updates will be type-safe. We have implemented our analysis for C and tested it on several well-known programs.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040321",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gareth",
+        "last_name": "Stoyle",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Gavin",
+        "last_name": "Bierman",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Iulian",
+        "last_name": "Neamtiu",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/popl/StoyleHBSN05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040310",
+    "title": "Parametric polymorphism for XML",
+    "abstract": "Despite the extensiveness of recent investigations on static typing for XML, parametric polymorphism has rarely been treated. This well-established typing discipline can also be useful in XML processing in particular for programs involving \"parametric schemas,\" i.e., schemas parameterized over other schemas (e.g., SOAP). The difficulty in treating polymorphism for XML lies in how to extend the \"semantic\" approach used in the mainstream (monomorphic) XML type systems. A naive extension would be \"semantic\" quantification over all substitutions for type variables. However, this approach reduces to an NEXPTIME-complete problem for which no practical algorithm is known. In this paper, we propose a different method that smoothly extends the semantic approach yet is algorithmically easier. In this, we devise a novel and simple marking technique, where we interpret a polymorphic type as a set of values with annotations of which subparts are parameterized. We exploit this interpretation in every ingredient of our polymorphic type system such as subtyping, inference of type arguments, and so on. As a result, we achieve a sensible system that directly represents a usual expected behavior of polymorphic type systems---\"values of variable types are never reconstructed\"---in a reminiscence of Reynold's parametricity theory. Also, we obtain a set of practical algorithms for typechecking by local modifications to existing ones for a monomorphic system.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040310",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Haruo",
+        "last_name": "Hosoya",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Alain",
+        "last_name": "Frisch",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Giuseppe",
+        "last_name": "Castagna",
+        "institution": "École Normale Supérieure"
+      }
+    ],
+    "dblp_key": "conf/popl/HosoyaFC05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040317",
+    "title": "Transition predicate abstraction and fair termination",
+    "abstract": "Predicate abstraction is the basis of many program verification tools. Until now, the only known way to overcome the inherent limitation of predicate abstraction to safety properties was to manually annotate the finite-state abstraction of a program. We extend predicate abstraction to transition predicate abstraction. Transition predicate abstraction goes beyond the idea of finite abstract-state programs (and checking the absence of loops). Instead, our abstraction algorithm transforms a program into a finite abstract-transition program. Then, a second algorithm checks fair termination. The two algorithms together yield an automated method for the verification of liveness properties under full fairness assumptions (justice and compassion). In summary, we exhibit principles that extend the applicability of predicate abstraction-based program verification to the full set of temporal properties.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040317",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Podelski",
+        "institution": "Max Planck Society"
+      },
+      {
+        "first_name": "Andrey",
+        "last_name": "Rybalchenko",
+        "institution": "Max Planck Society"
+      }
+    ],
+    "dblp_key": "conf/popl/PodelskiR05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040334",
+    "title": "Scalable error detection using boolean satisfiability",
+    "abstract": "We describe a software error-detection tool that exploits recent advances in boolean satisfiability (SAT) solvers. Our analysis is path sensitive, precise down to the bit level, and models pointers and heap data. Our approach is also highly scalable, which we achieve using two techniques. First, for each program function, several optimizations compress the size of the boolean formulas that model the control- and data-flow and the heap locations accessed by a function. Second, summaries in the spirit of type signatures are computed for each function, allowing inter-procedural analysis without a dramatic increase in the size of the boolean constraints to be solved.We demonstrate the effectiveness of our approach by constructing a lock interface inference and checking tool. In an interprocedural analysis of more than 23,000 lock related functions in the latest Linux kernel, the checker generated 300 warnings, of which 179 were unique locking errors, a false positive rate of only 40%.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040334",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Yichen",
+        "last_name": "Xie",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/XieA05",
+    "venue": "popl",
+    "year": 2005
+  },
+  {
+    "paper_id": "10.1145/1040305.1040330",
+    "title": "A semantics for procedure local heaps and its abstractions",
+    "abstract": "The goal of this work is to develop compile-time algorithms for automatically verifying properties of imperative programs that manipulate dynamically allocated storage. The paper presents an analysis method that uses a characterization of a procedure's behavior in which parts of the heap not relevant to the procedure are ignored. The paper has two main parts: The first part introduces a non-standard concrete semantics, LSL, in which called procedures are only passed parts of the heap. In this semantics, objects are treated specially when they separate the \"local heap\" that can be mutated by a procedure from the rest of the heap, which---from the viewpoint of that procedure---is non-accessible and immutable. The second part concerns abstract interpretation of LSL and develops a new static-analysis algorithm using canonical abstraction.",
+    "date": "2005-01-12",
+    "link": "https://doi.org/10.1145/1040305.1040330",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Noam",
+        "last_name": "Rinetzky",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Jörg",
+        "last_name": "Bauer",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Mooly",
+        "last_name": "Sagiv",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Reinhard",
+        "last_name": "Wilhelm",
+        "institution": "Saarland University"
+      }
+    ],
+    "dblp_key": "conf/popl/RinetzkyBRSW05",
+    "venue": "popl",
+    "year": 2005
+  }
+]

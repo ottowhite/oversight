@@ -1,0 +1,1440 @@
+[
+  {
+    "paper_id": "10.1145/1926385.1926441",
+    "title": "Space overhead bounds for dynamic memory management with partial compaction",
+    "abstract": "Dynamic memory allocation is ubiquitous in today's runtime environments. Allocation and de-allocation of objects during program execution may cause fragmentation and foil the program's ability to allocate objects. Robson has shown that a worst case scenario can create a space overhead within a factor of log(n) of the space that is actually required by the program, where n is the size of the largest possible object. Compaction can eliminate fragmentation, but is too costly to be run frequently. Many runtime systems employ partial compaction, in which only a small fraction of the allocated objects are moved. Partial compaction reduces some of the existing fragmentation at an acceptable cost. In this paper we study the effectiveness of partial compaction and provide the first rigorous lower and upper bounds on its effectiveness in reducing fragmentation at a low cost.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926441",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Anna",
+        "last_name": "Bendersky",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Erez",
+        "last_name": "Petrank",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/BenderskyP11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926410",
+    "title": "Correct blame for contracts: no more scapegoating",
+    "abstract": "Behavioral software contracts supplement interface information with logical assertions. A rigorous enforcement of contracts provides useful feedback to developers if it signals contract violations as soon as they occur and if it assigns blame to violators with preciseexplanations. Correct blame assignment gets programmers started with the debugging process and can significantly decrease the time needed to discover and fix bugs.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926410",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Christos",
+        "last_name": "Dimoulas",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "Northwestern University"
+      },
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/popl/DimoulasFFF11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926435",
+    "title": "Dynamic multirole session types",
+    "abstract": "Multiparty session types enforce structured safe communications between several participants, as long as their number is fixed when the session starts. In order to handle common distributed interaction patterns such as peer-to-peer protocols or cloud algorithms, we propose a new role-based multiparty session type theory where roles are defined as classes of local behaviours that an arbitrary number of participants can dynamically join and leave. We offer programmers a polling operation that gives access to the current set of a role's participants in order to fork processes. Our type system with universal types for polling can handle this dynamism and retain type safety. A multiparty locking mechanism is introduced to provide communication safety, but also to ensure a stronger progress property for joining participants that has never been guaranteed in previous systems. Finally, we present some implementation mechanisms used in our prototype extension of ML.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926435",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Pierre-Malo",
+        "last_name": "Deniélou",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/popl/DenielouY11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926407",
+    "title": "Precise reasoning for programs using containers",
+    "abstract": "Containers are general-purpose data structures that provide functionality for inserting, reading, removing, and iterating over elements. Since many applications written in modern programming languages, such as C++ and Java, use containers as standard building blocks, precise analysis of many programs requires a fairly sophisticated understanding of container contents. In this paper, we present a sound, precise, and fully automatic technique for static reasoning about contents of containers. We show that the proposed technique adds useful precision for verifying real C++ applications and that it scales to applications with over 100,000 lines of code.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926407",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Dillig",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/DilligDA11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926409",
+    "title": "Blame for all",
+    "abstract": "Several programming languages are beginning to integrate static and dynamic typing, including Racket (formerly PLT Scheme), Perl 6, and C# 4.0 and the research languages Sage (Gronski, Knowles, Tomb, Freund, and Flanagan, 2006) and Thorn (Wrigstad, Eugster, Field, Nystrom, and Vitek, 2009). However, an important open question remains, which is how to add parametric polymorphism to languages that combine static and dynamic typing. We present a system that permits a value of dynamic type to be cast to a polymorphic type and vice versa, with relational parametricity enforced by a kind of dynamic sealing along the lines proposed by Matthews and Ahmed (2008) and Neis, Dreyer, and Rossberg (2009). Our system includes a notion of blame, which allows us to show that when casting between a more-precise type and a less-precise type, any cast failures are due to the less-precisely-typed portion of the program. We also show that a cast from a subtype to its supertype cannot fail.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926409",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Amal",
+        "last_name": "Ahmed",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "Northwestern University"
+      },
+      {
+        "first_name": "Jeremy G.",
+        "last_name": "Siek",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Philip",
+        "last_name": "Wadler",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/popl/AhmedFSW11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926437",
+    "title": "Dynamic inference of static types for ruby",
+    "abstract": "There have been several efforts to bring static type inference to object-oriented dynamic languages such as Ruby, Python, and Perl. In our experience, however, such type inference systems are extremely difficult to develop, because dynamic languages are typically complex, poorly specified, and include features, such as eval and reflection, that are hard to analyze.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926437",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jong-hoon",
+        "last_name": "An",
+        "institution": "Epic Systems (United States)"
+      },
+      {
+        "first_name": "Avik",
+        "last_name": "Chaudhuri",
+        "institution": "Adobe Systems (United States)"
+      },
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/popl/AnCFH11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926416",
+    "title": "Modular reasoning for deterministic parallelism",
+    "abstract": "Weaving a concurrency control protocol into a program is difficult and error-prone. One way to alleviate this burden is deterministic parallelism. In this well-studied approach to parallelisation, a sequential program is annotated with sections that can execute concurrently, with automatically injected control constructs used to ensure observable behaviour consistent with the original program.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926416",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mike",
+        "last_name": "Dodds",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Parkinson",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/DoddsJP11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926431",
+    "title": "Making prophecies with decision predicates",
+    "abstract": "We describe a new algorithm for proving temporal properties expressed in LTL of infinite-state programs. Our approach takes advantage of the fact that LTL properties can often be proved more efficiently using techniques usually associated with the branching-time logic CTL than they can with native LTL algorithms. The caveat is that, in certain instances, nondeterminism in the system's transition relation can cause CTL methods to report counter examples that are spurious with respect to the original LTL formula. To address this problem we describe an algorithm that, as it attempts to apply CTL proof methods, finds and then removes problematic nondeterminism via an analysis on the potentially spurious counterexamples. Problematic nondeterminism is characterized using decision predicates, and removed using a partial, symbolic determinization procedure which introduces new prophecy variables to predict the future outcome of these choices. We demonstrate---using examples taken from the PostgreSQL database server, Apache web server, and Windows OS kernel---that our method can yield enormous performance improvements in comparison to known tools, allowing us to automatically prove properties of programs where we could not prove them before.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926431",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Byron",
+        "last_name": "Cook",
+        "institution": "Queen Mary University of London"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Koskinen",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/CookK11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926447",
+    "title": "Safe nondeterminism in a deterministic-by-default parallel language",
+    "abstract": "A number of deterministic parallel programming models with strong safety guarantees are emerging, but similar support for nondeterministic algorithms, such as branch and bound search, remains an open question. We present a language together with a type and effect system that supports nondeterministic computations with a deterministic-by-default guarantee: nondeterminism must be explicitly requested via special parallel constructs (marked nd), and any deterministic construct that does not execute any nd construct has deterministic input-output behavior. Moreover, deterministic parallel constructs are always equivalent to a sequential composition of their constituent tasks, even if they enclose, or are enclosed by, nd constructs. Finally, in the execution of nd constructs, interference may occur only between pairs of accesses guarded by atomic statements, so there are no data races, either between atomic statements and unguarded accesses (strong isolation) or between pairs of unguarded accesses (stronger than strong isolation alone). We enforce the guarantees at compile time with modular checking using novel extensions to a previously described effect system. Our effect system extensions also enable the compiler to remove unnecessary transactional synchronization. We provide a static semantics, dynamic semantics, and a complete proof of soundness for the language, both with and without the barrier removal feature. An experimental evaluation shows that our language can achieve good scalability for realistic parallel algorithms, and that the barrier removal techniques provide significant performance gains.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926447",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robert L.",
+        "last_name": "Bocchino",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Heumann",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Nima",
+        "last_name": "Honarmand",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Sarita V.",
+        "last_name": "Adve",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Vikram",
+        "last_name": "Adve",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Welc",
+        "institution": "Adobe Systems (United States)"
+      },
+      {
+        "first_name": "Tatiana",
+        "last_name": "Shpeisman",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/BocchinoHHAAWS11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926432",
+    "title": "Delay-bounded scheduling",
+    "abstract": "We provide a new characterization of scheduling nondeterminism by allowing deterministic schedulers to delay their next-scheduled task. In limiting the delays an otherwise-deterministic scheduler is allowed, we discover concurrency bugs efficiently---by exploring few schedules---and robustly---i.e., independent of the number of tasks, context switches, or buffered events. Our characterization elegantly applies to any systematic exploration (e.g., testing, model checking) of concurrent programs with dynamic task-creation. Additionally, we show that certain delaying schedulers admit efficient reductions from concurrent to sequential program analysis.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926432",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Emmi",
+        "institution": "Université Paris Cité"
+      },
+      {
+        "first_name": "Shaz",
+        "last_name": "Qadeer",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Zvonimir",
+        "last_name": "Rakamarić",
+        "institution": "University of British Columbia"
+      }
+    ],
+    "dblp_key": "conf/popl/EmmiQR11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926394",
+    "title": "Mathematizing C++ concurrency",
+    "abstract": "Shared-memory concurrency in C and C++ is pervasive in systems programming, but has long been poorly defined. This motivated an ongoing shared effort by the standards committees to specify concurrent behaviour in the next versions of both languages. They aim to provide strong guarantees for race-free programs, together with new (but subtle) relaxed-memory atomic primitives for high-performance concurrent code. However, the current draft standards, while the result of careful deliberation, are not yet clear and rigorous definitions, and harbour substantial problems in their details.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926394",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mark",
+        "last_name": "Batty",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Owens",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Susmit",
+        "last_name": "Sarkar",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Tjark",
+        "last_name": "Weber",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/BattyOSSW11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926401",
+    "title": "Step-indexed kripke models over recursive worlds",
+    "abstract": "Over the last decade, there has been extensive research on modelling challenging features in programming languages and program logics, such as higher-order store and storable resource invariants. A recent line of work has identified a common solution to some of these challenges: Kripke models over worlds that are recursively defined in a category of metric spaces. In this paper, we broaden the scope of this technique from the original domain-theoretic setting to an elementary, operational one based on step indexing. The resulting method is widely applicable and leads to simple, succinct models of complicated language features, as we demonstrate in our semantics of Charguéraud and Pottier's type-and-capability system for an ML-like higher-order language. Moreover, the method provides a high-level understanding of the essence of recent approaches based on step indexing.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926401",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "IT University of Copenhagen"
+      },
+      {
+        "first_name": "Bernhard",
+        "last_name": "Reus",
+        "institution": "University of Sussex"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Schwinghammer",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Kristian",
+        "last_name": "Støvring",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Jacob",
+        "last_name": "Thamsborg",
+        "institution": "IT University of Copenhagen"
+      },
+      {
+        "first_name": "Hongseok",
+        "last_name": "Yang",
+        "institution": "Queen Mary University of London"
+      }
+    ],
+    "dblp_key": "conf/popl/BirkedalRSSTY11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926454",
+    "title": "Streaming transducers for algorithmic verification of single-pass list-processing programs",
+    "abstract": "We introduce streaming data string transducers that map input data strings to output data strings in a single left-to-right pass in linear time. Data strings are (unbounded) sequences of data values, tagged with symbols from a finite set, over a potentially infinite data domain that supports only the operations of equality and ordering. The transducer uses a finite set of states, a finite set of variables ranging over the data domain, and a finite set of variables ranging over data strings. At every step, it can make decisions based on the next input symbol, updating its state, remembering the input data value in its data variables, and updating data-string variables by concatenating data-string variables and new symbols formed from data variables, while avoiding duplication. We establish PSPACE bounds for the problems of checking functional equivalence of two streaming transducers, and of checking whether a streaming transducer satisfies pre/post verification conditions specified by streaming acceptors over input/output data-strings.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926454",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Rajeev",
+        "last_name": "Alur",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Pavol",
+        "last_name": "Černý",
+        "institution": "Institute of Science and Technology Austria"
+      }
+    ],
+    "dblp_key": "conf/popl/AlurC11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926399",
+    "title": "A parametric segmentation functor for fully automatic and scalable array content analysis",
+    "abstract": "We introduce FunArray, a parametric segmentation abstract domain functor for the fully automatic and scalable analysis of array content properties. The functor enables a natural, painless and efficient lifting of existing abstract domains for scalar variables to the analysis of uniform compound data-structures such as arrays and collections. The analysis automatically and semantically divides arrays into consecutive non-overlapping possibly empty segments. Segments are delimited by sets of bound expressions and abstracted uniformly. All symbolic expressions appearing in a bound set are equal in the concrete. The FunArray can be naturally combined via reduced product with any existing analysis for scalar variables. The analysis is presented as a general framework parameterized by the choices of bound expressions, segment abstractions and the reduction operator. Once the functor has been instantiated with fixed parameters, the analysis is fully automatic.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926399",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Cousot",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Radhia",
+        "last_name": "Cousot",
+        "institution": "Laboratoire de Géologie de l’École Normale Supérieure"
+      },
+      {
+        "first_name": "Francesco",
+        "last_name": "Logozzo",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/CousotCL11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926442",
+    "title": "Laws of order: expensive synchronization in concurrent algorithms cannot be eliminated",
+    "abstract": "Building correct and efficient concurrent algorithms is known to be a difficult problem of fundamental importance. To achieve efficiency, designers try to remove unnecessary and costly synchronization. However, not only is this manual trial-and-error process ad-hoc, time consuming and error-prone, but it often leaves designers pondering the question of: is it inherently impossible to eliminate certain synchronization, or is it that I was unable to eliminate it on this attempt and I should keep trying?",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926442",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hagit",
+        "last_name": "Attiya",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Rachid",
+        "last_name": "Guerraoui",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Danny",
+        "last_name": "Hendler",
+        "institution": "Ben-Gurion University of the Negev"
+      },
+      {
+        "first_name": "Petr",
+        "last_name": "Kuznetsov",
+        "institution": "Deutsche Telekom (Germany)"
+      },
+      {
+        "first_name": "Maged M.",
+        "last_name": "Michael",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/AttiyaGHKMV11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926397",
+    "title": "Static analysis of multi-staged programs via unstaging translation",
+    "abstract": "Static analysis of multi-staged programs is challenging because the basic assumption of conventional static analysis no longer holds: the program text itself is no longer a fixed static entity, but rather a dynamically constructed value. This article presents a semantic-preserving translation of multi-staged call-by-value programs into unstaged programs and a static analysis framework based on this translation. The translation is semantic-preserving in that every small-step reduction of a multi-staged program is simulated by the evaluation of its unstaged version. Thanks to this translation we can analyze multi-staged programs with existing static analysis techniques that have been developed for conventional unstaged programs: we first apply the unstaging translation, then we apply conventional static analysis to the unstaged version, and finally we cast the analysis results back in terms of the original staged program. Our translation handles staging constructs that have been evolved to be useful in practice (typified in Lisp's quasi-quotation): open code as values, unrestricted operations on references and intentional variable-capturing substitutions. This article omits references for which we refer the reader to our companion technical report.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926397",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Wontae",
+        "last_name": "Choi",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Barış",
+        "last_name": "Aktemur",
+        "institution": "Özyeğin University"
+      },
+      {
+        "first_name": "Kwangkeun",
+        "last_name": "Yi",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Makoto",
+        "last_name": "Tatsuta",
+        "institution": "National Institute of Informatics"
+      }
+    ],
+    "dblp_key": "conf/popl/ChoiAYT11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926423",
+    "title": "Automating string processing in spreadsheets using input-output examples",
+    "abstract": "We describe the design of a string programming/expression language that supports restricted forms of regular expressions, conditionals and loops. The language is expressive enough to represent a wide variety of string manipulation tasks that end-users struggle with. We describe an algorithm based on several novel concepts for synthesizing a desired program in this language from input-output examples. The synthesis algorithm is very efficient taking a fraction of a second for various benchmark examples. The synthesis algorithm is interactive and has several desirable features: it can rank multiple solutions and has fast convergence, it can detect noise in the user input, and it supports an active interaction model wherein the user is prompted to provide outputs on inputs that may have multiple computational interpretations.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926423",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/Gulwani11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926446",
+    "title": "Bisimulation for quantum processes",
+    "abstract": "Quantum cryptographic systems have been commercially available, with a striking advantage over classical systems that their security and ability to detect the presence of eavesdropping are provable based on the principles of quantum mechanics. On the other hand, quantum protocol designers may commit much more faults than classical protocol designers since human intuition is much better adapted to the classical world than the quantum world. To offer formal techniques for modeling and verification of quantum protocols, several quantum extensions of process algebra have been proposed. One of the most serious issues in quantum process algebra is to discover a quantum generalization of the notion of bisimulation, which lies in a central position in process algebra, preserved by parallel composition in the presence of quantum entanglement, which has no counterpart in classical computation. Quite a few versions of bisimulation have been defined for quantum processes in the literature, but in the best case they are only proved to be preserved by parallel composition of purely quantum processes where no classical communications are involved.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926446",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Yuan",
+        "last_name": "Feng",
+        "institution": "University of Technology Sydney"
+      },
+      {
+        "first_name": "Runyao",
+        "last_name": "Duan",
+        "institution": "University of Technology Sydney"
+      },
+      {
+        "first_name": "Mingsheng",
+        "last_name": "Ying",
+        "institution": "University of Technology Sydney"
+      }
+    ],
+    "dblp_key": "conf/popl/FengDY11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926425",
+    "title": "Geometry of synthesis III: resource management through type inference",
+    "abstract": "Geometry of Synthesis is a technique for compiling higher-level programming languages into digital circuits via their game semantic model. Ghica (2007) first presented the key idea, then Ghica and Smith (2010) gave a provably correct compiler into asynchronous circuits for Syntactic Control of Interference (SCI), an affine-typed version of Reynolds's Idealized Algol. Affine typing has the dual benefits of ruling out race conditions through the type system and having a finite-state game-semantic model for any term, which leads to a natural circuit representation and simpler correctness proofs. In this paper we go beyond SCI to full Idealized Algol, enhanced with shared-memory concurrency and semaphores.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926425",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Dan R.",
+        "last_name": "Ghica",
+        "institution": "University of Birmingham"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Smith",
+        "institution": "University of Birmingham"
+      }
+    ],
+    "dblp_key": "conf/popl/GhicaS11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926439",
+    "title": "Robin Milner 1934--2010: verification, languages, and concurrency",
+    "abstract": "No abstract available.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926439",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Andrew D.",
+        "last_name": "Gordon",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Harrison",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Alan",
+        "last_name": "Jeffrey",
+        "institution": ""
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/GordonHHJS11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926450",
+    "title": "The essence of compiling with traces",
+    "abstract": "The technique of trace-based just-in-time compilation was introduced by Bala et al. and was further developed by Gal et al. It currently enjoys success in Mozilla Firefox's JavaScript engine. A trace-based JIT compiler leverages run-time profiling to optimize frequently-executed paths while enabling the optimized code to ``bail out'' to the original code when the path has been invalidated. This optimization strategy differs from those of other JIT compilers and opens the question of which trace optimizations are sound. In this paper we present a framework for reasoning about the soundness of trace optimizations, and we show that some traditional optimization techniques are sound when used in a trace compiler while others are unsound. The converse is also true: some trace optimizations are sound when used in a traditional compiler while others are unsound. So, traditional and trace optimizations form incomparable sets. Our setting is an imperative calculus for which tracing is explicitly spelled out in the semantics. We define optimization soundness via a notion of bisimulation, and we show that sound optimizations lead to confluence and determinacy of stores.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926450",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Shuyu",
+        "last_name": "Guo",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Jens",
+        "last_name": "Palsberg",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/popl/GuoP11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926443",
+    "title": "Complexity of pattern-based verification for multithreaded programs",
+    "abstract": "Pattern-based verification checks the correctness of the program executions that follow a given pattern, a regular expression over the alphabet of program transitions of the form w1* ... wn*. For multithreaded programs, the alphabet of the pattern is given by the synchronization operations between threads. We study the complexity of pattern-based verification for abstracted multithreaded programs in which, as usual in program analysis, conditions have been replaced by nondeterminism (the technique works also for boolean programs). While unrestricted verification is undecidable for abstracted multithreaded programs with recursive procedures and PSPACE-complete for abstracted multithreaded while-programs, we show that pattern-based verification is NP-complete for both classes. We then conduct a multiparameter analysis in which we study the complexity in the number of threads, the number of procedures per thread, the size of the procedures, and the size of the pattern. We first show that no algorithm for pattern-based verification can be polynomial in the number of threads, procedures per thread, or the size of the pattern (unless P=NP). Then, using recent results about Parikh images of regular languages and semilinear sets, we present an algorithm exponential in the number of threads, procedures per thread, and size of the pattern, but polynomial in the size of the procedures.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926443",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Javier",
+        "last_name": "Esparza",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Pierre",
+        "last_name": "Ganty",
+        "institution": "IMDEA Software"
+      }
+    ],
+    "dblp_key": "conf/popl/EsparzaG11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926427",
+    "title": "Multivariate amortized resource analysis",
+    "abstract": "We study the problem of automatically analyzing the worst-case resource usage of procedures with several arguments. Existing automatic analyses based on amortization, or sized types bound the resource usage or result size of such a procedure by a sum of unary functions of the sizes of the arguments.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926427",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jan",
+        "last_name": "Hoffmann",
+        "institution": "Ludwig-Maximilians-Universität München"
+      },
+      {
+        "first_name": "Klaus",
+        "last_name": "Aehlig",
+        "institution": "Ludwig-Maximilians-Universität München"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Hofmann",
+        "institution": "Ludwig-Maximilians-Universität München"
+      }
+    ],
+    "dblp_key": "conf/popl/HoffmannAH11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926429",
+    "title": "Regular expression containment: coinductive axiomatization and computational interpretation",
+    "abstract": "We present a new sound and complete axiomatization of regular expression containment. It consists of the conventional axiomatization of concatenation, alternation, empty set and (the singleton set containing) the empty string as an idempotent semiring, the fixed- point rule E* = 1 + E × E* for Kleene-star, and a general coinduction rule as the only additional rule.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926429",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Fritz",
+        "last_name": "Henglein",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Lasse",
+        "last_name": "Nielsen",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/popl/HengleinN11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926428",
+    "title": "Symmetric lenses",
+    "abstract": "Lenses--bidirectional transformations between pairs of connected structures--have been extensively studied and are beginning to find their way into industrial practice. However, some aspects of their foundations remain poorly understood. In particular, most previous work has focused on the special case of asymmetric lenses, where one of the structures is taken as primary and the other is thought of as a projection, or view. A few studies have considered symmetric variants, where each structure contains information not present in the other, but these all lack the basic operation of composition. Moreover, while many domain-specific languages based on lenses have been designed, lenses have not been thoroughly explored from an algebraic perspective.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926428",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Hofmann",
+        "institution": "Ludwig-Maximilians-Universität München"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Wägner",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/HofmannPW11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926402",
+    "title": "A kripke logical relation between ML and assembly",
+    "abstract": "There has recently been great progress in proving the correctness of compilers for increasingly realistic languages with increasingly realistic runtime systems. Most work on this problem has focused on proving the correctness of a particular compiler, leaving open the question of how to verify the correctness of assembly code that is hand-optimized or linked together from the output of multiple compilers. This has led Benton and other researchers to propose more abstract, compositional notions of when a low-level program correctly realizes a high-level one. However, the state of the art in so-called \"compositional compiler correctness\" has only considered relatively simple high-level and low-level languages.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926402",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Chung-Kil",
+        "last_name": "Hur",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Derek",
+        "last_name": "Dreyer",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/popl/HurD11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926387",
+    "title": "Verified squared: does critical software deserve verified tools?",
+    "abstract": "The formal verification of programs has progressed tremendously in the last decade. In this talk, I review some of the obstacles that [6, 8, 15, 18] remain to be lifted before source-level verification tools can be taken really seriously in the critical software industry. A direction I advocate is the systematic formal verification of the development tools that participate in the production and verification of critical software.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926387",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Xavier",
+        "last_name": "Leroy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/Leroy11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926424",
+    "title": "Predicate abstraction and refinement for verifying multi-threaded programs",
+    "abstract": "Automated verification of multi-threaded programs requires explicit identification of the interplay between interacting threads, so-called environment transitions, to enable scalable, compositional reasoning. Once the environment transitions are identified, we can prove program properties by considering each program thread in isolation, as the environment transitions keep track of the interleaving with other threads. Finding adequate environment transitions that are sufficiently precise to yield conclusive results and yet do not overwhelm the verifier with unnecessary details about the interleaving with other threads is a major challenge. In this paper we propose a method for safety verification of multi-threaded programs that applies (transition) predicate abstraction-based discovery of environment transitions, exposing a minimal amount of information about the thread interleaving. The crux of our method is an abstraction refinement procedure that uses recursion-free Horn clauses to declaratively state abstraction refinement queries. Then, the queries are resolved by a corresponding constraint solving algorithm. We present preliminary experimental results for mutual exclusion protocols and multi-threaded device drivers.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926424",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ashutosh",
+        "last_name": "Gupta",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Corneliu",
+        "last_name": "Popeea",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Andrey",
+        "last_name": "Rybalchenko",
+        "institution": "Technical University of Munich"
+      }
+    ],
+    "dblp_key": "conf/popl/GuptaPR11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926457",
+    "title": "A technique for the effective and automatic reuse of classical compiler optimizations on multithreaded code",
+    "abstract": "A large body of data-flow analyses exists for analyzing and optimizing sequential code. Unfortunately, much of it cannot be directly applied on parallel code, for reasons of correctness. This paper presents a technique to automatically, aggressively, yet safely apply sequentially-sound data-flow transformations, without change, on shared-memory programs. The technique is founded on the notion of program references being \"siloed\" on certain control-flow paths. Intuitively, siloed references are free of interference from other threads within the confines of such paths. Data-flow transformations can, in general, be unblocked on siloed references.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926457",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Pramod G.",
+        "last_name": "Joisha",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Schreiber",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Prithviraj",
+        "last_name": "Banerjee",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Hans J.",
+        "last_name": "Boehm",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Dhruva R.",
+        "last_name": "Chakrabarti",
+        "institution": "Hewlett-Packard (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/JoishaSBBC11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926413",
+    "title": "The design of kodu: a tiny visual programming language for children on the Xbox 360",
+    "abstract": "Kodu is a relatively new programming language designed specifically for young children to learn through independent exploration. Kodu seeks to lower the barrier to entry for new programmers by presenting a radically simplified programming model which nevertheless has significant expressive power. Kodu is integrated in a real-time 3D gaming environment and is designed to compete with modern console games in terms of intuitive user interface and graphical production values. In this paper we will review key tradeoffs made in the design of the programming language and illustrate how it is one of very few languages designed using user interface design principles and methodologies, to the extent that the blend of subjective and objective factors considered in the language design have succeeded in presenting a model of programming which is uniquely approachable and creatively empowering for non-technical users.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926413",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthew B.",
+        "last_name": "MacLaurin",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/MacLaurin11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926417",
+    "title": "Expressive modular fine-grained concurrency specification",
+    "abstract": "Compared to coarse-grained external synchronization of operations on data structures shared between concurrent threads, fine-grained, internal synchronization can offer stronger progress guarantees and better performance. However, fully specifying operations that perform internal synchronization modularly is a hard, open problem. The state of the art approaches, based on linearizability or on concurrent abstract predicates, have important limitations on the expressiveness of specifications. Linearizability does not support ownership transfer, and the concurrent abstract predicates-based specification approach requires hardcoding a particular usage protocol. In this paper, we propose a novel approach that lifts these limitations and enables fully general specification of fine-grained concurrent data structures. The basic idea is that clients pass the ghost code required to instantiate an operation's specification for a specific client scenario into the operation in a simple form of higher-order programming.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926417",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Bart",
+        "last_name": "Jacobs",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Piessens",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/popl/JacobsP11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926455",
+    "title": "Decidable logics combining heap structures and data",
+    "abstract": "We define a new logic, STRAND, that allows reasoning with heap-manipulating programs using deductive verification and SMT solvers. STRAND logic (\"STRucture ANd Data\" logic) formulas express constraints involving heap structures and the data they contain; they are defined over a class of pointer-structures R defined using MSO-defined relations over trees, and are of the form ∃→x∀→y (→x,→) x\" , where \"φ\" is a monadic second-order logic (MSO) formulawith additional quantification that combines structural constraints as well as data-constraints, but where the data-constraints are only allowed to refer to \"→x\" and \"→y\"",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926455",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "P.",
+        "last_name": "Madhusudan",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Gennaro",
+        "last_name": "Parlato",
+        "institution": "Université Paris Cité"
+      },
+      {
+        "first_name": "Xiaokang",
+        "last_name": "Qiu",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/popl/MadhusudanPQ11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926453",
+    "title": "Verifying higher-order functional programs with pattern-matching algebraic data types",
+    "abstract": "Type-based model checking algorithms for higher-order recursion schemes have recently emerged as a promising approach to the verification of functional programs. We introduce pattern-matching recursion schemes (PMRS) as an accurate model of computation for functional programs that manipulate algebraic data-types. PMRS are a natural extension of higher-order recursion schemes that incorporate pattern-matching in the defining rules.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926453",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "C.-H. Luke",
+        "last_name": "Ong",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Steven",
+        "last_name": "Ramsay",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/popl/OngR11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926403",
+    "title": "A typed store-passing translation for general references",
+    "abstract": "We present a store-passing translation of System F with general references into an extension of System Fω with certain well-behaved recursive kinds. This seems to be the first type-preserving store-passing translation for general references. It can be viewed as a purely syntactic account of a possible worlds model.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926403",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/Pottier11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926421",
+    "title": "Vector addition system reachability problem: a short self-contained proof",
+    "abstract": "The reachability problem for Vector Addition Systems (VASs) is a central problem of net theory. The general problem is known decidable by algorithms exclusively based on the classical Kosaraju-Lambert-Mayr-Sacerdote-Tenney decomposition (KLMTS decomposition). Recently from this decomposition, we deduced that a final configuration is not reachable from an initial one if and only if there exists a Presburger inductive invariant that contains the initial configuration but not the final one. Since we can decide if a Preburger formula denotes an inductive invariant, we deduce from this result that there exist checkable certificates of non-reachability in the Presburger arithmetic. In particular, there exists a simple algorithm for deciding the general VAS reachability problem based on two semi-algorithms. A first one that tries to prove the reachability by enumerating finite sequences of actions and a second one that tries to prove the non-reachability by enumerating Presburger formulas. In this paper we provide the first proof of the VAS reachability problem that is not based on the KLMST decomposition. The proof is based on the notion of production relations inspired from Hauschildt that directly provides the existence of Presburger inductive invariants.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926421",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jérôme",
+        "last_name": "Leroux",
+        "institution": "Laboratoire Bordelais de Recherche en Informatique"
+      }
+    ],
+    "dblp_key": "conf/popl/Leroux11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926389",
+    "title": "Points-to analysis with efficient strong updates",
+    "abstract": "This paper explores a sweet spot between flow-insensitive and flow-sensitive subset-based points-to analysis. Flow-insensitive analysis is efficient: it has been applied to million-line programs and even its worst-case requirements are quadratic space and cubic time. Flow-sensitive analysis is precise because it allows strong updates, so that points-to relationships holding in one program location can be removed from the analysis when they no longer hold in other locations. We propose a \"Strong Update\" analysis combining both features: it is efficient like flow-insensitive analysis, with the same worst-case bounds, yet its precision benefits from strong updates like flow-sensitive analysis. The key enabling insight is that strong updates are applicable when the dereferenced points-to set is a singleton, and a singleton set is cheap to analyze. The analysis therefore focuses flow sensitivity on singleton sets. Larger sets, which will not lead to strong updates, are modelled flow insensitively to maintain efficiency. We have implemented and evaluated the analysis as an extension of the standard flow-insensitive points-to analysis in the LLVM compiler infrastructure.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926389",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Kwok-Chiang Andrew",
+        "last_name": "Chung",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/popl/LhotakC11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926405",
+    "title": "A shape analysis for optimizing parallel graph programs",
+    "abstract": "Computations on unstructured graphs are challenging to parallelize because dependences in the underlying algorithms are usually complex functions of runtime data values, thwarting static parallelization. One promising general-purpose parallelization strategy for these algorithms is optimistic parallelization.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926405",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Dimitrios",
+        "last_name": "Prountzos",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Roman",
+        "last_name": "Manevich",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Keshav",
+        "last_name": "Pingali",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/popl/PrountzosMPM11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926419",
+    "title": "The tree width of auxiliary storage",
+    "abstract": "We propose a generalization of results on the decidability of emptiness for several restricted classes of sequential and distributed automata with auxiliary storage (stacks, queues) that have recently been proved. Our generalization relies on reducing emptiness of these automata to finite-state graph automata (without storage) restricted to monadic second-order (MSO) definable graphs of bounded tree-width, where the graph structure encodes the mechanism provided by the auxiliary storage. Our results outline a uniform mechanism to derive emptiness algorithms for automata, explaining and simplifying several existing results, as well as proving new decidability results.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926419",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "P.",
+        "last_name": "Madhusudan",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Gennaro",
+        "last_name": "Parlato",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/popl/MadhusudanP11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926445",
+    "title": "EigenCFA: accelerating flow analysis with GPUs",
+    "abstract": "We describe, implement and benchmark EigenCFA, an algorithm for accelerating higher-order control-flow analysis (specifically, 0CFA) with a GPU. Ultimately, our program transformations, reductions and optimizations achieve a factor of 72 speedup over an optimized CPU implementation.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926445",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Tarun",
+        "last_name": "Prabhu",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "S.",
+        "last_name": "Ramalingam",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Might",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Mary",
+        "last_name": "Hall",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/popl/PrabhuRMH11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926391",
+    "title": "Learning minimal abstractions",
+    "abstract": "Static analyses are generally parametrized by an abstraction which is chosen from a family of abstractions. We are interested in flexible families of abstractions with many parameters, as these families can allow one to increase precision in ways tailored to the client without sacrificing scalability. For example, we consider k-limited points-to analyses where each call site and allocation site in a program can have a different k value. We then ask a natural question in this paper: What is the minimal (coarsest) abstraction in a given family which is able to prove a set of queries? In addressing this question, we make the following two contributions: (i) We introduce two machine learning algorithms for efficiently finding a minimal abstraction; and (ii) for a static race detector backed by a k-limited points-to analysis, we show empirically that minimal abstractions are actually quite coarse: It suffices to provide context/object sensitivity to a very small fraction (0.4-2.3%) of the sites to yield equally precise results as providing context/object sensitivity uniformly to all sites.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926391",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Percy",
+        "last_name": "Liang",
+        "institution": "Berkeley College"
+      },
+      {
+        "first_name": "Omer",
+        "last_name": "Tripp",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Mayur",
+        "last_name": "Naik",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/LiangTN11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926451",
+    "title": "Resourceable, retargetable, modular instruction selection using a machine-independent, type-based tiling of low-level intermediate code",
+    "abstract": "We present a novel variation on the standard technique of selecting instructions by tiling an intermediate-code tree. Typical compilers use a different set of tiles for every target machine. By analyzing a formal model of machine-level computation, we have developed a single set of tiles that is machine-independent while retaining the expressive power of machine code. Using this tileset, we reduce the number of tilers required from one per machine to one per architectural family (e.g., register architecture or stack architecture). Because the tiler is the part of the instruction selector that is most difficult to reason about, our technique makes it possible to retarget an instruction selector with significantly less effort than standard techniques. Retargeting effort is further reduced by applying an earlier result which generates the machine-dependent implementation of our tileset automatically from a declarative description of instructions' semantics. Our design has the additional benefit of enabling modular reasoning about three aspects of code generation that are not typically separated: the semantics of the compiler's intermediate representation, the semantics of the target instruction set, and the techniques needed to generate good target code.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926451",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "João",
+        "last_name": "Dias",
+        "institution": "Tufts University"
+      }
+    ],
+    "dblp_key": "conf/popl/RamseyD11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926436",
+    "title": "Practical affine types",
+    "abstract": "Alms is a general-purpose programming language that supports practical affine types. To offer the expressiveness of Girard's linear logic while keeping the type system light and convenient, Alms uses expressive kinds that minimize notation while maximizing polymorphism between affine and unlimited types.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926436",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jesse A.",
+        "last_name": "Tov",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Riccardo",
+        "last_name": "Pucella",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/popl/TovP11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926395",
+    "title": "Formal verification of object layout for c++ multiple inheritance",
+    "abstract": "Object layout - the concrete in-memory representation of objects - raises many delicate issues in the case of the C++ language, owing in particular to multiple inheritance, C compatibility and separate compilation. This paper formalizes a family of C++ object layout schemes and mechanically proves their correctness against the operational semantics for multiple inheritance of Wasserrab et al. This formalization is flexible enough to account for space-saving techniques such as empty base class optimization and tail-padding optimization. As an application, we obtain the first formal correctness proofs for realistic, optimized object layout algorithms, including one based on the popular \"common vendor\" Itanium C++ application binary interface. This work provides semantic foundations to discover and justify new layout optimizations; it is also a first step towards the verification of a C++ compiler front-end.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926395",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Tahina",
+        "last_name": "Ramananandro",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Gabriel Dos",
+        "last_name": "Reis",
+        "institution": "Texas A&M University"
+      },
+      {
+        "first_name": "Xavier",
+        "last_name": "Leroy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/RamananandroRL11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926420",
+    "title": "Fresh-register automata",
+    "abstract": "What is a basic automata-theoretic model of computation with names and fresh-name generation? We introduce Fresh-Register Automata (FRA), a new class of automata which operate on an infinite alphabet of names and use a finite number of registers to store fresh names, and to compare incoming names with previously stored ones. These finite machines extend Kaminski and Francez's Finite-Memory Automata by being able to recognise globally fresh inputs, that is, names fresh in the whole current run. We examine the expressivity of FRA's both from the aspect of accepted languages and of bisimulation equivalence. We establish primary properties and connections between automata of this kind, and answer key decidability questions. As a demonstrating example, we express the theory of the pi-calculus in FRA's and characterise bisimulation equivalence by an appropriate, and decidable in the finitary case, notion in these automata.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926420",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Nikos",
+        "last_name": "Tzevelekos",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/popl/Tzevelekos11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926415",
+    "title": "A separation logic for refining concurrent objects",
+    "abstract": "Fine-grained concurrent data structures are crucial for gaining performance from multiprocessing, but their design is a subtle art. Recent literature has made large strides in verifying these data structures, using either atomicity refinement or separation logic with rely-guarantee reasoning. In this paper we show how the ownership discipline of separation logic can be used to enable atomicity refinement, and we develop a new rely-guarantee method that is localized to the definition of a data structure. We present the first semantics of separation logic that is sensitive to atomicity, and show how to control this sensitivity through ownership. The result is a logic that enables compositional reasoning about atomicity and interference, even for programs that use fine-grained synchronization and dynamic memory allocation.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926415",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Aaron",
+        "last_name": "Turon",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/popl/TuronW11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926406",
+    "title": "Calling context abstraction with shapes",
+    "abstract": "Interprocedural program analysis is often performed by computing procedure summaries. While possible, computing adequate summaries is difficult, particularly in the presence of recursive procedures. In this paper, we propose a complementary framework for interprocedural analysis based on a direct abstraction of the calling context. Specifically, our approach exploits the inductive structure of a calling context by treating it directly as a stack of activation records. We then build an abstraction based on separation logic with inductive definitions. A key element of this abstract domain is the use of parameters to refine the meaning of such call stack summaries and thus express relations across activation records and with the heap. In essence, we define an abstract interpretation-based analysis framework for recursive programs that permits a fluid per call site abstraction of the call stack--much like how shape analyzers enable a fluid per program point abstraction of the heap.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926406",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Xavier",
+        "last_name": "Rival",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Bor-Yuh Evan",
+        "last_name": "Chang",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/popl/RivalC11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926398",
+    "title": "Static analysis of interrupt-driven programs synchronized via the priority ceiling protocol",
+    "abstract": "We consider programs for embedded real-time systems which use priority-driven preemptive scheduling with task priorities adjusted dynamically according to the immediate ceiling priority protocol. For these programs, we provide static analyses for detecting data races between tasks running at different priorities as well as methods to guarantee transactional execution of procedures. Beyond that, we demonstrate how general techniques for value analyses can be adapted to this setting by developing a precise analysis of affine equalities.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926398",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin D.",
+        "last_name": "Schwarz",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Helmut",
+        "last_name": "Seidl",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Vesal",
+        "last_name": "Vojdani",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Lammich",
+        "institution": "University of Münster"
+      },
+      {
+        "first_name": "Markus",
+        "last_name": "Müller-Olm",
+        "institution": "University of Münster"
+      }
+    ],
+    "dblp_key": "conf/popl/SchwarzSVLM11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926393",
+    "title": "Relaxed-memory concurrency and verified compilation",
+    "abstract": "In this paper, we consider the semantic design and verified compilation of a C-like programming language for concurrent shared-memory computation above x86 multiprocessors. The design of such a language is made surprisingly subtle by several factors: the relaxed-memory behaviour of the hardware, the effects of compiler optimisation on concurrent code, the need to support high-performance concurrent algorithms, and the desire for a reasonably simple programming model. In turn, this complexity makes verified (or verifying) compilation both essential and challenging.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926393",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jaroslav",
+        "last_name": "Ševčík",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Vafeiadis",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Francesco Zappa",
+        "last_name": "Nardelli",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/SevcikVNJS11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926411",
+    "title": "Generative type abstraction and type-level computation",
+    "abstract": "Modular languages support generative type abstraction, ensuring that an abstract type is distinct from its representation, except inside the implementation where the two are synonymous. We show that this well-established feature is in tension with the non-parametric features of newer type systems, such as indexed type families and GADTs. In this paper we solve the problem by using kinds to distinguish between parametric and non-parametric contexts. The result is directly applicable to Haskell, which is rapidly developing support for type-level computation, but the same issues should arise whenever generativity and non-parametric features are combined.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926411",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Dimitrios",
+        "last_name": "Vytiniotis",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/WeirichVJZ11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926390",
+    "title": "Pick your contexts well: understanding object-sensitivity",
+    "abstract": "Object-sensitivity has emerged as an excellent context abstraction for points-to analysis in object-oriented languages. Despite its practical success, however, object-sensitivity is poorly understood. For instance, for a context depth of 2 or higher, past scalable implementations deviate significantly from the original definition of an object-sensitive analysis. The reason is that the analysis has many degrees of freedom, relating to which context elements are picked at every method call and object creation. We offer a clean model for the analysis design space, and discuss a formal and informal understanding of object-sensitivity and of how to create good object-sensitive analyses. The results are surprising in their extent. We find that past implementations have made a sub-optimal choice of contexts, to the severe detriment of precision and performance. We define a \"full-object-sensitive\" analysis that results in significantly higher precision, and often performance, for the exact same context depth. We also introduce \"type-sensitivity\" as an explicit approximation of object-sensitivity that preserves high context quality at substantially reduced cost. A type-sensitive points-to analysis makes an unconventional use of types as context: the context types are not dynamic types of objects involved in the analysis, but instead upper bounds on the dynamic types of their allocator objects. Our results expose the influence of context choice on the quality of points-to analysis and demonstrate type-sensitivity to be an idea with major impact: It decisively advances the state-of-the-art with a spectrum of analyses that simultaneously enjoy speed (several times faster than an analogous object-sensitive analysis), scalability (comparable to analyses with much less context-sensitivity), and precision (comparable to the best object-sensitive analysis with the same context depth).",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926390",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Bravenboer",
+        "institution": ""
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/popl/SmaragdakisBL11",
+    "venue": "popl",
+    "year": 2011
+  },
+  {
+    "paper_id": "10.1145/1926385.1926449",
+    "title": "Loop transformations: convexity, pruning and optimization",
+    "abstract": "High-level loop transformations are a key instrument in mapping computational kernels to effectively exploit the resources in modern processor architectures. Nevertheless, selecting required compositions of loop transformations to achieve this remains a significantly challenging task; current compilers may be off by orders of magnitude in performance compared to hand-optimized programs. To address this fundamental challenge, we first present a convex characterization of all distinct, semantics-preserving, multidimensional affine transformations. We then bring together algebraic, algorithmic, and performance analysis results to design a tractable optimization algorithm over this highly expressive space. Our framework has been implemented and validated experimentally on a representative set of benchmarks running on state-of-the-art multi-core platforms.",
+    "date": "2011-01-24",
+    "link": "https://doi.org/10.1145/1926385.1926449",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Louis-Noël",
+        "last_name": "Pouchet",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Uday",
+        "last_name": "Bondhugula",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Cédric",
+        "last_name": "Bastoul",
+        "institution": ""
+      },
+      {
+        "first_name": "Albert",
+        "last_name": "Cohen",
+        "institution": ""
+      },
+      {
+        "first_name": "J.",
+        "last_name": "Ramanujam",
+        "institution": "Louisiana State University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Sadayappan",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Vasilache",
+        "institution": "Reservoir Labs (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/PouchetBBCRSV11",
+    "venue": "popl",
+    "year": 2011
+  }
+]

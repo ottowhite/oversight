@@ -1,0 +1,904 @@
+[
+  {
+    "paper_id": "10.1145/174675.177838",
+    "title": "A Type System for Prototyping Languages",
+    "abstract": "RAPIDE is a programming language framework designed for the development of large, concurrent, real-time systems by prototyping. The framework consists of a type language and default executable, specification and architecture languages, along with associated programming tools. We describe the main features of the type language, its intended use in a prototyping environment, and rationale for selected design decisions.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177838",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Dinesh",
+        "last_name": "Katiyar",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "D",
+        "last_name": "Luckham",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "John C.",
+        "last_name": "Mitchell",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/KatiyarLM94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177844",
+    "title": "Decidable Bounded Quantification",
+    "abstract": "The standard formulation of bounded quantification, system F≤, is difficult to work with and lacks important syntactic properties, such as decidability. More tractable variants have been studied, but those studied so far either exclude significant classes of useful programs or lack a compelling semantics.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177844",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Giuseppe",
+        "last_name": "Castagna",
+        "institution": "Littoral, Environnement et Sociétés"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/CastagnaP94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.175935",
+    "title": "Dominators, Super Blocks, and Program Coverage",
+    "abstract": "In this paper we present techniques to find subsets of nodes of a flowgraph that satisfy the following property: A test set that exercises all nodes in a subset exercises all nodes in the flowgraph. Analogous techniques to find subsets of edges are also proposed. These techniques may be used to significantly reduce the cost of coverage testing of programs. A notion of a super block consisting of one or more basic blocks in that super block must be exercised by the same input. Dominator relationships among super blocks are used to identify a subset of the super blocks whose coverage implies that of all super blocks and, in turn, that of all basic blocks. Experiments with eight systems in the range of 1-75K lines of code show that, on the average, test cases targeted to cover just 29% of the basic blocks and 32% of the branches ensure 100% block and branch coverage, respectively.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.175935",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hiralal",
+        "last_name": "Agrawal",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Agrawal94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.175188",
+    "title": "Correctness of Trap-Based Breakpoint Implementations",
+    "abstract": "It is common for debuggers to implement breakpoints by a combination of planting traps and single stepping. When the target program contains multiple threads of execution, a debugger that is not carefully implemented may miss breakpoints. This paper gives a formal model of a breakpoint in a two-threaded program. The model describes correct and incorrect breakpoint implementations. Automatic search of the model's state space shows that the correct implementation does miss a breakpoint. The results apply even to debuggers like dbx and gdb, which are apparently for single-threaded programs; when the user evaluates an expression containing function calls, the debugger executes the call in the target address space, in effect creating a new thread.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.175188",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Core Competence"
+      }
+    ],
+    "dblp_key": "conf/popl/Ramsey94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.178047",
+    "title": "Representing Monads",
+    "abstract": "We show that any monad whose unit and extension operations are expressible as purely functional terms can be embedded in a call-by-value language with “composable continuations”. As part of the development, we extend Meyer and Wand's characterization of the relationship between continuation-passing and direct style to one for continuation-passing vs. general “monadic” style. We further show that the composable-continuations construct can itself be represented using ordinary, non-composable first-class continuations and a single piece of state. Thus, in the presence of two specific computational effects - storage and escapes - any expressible monadic structure (e.g., nondeterminism as represented by the list monad) can be added as a purely definitional extension, without requiring a reinterpretation of the whole language. The paper includes an implementation of the construction (in Standard ML with some New Jersey extensions) and several examples.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.178047",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Andrzej",
+        "last_name": "Filinski",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/Filinski94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177874",
+    "title": "Formally Optimal Boxing",
+    "abstract": "An important implementation decision in polymorphically typed functional programming languages is whether to rep-resent data in boxed or unboxed form and when to transform them from one representation to the other. Using a language with explicit representation types and boxing/unboxing ope-rations we axiomatize equationally the set of all explicitly boxed versions, called completions, of a given source pro-gram. In a two-stage process we give some of the equa-tions a rewriting interpretation that captures eliminating boxing/unboxing operations without relying on a specific implementation or even semantics of the underlying lan-guage. The resulting reduction systems operate on con-gruence classes of completions defined by the remaining equations E, which can be understood as moving box-ing/unboxing operations along data flow paths in the source program. We call a completion eopt formally optimal if ev-ery other completion for the same program (and at the same representation type) reduces to eopt under this two-stage re-duction. We show that every source program has formally optimal completions, which are unique modulo E. This is accom-plished by first “polarizing ” the equations in E and orienting them to obtain two canonical (confluent and strongly nor-malizing) rewriting systems. The completions produced by Leroy’s and Poulsen’s algorithms are generally not formally optimal in our sense. The rewriting systems have been implemented and ap-plied to some simple Standard ML programs. Our results show that the amount of boxing and unboxing operations is also in practice substantially reduced in comparison to Leroy’s completions. This analysis is intended to be inte-grated into Tofte’s region-based implementation of Standard ML currently underway at DIKU.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177874",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Fritz",
+        "last_name": "Henglein",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Jesper",
+        "last_name": "Jørgensen",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/popl/HengleinJ94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.174434",
+    "title": "The Typed Polymorphic Label-Selective lambda-Calculus",
+    "abstract": "Formal calculi of record structures have recently been a focus of active research. However, scarcely anyone has studied formally the dual notion—i.e., argument-passing to functions by keywords, and its harmonization with currying. We have. Recently, we introduced the label-selective λ-calculus, a conservative extension of λ-calculus that uses a labeling of abstractions and applications to perform unordered currying. In other words, it enables some form of commutation between arguments. This improves program legibility, thanks to the presence of labels, and efficiency, thanks to argument commuting. In this paper, we propose a simply typed version of the calculus, then extend it to one with ML-like polymorphic types. For the latter calculus, we establish the existence of principal types and we give an algorithm to compute them. Thanks to the fact that label-selective λ-calculus is a conservative extension of λ-calculus by adding numeric labels to stand for argument positions, its polymorphic typing provides us with a keyword argument-passing extension of ML obviating the need of records. In this context, conventional ML syntax can be seen as a restriction of the more general keyword-oriented syntax limited to using only implicit positions instead of keywords.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.174434",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jacques",
+        "last_name": "Garrigue",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Hassan",
+        "last_name": "Aı̈t-Kaci",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/GarrigueA94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177899",
+    "title": "A Needed Narrowing Strategy",
+    "abstract": "Narrowing is the operational principle of languages that integrate functional and logic programming. We propose a notion of a needed narrowing step that, for inductively sequential rewrite systems, extends the Huet and Le´vy notion of a needed reduction step. We define a strategy, based on this notion, that computes only needed narrowing steps. Our strategy is sound and complete for a large class of rewrite systems, is optimal w.r.t. the cost measure that counts the number of distinct steps of a derivation, computes only independent unifiers, and is efficiently implemented by pattern matching.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177899",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sergio",
+        "last_name": "Antoy",
+        "institution": "Portland State University"
+      },
+      {
+        "first_name": "Rachid",
+        "last_name": "Echahed",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hanus",
+        "institution": "Max Planck Society"
+      }
+    ],
+    "dblp_key": "conf/popl/AntoyEH94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177847",
+    "title": "Soft Typing with Conditional Types",
+    "abstract": "We present a simple and powerful type inference method for dynamically typed languages where no type information is supplied by the user. Type inference is reduced to the problem of solvability of a system of type inclusion constraints over a type language that includes function types, constructor types, union, intersection, and recursive types, and conditional types. Conditional types enable us to analyze control flow using type inference, thus facilitating computation of accurate types. We demonstrate the power and practicality of the method with examples and performance results from an implementation.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177847",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "IBM Research - Almaden"
+      },
+      {
+        "first_name": "Edward L.",
+        "last_name": "Wimmers",
+        "institution": "IBM Research - Almaden"
+      },
+      {
+        "first_name": "T. K.",
+        "last_name": "Lakshman",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/popl/AikenWL94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177911",
+    "title": "Lazy Array Data-Flow Dependence Analysis",
+    "abstract": "Automatic parallelization of real FORTRAN programs does not live up to users expectations yet, and dependence analysis algorithms which either produce too many false dependences or are too slow to contribute significantly to this. In this paper we introduce dataflow dependence analysis algorithm which exactly computes value-based dependence relations for program fragments in which all subscripts, loop bound and IF conditions are affine. Our algorithm also computes good affine approximations of dependence relations for non-affine program fragments. Actually, we do not know about any other algorithm which can compute better approximations.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177911",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "V.O.",
+        "last_name": "Maslov",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/popl/Maslov94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177905",
+    "title": "An Incremental Algorithm for Maintaining the Dominator Tree of a Reducible Flowgraph",
+    "abstract": "We present a new incremental algorithm for the problem of maintaining the dominator tree of a reducible flowgraph as the flowgraph undergoes changes such as the insertion and deletion of edges. Such an algorithm has applications in incremental dataflow analysis and incremental compilation.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177905",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "G.",
+        "last_name": "Ramalingam",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/popl/RamalingamR94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.174538",
+    "title": "Higher-Order Concurrent Programs with Finite Communication Topology",
+    "abstract": "Concurrent ML (CML) is an extension of the functional language Standard ML(SML) with primitives for the dynamic creation of processes and channels and for the communication of values over channels. Because of the powerful abstraction mechanisms the communication topology of a given program may be very complex and therefore an efficient implementation may be facilitated by knowledge of the topology.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.174538",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hanne Riis",
+        "last_name": "Nielson",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Flemming",
+        "last_name": "Nielson",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/NielsonN94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.174707",
+    "title": "From Lambda-sigma to Lambda-upsilon a Journey Through Calculi of Explicit Substitutions",
+    "abstract": "This paper gives a systematic description of several calculi of explicit substitutions. These systems are orthogonal and have easy proofs of termination of their substitution calculus. The last system, called λv, entails a very simple environment machine for strong normalization of λ-terms.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.174707",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Pierre",
+        "last_name": "Lescanne",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/popl/Lescanne94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177973",
+    "title": "Reducing Indirect Function call Overhead in C++ Programs",
+    "abstract": "Modern computer architectures increasingly depend on mechanisms that estimate future control flow decisions to increase performance. Mechanisms such as speculative execution and prefetching are becoming standard architectural mechanisms that rely on control flow prediction to prefetch and speculatively execute future instructions. At the same time, computer programmers are increasingly turning to object-oriented languages to increase their productivity. These languages commonly use run time dispatching to implement object polymorphism. Dispatching is usually implemented using an indirect function call, which presents challenges to existing control flow prediction techniques.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177973",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Brad",
+        "last_name": "Calder",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Dirk",
+        "last_name": "Grunwald",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/popl/CalderG94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177858",
+    "title": "Deriving Algorithms From Type Inference Systems: Application to Strictness Analysis",
+    "abstract": "The role of non-standard type inference in static program analysis has been much studied recently. Early work emphasised the efficiency of type inference algorithms and paid little attention to the correctness of the inference system. Recently more powerful inference systems have been investigated but the connection with efficient inference algorithms has been obscured. The contribution of this paper is twofold: first we show how to transform a program logic into an algorithm and, second, we introduce the notion of lazy types and show how to derive an efficient algorithm or strictness analysis.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177858",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Hankin",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Daniel Le",
+        "last_name": "Métayer",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      }
+    ],
+    "dblp_key": "conf/popl/HankinM94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.174673",
+    "title": "Portable, Unobtrusive Garbage Collection for Multiprocessor Systems",
+    "abstract": "We describe and prove the correctness of a new concurrent mark-and-sweep garbage collection algorithm. This algorithm derives from the classical on-the-fly algorithm from Dijkstra et al. [9]. A distinguishing feature of our algorithm is that it supports multiprocessor environments where the registers of running processes are not readily accessible, without imposing any overhead on the elementary operations of loading a register or reading or initializing a field. Furthermore our collector never blocks running mutator processes except possibly on requests for free memory; in particular, updating a field or creating or marking or sweeping a heap object does not involve system-dependent synchronization primitives such as locks. We also provide support for process creation and deletion, and for managing an extensible heap of variable-sized objects.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.174673",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Damien",
+        "last_name": "Doligez",
+        "institution": "École Normale Supérieure"
+      },
+      {
+        "first_name": "Georges",
+        "last_name": "Gonthier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/DoligezG94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.175187",
+    "title": "A Functional Theory of Local Names",
+    "abstract": "λv is an extension of the λ-calculus with a binding construct for local names. The extension has properties analogous to classical λ-calculus and preserves all observational equivalences of λ. It is useful as a basis for modeling wide-spectrum languages that build on a functional core.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.175187",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Odersky",
+        "institution": "Karlsruhe University of Education"
+      }
+    ],
+    "dblp_key": "conf/popl/Odersky94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177948",
+    "title": "CHOCOLATE: Calculi of Higher Order COmmunication and LAmbda TErms",
+    "abstract": "We propose a general definition of higher-order process calculi, generalizing CHOCS [Tho89] and related calculi, and investigate its basic properties. We give sufficient conditions under which a calculus is finitely-branching and effective. We show that a suitable notion of higher-order bisimulation is a congruence for a subclass of higher-order calculi. We illustrate our definitions with a simple calculus strictly stronger than CHOCS.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177948",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Bard",
+        "last_name": "Bloom",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/Bloom94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.178043",
+    "title": "The Revival Transformation",
+    "abstract": "The notion that a definition of a variable is dead is used by optimizing compilers to delete code whose execution is useless. We extend the notion of deadness to that of partial deadness, and define a transformation, the revival transformation, which eliminates useless executions of a (partially dead) definition by tightening its execution conditions without changing the set of uses which it reaches or the conditions under which it reaches each of them.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.178043",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Lawrence",
+        "last_name": "Feigen",
+        "institution": "Micro Focus (United States)"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Klappholz",
+        "institution": "Stevens Institute of Technology"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Casazza",
+        "institution": "Stevens Institute of Technology"
+      },
+      {
+        "first_name": "Xing",
+        "last_name": "Xue",
+        "institution": "Stevens Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/FeigenKCX94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177883",
+    "title": "Analyzing Logic Programs with Dynamic Scheduling",
+    "abstract": "Traditional logic programming languages, such as Prolog, use a fixed left-to-right atom scheduling rule. Recent logic programming languages, however, usually provide more flexible scheduling in which computation generally proceed left-to-right but in which some calls are dynamically “delayed” until their arguments are sufficiently instantiated to allow the call to run efficiently. Such dynamic scheduling has a significant cost. We give a framework for the global analysis of logic programming languages with dynamic scheduling and show that program analysis based on this framework supports optimizations which remove much of the overhead of dynamic scheduling.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177883",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Kim",
+        "last_name": "Marriott",
+        "institution": "Monash University"
+      },
+      {
+        "first_name": "María García de la",
+        "last_name": "Banda",
+        "institution": "Universidad Politécnica de Madrid"
+      },
+      {
+        "first_name": "Manuel V.",
+        "last_name": "Hermenegildo",
+        "institution": "Universidad Politécnica de Madrid"
+      }
+    ],
+    "dblp_key": "conf/popl/MarriottBH94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.176925",
+    "title": "Proving Concurrent Constraint Programs Correct",
+    "abstract": "We develop a compositional proof-system for the partial correctness of concurrent constraint programs. Soundness and (relative) completeness of the system are proved with respect to a denotational semantics based on the notion of strongest postcondition. The strongest postcondition semantics provides a justification of the declarative nature of concurrent constraint programs, since it allows to view programs as theories in the specification logic.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.176925",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Frank S. de",
+        "last_name": "Boer",
+        "institution": "University of Amsterdam"
+      },
+      {
+        "first_name": "Maurizio",
+        "last_name": "Gabbrielli",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Marchiori",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Catuscia",
+        "last_name": "Palamidessi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/BoerGMP94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177907",
+    "title": "Value Dependence Graphs: Representation without Taxation",
+    "abstract": "The value dependence graph (VDG) is a sparse dataflow-like representation that simplifies program analysis and transformation. It is a functional representation that represents control flow as data flow and makes explicit all machine quantities, such as stores and I/O channels. We are developing a compiler that builds a VDG representing a program, analyzes and transforms the VDG, then produces a control flow graph (CFG) [ASU86] from the optimized VDG. This framework simplifies transformations and improves upon several published results. For example, it enables more powerful code motion than [CLZ86, FOW87], eliminates as many redundancies as [AWZ88, RWZ88] (except for redundant loops), and provides important information to the code scheduler [BR91]. We exhibit a fast, one-pass method for elimination of partial redundancies that never performs redundant code motion [KFS92, DS93] and is simpler than the classical [MR79, Dha91] or SSA [RWZ88] methods. These results accrue from eliminating the CFG from the analysis/transformation phases and using demand dependences in preference to control dependences.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177907",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Weise",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Roger F.",
+        "last_name": "Crew",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Ernst",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Bjarne",
+        "last_name": "Steensgaard",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/WeiseCES94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177953",
+    "title": "Combinatory Representation of Mobile Processes",
+    "abstract": "A theory of combinators in the setting of concurrent processes is formulated. The new combinators are derived from an analysis of the operation called asynchronous name passing, just as an analysis of logical substitution gave rise to the sequential combinators. A system with seven atoms and fixed interaction rules, but with no notion of prefixing, is introduced, and is shown to be capable of representing input and output prefixes over arbitrary terms in a behaviourally correct way, just as SK-combinators are closed under functional abstraction without having it as a proper syntactic construct. The basic equational correspondence between concurrent combinators and a system of asynchronous mobile processes, as well as the embedding of the finite part of π-calculus in concurrent combinators, is proved. These results will hopefully serve as a cornerstone for further investigation of the theoretical as well as pragmatic possibilities of the presented construction.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177953",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Kohei",
+        "last_name": "Honda",
+        "institution": "Keio University"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Keio University"
+      }
+    ],
+    "dblp_key": "conf/popl/HondaY94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177880",
+    "title": "Combinations of Abstract Domains for Logic Programming",
+    "abstract": "Abstract interpretation [7] is a systematic methodology to design static program analysis which has been studied extensively in the logic programming community, because of the potential for optimizations in logic programming compilers and the sophistication of the analyses which require conceptual support. With the emergence of efficient generic abstract interpretation algorithms for logic programming, the main burden in building an analysis is the abstract domain which gives a safe approximation of the concrete domain of computation. However, accurate abstract domains for logic programming are often complex because of the variety of analyses to perform their interdependence, and the need to maintain structural information. The purpose of this paper is to propose conceptual and software support for the design of abstract domains. It contains two main contributions: the notion of open product and a generic pattern domain. The open product is a new way of combining abstract domains allowing each combined domain to benefit from information from the other components through the notions of queries and open operations. The open product is general-purpose and can be used for other programming paradigms as well. The generic pattern domain Pat (R)automatically upgrades a domain D with structural information yielding a more accurate domain Pat (D) without additional design or implementation cost. The two contributions are orthogonal and can be combined in various ways to obtain sophisticated domains while imposing minimal requirements on the designer. Both contributions are characterized theoretically and experimentally and were used to design very complex abstract domains such as PAT(OProp⊗OMode⊗OPS) which would be very difficult to design otherwise. On this last domain, designers need only contribute about 20% (about 3,400 lines) of the complete system (about 17,700 lines).",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177880",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Agostino",
+        "last_name": "Cortesi",
+        "institution": "Butler Hospital"
+      },
+      {
+        "first_name": "Baudouin Le",
+        "last_name": "Charlier",
+        "institution": "Butler Hospital"
+      },
+      {
+        "first_name": "Pascal Van",
+        "last_name": "Hentenryck",
+        "institution": "Butler Hospital"
+      }
+    ],
+    "dblp_key": "conf/popl/CortesiCH94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.178041",
+    "title": "Call Forwarding: A Simple Interprocedural Optimization Technique for Dynamically Typed Languages",
+    "abstract": "This paper discusses call forwarding, a simple interprocedural optimization technique for dynamically typed languages. The basic idea behind the optimization is straightforward: find an ordering for the “entry actions” of a procedure, and generate multiple entry points for the procedure, so as to maximize the savings realized from different call sites bypassing different sets of entry actions. We show that the problem of computing optimal solutions to arbitrary call forwarding problems is NP-complete, and describe an efficient greedy algorithm for the problem. Experimental results indicate that (i) this algorithm is effective, in that the solutions produced are generally close to optimal; and (ii) the resulting optimization leads to significant performance improvements for a number of benchmarks tested.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.178041",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Koen De",
+        "last_name": "Bosschere",
+        "institution": "Ghent University"
+      },
+      {
+        "first_name": "Saumya",
+        "last_name": "Debray",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Gudeman",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Sampath",
+        "last_name": "Kannan",
+        "institution": "University of Arizona"
+      }
+    ],
+    "dblp_key": "conf/popl/BosschereDGK94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177850",
+    "title": "Automated Synthesis of Interface Adapters for Reusable Classes",
+    "abstract": "The need to fit together reusable components and system designs in spite of differences in protocol and representation choices occurs often in object-oriented software construction. It is therefore necessary to use adapters to achieve an exact fit between the available “socket” for a reusable part and the actual part. In this paper we discuss an approach to the construction of tools that largely automate the synthesis of adapter code. Such tools are important in reducing the effort involved in reuse since adapter synthesis can be challenging and error-prone in the complex type environment of an object-oriented language. Our approach is applicable to statically typed languages like C++ and Eiffel, and is based on a formal notion of adaptability which is related to but distinct from both subtyping and inheritance.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177850",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Satish R.",
+        "last_name": "Thatté",
+        "institution": "Clarkson University"
+      }
+    ],
+    "dblp_key": "conf/popl/Thatte94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177971",
+    "title": "Composing Tree Attributions",
+    "abstract": "Using the simple tree attributions described in this paper, attribute values can themselves be trees, enabling attribution to be used for tree transformations. Unlike higher-order attribute grammars, simple tree attributions have the property of descriptional composition, which allows a complex transformation to be built up from simpler ones, yet be executed efficiently. In contrast to other formalisms that admit descriptional composition, notably composable attribute grammars, simple tree attributions have the expressive power to handle remote references and recursive syntactic (tree-generating) functions, providing significantly more general forms of attribution and transformation.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177971",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Boyland",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Susan L.",
+        "last_name": "Graham",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/popl/BoylandG94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177855",
+    "title": "Implementation of the Typed Call-by-Value lambda-Calculus using a Stack of Regions",
+    "abstract": "We present a translation scheme for the polymorphically typed call-by-value λ-calculus. All runtime values, including function closures, are put into regions. The store consists of a stack of regions. Region inference and effect inference are used to infer where regions can be allocated and de-allocated. Recursive functions are handled using a limited form of polymorphic recursion. The translation is proved correct with respect to a store semantics, which models as a region-based run-time system. Experimental results suggest that regions tend to be small, that region allocation is frequent and that overall memory demands are usually modest, even without garbage collection.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177855",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mads",
+        "last_name": "Tofte",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Jean-Pierre",
+        "last_name": "Talpin",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/TofteT94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.176926",
+    "title": "Manifest Types, Modules, and Separate Compilation",
+    "abstract": "This paper presents a variant of the SML module system that introduces a strict distinction between abstract types and manifest types (types whose definitions are part of the module specification), while retaining most of the expressive power of the SML module system. The resulting module system provides much better support for separate compila- tion.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.176926",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Xavier",
+        "last_name": "Leroy",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/Leroy94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.178068",
+    "title": "Building Interpreters by Composing Monads",
+    "abstract": "We exhibit a set of functions coded in Haskell that can be used as building blocks to construct a variety of interpreters for Lisp-like languages. The building blocks are joined merely through functional composition. Each building block contributes code to support a specific feature, such as numbers, continuations, functions calls, or nondeterminism. The result of composing some number of building blocks is a parser, an interpreter, and a printer that support exactly the expression forms and data types needed for the combined set of features, and no more.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.178068",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Guy L.",
+        "last_name": "Steele",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Steele94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.178053",
+    "title": "A Generic Account of Continuation-Passing Styles",
+    "abstract": "We unify previous work on the continuation-passing style (CPS) transformations in a generic framework based on Moggi's computational met a-language. This framework is used to obtain GPS transformations for a variety of evaluation strategies and to characterize the corresponding administrative reductions and inverse transformations. We establish generic formal connections between operational semantics and equational theories. Formal properties of transformations for specific evaluation orders follow as corollaries. Essentially, we factor transformations through Moggi's computational meta-language. Mapping A-terms into the met a-language captures computational properties (e.g., partiality, strictness) and evaluation order explicitly in both the term and the type structure of the meta-language. The CPS transformation is then obtained by applying a generic transformation from terms and types in the meta-language to CPS terms and types, based on a typed term representation of the continuation monad. We prove an adequacy property for the generic transformation and establish an equational correspondence between the meta-language and CPS terms. These generic results generalize Plotkin's seminal theorems, subsume more recent results, and enable new uses of CPS transformations and their inverses. We discuss how to apply these results to compilation.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.178053",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Hatcliff",
+        "institution": "Kansas State University"
+      },
+      {
+        "first_name": "Olivier",
+        "last_name": "Danvy",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/popl/HatcliffD94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177972",
+    "title": "A Staging Calculus and its Application to the Verification of Translators",
+    "abstract": "We develop a calculus in which the computation steps required to execute a computer program can be separated into discrete stages. The calculus, denoted λ2, is embedded within the pure untyped λ-calculus. The main result of the paper is a characterization of sufficient conditions for confluence for terms in the calculus. The condition can be taken as a correctness criterion for translators that perform reductions in one stage leaving residual redexes over for subsequent computation stages. As an application of the theory, we verify the correctness of a macro expansion algorithm. The expansion algorithm is of some interest in its own right since it solves the problem of desired variable capture using only the familiar capture avoiding substitutions.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177972",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Muller",
+        "institution": "Apple (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/Muller94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.174710",
+    "title": "Memory Subsystem Performance of Programs Using Copying Garbage Collection",
+    "abstract": "Heap allocation with copying garbage collection is believed to have poor memory subsystem performance. We conducted a study of the memory subsystem performance of heap allocation for memory subsystems found on many machines. We found that many machines support heap allocation poorly. However, with the appropriate memory subsystem organization, heap allocation can have good memory subsystem performance.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.174710",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Amer",
+        "last_name": "Diwan",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Tarditi",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "J. Eliot B.",
+        "last_name": "Moss",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/DiwanTM94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177941",
+    "title": "An Operational Framework for Value-Passing Processes",
+    "abstract": "This paper develops a semantic framework for concurrent languages with value passing. An operation analogous to substitution in the λ-calculus is given, and a semantics is given for a value-passing version of Milner's Calculus of Communicating Systems (CCS). An operational equivalence is then defined and shown to coincide with Milner's (early) bisimulation equivalence. We also show how semantics maybe given for languages with asynchronous communication primitives. In contrast with existing approaches to value passing, this semantics does not reduce data exchange to pure synchronization over (potentially infinite) families of ports indexed by data, and it avoids variable renamings that are not local to processes engaged in communication.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177941",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Rance",
+        "last_name": "Cleaveland",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Yankelevich",
+        "institution": "North Carolina State University"
+      }
+    ],
+    "dblp_key": "conf/popl/CleavelandY94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.176927",
+    "title": "A Type-Theoretic Approach to Higher-Order Modules with Sharing",
+    "abstract": "The design of a module system for constructing and maintaining large programs is a difficult task that raises a number of theoretical and practical issues. A fundamental issue is the management of the flow of information between program units at compile time via the notion of an interface. Experience has shown that fully opaque interfaces are awkward to use in practice since too much information is hidden, and that fully transparent interfaces lead to excessive interdependencies, creating problems for maintenance and separate compilation. The “sharing” specifications of Standard ML address this issue by allowing the programmer to specify equational relationships between types in separated modules, but are not expressive enough to allow the programmer complete control over the propagation of type information between modules.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.176927",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Mark",
+        "last_name": "Lillibridge",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/HarperL94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177889",
+    "title": "Higher-Order Equational Logic Programming",
+    "abstract": "Higher-order equational logic programming is a paradigm which combines first-order equational and higher-order logic programming, where higher-order logic programming is based on a subclass of simply typed l-terms, called higher-order patterns. Central to the notion of higher-order equational logic programming is the so-called higher-order equational unification. This paper extends several important classes of first-order equational unification algorithms to the higher-order setting: only problems of the extensions are discussed and first-order equational unifications are viewed as black boxes whenever possible.We first extend narrowing and show that the completeness of many higher-order narrowing strategies reduces to that of their underlying first-order counterparts. Then we propose an algorithm or higher-order equational unification of free higher-order patterns in an arbitrary equational theory. Finally a general approach to extend first-order unification combination algorithms is sketched informally. The termination property of the above higher-order extensions is considered in a uniform way.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177889",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Zhenyu",
+        "last_name": "Qian",
+        "institution": "University of Bremen"
+      }
+    ],
+    "dblp_key": "conf/popl/Qian94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177904",
+    "title": "Detecting Pipeline Structural Hazards Quickly",
+    "abstract": "This paper describes a method for detecting structural hazards 5--80 times faster than its predecessors, which generally have simulated the pipeline at compile time. It accepts a compact specification of the pipeline and creates a finitestate automaton that can detect structural hazards in one table lookup per instruction. The automaton maintains an integer state that encodes all potential structural hazards for all instructions in the pipe. It accepts an instruction type and a state and either reports a hazard or produces the state that folds in the new instruction and advances the pipeline by one cy-",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177904",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Todd A.",
+        "last_name": "Proebsting",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Christopher W.",
+        "last_name": "Fraser",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/ProebstingF94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.177965",
+    "title": "Multi-Pass Execution of Functional Logic Programs",
+    "abstract": "An operational semantics for functional logic programs is presented. In such programs functional terms provide for reduction of expressions, provided that they ground. The semantics is based on multi-pass evaluation techniques originally developed for attribute grammars. Program execution is divided into two phases: (1) construction of an incomplete proof tree, and (2) its decoration into a complete proof tree. The construction phase applies a modified SLD-resolution scheme, and the decoration phase a partial (multi-pass) traversal over the tree. The phase partition is generated by static analysis where data dependencies are extracted for the functional elements of the program. The method guarantees that all the functional terms of a program can be evaluated, and no dynamic groundness checks are needed.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.177965",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jukka",
+        "last_name": "Paakki",
+        "institution": "University of Jyväskylä"
+      }
+    ],
+    "dblp_key": "conf/popl/Paakki94",
+    "venue": "popl",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/174675.178044",
+    "title": "Selective and Lightweight Closure Conversion",
+    "abstract": "We consider the problem of selective and lightweight closure conversion, in which multiple procedure-calling protocols may coexist in the same code. Flow analysis is used to match the protocol expected by each procedure and the protocol used at each of its possible call sites. We formulate the flow analysis as the solution of a set of constraints, and show that any solution to the constraints justifies the resulting transformation. Some of the techniques used are suggested by those of abstract interpretation, but others arise out of alternative approaches.",
+    "date": "1994-01-01",
+    "link": "https://doi.org/10.1145/174675.178044",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Steckler",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/popl/WandS94",
+    "venue": "popl",
+    "year": 1994
+  }
+]

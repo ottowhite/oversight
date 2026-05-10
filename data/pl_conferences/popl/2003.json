@@ -1,0 +1,622 @@
+[
+  {
+    "paper_id": "10.1145/604131.604148",
+    "title": "Static prediction of heap space usage for first-order functional programs",
+    "abstract": "We show how to efficiently obtain linear a priori bounds on the heap space consumption of first-order functional programs.The analysis takes space reuse by explicit deallocation into account and also furnishes an upper bound on the heap usage in the presence of garbage collection. It covers a wide variety of examples including, for instance, the familiar sorting algorithms for lists, including quicksort.The analysis relies on a type system with resource annotations. Linear programming (LP) is used to automatically infer derivations in this enriched type system.We also show that integral solutions to the linear programs derived correspond to programs that can be evaluated without any operating system support for memory management. The particular integer linear programs arising in this way are shown to be feasibly solvable under mild assumptions.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604148",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Hofmann",
+        "institution": "Ludwig-Maximilians-Universität München"
+      },
+      {
+        "first_name": "Steffen",
+        "last_name": "Jost",
+        "institution": "Ludwig-Maximilians-Universität München"
+      }
+    ],
+    "dblp_key": "conf/popl/HofmannJ03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604140",
+    "title": "From symptom to cause: localizing errors in counterexample traces",
+    "abstract": "There is significant room for improving users' experiences with model checking tools. An error trace produced by a model checker can be lengthy and is indicative of a symptom of an error. As a result, users can spend considerable time examining an error trace in order to understand the cause of the error. Moreover, even state-of-the-art model checkers provide an experience akin to that provided by parsers before syntactic error recovery was invented: they report a single error trace per run. The user has to fix the error and run the model checker again to find more error traces.We present an algorithm that exploits the existence of correct traces in order to localize the error cause in an error trace, report a single error trace per error cause, and generate multiple error traces having independent causes. We have implemented this algorithm in the context of slam, a software model checker that automatically verifies temporal safety properties of C programs, and report on our experience using it to find and localize errors in device drivers. The algorithm typically narrows the location of a cause down to a few lines, even in traces consisting of hundreds of statements.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604140",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Ball",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Mayur",
+        "last_name": "Naik",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Sriram K.",
+        "last_name": "Rajamani",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/BallNR03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604149",
+    "title": "Toward a foundational typed assembly language",
+    "abstract": "We present the design of a typed assembly language called TALT that supports heterogeneous tuples, disjoint sums, and a general account of addressing modes. TALT also implements the von Neumann model in which programs are stored in memory, and supports relative addressing. Type safety for execution and for garbage collection are shown by machine-checkable proofs. TALT is the first formalized typed assembly language to provide any of these features.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604149",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/Crary03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604153",
+    "title": "Destructors, finalizers, and synchronization",
+    "abstract": "We compare two different facilities for running cleanup actions for objects that are about to reach the end of their life.Destructors, such as we find in C++, are invoked synchronously when an object goes out of scope. They make it easier to implement cleanup actions for objects of well-known lifetime, especially in the presence of exceptions.Languages like Java[8], Modula-3[12], and C\\#[6] provide a different kind of \"finalization\" facility: Cleanup methods may be run when the garbage collector discovers a heap object to be otherwise inaccessible. Unlike C++ destructors, such methods run in a separate thread at some much less well-defined time.Languages like Java[8], Modula-3[12], and C\\#[6] provide a different kind of \"finalization\" facility: Cleanup methods may be run when the garbage collector discovers a heap object to be otherwise inaccessible. Unlike C++ destructors, such methods run in a separate thread at some much less well-defined time.We argue that these are fundamentally different, and potentially complementary, language facilities. We also try to resolve some common misunderstandings about finalization in the process. In particular:",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604153",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hans‐J.",
+        "last_name": "Boehm",
+        "institution": "Hewlett-Packard (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/Boehm03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604133",
+    "title": "Selective memoization",
+    "abstract": "We present a framework for applying memoization selectively. The framework provides programmer control over equality, space usage, and identification of precise dependences so that memoization can be applied according to the needs of an application. Two key properties of the framework are that it is efficient and yields programs whose performance can be analyzed using standard techniques.We describe the framework in the context of a functional language and an implementation as an SML library. The language is based on a modal type system and allows the programmer to express programs that reveal their true data dependences when executed. The SML implementation cannot support this modal type system statically, but instead employs run-time checks to ensure correct usage of primitives.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604133",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Guy E.",
+        "last_name": "Blelloch",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/AcarBH03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604134",
+    "title": "Environment classifiers",
+    "abstract": "This paper proposes and develops the basic theory for a new approach to typing multi-stage languages based a notion of environment classifiers. This approach involves explicit but lightweight tracking -- at type-checking time -- of the origination environment for future-stage computations. Classification is less restrictive than the previously proposed notions of closedness, and allows for both a more expressive typing of the run construct and for a unifying account of typed multi-stage programmin.The proposed approach to typing requires making cross-stage persistence (CSP) explicit in the language. At the same time, it offers concrete new insights into the notion of levels and in turn into CSP itself. Type safety is established in the simply-typed setting. As a first step toward introducing classifiers to the Hindley-Milner setting, we propose an approach to integrating the two, and prove type preservation in this setting.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604134",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Walid",
+        "last_name": "Taha",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Michael Florentin",
+        "last_name": "Nielsen",
+        "institution": "IT University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/popl/TahaN03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604154",
+    "title": "Interprocedural compatibility analysis for static object preallocation",
+    "abstract": "We present an interprocedural and compositional algorithm for nding pairs of compatible allocation sites, which have the property that no object allocated at one site is live at the same time as any object allocated at the other site. If an allocation site is compatible with itself, it is said to be unitary : at most one object allocated at that site is live at any given point in the execution of the program. We use the results of the analysis to statically preallocate memory space for the objects allocated at unitary sites, thus simplifying the computation of an upper bound on the amount of memory required to execute the program. We also use the analysis to enable objects allocated at several compatible allocation sites to share the same preallocated memory. Our experimental results show that, for our set of Java benchmark programs, 60% of the allocation sites are unitary and can be statically preallocated. Moreover, allowing compatible unitary allocation sites to share the same preallocated memory leads to a 95% reduction in the amount of memory preallocated for these sites.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604154",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ovidiu",
+        "last_name": "Gheorghioiu",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Alexandru",
+        "last_name": "Sălcianu",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/GheorghioiuSR03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604142",
+    "title": "New results on the computability and complexity of points - to analysis",
+    "abstract": "Given a prog=I and two variables p and q, thegLI of points-to analysis is to check if p can point to q in some execution of the prog ram. This well-studied problem plays a crucial role in compiler optimization. The problem is known to be undecidable when dynamic memory is allowed. But the result is known only when variables are allowed to be structures. We extend the result to show that, the problem remains undecidable, even when only scalar variables are allowed. Our second result deals with a version of points-to analysis called flow-insensitive analysis, where one ig ores the control flow of the prog)$ and assumes that the statements can be executed in any order. The problem is known to be NP-Hard, even when dynamic memory is not allowed and variables are scalar. We show that when the variables are further restricted to have well-defined data types, the problem is in P. The corresponding flow-sensitive version, even with further restrictions, is known to be PSPACEComplete. Thus, our resultg ives some theoretical evidence that flow-insensitive analysis is easier than flow-sensitive analysis. Moreover, while most variations of the points-to analysis are known to be computationally hard, our result gO es a rare instance of a non-trivial points-to problem solvable in polynomial time.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604142",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Venkatesan T.",
+        "last_name": "Chakaravarthy",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/popl/Chakaravarthy03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604155",
+    "title": "A real-time garbage collector with low overhead and consistent utilization",
+    "abstract": "Now that the use of garbage collection in languages like Java is becoming widely accepted due to the safety and software engineering benefits it provides, there is significant interest in applying garbage collection to hard real-time systems. Past approaches have generally suffered from one of two major flaws: either they were not provably real-time, or they imposed large space overheads to meet the real-time bounds. We present a mostly non-moving, dynamically defragmenting collector that overcomes both of these limitations: by avoiding copying in most cases, space requirements are kept low; and by fully incrementalizing the collector we are able to meet real-time bounds. We implemented our algorithm in the Jikes RVM and show that at real-time resolution we are able to obtain mutator utilization rates of 45% with only 1.6--2.5 times the actual space required by the application, a factor of 4 improvement in utilization over the best previously published results. Defragmentation causes no more than 4% of the traced data to be copied.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604155",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David F.",
+        "last_name": "Bacon",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Perry",
+        "last_name": "Cheng",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "V. T.",
+        "last_name": "Rajan",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/BaconCR03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604138",
+    "title": "Discovering affine equalities using random interpretation",
+    "abstract": "We present a new polynomial-time randomized algorithm for discovering affine equalities involving variables in a program. The key idea of the algorithm is to execute a code fragment on a few random inputs, but in such a way that all paths are covered on each run. This makes it possible to rule out invalid relationships even with very few runs.The algorithm is based on two main techniques. First, both branches of a conditional are executed on each run and at joint points we perform an affine combination of the joining states. Secondly, in the branches of an equality conditional we adjust the data values on the fly to reflect the truth value of the guarding boolean expression. This increases the number of affine equalities that the analysis discovers.The algorithm is simpler to implement than alternative deterministic versions, has better computational complexity, and has an extremely small probability of error for even a small number of runs. This algorithm is an example of how randomization can provide a trade-off between the cost and complexity of program analysis, and a small probability of unsoundness.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604138",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "George C.",
+        "last_name": "Necula",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/popl/GulwaniN03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604141",
+    "title": "Folklore confirmed: reducible flow graphs are exponentially larger",
+    "abstract": "Many program analysis techniques used by compilers are applicable only to programs whose control flow graphs are reducible. Node-splitting is a technique that can be used to convert any control flow graph to a reducible one. However, as has been observed for various node-splitting algorithms, there can be an exponential blowup in the size of the graph.We prove that exponential blowup is unavoidable. In particular, we show that any reducible graph that is equivalent to the complete graph on n nodes (or to related bounded-degree control flow graphs) must have at least 2n-1 nodes. While this result is not a surprise, it may be relevant to the quest for finding methods of obfuscation for software protection.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604141",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Larry",
+        "last_name": "Carter",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Jeanne",
+        "last_name": "Ferrante",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Clark",
+        "last_name": "Thomborson",
+        "institution": "University of Auckland"
+      }
+    ],
+    "dblp_key": "conf/popl/CarterFT03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604136",
+    "title": "The m-calculus: a higher-order distributed process calculus",
+    "abstract": "This paper presents a new distributed process calculus, called the M-calculus, that can be understood as a higher-order version of the Distributed Join calculus with programmable localities. The calculus retains the implementable character of the Distributed Join calculus while overcoming several important limitations: insufficient control over communication and mobility, absence of dynamic binding, and limited locality semantics. The calculus is equipped with a polymorphic type system that guarantees the unicity of locality names, even in presence of higher-order communications -- a crucial property for the determinacy of message routing in the calculus.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604136",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Alan",
+        "last_name": "Schmitt",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Jean-Bernard",
+        "last_name": "Stefani",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/SchmittS03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604145",
+    "title": "Coercive subtyping for the calculus of constructions",
+    "abstract": "We present a coercive subtyping system for the calculus of constructions. The proposed system λCCOover≤ is obtained essentially by adding coercions and η-conversion to λC≤[10], which is a subtyping extension to the calculus of constructions without coercions. Following [17, 18], the coercive subtyping c : A η B is understood as a special case of typing in arrow type c : A → B such that the term c behaves like an identity function. We prove that, with respect to this semantic interpretation, the proposed coercive subtyping system is sound and complete, and that this completeness leads to transitivity elimination (transitivity rule is admissible). In addition, we establish the equivalence between λCCOover≤ and CCßη, this fact implies that λCCOover≤ has confluence, subject reduction and strong normalization. We propose a formalization of coercion inference problem and present a sound and complete coercion inference algorithm.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604145",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gang",
+        "last_name": "Chen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Chen03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604137",
+    "title": "A generic approach to the static analysis of concurrent programs with procedures",
+    "abstract": "We present a generic aproach to the static analysis of concurrent programs with procedures. We model programs as communicating pushdown systems. It is known that typical dataflow problems for this model are undecidable, because the emptiness problem for the intersection of context-free languages, which is undecidable, can be reduced to them. In this paper we propose an algebraic framework for defining abstractions (upper approximations) of context-free languages. We consider two classes of abstractions: finite-chain abstractions, which are abstractions whose domains do not contain any infinite chains, and commutative abstractions corresponding to classes of languages that contain a word if and only if they contain all its permutations. We show how to compute such approximations by combining automata theoretic techniques with algorithms for solving systems of polynomial inequations in Kleene algebras.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604137",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ahmed",
+        "last_name": "Bouajjani",
+        "institution": "Université Paris Cité"
+      },
+      {
+        "first_name": "Javier",
+        "last_name": "Esparza",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Tayssir",
+        "last_name": "Touili",
+        "institution": "Université Paris Cité"
+      }
+    ],
+    "dblp_key": "conf/popl/BouajjaniET03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604152",
+    "title": "Pure patterns type systems",
+    "abstract": "International audience",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604152",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gilles",
+        "last_name": "Barthe",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Horatiu",
+        "last_name": "Cirstea",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Claude",
+        "last_name": "Kirchner",
+        "institution": "Laboratoire Lorrain de Recherche en Informatique et ses Applications"
+      },
+      {
+        "first_name": "Luigi",
+        "last_name": "Liquori",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/BartheCKL03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604156",
+    "title": "Ownership types for object encapsulation",
+    "abstract": "Ownership types provide a statically enforceable way of specifying object encapsulation and enable local reasoning about program correctness in object-oriented languages. However, a type system that enforces strict object encapsulation is too constraining: it does not allow efficient implementation of important constructs like iterators. This paper argues that the right way to solve the problem is to allow objects of classes defined in the same module to have privileged access to each other's representations; we show how to do this for inner classes. This approach allows programmers to express constructs like iterators and yet supports local reasoning about the correctness of the classes, because a class and its inner classes together can be reasoned about as a module. The paper also sketches how we use our variant of ownership types to enable efficient software upgrades in persistent object stores.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604156",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Chandrasekhar",
+        "last_name": "Boyapati",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Liskov",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Liuba",
+        "last_name": "Shrira",
+        "institution": "Brandeis University"
+      }
+    ],
+    "dblp_key": "conf/popl/BoyapatiLS03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604132",
+    "title": "The essence of XML",
+    "abstract": "The World-Wide Web Consortium (W3C) promotes XML and related standards, including XML Schema, XQuery, and XPath. This paper describes a formalization of XML Schema. A formal semantics based on these ideas is part of the official XQuery and XPath specification, one of the first uses of formal methods by a standards body. XML Schema features both named and structural types, with structure based on tree grammars. While structural types and matching have been studied in other work (notably XDuce, Relax NG, and a previous formalization of XML Schema), this is the first work to study the relation between named types and structural types, and the relation between matching and validation.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604132",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jérǒme",
+        "last_name": "Simèon",
+        "institution": "Bell (Canada)"
+      },
+      {
+        "first_name": "Philip",
+        "last_name": "Wadler",
+        "institution": "Avaya (Bermuda)"
+      }
+    ],
+    "dblp_key": "conf/popl/SimeonW03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604151",
+    "title": "A type system for higher-order modules",
+    "abstract": "We present a type theory for higher-order modules that accounts for many central issues in module system design, including translucency, applicativity, generativity, and modules as first-class values. Our type system harmonizes design elements from previous work, resulting in a simple, economical account of modular programming. The main unifying principle is the treatment of abstraction mechanisms as computational effects. Our language is the first to provide a complete and practical formalization of all of these critical issues in module system design.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604151",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Derek",
+        "last_name": "Dreyer",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/DreyerCH03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604144",
+    "title": "From control effects to typed continuation passing",
+    "abstract": "First-class continuations are a powerful computational effect, allowing the programmer to express any form of jumping. Types and effect systems can be used to reason about continuations, both in the source language and in the target language of the continuation-passing transform. In this paper, we establish the connection between an effect system for first-class continuations and typed versions of continuation-passing style. A region in the effect system determines a local answer type for continuations, such that the continuation transforms of pure expressions are parametrically polymorphic in their answer types. We use this polymorphism to derive transforms that make use of effect information, in particular, a mixed linear/non-linear continuation-passing transform, in which expressions without control effects are passed their continuations linearly.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604144",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hayo",
+        "last_name": "Thielecke",
+        "institution": "University of Birmingham"
+      }
+    ],
+    "dblp_key": "conf/popl/Thielecke03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604147",
+    "title": "A type theory for memory allocation and data layout",
+    "abstract": "Ordered type theory is an extension of linear type theory in which variables in the context may be neither dropped nor re-ordered. This restriction gives rise to a natural notion of adjacency. We show that a language based on ordered types can use this property to give an exact account of the layout of data in memory. The fuse constructor from ordered logic describes adjacency of values in memory, and the mobility modal describes pointers into the heap. We choose a particular allocation model based on a common implementation scheme for copying garbage collection and show how this permits us to separate out the allocation and initialization of memory locations in such a way as to account for optimizations such as the coalescing of multiple calls to the allocator.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604147",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Leaf",
+        "last_name": "Petersen",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Pfenning",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/PetersenHCP03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604150",
+    "title": "Guarded recursive datatype constructors",
+    "abstract": "We introduce a notion of guarded recursive (g.r.) datatype constructors, generalizing the notion of recursive datatypes in functional programming languages such as ML and Haskell.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604150",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hongwei",
+        "last_name": "Xi",
+        "institution": ""
+      },
+      {
+        "first_name": "Chiyan",
+        "last_name": "Chen",
+        "institution": ""
+      },
+      {
+        "first_name": "Gang",
+        "last_name": "Chen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/XiCC03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604146",
+    "title": "Efficient algorithms for isomorphisms of simple types",
+    "abstract": "The first order isomorphism problem is to decide whether two nonrecursive types using product- and function-type constructors, are isomorphic under the axioms of commutative and associative products, and currying and distributivity of functions over products. We show that this problem can be solved in 2 is the input size. This result improves upon the space bounds of the best previous algorithm. We also describe an time algorithm for the linear isomorphism problem, which does not include the distributive axiom, whereby improving upon the time of the best previous algorithm for this problem.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604146",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Yoav",
+        "last_name": "Zibin",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Gil",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Jeffrey",
+        "last_name": "Considine",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/ZibinGC03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604139",
+    "title": "Bitwidth aware global register allocation",
+    "abstract": "Multimedia and network processing applications make extensive use of subword data. Since registers are capable of holding a full data word, when a subword variable is assigned a register, only part of the register is used. New embedded processors have started sup-porting instruction sets that allow direct referencing of bit sections within registers and therefore multiple subword variables can be made to simultaneously reside in the same register without hinder-ing accesses to these variables. However, a new register allocation algorithm is needed that is aware of the bitwidths of program vari-ables and is capable of packing multiple subword variables into a single register. This paper presents one such algorithm. The algorithm we propose has two key steps. First, a combina-tion of forward and backward data flow analyses are developed to determine the bitwidths of program variables throughout the pro-gram. This analysis is required because the declared bitwidths of variables are often larger than their true bitwidths and moreover the minimal bitwidths of a program variable can vary from one pro-gram point to another. Second, a novel interference graph represen-tation is designed to enable support for a fast and highly accurate algorithm for packing of subword variables into a single register. Packing is carried out by a node coalescing phase that precedes the conventional graph coloring phase of register allocation. In contrast to traditional node coalescing, packing coalesces a set of interfering nodes. Our experiments show that our bitwidth aware register allo-cation algorithm reduces the register requirements by 10 % to 50% over a traditional register allocation algorithm that assigns separate registers to simultaneously live subword variables.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604139",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sriraman",
+        "last_name": "Tallam",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Rajiv",
+        "last_name": "Gupta",
+        "institution": "University of Arizona"
+      }
+    ],
+    "dblp_key": "conf/popl/TallamG03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604143",
+    "title": "Incremental algorithms for dispatching in dynamically typed languages",
+    "abstract": "A fundamental problem in the implementation of object-oriented languages is that of a frugal dispatching data structure, i.e., support for quick response to dispatching queries combined with compact representation of the type hierarchy and the method families. Previous theoretical algorithms tend to be impractical due to their complexity and large hidden constant. In contrast, successful practical heuristics, including Vitek and Horspool's compact dispatch tables (CT) [16] designed for dynamically typed languages, lack theoretical support. In subjecting CT to theoretical analysis, we are not only able to improve and generalize it, but also provide the first non-trivial bounds on the performance of such a heuristic.Let n,ml denote the total number of types, messages, and different method implementations, respectively. Then, the dispatching matrix, whose size isnm, can be compressed by a factor of at most ι ≡ (nm)/l. Our main variant to CT achieves a compression factor of ½ √ι. More generally, we describe a sequence of algorithms CT1, CT2, CT3,..., where CTd achieves compression by a factor of (at least) 1overdι1—1/d, while using d memory dereferencing operations during dispatch. This tradeoff represents the first bounds on the compression ratio of constant-time dispatching algorithms.A generalization of these algorithms to a multiple-inheritance setting, increases the space by a factor of κ1-1/d, where κ is a metric of the complexity of the topology of the inheritance hierarchy, which (as indicated by our measurements) is typically small. The most important generalization is an incremental variant of the CTd scheme for a single-inheritance setting. This variant uses at most twice the space of CTd, and its time of inserting a new type into the hierarchy is optimal. We therefore obtain algorithms for efficient management of dispatching in dynamic-typing, dynamic-loading languages, such as Smalltalk and even the Java invokeinterface instruction.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604143",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Yoav",
+        "last_name": "Zibin",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Gil",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/ZibinG03",
+    "venue": "popl",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/604131.604135",
+    "title": "Bigraphs and transitions",
+    "abstract": "A bigraphical reactive system (BRS) involves bigraphs, in which the nesting of nodes represents locality, independently of the edges connecting them. BRSs represent a wide variety of calculi for mobility, including λ-calculus and ambient calculus. A labelled transition system (LTS) for each BRS is here derived uniformly, adapting previous work of Leifer and Milner, so that under certain conditions the resulting bisimilarity is automatically a congruence. For an asynchronous λ-calculus, this LTS and its bisimilarity agree closely with the standard.",
+    "date": "2003-01-15",
+    "link": "https://doi.org/10.1145/604131.604135",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ole Høgh",
+        "last_name": "Jensen",
+        "institution": "Aalborg University"
+      },
+      {
+        "first_name": "Robin",
+        "last_name": "Milner",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/JensenM03",
+    "venue": "popl",
+    "year": 2003
+  }
+]

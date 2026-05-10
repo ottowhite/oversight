@@ -1,0 +1,754 @@
+[
+  {
+    "paper_id": "10.1145/503272.503290",
+    "title": "Systematic design of program transformation frameworks by abstract interpretation",
+    "abstract": "We introduce a general uniform language-independent framework for designing online and offline source-to-source program transformations by abstract interpretation of program semantics. Iterative source-to-source program transformations are designed constructively by composition of source-to-semantics, semantics-to-transformed semantics and semantics-to-source abstractions applied to fixpoint trace semantics. The correctness of the transformations is expressed through observational and performance abstractions. The framework is illustrated on three examples: constant propagation, program specialization by online and offline partial evaluation and static program monitoring.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503290",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Cousot",
+        "institution": ""
+      },
+      {
+        "first_name": "Radhia",
+        "last_name": "Cousot",
+        "institution": "École Polytechnique"
+      }
+    ],
+    "dblp_key": "conf/popl/CousotC02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503276",
+    "title": "Role analysis",
+    "abstract": "We present a new role system in which the type (or role) of each object depends on its referencing relationships with other objects, with the role changing as these relationships change. Roles capture important object and data structure properties and provide useful information about how the actions of the program interact with these properties. Our role system enables the programmer to specify the legal aliasing relationships that define the set of roles that objects may play, the roles of procedure parameters and object fields, and the role changes that procedures perform while manipulating objects. We present an interprocedural, compositional, and context-sensitive role analysis algorithm that verifies that a program maintains role constraints.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503276",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Viktor",
+        "last_name": "Kunčak",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Lam",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/KuncakLR02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503299",
+    "title": "Proving correctness of compiler optimizations by temporal logic",
+    "abstract": "Many classical compiler optimizations can be elegantly expressed using rewrite rules of form: I ⇒ I′ if φ, where I, I′ are intermediate language instructions and φ is a property expressed in a temporal logic suitable for describing program data flow. Its reading: If the current program π contains an instruction of form I at some control point p, and if flow condition φ is satisfied at p, then replace I by I′. The purpose of this paper is to show how such transformations may be proven correct. Our methodology is illustrated by three familiar optimizations, dead code elimination, constant folding and code motion. The meaning of correctness is that for any program π, if Rewrite(π, π′, p, I ⇒ I′ if φ) then [π] = [π′], i.e. π and π′ have exactly the same semantics.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503299",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Lacey",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Neil D.",
+        "last_name": "Jones",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Eric Van",
+        "last_name": "Wyk",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Carl Christian",
+        "last_name": "Frederiksen",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/popl/LaceyJWF02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503297",
+    "title": "The strength of non-size increasing computation",
+    "abstract": "We study the expressive power of non-size increasing recursive definitions over lists. This notion of computation is such that the size of all intermediate results will automatically be bounded by the size of the input so that the interpretation in a finite model is sound with respect to the standard semantics. Many well-known algorithms with this property such as the usual sorting algorithms are definable in the system in the natural way. The main result is that a characteristic function is definable if and only if it is computable in time O(2p(n)) for some polynomial p.The method used to establish the lower bound on the expressive power also shows that the complexity becomes polynomial time if we allow primitive recursion only. This settles an open question posed in [1, 7].The key tool for establishing upper bounds on the complexity of derivable functions is an interpretation in a finite relational model whose correctness with respect to the standard interpretation is shown using a semantic technique.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503297",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Hofmann",
+        "institution": "Ludwig-Maximilians-Universität München"
+      }
+    ],
+    "dblp_key": "conf/popl/Hofmann02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503296",
+    "title": "Adaptive functional programming",
+    "abstract": "An adaptive computation maintains the relationship between its input and output as the input changes. Although various techniques for adaptive computing have been proposed, they remain limited in their scope of applicability. We propose a general mechanism for adaptive computing that enables one to make any purely-functional program adaptive.We show that the mechanism is practical by giving an efficient implementation as a small ML library. The library consists of three operations for making a program adaptive, plus two operations for making changes to the input and adapting the output to these changes. We give a general bound on the time it takes to adapt the output, and based on this, show that an adaptive Quicksort adapts its output in logarithmic time when its input is extended by one key.To show the safety and correctness of the mechanism we give a formal definition of AFL, a call-by-value functional language extended with adaptivity primitives. The modal type system of AFL enforces correct usage of the adaptivity mechanism, which can only be checked at run time in the ML library. Based on the AFL dynamic semantics, we formalize the change-propagation algorithm and prove its correctness.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503296",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Guy E.",
+        "last_name": "Blelloch",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/AcarBH02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503279",
+    "title": "Lazy abstraction",
+    "abstract": "One approach to model checking software is based on the abstract-check-refine paradigm: build an abstract model, then check the desired property, and if the check fails, refine the model and start over. We introduce the concept of lazy abstraction to integrate and optimize the three phases of the abstract-check-refine loop. Lazy abstraction continuously builds and refines a single abstract model on demand, driven by the model checker, so that different parts of the model may exhibit different degrees of precision, namely just enough to verify the desired property. We present an algorithm for model checking safety properties using lazy abstraction and describe an implementation of the algorithm applied to C programs. We also provide sufficient conditions for the termination of the method.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503279",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Thomas A.",
+        "last_name": "Henzinger",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Rupak",
+        "last_name": "Majumdar",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Grégoire",
+        "last_name": "Sutre",
+        "institution": "Université de Bordeaux"
+      }
+    ],
+    "dblp_key": "conf/popl/HenzingerJMS02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503285",
+    "title": "From POPL to the classroom and back",
+    "abstract": "This invited talk presents an overview of the TeachScheme! and DrScheme projects. The former aims at bringing the principles of programming and programming languages into the introductory programming curriculum. The latter is a program development environment that supports the pedagogy and design principles of the TeachScheme! project. Carrying out these projects enriched our research life with many interesting programming language and system design problems.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503285",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/popl/Felleisen02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503281",
+    "title": "A uniform type structure for secure information flow",
+    "abstract": "The π-calculus is a formalism of computing in which we can compositionally represent dynamics of major programming constructs by decomposing them into a single communication primitive, the name passing. This work reports our experience in using a linear/affine typed π-calculus for the analysis and development of type systems of programming languages, focussing on secure information flow analysis. After presenting a basic typed calculus for secrecy, we demonstrate its usage by a sound embedding of the dependency core calculus (DCC) and by the development of a novel type discipline for imperative programs which extends both a secure multi-threaded imperative language by Smith and Volpano and (a call-by-value version of) DCC. In each case, the embedding gives a simple proof of noninterference.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503281",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Kohei",
+        "last_name": "Honda",
+        "institution": "University of London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "University of Leicester"
+      }
+    ],
+    "dblp_key": "conf/popl/HondaY02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503286",
+    "title": "CCured: type-safe retrofitting of legacy code",
+    "abstract": "In this paper we propose a scheme that combines type inference and run-time checking to make existing C programs type safe. We describe the CCured type system, which extends that of C by separating pointer types according to their usage. This type system allows both pointers whose usage can be verified statically to be type safe, and pointers whose safety must be checked at run time. We prove a type soundness result and then we present a surprisingly simple type inference algorithm that is able to infer the appropriate pointer kinds for existing C programs.Our experience with the CCured system shows that the inference is very effective for many C programs, as it is able to infer that most or all of the pointers are statically verifiable to be type safe. The remaining pointers are instrumented with efficient run-time checks to ensure that they are used safely. The resulting performance loss due to run-time checks is 0-150%, which is several times better than comparable approaches that use only dynamic checking. Using CCured we have discovered programming bugs in established C programs such as several SPECINT95 benchmarks.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503286",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "George C.",
+        "last_name": "Necula",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "McPeak",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Westley",
+        "last_name": "Weimer",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/popl/NeculaMW02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503282",
+    "title": "Bounding space usage of conservative garbage collectors",
+    "abstract": "Conservative garbage collectors can automatically reclaim unused memory in the absence of precise pointer location information. If a location can possibly contain a pointer, it is treated by the collector as though it contained a pointer. Although it is commonly assumed that this can lead to unbounded space use due to misidentified pointers, such extreme space use is rarely observed in practice, and then generally only if the number of misidentified pointers is itself unbounded.We show that if the program manipulates only data structures satisfying a simple GC-robustness criterion, then a bounded number of misidentified pointers can at most result in increasing space usage by a constant factor. We argue that nearly all common data structures are already GC-robust, and it is typically easy to identify and replace those that are not. Thus it becomes feasible to prove space bounds on programs collected by mildly conservative garbage collectors, such as the one in [2]. The worst-case space overhead introduced by such mild conservatism is comparable to the worst-case fragmentation overhead for inherent in any non-moving storage allocator.The same GC-robustness criterion also ensures the absence of temporary space leaks of the kind discussed in [13] for generational garbage collectors.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503282",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hans‐J.",
+        "last_name": "Boehm",
+        "institution": "Hewlett-Packard (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/Boehm02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503274",
+    "title": "The SLAM project: debugging system software via static analysis",
+    "abstract": "The goal of the SLAM project is to check whether or not a program obeys \"API usage rules\" that specify what it means to be a good client of an API. The SLAM toolkit statically analyzes a C program to determine whether or not it violates given usage rules. The toolkit has two unique aspects: it does not require the programmer to annotate the source program (invariants are inferred); it minimizes noise (false error messages) through a process known as \"counterexample-driven refinement\". SLAM exploits and extends results from program analysis, model checking and automated deduction. We have successfully applied the SLAM toolkit to Windows XP device drivers, to both validate behavior and find defects in their usage of kernel APIs.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503274",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Ball",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Sriram K.",
+        "last_name": "Rajamani",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/BallR02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503275",
+    "title": "Mining specifications",
+    "abstract": "Program verification is a promising approach to improving program quality, because it can search all possible program executions for specific errors. However, the need to formally describe correct behavior or errors is a major barrier to the widespread adoption of program verification, since programmers historically have been reluctant to write formal specifications. Automating the process of formulating specifications would remove a barrier to program verification and enhance its practicality.This paper describes specification mining, a machine learning approach to discovering formal specifications of the protocols that code must obey when interacting with an application program interface or abstract data type. Starting from the assumption that a working program is well enough debugged to reveal strong hints of correct protocols, our tool infers a specification by observing program execution and concisely summarizing the frequent interaction patterns as state machines that capture both temporal and data dependences. These state machines can be examined by a programmer, to refine the specification and identify errors, and can be utilized by automatic verification tools, to find bugs.Our preliminary experience with the mining tool has been promising. We were able to learn specifications that not only captured the correct protocol, but also discovered serious bugs.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503275",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Glenn",
+        "last_name": "Ammons",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "James R.",
+        "last_name": "Larus",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/AmmonsBL02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503277",
+    "title": "Analyzing security protocols with secrecy types and logic programs",
+    "abstract": "We study and further develop two language-based techniques for analyzing security protocols. One is based on a typed process calculus; the other, on untyped logic programs. Both focus on secrecy properties. We contribute to these two techniques, in particular by extending the former with a flexible, generic treatment of many cryptographic operations. We also establish an equivalence between the two techniques.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503277",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martı́n",
+        "last_name": "Abadi",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Bruno",
+        "last_name": "Blanchet",
+        "institution": "École Normale Supérieure"
+      }
+    ],
+    "dblp_key": "conf/popl/AbadiB02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503291",
+    "title": "Predicate abstraction for software verification",
+    "abstract": "Software verification is an important and difficult problem. Many static checking techniques for software require annotations from the programmer in the form of method specifications and loop invariants. This annotation overhead, particularly of loop invariants, is a significant hurdle in the acceptance of static checking. We reduce the annotation burden by inferring loop invariants automatically.Our method is based on predicate abstraction, an abstract interpretation technique in which the abstract domain is constructed from a given set of predicates over program variables. A novel feature of our approach is that it infers universally-quantified loop invariants, which are crucial for verifying programs that manipulate unbounded data such as arrays. We present heuristics for generating appropriate predicates for each loop automatically; the programmer can specify additional predicates as well. We also present an efficient algorithm for computing the abstraction of a set of states in terms of a collection of predicates.Experiments on a 44KLOC program show that our approach can automatically infer the necessary predicates and invariants for all but 31 of the 396 routines that contain loops.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503291",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": ""
+      },
+      {
+        "first_name": "Shaz",
+        "last_name": "Qadeer",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/FlanaganQ02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503280",
+    "title": "Bisimulation congruences in safe ambients",
+    "abstract": "We study a variant of Levi and Sangiorgi&amp;apos;s Safe Ambients (SA) enriched with passwords (SAP). In SAP by managing passwords, for example generating new ones and distributing them selectively, an ambient may now program who may migrate into its computation space, and when. Moreover in SAP an ambient may provide different services depending on the passwords exhibited by its incoming clients. We give an lts based operational semantics for SAP and a labelled bisimulation based equivalence which is proved to coincide with barbed congruence. Our notion of bisimulation is used to prove a set of algebraic laws which are subsequently exploited to prove more significant examples. 1",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503280",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Massimo",
+        "last_name": "Merro",
+        "institution": "University of Sussex"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Hennessy",
+        "institution": "University of Sussex"
+      }
+    ],
+    "dblp_key": "conf/popl/MerroH02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503289",
+    "title": "Representation independence, confinement and access control [extended abstract]",
+    "abstract": "Denotational semantics is given for a Java-like language with pointers, subclassing and dynamic dispatch, class oriented visibility control, recursive types and methods, and privilege-based access control. Representation independence (relational parametricity) is proved, using a semantic notion of confinement similar to ones for which static disciplines have been recently proposed.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503289",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Anindya",
+        "last_name": "Banerjee",
+        "institution": "Kansas State University"
+      },
+      {
+        "first_name": "David A.",
+        "last_name": "Naumann",
+        "institution": "Stevens Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/BanerjeeN02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503298",
+    "title": "Composing dataflow analyses and transformations",
+    "abstract": "Dataflow analyses can have mutually beneficial interactions. Previous efforts to exploit these interactions have either (1) iteratively performed each individual analysis until no further improvements are discovered or (2) developed \"super-analyses\" that manually combine conceptually separate analyses. We have devised a new approach that allows analyses to be defined independently while still enabling them to be combined automatically and profitably. Our approach avoids the loss of precision associated with iterating individual analyses and the implementation difficulties of manually writing a super-analysis. The key to our approach is a novel method of implicit communication between the individual components of a super-analysis based on graph transformations. In this paper, we precisely define our approach; we demonstrate that it is sound and it terminates; finally we give experimental results showing that in practice (1) our framework produces results at least as precise as iterating the individual analyses while compiling at least 5 times faster, and (2) our framework achieves the same precision as a manually written super-analysis while incurring a compile-time overhead of less than 20%.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503298",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sorin",
+        "last_name": "Lerner",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Grove",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/popl/LernerGC02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503278",
+    "title": "Types as models: model checking message-passing programs",
+    "abstract": "Abstraction and composition are the fundamental issues in making model checking viable for software. This paper proposes new techniques for automating abstraction and decomposition using source level type information provided by the programmer. Our system includes two novel components to achieve this end: (1) a behavioral type-and-effect system for the π-calculus, which extracts sound models as types, and (2) an assume-guarantee proof rule for carrying out compositional model checking on the types. Open simulation between CCS processes is used as both the subtyping relation in the type system and the abstraction relation for compositional model checking.We have implemented these ideas in a tool---PIPER. PIPER exploits type signatures provided by the programmer to partition the model checking problem, and emit model checking obligations that are discharged using the SPIN model checker. We present the details on applying PIPER on two examples: (1) the SIS standard for managing trouble tickets across multiple organizations and (2) a file reader from the pipelined implementation of a web server.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503278",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sagar",
+        "last_name": "Chaki",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Sriram K.",
+        "last_name": "Rajamani",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Jakob",
+        "last_name": "Rehof",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/ChakiRR02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503301",
+    "title": "Stack inspection: theory and variants",
+    "abstract": "Stack inspection is a security mechanism implemented in runtimes such as the JVM and the CLR to accommodate components with diverse levels of trust. Although stack inspection enables the fine-grained expression of access control policies, it has rather a complex and subtle semantics. We present a formal semantics and an equational theory to explain how stack inspection affects program behaviour and code optimisations. We discuss the security properties enforced by stack inspection, and also consider variants with stronger, simpler properties.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503301",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Cédric",
+        "last_name": "Fournet",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Andrew D.",
+        "last_name": "Gordon",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/FournetG02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503294",
+    "title": "Functional logic overloading",
+    "abstract": "Functional logic overloading is a novel approach to user-defined overloading that extends Haskell's concept of type classes in significant ways. Whereas type classes are conceptually predicates on types in standard Haskell, they are type functions in our approach. Thus, we can base type inference on the evaluation of functional logic programs. Functional logic programming provides a solid theoretical foundation for type functions and, at the same time, allows for programmable overloading resolution strategies by choosing different evaluation strategies for functional logic programs. Type inference with type functions is an instance of type inference with constrained types, where the underlying constraint system is defined by a functional logic program. We have designed a variant of Haskell which supports our approach to overloading, and implemented a prototype front-end for the language.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503294",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Neubauer",
+        "institution": "University of Fribourg"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Fribourg"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Gasbichler",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Sperber",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "conf/popl/NeubauerTGS02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503287",
+    "title": "An efficient profile-analysis framework for data-layout optimizations",
+    "abstract": "Data-layout optimizations rearrange fields within objects, objects within objects, and objects within the heap, with the goal of increasing spatial locality. While the importance of data-layout optimizations has been growing, their deployment has been limited, partly because they lack a unifying framework. We propose a parameterizable framework for data-layout optimization of general-purpose applications. Acknowledging that finding an optimal layout is not only NP-hard, but also poorly approximable, our framework finds a good layout by searching the space of possible layouts, with the help of profile feedback. The search process iteratively prototypes candidate data layouts, evaluating them by \"simulating\" the program on a representative trace of memory accesses. To make the search process practical, we develop space-reduction heuristics and optimize the expensive simulation via memoization. Equipped with this iterative approach, we can synthesize layouts that outperform existing non-iterative heuristics, tune application-specific memory allocators, as well as compose multiple data-layout optimizations.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503287",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Shai",
+        "last_name": "Rubin",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Trishul",
+        "last_name": "Chilimbi",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/RubinBC02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503283",
+    "title": "The hardness of cache conscious data placement",
+    "abstract": "The growing gap between the speed of memory access and cache access has made cache misses an influential factor in program efficiency. Much effort has been spent recently on reducing the number of cache misses during program run. This effort includes wise rearranging of program code, cache-conscious data placement, and algorithmic modifications that improve the program cache behavior. In this work we investigate the complexity of finding the optimal placement of objects (or code) in the memory, in the sense that this placement reduces the cache misses to the minimum. We show that this problem is one of the toughest amongst the interesting algorithmic problems in computer science. In particular, suppose one is given a sequence of memory accesses and one has to place the data in the memory so as to minimize the number of cache misses for this sequence. We show that if P ≠ NP, then one cannot efficiently approximate the optimal solution even up to a very liberal approximation ratio. Thus, this problem joins the small family of extremely inapproximable optimization problems. The other two famous members in this family are minimum coloring and maximum clique.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503283",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Erez",
+        "last_name": "Petrank",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Dror",
+        "last_name": "Rawitz",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/PetrankR02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503288",
+    "title": "Stochastic lambda calculus and monads of probability distributions",
+    "abstract": "Probability distributions are useful for expressing the meanings of probabilistic languages, which support formal modeling of and reasoning about uncertainty. Probability distributions form a monad, and the monadic definition leads to a simple, natural semantics for a stochastic lambda calculus, as well as simple, clean implementations of common queries. But the monadic implementation of the expectation query can be much less efficient than current best practices in probabilistic modeling. We therefore present a language of measure terms, which can not only denote discrete probability distributions but can also support the best known modeling techniques. We give a translation of stochastic lambda calculus into measure terms. Whether one translates into the probability monad or into measure terms, the results of the translations denote the same probability distribution.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503288",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Avi",
+        "last_name": "Pfeffer",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/popl/RamseyP02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503300",
+    "title": "Exploiting prolific types for memory management and optimizations",
+    "abstract": "In this paper, we introduce the notion of prolific and non-prolific types, based on the number of instantiated objects of those types. We demonstrate that distinguishing between these types enables a new class of techniques for memory management and data locality, and facilitates the deployment of known techniques. Specifically, we first present a new type-based approach to garbage collection that has similar attributes but lower cost than generational collection. Then we describe the short type pointer technique for reducing memory requirements of objects (data) used by the program. We also discuss techniques to facilitate the recycling of prolific objects and to simplify object co-allocation decisions.We evaluate the first two techniques on a standard set of Java benchmarks (SPECjvm98 and SPECjbb2000). An implementation of the type-based collector in the Jalapeño VM shows improved pause times, elimination of unnecessary write barriers, and reduction in garbage collection time (compared to the analogous generational collector) by up to 15%. A study to evaluate the benefits of the short-type pointer technique shows a potential reduction in the heap space requirements of programs by up to 16%.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503300",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Yefim",
+        "last_name": "Shuf",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Manish",
+        "last_name": "Gupta",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Rajesh",
+        "last_name": "Bordawekar",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Jaswinder",
+        "last_name": "Singh",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/ShufGBS02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503295",
+    "title": "Scalable formal design methods for asynchronous VLSI",
+    "abstract": "This lecture will provide an overview of the field of asynchronous VLSI, and show how formal methods have played a critical role in the design of complex asynchronous systems. In particular, I will talk about program transformations and their application to asynchronous VLSI, as well as describe a simple language that I developed to describe these circuits and aid in their validation.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503295",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Rajit",
+        "last_name": "Manohar",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/Manohar02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503292",
+    "title": "The first-order theory of subtyping constraints",
+    "abstract": "We investigate the first-order of subtyping constraints. We show that the first-order theory of non-structural subtyping is undecidable, and we show that in the case where all constructors are either unary or nullary, the first-order theory is decidable for both structural and non-structural subtyping. The decidability results are shown by reduction to a decision problem on tree automata. This work is a step towards resolving long-standing open problems of the decidability of entailment for non-structural subtyping.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503292",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Zhendong",
+        "last_name": "Su",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Joachim",
+        "last_name": "Niehren",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Tim",
+        "last_name": "Priesnitz",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Ralf",
+        "last_name": "Treinen",
+        "institution": "Université Paris-Sud"
+      }
+    ],
+    "dblp_key": "conf/popl/SuANPT02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503302",
+    "title": "Information flow inference for ML",
+    "abstract": "This paper presents a type-based information flow analysis for a call-by-value λ-calculus equipped with references, exceptions and let-polymorphism, which we refer to as Core ML. The type system is constraint-based and has decidable type inference. Its non-interference proof is reasonably lightweight, thanks to the use of a number of orthogonal techniques. First, a syntactic segregation between values and expressions allows a lighter formulation of the type system. Second, non-interference is reduced to subject reduction for a non-standard language extension. Lastly, a semi-syntactic approach to type soundness allows dealing with constraint-based polymorphism separately.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503302",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Vincent",
+        "last_name": "Simonet",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/PottierS02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503284",
+    "title": "Towards automatic construction of staged compilers",
+    "abstract": "Some compilation systems, such as offline partial evaluators and selective dynamic compilation systems, support staged optimizations. A staged optimization is one where a logically single optimization is broken up into stages, with the early stage(s) performing preplanning set-up work, given any available partial knowledge about the program to be compiled, and the final stage completing the optimization. The final stage can be much faster than the original optimization by having much of its work performed by the early stages. A key limitation of current staged optimizers is that they are written by hand, sometimes in an ad hoc manner. We have developed a framework called the Staged Compilation Framework (SCF) for systematically and automatically converting single-stage optimizations into staged versions. The framework is based on a combination of aggressive partial evaluation and dead-assignment elimination. We have implemented SCF in Standard ML. A preliminary evaluation shows that SCF can speed up classical optimization of some commonly used C functions by up to 12× (and typically between 4.5× and 5.5×).",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503284",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthai",
+        "last_name": "Philipose",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Susan J.",
+        "last_name": "Eggers",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/popl/PhiliposeCE02",
+    "venue": "popl",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/503272.503293",
+    "title": "A type system for certified binaries",
+    "abstract": "A certified binary is a value together with a proof that the value satisfies a given specification. Existing compilers that generate certified code have focused on simple memory and control-flow safety rather than more advanced properties. In this paper, we present a general framework for explicitly representing complex propositions and proofs in typed intermediate and assembly languages. The new framework",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/503272.503293",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Bratin",
+        "last_name": "Saha",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Valery",
+        "last_name": "Trifonov",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Nikolaos",
+        "last_name": "Papaspyrou",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/popl/ShaoSTP02",
+    "venue": "popl",
+    "year": 2002
+  }
+]
