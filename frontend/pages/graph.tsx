@@ -302,6 +302,12 @@ export default function GraphPage() {
 
   // Force-graph imperative handle for fit-to-view / reheat.
   const fgRef = useRef<any>(null);
+  // When set, the next onEngineStop fires zoomToFit and clears the
+  // flag. Set whenever the visible graph fundamentally changes (mount,
+  // clickedIds change, mode switch). The deferred-until-stop pattern is
+  // necessary because zoomToFit needs node positions, which only exist
+  // after the simulation has run a few ticks.
+  const pendingFitRef = useRef<boolean>(true);
   // The library is dynamically imported so its window-touching code
   // doesn't run during SSR. Once loaded we render it directly (no
   // next/dynamic wrapper) so the ref forwards through to the real
@@ -451,6 +457,7 @@ export default function GraphPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickedIds, graph.mode]);
 
+
   // -------------------------------------------------------------------------
   // Slider / mode handlers (pure cache-derived re-renders).
   // -------------------------------------------------------------------------
@@ -518,6 +525,20 @@ export default function GraphPage() {
     () => deriveEdges(graph.cache, clickedIds, graph.mode, graph.k, graph.threshold),
     [graph.cache, clickedIds, graph.mode, graph.k, graph.threshold],
   );
+
+  // Whenever the visible graph fundamentally changes — clickedIds, mode,
+  // or the edge count (which a slider drag in topk/threshold can shrink
+  // dramatically) — request a fit-to-view. The actual zoomToFit call
+  // happens inside onEngineStop once node positions exist.
+  useEffect(() => {
+    pendingFitRef.current = true;
+    // If the simulation is already cool (e.g. a slider drag with no
+    // re-layout), nudge it so onEngineStop fires shortly after.
+    const fg = fgRef.current;
+    if (fg && typeof fg.d3ReheatSimulation === "function") {
+      fg.d3ReheatSimulation();
+    }
+  }, [clickedIds, graph.mode, edges.length]);
 
   const fgData = useMemo(() => {
     // Hide nodes that have no edges in the current derived view,
@@ -985,6 +1006,21 @@ export default function GraphPage() {
                   setHoverId(node && node.id ? String(node.id) : null);
                 }}
                 onNodeClick={(node: any) => clickPaper(String(node.id))}
+                onEngineStop={() => {
+                  // Fit-to-view request was set by a meaningful change
+                  // (mount, clickedIds change, mode switch, slider drag
+                  // big enough to alter the edge count). Clear the flag
+                  // before calling so a recursive zoom-induced re-stop
+                  // doesn't re-fire.
+                  if (!pendingFitRef.current) return;
+                  pendingFitRef.current = false;
+                  const fg = fgRef.current;
+                  if (fg && typeof fg.zoomToFit === "function") {
+                    // 400ms ease, 60px screen-padding around the
+                    // bounding box of currently-rendered nodes.
+                    fg.zoomToFit(400, 60);
+                  }
+                }}
                 cooldownTicks={120}
                 d3VelocityDecay={0.35}
               />
