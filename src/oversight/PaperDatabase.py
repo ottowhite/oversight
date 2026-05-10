@@ -30,6 +30,16 @@ class PaperDatabase:
         register_vector(self.con)
         return self
 
+    @classmethod
+    def from_connection(cls, con: psycopg.Connection[tuple[Any, ...]]) -> PaperDatabase:
+        """Build a ``PaperDatabase`` around an existing pgvector-registered
+        connection. The caller owns the connection's lifecycle (no commit /
+        close happens via this object).
+        """
+        instance = cls()
+        instance.con = con
+        return instance
+
     def __exit__(
         self,
         exc_type: type[BaseException] | None,
@@ -424,6 +434,123 @@ class PaperDatabase:
         result = {source: cnt for source, cnt in rows}
         result["total"] = sum(result.values())
         return result
+
+    def find_neighbors(
+        self,
+        paper_id: str,
+        k: int,
+        mutual: bool,
+        ef_search: int = 80,
+    ) -> list[tuple[str, float]]:
+        """Return ``k`` nearest neighbors of ``paper_id`` as ``(paper_id, similarity)``.
+
+        Uses a two-step query so pgvector's HNSW index can be used:
+          1. SELECT the seed embedding as a Python value.
+          2. SELECT the kNN with that embedding passed in as a parameter.
+
+        A self-join (``FROM embedding e1, embedding e2 ORDER BY e2.emb <=> e1.emb``)
+        prevents the planner from using the HNSW index and falls back to a brute
+        force scan (~5400ms p50 vs ~6ms p50).
+
+        When ``mutual=True``, returns only the subset of top-k neighbors where the
+        seed is also in each candidate's top-k (mutual-kNN). This is implemented
+        as a single round-trip CTE plus a parameterized lateral subquery — the
+        candidate's embedding flows into the inner ORDER BY as a literal so HNSW
+        is used for each reverse lookup.
+        """
+        with self._get_con().cursor() as cur:
+            # Step 1: fetch the seed embedding.
+            row = cur.execute(
+                """
+                SELECT embedding_gemini_embedding_001
+                FROM embedding
+                WHERE paper_id = %s
+                  AND embedding_gemini_embedding_001 IS NOT NULL
+                """,
+                [paper_id],
+            ).fetchone()
+            if row is None:
+                return []
+            seed_emb = row[0]
+
+            cur.execute(
+                sql.SQL("SET hnsw.ef_search = {}").format(sql.Literal(ef_search))
+            )
+
+            # Step 2: top-k kNN against the seed embedding. Over-fetch by 1 so we
+            # can drop the seed itself.
+            if not mutual:
+                rows = cur.execute(
+                    """
+                    SELECT paper_id,
+                           1 - (embedding_gemini_embedding_001 <=> %s::halfvec) AS sim
+                    FROM embedding
+                    WHERE embedding_gemini_embedding_001 IS NOT NULL
+                    ORDER BY embedding_gemini_embedding_001 <=> %s::halfvec
+                    LIMIT %s
+                    """,
+                    [seed_emb, seed_emb, k + 1],
+                ).fetchall()
+                return [(pid, float(sim)) for pid, sim in rows if pid != paper_id][:k]
+
+            # Mutual-kNN: fetch the seed's top-(k+1) candidates, then for each
+            # candidate run a top-(k+1) reverse kNN against the candidate's
+            # embedding and keep only those that contain the seed. The CTE
+            # materialises the candidate set so the inner subquery's ORDER BY
+            # parameter (sn.nb_emb) is a fixed literal per row, allowing HNSW.
+            rows = cur.execute(
+                """
+                WITH seed_neighbors AS (
+                    SELECT paper_id AS nb_id,
+                           embedding_gemini_embedding_001 AS nb_emb,
+                           1 - (embedding_gemini_embedding_001 <=> %s::halfvec) AS sim
+                    FROM embedding
+                    WHERE embedding_gemini_embedding_001 IS NOT NULL
+                    ORDER BY embedding_gemini_embedding_001 <=> %s::halfvec
+                    LIMIT %s
+                )
+                SELECT sn.nb_id, sn.sim
+                FROM seed_neighbors sn
+                WHERE sn.nb_id != %s
+                  AND EXISTS (
+                      SELECT 1
+                      FROM (
+                          SELECT paper_id
+                          FROM embedding
+                          WHERE embedding_gemini_embedding_001 IS NOT NULL
+                          ORDER BY embedding_gemini_embedding_001 <=> sn.nb_emb
+                          LIMIT %s
+                      ) rev
+                      WHERE rev.paper_id = %s
+                  )
+                ORDER BY sn.sim DESC
+                LIMIT %s
+                """,
+                [seed_emb, seed_emb, k + 1, paper_id, k + 1, paper_id, k],
+            ).fetchall()
+            return [(pid, float(sim)) for pid, sim in rows]
+
+    def get_papers_by_ids(self, paper_ids: list[str]) -> list[tuple[Any, ...]]:
+        """Fetch full paper rows for the given ``paper_ids`` in one round-trip.
+
+        Returns rows in the same column order as ``paper.*`` followed by ``NULL``
+        as the trailing similarity slot, so callers can hand the result directly
+        to ``Paper.from_database_row``. The output order matches ``paper_ids``.
+        """
+        if not paper_ids:
+            return []
+        with self._get_con().cursor() as cur:
+            rows = cur.execute(
+                """
+                SELECT ps.*, NULL AS similarity
+                FROM paper AS ps
+                WHERE ps.paper_id = ANY(%s)
+                """,
+                [paper_ids],
+            ).fetchall()
+        # Preserve the order requested by the caller.
+        by_id = {r[2]: r for r in rows}  # paper_id is the 3rd column
+        return [by_id[pid] for pid in paper_ids if pid in by_id]
 
     def commit(self) -> None:
         if self.con is not None:
