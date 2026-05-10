@@ -1,0 +1,763 @@
+[
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.0",
+    "title": "Front Matter, Table of Contents, Preface, List of Authors",
+    "abstract": "Front Matter, Table of Contents, Preface, List of Authors",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.0",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Shriram",
+        "last_name": "Krishnamurthi",
+        "institution": "Brown University"
+      },
+      {
+        "first_name": "Benjamin S.",
+        "last_name": "Lerner",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/X16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.1",
+    "title": "Trace Typing: An Approach for Evaluating Retrofitted Type Systems",
+    "abstract": "Recent years have seen growing interest in the retrofitting of type systems onto dynamically-typed programming languages, in order to improve type safety, programmer productivity, or performance. In such cases, type system developers must strike a delicate balance between disallowing certain coding patterns to keep the type system simple, or including them at the expense of additional complexity and effort. Thus far, the process for designing retrofitted type systems has been largely ad hoc, because evaluating multiple variations of a type system on large bodies of existing code is a significant undertaking. We present trace typing: a framework for automatically and quantitatively evaluating variations of a retrofitted type system on large code bases. The trace typing approach involves gathering traces of program executions, inferring types for instances of variables and expressions occurring in a trace, and merging types according to merge strategies that reflect specific (combinations of) choices in the source-level type system design space. We evaluated trace typing through several experiments. We compared several variations of type systems retrofitted onto JavaScript, measuring the number of program locations with type errors in each case on a suite of over fifty thousand lines of JavaScript code. We also used trace typing to validate and guide the design of a new retrofitted type system that enforces fixed object layout for JavaScript objects. Finally, we leveraged the types computed by trace typing to automatically identify tag tests --- dynamic checks that refine a type --- and examined the variety of tests identified.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.1",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Esben",
+        "last_name": "Andreasen",
+        "institution": ""
+      },
+      {
+        "first_name": "Colin S.",
+        "last_name": "Gordon",
+        "institution": ""
+      },
+      {
+        "first_name": "Satish",
+        "last_name": "Chandra",
+        "institution": ""
+      },
+      {
+        "first_name": "Manu",
+        "last_name": "Sridharan",
+        "institution": ""
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": ""
+      },
+      {
+        "first_name": "Koushik",
+        "last_name": "Sen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/AndreasenGCSTS16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.10",
+    "title": "Formal Language Recognition with the Java Type Checker",
+    "abstract": "This paper is a theoretical study of a practical problem: the automatic generation of Java Fluent APIs from their specification. We explain why the problem's core lies with the expressive power of Java generics. Our main result is that automatic generation is possible whenever the specification is an instance of the set of deterministic context-free languages, a set which contains most \"practical\" languages. Other contributions include a collection of techniques and idioms of the limited meta-programming possible with Java generics, and an empirical measurement demonstrating that the runtime of the \"javac\" compiler of Java may be exponential in the program's length, even for programs composed of a handful of lines and which do not rely on overly complex use of generics.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.10",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Yossi",
+        "last_name": "Gil",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Tomer",
+        "last_name": "Levy",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/GilL16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.12",
+    "title": "Magic with Dynamo -- Flexible Cross-Component Linking for Java with Invokedynamic",
+    "abstract": "Modern software systems are not built from scratch. They use functionality provided by libraries. These libraries evolve and often upgrades are deployed without the systems being recompiled. In Java, this process is particularly error-prone due to the mismatch between source and binary compatibility, and the lack of API stability in many popular libraries. We propose a novel approach to mitigate this problem based on the use of invokedynamic instructions for cross-component method invocations. The dispatch mechanism of invokedynamic is used to provide on-the-fly signature adaptation. We show how this idea can be used to construct a Java compiler that produces more resilient bytecode. We present the dynamo compiler, a proof-of-concept implemented as a javac post compiler. We evaluate our approach using several benchmark examples and two case studies showing how the dynamo compiler can prevent certain types of linkage and stack overflow errors that have been observed in real-world systems.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.12",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Kamil",
+        "last_name": "Ježek",
+        "institution": "University of West Bohemia"
+      },
+      {
+        "first_name": "Jens",
+        "last_name": "Dietrich",
+        "institution": "Massey University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/JezekD16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.9",
+    "title": "LJGS: Gradual Security Types for Object-Oriented Languages",
+    "abstract": "LJGS is a lightweight Java core calculus with a gradual security type system. The calculus guarantees secure information flow for sequential, class-based, typed object-oriented programming with mutable objects and virtual method calls. An LJGS program is composed of fragments that are checked either statically or dynamically. Statically checked fragments adhere to a security type system so that they incur no run-time penalty whereas dynamically checked fragments rely on run-time security labels. The programmer marks the boundaries between static and dynamic checking with casts so that it is always clear whether a program fragment requires run-time checks. LJGS requires security annotations on fields and methods. A field annotation either specifies a fixed static security level or it prescribes dynamic checking. A method annotation specifies a constrained polymorphic security signature. The types of local variables in method bodies are analyzed flow-sensitively and require no annotation. The dynamic checking of fields relies on a static points-to analysis to approximate implicit flows. We prove type soundness and non-interference for LJGS.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.9",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Luminous",
+        "last_name": "Fennell",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Freiburg"
+      }
+    ],
+    "dblp_key": "conf/ecoop/FennellT16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.6",
+    "title": "A Calculus for Variational Programming",
+    "abstract": "Variation is ubiquitous in software. Many applications can benefit from making this variation explicit, then manipulating and computing with it directly---a technique we call \"variational programming\". This idea has been independently discovered in several application domains, such as efficiently analyzing and verifying software product lines, combining bounded and symbolic model-checking, and computing with alternative privacy profiles. Although these domains share similar core problems, and there are also many similarities in the solutions, there is no dedicated programming language support for variational programming. This makes the various implementations tedious, prone to errors, hard to maintain and reuse, and difficult to compare. In this paper we present a calculus that forms the basis of a programming language with explicit support for representing, manipulating, and computing with variation in programs and data. We illustrate how such a language can simplify the implementation of variational programming tasks. We present the syntax and semantics of the core calculus, a sound type system, and a type inference algorithm that produces principal types.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.6",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Sheng",
+        "last_name": "Chen",
+        "institution": "University of Louisiana at Lafayette"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Erwig",
+        "institution": "Oregon State University"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Walkingshaw",
+        "institution": "Oregon State University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/0008EW16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.3",
+    "title": "Fine-grained Language Composition: A Case Study",
+    "abstract": "Although run-time language composition is common, it normally takes the form of a crude Foreign Function Interface (FFI). While useful, such compositions tend to be coarse-grained and slow. In this paper we introduce a novel fine-grained syntactic composition of PHP and Python which allows users to embed each language inside the other, including referencing variables across languages. This composition raises novel design and implementation challenges. We show that good solutions can be found to the design challenges; and that the resulting implementation imposes an acceptable performance overhead of, at most, 2.6x.",
+    "date": "2015-03-30",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.3",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Edd",
+        "last_name": "Barrett",
+        "institution": ""
+      },
+      {
+        "first_name": "Carl Friedrich",
+        "last_name": "Bolz",
+        "institution": ""
+      },
+      {
+        "first_name": "Lukas",
+        "last_name": "Diekmann",
+        "institution": ""
+      },
+      {
+        "first_name": "Laurence",
+        "last_name": "Tratt",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/BarrettBDT16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.4",
+    "title": "Making an Embedded DBMS JIT-friendly",
+    "abstract": "While database management systems (DBMSs) are highly optimized,&#13;\\ninteractions across the boundary between the programming language (PL) and the DBMS are costly, even for in-process embedded DBMSs. In this paper, we show that programs that interact with the popular embedded DBMS SQLite can be significantly optimized -- by a factor of 3.4 in our benchmarks -- by inlining across the PL / DBMS boundary. We achieved this speed-up by replacing parts of SQLite's&#13;\\nC interpreter with RPython code and composing the resulting meta-tracing virtual machine (VM) -- called SQPyte -- with the PyPy VM. SQPyte does not compromise stand-alone SQL performance and is 2.2% faster than SQLite on the widely used TPC-H benchmark suite.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.4",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Carl Friedrich",
+        "last_name": "Bolz",
+        "institution": ""
+      },
+      {
+        "first_name": "Darya",
+        "last_name": "Kurilova",
+        "institution": ""
+      },
+      {
+        "first_name": "Laurence",
+        "last_name": "Tratt",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/BolzKT16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.11",
+    "title": "IceDust: Incremental and Eventual Computation of Derived Values in Persistent Object Graphs",
+    "abstract": "Derived values are values calculated from base values. They can be expressed in object-oriented languages by means of getters calculating the derived value, and in relational or logic databases by means of (materialized) views. However, switching to a different calculation strategy (for example caching) in object-oriented programming requires invasive code changes, and the databases limit expressiveness by disallowing recursive aggregation. In this paper, we present IceDust, a data modeling language for expressing derived attribute values without committing to a calculation strategy. IceDust provides three strategies for calculating derived values in persistent object graphs: Calculate-on-Read, Calculate-on-Write, and Calculate-Eventually. We have developed a path-based abstract interpretation that provides static dependency analysis to generate code for these strategies. Benchmarks show that different strategies perform better in different scenarios. In addition we have conducted a case study that suggests that derived value calculations of systems used in practice can be expressed in IceDust.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.11",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Daco C.",
+        "last_name": "Harkes",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Danny M.",
+        "last_name": "Groenewegen",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Eelco",
+        "last_name": "Visser",
+        "institution": "Delft University of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HarkesGV16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.5",
+    "title": "Reference Capabilities for Concurrency Control",
+    "abstract": "The proliferation of shared mutable state in object-oriented programming complicates software development as two seemingly unrelated operations may interact via an alias and produce unexpected results. In concurrent programming this manifests itself as data-races. Concurrent object-oriented programming further suffers from the fact that code that warrants synchronisation cannot easily be distinguished from code that does not. The burden is placed solely on the programmer to reason about alias freedom, sharing across threads and side-effects to deduce where and when to apply concurrency control, without inadvertently blocking parallelism. This paper presents a reference capability approach to concurrent and parallel object-oriented programming where all uses of aliases are guaranteed to be data-race free. The static type of an alias describes its possible sharing without using explicit ownership or effect annotations. Type information can express non-interfering deterministic parallelism without dynamic concurrency control, thread-locality, lock-based schemes, and guarded-by relations giving multi-object atomicity to nested data structures. Unification of capabilities and traits allows trait-based reuse across multiple concurrency scenarios with minimal code duplication. The resulting system brings together features from a wide range of prior work in a unified way.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.5",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Elias",
+        "last_name": "Castegren",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Wrigstad",
+        "institution": "Uppsala University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/CastegrenW16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.13",
+    "title": "Object Inheritance Without Classes",
+    "abstract": "Which comes first: the object or the class? Language designers enjoy the conceptual simplicity of object-based languages (such as Emerald or Self) while many programmers prefer the pragmatic utility of classical inheritance (as in Simula and Java). Programmers in object-based languages have a tendency to build libraries to support traditional inheritance, and language implementations are often contorted to the same end. In this paper, we revisit the relationship between classes and objects. We model various kinds of inheritance in the context of an object-oriented language whose objects are not defined by classes, and explain why class inheritance and initialisation cannot be easily modelled purely by delegation.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.13",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Timothy M.",
+        "last_name": "Jones",
+        "institution": "Victoria University of Wellington"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Homer",
+        "institution": "Victoria University of Wellington"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Noble",
+        "institution": "Victoria University of Wellington"
+      },
+      {
+        "first_name": "Kim B.",
+        "last_name": "Bruce",
+        "institution": "Pomona College"
+      }
+    ],
+    "dblp_key": "conf/ecoop/0002HNB16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.2",
+    "title": "QL: Object-oriented Queries on Relational Data",
+    "abstract": "This paper describes QL, a language for querying complex, potentially recursive data structures. QL compiles to Datalog and runs on a standard relational database, yet it provides familiar-looking object-oriented features such as classes and methods, reinterpreted in logical terms: classes are logical properties describing sets of values, subclassing is implication, and virtual calls are dispatched dynamically by considering the most specific classes containing the receiver. Furthermore, types in QL are prescriptive and actively influence program evaluation rather than just describing it. In combination, these features enable the development of concise queries based on reusable libraries, which are written in a purely declarative style, yet can be efficiently executed even on very large data sets. In particular, we have used QL to implement static analyses for various programming languages, which scale to millions of lines of code.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.2",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Pavel",
+        "last_name": "Avgustinov",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Oege de",
+        "last_name": "Moor",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Michael Peyton",
+        "last_name": "Jones",
+        "institution": ""
+      },
+      {
+        "first_name": "Max",
+        "last_name": "Schäfer",
+        "institution": "Nanyang Technological University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/AvgustinovMJS16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.7",
+    "title": "Interprocedural Type Specialization of JavaScript Programs Without Type Analysis",
+    "abstract": "Previous work proposed lazy basic block versioning, a technique for just-in-time compilation of dynamic languages which we believe represents an interesting point in the design space. Basic block versioning is simple to implement, simple enough that a single developer can build a complete just-in-time compiler for JavaScript in a year, yet it performs surprisingly well as it propagates&#13;\\ncontext-sensitive type information to generate type-specialized code on the fly.&#13;\\n&#13;\\nIn this paper, we demonstrate that lazy basic block versioning&#13;\\ncan be extended is simple ways to propagate type information across function call boundaries. This gives some of the benefits of whole-program analysis, or a tracing compiler, without having to implement the machinery for either. We have implemented this proposal in the Higgs JavaScript virtual machine and report on the empirical evaluation of this system on a set of industry standard benchmarks. The approach eliminates 94.3 of dynamic type tests on average,&#13;\\nwhich we show is more than what is achievable with any static whole-program type analysis.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.7",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Maxime",
+        "last_name": "Chevalier-Boisvert",
+        "institution": "Université de Montréal"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Feeley",
+        "institution": "Université de Montréal"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Chevalier-Boisvert16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.14",
+    "title": "One Way to Select Many",
+    "abstract": "Selecting items from a collection is one of the most common tasks users perform with graphical user interfaces. Practically every application supports this task with a selection feature different from that of any other application. Defects are common, especially in manipulating selections of non-adjacent elements, and flexible selection features are often missing when they would clearly be useful. As a consequence, user effort is wasted. The loss of productivity is experienced in small doses, but all computer users are impacted. The undesirable state of support for multi-element selection prevails because the same selection features are redesigned and reimplemented repeatedly. This article seeks to establish common abstractions for multi-selection. It gives generic but precise meanings to selection operations and makes multi-selection reusable; a JavaScript implementation is described. Application vendors benefit because of reduced development effort. Users benefit because correct and consistent multi-selection becomes available in more contexts.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.14",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jaakko",
+        "last_name": "Järvi",
+        "institution": "Texas A&M University"
+      },
+      {
+        "first_name": "Sean",
+        "last_name": "Parent",
+        "institution": "Adobe Systems (United States)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/JarviP16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.8",
+    "title": "C++ const and Immutability: An Empirical Study of Writes-Through-const",
+    "abstract": "The ability to specify immutability in a programming language is a powerful tool for developers, enabling them to better understand and more safely transform their code without fearing unintended changes to program state. The C++ programming language allows developers to specify a form of immutability using the const keyword. In this work, we characterize the meaning of the C++ const qualifier and present the ConstSanitizer tool, which dynamically verifies a stricter form of immutability than that defined in C++: it identifies const uses that are either not consistent with transitive immutability, that write to mutable fields, or that write to formerly-const objects whose const-ness has been cast away. We evaluate a set of 7 C++ benchmark programs to find writes-through-const, establish root causes for how they fail to respect our stricter definition of immutability, and assign attributes to each write (namely: synchronized, not visible, buffer/cache, delayed initialization, and incorrect). ConstSanitizer finds 17 archetypes for writes in these programs which do not respect our version of immutability. Over half of these seem unnecessary to us. Our classification and observations of behaviour in practice contribute to the understanding of a widely-used C++ language feature.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.8",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jon",
+        "last_name": "Eyolfson",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Lam",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/ecoop/EyolfsonL16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.15",
+    "title": "Program Tailoring: Slicing by Sequential Criteria",
+    "abstract": "Protocol and typestate analyses often report some sequences of statements ending at a program point P that needs to be scrutinized, since P may be erroneous or imprecisely analyzed. Program slicing focuses only on the behavior at P by computing a slice of the program affecting the values at P. In this paper, we propose to restrict our attention to the subset of that behavior at P affected by one or several statement sequences, called a sequential criterion (SC). By leveraging the ordering information in a SC, e.g., the temporal order in a few valid/invalid API method invocation sequences, we introduce a new technique, program tailoring, to compute a tailored program that comprises the statements in all possible execution paths passing through at least one sequence in SC in the given order. With a prototyping implementation, Tailor, we show why tailoring is practically useful by conducting two case studies on seven large real-world Java applications. For program debugging and understanding, Tailor can complement program slicing by removing SC-irrelevant statements. For program analysis, Tailor can enable a pointer analysis, which is unscalable to a program, to perform a more focused and therefore potentially scalable analysis to its specific parts containing hard language features such as reflection.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.15",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Yue",
+        "last_name": "Li",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Tian",
+        "last_name": "Tan",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Yifei",
+        "last_name": "Zhang",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Jingling",
+        "last_name": "Xue",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LiTZX16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.16",
+    "title": "Composing Interfering Abstract Protocols",
+    "abstract": "The undisciplined use of shared mutable state can be a source of program errors when aliases unsafely interfere with each other. While protocol-based techniques to reason about interference abound, they do not address two practical concerns: the decidability of protocol composition and its integration with protocol abstraction. We show that our composition procedure is decidable and that it ensures safe interference even when composing abstract protocols. To evaluate the expressiveness of our protocol framework for safe shared memory interference, we show how this same protocol framework can be used to model safe, typeful message-passing concurrency idioms.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.16",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Filipe",
+        "last_name": "Militão",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Aldrich",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Luı́s",
+        "last_name": "Caires",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/MilitaoAC16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.17",
+    "title": "The Elements of Decision Alignment",
+    "abstract": "When one object makes a request of another, why do we expect that the second object's behavior correctly satisfies the first object's wishes? The need to cope with such principal-agent problems shapes programming practice as much as it shapes human organizations and economies. However, the literature about such plan coordination issues among humans is almost disjoint from the literature about these issues among objects. Even the terms used are unrelated. These fields have much to learn from each other---both from their similarities and from the causes of their differences. We propose a framework for thinking about decision alignment as a bridge between these disciplines.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.17",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Mark S.",
+        "last_name": "Miller",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Bill",
+        "last_name": "Tulloh",
+        "institution": "Google (United States)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MillerT16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.18",
+    "title": "A Calculus with Partially Dynamic Records for Typeful Manipulation of JSON Objects",
+    "abstract": "This paper investigates language constructs for high-level and type-safe manipulation of JSON objects in a typed functional language. A major obstacle in representing JSON in a static type system is their heterogeneous nature: in most practical JSON APIs, a JSON array is a heterogeneous list consisting of, for example, objects having common fields and possibly some optional fields. This paper presents a typed calculus that reconciles static typing constraints and heterogeneous JSON arrays based on the idea of partially dynamic records originally proposed and sketched by Buneman and Ohori for complex database object manipulation. Partially dynamic records are dynamically typed records, but some parts of their structures are statically known. This feature enables us to represent JSON objects as typed data structures. The proposed calculus smoothly extends with ML-style pattern matching and record polymorphism. These results yield a typed functional language where the programmer can directly import JSON data as terms having static types, and can manipulate them with the full benefits of static polymorphic type-checking. The proposed calculus has been embodied in SML#, an extension of Standard ML with record polymorphism and other practically useful features. This paper also reports on the details of the implementation and demonstrates its feasibility through examples using actual Web APIs. The SML# version 3.1.0 compiler includes JSON support presented in this paper, and is available from Tohoku University as open-source software under a BSD-style license.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.18",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Atsushi",
+        "last_name": "Ohori",
+        "institution": ""
+      },
+      {
+        "first_name": "Katsuhiro",
+        "last_name": "Ueno",
+        "institution": ""
+      },
+      {
+        "first_name": "Tomohiro",
+        "last_name": "Sasaki",
+        "institution": ""
+      },
+      {
+        "first_name": "Daisuke",
+        "last_name": "Kikuchi",
+        "institution": "Hitachi (Japan)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/OhoriUSK16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.20",
+    "title": "Scopes Describe Frames: A Uniform Model for Memory Layout in Dynamic Semantics",
+    "abstract": "Designing, developing and maintaining concurrent applications is an error-prone and time-consuming task; most difficulties arise because compilers are usually unable to check whether the inputs/outputs performed by a program at runtime will adhere to a given protocol specification. To address this problem, we propose lightweight session programming in Scala: we leverage the native features of the Scala type system and standard library, to introduce (1) a representation of session types as Scala types, and (2) a library, called lchannels, with a convenient API for session-based programming, supporting local and distributed communication. We generalise the idea of Continuation-Passing Style Protocols (CPSPs), studying their formal relationship with session types. We illustrate how session programming can be carried over in Scala: how to formalise a communication protocol, and represent it using Scala classes and lchannels, letting the compiler help spotting protocol violations. We attest the practicality of our approach with a complex use case, and evaluate the performance of lchannels with a series of benchmarks.",
+    "date": "2015-10-18",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.20",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Scalas,",
+        "last_name": "Alceste",
+        "institution": ""
+      },
+      {
+        "first_name": "Yoshida,",
+        "last_name": "Nobuko",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/PoulsenNTV16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.23",
+    "title": "Transactional Tasks: Parallelism in Software Transactions",
+    "abstract": "Many programming languages, such as Clojure, Scala, and Haskell, support different concurrency models. In practice these models are often combined, however the semantics of the combinations are not always well-defined. In this paper, we study the combination of futures and Software Transactional Memory. Currently, futures created within a transaction cannot access the transactional state safely, violating the serializability of the transactions and leading to undesired behavior. We define transactional tasks: a construct that allows futures to be created in transactions. Transactional tasks allow the parallelism in a transaction to be exploited, while providing safe access to the state of their encapsulating transaction. We show that transactional tasks have several useful properties: they are coordinated, they maintain serializability, and they do not introduce non-determinism. As such, transactional tasks combine futures and Software Transactional Memory, allowing the potential parallelism of a program to be fully exploited, while preserving the properties of the separate models where possible.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.23",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Janwillem",
+        "last_name": "Swalens",
+        "institution": ""
+      },
+      {
+        "first_name": "Joeri De",
+        "last_name": "Koster",
+        "institution": ""
+      },
+      {
+        "first_name": "Wolfgang De",
+        "last_name": "Meuter",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/SwalensKM16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.26",
+    "title": "Towards Ontology-Based Program Analysis",
+    "abstract": "Program analysis is fundamental for program optimizations, debugging, and many other tasks. But developing program analyses has been a challenging and error-prone process for general users. Declarative program analysis has shown the promise to dramatically improve the productivity in the development of program analyses. Current declarative program analysis is however subject to some major limitations in supporting cooperations among analysis tools, guiding program optimizations, and often requires much effort for repeated program preprocessing. In this work, we advocate the integration of ontology into declarative program analysis. As a way to standardize the definitions of concepts in a domain and the representation of the knowledge in the domain, ontology offers a promising way to address the limitations of current declarative program analysis. We develop a prototype framework named PATO for conducting program analysis upon ontology-based program representation. Experiments on six program analyses confirm the potential of ontology for complementing existing declarative program analysis. It supports multiple analyses without separate program preprocessing, promotes cooperative Liveness analysis between two compilers, and effectively guides a data placement optimization for Graphic Processing Units (GPU).",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.26",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Yue",
+        "last_name": "Zhao",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Guoyang",
+        "last_name": "Chen",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Chunhua",
+        "last_name": "Liao",
+        "institution": "Lawrence Livermore National Laboratory"
+      },
+      {
+        "first_name": "Xipeng",
+        "last_name": "Shen",
+        "institution": "North Carolina State University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ZhaoCLS16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.19",
+    "title": "Higher-Order Demand-Driven Program Analysis",
+    "abstract": "We explore a novel approach to higher-order program analysis that brings ideas of on-demand lookup from first-order CFL-reachability program analyses to higher-order programs. The analysis needs to produce only a control-flow graph; it can derive all other information including values of variables directly from the graph. Several challenges had to be overcome, including how to build the control-flow graph on-the-fly and how to deal with non-local variables in functions. The resulting analysis is flow- and context-sensitive with a provable polynomial-time bound. The analysis is formalized and proved correct and terminating, and an initial implementation is described.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.19",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Zachary",
+        "last_name": "Palmer",
+        "institution": "Johns Hopkins University"
+      },
+      {
+        "first_name": "Scott F.",
+        "last_name": "Smith",
+        "institution": "Johns Hopkins University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/PalmerS16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.22",
+    "title": "Boomerang: Demand-Driven Flow- and Context-Sensitive Pointer Analysis for Java",
+    "abstract": "Many current program analyses require highly precise pointer information about small, tar- geted parts of a given program. This motivates the need for demand-driven pointer analyses that compute information only where required. Pointer analyses generally compute points-to sets of program variables or answer boolean alias queries. However, many client analyses require richer pointer information. For example, taint and typestate analyses often need to know the set of all aliases of a given variable under a certain calling context. With most current pointer analyses, clients must compute such information through repeated points-to or alias queries, increasing complexity and computation time for them. This paper presents Boomerang, a demand-driven, flow-, field-, and context-sensitive pointer analysis for Java programs. Boomerang computes rich results that include both the possible allocation sites of a given pointer (points-to information) and all pointers that can point to those allocation sites (alias information). For increased precision and scalability, clients can query Boomerang with respect to particular calling contexts of interest. Our experiments show that Boomerang is more precise than existing demand-driven pointer analyses. Additionally, using Boomerang, the taint analysis FlowDroid issues up to 29.4x fewer pointer queries compared to using other pointer analyses that return simpler pointer infor- mation. Furthermore, the search space of Boomerang can be significantly reduced by requesting calling contexts from the client analysis.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.22",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Johannes",
+        "last_name": "Späth",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Lisa Nguyen",
+        "last_name": "Quang",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Karim",
+        "last_name": "Ali",
+        "institution": "University of Alberta"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Bodden",
+        "institution": "Paderborn University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SpathDAB16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.25",
+    "title": "Transforming Programs between APIs with Many-to-Many Mappings",
+    "abstract": "Transforming programs between two APIs or different versions of the same API is a common software engineering task. However, existing languages supporting for such transformation cannot satisfactorily handle the cases when the relations between elements in the old API and the new API are many-to-many mappings: multiple invocations to the old API are supposed to be replaced by multiple invocations to the new API. Since the multiple invocations of the original APIs may not appear consecutively and the variables in these calls may have different names, writing a tool correctly to cover all such invocation cases is not an easy task. In this paper we propose a novel guided-normalization approach to address this problem. Our core insight is that programs in different forms can be semantics-equivalently normalized into a basic form guided by transformation goals, and developers only need to write rules for the basic form to address the transformation. Based on this approach, we design a declarative program transformation language, PATL, for adapting Java programs between different APIs. PATL has simple syntax and basic semantics to handle transformations only considering consecutive statements inside basic blocks, while with guided-normalization, it can be extended to handle complex forms of invocations. Furthermore, PATL ensures that the user-written rules would not accidentally break def-use relations in the program. We formalize the semantics of PATL on Middleweight Java and prove the semantics-preserving property of guided-normalization. We also evaluated our language with three non-trivial case studies: i.e. updating Google Calendar API, switching from JDom to Dom4j, and switching from Swing to SWT. The result is encouraging; it shows that our language allows successful transformations of real world programs with a small number of rules and little manual resolution.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.25",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Chenglong",
+        "last_name": "Wang",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Jiajun",
+        "last_name": "Jiang",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Jun",
+        "last_name": "Li",
+        "institution": "China University of Mining and Technology"
+      },
+      {
+        "first_name": "Yingfei",
+        "last_name": "Xiong",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Xiangyu",
+        "last_name": "Luo",
+        "institution": ""
+      },
+      {
+        "first_name": "Lu",
+        "last_name": "Zhang",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Zhenjiang",
+        "last_name": "Hu",
+        "institution": "The Graduate University for Advanced Studies, SOKENDAI"
+      }
+    ],
+    "dblp_key": "conf/ecoop/WangJLXLZH16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.21",
+    "title": "Lightweight Session Programming in Scala",
+    "abstract": "Designing, developing and maintaining concurrent applications is an&#13;\\nerror-prone and time-consuming task; most difficulties arise because&#13;\\ncompilers are usually unable to check whether the inputs/outputs&#13;\\nperformed by a program at runtime will adhere to a given protocol&#13;\\nspecification. To address this problem, we propose lightweight session programming in Scala: we leverage the native features of the Scala&#13;\\ntype system and standard library, to introduce (1) a representation of session types as Scala types, and (2) a library, called lchannels, with a convenient API for session-based programming, supporting local and distributed communication. We generalise the idea of Continuation-Passing Style Protocols (CPSPs), studying their formal relationship with session types. We illustrate how session programming can be carried over in Scala: how to formalise a communication protocol, and represent it using Scala classes and lchannels, letting the compiler help spotting protocol violations. We attest the practicality of our approach with a complex use case, and evaluate the performance of lchannels with a series of benchmarks.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.21",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Alceste",
+        "last_name": "Scalas",
+        "institution": "University of Cagliari"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ScalasY16",
+    "venue": "ecoop",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2016.24",
+    "title": "Staccato: A Bug Finder for Dynamic Configuration Updates",
+    "abstract": "Modern software applications are highly configurable, allowing configuration options to be changed even during program execution. When dynamic configuration updating is implemented incorrectly, program errors can result. These program errors occur primarily when stale data—computed from old configurations—or inconsistent data—computed from different configurations—are used. We introduce Staccato, the first tool designed to detect these errors. Staccato uses a dynamic analysis in the style of taint analysis to find the use of stale configuration data in Java programs. It supports concurrent programs running on commodity JVMs. In some cases, Staccato can provide automatic bug avoidance and semi-automatic repair when errors occur. We evaluated Staccato on 3 open-source applications that support complex reconfigurability. Staccato found multiple errors in all of them. Staccato requires only modest annotation overhead and has moderate performance overhead.",
+    "date": "2016-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2016.24",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Toman",
+        "institution": "Seattle University"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "Seattle University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/TomanG16",
+    "venue": "ecoop",
+    "year": 2016
+  }
+]

@@ -1,0 +1,1046 @@
+[
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.7",
+    "title": "Functional Programming with Datalog",
+    "abstract": "Datalog is a carefully restricted logic programming language. What makes Datalog attractive is its declarative fixpoint semantics: Datalog queries consist of simple Horn clauses, yet Datalog solvers efficiently compute all derivable tuples even for recursive queries. However, as we argue in this paper, Datalog is ill-suited as a programming language and Datalog programs are hard to write and maintain. We propose a \"new\" frontend for Datalog: functional programming with sets called functional IncA. While programmers write recursive functions over algebraic data types and sets, we transparently translate all code to Datalog relations. However, we retain Datalog’s strengths: Functions that generate sets can encode arbitrary relations and mutually recursive functions have fixpoint semantics. We also ensure that the generated Datalog program terminates whenever the original functional program terminates, so that we can apply off-the-shelve bottom-up Datalog solvers. We demonstrate the versatility and ease of use of functional IncA by implementing a type checker, a program transformation, an interpreter of the untyped lambda calculus, two data-flow analyses, and clone detection of Java bytecode.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.7",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Pacak,",
+        "last_name": "André",
+        "institution": ""
+      },
+      {
+        "first_name": "Erdweg,",
+        "last_name": "Sebastian",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/PacakE22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.0",
+    "title": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "abstract": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.0",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Ali,",
+        "last_name": "Karim",
+        "institution": "University of Alberta"
+      },
+      {
+        "first_name": "Vitek,",
+        "last_name": "Jan",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/X22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.1",
+    "title": "Verified Compilation and Optimization of Floating-Point Programs in CakeML",
+    "abstract": "Verified compilers such as CompCert and CakeML have become increasingly realistic over the last few years, but their support for floating-point arithmetic has thus far been limited. In particular, they lack the \"fast-math-style\" optimizations that unverified mainstream compilers perform. Supporting such optimizations in the setting of verified compilers is challenging because these optimizations, for the most part, do not preserve the IEEE-754 floating-point semantics. However, IEEE-754 floating-point numbers are finite approximations of the real numbers, and we argue that any compiler correctness result for fast-math optimizations should appeal to a real-valued semantics rather than the rigid IEEE-754 floating-point numbers. This paper presents RealCake, an extension of CakeML that achieves end-to-end correctness results for fast-math-style optimized compilation of floating-point arithmetic. This result is achieved by giving CakeML a flexible floating-point semantics and integrating an external proof-producing accuracy analysis. RealCake’s end-to-end theorems relate the I/O behavior of the original source program under real-number semantics to the observable I/O behavior of the compiler generated and fast-math-optimized machine code.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.1",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Becker,",
+        "last_name": "Heiko",
+        "institution": "Max Planck Institute for Informatics"
+      },
+      {
+        "first_name": "Rabe,",
+        "last_name": "Robert",
+        "institution": ""
+      },
+      {
+        "first_name": "Darulova,",
+        "last_name": "Eva",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Myreen, Magnus",
+        "last_name": "O.",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Tatlock,",
+        "last_name": "Zachary",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Kumar,",
+        "last_name": "Ramana",
+        "institution": "Google DeepMind (United Kingdom)"
+      },
+      {
+        "first_name": "Tan, Yong",
+        "last_name": "Kiam",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Fox,",
+        "last_name": "Anthony",
+        "institution": "ARM (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BeckerRDMTKTF22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.9",
+    "title": "A Deterministic Memory Allocator for Dynamic Symbolic Execution",
+    "abstract": "Dynamic symbolic execution (DSE) has established itself as an effective testing and analysis technique. While the memory model in DSE has attracted significant attention, the memory allocator has been largely ignored, despite its significant influence on DSE. In this paper, we discuss the different ways in which the memory allocator can influence DSE and the main design principles that a memory allocator for DSE needs to follow: support for external calls, cross-run and cross-path determinism, spatially and temporally distanced allocations, and stability. We then present KDAlloc, a deterministic allocator for DSE that is guided by these six design principles. We implement KDAlloc in KLEE, a popular DSE engine, and first show that it is competitive with KLEE’s default allocator in terms of performance and memory overhead, and in fact significantly improves performance in several cases. We then highlight its benefits for use-after-free error detection and two distinct DSE-based techniques: MoKlee, a system for saving DSE runs to disk and later (partially) restoring them, and SymLive, a system for finding infinite-loop bugs.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.9",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Schemmel,",
+        "last_name": "Daniel",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Büning,",
+        "last_name": "Julian",
+        "institution": "RWTH Aachen University"
+      },
+      {
+        "first_name": "Busse,",
+        "last_name": "Frank",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nowack,",
+        "last_name": "Martin",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Cadar,",
+        "last_name": "Cristian",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SchemmelBBNC22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.12",
+    "title": "",
+    "abstract": "We present two methods for defining corecursive functions that go beyond what is accepted by the builtin corecursion mechanisms of the Coq proof assistant. This gain in expressiveness is obtained by using a combination of axioms from Coq’s standard library that, to our best knowledge, do not introduce inconsistencies but enable reasoning in standard mathematics. Both methods view corecursive functions as limits of sequences of approximations, and both are based on a property of productiveness that, intuitively, requires that for each input, an arbitrarily close approximation of the corresponding output is eventually obtained. The first method uses Coq’s builtin corecursive mechanisms in a non-standard way, while the second method uses none of the mechanisms but redefines them. Both methods are implemented in Coq and are illustrated with examples.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.12",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Vlad",
+        "last_name": "Rusu",
+        "institution": "Centre Inria de l'Université de Lille"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Nowak",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/ecoop/RusuN22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.11",
+    "title": "Concolic Execution for WebAssembly",
+    "abstract": "WebAssembly (Wasm) is a new binary instruction format that allows targeted compiled code written in high-level languages to be executed by the browser’s JavaScript engine with near-native speed. Despite its clear performance advantages, Wasm opens up the opportunity for bugs or security vulnerabilities to be introduced into Web programs, as pre-existing issues in programs written in unsafe languages can be transferred down to cross-compiled binaries. The source code of such binaries is frequently unavailable for static analysis, creating the demand for tools that can directly tackle Wasm code. Despite this potentially security-critical situation, there is still a noticeable lack of tool support for analysing Wasm binaries. We present WASP, a symbolic execution engine for testing Wasm modules, which works directly on Wasm code and was built on top of a standard-compliant Wasm reference implementation. WASP was thoroughly evaluated: it was used to symbolically test a generic data-structure library for C and the Amazon Encryption SDK for C, demonstrating that it can find bugs and generate high-coverage testing inputs for real-world C applications; and was further tested against the Test-Comp benchmark, obtaining results comparable to well-established symbolic execution and testing tools for C.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.11",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Marques,",
+        "last_name": "Filipe",
+        "institution": "Instituto de Engenharia de Sistemas e Computadores Investigação e Desenvolvimento"
+      },
+      {
+        "first_name": "Fragoso Santos,",
+        "last_name": "José",
+        "institution": "Instituto de Engenharia de Sistemas e Computadores Investigação e Desenvolvimento"
+      },
+      {
+        "first_name": "Santos,",
+        "last_name": "Nuno",
+        "institution": "Instituto de Engenharia de Sistemas e Computadores Investigação e Desenvolvimento"
+      },
+      {
+        "first_name": "Adão,",
+        "last_name": "Pedro",
+        "institution": "University of Lisbon"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MarquesS0A22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.13",
+    "title": "REST: Integrating Term Rewriting with Program Verification",
+    "abstract": "We introduce REST, a novel term rewriting technique for theorem proving that uses online termination checking and can be integrated with existing program verifiers. REST enables flexible but terminating term rewriting for theorem proving by: (1) exploiting newly-introduced term orderings that are more permissive than standard rewrite simplification orderings; (2) dynamically and iteratively selecting orderings based on the path of rewrites taken so far; and (3) integrating external oracles that allow steps that cannot be justified with rewrite rules. Our REST approach is designed around an easily implementable core algorithm, parameterizable by choices of term orderings and their implementations; in this way our approach can be easily integrated into existing tools. We implemented REST as a Haskell library and incorporated it into Liquid Haskell's evaluation strategy, extending Liquid Haskell with rewriting rules. We evaluated our REST implementation by comparing it against both existing rewriting techniques and E-matching and by showing that it can be used to supplant manual lemma application in many existing Liquid Haskell proofs.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.13",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Zachary",
+        "last_name": "Grannan",
+        "institution": ""
+      },
+      {
+        "first_name": "Niki",
+        "last_name": "Vazou",
+        "institution": ""
+      },
+      {
+        "first_name": "Eva",
+        "last_name": "Darulová",
+        "institution": ""
+      },
+      {
+        "first_name": "Alexander J.",
+        "last_name": "Summers",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/GrannanVDS22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.2",
+    "title": "Elementary Type Inference",
+    "abstract": "Languages with polymorphic type systems are made convenient to use by employing type inference to avoid redundant type information. Unfortunately, features such as impredicative types and subtyping make complete type inference very challenging or impossible to realize. This paper presents a form of partial type inference called elementary type inference. Elementary type inference adopts the idea of inferring only monotypes from past work on predicative higher-ranked polymorphism. This idea is extended with the addition of explicit type applications that work for any polytypes. Thus easy (predicative) instantiations can be inferred, while all other (impredicative) instantiations are always possible with explicit type applications without any compromise in expressiveness. Our target is a System F extension with top and bottom types, similar to the language employed by Pierce and Turner in their seminal work on local type inference. We show a sound, complete and decidable type system for a calculus called F_{< :}^e, that targets that extension of System F. A key design choice in F_{< :}^e is to consider top and bottom types as polytypes only. An important technical challenge is that the combination of predicative implicit instantiation and impredicative explicit type applications, in the presence of standard subtyping rules, is non-trivial. Without some restrictions, key properties, such as subsumption and stability of type substitution lemmas, break. To address this problem we introduce a variant of polymorphic subtyping called stable subtyping with some mild restrictions on implicit instantiation. All the results are mechanically formalized in the Abella theorem prover.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.2",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Zhao,",
+        "last_name": "Jinxu",
+        "institution": "Chinese University of Hong Kong"
+      },
+      {
+        "first_name": "Oliveira, Bruno C. d.",
+        "last_name": "S.",
+        "institution": "Chinese University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ZhaoO22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.14",
+    "title": "Static Analysis for AWS Best Practices in Python Code",
+    "abstract": "Amazon Web Services (AWS) is a comprehensive and broadly adopted cloud provider. AWS SDKs provide access to AWS services through API endpoints. However, incorrect use of these APIs can lead to code defects, crashes, performance issues, and other problems. AWS best practices are a set of guidelines for correct and secure use of these APIs to access cloud services, allowing conformant clients to fully reap the benefits of cloud computing. We present static analyses, developed in the context of a commercial service for detection of code defects and security vulnerabilities, to identify deviations from AWS best practices. We focus on applications that use the AWS SDK for Python, called Boto3. Precise static analysis of Python cloud applications requires robust type inference for inferring the types of cloud service clients. However, Boto3’s \"Pythonic\" APIs pose unique challenges for type resolution, as does the interprocedural style in which service clients are used. We offer a layered approach that combines multiple type-resolution and tracking strategies in a staged manner: (i) general-purpose type inference augmented by type annotations, (ii) interprocedural dataflow analysis expressed in a domain-specific language, and (iii) name-based resolution as a low-confidence fallback. Across >3,000 popular Python GitHub repos that make use of the AWS SDK, our layered type inference system achieves 85% precision and 100% recall in inferring Boto3 clients in Python client code. Additionally, we use real-world developer feedback to assess a representative sample of eight AWS best-practice rules. These rules detect a wide range of issues including pagination, polling, and batch operations. Developers have accepted more than 85% of the recommendations made by five out of eight Python rules, and almost 83% of all recommendations.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.14",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Mukherjee,",
+        "last_name": "Rajdeep",
+        "institution": ""
+      },
+      {
+        "first_name": "Omer",
+        "last_name": "Tripp",
+        "institution": ""
+      },
+      {
+        "first_name": "Ben",
+        "last_name": "Liblit",
+        "institution": ""
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Wilson",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/MukherjeeTLW22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.8",
+    "title": "Design-By-Contract for Flexible Multiparty Session Protocols",
+    "abstract": "Choreographic models support a correctness-by-construction principle in distributed programming. Also, they enable the automatic generation of correct message-based communication patterns from a global specification of the desired system behaviour. In this paper we extend the theory of choreography automata, a choreographic model based on finite-state automata, with two key features. First, we allow participants to act only in some of the scenarios described by the choreography automaton. While this seems natural, many choreographic approaches in the literature, and choreography automata in particular, forbid this behaviour. Second, we equip communications with assertions constraining the values that can be communicated, enabling a design-by-contract approach. We provide a toolchain allowing to exploit the theory above to generate APIs for TypeScript web programming. Programs communicating via the generated APIs follow, by construction, the prescribed communication pattern and are free from communication errors such as deadlocks.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.8",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Lorenzo",
+        "last_name": "Gheri",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Ivan",
+        "last_name": "Lanese",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Neil",
+        "last_name": "Sayers",
+        "institution": "Clinical Research Solutions"
+      },
+      {
+        "first_name": "Emilio",
+        "last_name": "Tuosto",
+        "institution": "Gran Sasso Science Institute"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/GheriLSTY22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.15",
+    "title": "What If We Don't Pop the Stack? The Return of 2nd-Class Values",
+    "abstract": "Type systems usually characterize the shape of values but not their free variables. However, there are many desirable safety properties one could guarantee if one could track how references can escape. For example, one may implement algebraic effect handlers using capabilities -- a value which permits one to perform the effect -- safely if one can guarantee that the capability itself does not escape the scope bound by the effect handler. To this end, we study the $\\textrm{CF}_{",
+    "date": "2021-05-25",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.15",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Aleksander",
+        "last_name": "Boruch-Gruszecki",
+        "institution": ""
+      },
+      {
+        "first_name": "Jonathan Immanuel",
+        "last_name": "Brachthäuser",
+        "institution": ""
+      },
+      {
+        "first_name": "Edward",
+        "last_name": "Lee",
+        "institution": ""
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": ""
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Odersky",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/XhebrajB0R22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.5",
+    "title": "How to Take the Inverse of a Type",
+    "abstract": "Context-free session types provide a typing discipline for recursive structured communication protocols on bidirectional channels. They overcome the restriction of regular session type systems to tail recursive protocols. This extension enables us to implement serialisation and deserialisation of tree structures in a fully type-safe manner. We present the theory underlying the language FreeST 2, which features context-free session types in an extension of System F with linear types and a kind system to distinguish message types and channel types. The system presents some metatheoretical challenges, which we address, contractivity in the presence of polymorphism, a non-trivial equational theory on types, and decidability of type equivalence. We also establish standard results on type preservation, progress, and a characterisation of erroneous processes.",
+    "date": "2021-06-12",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.5",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Bernardo",
+        "last_name": "Almeida",
+        "institution": ""
+      },
+      {
+        "first_name": "Mordido,",
+        "last_name": "Andreia",
+        "institution": ""
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": ""
+      },
+      {
+        "first_name": "Vasco T.",
+        "last_name": "Vasconcelos",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/MarshallO22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.4",
+    "title": "Stay Safe Under Panic: Affine Rust Programming with Multiparty Session Types",
+    "abstract": "Communicating systems comprise diverse software components across networks. To ensure their robustness, modern programming languages such as Rust provide both strongly typed channels, whose usage is guaranteed to be affine (at most once), and cancellation operations over binary channels. For coordinating components to correctly communicate and synchronise with each other, we use the structuring mechanism from multiparty session types, extending it with affine communication channels and implicit/explicit cancellation mechanisms. This new typing discipline, affine multiparty session types (AMPST), ensures cancellation termination of multiple, independently running components and guarantees that communication will not get stuck due to error or abrupt termination. Guided by AMPST, we implemented an automated generation tool (MultiCrusty) of Rust APIs associated with cancellation termination algorithms, by which the Rust compiler auto-detects unsafe programs. Our evaluation shows that MultiCrusty provides an efficient mechanism for communication, synchronisation and propagation of the notifications of cancellation for arbitrary processes. We have implemented several usecases, including popular application protocols (OAuth, SMTP), and protocols with exception handling patterns (circuit breaker, distributed logging).",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.4",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Nicolas",
+        "last_name": "Lagaillardie",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Rumyana",
+        "last_name": "Neykova",
+        "institution": "Brunel University of London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LagaillardieNY22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.10",
+    "title": "Accumulation Analysis",
+    "abstract": "A typestate specification indicates which behaviors of an object are permitted in each of the object’s states. In the general case, soundly checking a typestate specification requires precise information about aliasing (i.e., an alias or pointer analysis), which is computationally expensive. This requirement has hindered the adoption of sound typestate analyses in practice. This paper identifies accumulation typestate specifications, which are the subset of typestate specifications that can be soundly checked without any information about aliasing. An accumulation typestate specification can be checked instead by an accumulation analysis: a simple, fast dataflow analysis that conservatively approximates the operations that have been performed on an object. This paper formalizes the notions of accumulation analysis and accumulation typestate specification. It proves that accumulation typestate specifications are exactly those typestate specifications that can be checked soundly without aliasing information. Further, 41% of the typestate specifications that appear in the research literature are accumulation typestate specifications.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.10",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Kellogg,",
+        "last_name": "Martin",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Shadab,",
+        "last_name": "Narges",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Sridharan,",
+        "last_name": "Manu",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Ernst, Michael",
+        "last_name": "D.",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/ecoop/KelloggSSE22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.6",
+    "title": "Compiling Volatile Correctly in Java",
+    "abstract": "The compilation scheme for Volatile accesses in the OpenJDK 9 HotSpot Java Virtual Machine has a major problem that persists despite a recent bug report and a long discussion. One of the suggested fixes is to let Java compile Volatile accesses in the same way as C/C++11. However, we show that this approach is invalid for Java. Indeed, we show a set of optimizations that is valid for C/C++11 but invalid for Java, while the compilation scheme is similar. We prove the correctness of the compilation scheme to Power and x86 and a suite of valid optimizations in Java. Our proofs are based on a language model that we validate by proving key properties such as the DRF-SC theorem and by running litmus tests via our implementation of Java in Herd7.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.6",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Liu,",
+        "last_name": "Shuyang",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Bender,",
+        "last_name": "John",
+        "institution": "Sandia National Laboratories"
+      },
+      {
+        "first_name": "Palsberg,",
+        "last_name": "Jens",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LiuBP22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.16",
+    "title": "Maniposynth: Bimodal Tangible Functional Programming",
+    "abstract": "Traditionally, writing code is a non-graphical, abstract, and linear process. Not everyone is comfortable with this way of thinking at all times. Can programming be transformed into a graphical, concrete, non-linear activity? While nodes-and-wires and blocks-based programming environments do leverage graphical direct manipulation, users perform their manipulations on abstract syntax tree elements, which are still abstract. Is it possible to be more concrete - could users instead directly manipulate live program values to create their program? We present a system, Maniposynth, that reimagines functional programming as a non-linear workflow where program expressions are spread on a 2D canvas. The live results of those expressions are continuously displayed and available for direct manipulation. The non-linear canvas liberates users to work out-of-order, and the live values can be interacted with via drag-and-drop. Incomplete programs are gracefully handled via hole expressions, which allow Maniposynth to offer program synthesis. Throughout the workflow, the program is valid OCaml code which the user may inspect and edit in their preferred text editor at any time. With Maniposynth's direct manipulation features, we created 38 programs drawn from a functional data structures course. We additionally hired two professional OCaml developers to implement a subset of these programs. We report on these experiences and discuss to what degree Maniposynth meets its goals of providing a non-linear, concrete, graphical programming workflow.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.16",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Brian",
+        "last_name": "Hempel",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Ravi",
+        "last_name": "Chugh",
+        "institution": "University of Chicago"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HempelC22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.17",
+    "title": "Synchron - An API and Runtime for Embedded Systems",
+    "abstract": "Programming embedded applications involves writing concurrent, event-driven and timing-aware programs. Traditionally, such programs are written in machine-oriented programming languages like C or Assembly. We present an alternative by introducing Synchron, an API that offers high-level abstractions to the programmer while supporting the low-level infrastructure in an associated runtime system and one-time-effort drivers. Embedded systems applications exhibit the general characteristics of being (i) concurrent, (ii) I/O-bound and (iii) timing-aware. To address each of these concerns, the Synchron API consists of three components - (1) a Concurrent ML (CML) inspired message-passing concurrency model, (2) a message-passing-based I/O interface that translates between low-level interrupt based and memory-mapped peripherals, and (3) a timing operator, syncT, that marries CML’s sync operator with timing windows inspired from the TinyTimber kernel. We implement the Synchron API as the bytecode instructions of a virtual machine called SynchronVM. SynchronVM hosts a Caml-inspired functional language as its frontend language, and the backend of the VM supports the STM32F4 and NRF52 microcontrollers, with RAM in the order of hundreds of kilobytes. We illustrate the expressiveness of the Synchron API by showing examples of expressing state machines commonly found in embedded systems. The timing functionality is demonstrated through a music programming exercise. Finally, we provide benchmarks on the response time, jitter rates, memory, and power usage of the SynchronVM.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.17",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Sarkar,",
+        "last_name": "Abhiroop",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Svensson, Bo",
+        "last_name": "Joel",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Sheeran,",
+        "last_name": "Mary",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SarkarSS22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.18",
+    "title": "Direct Foundations for Compositional Programming",
+    "abstract": "The recently proposed CP language adopts Compositional Programming: a new modular programming style that solves challenging problems such as the Expression Problem. CP is implemented on top of a polymorphic core language with disjoint intersection types called Fi+. The semantics of Fi+ employs an elaboration to a target language and relies on a sophisticated proof technique to prove the coherence of the elaboration. Unfortunately, the proof technique is technically challenging and hard to scale to many common features, including recursion or impredicative polymorphism. Thus, the original formulation of Fi+ does not support the two later features, which creates a gap between theory and practice, since CP fundamentally relies on them. This paper presents a new formulation of Fi+ based on a type-directed operational semantics (TDOS). The TDOS approach was recently proposed to model the semantics of languages with disjoint intersection types (but without polymorphism). Our work shows that the TDOS approach can be extended to languages with disjoint polymorphism and model the full Fi+ calculus. Unlike the elaboration semantics, which gives the semantics to Fi+ indirectly via a target language, the TDOS approach gives a semantics to Fi+ directly. With a TDOS, there is no need for a coherence proof. Instead, we can simply prove that the semantics is deterministic. The proof of determinism only uses simple reasoning techniques, such as straightforward induction, and is able to handle problematic features such as recursion and impredicative polymorphism. This removes the gap between theory and practice and validates the original proofs of correctness for CP. We formalized the TDOS variant of the Fi+ calculus and all its proofs in the Coq proof assistant.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.18",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Andong",
+        "last_name": "Fan",
+        "institution": "Zhejiang University"
+      },
+      {
+        "first_name": "Xuejing",
+        "last_name": "Huang",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Xu,",
+        "last_name": "Han",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Yaozhu",
+        "last_name": "Sun",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/ecoop/FanHXSO22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.24",
+    "title": "JavaScript Sealed Classes",
+    "abstract": "In this work, we study the JavaScript Sealed Classes, which differ from regular classes in a few ways that allow ahead-of-time (AoT) compilers to implement them more efficiently. Sealed classes are compatible with the rest of the language so that they can be combined with all other structures, including regular classes, and can be gradually integrated into existing code bases. We present the design of the sealed classes and study their implementation in the hopc AoT compiler. We present an in-depth analysis of the speed of sealed classes compared to regular classes. To do so, we assembled a new suite of benchmarks that focuses on the efficiency of the class implementations. On this suite, we found that sealed classes provide an average speedup of 19%. The more classes and methods programs use, the greater the speedup. For the most favorable test that uses them intensively, we measured a speedup of 56%.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.24",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Serrano,",
+        "last_name": "Manuel",
+        "institution": "Centre Inria d'Université Côte d'Azur"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Serrano22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.19",
+    "title": "Low-Level Bi-Abduction",
+    "abstract": "The paper proposes a new static analysis designed to handle open programs, i.e., fragments of programs, with dynamic pointer-linked data structures - in particular, various kinds of lists - that employ advanced low-level pointer operations. The goal is to allow such programs be analysed without a need of writing analysis harnesses that would first initialise the structures being handled. The approach builds on a special flavour of separation logic and the approach of bi-abduction. The code of interest is analyzed along the call tree, starting from its leaves, with each function analysed just once without any call context, leading to a set of contracts summarizing the behaviour of the analysed functions. In order to handle the considered programs, methods of abduction existing in the literature are significantly modified and extended in the paper. The proposed approach has been implemented in a tool prototype and successfully evaluated on not large but complex programs.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.19",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Lukáš",
+        "last_name": "Holík",
+        "institution": ""
+      },
+      {
+        "first_name": "Petr",
+        "last_name": "Peringer",
+        "institution": ""
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Rogalewicz",
+        "institution": ""
+      },
+      {
+        "first_name": "Veronika",
+        "last_name": "Šoková",
+        "institution": ""
+      },
+      {
+        "first_name": "Tomáš",
+        "last_name": "Vojnar",
+        "institution": ""
+      },
+      {
+        "first_name": "Florian",
+        "last_name": "Zuleger",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/HolikPRSVZ22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.22",
+    "title": "Ferrite: A Judgmental Embedding of Session Types in Rust",
+    "abstract": "Multiparty message-passing protocols are notoriously difficult to design, due to interaction mismatches that lead to errors such as deadlocks. Existing protocol specification formats have been developed to prevent such errors (e.g. multiparty session types (MPST)). In order to further constrain protocols, specifications can be extended with refinements, i.e. logical predicates to control the behaviour of the protocol based on previous values exchanged. Unfortunately, existing refinement theories and implementations are tightly coupled with specification formats. This paper proposes a framework for multiparty message-passing protocols with refinements and its implementation in Rust. Our work decouples correctness of refinements from the underlying model of computation, which results in a specification-agnostic framework. Our contributions are threefold. First, we introduce a trace system which characterises valid refined traces, i.e. a sequence of sending and receiving actions correct with respect to refinements. Second, we give a correct model of computation named refined communicating system (RCS), which is an extension of communicating automata systems with refinements. We prove that RCS only produce valid refined traces. We show how to generate RCS from mainstream protocol specification formats, such as refined multiparty session types (RMPST) or refined choreography automata. Third, we illustrate the flexibility of the framework by developing both a static analysis technique and an improved model of computation for dynamic refinement evaluation. Finally, we provide a Rust toolchain for decentralised RMPST, evaluate our implementation with a set of benchmarks from the literature, and observe that refinement overhead is negligible.",
+    "date": "2020-09-28",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.22",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Chen,",
+        "last_name": "Ruofei",
+        "institution": ""
+      },
+      {
+        "first_name": "Balzer,",
+        "last_name": "Stephanie",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Toninho,",
+        "last_name": "Bernardo",
+        "institution": "Universidade Nova de Lisboa"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ChenBT22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.27",
+    "title": "API Generation for Multiparty Session Types, Revisited and Revised Using Scala 3",
+    "abstract": "Construction and analysis of distributed systems is difficult. Multiparty session types (MPST) constitute a method to make it easier. The idea is to use type checking to statically prove deadlock freedom and protocol compliance of communicating processes. In practice, the premier approach to apply the MPST method in combination with mainstream programming languages has been based on API generation. In this paper (pearl), we revisit and revise this approach. Regarding our \"revisitation\", using Scala 3, we present the existing API generation approach, which is based on deterministic finite automata (DFA), in terms of both the existing states-as-classes encoding of DFAs as APIs, and a new states-as-type-parameters encoding; the latter leverages match types in Scala 3. Regarding our \"revision\", also using Scala 3, we present a new API generation approach that is based on sets of pomsets instead of DFAs; it crucially leverages match types, too. Our fresh perspective allows us to avoid two forms of combinatorial explosion resulting from implementing concurrent subprotocols in the DFA-based approach. We implement our approach in a new API generation tool.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.27",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Cledou,",
+        "last_name": "Guillermina",
+        "institution": "INESC TEC"
+      },
+      {
+        "first_name": "Edixhoven,",
+        "last_name": "Luc",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Jongmans,",
+        "last_name": "Sung-Shik",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Proença,",
+        "last_name": "José",
+        "institution": "Polytechnic Institute of Porto"
+      }
+    ],
+    "dblp_key": "conf/ecoop/CledouEJP22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.21",
+    "title": "PEDroid: Automatically Extracting Patches from Android App Updates",
+    "abstract": "Identifying and analyzing code patches is a common practice to not only understand existing bugs but also help find and fix similar bugs in new projects. Most patch analysis techniques aim at open-source projects, in which the differentials of source code are easily identified, and some extra information such as code commit logs could be leveraged to help find and locate patches. The task, however, becomes challenging when source code as well as development logs are lacking. A typical scenario is to discover patches in an updated Android app, which requires bytecode-level analysis. In this paper, we propose an approach to automatically identify and extract patches from updated Android apps by comparing the updated versions and their predecessors. Given two Android apps (original and updated versions), our approach first identifies identical and modified methods by similarity comparison through code features and app structures. Then, it compares these modified methods with their original implementations in the original app, and detects whether a patch is applied to the modified method by analyzing the difference in internal semantics. We implemented PEDroid, a prototype patch extraction tool against Android apps, and evaluated it with a set of popular open-source apps and a set of real-world apps from different Android vendors. PEDroid identifies 28 of the 36 known patches in the former, and successfully analyzes 568 real-world app updates in the latter, among which 94.37% of updates could be completed within 20 minutes.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.21",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Li,",
+        "last_name": "Hehao",
+        "institution": "Shanghai Jiao Tong University"
+      },
+      {
+        "first_name": "Wang,",
+        "last_name": "Yizhuo",
+        "institution": "Shanghai Jiao Tong University"
+      },
+      {
+        "first_name": "Zhang,",
+        "last_name": "Yiwei",
+        "institution": "Shanghai Jiao Tong University"
+      },
+      {
+        "first_name": "Li,",
+        "last_name": "Juanru",
+        "institution": "Shanghai Jiao Tong University"
+      },
+      {
+        "first_name": "Gu,",
+        "last_name": "Dawu",
+        "institution": "Shanghai Jiao Tong University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LiWZLG22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.30",
+    "title": "Qilin: A New Framework For Supporting Fine-Grained Context-Sensitivity in Java Pointer Analysis",
+    "abstract": "Existing whole-program context-sensitive pointer analysis frameworks for Java, which were open-sourced over one decade ago, were designed and implemented to support only method-level context-sensitivity (where all the variables/objects in a method are qualified by a common context abstraction representing a context under which the method is analyzed). We introduce Qilin as a generalized (modern) alternative, which has been open-sourced on GitHub, to support the current research trend on exploring fine-grained context-sensitivity (including variable-level context-sensitivity where different variables/objects in a method can be analyzed under different context abstractions at the variable level), precisely, efficiently, and modularly. To meet these four design goals, Qilin is developed as an imperative framework (implemented in Java) consisting of a fine-grained pointer analysis kernel with parameterized context-sensitivity that supports on-the-fly call graph construction and exception analysis, solved iteratively based on a new carefully-crafted incremental worklist-based constraint solver, on top of its handlers for complex Java features. We have evaluated Qilin extensively using a set of 12 representative Java programs (popularly used in the literature). For method-level context-sensitive analyses, we compare Qilin with Doop (a declarative framework that defines the state-of-the-art), Qilin yields logically the same precision but more efficiently (e.g., 2.4x faster for four typical baselines considered, on average). For fine-grained context-sensitive analyses (which are not currently supported by open-source Java pointer analysis frameworks such as Doop), we show that Qilin allows seven recent approaches to be instantiated effectively in our parameterized framework, requiring additionally only an average of 50 LOC each.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.30",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "He,",
+        "last_name": "Dongjie",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Lu,",
+        "last_name": "Jingbo",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Xue,",
+        "last_name": "Jingling",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HeLX22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.20",
+    "title": "Functional Programming for Distributed Systems with XC",
+    "abstract": "Programming distributed systems is notoriously hard due to - among the others - concurrency, asynchronous execution, message loss, and device failures. Homogeneous distributed systems consist of similar devices that communicate to neighbours and execute the same program: they include wireless sensor networks, network hardware, and robot swarms. For the homogeneous case, we investigate an experimental language design that aims to push the abstraction boundaries farther, compared to existing approaches. In this paper, we introduce the design of XC, a programming language to develop homogeneous distributed systems. In XC, developers define the single program that every device executes and the overall behaviour is achieved collectively, in an emergent way. The programming framework abstracts over concurrency, asynchronous execution, message loss, and device failures. We propose a minimalistic design, which features a single declarative primitive for communication, state management, and connection management. A mechanism called alignment enables developers to abstract over asynchronous execution while still retaining composability. We define syntax and operational semantics of a core calculus, and briefly discuss its main properties. XC comes with two DSL implementations: a DSL in Scala and one in C++. An evaluation based on smart-city monitoring demonstrates XC in a realistic application.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.20",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Audrito,",
+        "last_name": "Giorgio",
+        "institution": "University of Turin"
+      },
+      {
+        "first_name": "Casadei,",
+        "last_name": "Roberto",
+        "institution": "Azienda-Unita' Sanitaria Locale Di Cesena"
+      },
+      {
+        "first_name": "Damiani,",
+        "last_name": "Ferruccio",
+        "institution": "University of Turin"
+      },
+      {
+        "first_name": "Salvaneschi,",
+        "last_name": "Guido",
+        "institution": "University of St.Gallen"
+      },
+      {
+        "first_name": "Viroli,",
+        "last_name": "Mirko",
+        "institution": "Azienda-Unita' Sanitaria Locale Di Cesena"
+      }
+    ],
+    "dblp_key": "conf/ecoop/AudritoCDSV22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.29",
+    "title": "Experience: Model-Based, Feedback-Driven, Greybox Web Fuzzing with BackREST",
+    "abstract": "Following the advent of the American Fuzzy Lop (AFL), fuzzing had a surge in popularity, and modern day fuzzers range from simple blackbox random input generators to complex whitebox concolic frameworks that are capable of deep program introspection. Web application fuzzers, however, did not benefit from the tremendous advancements in fuzzing for binary programs and remain largely blackbox in nature. In this experience paper, we show how techniques like state-aware crawling, type inference, coverage and taint analysis can be integrated with a black-box fuzzer to find more critical vulnerabilities, faster (speedups between 7.4× and 25.9×). Comparing BackREST against three other web fuzzers on five large (>500 KLOC) Node.js applications shows how it consistently achieves comparable coverage while reporting more vulnerabilities than state-of-the-art. Finally, using BackREST, we uncovered eight 0-days, out of which six were not reported by any other fuzzer. All the 0-days have been disclosed and most are now public, including two in the highly popular Sequelize and Mongodb libraries.",
+    "date": "2021-08-19",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.29",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Gauthier",
+        "institution": ""
+      },
+      {
+        "first_name": "Behnaz",
+        "last_name": "Hassanshahi",
+        "institution": ""
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Selwyn-Smith",
+        "institution": ""
+      },
+      {
+        "first_name": "Trong",
+        "last_name": "Nhan",
+        "institution": ""
+      },
+      {
+        "first_name": "Max",
+        "last_name": "Schlüter",
+        "institution": ""
+      },
+      {
+        "first_name": "Micah",
+        "last_name": "Williams",
+        "institution": "Oracle (United States)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/GauthierHSMSW22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.23",
+    "title": "A Self-Dual Distillation of Session Types",
+    "abstract": "We introduce ƛ (\"lambda-barrier\"), a minimal extension of linear λ-calculus with concurrent communication, which adds only a single new fork construct for spawning threads. It is inspired by GV, a session-typed functional language also based on linear λ-calculus. Unlike GV, ƛ strives to be as simple as possible, and adds no new operations other than fork, no new type formers, and no explicit definition of session type duality. Instead, we use linear function function type τ₁ -∘ τ₂ for communication between threads, which is dual to τ₂ -∘ τ₁, i.e., the function type constructor is dual to itself. Nevertheless, we can encode session types as ƛ types, GV’s channel operations as ƛ terms, and show that this encoding is type-preserving. The linear type system of ƛ ensures that all programs are deadlock-free and satisfy global progress, which we prove in Coq. Because of ƛ’s minimality, these proofs are simpler than mechanized proofs of deadlock freedom for GV.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.23",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jacobs,",
+        "last_name": "Jules",
+        "institution": "Radboud University Nijmegen"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Jacobs22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.28",
+    "title": "Global Type Inference for Featherweight Generic Java",
+    "abstract": "Java's type system mostly relies on type checking augmented with local type inference to improve programmer convenience. We study global type inference for Featherweight Generic Java (FGJ), a functional Java core language. Given generic class headers and field specifications, our inference algorithm infers all method types if classes do not make use of polymorphic recursion. The algorithm is constraint-based and improves on prior work in several respects. Despite the restricted setting, global type inference for FGJ is NP-complete.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.28",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Stadelmeier",
+        "institution": ""
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Plümicke",
+        "institution": ""
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/StadelmeierP022",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.25",
+    "title": "Union Types with Disjoint Switches",
+    "abstract": "Union types are nowadays a common feature in many modern programming languages. This paper investigates a formulation of union types with an elimination construct that enables case analysis (or switches) on types. The interesting aspect of this construct is that each clause must operate on disjoint types. By using disjoint switches, it is possible to ensure exhaustiveness (i.e. all possible cases are handled), and that none of the cases overlap. In turn, this means that the order of the cases does not matter and that reordering the cases has no impact on the semantics, helping with program understanding and refactoring. While implemented in the Ceylon language, disjoint switches have not been formally studied in the research literature, although a related notion of disjointness has been studied in the context of disjoint intersection types. We study union types with disjoint switches formally and in a language independent way. We first present a simplified calculus, called the union calculus (λ_u), which includes disjoint switches and prove several results, including type soundness and determinism. The notion of disjointness in λ_u is in essence the dual notion of disjointness for intersection types. We then present a more feature-rich formulation of λ_u, which includes intersection types, distributive subtyping and a simple form of nominal types. This extension reveals new challenges. Those challenges require us to depart from the dual notion of disjointness for intersection types, and use a more general formulation of disjointness instead. Among other applications, we show that disjoint switches provide an alternative to certain forms of overloading, and that they enable a simple approach to nullable (or optional) types. All the results about λ_u and its extensions have been formalized in the Coq theorem prover.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.25",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Rehman,",
+        "last_name": "Baber",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Huang,",
+        "last_name": "Xuejing",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Xie,",
+        "last_name": "Ningning",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Oliveira, Bruno C. d.",
+        "last_name": "S.",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/ecoop/RehmanHXO22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.32",
+    "title": "Vincent: Green Hot Methods in the JVM (Extended Abstract)",
+    "abstract": "In this paper, we show the energy efficiency of Java applications can be improved by applying Dynamic Voltage and Frequency Scaling (DVFS) inside the Java Virtual Machine (JVM). We augment the JVM to record the energy consumption of hot methods as the underlying CPU is run at different clock frequencies; after all the frequency possibilities for a method have been explored, the execution of the method in an optimized run is set to the CPU frequency that leads to the most energy-efficient execution for that method. We introduce a new sampling methodology to overcome the dual challenges in our design: both the underlying measurement mechanism for energy profiling and the DVFS for energy optimization are overhead-prone. We extend JikesRVM with our approach and benchmark it over the DaCapo suite on a server-class Linux machine. Experiments show we are able to use 14.9% less energy than built-in power management in Linux, and improve energy efficiency by 21.1% w.r.t. the metric of Energy-Delay Product (EDP).",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.32",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Liu,",
+        "last_name": "Kenan",
+        "institution": "Binghamton University"
+      },
+      {
+        "first_name": "Mahmoud,",
+        "last_name": "Khaled",
+        "institution": "Binghamton University"
+      },
+      {
+        "first_name": "Yoo,",
+        "last_name": "Joonhwan",
+        "institution": "Binghamton University"
+      },
+      {
+        "first_name": "Liu, Yu",
+        "last_name": "David",
+        "institution": "Binghamton University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LiuMYL22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.34",
+    "title": "Slicing of Probabilistic Programs Based on Specifications (Extended Abstract)",
+    "abstract": "We present the first slicing approach for probabilistic programs based on specifications. Concretely, we show that when probabilistic programs are accompanied by their functional specifications in the form of pre- and post-condition, one can exploit this semantic information to produce specification-preserving slices strictly more precise than slices yielded by conventional techniques based on data/control dependency. To illustrate this, assume that Alice and Bob repeatedly flip a fair coin until observing a matching outcome, either both heads or both tails. However, Alice decides to \"trick\" Bob and switches the outcome of her coin, before comparing it to Bob’s. The game can be encoded by the program below, which is instrumented with a variable n that tracks the required number of rounds until observing the first match. The program terminates after K loop iterations with probability 1/(2^K) provided K > 0, and with probability 0 otherwise, satisfying the annotated specification. \\\\ pre: 1/(2^K) [K > 0] n := 0; a, b := 0, 1; while (a ̸= b) do n := n + 1; {a := 0} [1/2] {a := 1}; a := 1 − a; {b := 0} [1/2] {b := 1} \\\\ post: [n = K] Traditional slicing techniques based on data/control dependencies conclude that the only valid slice of the program (w.r.t. output variable n) is the very same program. However, our slicing approach allows removing the assignment a := 1-a from the loop body, while preserving the program specification. At the technical level, our slicing technique works by propagating post-conditions backward using the greatest pre-expectation transformer - the probabilistic counterpart of Dijkstra’s weakest pre-condition transformer. This endows programs with an axiomatic semantics, expressed in terms of a verification condition generator (VCGen) that yields quantitative proof obligations. In particular, we design (and prove sound) VCGens for both the partial (allowing divergence) and the total (requiring termination) correctness of probabilistic programs, making our slicing technique termination-sensitive. To handle iteration, we assume that program loops are annotated with invariants. To reason about (probabilistic) termination, we assume that loop annotations also include (probabilistic) variants. Another appealing property of our slicing technique is its modularity: It yields valid slices of a program from valid slices of its subprograms. Most importantly, this involves only local reasoning. Besides developing the theoretical foundations of our slicing approach, we also exhibit an algorithm for computing program slices. Interestingly, the algorithm computes the least slice that can be derived from the slicing approach, according to a proper notion of slice size, using, as main ingredient, a shortest-path algorithm. Finally, we demonstrate the applicability of our approach by means of a few illustrative examples and a case study from the probabilistic modeling field.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.34",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Navarro,",
+        "last_name": "Marcelo",
+        "institution": "University of Chile"
+      },
+      {
+        "first_name": "Olmedo,",
+        "last_name": "Federico",
+        "institution": "University of Chile"
+      }
+    ],
+    "dblp_key": "conf/ecoop/NavarroO22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.35",
+    "title": "Prisma: A Tierless Language for Enforcing Contract-Client Protocols in Decentralized Applications (Extended Abstract)",
+    "abstract": "Decentralized applications (dApps) consist of smart contracts that run on blockchains and clients that model collaborating parties. dApps are used to model financial and legal business functionality. Today, contracts and clients are written as separate programs - in different programming languages - communicating via send and receive operations. This makes distributed program flow awkward to express and reason about, increasing the potential for mismatches in the client-contract interface, which can be exploited by malicious clients, potentially leading to huge financial losses. In this paper, we present Prisma, a language for tierless decentralized applications, where the contract and its clients are defined in one unit. Pairs of send and receive actions that \"belong together\" are encapsulated into a single direct-style operation, which is executed differently by sending and receiving parties. This enables expressing distributed program flow via standard control flow and renders mismatching communication impossible. We prove formally that our compiler preserves program behavior in presence of an attacker controlling the client code. We systematically compare Prisma with mainstream and advanced programming models for dApps and provide empirical evidence for its expressiveness and performance. The design space of dApp programming and other multi-party languages depends on one major choice: a local model versus a global model. In a local model, parties are defined in separate programs and their interactions are encoded via send and receive effects. In a global language, parties are defined within one shared program and interactions are encoded via combined send-and-receive operations with no effects visible to the outside world. The global model is followed by tierless [Christian Queinnec, 2000; Cooper et al., 2007; Choi and Chang, 2019; Fowler et al., 2019; Serrano et al., 2006; Serrano and Prunet, 2016; Radanne et al., 2016; Weisenburger et al., 2018] and choreographic [Kohei Honda et al., 2011; Fabrizio Montesi et al., 2014; Saverio Giallorenzo et al., 2020] languages. However, known approaches to dApp programming follow the local model, thus rely on explicitly specifying the client-contract interaction protocol. Moreover, the contract and clients are implemented in different languages, hence, developers have to master two technology stacks. The dominating approach in industry is Solidity [Mix, 2019] for the contract and JavaScript for clients. Solidity relies on expressing the protocol using assertions in the contract code, which are checked at run time [Solidity documentation - common patterns, 2020]. Failing to insert the correct assertions may give parties illegal access to monetary values to the detriment of others [Nikolić et al., 2018; Luu et al., 2016]. In research, contract languages [Ankush Das et al., 2019; Michael J. Coblenz, 2017; Franklin Schrans et al., 2018; Franklin Schrans et al., 2019; Michael J. Coblenz et al., 2019; Michael J. Coblenz et al., 2019; Reed Oei et al., 2020; Sam Blackshear et al., 2019] have been proposed that rely on advanced type systems such as session types, type states, and linear types. The global model has not been explored for dApp programming. This is unfortunate given the potential to get by with a standard typing discipline and to avoid intricacies and potential mismatches of a two-language stack. Our work fills this gap by proposing Prisma - the first language that features a global programming model for Ethereum dApps. While we focus on the Ethereum blockchain, we believe our techniques to be applicable to other smart contract platforms. Prisma enables interleaving contract and client logic within the same program and adopts a direct style (DS) notation for encoding send-and-receive operations (with our awaitCl language construct) akin to languages with async/await [Gavin M. Bierman et al., 2012; Scala async rfc]. DS addresses shortcomings with the currently dominant encoding of the protocol’s finite state machines (FSM) [Mix, 2019; Michael J. Coblenz, 2017; Franklin Schrans et al., 2018; Franklin Schrans et al., 2019; Michael J. Coblenz et al., 2019; Michael J. Coblenz et al., 2019]. We argue writing FSM style corresponds to a control-flow graph of basic blocks, which is low-level and more suited to be written by a compiler than by a human. With FSM style, the contract is a passive entity whose execution is driven by clients. whereas the DS encoding allows the contract to actively ask clients for input, fitting dApp execution where a dominant contract controls execution and diverts control to other parties when their input is needed. In the following Prisma snippet, the payout function is a function invoked by the contract when it is time to pay money to a client. In Prisma, variables, methods and classes are separated into two namespaces, one for the contract and one for the clients. The payout method is located on the contract via the annotation @co. The body of the method diverts the control to the client using awaitCl(...) { ... }, hence the contained readLine call is executed on the client. Note that no explicit send/receive operations are needed but the communication protocol is expressed through the program control flow. Only after the check client == toBePayed that the correct client replied, the current contact balance balance() is transferred to the client via transfer. @co def payout(toBePayed: Arr[Address]): Unit = { awaitCl(client => client == toBePayed) { readLine(\"Press enter for payout\") } toBePayed.transfer(balance()) } Overall, Prisma relieves the developer from the responsibility of correctly managing distributed, asynchronous program flows and the heterogeneous technology stack. Instead, the burden is put on the compiler, which distributes the program flow by means of selective continuation-passing-style (CPS) translation and defunctionalisation and inserts guards against malicious client interactions. We needed to develop a CPS translation for the code that runs on the Ethereum Virtual Machine (EVM) since the EVM has no built-in support for concurrency primitives which could be used for asynchronous communication. While CPS translations are well-known, we cannot use them out-of-the-box because the control flow is interwoven with distribution in our case. A CPS translation that does not take distribution into account would allow malicious clients to force the contract to deviate from the intended control flow by sending a spoofed continuation. Thus, it was imperative to prove correctness of our distributed CPS translation to ensure control-flow integrity of the contract.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.35",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Richter",
+        "institution": "Technische Universität Darmstadt"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Kretzler",
+        "institution": "Technische Universität Darmstadt"
+      },
+      {
+        "first_name": "Pascal",
+        "last_name": "Weisenburger",
+        "institution": "University of St.Gallen"
+      },
+      {
+        "first_name": "Guido",
+        "last_name": "Salvaneschi",
+        "institution": "University of St.Gallen"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Faust",
+        "institution": "Technische Universität Darmstadt"
+      },
+      {
+        "first_name": "Mira",
+        "last_name": "Mezini",
+        "institution": "Technische Universität Darmstadt"
+      }
+    ],
+    "dblp_key": "conf/ecoop/RichterKWSFM22",
+    "venue": "ecoop",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2022.33",
+    "title": "Hinted Dictionaries: Efficient Functional Ordered Sets and Maps (Extended Abstract)",
+    "abstract": "Sets and maps are two essential collection types for programming used widely in data analytics [Shaikhha et al., 2022]. The underlying implementation for both are normally based on 1) hash tables or 2) ordered data structures. The former provides (average-case) constant-time lookup, insertion, and deletion operations, while the latter performs these operations in a logarithmic time. The trade-off between these two approaches has been heavily investigated in systems communities [Kim et al., 2009]. An important class of operations are those dealing with two collection types, such as set-set-union or the merge of two maps. One of the main advantages of hash-based implementations is a straightforward implementation for such operations with a linear computational complexity. However, naïvely using ordered dictionaries results in an implementation with a computational complexity of O(n log(n)). Motivating Example. The following C++ code computes the intersection of two sets, implemented by std::unordered_set, a hash-table-based set: std::unordered_set<K> result; for(auto& e : set1) { if(set2.count(e)) result.emplace(e); } However, the same fact is not true for ordered data structures; changing the dictionary type to std::set, an ordered implementation, results in a program with O(n log(n)) computational complexity. This is because both the count (lookup) and emplace (insertion) methods have logarithmic computational complexity. As a partial remedy, the standard library of C++ provides an alternative insertion method that can take linear time, if used appropriately. The emplace_hint method takes a hint for the position that the element will be inserted. If the hint correctly specifies the insertion point, the computational complexity will be amortized to constant time. std::set<K> result; auto hint = result.begin(); for(auto& e : set1) { if(set2.count(e)) hint = result.emplace_hint(hint, e); } However, the above implementation still suffers from an O(n log(n)) computational complexity, due to the logarithmic computational complexity of the lookup operation (count) of the second set. Thanks to the orderedness of the second set, one can observe that once an element is looked up, there is no longer any need to search its preceding elements at the next iterations. By leveraging this feature, we can provide a hinted lookup method with an amortized constant run-time. Hinted Data Structures. The following code, shows an alternative implementation for set intersection that uses such hinted lookup operations: hinted_set<K> result; hinted_set<K>::hint_t hint = result.begin(); for(auto& e : set1) { hinted_set<K>::hint_t hint2 = set2.seek(e); if(hint2.found) hint = result.insert_hint(hint, e); set2.after(hint2); } The above hinted set data-structure enables faster insertion and lookup by providing a cursor through a hint object (of type hint_t). The seek method returns the hint object hint2 pointing to element e. Thanks to the invocation of set2.after(hint2), the irrelevant elements of set2 (which are smaller than e) are no longer considered in the next iterations. The expression hint2.found specifies if the element exists in set2 or not. Finally, if an element exists in the second set (specified by hint2.found), it is inserted into its correct position using insert_hint. The existing work on efficient ordered dictionaries can be divided into two categories. First, in the imperative world, there are C++ ordered dictionaries (e.g., std::map) with limited hinting capabilities only for insertion through emplace_hint, but not for deletion and lookup, as observed previously. Second, from the functional world, Adams' sets [Adams, 1993] provide efficient implementations for set-set operators. Functional languages such as Haskell have implemented ordered sets and maps based on them for more than twenty years [Straka, 2010]. Furthermore, it has been shown [Blelloch et al., 2016] that Adams' maps can be used to provide a parallel implementation for balanced trees such as AVL, Red-Black, Weight-Balanced, and Treaps. However, Adams' maps do not expose any hint-based operations to the programmer. At first glance, these two approaches seem completely irrelevant to each other. The key contribution of this paper is hinted dictionaries, an ordered data structure that unifies the techniques from both imperative and functional worlds. The essential building block of hinted dictionaries are hint objects, that enable faster operations (than the traditional O(log n) complexity) by maintaining a pointer into the data structure. The underlying representation for hinted dictionaries can be sorted arrays, unbalanced trees, and balanced trees by sharing the same interface. In our running example, alternative data structures can be provided by simply changing the type signature of the hinted set from hinted_set to another implementation, without modifying anything else.",
+    "date": "2022-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2022.33",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Amir",
+        "last_name": "Shaikhha",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Mahdi",
+        "last_name": "Ghorbani",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Hesam",
+        "last_name": "Shahrokhi",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ShaikhhaGS22",
+    "venue": "ecoop",
+    "year": 2022
+  }
+]

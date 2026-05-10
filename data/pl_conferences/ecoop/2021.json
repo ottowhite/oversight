@@ -1,0 +1,688 @@
+[
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.0",
+    "title": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "abstract": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.0",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Anders",
+        "last_name": "Møller",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Manu",
+        "last_name": "Sridharan",
+        "institution": "University of California, Riverside"
+      }
+    ],
+    "dblp_key": "conf/ecoop/X21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.1",
+    "title": "Scope States: Guarding Safety of Name Resolution in Parallel Type Checkers",
+    "abstract": "Compilers that can type check compilation units in parallel can make more efficient use of multi-core architectures, which are nowadays widespread. Developing parallel type checker implementations is complicated by the need to handle concurrency and synchronization of parallel compilation units. Dependencies between compilation units are induced by name resolution, and a parallel type checker needs to ensure that units have defined all relevant names before other units do a lookup. Mutually recursive references and implicitly discovered dependencies between compilation units preclude determining a static compilation order for many programming languages. In this paper, we present a new framework for implementing hierarchical type checkers that provides implicit parallel execution in the presence of dynamic and mutual dependencies between compilation units. The resulting type checkers can be written without explicit handling of communication or synchronization between different compilation units. We achieve this by providing type checkers with an API for name resolution based on scope graphs, a language-independent formalism that supports a wide range of binding patterns. We introduce the notion of scope state to ensure safe name resolution. Scope state tracks the completeness of a scope, and is used to decide whether a scope graph query between compilation units must be delayed. Our framework is implemented in Java using the actor paradigm. We evaluated our approach by parallelizing the solver for Statix, a meta-language for type checkers based on scope graphs, using our framework. This parallelizes every Statix-based type checker, provided its specification follows a split declaration-type style. Benchmarks show that the approach results in speedups for the parallel Statix solver of up to 5.0x on 8 cores for real-world code bases.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.1",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Hendrik van",
+        "last_name": "Antwerpen",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Eelco",
+        "last_name": "Visser",
+        "institution": "Delft University of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/AntwerpenV21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.9",
+    "title": "Idris 2: Quantitative Type Theory in Practice",
+    "abstract": "Dependent types allow us to express precisely what a function is intended to do. Recent work on Quantitative Type Theory (QTT) extends dependent type systems with linearity, also allowing precision in expressing when a function can run. This is promising, because it suggests the ability to design and reason about resource usage protocols, such as we might find in distributed and concurrent programming, where the state of a communication channel changes throughout program execution. As yet, however, there has not been a full-scale programming language with which to experiment with these ideas. Idris 2 is a new version of the dependently typed language Idris, with a new core language based on QTT, supporting linear and dependent types. In this paper, we introduce Idris 2, and describe how QTT has influenced its design. We give examples of the benefits of QTT in practice including: expressing which data is erased at run time, at the type level; and, resource tracking in the type system leading to type-safe concurrent programming with session types.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.9",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Edwin",
+        "last_name": "Brady",
+        "institution": "University of St Andrews"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Brady21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.15",
+    "title": "Best-Effort Lazy Evaluation for Python Software Built on APIs",
+    "abstract": "There is a perceived trade-off between machine learning code that is easy to write, and machine learning code that is scalable or fast to execute. In machine learning, imperative style libraries like Autograd and PyTorch are easy to write, but suffer from high interpretive overhead and are not easily deployable in production or mobile settings. Graph-based libraries like TensorFlow and Theano benefit from whole-program optimization and can be deployed broadly, but make expressing complex models more cumbersome. We describe how the use of staged programming in Python, via source code transformation, offers a midpoint between these two library design patterns, capturing the benefits of both. A key insight is to delay all type-dependent decisions until runtime, via dynamic dispatch. We instantiate these principles in AutoGraph, a software system that improves the programming experience of the TensorFlow library, and demonstrate usability improvements with no loss in performance compared to native TensorFlow graphs. We also show that our system is backend agnostic, and demonstrate targeting an alternate IR with characteristics not found in TensorFlow graphs.",
+    "date": "2018-10-16",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.15",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Moldovan,",
+        "last_name": "Dan",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Decker, James",
+        "last_name": "M",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Wang,",
+        "last_name": "Fei",
+        "institution": ""
+      },
+      {
+        "first_name": "Johnson, Andrew",
+        "last_name": "A",
+        "institution": ""
+      },
+      {
+        "first_name": "Lee, Brian",
+        "last_name": "K",
+        "institution": ""
+      },
+      {
+        "first_name": "Nado,",
+        "last_name": "Zachary",
+        "institution": ""
+      },
+      {
+        "first_name": "Sculley,",
+        "last_name": "D",
+        "institution": ""
+      },
+      {
+        "first_name": "Rompf,",
+        "last_name": "Tiark",
+        "institution": ""
+      },
+      {
+        "first_name": "Wiltschko, Alexander",
+        "last_name": "B",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/ZhangS21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.4",
+    "title": "Covariant Conversions (CoCo): A Design Pattern for Type-Safe Modular Software Evolution in Object-Oriented Systems",
+    "abstract": "Software evolution is an essential challenge for all software engineers, typically addressed solely using code versioning systems and language-specific code analysis tools. Most versioning systems view the evolution of a system as a directed acyclic graph of steps, with independent branches that could be merged. What these systems fail to provide is the ability to ensure stable APIs or that each subsequent evolution represents a cohesive extension yielding a valid system. Modular software evolution ensures that APIs remain stable, which is achieved by ensuring that only additional methods, fields, and data types are added, while treating existing modules through blackbox interfaces. Even with these restrictions, it must be possible to add new variations, fields, and methods without extensive duplication of prior module code. In contrast to most literature, our focus is on ensuring modular software evolution using mainstream object-oriented programming languages, instead of resorting to novel language extensions. We present a novel CoCo design pattern that supports type-safe covariantly overridden convert methods to transform earlier data type instances into their newest evolutionary representation to access operations that had been added later. CoCo supports both binary methods and producer methods. We validate and contrast our approach using a well-known compiler construction case study that other researchers have also investigated for modular evolution. Our resulting implementation relies on less boilerplate code, is completely type-safe, and allows clients to use normal object-oriented calling conventions. We also compare CoCo with existing approaches to the Expression Problem. We conclude by discussing how CoCo could change the direction of currently proposed Java language extensions to support closed-world assumptions about data types, as borrowed from functional programming.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.4",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jan",
+        "last_name": "Bessai",
+        "institution": "TU Dortmund University"
+      },
+      {
+        "first_name": "George T.",
+        "last_name": "Heineman",
+        "institution": "Worcester Polytechnic Institute"
+      },
+      {
+        "first_name": "Boris",
+        "last_name": "Düdder",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BessaiHD21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.13",
+    "title": "Linear Promises: Towards Safer Concurrent Programming",
+    "abstract": "In this paper, we introduce a new type system based on linear typing, and show how it can be incorporated in a concurrent programming language to track ownership of promises. By tracking write operations on each promise, the language is able to guarantee exactly one write operation is ever performed on any given promise. This language thus precludes a number of common bugs found in promise-based programs, such as failing to write to a promise and writing to the same promise multiple times. We also present an implementation of the language, complete with an efficient type checking algorithm and high-level programming constructs. This language serves as a safer platform for writing high-level concurrent code.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.13",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Ohad",
+        "last_name": "Rau",
+        "institution": ""
+      },
+      {
+        "first_name": "Caleb",
+        "last_name": "Voss",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Rau0S21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.7",
+    "title": "Enabling Additional Parallelism in Asynchronous JavaScript Applications",
+    "abstract": "JavaScript is a single-threaded programming language, so asynchronous programming is practiced out of necessity to ensure that applications remain responsive in the presence of user input or interactions with file systems and networks. However, many JavaScript applications execute in environments that do exhibit concurrency by, e.g., interacting with multiple or concurrent servers, or by using file systems managed by operating systems that support concurrent I/O. In this paper, we demonstrate that JavaScript programmers often schedule asynchronous I/O operations suboptimally, and that reordering such operations may yield significant performance benefits. Concretely, we define a static side-effect analysis that can be used to determine how asynchronous I/O operations can be refactored so that asynchronous I/O-related requests are made as early as possible, and so that the results of these requests are awaited as late as possible. While our static analysis is potentially unsound, we have not encountered any situations where it suggested reorderings that change program behavior. We evaluate the refactoring on 20 applications that perform file- or network-related I/O. For these applications, we observe average speedups ranging between 0.99% and 53.6% for the tests that execute refactored code (8.1% on average).",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.7",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Ellen",
+        "last_name": "Arteca",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Max",
+        "last_name": "Schäfer",
+        "institution": "Nanyang Technological University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ArtecaTS21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.3",
+    "title": "Gradual Program Analysis for Null Pointers",
+    "abstract": "Static analysis tools typically address the problem of excessive false positives by requiring programmers to explicitly annotate their code. However, when faced with incomplete annotations, many analysis tools are either too conservative, yielding false positives, or too optimistic, resulting in unsound analysis results. In order to flexibly and soundly deal with partially-annotated programs, we propose to build upon and adapt the gradual typing approach to abstract-interpretation-based program analyses. Specifically, we focus on null-pointer analysis and demonstrate that a gradual null-pointer analysis hits a sweet spot, by gracefully applying static analysis where possible and relying on dynamic checks where necessary for soundness. In addition to formalizing a gradual null-pointer analysis for a core imperative language, we build a prototype using the Infer static analysis framework, and present preliminary evidence that the gradual null-pointer analysis reduces false positives compared to two existing null-pointer checkers for Infer. Further, we discuss ways in which the gradualization approach used to derive the gradual analysis from its static counterpart can be extended to support more domains. This work thus provides a basis for future analysis tools that can smoothly navigate the tradeoff between human effort and run-time overhead to reduce the number of reported false positives.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.3",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Sam",
+        "last_name": "Estep",
+        "institution": "Jane Street (United States)"
+      },
+      {
+        "first_name": "Jenna",
+        "last_name": "Wise",
+        "institution": "Jane Street (United States)"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Aldrich",
+        "institution": "Jane Street (United States)"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "Jane Street (United States)"
+      },
+      {
+        "first_name": "Johannes",
+        "last_name": "Bader",
+        "institution": "Jane Street (United States)"
+      },
+      {
+        "first_name": "Joshua",
+        "last_name": "Sunshine",
+        "institution": "Jane Street (United States)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/EstepWATBS21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.8",
+    "title": "Differential Privacy for Coverage Analysis of Software Traces",
+    "abstract": "This work considers software execution traces, where a trace is a sequence of run-time events. Each user of a software system collects the set of traces covered by her execution of the software, and reports this set to an analysis server. Our goal is to report the local data of each user in a privacy-preserving manner by employing local differential privacy, a powerful theoretical framework for designing privacy-preserving data analysis. A significant advantage of such analysis is that it offers principled \"built-in\" privacy with clearly-defined and quantifiable privacy protections. In local differential privacy, the data of an individual user is modified using a local randomizer before being sent to the untrusted analysis server. Based on the randomized information from all users, the analysis server computes, for each trace, an estimate of how many users have covered it. Such analysis requires that the domain of possible traces be defined ahead of time. Unlike in prior related work, here the domain is either infinite or, at best, restricted to many billions of elements. Further, the traces in this domain typically have structure defined by the static properties of the software. To capture these novel aspects, we define the trace domain with the help of context-free grammars. We illustrate this approach with two exemplars: a call chain analysis in which traces are described through a regular language, and an enter/exit trace analysis in which traces are described by a balanced-parentheses context-free language. Randomization over such domains is challenging due to their large size, which makes it impossible to use prior randomization techniques. To solve this problem, we propose to use count sketch, a fixed-size hashing data structure for summarizing frequent items. We develop a version of count sketch for trace analysis and demonstrate its suitability for software execution data. In addition, instead of randomizing separately each contribution to the sketch, we develop a much-faster one-shot randomization of the accumulated sketch data. One important client of the collected information is the identification of high-frequency (\"hot\") traces. We develop a novel approach to identify hot traces from the collected randomized sketches. A key insight is that the very large domain of possible traces can be efficiently explored for hot traces by using the frequency estimates of a visited trace and its prefixes and suffixes. Our experimental study of both call chain analysis and enter/exit trace analysis indicates that the frequency estimates, as well as the identification of hot traces, achieve high accuracy and high privacy.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.8",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Yu",
+        "last_name": "Hao",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Sufian",
+        "last_name": "Latif",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Hailong",
+        "last_name": "Zhang",
+        "institution": "Fordham University"
+      },
+      {
+        "first_name": "Raef",
+        "last_name": "Bassily",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Atanas",
+        "last_name": "Rountev",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HaoL0BR21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.11",
+    "title": "Do Bugs Propagate? An Empirical Analysis of Temporal Correlations Among Software Bugs",
+    "abstract": "The occurrences of bugs are not isolated events, rather they may interact, affect each other, and trigger other latent bugs. Identifying and understanding bug correlations could help developers localize bug origins, predict potential bugs, and design better architectures of software artifacts to prevent bug affection. Many studies in the defect prediction and fault localization literature implied the dependence and interactions between multiple bugs, but few of them explicitly investigate the correlations of bugs across time steps and how bugs affect each other. In this paper, we perform social network analysis on the temporal correlations between bugs across time steps on software artifact ties, i.e., software graphs. Adopted from the correlation analysis methodology in social networks, we construct software graphs of three artifact ties such as function calls and type hierarchy and then perform longitudinal logistic regressions of time-lag bug correlations on these graphs. Our experiments on four open-source projects suggest that bugs can propagate as observed on certain artifact tie graphs. Based on our findings, we propose a hybrid artifact tie graph, a synthesis of a few well-known software graphs, that exhibits a higher degree of bug propagation. Our findings shed light on research for better bug prediction and localization models and help developers to perform maintenance actions to prevent consequential bugs.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.11",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Xiaodong",
+        "last_name": "Gu",
+        "institution": "Shanghai Jiao Tong University"
+      },
+      {
+        "first_name": "Yo-Sub",
+        "last_name": "Han",
+        "institution": "Yonsei University"
+      },
+      {
+        "first_name": "Sung Hun",
+        "last_name": "Kim",
+        "institution": "Hong Kong University of Science and Technology"
+      },
+      {
+        "first_name": "Hongyu",
+        "last_name": "Zhang",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/GuH0021",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.2",
+    "title": "Lossless, Persisted Summarization of Static Callgraph, Points-To and Data-Flow Analysis",
+    "abstract": "Static analysis is used to automatically detect bugs and security breaches, and aids compiler optimization. Whole-program analysis (WPA) can yield high precision, however causes long analysis times and thus does not match common software-development workflows, making it often impractical to use for large, real-world applications. This paper thus presents the design and implementation of ModAlyzer, a novel static-analysis approach that aims at accelerating whole-program analysis by making the analysis modular and compositional. It shows how to compute lossless, persisted summaries for callgraph, points-to and data-flow information, and it reports under which circumstances this function-level compositional analysis outperforms WPA. We implemented ModAlyzer as an extension to LLVM and PhASAR, and applied it to 12 real-world C and C++ applications. At analysis time, ModAlyzer modularly and losslessly summarizes the analysis effect of the library code those applications share, hence avoiding its repeated re-analysis. The experimental results show that the reuse of these summaries can save, on average, 72% of analysis time over WPA. Moreover, because it is lossless, the module-wise analysis fully retains precision and recall. Surprisingly, as our results show, it sometimes even yields precision superior to WPA. The initial summary generation, on average, takes about 3.67 times as long as WPA.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.2",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Philipp Dominik",
+        "last_name": "Schubert",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Ben",
+        "last_name": "Hermann",
+        "institution": "TU Dortmund University"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Bodden",
+        "institution": "Paderborn University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SchubertHB21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.6",
+    "title": "CodeDJ: Reproducible Queries over Large-Scale Software Repositories",
+    "abstract": "Analyzing massive code bases is a staple of modern software engineering research – a welcome side-effect of the advent of large-scale software repositories such as GitHub. Selecting which projects one should analyze is a labor-intensive process, and a process that can lead to biased results if the selection is not representative of the population of interest. One issue faced by researchers is that the interface exposed by software repositories only allows the most basic of queries. CodeDJ is an infrastructure for querying repositories composed of a persistent datastore, constantly updated with data acquired from GitHub, and an in-memory database with a Rust query interface. CodeDJ supports reproducibility, historical queries are answered deterministically using past states of the datastore; thus researchers can reproduce published results. To illustrate the benefits of CodeDJ, we identify biases in the data of a published study and, by repeating the analysis with new data, we demonstrate that the study’s conclusions were sensitive to the choice of projects.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.6",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Petr",
+        "last_name": "Maj",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Konrad",
+        "last_name": "Siek",
+        "institution": ""
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Kovalenko",
+        "institution": ""
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Czech Technical University in Prague"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MajSKV21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.10",
+    "title": "Multiparty Session Types for Safe Runtime Adaptation in an Actor Language",
+    "abstract": "Human fallibility, unpredictable operating environments, and the heterogeneity of hardware devices are driving the need for software to be able to adapt as seen in the Internet of Things or telecommunication networks. Unfortunately, mainstream programming languages do not readily allow a software component to sense and respond to its operating environment, by discovering, replacing, and communicating with components that are not part of the original system design, while maintaining static correctness guarantees. In particular, if a new component is discovered at runtime, there is no guarantee that its communication behaviour is compatible with existing components. We address this problem by using multiparty session types with explicit connection actions, a type formalism used to model distributed communication protocols. By associating session types with software components, the discovery process can check protocol compatibility and, when required, correctly replace components without jeapordising safety. We present the design and implementation of EnsembleS, the first actor-based language with adaptive features and a static session type system, and apply it to a case study based on an adaptive DNS server. We formalise the type system of EnsembleS and prove the safety of well-typed programs, making essential use of recent advances in non-classical multiparty session types.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.10",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Harvey",
+        "institution": "Rakuten (Japan)"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Fowler",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Ornela",
+        "last_name": "Dardha",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Gay, Simon",
+        "last_name": "J.",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/ecoop/00020DG21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.14",
+    "title": "Lifted Static Analysis of Dynamic Program Families by Abstract Interpretation",
+    "abstract": "Program families (software product lines) are increasingly adopted by industry for building families of related software systems. A program family offers a set of features (configured options) to control the presence and absence of software functionality. Features in program families are often assigned at compile-time, so their values can only be read at run-time. However, today many program families and application domains demand run-time adaptation, reconfiguration, and post-deployment tuning. Dynamic program families (dynamic software product lines) have emerged as an attempt to handle variability at run-time. Features in dynamic program families can be controlled by ordinary program variables, so reads and writes to them may happen at run-time. Recently, a decision tree lifted domain for analyzing traditional program families with numerical features has been proposed, in which decision nodes contain linear constraints defined over numerical features and leaf nodes contain analysis properties defined over program variables. Decision nodes partition the configuration space of possible feature values, while leaf nodes provide analysis information corresponding to each partition of the configuration space. As features are statically assigned at compile-time, decision nodes can be added, modified, and deleted only when analyzing read accesses of features. In this work, we extend the decision tree lifted domain so that it can be used to efficiently analyze dynamic program families with numerical features. Since features can now be changed at run-time, decision nodes can be modified when handling read and write accesses of feature variables. For this purpose, we define extended transfer functions for assignments and tests as well as a special widening operator to ensure termination of the lifted analysis. To illustrate the potential of this approach, we have implemented a lifted static analyzer, called DSPLNum²Analyzer, for inferring numerical invariants of dynamic program families written in C. An empirical evaluation on benchmarks from SV-COMP indicates that our tool is effective and provides a flexible way of adjusting the precision/cost ratio in static analysis of dynamic program families.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.14",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Aleksandar S.",
+        "last_name": "Dimovski",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Sven",
+        "last_name": "Apel",
+        "institution": "Saarland University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/DimovskiA21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.5",
+    "title": "ALPACAS: A Language for Parametric Assessment of Critical Architecture Safety",
+    "abstract": "This paper introduces Alpacas, a domain-specific language and algorithms aimed at architecture modeling and safety assessment for critical systems. It allows to study the effects of random and systematic faults on complex critical systems and their reliability. The underlying semantic framework of the language is Stochastic Guarded Transition Systems, for which Alpacas provides a feature-rich declarative modeling language and algorithms for symbolic analysis and Monte-Carlo simulation, allowing to compute safety indicators such as minimal cutsets and reliability. Built as a domain-specific language deeply embedded in Scala 3, Alpacas offers generic modeling capabilities and type-safety unparalleled in other existing safety assessment frameworks. This improved expressive power allows to address complex system modeling tasks, such as formalizing the architectural design space of a critical function, and exploring it to identify the most reliable variant. The features and algorithms of Alpacas are illustrated on a case study of a thrust allocation and power dispatch system for an electric vertical takeoff and landing aircraft.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.5",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Maxime",
+        "last_name": "Buyse",
+        "institution": ""
+      },
+      {
+        "first_name": "Rémi",
+        "last_name": "Delmas",
+        "institution": ""
+      },
+      {
+        "first_name": "Youssef",
+        "last_name": "Hamadi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/BuyseDH21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.16",
+    "title": "Accelerating Object-Sensitive Pointer Analysis by Exploiting Object Containment and Reachability",
+    "abstract": "Object-sensitive pointer analysis for an object-oriented program can be accelerated if context-sensitivity can be selectively applied to some precision-critical variables/objects in the program. Existing pre-analyses, which are performed to make such selections, either preserve precision but achieve limited speedups by reasoning about all the possible value flows in the program conservatively or achieve greater speedups but sacrifice precision (often unduly) by examining only some but not all the value flows in the program heuristically. In this paper, we introduce a new approach, named Turner, that represents a sweet spot between the two existing ones, as it is designed to enable object-sensitive pointer analysis to run significantly faster than the former approach and achieve significantly better precision than the latter approach. Turner is simple, lightweight yet effective due to two novel aspects in its design. First, we exploit a key observation that some precision-uncritical objects can be approximated based on the object-containment relationship pre-established (by applying Andersen’s analysis). This approximation introduces a small degree yet the only source of imprecision into Turner. Second, leveraging this initial approximation, we introduce a simple DFA to reason about object reachability for a method intra-procedurally from its entry to its exit along all the possible value flows established by its statements to finalize its precision-critical variables/objects identified. We have validated Turner with an implementation in Soot against the state of the art using a set of 12 popular Java benchmarks and applications.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.16",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Dongjie",
+        "last_name": "He",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Jingbo",
+        "last_name": "Lu",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Yaoqing",
+        "last_name": "Gao",
+        "institution": "Huawei Technologies (Canada)"
+      },
+      {
+        "first_name": "Jingling",
+        "last_name": "Xue",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HeLGX21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.17",
+    "title": "Signal Classes: A Mechanism for Building Synchronous and Persistent Signal Networks",
+    "abstract": "Signals are principal abstraction in reactive programming languages and constitute the basics of reactive computations in modern systems, such as the Internet of Things. Signals sometimes utilize past values, which leads to space leak, a problem where accumulated past values waste resources such as the main memory. Persistent signals, an abstraction for time-varying values with their execution histories, provide a generalized and standardized way of space leak management by leaving this management to the database system. However, the current design of persistent signals is very rudimental. For example, they cannot represent complex data structures; they can only be connected using pre-defined API methods that implicitly synchronize the persistent signal network; and they cannot be created dynamically. In this paper, we show that these problems are derived from more fundamental one: no language mechanism is provided to group related persistent signals. To address this problem, we propose a new language mechanism signal classes. A signal class packages a network of related persistent signals that comprises a complex data structure. A signal class defines the scope of synchronization, making it possible to flexibly create persistent signal networks by methods not limited to the use of pre-defined API methods. Furthermore, a signal class can be instantiated, and this instance forms a unit of lifecycle management, which enables the dynamic creation of persistent signals. We formalize signal classes as a small core language where the computation is deliberately defined to interact with the underlying database system using relational algebra. Based on this formalization, we prove the language’s glitch freedom. We also formulate its type soundness by introducing an additional check of program well-formedness. This mechanism is implemented as a compiler and a runtime library that is based on a time-series database. The usefulness of the language is demonstrated through the vehicle tracking simulator and viewer case study. We also conducted a performance evaluation that confirms the feasibility of this case study.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.17",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Tetsuo",
+        "last_name": "Kamina",
+        "institution": "Oita University"
+      },
+      {
+        "first_name": "Tomoyuki",
+        "last_name": "Aotani",
+        "institution": "Tokyo Institute of Technology"
+      },
+      {
+        "first_name": "Hidehiko",
+        "last_name": "Masuhara",
+        "institution": "Tokyo Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/KaminaAM21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.18",
+    "title": "Refinements of Futures Past: Higher-Order Specification with Implicit Refinement Types",
+    "abstract": "Refinement types decorate types with assertions that enable automatic verification. Like assertions, refinements are limited to binders that are in scope, and hence, cannot express higher-order specifications. Ghost variables circumvent this limitation but are prohibitively tedious to use as the programmer must divine and explicate their values at all call-sites. We introduce Implicit Refinement Types which turn ghost variables into implicit pair and function types, in a way that lets the refinement typechecker automatically synthesize their values at compile time. Implicit Refinement Types further take advantage of refinement type information, allowing them to be used as a lightweight verification tool, rather than merely as a technique to automate programming tasks. We evaluate the utility of Implicit Refinement Types by showing how they enable the modular specification and automatic verification of various higher-order examples including stateful protocols, access control, and resource usage.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.18",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Anish",
+        "last_name": "Tondwalkar",
+        "institution": ""
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Kolosick",
+        "institution": ""
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/TondwalkarKJ21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.20",
+    "title": "On the Monitorability of Session Types, in Theory and Practice",
+    "abstract": "Software components are expected to communicate according to predetermined protocols and APIs. Numerous methods have been proposed to check the correctness of communicating systems against such protocols/APIs. Session types are one such method, used both for static type-checking as well as for run-time monitoring. This work takes a fresh look at the run-time verification of communicating systems using session types, in theory and in practice. On the theoretical side, we develop a formal model of session-monitored processes. We then use this model to formulate and prove new results on the monitorability of session types, defined in terms of soundness (i.e., whether monitors only flag ill-typed processes) and completeness (i.e., whether all ill-typed processes can be flagged by a monitor). On the practical side, we show that our monitoring theory is indeed realisable: we instantiate our formal model as a Scala toolkit (called STMonitor) for the automatic generation of session monitors. These executable monitors can be used as proxies to instrument communication across black-box processes written in any programming language. Finally, we evaluate the viability of our approach through a series of benchmarks.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.20",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Christian Bartolo",
+        "last_name": "Burlò",
+        "institution": "Gran Sasso Science Institute"
+      },
+      {
+        "first_name": "Adrian",
+        "last_name": "Francalanza",
+        "institution": "University of Malta"
+      },
+      {
+        "first_name": "Alceste",
+        "last_name": "Scalas",
+        "institution": "Technical University of Denmark"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BurloFS21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.19",
+    "title": "Dealing with Variability in API Misuse Specification",
+    "abstract": "APIs are the primary mechanism for developers to gain access to externally defined services and tools. However, previous research has revealed API misuses that violate the contract of APIs to be prevalent. Such misuses can have harmful consequences, especially in the context of cryptographic libraries. Various API-misuse detectors have been proposed to address this issue - including CogniCrypt, one of the most versatile of such detectors and that uses a language (CrySL) to specify cryptographic API usage contracts. Nonetheless, existing approaches to detect API misuse had not been designed for systematic reuse, ignoring the fact that different versions of a library, different versions of a platform, and different recommendations/guidelines might introduce variability in the correct usage of an API. Yet, little is known about how such variability impacts the specification of the correct API usage. This paper investigates this question by analyzing the impact of various sources of variability on widely used Java cryptographic libraries (including JCA/JCE, Bouncy Castle, and Google Tink). The results of our investigation show that sources of variability like new versions of the API and security standards significantly impact the specifications. We then use the insights gained from our investigation to motivate an extension to the CrySL language (named MetaCrySL), which builds on meta-programming concepts. We evaluate MetaCrySL by specifying usage rules for a family of Android versions and illustrate that MetaCrySL can model all forms of variability we identified and drastically reduce the size of a family of specifications for the correct usage of cryptographic APIs.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.19",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Rodrigo",
+        "last_name": "Bonifácio",
+        "institution": "Universidade de Brasília"
+      },
+      {
+        "first_name": "Stefan",
+        "last_name": "Krüger",
+        "institution": "Technische Universität Darmstadt"
+      },
+      {
+        "first_name": "Krishna",
+        "last_name": "Narasimhan",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Bodden",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Mira",
+        "last_name": "Mezini",
+        "institution": "Paderborn University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BonifacioKNBM21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.22",
+    "title": "Multiparty Languages: The Choreographic and Multitier Cases (Pearl)",
+    "abstract": "Choreographic languages aim to express multiparty communication protocols, by providing primitives that make interaction manifest. Multitier languages enable programming computation that spans across several tiers of a distributed system, by supporting primitives that allow computation to change the location of execution. Rooted into different theoretical underpinnings—respectively process calculi and lambda calculus—the two paradigms have been investigated independently by different research communities with little or no contact. As a result, the link between the two paradigms has remained hidden for long. In this paper, we show that choreographic languages and multitier languages are surprisingly similar. We substantiate our claim by isolating the core abstractions that differentiate the two approaches and by providing algorithms that translate one into the other in a straightforward way. We believe that this work paves the way for joint research and cross-fertilisation among the two communities.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.22",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Saverio",
+        "last_name": "Giallorenzo",
+        "institution": ""
+      },
+      {
+        "first_name": "Fabrizio",
+        "last_name": "Montesi",
+        "institution": "Department of Physics, Mathematics and Informatics"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Peressotti",
+        "institution": "Department of Physics, Mathematics and Informatics"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Richter",
+        "institution": ""
+      },
+      {
+        "first_name": "Guido",
+        "last_name": "Salvaneschi",
+        "institution": ""
+      },
+      {
+        "first_name": "Pascal",
+        "last_name": "Weisenburger",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/GiallorenzoMPRS21",
+    "venue": "ecoop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2021.21",
+    "title": "&#955;-Based Object-Oriented Programming (Pearl)",
+    "abstract": "We show that a minimal subset of Java 8 excluding classes supports a simple and natural programming style, which we call λ-based object-oriented programming. That is, on one hand the programmer can use tuples in place of objects (class instances), and tuples can be desugared to lambdas following their classical encoding in the λ-calculus. On the other hand, lambdas can be equipped with additional behaviour, thanks to the fact that they may implement interfaces with default methods, hence inheritance and dynamic dispatch are still supported. We formally describe the encoding by a translation from FJλ, an FJ variant including lambdas and interfaces with default methods, to FJλ-, a subset of FJλ with no classes (hence no constructors and fields). We provide several examples illustrating this novel programming style.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2021.21",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Marco",
+        "last_name": "Servetto",
+        "institution": "Victoria University of Wellington"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Zucca",
+        "institution": "University of Genoa"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ServettoZ21",
+    "venue": "ecoop",
+    "year": 2021
+  }
+]

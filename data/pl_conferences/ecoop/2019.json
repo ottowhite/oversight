@@ -1,0 +1,803 @@
+[
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.0",
+    "title": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "abstract": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.0",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Donaldson, Alastair",
+        "last_name": "F.",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/X19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.7",
+    "title": "On Satisfiability of Nominal Subtyping with Variance",
+    "abstract": "Nominal type systems with variance, the core of the subtyping relation in object-oriented programming languages like Java, C# and Scala, have been extensively studied by Kennedy and Pierce: they have shown the undecidability of the subtyping between ground types and proposed the decidable fragments of such type systems. However, modular verification of object-oriented code may require reasoning about the relations of open types. In this paper, we formalize and investigate the satisfiability problem for nominal subtyping with variance. We define the problem in the context of first-order logic. We show that although the non-expansive ground nominal subtyping with variance is decidable, its satisfiability problem is undecidable. Our proof uses a remarkably small fragment of the type system. In fact, we demonstrate that even for the non-expansive class tables with only nullary and unary covariant and invariant type constructors, the satisfiability of quantifier-free conjunctions of positive subtyping atoms is undecidable. We discuss this result in detail, as well as show one decidable fragment and a scheme for obtaining other decidable fragments.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.7",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Aleksandr",
+        "last_name": "Misonizhnik",
+        "institution": "St Petersburg University"
+      },
+      {
+        "first_name": "Dmitry",
+        "last_name": "Mordvinov",
+        "institution": "St Petersburg University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MisonizhnikM19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.2",
+    "title": "Godot: All the Benefits of Implicit and Explicit Futures",
+    "abstract": "Concurrent programs often make use of futures, handles to the results of asynchronous operations. Futures provide means to communicate not yet computed results, and simplify the implementation of operations that synchronise on the result of such asynchronous operations. Futures can be characterised as implicit or explicit, depending on the typing discipline used to type them. Current future implementations suffer from \"future proliferation\", either at the type-level or at run-time. The former adds future type wrappers, which hinders subtype polymorphism and exposes the client to the internal asynchronous communication architecture. The latter increases latency, by traversing nested future structures at run-time. Many languages suffer both kinds. Previous work offer partial solutions to the future proliferation problems; in this paper we show how these solutions can be integrated in an elegant and coherent way, which is more expressive than either system in isolation. We describe our proposal formally, and state and prove its key properties, in two related calculi, based on the two possible families of future constructs (data-flow futures and control-flow futures). The former relies on static type information to avoid unwanted future creation, and the latter uses an algebraic data type with dynamic checks. We also discuss how to implement our new system efficiently.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.2",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Kiko",
+        "last_name": "Fernandez-Reyes",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Dave",
+        "last_name": "Clarke",
+        "institution": "Stockholm School of Economics"
+      },
+      {
+        "first_name": "Ludovic",
+        "last_name": "Henrio",
+        "institution": "Université Claude Bernard Lyon 1"
+      },
+      {
+        "first_name": "Einar Broch",
+        "last_name": "Johnsen",
+        "institution": "University of Oslo"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Wrigstad",
+        "institution": "Uppsala University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Fernandez-Reyes19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.13",
+    "title": "Fling - A Fluent API Generator",
+    "abstract": "We present the first general and practical solution of the fluent API problem - an algorithm, that given a deterministic language (equivalently, LR(k), k >= 0 language) encodes it in an unbounded parametric polymorphism type system employing only a polynomial number of types. The theoretical result is accompanied by an actual tool Fling - a fluent API compiler-compiler in the venue of YACC, tailored for embedding DSLs in Java.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.13",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Yossi",
+        "last_name": "Gil",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Ori",
+        "last_name": "Roth",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/GilR19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.4",
+    "title": "Scopes and Frames Improve Meta-Interpreter Specialization",
+    "abstract": "DynSem is a domain-specific language for concise specification of the dynamic semantics of programming languages, aimed at rapid experimentation and evolution of language designs. To maintain a short definition-to-execution cycle, DynSem specifications are meta-interpreted. Meta-interpretation introduces runtime overhead that is difficult to remove by using interpreter optimization frameworks such as the Truffle/Graal Java tools; previous work has shown order-of-magnitude improvements from applying Truffle/Graal to a meta-interpreter, but this is still far slower than what can be achieved with a language-specific interpreter. In this paper, we show how specifying the meta-interpreter using scope graphs, which encapsulate static name binding and resolution information, produces much better optimization results from Truffle/Graal. Furthermore, we identify that JIT compilation is hindered by large numbers of calls between small polymorphic rules and we introduce rule cloning to derive larger monomorphic rules at run time as a countermeasure. Our contributions improve the performance of DynSem-derived interpreters to within an order of magnitude of a handwritten language-specific interpreter.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.4",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Vlad",
+        "last_name": "Vergu",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Tolmach",
+        "institution": "Portland State University"
+      },
+      {
+        "first_name": "Eelco",
+        "last_name": "Visser",
+        "institution": "Delft University of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/VerguTV19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.12",
+    "title": "How to Avoid Making a Billion-Dollar Mistake: Type-Safe Data Plane Programming with SafeP4",
+    "abstract": "The P4 programming language offers high-level, declarative abstractions that bring the flexibility of software to the domain of networking. Unfortunately, the main abstraction used to represent packet data in P4, namely header types, lacks basic safety guarantees. Over the last few years, experience with an increasing number of programs has shown the risks of the unsafe approach, which often leads to subtle software bugs. This paper proposes SafeP4, a domain-specific language for programmable data planes in which all packet data is guaranteed to have a well-defined meaning and satisfy essential safety guarantees. We equip SafeP4 with a formal semantics and a static type system that statically guarantees header validity---a common source of safety bugs according to our analysis of real-world P4 programs. Statically ensuring header validity is challenging because the set of valid headers can be modified at runtime, making it a dynamic program property. Our type system achieves static safety by using a form of path-sensitive reasoning that tracks dynamic information from conditional statements, routing tables, and the control plane. Our evaluation shows that SafeP4's type system can effectively eliminate common failures in many real-world programs.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.12",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Eichholz",
+        "institution": ""
+      },
+      {
+        "first_name": "Eric Hayden",
+        "last_name": "Campbell",
+        "institution": ""
+      },
+      {
+        "first_name": "Nate",
+        "last_name": "Foster",
+        "institution": ""
+      },
+      {
+        "first_name": "Guido",
+        "last_name": "Salvaneschi",
+        "institution": ""
+      },
+      {
+        "first_name": "Mira",
+        "last_name": "Mezini",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/EichholzCFSM19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.14",
+    "title": "NumLin: Linear Types for Linear Algebra",
+    "abstract": "We present NumLin, a functional programming language whose type system is designed to enforce the safe usage of the APIs of low-level linear algebra libraries (such as BLAS/LAPACK). We do so through a brief description of its key features and several illustrative examples. We show that NumLin’s type system is sound and that its implementation improves upon naïve implementations of linear algebra programs, almost towards C-levels of performance. By doing so, we demonstrate (a) that linear types are well-suited to expressing the APIs of low-level linear algebra libraries accurately and concisely and (b) that, despite the complexity of prior work on it, fractional permissions can actually be implemented using simple, well-known techniques and be used practically in real programs.",
+    "date": "2019-07-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.14",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Dhruv C.",
+        "last_name": "Makwana",
+        "institution": ""
+      },
+      {
+        "first_name": "Neelakantan R.",
+        "last_name": "Krishnaswami",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MakwanaK19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.15",
+    "title": "Deep Static Modeling of invokedynamic",
+    "abstract": "Java 7 introduced programmable dynamic linking in the form of the invokedynamic framework. Static analysis of code containing programmable dynamic linking has often been cited as a significant source of unsoundness in the analysis of Java programs. For example, Java lambdas, introduced in Java 8, are a very popular feature, which is, however, resistant to static analysis, since it mixes invokedynamic with dynamic code generation. These techniques invalidate static analysis assumptions: programmable linking breaks reasoning about method resolution while dynamically generated code is, by definition, not available statically. In this paper, we show that a static analysis can predictively model uses of invokedynamic while also cooperating with extra rules to handle the runtime code generation of lambdas. Our approach plugs into an existing static analysis and helps eliminate all unsoundness in the handling of lambdas (including associated features such as method references) and generic invokedynamic uses. We evaluate our technique on a benchmark suite of our own and on third-party benchmarks, uncovering all code previously unreachable due to unsoundness, highly efficiently.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.15",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Fourtounis,",
+        "last_name": "George",
+        "institution": "Hellenic Telecommunications and Post Commission (Greece)"
+      },
+      {
+        "first_name": "Smaragdakis,",
+        "last_name": "Yannis",
+        "institution": "Hellenic Telecommunications and Post Commission (Greece)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/FourtounisS19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.1",
+    "title": "Lifestate: Event-Driven Protocols and Callback Control Flow",
+    "abstract": "Developing interactive applications (apps) against event-driven software frameworks such as Android is notoriously difficult. To create apps that behave as expected, developers must follow complex and often implicit asynchronous programming protocols. Such protocols intertwine the proper registering of callbacks to receive control from the framework with appropriate application-programming interface (API) calls that in turn affect the set of possible future callbacks. An app violates the protocol when, for example, it calls a particular API method in a state of the framework where such a call is invalid. What makes automated reasoning hard in this domain is largely what makes programming apps against such frameworks hard: the specification of the protocol is unclear, and the control flow is complex, asynchronous, and higher-order. In this paper, we tackle the problem of specifying and modeling event-driven application-programming protocols. In particular, we formalize a core meta-model that captures the dialogue between event-driven frameworks and application callbacks. Based on this meta-model, we define a language called lifestate that permits precise and formal descriptions of application-programming protocols and the callback control flow imposed by the event-driven framework. Lifestate unifies modeling what app callbacks can expect of the framework with specifying rules the app must respect when calling into the framework. In this way, we effectively combine lifecycle constraints and typestate rules. To evaluate the effectiveness of lifestate modeling, we provide a dynamic verification algorithm that takes as input a trace of execution of an app and a lifestate protocol specification to either produce a trace witnessing a protocol violation or a proof that no such trace is realizable.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.1",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Shawn",
+        "last_name": "Meier",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Sergio",
+        "last_name": "Mover",
+        "institution": "École Polytechnique"
+      },
+      {
+        "first_name": "Bor-Yuh Evan",
+        "last_name": "Chang",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MeierMC19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.3",
+    "title": "Multitier Modules",
+    "abstract": "Multitier programming languages address the complexity of developing distributed systems abstracting over low level implementation details such as data representation, serialization and network protocols. Since the functionalities of different peers can be defined in the same compilation unit, multitier languages do not force developers to modularize software along network boundaries. Unfortunately, combining the code for all tiers into the same compilation unit poses a scalability challenge or forces developers to resort to traditional modularization abstractions that are agnostic to the multitier nature of the language. In this paper, we address this issue with a module system for multitier languages. Our module system supports encapsulating each (cross-peer) functionality and defining it over abstract peer types. As a result, we disentangle modularization and distribution and we enable the definition of a distributed system as a composition of multitier modules, each representing a subsystem. Our case studies on distributed algorithms, distributed data structures, as well as on the Apache Flink task distribution system, show that multitier modules allow the definition of reusable (abstract) patterns of interaction in distributed software and enable separating the modularization and distribution concerns, properly separating functionalities in distributed systems.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.3",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Weisenburger,",
+        "last_name": "Pascal",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "Salvaneschi,",
+        "last_name": "Guido",
+        "institution": "Technical University of Darmstadt"
+      }
+    ],
+    "dblp_key": "conf/ecoop/WeisenburgerS19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.10",
+    "title": "Garbage-Free Abstract Interpretation Through Abstract Reference Counting",
+    "abstract": "Abstract garbage collection is the application of garbage collection to an abstract interpreter. Existing work has shown that abstract garbage collection can improve both the interpreter’s precision and performance. Current approaches rely on heuristics to decide when to apply abstract garbage collection. Garbage will build up and impact precision and performance when the collection is applied infrequently, while too frequent applications will bring about their own performance overhead. A balance between these tradeoffs is often difficult to strike. We propose a new approach to cope with the buildup of garbage in the results of an abstract interpreter. Our approach is able to eliminate all garbage, therefore obtaining the maximum precision and performance benefits of abstract garbage collection. At the same time, our approach does not require frequent heap traversals, and therefore adds little to the interpreters’s running time. The core of our approach uses reference counting to detect and eliminate garbage as soon as it arises. However, reference counting cannot deal with cycles, and we show that cycles are much more common in an abstract interpreter than in its concrete counterpart. To alleviate this problem, our approach detects cycles and employs reference counting at the level of strongly connected components. While this technique in general works for any system that uses reference counting, we argue that it works particularly well for an abstract interpreter. In fact, we show formally that for the continuation store, where most of the cycles occur, the cycle detection technique only requires O(1) amortized operations per continuation push. We present our approach formally, and provide a proof-of-concept implementation in the Scala-AM framework. We empirically show our approach achieves both the optimal precision and significantly better performance compared to existing approaches to abstract garbage collection.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.10",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Noah Van",
+        "last_name": "Es",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Quentin",
+        "last_name": "Stiévenart",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Coen De",
+        "last_name": "Roover",
+        "institution": "Vrije Universiteit Brussel"
+      }
+    ],
+    "dblp_key": "conf/ecoop/EsSR19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.11",
+    "title": "Eventually Sound Points-To Analysis with Specifications",
+    "abstract": "Static analyses make the increasingly tenuous assumption that all source code is available for analysis; for example, large libraries often call into native code that cannot be analyzed. We propose a points-to analysis that initially makes optimistic assumptions about missing code, and then inserts runtime checks that report counterexamples to these assumptions that occur during execution. Our approach guarantees eventual soundness, which combines two guarantees: (i) the runtime checks are guaranteed to catch the first counterexample that occurs during any execution, in which case execution can be terminated to prevent harm, and (ii) only finitely many counterexamples ever occur, implying that the static analysis eventually becomes statically sound with respect to all remaining executions. We implement Optix, an eventually sound points-to analysis for Android apps, where the Android framework is missing. We show that the runtime checks added by Optix incur low overhead on real programs, and demonstrate how Optix improves a client information flow analysis for detecting Android malware.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.11",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Osbert",
+        "last_name": "Bastani",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Rahul",
+        "last_name": "Sharma",
+        "institution": "University of Ottawa"
+      },
+      {
+        "first_name": "Lazaro",
+        "last_name": "Clapp",
+        "institution": "Uber AI (United States)"
+      },
+      {
+        "first_name": "Saswat",
+        "last_name": "Anand",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Bastani0CAA19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.8",
+    "title": "Static Analysis for Asynchronous JavaScript Programs",
+    "abstract": "Asynchrony has become an inherent element of JavaScript, as an effort to improve the scalability and performance of modern web applications. To this end, JavaScript provides programmers with a wide range of constructs and features for developing code that performs asynchronous computations, including but not limited to timers, promises, and non-blocking I/O. However, the data flow imposed by asynchrony is implicit, and not always well-understood by the developers who introduce many asynchrony-related bugs to their programs. Worse, there are few tools and techniques available for analyzing and reasoning about such asynchronous applications. In this work, we address this issue by designing and implementing one of the first static analysis schemes capable of dealing with almost all the asynchronous primitives of JavaScript up to the 7th edition of the ECMAScript specification. Specifically, we introduce the callback graph, a representation for capturing data flow between asynchronous code. We exploit the callback graph for designing a more precise analysis that respects the execution order between different asynchronous functions. We parameterize our analysis with one novel context-sensitivity flavor, and we end up with multiple analysis variations for building callback graph. We performed a number of experiments on a set of hand-written and real-world JavaScript programs. Our results show that our analysis can be applied to medium-sized programs achieving 79% precision on average. The findings further suggest that analysis sensitivity is beneficial for the vast majority of the benchmarks. Specifically, it is able to improve precision by up to 28.5%, while it achieves an 88% precision on average without highly sacrificing performance.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.8",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Thodoris",
+        "last_name": "Sotiropoulos",
+        "institution": "Athens University of Economics and Business"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Livshits",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SotiropoulosL19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.6",
+    "title": "A Typing Discipline for Hardware Interfaces",
+    "abstract": "Modern Systems-on-a-Chip (SoC) are constructed by composition of IP (Intellectual Property) Cores with the communication between these IP Cores being governed by well described interaction protocols. However, there is a disconnect between the machine readable specification of these protocols and the verification of their implementation in known hardware description languages. Although tools can be written to address such separation of concerns, the tooling is often hand written and used to check hardware designs a posteriori. We have developed a dependent type-system and proof-of-concept modelling language to reason about the physical structure of hardware interfaces using user provided descriptions. Our type-system provides correct-by-construction guarantees that the interfaces on an IP Core will be well-typed if they adhere to a specified standard.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.6",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jan de",
+        "last_name": "Muijnck-Hughes",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Wim",
+        "last_name": "Vanderbauwhede",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Muijnck-HughesV19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.16",
+    "title": "Reasoning About Foreign Function Interfaces Without Modelling the Foreign Language",
+    "abstract": "Object-oriented programming has long been regarded as too inefficient for SIMD high-performance computing, despite the fact that many important HPC applications have an inherent object structure. On SIMD accelerators, including GPUs, this is mainly due to performance problems with memory allocation and memory access: There are a few libraries that support parallel memory allocation directly on accelerator devices, but all of them suffer from uncoalesed memory accesses. We discovered a broad class of object-oriented programs with many important real-world applications that can be implemented efficiently on massively parallel SIMD accelerators. We call this class Single-Method Multiple-Objects (SMMO), because parallelism is expressed by running a method on all objects of a type. To make fast GPU programming available to average programmers, we developed DynaSOAr, a CUDA framework for SMMO applications. DynaSOAr consists of (1) a fully-parallel, lock-free, dynamic memory allocator, (2) a data layout DSL and (3) an efficient, parallel do-all operation. DynaSOAr achieves performance superior to state-of-the-art GPU memory allocators by controlling both memory allocation and memory access. DynaSOAr improves the usage of allocated memory with a Structure of Arrays data layout and achieves low memory fragmentation through efficient management of free and allocated memory blocks with lock-free, hierarchical bitmaps. Contrary to other allocators, our design is heavily based on atomic operations, trading raw (de)allocation performance for better overall application performance. In our benchmarks, DynaSOAr achieves a speedup of application code of up to 3x over state-of-the-art allocators. Moreover, DynaSOAr manages heap memory more efficiently than other allocators, allowing programmers to run up to 2x larger problem sizes with the same amount of memory.",
+    "date": "2018-10-28",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.16",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Springer",
+        "institution": ""
+      },
+      {
+        "first_name": "Hidehiko",
+        "last_name": "Masuhara",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/TurcotteAR19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.17",
+    "title": "DynaSOAr: A Parallel Memory Allocator for Object-Oriented Programming on GPUs with Efficient Memory Access",
+    "abstract": "Object-oriented programming has long been regarded as too inefficient for SIMD high-performance computing, despite the fact that many important HPC applications have an inherent object structure. On SIMD accelerators, including GPUs, this is mainly due to performance problems with memory allocation and memory access: There are a few libraries that support parallel memory allocation directly on accelerator devices, but all of them suffer from uncoalesed memory accesses. We discovered a broad class of object-oriented programs with many important real-world applications that can be implemented efficiently on massively parallel SIMD accelerators. We call this class Single-Method Multiple-Objects (SMMO), because parallelism is expressed by running a method on all objects of a type. To make fast GPU programming available to average programmers, we developed DynaSOAr, a CUDA framework for SMMO applications. DynaSOAr consists of (1) a fully-parallel, lock-free, dynamic memory allocator, (2) a data layout DSL and (3) an efficient, parallel do-all operation. DynaSOAr achieves performance superior to state-of-the-art GPU memory allocators by controlling both memory allocation and memory access. DynaSOAr improves the usage of allocated memory with a Structure of Arrays data layout and achieves low memory fragmentation through efficient management of free and allocated memory blocks with lock-free, hierarchical bitmaps. Contrary to other allocators, our design is heavily based on atomic operations, trading raw (de)allocation performance for better overall application performance. In our benchmarks, DynaSOAr achieves a speedup of application code of up to 3x over state-of-the-art allocators. Moreover, DynaSOAr manages heap memory more efficiently than other allocators, allowing programmers to run up to 2x larger problem sizes with the same amount of memory.",
+    "date": "2018-10-28",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.17",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Springer",
+        "institution": "Association for Computing Machinery"
+      },
+      {
+        "first_name": "Hidehiko",
+        "last_name": "Masuhara",
+        "institution": "Association for Computing Machinery"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SpringerM19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.25",
+    "title": "Finally, a Polymorphic Linear Algebra Language (Pearl)",
+    "abstract": "Many different data analytics tasks boil down to linear algebra primitives. In practice, for each different type of workload, data scientists use a particular specialised library. In this paper, we present Pilatus, a polymorphic iterative linear algebra language, applicable to various types of data analytics workloads. The design of this domain-specific language (DSL) is inspired by both mathematics and programming languages: its basic constructs are borrowed from abstract algebra, whereas the key technology behind its polymorphic design uses the tagless final approach (a.k.a. polymorphic embedding/object algebras). This design enables us to change the behaviour of arithmetic operations to express matrix algebra, graph algorithms, logical probabilistic programs, and differentiable programs. Crucially, the polymorphic design of Pilatus allows us to use multi-stage programming and rewrite-based optimisation to recover the performance of specialised code, supporting fixed sized matrices, algebraic optimisations, and fusion.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.25",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Amir",
+        "last_name": "Shaikhha",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Lionel",
+        "last_name": "Parreaux",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ShaikhhaP19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.19",
+    "title": "Transferring Obligations Through Synchronizations",
+    "abstract": "One common approach for verifying safety properties of multithreaded programs is assigning appropriate permissions, such as ownership of a heap location, and obligations, such as an obligation to send a message on a channel, to each thread and making sure that each thread only performs the actions for which it has permissions and it also fulfills all of its obligations before it terminates. Although permissions can be transferred through synchronizations from a sender thread, where for example a message is sent or a condition variable is notified, to a receiver thread, where that message or that notification is received, in existing approaches obligations can only be transferred when a thread is forked. In this paper we introduce two mechanisms, one for channels and the other for condition variables, that allow obligations, along with permissions, to be transferred from the sender to the receiver, while ensuring that there is no state where the transferred obligations are lost, i.e. where they are discharged from the sender thread but not loaded onto the receiver thread yet. We show how these mechanisms can be used to modularly verify deadlock-freedom of a number of interesting programs, such as some variations of client-server programs, fair readers-writers locks, and dining philosophers, which cannot be modularly verified without such transfer. We also encoded the proposed separation logic-based proof rules in the VeriFast program verifier and succeeded in verifying the mentioned programs.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.19",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jafar",
+        "last_name": "Hamin",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Bart",
+        "last_name": "Jacobs",
+        "institution": "Radboud University Nijmegen"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Hamin019",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.18",
+    "title": "Reliable State Machines: A Framework for Programming Reliable Cloud Services",
+    "abstract": "Building reliable applications for the cloud is challenging because of unpredictable failures during a program’s execution. This paper presents a programming framework, called Reliable State Machines (RSMs), that offers fault-tolerance by construction. In our framework, an application comprises several (possibly distributed) RSMs that communicate with each other via messages, much in the style of actor-based programming. Each RSM is fault-tolerant by design, thereby offering the illusion of being \"always-alive\". An RSM is guaranteed to process each input request exactly once, as one would expect in a failure-free environment. The RSM runtime automatically takes care of persisting state and rehydrating it on a failover. We present the core syntax and semantics of RSMs, along with a formal proof of failure-transparency. We provide a .NET implementation of the RSM framework for deploying services to Microsoft Azure. We carry out an extensive performance evaluation on micro-benchmarks to show that one can build high-throughput applications with RSMs. We also present a case study where we rewrite a significant part of a production cloud service using RSMs. The resulting service has simpler code and exhibits production-grade performance.",
+    "date": "2019-02-25",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.18",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Suvam",
+        "last_name": "Mukherjee",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Nitin John",
+        "last_name": "Raj",
+        "institution": ""
+      },
+      {
+        "first_name": "Krishnan",
+        "last_name": "Govindraj",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Pantazis",
+        "last_name": "Deligiannis",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Chandramouleswaran",
+        "last_name": "Ravichandran",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Akash",
+        "last_name": "Lal",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Aseem",
+        "last_name": "Rastogi",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Raja",
+        "last_name": "Krishnaswamy",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MukherjeeRGDRLR19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.20",
+    "title": "Automated Large-Scale Multi-Language Dynamic Program Analysis in the Wild (Tool Insights Paper)",
+    "abstract": "Today’s availability of open-source software is overwhelming, and the number of free, ready-to-use software components in package repositories such as NPM, Maven, or SBT is growing exponentially. In this paper we address two straightforward yet important research questions: would it be possible to develop a tool to automate dynamic program analysis on public open-source software at a large scale? Moreover, and perhaps more importantly, would such a tool be useful? We answer the first question by introducing NAB, a tool to execute large-scale dynamic program analysis of open-source software in the wild. NAB is fully-automatic, language-agnostic, and can scale dynamic program analyses on open-source software up to thousands of projects hosted in code repositories. Using NAB, we analyzed more than 56K Node.js, Java, and Scala projects. Using the data collected by NAB we were able to (1) study the adoption of new language constructs such as JavaScript Promises, (2) collect statistics about bad coding practices in JavaScript, and (3) identify Java and Scala task-parallel workloads suitable for inclusion in a domain-specific benchmark suite. We consider such findings and the collected data an affirmative answer to the second question.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.20",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Alex",
+        "last_name": "Villazón",
+        "institution": "Universidad Privada Boliviana"
+      },
+      {
+        "first_name": "Haiyang",
+        "last_name": "Sun",
+        "institution": "Università della Svizzera italiana"
+      },
+      {
+        "first_name": "Andrea",
+        "last_name": "Rosà",
+        "institution": "Università della Svizzera italiana"
+      },
+      {
+        "first_name": "Eduardo",
+        "last_name": "Rosales",
+        "institution": "Università della Svizzera italiana"
+      },
+      {
+        "first_name": "Daniele",
+        "last_name": "Bonetta",
+        "institution": "Oracle (United States)"
+      },
+      {
+        "first_name": "Isabella",
+        "last_name": "Defilippis",
+        "institution": "Universidad Privada Boliviana"
+      },
+      {
+        "first_name": "Sergio",
+        "last_name": "Oporto",
+        "institution": "Universidad Privada Boliviana"
+      },
+      {
+        "first_name": "Walter",
+        "last_name": "Binder",
+        "institution": "Università della Svizzera italiana"
+      }
+    ],
+    "dblp_key": "conf/ecoop/VillazonSRRBDOB19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.21",
+    "title": "MagpieBridge: A General Approach to Integrating Static Analyses into IDEs and Editors (Tool Insights Paper)",
+    "abstract": "In the past, many static analyses have been created in academia, but only a few of them have found widespread use in industry. Those analyses which are adopted by developers usually have IDE support in the form of plugins, without which developers have no convenient mechanism to use the analysis. Hence, the key to making static analyses more accessible to developers is to integrate the analyses into IDEs and editors. However, integrating static analyses into IDEs is non-trivial: different IDEs have different UI workflows and APIs, expertise in those matters is required to write such plugins, and analysis experts are not typically familiar with doing this. As a result, especially in academia, most analysis tools are headless and only have command-line interfaces. To make static analyses more usable, we propose MagpieBridge - a general approach to integrating static analyses into IDEs and editors. MagpieBridge reduces the mxn complexity problem of integrating m analyses into n IDEs to m+n complexity because each analysis and type of plugin need be done just once for MagpieBridge itself. We demonstrate our approach by integrating two existing analyses, Ariadne and CogniCrypt, into IDEs; these two analyses illustrate the generality of MagpieBridge, as they are based on different program analysis frameworks - WALA and Soot respectively - for different application areas - machine learning and security - and different programming languages - Python and Java. We show further generality of MagpieBridge by using multiple popular IDEs and editors, such as Eclipse, IntelliJ, PyCharm, Jupyter, Sublime Text and even Emacs and Vim.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.21",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Linghui",
+        "last_name": "Luo",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Julian",
+        "last_name": "Dolby",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Bodden",
+        "institution": "Fraunhofer Institute for Mechatronic Systems Design"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LuoDB19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.26",
+    "title": "Towards Language-Parametric Semantic Editor Services Based on Declarative Type System Specifications (Brave New Idea Paper)",
+    "abstract": "Editor services assist programmers to more effectively write and comprehend code. Implementing editor services correctly is not trivial. This paper focuses on the specification of semantic editor services, those that use the semantic model of a program. The specification of refactorings is a common subject of study, but many other semantic editor services have received little attention. We propose a language-parametric approach to the definition of semantic editor services, using a declarative specification of the static semantics of the programming language, and constraint solving. Editor services are specified as constraint problems, and language specifications are used to ensure correctness. We describe our approach for the following semantic editor services: reference resolution, find usages, goto subclasses, code completion, and the extract definition refactoring. We do this in the context of Statix, a constraint language for the specification of type systems. We investigate the specification of editor services in terms of Statix constraints, and the requirements these impose on a suitable solver.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.26",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Daniel A. A.",
+        "last_name": "Pelsmaeker",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Hendrik van",
+        "last_name": "Antwerpen",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Eelco",
+        "last_name": "Visser",
+        "institution": "Delft University of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/PelsmaekerAV19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.28",
+    "title": "Motion Session Types for Robotic Interactions (Brave New Idea Paper)",
+    "abstract": "Robotics applications involve programming concurrent components synchronising through messages while simultaneously executing motion primitives that control the state of the physical world. Today, these applications are typically programmed in low-level imperative programming languages which provide little support for abstraction or reasoning. We present a unifying programming model for concurrent message-passing systems that additionally control the evolution of physical state variables, together with a compositional reasoning framework based on multiparty session types. Our programming model combines message-passing concurrent processes with motion primitives. Processes represent autonomous components in a robotic assembly, such as a cart or a robotic arm, and they synchronise via discrete messages as well as via motion primitives. Continuous evolution of trajectories under the action of controllers is also modelled by motion primitives, which operate in global, physical time. We use multiparty session types as specifications to orchestrate discrete message-passing concurrency and continuous flow of trajectories. A global session type specifies the communication protocol among the components with joint motion primitives. A projection from a global type ensures that jointly executed actions at end-points are communication safe and deadlock-free, i.e., session-typed components do not get stuck. Together, these checks provide a compositional verification methodology for assemblies of robotic components with respect to concurrency invariants such as a progress property of communications as well as dynamic invariants such as absence of collision. We have implemented our core language and, through initial experiments, have shown how multiparty session types can be used to specify and compositionally verify robotic systems implemented on top of off-the-shelf and custom hardware using standard robotics application libraries.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.28",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Rupak",
+        "last_name": "Majumdar",
+        "institution": "Max Planck Society"
+      },
+      {
+        "first_name": "Marcus",
+        "last_name": "Pirron",
+        "institution": "Max Planck Society"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Max Planck Society"
+      },
+      {
+        "first_name": "Damien",
+        "last_name": "Zufferey",
+        "institution": "Max Planck Society"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MajumdarPYZ19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.23",
+    "title": "Minimal Session Types (Pearl)",
+    "abstract": "Session types are a type-based approach to the verification of message-passing programs. They have been much studied as type systems for the pi-calculus and for languages such as Java. A session type specifies what and when should be exchanged through a channel. Central to session-typed languages are constructs in types and processes that specify sequencing in protocols. Here we study minimal session types, session types without sequencing. This is arguably the simplest form of session types. By relying on a core process calculus with sessions and higher-order concurrency (abstraction-passing), we prove that every process typable with standard (non minimal) session types can be compiled down into a process typed with minimal session types. This means that having sequencing constructs in both processes and session types is redundant; only sequentiality in processes is indispensable, as it can precisely codify sequentiality in types. Our developments draw inspiration from work by Parrow on behavior-preserving decompositions of untyped processes. By casting Parrow’s results in the realm of typed processes, our results reveal a conceptually simple formulation of session types and a principled avenue to the integration of session types into languages without sequencing in types.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.23",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Alen",
+        "last_name": "Arslanagić",
+        "institution": "University of Groningen"
+      },
+      {
+        "first_name": "Jorge A.",
+        "last_name": "Pérez",
+        "institution": "University of Groningen"
+      },
+      {
+        "first_name": "Erik",
+        "last_name": "Voogd",
+        "institution": "University of Groningen"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ArslanagicPV19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.22",
+    "title": "Semantic Patches for Java Program Transformation (Experience Report)",
+    "abstract": "Developing software often requires code changes that are widespread and applied to multiple locations. There are tools for Java that allow developers to specify patterns for program matching and source-to-source transformation. However, to our knowledge, none allows for transforming code based on its control-flow context. We prototype Coccinelle4J, an extension to Coccinelle, which is a program transformation tool designed for widespread changes in C code, in order to work on Java source code. We adapt Coccinelle to be able to apply scripts written in the Semantic Patch Language (SmPL), a language provided by Coccinelle, to Java source files. As a case study, we demonstrate the utility of Coccinelle4J with the task of API migration. We show 6 semantic patches to migrate from deprecated Android API methods on several open source Android projects. We describe how SmPL can be used to express several API migrations and justify several of our design decisions.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.22",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Hong Jin",
+        "last_name": "Kang",
+        "institution": "Singapore Management University"
+      },
+      {
+        "first_name": "Ferdian",
+        "last_name": "Thung",
+        "institution": "Singapore Management University"
+      },
+      {
+        "first_name": "Julia",
+        "last_name": "Lawall",
+        "institution": "Sorbonne Université"
+      },
+      {
+        "first_name": "Gilles",
+        "last_name": "Muller",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Lingxiao",
+        "last_name": "Jiang",
+        "institution": "Singapore Management University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Lo",
+        "institution": "Singapore Management University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/KangTLMJ019",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.24",
+    "title": "Julia's Efficient Algorithm for Subtyping Unions and Covariant Tuples (Pearl)",
+    "abstract": "The Julia programming language supports multiple dispatch and provides a rich type annotation language to specify method applicability. When multiple methods are applicable for a given call, Julia relies on subtyping between method signatures to pick the correct method to invoke. Julia’s subtyping algorithm is surprisingly complex, and determining whether it is correct remains an open question. In this paper, we focus on one piece of this problem: the interaction between union types and covariant tuples. Previous work normalized unions inside tuples to disjunctive normal form. However, this strategy has two drawbacks: complex type signatures induce space explosion, and interference between normalization and other features of Julia’s type system. In this paper, we describe the algorithm that Julia uses to compute subtyping between tuples and unions - an algorithm that is immune to space explosion and plays well with other features of the language. We prove this algorithm correct and complete against a semantic-subtyping denotational model in Coq.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.24",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Benjamin",
+        "last_name": "Chung",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Francesco Zappa",
+        "last_name": "Nardelli",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ChungNV19",
+    "venue": "ecoop",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2019.27",
+    "title": "Multiverse Debugging: Non-Deterministic Debugging for Non-Deterministic Programs (Brave New Idea Paper)",
+    "abstract": "Many of today’s software systems are parallel or concurrent. With the rise of Node.js and more generally event-loop architectures, many systems need to handle concurrency. However, its non-deterministic behavior makes it hard to reproduce bugs. Today’s interactive debuggers unfortunately do not support developers in debugging non-deterministic issues. They only allow us to explore a single execution path. Therefore, some bugs may never be reproduced in the debugging session, because the right conditions are not triggered. As a solution, we propose multiverse debugging, a new approach for debugging non-deterministic programs that allows developers to observe all possible execution paths of a parallel program and debug it interactively. We introduce the concepts of multiverse breakpoints and stepping, which can halt a program in different execution paths, i.e. universes. We apply multiverse debugging to AmbientTalk, an actor-based language, resulting in Voyager, a multiverse debugger implemented on top of the AmbientTalk operational semantics. We provide a proof of non-interference, i.e., we prove that observing the behavior of a program by the debugger does not affect the behavior of that program and vice versa. Multiverse debugging establishes the foundation for debugging non-deterministic programs interactively, which we believe can aid the development of parallel and concurrent systems.",
+    "date": "2019-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.27",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Carmen Torres",
+        "last_name": "Lopez",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Robbert Gurdeep",
+        "last_name": "Singh",
+        "institution": "Ghent University"
+      },
+      {
+        "first_name": "Stefan",
+        "last_name": "Marr",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Elisa Gonzalez",
+        "last_name": "Boix",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Christophe",
+        "last_name": "Scholliers",
+        "institution": "Ghent University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LopezSMBS19",
+    "venue": "ecoop",
+    "year": 2019
+  }
+]
