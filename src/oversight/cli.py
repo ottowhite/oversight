@@ -29,13 +29,76 @@ def cmd_search(args: argparse.Namespace) -> None:
 
 
 def cmd_sync(args: argparse.Namespace) -> None:
-    from .ArXivRepository import ArXivRepository
+    """Run all (or a subset of) registered :class:`SourcePoller` instances.
 
-    with ArXivRepository(
-        embedding_model_name="models/gemini-embedding-001",
-        research_llm_model_name="google/gemini-2.5-flash",
-    ) as repo:
-        repo.sync()
+    Embedding is run once at the end, in a single pass over every
+    source's unembedded rows.
+    """
+    from .PaperDatabase import PaperDatabase
+    from .source_registry import build_registry
+    from .utils import get_logger
+
+    logger = get_logger()
+    registry = build_registry()
+
+    if args.sources:
+        requested = [s.strip() for s in args.sources.split(",") if s.strip()]
+        unknown = [s for s in requested if s not in registry]
+        if unknown:
+            raise SystemExit(f"Unknown source(s): {unknown}. Known: {sorted(registry)}")
+        selected = [registry[s] for s in requested]
+    else:
+        if args.backfill:
+            raise SystemExit(
+                "--backfill requires --sources to avoid accidental full re-pulls. "
+                f"Known sources: {sorted(registry)}"
+            )
+        selected = list(registry.values())
+
+    print(f"oversight sync: {len(selected)} poller(s) selected")
+    if args.dry_run:
+        print("(dry-run — no inserts will be performed)\n")
+
+    results: list[tuple[str, str]] = []
+    with PaperDatabase() as db:
+        for poller in selected:
+            print(f"--- poller: {poller.name} ---")
+            try:
+                result = poller.fetch_and_insert(
+                    db,
+                    backfill=args.backfill,
+                    dry_run=args.dry_run,
+                )
+            except NotImplementedError as exc:
+                print(f"  [skipped] {exc}")
+                results.append((poller.name, f"skipped: {exc}"))
+                continue
+            except Exception as exc:  # noqa: BLE001
+                logger.exception("poller %s failed", poller.name)
+                results.append((poller.name, f"FAILED: {exc}"))
+                continue
+            print(
+                f"  inserted={result.inserted} updated={result.updated} "
+                f"skipped={result.skipped}"
+                + (f" note={result.note}" if result.note else "")
+            )
+            results.append((poller.name, str(result)))
+
+        if not args.dry_run:
+            # Single embedding pass. Reuse the existing repo-level
+            # plumbing for non-arxiv rows; arxiv rows are embedded by
+            # the ArXivRepository.sync path the ArxivPoller currently
+            # delegates to.
+            from .PaperRepository import PaperRepository
+
+            with PaperRepository(
+                embedding_model_name="models/gemini-embedding-001"
+            ) as repo:
+                repo.embed_missing_conference_papers()
+
+    print("\n=== sync summary ===")
+    for name, summary in results:
+        print(f"  {name}: {summary}")
 
 
 def cmd_digest(args: argparse.Namespace) -> None:
@@ -155,7 +218,29 @@ def main() -> None:
     sp_search.set_defaults(func=cmd_search)
 
     # oversight sync
-    sp_sync = subparsers.add_parser("sync", help="Sync papers from ArXiv")
+    sp_sync = subparsers.add_parser(
+        "sync",
+        help="Sync papers from registered sources (arxiv, pl, ml, systems)",
+    )
+    sp_sync.add_argument(
+        "--sources",
+        help=(
+            "Comma-separated source names to sync. Defaults to every registered poller."
+        ),
+    )
+    sp_sync.add_argument(
+        "--backfill",
+        action="store_true",
+        help=(
+            "Re-pull each poller's full back-catalogue rather than using its "
+            "watermark. Requires --sources to avoid accidental full re-pulls."
+        ),
+    )
+    sp_sync.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print each poller's plan without inserting.",
+    )
     sp_sync.set_defaults(func=cmd_sync)
 
     # oversight digest
