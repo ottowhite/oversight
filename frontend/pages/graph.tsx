@@ -237,7 +237,10 @@ export default function GraphPage() {
     cache: {},
   });
   const [distribution, setDistribution] = useState<SimilarityDistribution | null>(null);
-  const [hoverNode, setHoverNode] = useState<Paper | null>(null);
+  // The abstract sidebar latches on hover and persists when the cursor
+  // leaves the node — only swaps when another node is hovered. This lets
+  // the user read long abstracts without panicking the cursor.
+  const [panelPaper, setPanelPaper] = useState<Paper | null>(null);
   const [loadingNodeId, setLoadingNodeId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -668,6 +671,7 @@ export default function GraphPage() {
         <title>Graph · Oversight</title>
       </Head>
       <main className="grid h-screen grid-rows-[auto,1fr]">
+        {/* Top-level header spans both the graph and the abstract panel. */}
         <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
           <div className="flex items-center gap-3 px-4 py-3">
             <a
@@ -702,6 +706,8 @@ export default function GraphPage() {
           </div>
         </header>
 
+        {/* Content row: graph canvas (flex) + fixed-width abstract sidebar. */}
+        <div className="grid min-h-0 grid-cols-[1fr,360px]">
         <div ref={containerRef} className="relative min-h-0 w-full overflow-hidden">
           <ForceGraph2D
             ref={fgRef}
@@ -721,7 +727,12 @@ export default function GraphPage() {
             }}
             linkColor={linkColor as any}
             linkWidth={linkWidth as any}
-            onNodeHover={(node: any) => setHoverNode(node ? node.paper : null)}
+            onNodeHover={(node: any) => {
+              // Latch: only update on enter, never clear on leave. This keeps
+              // the abstract panel populated so the user can read long
+              // abstracts without their cursor needing to stay on the node.
+              if (node && node.paper) setPanelPaper(node.paper);
+            }}
             onNodeClick={(node: any) => expandNode(node.id, graph.mode)}
             cooldownTicks={120}
             d3VelocityDecay={0.35}
@@ -743,25 +754,9 @@ export default function GraphPage() {
             </div>
           )}
 
-          {/* Hover tooltip */}
-          {hoverNode && (
-            <div
-              className="pointer-events-none absolute bottom-4 left-4 z-20 max-w-md rounded-xl bg-[#111111] border border-[#333333] p-3 shadow-lg"
-            >
-              <div className="text-sm font-semibold text-base-content">{hoverNode.title}</div>
-              <div className="mt-1 text-xs text-base-content/60">
-                {hoverNode.authors[0]}
-                {hoverNode.authors.length > 1 ? ` +${hoverNode.authors.length - 1}` : ""}
-              </div>
-              <div className="mt-1 text-xs text-base-content/40 font-mono">
-                {hoverNode.paper_id === seedId
-                  ? "seed"
-                  : `sim(seed) = ${(simToSeed[hoverNode.paper_id] ?? 0).toFixed(3)}`}
-              </div>
-            </div>
-          )}
-
-          {/* Controls panel (top-right floating) */}
+          {/* Controls panel (top-right, floats over the graph area). The
+              abstract sidebar lives in the grid cell to the right, so the
+              controls don't overlap any rendered text. */}
           <aside
             className="absolute top-4 right-4 z-20 w-[320px] card bg-base-200 shadow-lg border border-[#333333]"
           >
@@ -836,9 +831,112 @@ export default function GraphPage() {
             </div>
           </aside>
         </div>
+
+        <AbstractPanel
+          paper={panelPaper}
+          isSeed={panelPaper?.paper_id === seedId}
+          similarity={panelPaper ? simToSeed[panelPaper.paper_id] : undefined}
+        />
+        </div>
       </main>
     </>
   );
+}
+
+// ---------------------------------------------------------------------------
+// AbstractPanel — fixed right-hand sidebar that shows the metadata and
+// abstract for the most recently hovered node. Latches: never clears
+// when the cursor leaves a node, only swaps to a new paper.
+// ---------------------------------------------------------------------------
+
+function AbstractPanel({
+  paper,
+  isSeed,
+  similarity,
+}: {
+  paper: Paper | null;
+  isSeed: boolean;
+  similarity: number | undefined;
+}) {
+  return (
+    <aside className="border-l border-base-300/60 bg-base-200/40 min-h-0 overflow-y-auto">
+      <div className="p-4">
+        {!paper ? (
+          <div className="text-sm text-base-content/40 leading-relaxed">
+            Hover a node to see its abstract.
+          </div>
+        ) : (
+          <>
+            <div className="flex items-center gap-2 mb-2 text-[11px] uppercase tracking-wide text-base-content/40">
+              {isSeed ? (
+                <span className="text-primary font-semibold">seed</span>
+              ) : similarity !== undefined ? (
+                <span className="font-mono text-accent">
+                  sim = {similarity.toFixed(3)}
+                </span>
+              ) : (
+                <span className="font-mono">paper</span>
+              )}
+              {paper.source && (
+                <span className="ml-auto font-mono">{paper.source}</span>
+              )}
+              {paper.paper_date && (
+                <span className="font-mono">{formatDate(paper.paper_date)}</span>
+              )}
+            </div>
+
+            <h2 className="text-base font-semibold leading-snug text-base-content">
+              {paper.link ? (
+                <a
+                  href={paper.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-accent hover:underline"
+                >
+                  {paper.title}
+                </a>
+              ) : (
+                paper.title
+              )}
+            </h2>
+
+            {paper.authors.length > 0 && (
+              <p className="mt-2 text-xs text-base-content/60 leading-relaxed">
+                {paper.authors.join(", ")}
+              </p>
+            )}
+
+            <p className="mt-1 text-[11px] text-base-content/30 font-mono">
+              {paper.paper_id}
+            </p>
+
+            {paper.abstract ? (
+              <p className="mt-3 text-sm text-base-content/80 whitespace-pre-wrap leading-relaxed">
+                {paper.abstract}
+              </p>
+            ) : (
+              <p className="mt-3 text-sm text-base-content/40 italic">
+                No abstract available.
+              </p>
+            )}
+          </>
+        )}
+      </div>
+    </aside>
+  );
+}
+
+// "2026-01-16" → "Jan 2026". Returns the raw string on any parse failure.
+function formatDate(iso: string): string {
+  const m = /^(\d{4})-(\d{2})-/.exec(iso);
+  if (!m) return iso;
+  const months = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  ];
+  const monthIdx = parseInt(m[2], 10) - 1;
+  const monthName = months[monthIdx] ?? m[2];
+  return `${monthName} ${m[1]}`;
 }
 
 // ---------------------------------------------------------------------------
