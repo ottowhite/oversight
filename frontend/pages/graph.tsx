@@ -556,51 +556,70 @@ export default function GraphPage() {
   // Layout constants are in world units (the same units the d3-force
   // simulation uses for x/y). NODE_FONT_PX is a world-space size, NOT a
   // screen-pixel size.
-  const NODE_FONT_PX = 4; // world-units; readable at default zoom
-  const NODE_TEXT_PAD = 2.5; // world-units of horizontal padding inside the circle
-  const NODE_MIN_RADIUS = 6; // world-units floor for tiny labels
+  // World-coordinate sizes. Bumping NODE_FONT_PX makes citations easier
+  // to read at default zoom; multi-line wrap keeps the resulting circles
+  // from ballooning in width.
+  const NODE_FONT_PX = 8; // world-units; ~2× the previous single-line font
+  const NODE_LINE_HEIGHT = NODE_FONT_PX * 1.2;
+  const NODE_TEXT_PAD = 4; // world-units of internal padding
+  const NODE_MIN_RADIUS = 10; // floor for short single-line labels
+  const NODE_WRAP_TARGET_CHARS = 12; // greedy line-fill target
   const NODE_REL_SIZE = 1; // px per sqrt(nodeVal) unit; we fully drive radius via nodeVal
 
-  // Cache label + measured width per paper_id so we don't re-measure on
-  // every frame. Uses an off-screen canvas for measurement so the result
-  // is independent of whichever zoom the user is currently at.
-  const labelCache = useRef<
-    Map<string, { label: string; worldWidth: number }>
-  >(new Map());
+  // Cache wrapped label + measured dimensions per paper_id. Wrapping +
+  // measuring is done once on first render of each node and re-used for
+  // every subsequent frame. Off-screen canvas so measurement is
+  // zoom-independent.
+  type LabelInfo = {
+    lines: string[];
+    worldWidth: number; // widest measured line
+    worldHeight: number; // total stack height (lines * lineHeight)
+  };
+  const labelCache = useRef<Map<string, LabelInfo>>(new Map());
   const measureCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const getLabelInfo = useCallback(
-    (paper: Paper | undefined, paperId: string) => {
+    (paper: Paper | undefined, paperId: string): LabelInfo => {
       const cached = labelCache.current.get(paperId);
       if (cached) return cached;
       const label = formatCitation(paper);
+      const lines = label ? wrapLabel(label, NODE_WRAP_TARGET_CHARS) : [];
       if (!measureCanvasRef.current) {
         measureCanvasRef.current = document.createElement("canvas");
       }
       const mctx = measureCanvasRef.current.getContext("2d");
-      if (!mctx) {
-        const fallback = { label, worldWidth: label.length * NODE_FONT_PX * 0.6 };
-        labelCache.current.set(paperId, fallback);
-        return fallback;
+      let worldWidth = 0;
+      if (mctx) {
+        mctx.font = `${NODE_FONT_PX}px ui-sans-serif, system-ui, sans-serif`;
+        for (const line of lines) {
+          worldWidth = Math.max(worldWidth, mctx.measureText(line).width);
+        }
+      } else {
+        // Fallback estimate when 2D context is unavailable (~test envs).
+        for (const line of lines) {
+          worldWidth = Math.max(worldWidth, line.length * NODE_FONT_PX * 0.6);
+        }
       }
-      mctx.font = `${NODE_FONT_PX}px ui-sans-serif, system-ui, sans-serif`;
-      const worldWidth = label ? mctx.measureText(label).width : 0;
-      const info = { label, worldWidth };
+      const worldHeight = lines.length * NODE_LINE_HEIGHT;
+      const info: LabelInfo = { lines, worldWidth, worldHeight };
       labelCache.current.set(paperId, info);
       return info;
     },
-    [],
+    [NODE_LINE_HEIGHT],
   );
 
-  // Per-node world radius. Combines a degree-based "base" radius (so hubs
-  // visually pop) with the half-width-of-label requirement. Returned in
-  // world units.
+  // Per-node world radius. Combines a degree-based "base" radius with the
+  // size of the wrapped label so the citation always fits inside the
+  // circle without clipping. The diagonal-half (sqrt(w² + h²) / 2) is the
+  // tightest fit; we use that plus padding.
   const nodeRadius = useCallback(
     (node: any) => {
       const deg = degreeById[node.id] ?? 0;
       // Seed reads as a hub even before its neighbors connect back.
       const baseRadius = (node.id === seedId ? 5 : 3) + Math.sqrt(deg) * 0.8;
-      const { worldWidth } = getLabelInfo(node.paper, node.id);
-      const labelRadius = worldWidth / 2 + NODE_TEXT_PAD;
+      const { worldWidth, worldHeight } = getLabelInfo(node.paper, node.id);
+      const labelRadius =
+        Math.sqrt(worldWidth * worldWidth + worldHeight * worldHeight) / 2 +
+        NODE_TEXT_PAD;
       return Math.max(NODE_MIN_RADIUS, baseRadius, labelRadius);
     },
     [degreeById, seedId, getLabelInfo],
@@ -637,20 +656,26 @@ export default function GraphPage() {
       ctx.lineWidth = isLoading ? 0.8 : 0.5;
       ctx.stroke();
 
-      // 2) Citation label centered inside the circle. Both the font and
-      //    radius are in world coords, so they scale together with zoom
-      //    and never smear at low zoom.
-      const { label } = getLabelInfo(node.paper, node.id);
-      if (!label) return;
+      // 2) Citation label centered inside the circle, possibly across
+      //    multiple lines. Both the font and radius are in world coords,
+      //    so they scale together with zoom and never smear.
+      const { lines } = getLabelInfo(node.paper, node.id);
+      if (lines.length === 0) return;
       ctx.font = `${NODE_FONT_PX}px ui-sans-serif, system-ui, sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = isSeed
         ? "rgba(255,255,255,0.95)"
         : "rgba(237,237,237,0.95)";
-      ctx.fillText(label, node.x, node.y);
+      // Vertically center the stack: top of the first line sits half the
+      // total stack-height above the node center; each subsequent line
+      // drops by NODE_LINE_HEIGHT.
+      const topY = node.y - ((lines.length - 1) * NODE_LINE_HEIGHT) / 2;
+      for (let i = 0; i < lines.length; i++) {
+        ctx.fillText(lines[i], node.x, topY + i * NODE_LINE_HEIGHT);
+      }
     },
-    [seedId, loadingNodeId, nodeRadius, getLabelInfo],
+    [seedId, loadingNodeId, nodeRadius, getLabelInfo, NODE_LINE_HEIGHT],
   );
 
   // Reset the label cache when the cache shape changes (new paper added),
@@ -1308,6 +1333,34 @@ function formatCitation(paper: Paper | undefined): string {
   // No authors → fall back to title slice so the node still says something.
   const title = unicodify(paper.title ?? paper.paper_id);
   return title.length > 14 ? `${title.slice(0, 14)}…` : title;
+}
+
+// Greedy word-wrap into roughly square blocks. Splits on spaces and packs
+// words into lines, starting a new line whenever the current line would
+// exceed the target. Single words longer than the target stay on their
+// own line (we never break inside a word). Returns at least one line for
+// any non-empty input. Used to keep node-citation circles roughly round
+// rather than ballooning horizontally for long surnames.
+function wrapLabel(s: string, targetChars: number): string[] {
+  const trimmed = s.trim();
+  if (!trimmed) return [];
+  const words = trimmed.split(/\s+/);
+  const lines: string[] = [];
+  let current = "";
+  for (const w of words) {
+    if (!current) {
+      current = w;
+      continue;
+    }
+    if (current.length + 1 + w.length <= targetChars) {
+      current = `${current} ${w}`;
+    } else {
+      lines.push(current);
+      current = w;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
 }
 
 // Map common TeX accent macros into the corresponding Unicode characters.
