@@ -535,8 +535,25 @@ export default function GraphPage() {
     }
     // threshold mode
     const dist = distribution;
-    const min = dist ? Math.max(0, dist.p50 - 0.05) : 0.3;
-    const max = dist ? Math.min(1, dist.p99_9 + 0.05) : 0.85;
+    // Take the union of the corpus percentile envelope and the actual
+    // cached similarities. The corpus envelope alone (p50–p99.9) is
+    // calibrated to a random pair, but real neighborhoods often cluster
+    // way above p99.9 (e.g. abstract-similar papers can sit at 0.85+
+    // while p99.9 ≈ 0.79). Without expanding the slider, dragging
+    // "all the way right" still leaves every edge in.
+    const cachedSims: number[] = [];
+    for (const entry of Object.values(graph.cache)) {
+      for (const n of entry.topN) cachedSims.push(n.similarity);
+      if (entry.mutualN) for (const n of entry.mutualN) cachedSims.push(n.similarity);
+    }
+    const obsMin = cachedSims.length > 0 ? Math.min(...cachedSims) : 0;
+    const obsMax = cachedSims.length > 0 ? Math.max(...cachedSims) : 1;
+    const baseMin = dist ? Math.max(0, dist.p50 - 0.05) : 0.3;
+    const baseMax = dist ? Math.min(1, dist.p99_9 + 0.05) : 0.85;
+    const min = Math.max(0, Math.min(baseMin, obsMin - 0.005));
+    // +0.005 so the user can drag past the largest cached similarity and
+    // see "0 edges," which is the only way to confirm the filter works.
+    const max = Math.min(1, Math.max(baseMax, obsMax + 0.005));
     return {
       label: "T (cosine similarity threshold)",
       valueLabel: graph.threshold.toFixed(3),
@@ -547,7 +564,15 @@ export default function GraphPage() {
       onChange: (v: number) => setThreshold(v),
       helper: dist ? percentileLabel(graph.threshold, dist) : "loading corpus distribution…",
     };
-  }, [graph.mode, graph.k, graph.threshold, distribution, setK, setThreshold]);
+  }, [
+    graph.mode,
+    graph.k,
+    graph.threshold,
+    graph.cache,
+    distribution,
+    setK,
+    setThreshold,
+  ]);
 
   // -------------------------------------------------------------------------
   // Render
