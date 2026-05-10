@@ -237,16 +237,24 @@ const MODE_LABEL: Record<Mode, string> = {
 
 export default function GraphPage() {
   const router = useRouter();
-  // router.query is empty until router.isReady on first client render.
-  // Wait for it before triggering any fetches so we don't hit the API
-  // with an empty seed.
-  const seedId = useMemo<string | null>(() => {
-    if (!router.isReady) return null;
-    const raw = router.query.seed;
-    if (typeof raw === "string" && raw.length > 0) return raw;
-    if (Array.isArray(raw) && raw.length > 0) return raw[0];
-    return null;
-  }, [router.isReady, router.query.seed]);
+  // The URL is the source of truth for which papers the user has
+  // actively chosen ("clicked"). ?papers=A,B,C  → ["A", "B", "C"]
+  // (insertion order = click order). Each clicked paper sits at the
+  // center of a small cluster of its top-N neighbors.
+  //
+  // router.query is empty until router.isReady on first client render,
+  // so we return [] until then to avoid spurious fetches.
+  const clickedIds = useMemo<string[]>(() => {
+    if (!router.isReady) return [];
+    const raw = router.query.papers;
+    const value = typeof raw === "string" ? raw : Array.isArray(raw) ? raw[0] : "";
+    if (!value) return [];
+    return value
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0);
+  }, [router.isReady, router.query.papers]);
+  const clickedSet = useMemo(() => new Set(clickedIds), [clickedIds]);
 
   const [graph, setGraph] = useState<GraphState>({
     nodes: [],
@@ -257,10 +265,12 @@ export default function GraphPage() {
     cache: {},
   });
   const [distribution, setDistribution] = useState<SimilarityDistribution | null>(null);
-  // The abstract panel latches on hover and persists when the cursor
-  // leaves the node — only swaps when another node is hovered. This lets
-  // the user read long abstracts without panicking the cursor.
-  const [panelPaper, setPanelPaper] = useState<Paper | null>(null);
+  // Side-panel paper resolution:
+  //   hoverId is a transient overlay, set on mouse-enter and cleared on
+  //   mouse-leave. pinnedId persists — set when the user clicks a node.
+  //   Effective panel paper = hoverId ?? pinnedId.
+  const [pinnedId, setPinnedId] = useState<string | null>(null);
+  const [hoverId, setHoverId] = useState<string | null>(null);
   const [loadingNodeId, setLoadingNodeId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -416,14 +426,19 @@ export default function GraphPage() {
     [graph.cache],
   );
 
-  // Initial seed expansion. Re-runs if the user navigates to a new ?seed=.
+  // Fetch any clicked paper that isn't yet cached. Re-runs whenever the
+  // URL's ?papers= list changes (back/forward, clicks, deep links). Each
+  // expandNode call is idempotent — a cache hit returns immediately.
   useEffect(() => {
-    if (!seedId) return;
-    expandNode(seedId, "topk");
-    // We intentionally depend only on seedId — expandNode closes over the
-    // current cache, but for the bootstrap call the cache is empty anyway.
+    if (clickedIds.length === 0) return;
+    for (const id of clickedIds) {
+      expandNode(id, graph.mode);
+    }
+    // We intentionally depend only on clickedIds + mode — expandNode
+    // closes over the current cache and skips on hits, so re-deriving
+    // it on every state change would just create extra work.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [seedId]);
+  }, [clickedIds, graph.mode]);
 
   // -------------------------------------------------------------------------
   // Slider / mode handlers (pure cache-derived re-renders).
@@ -435,7 +450,6 @@ export default function GraphPage() {
         const next: GraphState = {
           ...g,
           mode,
-          k: mode === "threshold" ? g.k : g.k, // keep k as-is across topk/mutual switches
           threshold:
             mode === "threshold" && g.threshold === 0 && distribution
               ? distribution.p99
@@ -444,19 +458,19 @@ export default function GraphPage() {
         next.edges = deriveEdges(next.cache, next.mode, next.k, next.threshold);
         return next;
       });
-      // If we just entered mutual-kNN and the seed has no cached mutual
-      // results yet, fetch them. (Other already-expanded nodes stay
-      // un-fetched in mutual mode until clicked — matches the plan's
-      // "first switch into mutual-kNN for a node already in the graph"
-      // wording.)
-      if (mode === "mutual_knn" && seedId) {
-        const entry = graph.cache[seedId];
-        if (entry && !entry.mutualN) {
-          await expandNode(seedId, "mutual_knn");
+      // Entering mutual-kNN: fetch the mutual edge set for every clicked
+      // paper that doesn't have it yet. Each expandNode call is
+      // idempotent so this is safe to fire-and-forget.
+      if (mode === "mutual_knn") {
+        for (const id of clickedIds) {
+          const entry = graph.cache[id];
+          if (!entry || !entry.mutualN) {
+            expandNode(id, "mutual_knn");
+          }
         }
       }
     },
-    [distribution, graph.cache, seedId, expandNode],
+    [distribution, graph.cache, clickedIds, expandNode],
   );
 
   const setK = useCallback((k: number) => {
@@ -471,20 +485,37 @@ export default function GraphPage() {
     }));
   }, []);
 
+  // Click → pin + (if not yet clicked) push to URL. The URL push
+  // triggers the bootstrap effect, which fires expandNode for the new
+  // id. Already-clicked papers are still pinned to the panel but the
+  // URL is left unchanged.
+  const clickPaper = useCallback(
+    (paperId: string) => {
+      setPinnedId(paperId);
+      if (clickedSet.has(paperId)) return;
+      const next = [...clickedIds, paperId];
+      router.push(
+        { pathname: "/graph", query: { papers: next.join(",") } },
+        undefined,
+        { shallow: true },
+      );
+    },
+    [clickedIds, clickedSet, router],
+  );
+
   // -------------------------------------------------------------------------
   // Derived graph data for ForceGraph2D.
   // -------------------------------------------------------------------------
 
   const fgData = useMemo(() => {
-    // Hide nodes that have no edges in the current derived view, otherwise
-    // top-k with k<20 (or threshold mode) leaves orphan nodes floating
-    // disconnected. The cache still holds them, so they reappear instantly
-    // when the slider widens — no re-fetch needed.
+    // Hide nodes that have no edges in the current derived view,
+    // otherwise top-k with k<20 (or threshold mode) leaves orphan nodes
+    // floating disconnected. The cache still holds them, so they reappear
+    // instantly when the slider widens — no re-fetch needed.
     //
-    // The seed always renders even if every edge filtered out, so the
-    // user can always see "where they are" in the graph.
-    const connected = new Set<string>();
-    if (seedId) connected.add(seedId);
+    // Clicked papers always render even if every edge filtered out, so
+    // the user can always see "what they've explored."
+    const connected = new Set<string>(clickedIds);
     for (const e of graph.edges) {
       connected.add(typeof e.source === "string" ? e.source : String(e.source));
       connected.add(typeof e.target === "string" ? e.target : String(e.target));
@@ -498,7 +529,7 @@ export default function GraphPage() {
       similarity: e.similarity,
     }));
     return { nodes, links };
-  }, [graph.nodes, graph.edges, seedId]);
+  }, [graph.nodes, graph.edges, clickedIds]);
 
   // Per-node degree, for sizing.
   const degreeById = useMemo(() => {
@@ -510,24 +541,31 @@ export default function GraphPage() {
     return d;
   }, [graph.edges]);
 
-  // Similarity-of-each-neighbor-to-the-seed, for the hover tooltip.
-  const simToSeed = useMemo(() => {
-    if (!seedId) return {} as Record<string, number>;
-    const seedCache = graph.cache[seedId];
-    if (!seedCache) return {} as Record<string, number>;
-    const m: Record<string, number> = { [seedId]: 1.0 };
-    for (const n of seedCache.topN) m[n.paper_id] = n.similarity;
+  // For each paper, compute max similarity to any clicked paper. Drives
+  // the panel's "sim = X.XXX" display. Clicked papers themselves get
+  // sim 1.0 (against themselves).
+  const simToClicked = useMemo(() => {
+    const m: Record<string, number> = {};
+    for (const id of clickedIds) m[id] = 1.0;
+    for (const id of clickedIds) {
+      const entry = graph.cache[id];
+      if (!entry) continue;
+      for (const n of entry.topN) {
+        const prev = m[n.paper_id] ?? 0;
+        if (n.similarity > prev) m[n.paper_id] = n.similarity;
+      }
+    }
     return m;
-  }, [graph.cache, seedId]);
+  }, [graph.cache, clickedIds]);
 
-  // Look up the seed paper's title for the header. The /neighbors response
-  // includes the seed's metadata in `response.seed`, which expandNode
-  // merges into graph.nodes — no separate paper-metadata fetch required.
-  const seedTitle = useMemo(() => {
-    if (!seedId) return null;
-    const p = graph.nodes.find((n) => n.paper_id === seedId);
-    return p?.title ?? null;
-  }, [graph.nodes, seedId]);
+  // Look up paper metadata by id (for the panel and header). Built
+  // inline because we touch graph.nodes once and don't want to thread
+  // a Map through the JSX.
+  const paperById = useMemo(() => {
+    const m: Record<string, Paper> = {};
+    for (const p of graph.nodes) m[p.paper_id] = p;
+    return m;
+  }, [graph.nodes]);
 
   // -------------------------------------------------------------------------
   // Visual helpers.
@@ -542,9 +580,12 @@ export default function GraphPage() {
   }, []);
 
   const linkWidth = useCallback((link: any) => {
+    // Width is the primary similarity signal (color/opacity remains
+    // secondary). Floor at 0.5px so even weak edges are visible; grow
+    // sharply above sim=0.5 so the typical 0.5–0.9 range maps to
+    // roughly 0.5–3.7px — clearly distinguishable at default zoom.
     const s = typeof link.similarity === "number" ? link.similarity : 0.5;
-    const norm = Math.max(0, Math.min(1, (s - 0.3) / 0.55));
-    return 0.6 + norm * 2.2;
+    return 0.5 + Math.max(0, s - 0.5) * 8;
   }, []);
 
   // Citation labels live INSIDE the node circle now, in world coordinates
@@ -565,6 +606,10 @@ export default function GraphPage() {
   const NODE_MIN_RADIUS = 10; // floor for short single-line labels
   const NODE_WRAP_TARGET_CHARS = 12; // greedy line-fill target
   const NODE_REL_SIZE = 1; // px per sqrt(nodeVal) unit; we fully drive radius via nodeVal
+  // Neighbor nodes render smaller and dimmer than clicked nodes so the
+  // user's eye picks out the papers they've actively chosen.
+  const NEIGHBOR_FONT_SCALE = 0.7;
+  const NEIGHBOR_OPACITY = 0.6;
 
   // Cache wrapped label + measured dimensions per paper_id. Wrapping +
   // measuring is done once on first render of each node and re-used for
@@ -614,15 +659,25 @@ export default function GraphPage() {
   const nodeRadius = useCallback(
     (node: any) => {
       const deg = degreeById[node.id] ?? 0;
-      // Seed reads as a hub even before its neighbors connect back.
-      const baseRadius = (node.id === seedId ? 5 : 3) + Math.sqrt(deg) * 0.8;
+      const isClicked = clickedSet.has(node.id);
+      // Clicked papers read as hubs even before their neighbors connect
+      // back. Neighbors render at ~60% the radius of clicked papers so
+      // the eye picks out which papers the user has actively chosen.
+      // Citation text scales down proportionally for neighbors via
+      // getLabelInfo's font-size (handled in drawNode).
+      const baseRadius = (isClicked ? 5 : 2) + Math.sqrt(deg) * 0.8;
       const { worldWidth, worldHeight } = getLabelInfo(node.paper, node.id);
+      // For neighbors we use a smaller font-block, so shrink the label
+      // bound proportionally too (NEIGHBOR_FONT_SCALE matches drawNode).
+      const labelScale = isClicked ? 1 : NEIGHBOR_FONT_SCALE;
+      const w = worldWidth * labelScale;
+      const h = worldHeight * labelScale;
       const labelRadius =
-        Math.sqrt(worldWidth * worldWidth + worldHeight * worldHeight) / 2 +
-        NODE_TEXT_PAD;
-      return Math.max(NODE_MIN_RADIUS, baseRadius, labelRadius);
+        Math.sqrt(w * w + h * h) / 2 + NODE_TEXT_PAD;
+      const minR = isClicked ? NODE_MIN_RADIUS : NODE_MIN_RADIUS * 0.7;
+      return Math.max(minR, baseRadius, labelRadius);
     },
-    [degreeById, seedId, getLabelInfo],
+    [degreeById, clickedSet, getLabelInfo],
   );
 
   // nodeVal feeds both the d3-force collision force and the click-hit
@@ -639,43 +694,63 @@ export default function GraphPage() {
 
   const drawNode = useCallback(
     (node: any, ctx: CanvasRenderingContext2D, _globalScale: number) => {
-      const isSeed = node.id === seedId;
       const isLoading = loadingNodeId === node.id;
+      const isClicked = clickedSet.has(node.id);
+      const isPinned = node.id === pinnedId;
       const r = nodeRadius(node);
 
-      // 1) Circle.
+      // 1) Circle. Clicked papers fill at full opacity; neighbors at
+      //    NEIGHBOR_OPACITY so the eye picks out the user's actively
+      //    chosen papers. Pinned (a clicked paper currently driving the
+      //    side-panel) gets a subtle white halo to mark it as "active."
+      const fillAlpha = isClicked ? 1 : NEIGHBOR_OPACITY;
       ctx.beginPath();
       ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
-      ctx.fillStyle = isSeed ? "#0a0a0a" : "#0050a8";
+      ctx.fillStyle = isClicked
+        ? `rgba(0, 80, 168, ${fillAlpha})` // solid Vercel-ish blue
+        : `rgba(0, 80, 168, ${fillAlpha})`;
       ctx.fill();
+      // Stroke: loading > pinned > clicked > neighbor.
       ctx.strokeStyle = isLoading
         ? "#f5a623"
-        : isSeed
-          ? "rgba(255,255,255,0.85)"
-          : "rgba(255,255,255,0.45)";
-      ctx.lineWidth = isLoading ? 0.8 : 0.5;
+        : isPinned
+          ? "rgba(255,255,255,0.95)"
+          : isClicked
+            ? "rgba(255,255,255,0.7)"
+            : "rgba(255,255,255,0.25)";
+      ctx.lineWidth = isPinned ? 1.5 : isClicked ? 0.8 : 0.4;
       ctx.stroke();
+      // Pinned glow: a second translucent ring just outside the stroke.
+      if (isPinned) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, r + 3, 0, 2 * Math.PI, false);
+        ctx.strokeStyle = "rgba(255,255,255,0.35)";
+        ctx.lineWidth = 1.0;
+        ctx.stroke();
+      }
 
       // 2) Citation label centered inside the circle, possibly across
       //    multiple lines. Both the font and radius are in world coords,
-      //    so they scale together with zoom and never smear.
+      //    so they scale together with zoom and never smear. Neighbors
+      //    get a smaller font (NEIGHBOR_FONT_SCALE) to match the smaller
+      //    circle and reduce visual weight.
       const { lines } = getLabelInfo(node.paper, node.id);
       if (lines.length === 0) return;
-      ctx.font = `${NODE_FONT_PX}px ui-sans-serif, system-ui, sans-serif`;
+      const fontPx = isClicked ? NODE_FONT_PX : NODE_FONT_PX * NEIGHBOR_FONT_SCALE;
+      const lineHeight = fontPx * 1.2;
+      ctx.font = `${fontPx}px ui-sans-serif, system-ui, sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillStyle = isSeed
+      ctx.fillStyle = isClicked
         ? "rgba(255,255,255,0.95)"
-        : "rgba(237,237,237,0.95)";
-      // Vertically center the stack: top of the first line sits half the
-      // total stack-height above the node center; each subsequent line
-      // drops by NODE_LINE_HEIGHT.
-      const topY = node.y - ((lines.length - 1) * NODE_LINE_HEIGHT) / 2;
+        : "rgba(237,237,237,0.85)";
+      // Vertically center the stack.
+      const topY = node.y - ((lines.length - 1) * lineHeight) / 2;
       for (let i = 0; i < lines.length; i++) {
-        ctx.fillText(lines[i], node.x, topY + i * NODE_LINE_HEIGHT);
+        ctx.fillText(lines[i], node.x, topY + i * lineHeight);
       }
     },
-    [seedId, loadingNodeId, nodeRadius, getLabelInfo, NODE_LINE_HEIGHT],
+    [loadingNodeId, clickedSet, pinnedId, nodeRadius, getLabelInfo],
   );
 
   // Reset the label cache when the cache shape changes (new paper added),
@@ -832,20 +907,21 @@ export default function GraphPage() {
               </svg>
             </a>
             <h1 className="text-lg font-semibold">Similarity graph</h1>
-            {seedId && (
+            {clickedIds.length > 0 && (
               <span className="text-sm text-base-content/70 ml-2 truncate">
-                {seedTitle ? (
-                  <>
-                    {seedTitle}
-                    <span className="text-xs text-base-content/40 font-mono ml-2">
-                      {seedId}
-                    </span>
-                  </>
-                ) : (
-                  <span className="font-mono text-xs text-base-content/50">
-                    seed: {seedId}
-                  </span>
-                )}
+                Exploring {clickedIds.length} paper
+                {clickedIds.length === 1 ? "" : "s"}
+                <span className="text-xs text-base-content/40 ml-2">
+                  {clickedIds
+                    .map(
+                      (id) =>
+                        unicodify(paperById[id]?.title ?? id).slice(0, 40) +
+                        (paperById[id]?.title && paperById[id].title.length > 40
+                          ? "…"
+                          : ""),
+                    )
+                    .join(" · ")}
+                </span>
               </span>
             )}
             {error && (
@@ -891,54 +967,70 @@ export default function GraphPage() {
                 linkColor={linkColor as any}
                 linkWidth={linkWidth as any}
                 onNodeHover={(node: any) => {
-                  // Latch: only update on enter, never clear on leave. The
-                  // user can move their cursor away to read long abstracts.
-                  if (node && node.paper) setPanelPaper(node.paper);
+                  // Hover is a transient overlay — set on enter, cleared
+                  // on leave. The pinned paper (set by click) survives
+                  // mouse-off so the user can read long abstracts.
+                  setHoverId(node && node.id ? String(node.id) : null);
                 }}
-                onNodeClick={(node: any) => expandNode(node.id, graph.mode)}
+                onNodeClick={(node: any) => clickPaper(String(node.id))}
                 cooldownTicks={120}
                 d3VelocityDecay={0.35}
               />
             )}
 
-            {/* Empty state when no ?seed= was provided */}
-            {router.isReady && !seedId && (
+            {/* Empty state when no ?papers= was provided */}
+            {router.isReady && clickedIds.length === 0 && (
               <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
-                <div className="rounded-xl bg-[#111111] border border-[#333333] px-6 py-4 text-center max-w-md">
+                <div className="rounded-xl bg-[#111111] border border-[#333333] px-6 py-4 text-center max-w-md pointer-events-auto">
                   <div className="text-base font-semibold text-base-content/80">
-                    No seed paper selected
+                    No papers selected
                   </div>
                   <div className="mt-1 text-xs text-base-content/50">
-                    Open this page from a search result, or pass{" "}
-                    <span className="font-mono">?seed=&lt;paper_id&gt;</span>{" "}
+                    Open the graph from a search result, or pass{" "}
+                    <span className="font-mono">
+                      ?papers=&lt;id&gt;[,&lt;id&gt;…]
+                    </span>{" "}
                     in the URL.
                   </div>
+                  <a
+                    href="/"
+                    className="btn btn-primary btn-sm mt-3"
+                  >
+                    Back to search
+                  </a>
                 </div>
               </div>
             )}
           </div>
 
-          <RightSidebar
-            open={sidebarOpen}
-            onToggle={() => setSidebarOpen(!sidebarOpen)}
-            mode={graph.mode}
-            onModeChange={setMode}
-            slider={slider}
-            distribution={distribution}
-            stats={{
-              renderedNodes: fgData.nodes.length,
-              totalNodes: graph.nodes.length,
-              edges: graph.edges.length,
-              cachedExpansions: Object.keys(graph.cache).length,
-              loadingNodeId,
-            }}
-            panelPaper={panelPaper}
-            isSeed={panelPaper?.paper_id === seedId}
-            similarity={
-              panelPaper ? simToSeed[panelPaper.paper_id] : undefined
-            }
-            onClearPanel={() => setPanelPaper(null)}
-          />
+          {(() => {
+            const panelId = hoverId ?? pinnedId;
+            const panelPaper = panelId ? paperById[panelId] ?? null : null;
+            return (
+              <RightSidebar
+                open={sidebarOpen}
+                onToggle={() => setSidebarOpen(!sidebarOpen)}
+                mode={graph.mode}
+                onModeChange={setMode}
+                slider={slider}
+                distribution={distribution}
+                stats={{
+                  renderedNodes: fgData.nodes.length,
+                  totalNodes: graph.nodes.length,
+                  edges: graph.edges.length,
+                  cachedExpansions: Object.keys(graph.cache).length,
+                  loadingNodeId,
+                }}
+                panelPaper={panelPaper}
+                isClicked={!!panelPaper && clickedSet.has(panelPaper.paper_id)}
+                isPinned={!!panelPaper && panelPaper.paper_id === pinnedId}
+                similarity={
+                  panelPaper ? simToClicked[panelPaper.paper_id] : undefined
+                }
+                onClearPanel={() => setPinnedId(null)}
+              />
+            );
+          })()}
         </div>
       </main>
     </>
@@ -983,7 +1075,8 @@ function RightSidebar({
   distribution,
   stats,
   panelPaper,
-  isSeed,
+  isClicked,
+  isPinned,
   similarity,
   onClearPanel,
 }: {
@@ -995,7 +1088,8 @@ function RightSidebar({
   distribution: SimilarityDistribution | null;
   stats: SidebarStats;
   panelPaper: Paper | null;
-  isSeed: boolean;
+  isClicked: boolean;
+  isPinned: boolean;
   similarity: number | undefined;
   onClearPanel: () => void;
 }) {
@@ -1147,7 +1241,8 @@ function RightSidebar({
             </div>
             <HoverPreview
               paper={panelPaper}
-              isSeed={isSeed}
+              isClicked={isClicked}
+              isPinned={isPinned}
               similarity={similarity}
             />
           </div>
@@ -1159,31 +1254,36 @@ function RightSidebar({
 
 function HoverPreview({
   paper,
-  isSeed,
+  isClicked,
+  isPinned,
   similarity,
 }: {
   paper: Paper | null;
-  isSeed: boolean;
+  isClicked: boolean;
+  isPinned: boolean;
   similarity: number | undefined;
 }) {
   if (!paper) {
     return (
       <div className="text-sm text-base-content/40 leading-relaxed">
-        Hover a node to see its abstract.
+        Hover or click a node to see its abstract.
       </div>
     );
   }
   return (
     <>
       <div className="flex items-center gap-2 mb-2 text-[11px] uppercase tracking-wide text-base-content/40">
-        {isSeed ? (
-          <span className="text-primary font-semibold">seed</span>
-        ) : similarity !== undefined ? (
+        {isPinned ? (
+          <span className="text-primary font-semibold">pinned</span>
+        ) : isClicked ? (
+          <span className="text-accent font-semibold">clicked</span>
+        ) : (
+          <span className="font-mono">neighbor</span>
+        )}
+        {similarity !== undefined && similarity < 1 && (
           <span className="font-mono text-accent">
             sim = {similarity.toFixed(3)}
           </span>
-        ) : (
-          <span className="font-mono">paper</span>
         )}
         {paper.source && (
           <span className="ml-auto font-mono">{paper.source}</span>
@@ -1217,6 +1317,17 @@ function HoverPreview({
       <p className="mt-1 text-[11px] text-base-content/30 font-mono">
         {paper.paper_id}
       </p>
+
+      {paper.link && (
+        <a
+          href={paper.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary btn-sm mt-3 w-full"
+        >
+          View paper →
+        </a>
+      )}
 
       {paper.abstract ? (
         <p className="mt-3 text-sm text-base-content/80 whitespace-pre-wrap leading-relaxed">

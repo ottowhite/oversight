@@ -506,7 +506,7 @@ export default function HomePage() {
                       Find Similar
                     </button>
                     <Link
-                      href={`/graph?seed=${encodeURIComponent(p.paper_id)}`}
+                      href={`/graph?papers=${encodeURIComponent(p.paper_id)}`}
                     >
                       <a className="btn btn-xs btn-ghost text-accent hover:bg-accent/10">
                         Graph
