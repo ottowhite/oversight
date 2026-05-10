@@ -25,6 +25,14 @@ type Paper = {
   paper_id: string;
   title: string;
   authors: string[];
+  // Optional rich metadata returned by /api/papers/<id>/neighbors. Used by
+  // the citation label rendered inside each node and by the abstract
+  // sidebar panel. Optional because the API contract in the plan only
+  // hard-guarantees paper_id/title/authors.
+  paper_date?: string | null;
+  abstract?: string | null;
+  link?: string | null;
+  source?: string | null;
 };
 
 type NeighborApiEntry = Paper & { similarity: number };
@@ -297,7 +305,18 @@ export default function GraphPage() {
           let nextEntry: NodeCache = { ...prevEntry };
           const newPapers: Paper[] = [];
 
-          // Walk responses in the same order as `tasks`.
+          // Walk responses in the same order as `tasks`. Each NeighborApiEntry
+          // carries the rich metadata the UI needs (citation label, abstract
+          // panel) — copy it all through so a hover doesn't need a re-fetch.
+          const copyMetadata = (n: NeighborApiEntry | Paper): Paper => ({
+            paper_id: n.paper_id,
+            title: n.title,
+            authors: n.authors,
+            paper_date: (n as Paper).paper_date ?? null,
+            abstract: (n as Paper).abstract ?? null,
+            link: (n as Paper).link ?? null,
+            source: (n as Paper).source ?? null,
+          });
           let idx = 0;
           if (!haveTop) {
             const r = responses[idx++];
@@ -306,14 +325,8 @@ export default function GraphPage() {
               similarity: n.similarity,
             }));
             // Make sure the seed itself is in the node set with rich metadata.
-            newPapers.push(r.seed);
-            for (const n of r.neighbors) {
-              newPapers.push({
-                paper_id: n.paper_id,
-                title: n.title,
-                authors: n.authors,
-              });
-            }
+            newPapers.push(copyMetadata(r.seed));
+            for (const n of r.neighbors) newPapers.push(copyMetadata(n));
           }
           if (needMutual && !haveMutual) {
             const r = responses[idx++];
@@ -322,13 +335,7 @@ export default function GraphPage() {
               similarity: n.similarity,
             }));
             // Mutual-kNN may surface papers we haven't seen in top-N.
-            for (const n of r.neighbors) {
-              newPapers.push({
-                paper_id: n.paper_id,
-                title: n.title,
-                authors: n.authors,
-              });
-            }
+            for (const n of r.neighbors) newPapers.push(copyMetadata(n));
           }
           cache[paperId] = nextEntry;
 
@@ -527,7 +534,11 @@ export default function GraphPage() {
     (node: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
       const isSeed = node.id === seedId;
       const isLoading = loadingNodeId === node.id;
-      const r = (nodeVal(node) + 1) / Math.max(globalScale, 0.5) * Math.min(globalScale, 1.6);
+      const r =
+        ((nodeVal(node) + 1) / Math.max(globalScale, 0.5)) *
+        Math.min(globalScale, 1.6);
+
+      // 1) The node circle itself.
       ctx.beginPath();
       ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
       ctx.fillStyle = isSeed ? "#ffffff" : "#0070f3";
@@ -541,6 +552,38 @@ export default function GraphPage() {
         ctx.lineWidth = 0.8 / globalScale;
         ctx.stroke();
       }
+
+      // 2) Citation label sitting just below the node, with a translucent
+      //    pill behind the text so it stays readable when crossed by edges.
+      //    Skip when zoomed way out — labels would just be a smear.
+      if (globalScale < 0.6) return;
+      const label = formatCitation(node.paper);
+      if (!label) return;
+
+      // Font size is screen-pixel-stable: divide by globalScale so the
+      // label looks the same regardless of zoom.
+      const fontPx = 11 / globalScale;
+      ctx.font = `${fontPx}px ui-sans-serif, system-ui, sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+      const padX = 4 / globalScale;
+      const padY = 2 / globalScale;
+      const textW = ctx.measureText(label).width;
+      const pillW = textW + padX * 2;
+      const pillH = fontPx + padY * 2;
+      const pillX = node.x - pillW / 2;
+      // Clear the node radius (+ a small gap) before drawing the pill.
+      const pillY = node.y + r + 2 / globalScale;
+
+      ctx.fillStyle = "rgba(0, 0, 0, 0.72)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+      ctx.lineWidth = 0.6 / globalScale;
+      roundedRect(ctx, pillX, pillY, pillW, pillH, 3 / globalScale);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = isSeed ? "#ffffff" : "rgba(237, 237, 237, 0.92)";
+      ctx.fillText(label, node.x, pillY + padY);
     },
     [seedId, loadingNodeId, nodeVal],
   );
@@ -866,6 +909,49 @@ function DistributionStrip({
       </div>
     </div>
   );
+}
+
+// Standard short-form citation: "Cheng, 2025" or "Cheng et al., 2025".
+// Falls back to a truncated title so a node never renders as an empty
+// pill when paper_date or authors are missing (e.g. during a partial
+// fetch or for older imports).
+function formatCitation(paper: Paper | undefined): string {
+  if (!paper) return "";
+  const year = paper.paper_date ? paper.paper_date.slice(0, 4) : null;
+  const firstAuthor = paper.authors?.[0];
+  if (firstAuthor) {
+    // Surname = last whitespace-separated token. Handles "Daizhan Cheng"
+    // → "Cheng" and "Van Den Berg" → "Berg" (acceptable for v1).
+    const surname = firstAuthor.trim().split(/\s+/).pop() ?? firstAuthor;
+    const suffix = paper.authors.length > 1 ? " et al." : "";
+    return year ? `${surname}${suffix}, ${year}` : `${surname}${suffix}`;
+  }
+  // No authors → fall back to title slice so the node still says something.
+  const title = paper.title ?? paper.paper_id;
+  return title.length > 14 ? `${title.slice(0, 14)}…` : title;
+}
+
+// Tiny helper: Path of a rounded rectangle on a 2D canvas context.
+function roundedRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+): void {
+  const rr = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + rr, y);
+  ctx.lineTo(x + w - rr, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + rr);
+  ctx.lineTo(x + w, y + h - rr);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - rr, y + h);
+  ctx.lineTo(x + rr, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - rr);
+  ctx.lineTo(x, y + rr);
+  ctx.quadraticCurveTo(x, y, x + rr, y);
+  ctx.closePath();
 }
 
 function percentileLabel(t: number, d: SimilarityDistribution): string {
