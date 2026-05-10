@@ -209,6 +209,10 @@ function deriveEdges(
 const DEFAULT_K = 15;
 const DEFAULT_K_MAX = 15;
 
+const SIDEBAR_OPEN_PX = 360;
+const SIDEBAR_COLLAPSED_PX = 32;
+const SIDEBAR_STORAGE_KEY = "oversight.graphSidebar.open";
+
 const MODE_LABEL: Record<Mode, string> = {
   topk: "top-k",
   threshold: "threshold",
@@ -237,12 +241,28 @@ export default function GraphPage() {
     cache: {},
   });
   const [distribution, setDistribution] = useState<SimilarityDistribution | null>(null);
-  // The abstract sidebar latches on hover and persists when the cursor
+  // The abstract panel latches on hover and persists when the cursor
   // leaves the node — only swaps when another node is hovered. This lets
   // the user read long abstracts without panicking the cursor.
   const [panelPaper, setPanelPaper] = useState<Paper | null>(null);
   const [loadingNodeId, setLoadingNodeId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // Single right-side bar (controls + hover preview). Collapsible so the
+  // graph can reclaim the full canvas width. Default open. Persist across
+  // reloads via localStorage.
+  const [sidebarOpen, setSidebarOpenRaw] = useState<boolean>(true);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem(SIDEBAR_STORAGE_KEY);
+    if (stored !== null) setSidebarOpenRaw(stored === "1");
+  }, []);
+  const setSidebarOpen = useCallback((open: boolean) => {
+    setSidebarOpenRaw(open);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(SIDEBAR_STORAGE_KEY, open ? "1" : "0");
+    }
+  }, []);
 
   // Force-graph imperative handle for fit-to-view / reheat.
   const fgRef = useRef<any>(null);
@@ -706,137 +726,85 @@ export default function GraphPage() {
           </div>
         </header>
 
-        {/* Content row: graph canvas (flex) + fixed-width abstract sidebar. */}
-        <div className="grid min-h-0 grid-cols-[1fr,360px]">
-        <div ref={containerRef} className="relative min-h-0 w-full overflow-hidden">
-          <ForceGraph2D
-            ref={fgRef}
-            graphData={fgData}
-            width={size.w}
-            height={size.h}
-            backgroundColor="#000000"
-            nodeId="id"
-            nodeRelSize={4}
-            nodeVal={nodeVal as any}
-            nodeCanvasObject={drawNode as any}
-            nodePointerAreaPaint={(node: any, color: string, ctx: CanvasRenderingContext2D) => {
-              ctx.fillStyle = color;
-              ctx.beginPath();
-              ctx.arc(node.x, node.y, 8, 0, 2 * Math.PI, false);
-              ctx.fill();
-            }}
-            linkColor={linkColor as any}
-            linkWidth={linkWidth as any}
-            onNodeHover={(node: any) => {
-              // Latch: only update on enter, never clear on leave. This keeps
-              // the abstract panel populated so the user can read long
-              // abstracts without their cursor needing to stay on the node.
-              if (node && node.paper) setPanelPaper(node.paper);
-            }}
-            onNodeClick={(node: any) => expandNode(node.id, graph.mode)}
-            cooldownTicks={120}
-            d3VelocityDecay={0.35}
-          />
-
-          {/* Empty state when no ?seed= was provided */}
-          {router.isReady && !seedId && (
-            <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
-              <div className="rounded-xl bg-[#111111] border border-[#333333] px-6 py-4 text-center max-w-md">
-                <div className="text-base font-semibold text-base-content/80">
-                  No seed paper selected
-                </div>
-                <div className="mt-1 text-xs text-base-content/50">
-                  Open this page from a search result, or pass{" "}
-                  <span className="font-mono">?seed=&lt;paper_id&gt;</span> in
-                  the URL.
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Controls panel (top-right, floats over the graph area). The
-              abstract sidebar lives in the grid cell to the right, so the
-              controls don't overlap any rendered text. */}
-          <aside
-            className="absolute top-4 right-4 z-20 w-[320px] card bg-base-200 shadow-lg border border-[#333333]"
+        {/* Content row: graph canvas (flex) + collapsible right-side bar.
+            Width of the bar drives the grid template; the canvas reflows
+            to fill whatever's left over. */}
+        <div
+          className="grid min-h-0"
+          style={{
+            gridTemplateColumns: `1fr ${sidebarOpen ? SIDEBAR_OPEN_PX : SIDEBAR_COLLAPSED_PX}px`,
+          }}
+        >
+          <div
+            ref={containerRef}
+            className="relative min-h-0 w-full overflow-hidden"
           >
-            <div className="card-body gap-4 p-4">
-              <div>
-                <h2 className="card-title text-base">Mode</h2>
-                <div className="mt-2 grid grid-cols-3 gap-1 rounded-lg bg-base-300 p-1">
-                  {(["topk", "threshold", "mutual_knn"] as Mode[]).map((m) => (
-                    <button
-                      key={m}
-                      onClick={() => setMode(m)}
-                      className={`btn btn-xs ${
-                        graph.mode === m ? "btn-primary" : "btn-ghost"
-                      }`}
-                    >
-                      {MODE_LABEL[m]}
-                    </button>
-                  ))}
+            <ForceGraph2D
+              ref={fgRef}
+              graphData={fgData}
+              width={size.w}
+              height={size.h}
+              backgroundColor="#000000"
+              nodeId="id"
+              nodeRelSize={4}
+              nodeVal={nodeVal as any}
+              nodeCanvasObject={drawNode as any}
+              nodePointerAreaPaint={(node: any, color: string, ctx: CanvasRenderingContext2D) => {
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, 8, 0, 2 * Math.PI, false);
+                ctx.fill();
+              }}
+              linkColor={linkColor as any}
+              linkWidth={linkWidth as any}
+              onNodeHover={(node: any) => {
+                // Latch: only update on enter, never clear on leave. The
+                // user can move their cursor away to read long abstracts.
+                if (node && node.paper) setPanelPaper(node.paper);
+              }}
+              onNodeClick={(node: any) => expandNode(node.id, graph.mode)}
+              cooldownTicks={120}
+              d3VelocityDecay={0.35}
+            />
+
+            {/* Empty state when no ?seed= was provided */}
+            {router.isReady && !seedId && (
+              <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+                <div className="rounded-xl bg-[#111111] border border-[#333333] px-6 py-4 text-center max-w-md">
+                  <div className="text-base font-semibold text-base-content/80">
+                    No seed paper selected
+                  </div>
+                  <div className="mt-1 text-xs text-base-content/50">
+                    Open this page from a search result, or pass{" "}
+                    <span className="font-mono">?seed=&lt;paper_id&gt;</span>{" "}
+                    in the URL.
+                  </div>
                 </div>
               </div>
+            )}
+          </div>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">{slider.label}</span>
-                  <span className="label-text-alt text-primary font-medium font-mono">
-                    {slider.valueLabel}
-                  </span>
-                </label>
-                <input
-                  type="range"
-                  min={slider.min}
-                  max={slider.max}
-                  step={slider.step}
-                  value={slider.value}
-                  onChange={(e) => slider.onChange(parseFloat(e.target.value))}
-                  className="range range-primary range-sm"
-                />
-                <div className="mt-1 text-xs text-base-content/50">{slider.helper}</div>
-              </div>
-
-              {graph.mode === "threshold" && distribution && (
-                <DistributionStrip
-                  distribution={distribution}
-                  threshold={graph.threshold}
-                  min={slider.min}
-                  max={slider.max}
-                />
-              )}
-
-              <div className="text-xs text-base-content/50 leading-relaxed">
-                <div>
-                  nodes: {fgData.nodes.length}
-                  {fgData.nodes.length !== graph.nodes.length && (
-                    <span className="opacity-60">
-                      {" "}
-                      ({graph.nodes.length - fgData.nodes.length} hidden)
-                    </span>
-                  )}
-                </div>
-                <div>edges: {graph.edges.length}</div>
-                <div>cached expansions: {Object.keys(graph.cache).length}</div>
-                {loadingNodeId && (
-                  <div className="text-warning mt-1">fetching {loadingNodeId}…</div>
-                )}
-              </div>
-
-              <div className="text-[11px] text-base-content/40 leading-snug">
-                Click any node to expand its top-{NEIGHBOR_CEILING} neighbors.
-                Slider drags re-derive edges from cache without hitting the
-                network.
-              </div>
-            </div>
-          </aside>
-        </div>
-
-        <AbstractPanel
-          paper={panelPaper}
-          isSeed={panelPaper?.paper_id === seedId}
-          similarity={panelPaper ? simToSeed[panelPaper.paper_id] : undefined}
-        />
+          <RightSidebar
+            open={sidebarOpen}
+            onToggle={() => setSidebarOpen(!sidebarOpen)}
+            mode={graph.mode}
+            onModeChange={setMode}
+            slider={slider}
+            distribution={distribution}
+            stats={{
+              renderedNodes: fgData.nodes.length,
+              totalNodes: graph.nodes.length,
+              edges: graph.edges.length,
+              cachedExpansions: Object.keys(graph.cache).length,
+              loadingNodeId,
+            }}
+            panelPaper={panelPaper}
+            isSeed={panelPaper?.paper_id === seedId}
+            similarity={
+              panelPaper ? simToSeed[panelPaper.paper_id] : undefined
+            }
+            onClearPanel={() => setPanelPaper(null)}
+          />
         </div>
       </main>
     </>
@@ -849,7 +817,213 @@ export default function GraphPage() {
 // when the cursor leaves a node, only swaps to a new paper.
 // ---------------------------------------------------------------------------
 
-function AbstractPanel({
+type SliderConfig = {
+  label: string;
+  valueLabel: string;
+  min: number;
+  max: number;
+  step: number;
+  value: number;
+  onChange: (v: number) => void;
+  helper: string;
+};
+
+type SidebarStats = {
+  renderedNodes: number;
+  totalNodes: number;
+  edges: number;
+  cachedExpansions: number;
+  loadingNodeId: string | null;
+};
+
+// Single right-side bar that holds everything that isn't the graph:
+// controls at the top, hover preview below. Collapsible to a 32px strip
+// (just the toggle button) so the graph can reclaim the full canvas
+// width when the user wants to focus on the layout.
+function RightSidebar({
+  open,
+  onToggle,
+  mode,
+  onModeChange,
+  slider,
+  distribution,
+  stats,
+  panelPaper,
+  isSeed,
+  similarity,
+  onClearPanel,
+}: {
+  open: boolean;
+  onToggle: () => void;
+  mode: Mode;
+  onModeChange: (m: Mode) => void;
+  slider: SliderConfig;
+  distribution: SimilarityDistribution | null;
+  stats: SidebarStats;
+  panelPaper: Paper | null;
+  isSeed: boolean;
+  similarity: number | undefined;
+  onClearPanel: () => void;
+}) {
+  return (
+    <aside className="border-l border-base-300/60 bg-base-200/40 min-h-0 flex flex-col">
+      {/* Top edge: collapse/expand toggle. The button stays visible in
+          both states so the user can always reopen. */}
+      <div className="flex items-center justify-between border-b border-base-300/60 px-2 py-2">
+        <button
+          onClick={onToggle}
+          title={open ? "Collapse sidebar" : "Expand sidebar"}
+          className="btn btn-ghost btn-xs btn-square"
+        >
+          {/* Chevron rotates with the open state. Pointing INTO the bar
+              (right) means "collapse," pointing OUT (left) means "expand." */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="h-4 w-4"
+          >
+            {open ? (
+              <path
+                fillRule="evenodd"
+                d="M12.79 5.23a.75.75 0 010 1.06L9.06 10l3.73 3.71a.75.75 0 11-1.06 1.06l-4.25-4.24a.75.75 0 010-1.06l4.25-4.24a.75.75 0 011.06 0z"
+                clipRule="evenodd"
+              />
+            ) : (
+              <path
+                fillRule="evenodd"
+                d="M7.21 5.23a.75.75 0 011.06 0l4.25 4.24a.75.75 0 010 1.06l-4.25 4.24a.75.75 0 11-1.06-1.06L10.94 10 7.21 6.29a.75.75 0 010-1.06z"
+                clipRule="evenodd"
+              />
+            )}
+          </svg>
+        </button>
+        {open && (
+          <span className="text-[11px] uppercase tracking-wide text-base-content/40">
+            Controls
+          </span>
+        )}
+      </div>
+
+      {/* Body — only rendered when open. Collapsed state shows just the
+          toggle column. */}
+      {open && (
+        <div className="flex flex-col min-h-0 flex-1">
+          {/* Controls section */}
+          <div className="p-4 flex flex-col gap-4 border-b border-base-300/60">
+            <div>
+              <div className="text-[11px] uppercase tracking-wide text-base-content/40 mb-2">
+                Mode
+              </div>
+              <div className="grid grid-cols-3 gap-1 rounded-lg bg-base-300 p-1">
+                {(["topk", "threshold", "mutual_knn"] as Mode[]).map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => onModeChange(m)}
+                    className={`btn btn-xs ${
+                      mode === m ? "btn-primary" : "btn-ghost"
+                    }`}
+                  >
+                    {MODE_LABEL[m]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">{slider.label}</span>
+                <span className="label-text-alt text-primary font-medium font-mono">
+                  {slider.valueLabel}
+                </span>
+              </label>
+              <input
+                type="range"
+                min={slider.min}
+                max={slider.max}
+                step={slider.step}
+                value={slider.value}
+                onChange={(e) =>
+                  slider.onChange(parseFloat(e.target.value))
+                }
+                className="range range-primary range-sm"
+              />
+              <div className="mt-1 text-xs text-base-content/50">
+                {slider.helper}
+              </div>
+            </div>
+
+            {mode === "threshold" && distribution && (
+              <DistributionStrip
+                distribution={distribution}
+                threshold={slider.value}
+                min={slider.min}
+                max={slider.max}
+              />
+            )}
+
+            <div className="text-xs text-base-content/50 leading-relaxed">
+              <div>
+                nodes: {stats.renderedNodes}
+                {stats.renderedNodes !== stats.totalNodes && (
+                  <span className="opacity-60">
+                    {" "}
+                    ({stats.totalNodes - stats.renderedNodes} hidden)
+                  </span>
+                )}
+              </div>
+              <div>edges: {stats.edges}</div>
+              <div>cached expansions: {stats.cachedExpansions}</div>
+              {stats.loadingNodeId && (
+                <div className="text-warning mt-1">
+                  fetching {stats.loadingNodeId}…
+                </div>
+              )}
+            </div>
+
+            <div className="text-[11px] text-base-content/40 leading-snug">
+              Click any node to expand its top-{NEIGHBOR_CEILING} neighbors.
+              Slider drags re-derive edges from cache without hitting the
+              network.
+            </div>
+          </div>
+
+          {/* Hover preview section — latched, scrollable */}
+          <div className="flex-1 min-h-0 overflow-y-auto p-4">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[11px] uppercase tracking-wide text-base-content/40">
+                Hover preview
+              </span>
+              {panelPaper && (
+                <button
+                  onClick={onClearPanel}
+                  title="Clear hover preview"
+                  className="btn btn-ghost btn-xs btn-square text-base-content/40 hover:text-base-content"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="h-3.5 w-3.5"
+                  >
+                    <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+                  </svg>
+                </button>
+              )}
+            </div>
+            <HoverPreview
+              paper={panelPaper}
+              isSeed={isSeed}
+              similarity={similarity}
+            />
+          </div>
+        </div>
+      )}
+    </aside>
+  );
+}
+
+function HoverPreview({
   paper,
   isSeed,
   similarity,
@@ -858,71 +1032,68 @@ function AbstractPanel({
   isSeed: boolean;
   similarity: number | undefined;
 }) {
+  if (!paper) {
+    return (
+      <div className="text-sm text-base-content/40 leading-relaxed">
+        Hover a node to see its abstract.
+      </div>
+    );
+  }
   return (
-    <aside className="border-l border-base-300/60 bg-base-200/40 min-h-0 overflow-y-auto">
-      <div className="p-4">
-        {!paper ? (
-          <div className="text-sm text-base-content/40 leading-relaxed">
-            Hover a node to see its abstract.
-          </div>
+    <>
+      <div className="flex items-center gap-2 mb-2 text-[11px] uppercase tracking-wide text-base-content/40">
+        {isSeed ? (
+          <span className="text-primary font-semibold">seed</span>
+        ) : similarity !== undefined ? (
+          <span className="font-mono text-accent">
+            sim = {similarity.toFixed(3)}
+          </span>
         ) : (
-          <>
-            <div className="flex items-center gap-2 mb-2 text-[11px] uppercase tracking-wide text-base-content/40">
-              {isSeed ? (
-                <span className="text-primary font-semibold">seed</span>
-              ) : similarity !== undefined ? (
-                <span className="font-mono text-accent">
-                  sim = {similarity.toFixed(3)}
-                </span>
-              ) : (
-                <span className="font-mono">paper</span>
-              )}
-              {paper.source && (
-                <span className="ml-auto font-mono">{paper.source}</span>
-              )}
-              {paper.paper_date && (
-                <span className="font-mono">{formatDate(paper.paper_date)}</span>
-              )}
-            </div>
-
-            <h2 className="text-base font-semibold leading-snug text-base-content">
-              {paper.link ? (
-                <a
-                  href={paper.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent hover:underline"
-                >
-                  {unicodify(paper.title)}
-                </a>
-              ) : (
-                unicodify(paper.title)
-              )}
-            </h2>
-
-            {paper.authors.length > 0 && (
-              <p className="mt-2 text-xs text-base-content/60 leading-relaxed">
-                {paper.authors.map(unicodify).join(", ")}
-              </p>
-            )}
-
-            <p className="mt-1 text-[11px] text-base-content/30 font-mono">
-              {paper.paper_id}
-            </p>
-
-            {paper.abstract ? (
-              <p className="mt-3 text-sm text-base-content/80 whitespace-pre-wrap leading-relaxed">
-                {unicodify(paper.abstract)}
-              </p>
-            ) : (
-              <p className="mt-3 text-sm text-base-content/40 italic">
-                No abstract available.
-              </p>
-            )}
-          </>
+          <span className="font-mono">paper</span>
+        )}
+        {paper.source && (
+          <span className="ml-auto font-mono">{paper.source}</span>
+        )}
+        {paper.paper_date && (
+          <span className="font-mono">{formatDate(paper.paper_date)}</span>
         )}
       </div>
-    </aside>
+
+      <h2 className="text-base font-semibold leading-snug text-base-content">
+        {paper.link ? (
+          <a
+            href={paper.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent hover:underline"
+          >
+            {unicodify(paper.title)}
+          </a>
+        ) : (
+          unicodify(paper.title)
+        )}
+      </h2>
+
+      {paper.authors.length > 0 && (
+        <p className="mt-2 text-xs text-base-content/60 leading-relaxed">
+          {paper.authors.map(unicodify).join(", ")}
+        </p>
+      )}
+
+      <p className="mt-1 text-[11px] text-base-content/30 font-mono">
+        {paper.paper_id}
+      </p>
+
+      {paper.abstract ? (
+        <p className="mt-3 text-sm text-base-content/80 whitespace-pre-wrap leading-relaxed">
+          {unicodify(paper.abstract)}
+        </p>
+      ) : (
+        <p className="mt-3 text-sm text-base-content/40 italic">
+          No abstract available.
+        </p>
+      )}
+    </>
   );
 }
 
