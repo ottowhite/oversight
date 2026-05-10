@@ -1,0 +1,318 @@
+[
+  {
+    "paper_id": "10.1145/1017472.1017478",
+    "title": "Plugging Haskell in",
+    "abstract": "Extension languages enable users to expand the functionality of an application without touching its source code. Commonly, these languages are dynamically typed languages, such as Lisp, Python, or domain-specific languages, which support runtime plugins via dynamic loading of components. We show that Haskell can be comfortably used as a statically typed extension language for both Haskell and foreign-language applications supported by the Haskell FFI, and that it can perform type-safe dynamic loading of plugins using dynamic types. Moreover, we discuss how plugin support is especially useful to applications where Haskell is used as an embedded domain-specific language (EDSL). We explain how to realise type-safe plugins using dynamic types, runtime compilation, and dynamic linking, exploiting infrastructure provided by the Glasgow Haskell Compiler. We demonstrate the practicability of our approach with several applications that serve as running examples.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017478",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "André",
+        "last_name": "Pang",
+        "institution": "Commonwealth Scientific and Industrial Research Organisation"
+      },
+      {
+        "first_name": "Don",
+        "last_name": "Stewart",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Sean",
+        "last_name": "Seefried",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/haskell/PangSSC04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017488",
+    "title": "Strongly typed heterogeneous collections",
+    "abstract": "A heterogeneous collection is a datatype that is capable of storing data of different types, while providing operations for look-up, update, iteration, and others. There are various kinds of heterogeneous collections, differing in representation, invariants, and access operations. We describe HLIST - a Haskell library for strongly typed heterogeneous collections including extensible records. We illustrate HLIST's benefits in the context of type-safe database access in Haskell. The HLIST library relies on common extensions of Haskell 98. Our exploration raises interesting issues regarding Haskell's type system, in particular, avoidance of overlapping instances, and reification of type equality and type unification.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017488",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Oleg",
+        "last_name": "Kiselyov",
+        "institution": ""
+      },
+      {
+        "first_name": "Ralf",
+        "last_name": "Lämmel",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Keean",
+        "last_name": "Schupke",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/haskell/KiselyovLS04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017485",
+    "title": "Type-safe, self inspecting code",
+    "abstract": "We present techniques for representing typed abstract syntax trees in the presence of observable recursive structures. The need for this arose from the desire to cope with left-recursion in combinator based parsers. The techniques employed can be used in a much wider setting however, since it enables the inspection and transformation of any program structure, which contains internal references. The hard part of the work is to perform such analyses and transformations in a setting in which the Haskell type checker is still able to statically check the correctness of the program representations, and hence the type correctness of the transformed program.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017485",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Arthur I.",
+        "last_name": "Baars",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "S. Doaitse",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/haskell/BaarsS04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017479",
+    "title": "Extending the Haskell foreign function interface with concurrency",
+    "abstract": "A Haskell system that includes both the Foreign Function Interface and the Concurrent Haskell extension must consider how Concurrent Haskell threads map to external Operating System threads for the purposes of specifying in which thread a foreign call is made.Many concurrent languages take the easy route and specify a one-to-one correspondence between the language's own threads and external OS threads. However, OS threads tend to be expensive, so this choice can limit the performance and scalability of the concurrent language.The main contribution of this paper is a language design that provides a neat solution to this problem, allowing the implementor of the language enough flexibility to provide cheap lightweight threads, while still providing the programmer with control over the mapping between internal threads and external threads where necessary.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017479",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Wolfgang",
+        "last_name": "Thaller",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/MarlowJT04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017475",
+    "title": "BNF converter",
+    "abstract": "We will demonstrate BNFC (the BNF Converter) [7, 6], a multi-lingual compiler tool. BNFC takes as its input a grammar written in LBNF (Labelled BNF) notation, and generates a compiler front-end (an abstract syntax, a lexer, and a parser). Furthermore, it generates a case skeleton usable as the starting point of back-end construction, a pretty printer, a test bench, and a LaTeX document usable as language specification. The program components can be generated in Haskell, Java, C and C++ and their standard parser and lexer tools. BNFC itself was written in Haskell.The methodology used for the generated front-end is based on Appel's books on compiler construction [3, 1, 2]. BNFC has been used as a teaching tool in compiler construction courses at Chalmers. It has also been applied to research-related programming language development, and in an industrial application producing a compiler for a telecommunications protocol description language [4].BNFC is freely available under the GPL license at its website and in the testing distribution of Debian Linux.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017475",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Markus",
+        "last_name": "Forsberg",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Aarne",
+        "last_name": "Ranta",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/ForsbergR04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017477",
+    "title": "Functional pearl: i am not a number-i am a free variable",
+    "abstract": "In this paper, we show how to manipulate syntax with binding using a mixed representation of names for free variables (with respect to the task in hand) and de Bruijn indices [5] for bound variables. By doing so, we retain the advantages of both representations: naming supports easy, arithmetic-free manipulation of terms; de Bruijn indices eliminate the need for α-conversion. Further, we have ensured that not only the user but also the implementation need never deal with de Bruijn indices, except within key basic operations.Moreover, we give a hierarchical representation for names which naturally reflects the structure of the operations we implement. Name choice is safe and straightforward. Our technology combines easily with an approach to syntax manipulation inspired by Huet's 'zippers'[10].Without the ideas in this paper, we would have struggled to implement EPIGRAM [19]. Our example-constructing inductive elimination operators for datatype families-is but one of many where it proves invaluable.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017477",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Conor",
+        "last_name": "McBride",
+        "institution": "Durham University"
+      },
+      {
+        "first_name": "James",
+        "last_name": "McKinna",
+        "institution": "University of St Andrews"
+      }
+    ],
+    "dblp_key": "conf/haskell/McBrideM04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017481",
+    "title": "Functional pearl: implicit configurations-or, type classes reflect the values of types",
+    "abstract": "The configurations problem is to propagate run-time preferences throughout a program, allowing multiple concurrent configuration sets to coexist safely under statically guaranteed separation. This problem is common in all software systems, but particularly acute in Haskell, where currently the most popular solution relies on unsafe operations and compiler pragmas.We solve the configurations problem in Haskell using only stable and widely implemented language features like the type-class system. In our approach, a term expression can refer to run-time configuration parameters as if they were compile-time constants in global scope. Besides supporting such intuitive term notation and statically guaranteeing separation, our solution also helps improve the program's performance by transparently dispatching to specialized code at run-time. We can propagate any type of configuration data-numbers, strings, IO actions, polymorphic functions, closures, and abstract data types. No previous approach to propagating configurations implicitly in any language provides the same static separation guarantees.The enabling technique behind our solution is to propagate values via types, with the help of polymorphic recursion and higher-rank polymorphism. The technique essentially emulates local type-class instance declarations while preserving coherence. Configuration parameters are propagated throughout the code implicitly as part of type inference rather than explicitly by the programmer. Our technique can be regarded as a portable, coherent, and intuitive alternative to implicit parameters. It motivates adding local instances to Haskell, with a restriction that salvages principal types.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017481",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Oleg",
+        "last_name": "Kiselyov",
+        "institution": "Naval Meteorology and Oceanography Command"
+      },
+      {
+        "first_name": "Chung-chieh",
+        "last_name": "Shan",
+        "institution": "Harvard University"
+      }
+    ],
+    "dblp_key": "conf/haskell/KiselyovS04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017486",
+    "title": "Improving type error diagnosis",
+    "abstract": "All in-text\\treferences\\tunderlined\\tin\\tblue\\tare\\tlinked\\tto\\tpublications\\ton\\tResearchGate, letting you\\taccess\\tand\\tread\\tthem\\timmediately.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017486",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Peter J.",
+        "last_name": "Stuckey",
+        "institution": "University of Melbourne"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Sulzmann",
+        "institution": ""
+      },
+      {
+        "first_name": "Jeremy",
+        "last_name": "Wazny",
+        "institution": "University of Melbourne"
+      }
+    ],
+    "dblp_key": "conf/haskell/StuckeySW04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017483",
+    "title": "wxHaskell: a portable and concise GUI library for haskell",
+    "abstract": "wxHaskell is a graphical user interface (GUI) library for Haskell that is built on wxWidgets: a free industrial strength GUI library for C++ that has been ported to all major platforms, including Windows, Gtk, and MacOS X. In contrast with many other libraries, wxWidgets retains the native look-and-feel of each particular platform. We show how distinctive features of Haskell, like parametric polymorphism, higher-order functions, and first-class computations, can be used to present a concise and elegant monadic interface for portable GUI programs.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017483",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Daan",
+        "last_name": "Leijen",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/haskell/Leijen04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017474",
+    "title": "Haskell type browser",
+    "abstract": "No abstract available.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017474",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Neubauer",
+        "institution": "University of Fribourg"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Fribourg"
+      }
+    ],
+    "dblp_key": "conf/haskell/NeubauerT04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017482",
+    "title": "Programming graphics processors functionally",
+    "abstract": "Graphics cards for personal computers have recently undergone a radical transformation from fixed-function graphics pipelines to multi-processor, programmable architectures. Multi-processor architectures are clearly advantageous for graphics for the simple reason that graphics computations are naturally concurrent, mapping well to stateless stream processing. They therefore parallelize easily and need no random access to memory with its problematic latencies.This paper presents Vertigo, a purely functional, Haskell-embedded language for 3D graphics and an optimizing compiler that generates graphics processor code. The language integrates procedural surface modeling, shading, and texture generation, and the compiler exploits the unusual processor architecture. The shading sub-language is based on a simple and precise semantic model, in contrast to previous shading languages. Geometry and textures are also defined via a very simple denotational semantics. The formal semantics yields not only programs that are easy to understand and reason about, but also very efficient implementation, thanks to a compiler based on partial evaluation and symbolic optimization, much in the style of Pan [2].Haskell's overloading facility is extremely useful throughout Vertigo. For instance, math operators are used not just for floating point numbers, but also expressions (for differentiation and compilation), tuples, and functions. Typically, these overloadings cascade, as in the case of surfaces, which may be combined via math operators, though they are really functions over tuples of expressions on floating point numbers. Shaders may be composed with the same notational convenience. Functional dependencies are exploited for vector spaces, cross products, and derivatives.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017482",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Conal",
+        "last_name": "Elliott",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/Elliott04",
+    "venue": "haskell",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1017472.1017473",
+    "title": "Student paper: HaskellDB improved",
+    "abstract": "We present an improved version of the HaskellDB database library. The original version relied on TRex, a Haskell extension supported only by the Hugs interpreter. We have replaced the use of TRex by a record implementation which uses more commonly implemented Haskell extensions.Additionally, HaskellDB now supports two different cross-platform database backends. Other changes include database creation functionality, bounded string support, performance enhancements, fixes to the optimisation logic, transaction support and more fine grained expression types.",
+    "date": "2004-09-22",
+    "link": "https://doi.org/10.1145/1017472.1017473",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Björn",
+        "last_name": "Bringert",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Anders",
+        "last_name": "Höckersten",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Conny",
+        "last_name": "Andersson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Andersson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Mary Elizabeth",
+        "last_name": "Bergman",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Victor",
+        "last_name": "Blomqvist",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Torbjörn",
+        "last_name": "Martin",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/BringertHAABBM04",
+    "venue": "haskell",
+    "year": 2004
+  }
+]
