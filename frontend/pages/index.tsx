@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type Paper = {
@@ -572,14 +573,13 @@ export default function HomePage() {
                     >
                       Find Similar
                     </button>
-                    <a
-                      className="btn btn-xs btn-ghost text-accent hover:bg-accent/10"
+                    <Link
                       href={`/graph?seed=${encodeURIComponent(p.paper_id)}`}
-                      target="_blank"
-                      rel="noreferrer"
                     >
-                      Graph
-                    </a>
+                      <a className="btn btn-xs btn-ghost text-accent hover:bg-accent/10">
+                        Graph
+                      </a>
+                    </Link>
                     {p.link && (
                       <a
                         className="btn btn-xs btn-ghost text-accent hover:bg-accent/10"
