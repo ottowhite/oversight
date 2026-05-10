@@ -1,0 +1,793 @@
+[
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.0",
+    "title": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "abstract": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.0",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Todd",
+        "last_name": "Millstein",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/ecoop/X18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.2",
+    "title": "ContextWorkflow: A Monadic DSL for Compensable and Interruptible Executions",
+    "abstract": "Context-aware applications, whose behavior reactively depends on the time-varying status of the surrounding environment - such as network connection, battery level, and sensors - are getting more and more pervasive and important. The term \"context-awareness\" usually suggests prompt reactions to context changes: as the context change signals that the current execution cannot be continued, the application should immediately abort its execution, possibly does some clean-up tasks, and suspend until the context allows it to restart. Interruptions, or asynchronous exceptions, are useful to achieve context-awareness. It is, however, difficult to program with interruptions in a compositional way in most programming languages because their support is too primitive, relying on synchronous exception handling mechanism such as try-catch. We propose a new domain-specific language ContextWorkflow for interruptible programs as a solution to the problem. A basic unit of an interruptible program is a workflow, i.e., a sequence of atomic computations accompanied with compensation actions. The uniqueness of ContextWorkflow is that, during its execution, a workflow keeps watching the context between atomic actions and decides if the computation should be continued, aborted, or suspended. Our contribution of this paper is as follows; (1) the design of a workflow-like language with asynchronous interruption, checkpointing, sub-workflows and suspension; (2) a formal semantics of the core language; (3) a monadic interpreter corresponding to the semantics; and (4) its concrete implementation as an embedded domain-specific language in Scala.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.2",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Hiroaki",
+        "last_name": "Inoue",
+        "institution": "Kyoto College of Graduate Studies for Informatics"
+      },
+      {
+        "first_name": "Tomoyuki",
+        "last_name": "Aotani",
+        "institution": "Tokyo Institute of Technology"
+      },
+      {
+        "first_name": "Atsushi",
+        "last_name": "Igarashi",
+        "institution": "Kyoto College of Graduate Studies for Informatics"
+      }
+    ],
+    "dblp_key": "conf/ecoop/InoueAI18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.13",
+    "title": "Dependent Types for Class-based Mutable Objects",
+    "abstract": "We present an imperative object-oriented language featuring a dependent type system designed to support class-based programming and inheritance. Programmers implement classes in the usual imperative style, and may take advantage of a richer dependent type system to express class invariants and restrictions on how objects are allowed to change and be used as arguments to methods. By way of example, we implement insertion and deletion for binary search trees in an imperative style, and come up with types that ensure the binary search tree invariant. This is the first dependently-typed language with mutable objects that we know of to bring classes and index refinements into play, enabling types (classes) to be refined by indices drawn from some constraint domain. We give a declarative type system that supports objects whose types may change, despite being sound. We also give an algorithmic type system that provides a precise account of quantifier instantiation in a bidirectional style, and from which it is straightforward to read off an implementation. Moreover, all the examples in the paper have been run, compiled and executed in a fully functional prototype that includes a plugin for the Eclipse IDE.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.13",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Joana",
+        "last_name": "Campos",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Vasco T.",
+        "last_name": "Vasconcelos",
+        "institution": "University of Lisbon"
+      }
+    ],
+    "dblp_key": "conf/ecoop/0002V18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.14",
+    "title": "Static Typing of Complex Presence Constraints in Interfaces",
+    "abstract": "Many functions in libraries and APIs have the notion of optional parameters, which can be mapped onto optional properties of an object representing those parameters. The fact that properties are optional opens up the possibility for APIs and libraries to design a complex \"dependency logic\" between properties: for example, some properties may be mutually exclusive, some properties may depend on others, etc. Existing type systems are not strong enough to express such dependency logic, which can lead to the creation of invalid objects and accidental usage of absent properties. In this paper we propose TypeScriptIPC: a variant of TypeScript with a novel type system that enables programmers to express complex presence constraints on properties. We prove that it is sound with respect to enforcing complex dependency logic defined by the programmer when an object is created, modified or accessed.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.14",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Nathalie",
+        "last_name": "Oostvogels",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Joeri De",
+        "last_name": "Koster",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Wolfgang De",
+        "last_name": "Meuter",
+        "institution": "Vrije Universiteit Brussel"
+      }
+    ],
+    "dblp_key": "conf/ecoop/OostvogelsKM18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.8",
+    "title": "Targeted Test Generation for Actor Systems",
+    "abstract": "This paper addresses the problem of targeted test generation for actor systems. Specifically, we propose a method to support generation of system-level tests to cover a given code location in an actor system. The test generation method consists of two phases. First, static analysis is used to construct an abstraction of an entire actor system in terms of a message flow graph (MFG). An MFG captures potential actor interactions that are defined in a program. Second, a backwards symbolic execution (BSE) from a target location to an \"entry point\" of the actor system is performed. BSE uses the MFG constructed in the first phase of our targeted test generation method to guide execution across actors. Because concurrency leads to a huge search space which can potentially be explored through BSE, we prune the search space by using two heuristics combined with a feedback-directed technique. We implement our method in Tap, a tool for Java Akka programs, and evaluate Tap on the Savina benchmarks as well as four open source projects. Our evaluation shows that the Tap achieves a relatively high target coverage (78% on 1,000 targets) and detects six previously unreported bugs in the subjects.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.8",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Sihan",
+        "last_name": "Li",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Farah",
+        "last_name": "Hariri",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Gul",
+        "last_name": "Agha",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LiHA18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.5",
+    "title": "A Characteristic Study of Parameterized Unit Tests in .NET Open Source Projects",
+    "abstract": "In the past decade, parameterized unit testing has emerged as a promising method to specify program behaviors under test in the form of unit tests. Developers can write parameterized unit tests (PUTs), unit-test methods with parameters, in contrast to conventional unit tests, without parameters. The use of PUTs can enable powerful test generation tools such as Pex to have strong test oracles to check against, beyond just uncaught runtime exceptions. In addition, PUTs have been popularly supported by various unit testing frameworks for .NET and the JUnit framework for Java. However, there exists no study to offer insights on how PUTs are written by developers in either proprietary or open source development practices, posing barriers for various stakeholders to bring PUTs to widely adopted practices in software industry. To fill this gap, we first present categorization results of the Microsoft MSDN Pex Forum posts (contributed primarily by industrial practitioners) related to PUTs. We then use the categorization results to guide the design of the first characteristic study of PUTs in .NET open source projects. We study hundreds of PUTs that open source developers wrote for these open source projects. Our study findings provide valuable insights for various stakeholders such as current or prospective PUT writers (e.g., developers), PUT framework designers, test-generation tool vendors, testing researchers, and testing educators.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.5",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Wing",
+        "last_name": "Lam",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Siwakorn",
+        "last_name": "Srisakaokul",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Blake",
+        "last_name": "Bassett",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Peyman",
+        "last_name": "Mahdian",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Tao",
+        "last_name": "Xie",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Pratap",
+        "last_name": "Lakshman",
+        "institution": "Microsoft Research Asia (China)"
+      },
+      {
+        "first_name": "Jonathan de",
+        "last_name": "Halleux",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LamSBM0LH18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.6",
+    "title": "Learning to Accelerate Symbolic Execution via Code Transformation",
+    "abstract": "Symbolic execution is an effective but expensive technique for automated test generation. Over the years, a large number of refined symbolic execution techniques have been proposed to improve its efficiency. However, the symbolic execution efficiency problem remains, and largely limits the application of symbolic execution in practice. Orthogonal to refined symbolic execution, in this paper we propose to accelerate symbolic execution through semantic-preserving code transformation on the target programs. During the initial stage of this direction, we adopt a particular code transformation, compiler optimization, which is initially proposed to accelerate program concrete execution by transforming the source program into another semantic-preserving target program with increased efficiency (e.g., faster or smaller). However, compiler optimizations are mostly designed to accelerate program concrete execution rather than symbolic execution. Recent work also reported that unified settings on compiler optimizations that can accelerate symbolic execution for any program do not exist at all. Therefore, in this work we propose a machine-learning based approach to tuning compiler optimizations to accelerate symbolic execution, whose results may also aid further design of specific code transformations for symbolic execution. In particular, the proposed approach LEO separates source-code functions and libraries through our program-splitter, and predicts individual compiler optimization (i.e., whether a type of code transformation is chosen) separately through analyzing the performance of existing symbolic execution. Finally, LEO applies symbolic execution on the code transformed by compiler optimization (through our local-optimizer). We conduct an empirical study on GNU Coreutils programs using the KLEE symbolic execution engine. The results show that LEO significantly accelerates symbolic execution, outperforming the default KLEE configurations (i.e., turning on/off all compiler optimizations) in various settings, e.g., with the default training/testing time, LEO achieves the highest line coverage in 50/68 programs, and its average improvement rate on all programs is 46.48%/88.92% in terms of line coverage compared with turning on/off all compiler optimizations.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.6",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Junjie",
+        "last_name": "Chen",
+        "institution": "Institute of Software"
+      },
+      {
+        "first_name": "Wenxiang",
+        "last_name": "Hu",
+        "institution": "Institute of Software"
+      },
+      {
+        "first_name": "Lingming",
+        "last_name": "Zhang",
+        "institution": "The University of Texas at Dallas"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Hao",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Sarfraz",
+        "last_name": "Khurshid",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Lu",
+        "last_name": "Zhang",
+        "institution": "Peking University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ChenHZHK018",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.7",
+    "title": "Type Regression Testing to Detect Breaking Changes in Node.js Libraries",
+    "abstract": "The npm repository contains JavaScript libraries that are used by millions of software developers. Its semantic versioning system relies on the ability to distinguish between breaking and non-breaking changes when libraries are updated. However, the dynamic nature of JavaScript often causes unintended breaking changes to be detected too late, which undermines the robustness of the applications.\\nWe present a novel technique, type regression testing, to automatically determine whether an update of a library implementation affects the types of its public interface, according to how the library is being used by other npm packages. By leveraging available test suites of clients, type regression testing uses a dynamic analysis to learn models of the library interface. Comparing the models before and after an update effectively amplifies the existing tests by revealing changes that may affect the clients.\\nExperimental results on 12 widely used libraries show that the technique can identify type-related breaking changes with high accuracy. It fully automatically classifies at least 90% of the updates correctly as either major or as minor or patch, and it detects 26 breaking changes among the minor and patch updates.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.7",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Gianluca",
+        "last_name": "Mezzetti",
+        "institution": "University of Pisa"
+      },
+      {
+        "first_name": "Anders",
+        "last_name": "Møller",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Martin Toldam",
+        "last_name": "Torp",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MezzettiMT18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.10",
+    "title": "CrySL: An Extensible Approach to Validating the Correct Usage of Cryptographic APIs",
+    "abstract": "Various studies have empirically shown that the majority of Java and Android apps misuse cryptographic libraries, causing devastating breaches of data security. It is crucial to detect such misuses early in the development process. To detect cryptography misuses, one must first define secure uses, a process mastered primarily by cryptography experts, and not by developers. In this paper, we present CrySL, a definition language for bridging the cognitive gap between cryptography experts and developers. CrySL enables cryptography experts to specify the secure usage of the cryptographic libraries that they provide. We have implemented a compiler that translates such CrySL specification into a context-sensitive and flow-sensitive demand-driven static analysis. The analysis then helps developers by automatically checking a given Java or Android app for compliance with the CrySL-encoded rules. We have designed an extensive CrySL rule set for the Java Cryptography Architecture (JCA), and empirically evaluated it by analyzing 10,000 current Android apps. Our results show that misuse of cryptographic APIs is still widespread, with 95% of apps containing at least one misuse. Our easily extensible CrySL rule set covers more violations than previous special-purpose tools with hard-coded rules, with our tooling offering a more precise analysis.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.10",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Stefan",
+        "last_name": "Krüger",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Johannes",
+        "last_name": "Späth",
+        "institution": "Fraunhofer Institute for Mechatronic Systems Design"
+      },
+      {
+        "first_name": "Karim",
+        "last_name": "Ali",
+        "institution": "University of Alberta"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Bodden",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Mira",
+        "last_name": "Mezini",
+        "institution": "Technical University of Darmstadt"
+      }
+    ],
+    "dblp_key": "conf/ecoop/KrugerS0BM18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.11",
+    "title": "Safe Transferable Regions",
+    "abstract": "There is an increasing interest in alternative memory management schemes that seek to combine the convenience of garbage collection and the performance of manual memory management in a single language framework. Unfortunately, ensuring safety in presence of manual memory management remains as great a challenge as ever. In this paper, we present a C#-like object-oriented language called Broom that uses a combination of region type system and lightweight runtime checks to enforce safety in presence of user-managed memory regions called transferable regions. Unsafe transferable regions have been previously used to contain the latency due to unbounded GC pauses. Our approach shows that it is possible to restore safety without compromising on the benefits of transferable regions. We prove the type safety of Broom in a formal framework that includes its C#-inspired features, such as higher-order functions and generics. We complement our type system with a type inference algorithm, which eliminates the need for programmers to write region annotations on types. The inference algorithm has been proven sound and relatively complete. We describe a prototype implementation of the inference algorithm, and our experience of using it to enforce memory safety in dataflow programs.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.11",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Gowtham",
+        "last_name": "Kaki",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "G.",
+        "last_name": "Ramalingam",
+        "institution": "Microsoft Research (India)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/KakiR18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.4",
+    "title": "A Concurrent Specification of POSIX File Systems",
+    "abstract": "POSIX is a standard for operating systems, with a substantial part devoted to specifying file-system operations. File-system operations exhibit complex concurrent behaviour, comprising multiple actions affecting different parts of the state: typically, multiple atomic reads followed by an atomic update. However, the standard's description of concurrent behaviour is unsatisfactory: it is fragmented; contains ambiguities; and is generally under-specified. We provide a formal concurrent specification of POSIX file systems and demonstrate scalable reasoning for clients. Our specification is based on a concurrent specification language, which uses a modern concurrent separation logic for reasoning about abstract atomic operations, and an associated refinement calculus. Our reasoning about clients highlights an important difference between reasoning about modules built over a heap, where the interference on the shared state is restricted to the operations of the module, and modules built over a file system, where the interference cannot be restricted as the file system is a public namespace. We introduce specifications conditional on context invariants used to restrict the interference, and apply our reasoning to the example of lock files.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.4",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Gian",
+        "last_name": "Ntzik",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Pedro da Rocha",
+        "last_name": "Pinto",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Julian",
+        "last_name": "Sutherland",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Philippa",
+        "last_name": "Gardner",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/NtzikPSG18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.9",
+    "title": "Typed First-Class Traits",
+    "abstract": "Many dynamically-typed languages (including JavaScript, Ruby, Python or Racket) support first-class classes, or related concepts such as first-class traits and/or mixins. In those languages classes are first-class values and, like any other values, they can be passed as an argument, or returned from a function. Furthermore first-class classes support dynamic inheritance: i.e. they can inherit from other classes at runtime, enabling programmers to abstract over the inheritance hierarchy. In contrast, type system limitations prevent most statically-typed languages from having first-class classes and dynamic inheritance. This paper shows the design of SEDEL: a polymorphic statically-typed language with first-class traits, supporting dynamic inheritance as well as conventional OO features such as dynamic dispatching and abstract methods. To address the challenges of type-checking first-class traits, SEDEL employs a type system based on the recent work on disjoint intersection types and disjoint polymorphism. The novelty of SEDEL over core disjoint intersection calculi are source level features for practical OO programming, including first-class traits with dynamic inheritance, dynamic dispatching and abstract methods. Inspired by Cook and Palsberg's work on the denotational semantics for inheritance, we show how to design a source language that can be elaborated into Alpuim et al.'s F_{i} (a core polymorphic calculus with records supporting disjoint polymorphism). We illustrate the applicability of SEDEL with several example uses for first-class traits, and a case study that modularizes programming language interpreters using a highly modular form of visitors.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.9",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Xuan",
+        "last_name": "Bi",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BiO18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.1",
+    "title": "Fault-tolerant Distributed Reactive Programming",
+    "abstract": "In this paper, we present a holistic approach to provide fault tolerance for distributed reactive programming. Our solution automatically stores and recovers program state to handle crashes, automatically updates and shares distributed parts of the state to provide eventual consistency, and handles errors in a fine-grained manner to allow precise manual control when necessary. By making use of the reactive programming paradigm, we provide these mechanisms without changing the behavior of existing programs and with reasonable performance, as indicated by our experimental evaluation.",
+    "date": "2016-09-08",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.1",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Rachid",
+        "last_name": "Guerraoui",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Matej",
+        "last_name": "Pavlovič",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Dragos-Adrian",
+        "last_name": "Seredinschi",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MogkBSFM18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.15",
+    "title": "Mailbox Types for Unordered Interactions",
+    "abstract": "We propose a type system for reasoning on protocol conformance and deadlock freedom in networks of processes that communicate through unordered mailboxes. We model these networks in the mailbox calculus, a mild extension of the asynchronous pi-calculus with first-class mailboxes and selective input. The calculus subsumes the actor model and allows us to analyze networks with dynamic topologies and varying number of processes possibly mixing different concurrency abstractions. Well-typed processes are deadlock free and never fail because of unexpected messages. For a non-trivial class of them, junk freedom is also guaranteed. We illustrate the expressiveness of the calculus and of the type system by encoding instances of non-uniform, concurrent objects, binary sessions extended with joins and forks, and some known actor benchmarks.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.15",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "De&amp;apos; Liguoro,",
+        "last_name": "Ugo",
+        "institution": "University of Turin"
+      },
+      {
+        "first_name": "Luca",
+        "last_name": "Padovani",
+        "institution": "University of Turin"
+      }
+    ],
+    "dblp_key": "conf/ecoop/deLiguoroP18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.3",
+    "title": "Theory and Practice of Coroutines with Snapshots",
+    "abstract": "Coroutines are a general control flow construct that can eliminate control flow fragmentation inherent in event-driven programs, and are still missing in many popular languages. Coroutines with snapshots are a first-class, type-safe, stackful coroutine model, which unifies many variants of suspendable computing, and is sufficiently general to express iterators, single-assignment variables, async-await, actors, event streams, backtracking, symmetric coroutines and continuations. In this paper, we develop a formal model called $λ_{\\rightsquigarrow}$ (lambda-squiggly) that captures the essence of type-safe, stackful, delimited coroutines with snapshots. We prove the standard progress and preservation safety properties. Finally, we show a formal transformation from the $λ_{\\rightsquigarrow}$ calculus to the simply-typed lambda calculus with references.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.3",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Aleksandar",
+        "last_name": "Prokopec",
+        "institution": ""
+      },
+      {
+        "first_name": "Fengyun",
+        "last_name": "Liu",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ProkopecL18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.12",
+    "title": "KafKa: Gradual Typing for Objects",
+    "abstract": "A wide range of gradual type systems have been proposed, providing many languages with the ability to mix typed and untyped code. However, hiding under language details, these gradual type systems embody fundamentally different ideas of what it means to be well-typed. In this paper, we show that four of the most common gradual type systems provide distinct guarantees, and we give a formal framework for comparing gradual type systems for object-oriented languages. First, we show that the different gradual type systems are practically distinguishable via a three-part litmus test. We present a formal framework for defining and comparing gradual type systems. Within this framework, different gradual type systems become translations between a common source and target language, allowing for direct comparison of semantics and guarantees.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.12",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Benjamin",
+        "last_name": "Chung",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Paley",
+        "last_name": "Li",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Francesco Zappa",
+        "last_name": "Nardelli",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ChungLNV18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.16",
+    "title": "Accelerating Dynamically-Typed Languages on Heterogeneous Platforms Using Guards Optimization",
+    "abstract": "Scientific applications are ideal candidates for the \"heterogeneous computing\" paradigm, in which parts of a computation are \"offloaded\" to available accelerator hardware such as GPUs. However, when such applications are written in dynamic languages such as Python or R, as they increasingly are, things become less straightforward. The same flexibility that makes these languages so appealing to programmers also significantly complicates the problem of automatically and transparently partitioning a program's execution between a CPU and available accelerator hardware without having to rely on programmer annotations. A common way of handling the features of dynamic languages is by introducing speculation in conjunction with guards to ascertain the validity of assumptions made in the speculative computation. Unfortunately, a single guard violation during the execution of \"offloaded\" code may result in a huge performance penalty and necessitate the complete re-execution of the offloaded computation. In the case of dynamic languages, this problem is compounded by the fact that a full compiler analysis is not always possible ahead of time. This paper presents MegaGuards, a new approach for speculatively executing dynamic languages on heterogeneous platforms in a fully automatic and transparent manner. Our method translates each target loop into a single static region devoid of any dynamic type features. The dynamic parts are instead handled by a construct that we call a mega guard which checks all the speculative assumptions ahead of its corresponding static region. Notably, the advantage of MegaGuards is not limited to heterogeneous computing; because it removes guards from compute-intensive loops, the approach also improves sequential performance. We have implemented MegaGuards along with an automatic loop parallelization backend in ZipPy, a Python Virtual Machine. The results of a careful and detailed evaluation reveal very significant speedups of an order of magnitude on average with a maximum speedup of up to two orders of magnitudes when compared to the original ZipPy performance as a baseline. These results demonstrate the potential for applying heterogeneous computing to dynamic languages.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.16",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Mohaned",
+        "last_name": "Qunaibit",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Stefan",
+        "last_name": "Brunthaler",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Yeoul",
+        "last_name": "Na",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Stijn",
+        "last_name": "Volckaert",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Franz",
+        "institution": "University of California, Irvine"
+      }
+    ],
+    "dblp_key": "conf/ecoop/QunaibitBNVF18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.17",
+    "title": "CROCHET: Checkpoint and Rollback via Lightweight Heap Traversal on Stock JVMs",
+    "abstract": "Checkpoint/rollback (CR) mechanisms create snapshots of the state of a running application, allowing it to later be restored to that checkpointed snapshot. Support for checkpoint/rollback enables many program analyses and software engineering techniques, including test generation, fault tolerance, and speculative execution. Fully automatic CR support is built into some modern operating systems. However, such systems perform checkpoints at the coarse granularity of whole pages of virtual memory, which imposes relatively high overhead to incrementally capture the changing state of a process, and makes it difficult for applications to checkpoint only some logical portions of their state. CR systems implemented at the application level and with a finer granularity typically require complex developer support to identify: (1) where checkpoints can take place, and (2) which program state needs to be copied. A popular compromise is to implement CR support in managed runtime environments, e.g. the Java Virtual Machine (JVM), but this typically requires specialized, non-standard runtime environments, limiting portability and adoption of this approach. In this paper, we present a novel approach for Checkpoint ROllbaCk via lightweight HEap Traversal (Crochet), which enables fully automatic fine-grained lightweight checkpoints within unmodified commodity JVMs (specifically Oracle's HotSpot and OpenJDK). Leveraging key insights about the internal design common to modern JVMs, Crochet works entirely through bytecode rewriting and standard debug APIs, utilizing special proxy objects to perform a lazy heap traversal that starts at the root references and traverses the heap as objects are accessed, copying or restoring state as needed and removing each proxy immediately after it is used. We evaluated Crochet on the DaCapo benchmark suite, finding it to have very low runtime overhead in steady state (ranging from no overhead to 1.29x slowdown), and that it often outperforms a state-of-the-art system-level checkpoint tool when creating large checkpoints.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.17",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jonathan",
+        "last_name": "Bell",
+        "institution": "George Mason University"
+      },
+      {
+        "first_name": "Luís",
+        "last_name": "Pina",
+        "institution": "George Mason University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BellP18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.18",
+    "title": "ThingsMigrate: Platform-Independent Migration of Stateful JavaScript IoT Applications",
+    "abstract": "The Internet of Things (IoT) has gained wide popularity both in academic and industrial contexts. As IoT devices become increasingly powerful, they can run more and more complex applications written in higher-level languages, such as JavaScript. However, by their nature, IoT devices are subject to resource constraints, which require applications to be dynamically migrated between devices (and the cloud). Further, IoT applications are also becoming more stateful, and hence we need to save their state during migration transparently to the programmer. In this paper, we present ThingsMigrate, a middleware providing VM-independent migration of stateful JavaScript applications across IoT devices. ThingsMigrate captures and reconstructs the internal JavaScript program state by instrumenting application code before run time, without modifying the underlying Virtual Machine (VM), thus providing platform and VM-independence. We evaluated ThingsMigrate against standard benchmarks, and over two IoT platforms and a cloud-like environment. We show that it can successfully migrate even highly CPU-intensive applications, with acceptable overheads (about 30%), and supports multiple migrations.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.18",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Julien",
+        "last_name": "Gascon‐Samson",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Kumseok",
+        "last_name": "Jung",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Shivanshu",
+        "last_name": "Goyal",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Armin",
+        "last_name": "Rezaiean‐Asel",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Karthik",
+        "last_name": "Pattabiraman",
+        "institution": "University of British Columbia"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Gascon-SamsonJG18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.21",
+    "title": "Modeling Infinite Behaviour by Corules",
+    "abstract": "Generalized inference systems have been recently introduced, and used, among other applications, to define semantic judgments which uniformly model terminating computations and divergence. We show that the approach can be successfully extended to more sophisticated notions of infinite behaviour, that is, to express that a diverging computation produces some possibly infinite result. This also provides a motivation to smoothly extend the theory of generalized inference systems to include, besides coaxioms, also corules, a more general notion for which significant examples were missing until now. We first illustrate the approach on a lambda-calculus with output effects, for which we also provide an alternative semantics based on standard notions, and a complete proof of the equivalence of the two semantics. Then, we consider a more involved example, that is, an imperative Java-like language with I/O primitives.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.21",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Davide",
+        "last_name": "Ancona",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Francesco",
+        "last_name": "Dagnino",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Zucca",
+        "institution": "University of Genoa"
+      }
+    ],
+    "dblp_key": "conf/ecoop/AnconaDZ18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.20",
+    "title": "FHJ: A Formal Model for Hierarchical Dispatching and Overriding",
+    "abstract": "Multiple inheritance is a valuable feature for Object-Oriented Programming. However, it is also tricky to get right, as illustrated by the extensive literature on the topic. A key issue is the ambiguity arising from inheriting multiple parents, which can have conflicting methods. Numerous existing work provides solutions for conflicts which arise from diamond inheritance: i.e. conflicts that arise from implementations sharing a common ancestor. However, most mechanisms are inadequate to deal with unintentional method conflicts: conflicts which arise from two unrelated methods that happen to share the same name and signature. This paper presents a new model called Featherweight Hierarchical Java (FHJ) that deals with unintentional method conflicts. In our new model, which is partly inspired by C++, conflicting methods arising from unrelated methods can coexist in the same class, and hierarchical dispatching supports unambiguous lookups in the presence of such conflicting methods. To avoid ambiguity, hierarchical information is employed in method dispatching, which uses a combination of static and dynamic type information to choose the implementation of a method at run-time. Furthermore, unlike all existing inheritance models, our model supports hierarchical method overriding: that is, methods can be independently overridden along the multiple inheritance hierarchy. We give illustrative examples of our language and features and formalize FHJ as a minimal Featherweight-Java style calculus.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.20",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Yanlin",
+        "last_name": "Wang",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Haoyuan",
+        "last_name": "Zhang",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Servetto",
+        "institution": "Victoria University of Wellington"
+      }
+    ],
+    "dblp_key": "conf/ecoop/WangZOS18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.19",
+    "title": "Automating Object Transformations for Dynamic Software Updating via Online Execution Synthesis",
+    "abstract": "Dynamic software updating (DSU) is a technique to upgrade a running software system on the fly without stopping the system. During updating, the runtime state of the modified components of the system needs to be properly transformed into a new state, so that the modified components can still correctly interact with the rest of the system. However, the transformation is non-trivial to realize due to the gap between the low-level implementations of two versions of a program. This paper presents AOTES, a novel approach to automating object transformations for dynamic updating of Java programs. AOTES bridges the gap by abstracting the old state of an object to a history of method invocations, and re-invoking the new version of all methods in the history to get the desired new state. AOTES requires no instrumentation to record any data and thus has no overhead during normal execution. We propose and implement a novel technique that can synthesize an equivalent history of method invocations based on the current object state only. We evaluated AOTES on software updates taken from Apache Commons Collections, Tomcat, FTP Server and SSHD Server. Experimental results show that AOTES successfully handled 51 of 61 object transformations of 21 updated classes, while two state-of-the-art approaches only handled 11 and 6 of 61, respectively.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.19",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Tianxiao",
+        "last_name": "Gu",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Xiaoxing",
+        "last_name": "Ma",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Chang",
+        "last_name": "Xu",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Yanyan",
+        "last_name": "Jiang",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Chun",
+        "last_name": "Cao",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Jian",
+        "last_name": "Lü",
+        "institution": "Nanjing University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/GuM00CL18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.25",
+    "title": "Definite Reference Mutability",
+    "abstract": "Reference immutability type systems such as Javari and ReIm ensure that a given reference cannot be used to mutate the referenced object. These systems are conservative in the sense that a mutable reference may be mutable due to approximation. In this paper, we present ReM (for definite Re[ference] M[utability]). It separates mutable references into (1) definitely mutable, and (2) maybe mutable, i.e., references whose mutability is due to inherent approximation. In addition, we propose a CFL-reachability system for reference immutability, and prove that it is equivalent to ReIm/ReM, thus building a novel framework for reasoning about correctness of reference immutability type systems. We have implemented ReM and applied it on a large benchmark suite. Our results show that approximately 86.5% of all mutable references are definitely mutable.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.25",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Ana",
+        "last_name": "Milanova",
+        "institution": "Rensselaer Polytechnic Institute"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Milanova18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.22",
+    "title": "The Essence of Nested Composition",
+    "abstract": "Calculi with disjoint intersection types support an introduction form for intersections called the merge operator, while retaining a coherent semantics. Disjoint intersections types have great potential to serve as a foundation for powerful, flexible and yet type-safe and easy to reason OO languages. This paper shows how to significantly increase the expressive power of disjoint intersection types by adding support for nested subtyping and composition, which enables simple forms of family polymorphism to be expressed in the calculus. The extension with nested subtyping and composition is challenging, for two different reasons. Firstly, the subtyping relation that supports these features is non-trivial, especially when it comes to obtaining an algorithmic version. Secondly, the syntactic method used to prove coherence for previous calculi with disjoint intersection types is too inflexible, making it hard to extend those calculi with new features (such as nested subtyping). We show how to address the first problem by adapting and extending the Barendregt, Coppo and Dezani (BCD) subtyping rules for intersections with records and coercions. A sound and complete algorithmic system is obtained by using an approach inspired by Pierce's work. To address the second problem we replace the syntactic method to prove coherence, by a semantic proof method based on logical relations. Our work has been fully formalized in Coq, and we have an implementation of our calculus.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.22",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Xuan",
+        "last_name": "Bi",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BiOS18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.26",
+    "title": "Efficient Reflection String Analysis via Graph Coloring",
+    "abstract": "Static analyses for reflection and other dynamic language features have recently increased in number and advanced in sophistication. Most such analyses rely on a whole-program model of the flow of strings, through the stack and heap. We show that this global modeling of strings remains a major bottleneck of static analyses and propose a compact encoding, in order to battle unnecessary complexity. In our encoding, strings are maximally merged if they can never serve to differentiate class members in reflection operations. We formulate the problem as an instance of graph coloring and propose a fast polynomial-time algorithm that exploits the unique features of the setting (esp. large cliques, leading to hundreds of colors for realistic programs). The encoding is applied to two different frameworks for string-guided Java reflection analysis from past literature and leads to significant optimization (e.g., a ~2x reduction in the number of string-flow inferences), for a whole-program points-to analysis that uses strings.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.26",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Neville",
+        "last_name": "Grech",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "George",
+        "last_name": "Kastrinis",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "National and Kapodistrian University of Athens"
+      }
+    ],
+    "dblp_key": "conf/ecoop/GrechKS18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.23",
+    "title": "Defensive Points-To Analysis: Effective Soundness via Laziness",
+    "abstract": "We present a defensive may-point-to analysis approach, which offers soundness even in the presence of arbitrary opaque code: all non-empty points-to sets computed are guaranteed to be over-approximations of the sets of values arising at run time. A key design tenet of the analysis is laziness: the analysis computes points-to relationships only for variables or objects that are guaranteed to never escape into opaque code. This means that the analysis misses some valid inferences, yet it also never wastes work to compute sets of values that are not \"complete\", i.e., that may be missing elements due to opaque code. Laziness enables great efficiency, allowing a highly precise points-to analysis (such as a 5-call-site-sensitive, flow-sensitive analysis). Despite its conservative nature, our analysis yields sound, actionable results for a large subset of the program code, achieving (under worst-case assumptions) 34-74% of the program coverage of an unsound state-of-the-art analysis for real-world programs.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.23",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "George",
+        "last_name": "Kastrinis",
+        "institution": "National and Kapodistrian University of Athens"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SmaragdakisK18",
+    "venue": "ecoop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2018.24",
+    "title": "Legato: An At-Most-Once Analysis with Applications to Dynamic Configuration Updates",
+    "abstract": "Modern software increasingly relies on external resources whose location or content can change during program execution. Examples of such resources include remote network hosts, database entries, dynamically updated configuration options, etc. Long running, adaptable programs must handle these changes gracefully and correctly. Dealing with all possible resource update scenarios is difficult to get right, especially if, as is common, external resources can be modified without prior warning by code and/or users outside of the application's direct control. If a resource unexpectedly changes during a computation, an application may observe multiple, inconsistent states of the resource, leading to incorrect program behavior. This paper presents a sound and precise static analysis, Legato, that verifies programs correctly handle changes in external resources. Our analysis ensures that every value computed by an application reflects a single, consistent version of every external resource's state. Although consistent computation in the presence of concurrent resource updates is fundamentally a concurrency issue, our analysis relies on the novel at-most-once condition to avoid explicitly reasoning about concurrency. The at-most-once condition requires that all values depend on at most one access of each resource. Our analysis is flow-, field-, and context-sensitive. It scales to real-world Java programs while producing a moderate number of false positives. We applied Legato to 10 applications with dynamically updated configurations, and found several non-trivial consistency bugs.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2018.24",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Toman",
+        "institution": "Seattle University"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/ecoop/TomanG18",
+    "venue": "ecoop",
+    "year": 2018
+  }
+]

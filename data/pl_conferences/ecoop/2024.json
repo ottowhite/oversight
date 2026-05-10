@@ -1,0 +1,1426 @@
+[
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.0",
+    "title": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "abstract": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.0",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Aldrich,",
+        "last_name": "Jonathan",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Salvaneschi,",
+        "last_name": "Guido",
+        "institution": "University of St.Gallen"
+      }
+    ],
+    "dblp_key": "conf/ecoop/X24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.1",
+    "title": "A Sound Type System for Secure Currency Flow",
+    "abstract": "In this paper we focus on TinySol, a minimal calculus for Solidity smart contracts, introduced by Bartoletti et al. We start by rephrasing its syntax (to emphasise its object-oriented flavour) and give a new big-step operational semantics. We then use it to define two security properties, namely call integrity and noninterference. These two properties have some similarities in their definition, in that they both require that some part of a program is not influenced by the other part. However, we show that the two properties are actually incomparable. Nevertheless, we provide a type system for noninterference and show that well-typed programs satisfy call integrity as well; hence, programs that are accepted by our type system satisfy both properties. We finally discuss the practical usability of the type system and its limitations by means of some simple examples.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.1",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Luca",
+        "last_name": "Aceto",
+        "institution": "Reykjavík University"
+      },
+      {
+        "first_name": "Daniele",
+        "last_name": "Gorla",
+        "institution": "Sapienza University of Rome"
+      },
+      {
+        "first_name": "Stian",
+        "last_name": "Lybech",
+        "institution": "Reykjavík University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/AcetoGL24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.4",
+    "title": "Dynamically Generating Callback Summaries for Enhancing Static Analysis",
+    "abstract": "Interprocedural static analyses require a complete and precise callgraph. Since third-party libraries are responsible for large portions of the code of an app, a substantial fraction of the effort in callgraph generation is therefore spent on the library code for each app. For analyses that are oblivious to the inner workings of a library and only require the user code to be processed, the library can be replaced with a summary that allows to reconstruct the callbacks from library code back to user code. To improve performance, we propose the automatic generation and use of precise pre-computed callgraph summaries for commonly used libraries. Reflective method calls within libraries and callback-driven APIs pose further challenges for generating precise callgraphs using static analysis. Pre-computed summaries can also help analyses avoid these challenges. We present CGMiner, an approach for automatically generating callgraph models for library code. It dynamically observes sample apps that use one or more particular target libraries. As we show, CGMiner yields more than 94% of correct edges, whereas existing work only achieves around 33% correct edges. CGMiner avoids the high false positive rate of existing tools. We show that CGMiner integrated into FlowDroid uncovers 40% more data flows than our baseline without callback summaries.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.4",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Arzt,",
+        "last_name": "Steven",
+        "institution": "Fraunhofer Institute for Secure Information Technology"
+      },
+      {
+        "first_name": "Miltenberger,",
+        "last_name": "Marc",
+        "institution": "Fraunhofer Institute for Secure Information Technology"
+      },
+      {
+        "first_name": "Näumann,",
+        "last_name": "Julius",
+        "institution": "Technische Universität Darmstadt"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ArztMN24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.10",
+    "title": "Indirection-Bounded Call Graph Analysis",
+    "abstract": "Call graphs play a crucial role in analyzing the structure and behavior of programs. For JavaScript and other dynamically typed programming languages, static call graph analysis relies on approximating the possible flow of functions and objects, and producing usable call graphs for large, real-world programs remains challenging.&#13;\\nIn this paper, we propose a simple but effective technique that addresses performance issues encountered in call graph generation. We observe via a dynamic analysis that typical JavaScript program code exhibits small levels of indirection of object pointers and higher-order functions. We demonstrate that a widely used analysis algorithm, wave propagation, closely follows the levels of indirections, so that call edges discovered early are more likely to be true positives. By bounding the number of indirections covered by this analysis, in many cases it can find most true-positive call edges in less time. We also show that indirection-bounded analysis can similarly be incorporated into the field-based call graph analysis algorithm ACG.&#13;\\nWe have experimentally evaluated the modified wave propagation algorithm on 25 large Node.js-based JavaScript programs. Indirection-bounded analysis on average yields close to a 2X speed-up with only 5% reduction in recall and almost identical precision relative to the baseline analysis, using dynamically generated call graphs for the recall and precision measurements. To demonstrate the robustness of the approach, we also evaluated the modified ACG algorithm on 10 web-based and 4 mobile-based medium sized benchmarks, with similar results.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.10",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Madhurima",
+        "last_name": "Chakraborty",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Aakash",
+        "last_name": "Gnanakumar",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Manu",
+        "last_name": "Sridharan",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Anders",
+        "last_name": "Møller",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ChakrabortyGSM24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.3",
+    "title": "A Dynamic Logic for Symbolic Execution for the Smart Contract Programming Language Michelson",
+    "abstract": "Verification of smart contracts is an important topic in the context of blockchain technology. We study an approach to verification that is based on symbolic execution. As a formal basis for symbolic execution, we design a dynamic logic for Michelson, the smart contract language of the Tezos blockchain, and prove its soundness in the proof assistant Agda. Towards the soundness proof we formalize the concrete semantics as well as its symbolic counterpart in a unified setting. The logic encompasses single contract runs as well as inter-contract runs chained in a single transaction.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.3",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Arvay,",
+        "last_name": "Barnabas",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Doan, Thi Thu",
+        "last_name": "Ha",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Thiemann,",
+        "last_name": "Peter",
+        "institution": "University of Freiburg"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ArvayD024",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.14",
+    "title": "The Performance Effects of Virtual-Machine Instruction Pointer Updates",
+    "abstract": "How much performance do VM instruction-pointer (IP) updates cost and how much benefit do we get from optimizing them away? Two decades ago it had little effect on the hardware of the day, but on recent hardware the dependence chain of IP updates can become the critical path on processors with out-of-order execution. In particular, this happens if the VM instructions are light-weight and the application programs are loop-dominated. The present work presents several ways of reducing or eliminating the dependence chains from IP updates, either by breaking the dependence chains with the loop optimization or by reducing the number of IP updates (the c and ci optimizations) or their latency (the b optimization). Some benchmarks see speedups from these optimizations by factors > 2 on most recent cores, while other benchmarks and older cores see more modest results, often in the speedup ranges 1.1-1.3.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.14",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Ertl, M.",
+        "last_name": "Anton",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "Paysan,",
+        "last_name": "Bernd",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/ErtlP24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.7",
+    "title": "HOBBIT: Hashed OBject Based InTegrity",
+    "abstract": "C vulnerabilities usually hold verbatim for C++ programs. The counterfeit-object-oriented programming attack demonstrated that this relation is asymmetric, i.e., it only applies to C++. The problem pinpointed by this COOP attack is that C++ does not validate the integrity of its objects. By injecting malicious objects with manipulated virtual function table pointers, attackers can hijack control-flow of programs. The software security community addressed the COOP-problem in the years following its discovery, but together with the emergence of transient-execution attacks, such as Spectre, researchers also shifted their attention. We present Hobbit, a software-only solution to prevent COOP attacks by validating object integrity for virtual function pointer tables. Hobbit does not require any hardware specific features, scales to multi-million lines of C++ source code, and our LLVM-based implementation offers a configurable performance impact between 121.63% and 2.80% on compute-intensive SPEC CPU C++ benchmarks. Hobbit’s security analysis indicates strong resistance to brute forcing attacks and demonstrates additional benefits of using execute-only memory.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.7",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Bernad,",
+        "last_name": "Matthias",
+        "institution": "Universität der Bundeswehr München"
+      },
+      {
+        "first_name": "Brunthaler,",
+        "last_name": "Stefan",
+        "institution": "Universität der Bundeswehr München"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Bernad024",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.15",
+    "title": "Rose: Composable Autodiff for the Interactive Web",
+    "abstract": "Reverse-mode automatic differentiation (autodiff) has been popularized by deep learning, but its ability to compute gradients is also valuable for interactive use cases such as bidirectional computer-aided design, embedded physics simulations, visualizing causal inference, and more. Unfortunately, the web is ill-served by existing autodiff frameworks, which use autodiff strategies that perform poorly on dynamic scalar programs, and pull in heavy dependencies that would result in unacceptable webpage sizes. This work introduces Rose, a lightweight autodiff framework for the web using a new hybrid approach to reverse-mode autodiff, blending conventional tracing and transformation techniques in a way that uses the host language for metaprogramming while also allowing the programmer to explicitly define reusable functions that comprise a larger differentiable computation. We demonstrate the value of the Rose design by porting two differentiable physics simulations, and evaluate its performance on an optimization-based diagramming application, showing Rose outperforming the state-of-the-art in web-based autodiff by multiple orders of magnitude.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.15",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Sam",
+        "last_name": "Estep",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Wode",
+        "last_name": "Ni",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Raven",
+        "last_name": "Rothkopf",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "Joshua",
+        "last_name": "Sunshine",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/EstepNRS24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.9",
+    "title": "A Language-Based Version Control System for Python",
+    "abstract": "Despite being the most popular programming language, Python has not yet received enough attention from the community. To the best of our knowledge, there is no general static analysis framework proposed to facilitate the implementation of dedicated Python static analyzers. To fill this gap, we design and implement such a framework (named Scalpel) and make it publicly available as an open-source project. The Scalpel framework has already integrated a number of fundamental static analysis functions (e.g., call graph constructions, control-flow graph constructions, alias analysis, etc.) that are ready to be reused by developers to implement client applications focusing on statically resolving dedicated Python problems such as detecting bugs or fixing vulnerabilities.",
+    "date": "2022-02-24",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.9",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Li",
+        "last_name": "Li",
+        "institution": ""
+      },
+      {
+        "first_name": "Jiawei",
+        "last_name": "Wang",
+        "institution": ""
+      },
+      {
+        "first_name": "Haowei",
+        "last_name": "Quan",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/CarvalhoS24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.13",
+    "title": "Pure Methods for roDOT",
+    "abstract": "Object-oriented programming languages typically allow mutation of objects, but pure methods are common too. There is great interest in recognizing which methods are pure, because it eases analysis of program behavior and allows modifying the program without changing its behavior. The roDOT calculus is a formal calculus extending DOT with reference mutability. In this paper, we explore purity conditions in roDOT and pose a SEF guarantee, by which the type system guarantees that methods of certain types are side-effect free. We use the idea from ReIm to detect pure methods by argument types. Applying this idea to roDOT required just a few changes to the type system, but necessitated re-working a significant part of the soundness proof. In addition, we state a transformation guarantee, which states that in a roDOT program, calls to SEF methods can be safely reordered without changing the outcome of the program. We proved type soundness of the updated roDOT calculus, using multiple layers of typing judgments. We proved the SEF guarantee by applying the Immutability guarantee, and the transformation guarantee by applying the SEF guarantee within a framework for reasoning about safe transformations of roDOT programs. All proofs are mechanized in Coq.",
+    "date": "2022-07-07",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.13",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Dort,",
+        "last_name": "Vlastimil",
+        "institution": ""
+      },
+      {
+        "first_name": "Aleksander",
+        "last_name": "Boruch-Gruszecki",
+        "institution": ""
+      },
+      {
+        "first_name": "Lhoták,",
+        "last_name": "Ondřej",
+        "institution": ""
+      },
+      {
+        "first_name": "Parízek,",
+        "last_name": "Pavel",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/DortLLP24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.6",
+    "title": "Cross Module Quickening - The Curious Case of C Extensions",
+    "abstract": "Dynamic programming languages such as Python offer expressive power and programmer productivity at the expense of performance. Although the topic of optimizing Python has received considerable attention over the years, a key obstacle remains elusive: C extensions. Time and again, optimized run-time environments, such as JIT compilers and optimizing interpreters, fall short of optimizing across C extensions, as they cannot reason about the native code hiding underneath. To bridge this gap, we present an analysis of C extensions for Python. The analysis data indicates that C extensions come in different varieties. One such variety is to merely speed up a single thing, such as reading a file and processing it directly in C. Another variety offers broad access through an API, resulting in a domain-specific language realized by function calls. While the former variety of C extensions offer little optimization potential for optimizing run-times, we find that the latter variety does offer considerable optimization potential. This optimization potential rests on dynamic locality that C extensions cannot readily tap. We introduce a new, interpreter-based optimization leveraging this untapped optimization potential called Cross-Module Quickening. The key idea is that C extensions can use an optimization interface to register highly-optimized operations on C extension-specific datatypes. A quickening interpreter uses these information to continuously specialize programs with C extensions. To quantify the attainable performance potential of going beyond C extensions, we demonstrate a concrete instantiation of Cross-Module Quickening for the CPython interpreter and the popular NumPy C extension. We evaluate our implementation with the NPBench benchmark suite and report performance improvements by a factor of up to 2.84.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.6",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Berlakovich,",
+        "last_name": "Felix",
+        "institution": "Universität der Bundeswehr München"
+      },
+      {
+        "first_name": "Brunthaler,",
+        "last_name": "Stefan",
+        "institution": "Universität der Bundeswehr München"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Berlakovich024",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.5",
+    "title": "Behavioural Up/down Casting For Statically Typed Languages",
+    "abstract": "We provide support for polymorphism in static typestate analysis for object-oriented languages with upcasts and downcasts. Recent work has shown how typestate analysis can be embedded in the development of Java programs to obtain safer behaviour at runtime, e.g., absence of null pointer errors and protocol completion. In that approach, inheritance is supported at the price of limiting casts in source code, thus only allowing those at the beginning of the protocol, i.e., immediately after objects creation, or at the end, and in turn seriously affecting the applicability of the analysis. In this paper, we provide a solution to this open problem in typestate analysis by introducing a theory based on a richer data structure, named typestate tree, which supports upcast and downcast operations at any point of the protocol by leveraging union and intersection types. The soundness of the typestate tree-based approach has been mechanised in Coq. The theory can be applied to most object-oriented languages statically analysable through typestates, thus opening new scenarios for acceptance of programs exploiting inheritance and casting. To defend this thesis, we show an application of the theory, by embedding the typestate tree mechanism in a Java-like object-oriented language, and proving its soundness.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.5",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Bacchiani,",
+        "last_name": "Lorenzo",
+        "institution": "University of Bologna"
+      },
+      {
+        "first_name": "Bravetti,",
+        "last_name": "Mario",
+        "institution": "University of Bologna"
+      },
+      {
+        "first_name": "Giunti,",
+        "last_name": "Marco",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Mota,",
+        "last_name": "João",
+        "institution": "Universidade Nova de Lisboa"
+      },
+      {
+        "first_name": "Ravara,",
+        "last_name": "António",
+        "institution": "Universidade Nova de Lisboa"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BacchianiBGMR24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.8",
+    "title": "Understanding Concurrency Bugs in Real-World Programs with Kotlin Coroutines",
+    "abstract": "Kotlin language has recently become prominent for developing both Android and server-side applications. These programs are typically designed to be fast and responsive, with asynchrony and concurrency at their core. To enable developers to write asynchronous and concurrent code safely and concisely, Kotlin provides built-in coroutines support. However, developers unfamiliar with the coroutines concept may write programs with subtle concurrency bugs and face unexpected program behaviors. Besides the traditional concurrency bug patterns, such as data races and deadlocks, these bugs may exhibit patterns related to the coroutine semantics. Understanding these coroutine-specific bug patterns in real-world Kotlin applications is essential in avoiding common mistakes and writing correct programs. In this paper, we present the first study of real-world concurrency bugs related to Kotlin coroutines. We examined 55 concurrency bug cases selected from 7 popular open-source repositories that use Kotlin coroutines, including IntelliJ IDEA, Firefox, and Ktor, and analyzed their bug characteristics and root causes. We identified common bug patterns related to asynchrony and Kotlin’s coroutine semantics, presenting them with their root causes, misconceptions that led to the bugs, and strategies for their automated detection. Overall, this study provides insight into programming with Kotlin coroutines concurrency and its pitfalls, aiming to shed light on common bug patterns and foster further research and development of concurrency analysis tools for Kotlin programs.",
+    "date": "2021-05-24",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.8",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Saeed",
+        "last_name": "Taheri",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Ganesh",
+        "last_name": "Gopalakrishnan",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "van Deursen,",
+        "last_name": "Arie",
+        "institution": ""
+      },
+      {
+        "first_name": "Ozkan, Burcu",
+        "last_name": "Kulahcioglu",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/BrockberndKDO24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.12",
+    "title": "Mutation-Based Lifted Repair of Software Product Lines",
+    "abstract": "The introduction of separation logic has led to the development of symbolic execution techniques and tools that are (functionally) compositional with function specifications that can be used in broader calling contexts. Many of the compositional symbolic execution tools developed in academia and industry have been grounded on a formal foundation, but either the function specifications are not validated with respect to the underlying separation logic of the theory, or there is a large gulf between the theory and the implementation of the tool. We introduce a formal compositional symbolic execution engine which creates and uses function specifications from an underlying separation logic and provides a sound theoretical foundation for, and indeed was partially inspired by, the Gillian symbolic execution platform. This is achieved by providing an axiomatic interface which describes the properties of the consume and produce operations used in the engine to update compositionally the symbolic state, for example when calling function specifications. This consume-produce technique is used by VeriFast, Viper, and Gillian, but has not been previously characterised independently of the tool. As part of our result, we give consume and produce operations inspired by the Gillian implementation that satisfy the properties described by our axiomatic interface. A surprising property is that our engine semantics provides a common foundation for both correctness and incorrectness reasoning, with the difference in the underlying engine only amounting to the choice to use satisfiability or validity. We use this property to extend the Gillian platform, which previously only supported correctness reasoning, with incorrectness reasoning and automatic true bug-finding using incorrectness bi-abduction. We evaluate our new Gillian platform by using the Gillian instantiation to C. This instantiation is the first tool grounded on a common formal compositional symbolic execution engine to support both correctness and incorrectness reasoning.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.12",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Dimovski, Aleksandar",
+        "last_name": "S.",
+        "institution": "Mother Teresa University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Dimovski24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.16",
+    "title": "Mover Logic: A Concurrent Program Logic for Reduction and Rely-Guarantee Reasoning",
+    "abstract": "Rely-guarantee (RG) logic uses thread interference specifications (relies and guarantees) to reason about the correctness of multithreaded software. Unfortunately, RG logic requires each function postcondition to be \"stabilized\" or specialized to the behavior of other threads, making it difficult to write function specifications that are reusable at multiple call sites. This paper presents mover logic, which extends RG logic to address this problem via the notion of atomic functions. Atomic functions behave as if they execute serially without interference from concurrent threads, and so they can be assigned more general and reusable specifications that avoid the stabilization requirement of RG logic. Several practical verifiers (Calvin-R, QED, CIVL, Armada, Anchor, etc.) have demonstrated the modularity benefits of atomic function specifications. However, the complexity of these systems and their correctness proofs makes it challenging to understand and extend these systems. Mover logic formalizes the central ideas of reduction in a declarative program logic that provides a foundation for future work in this area.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.16",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": ""
+      },
+      {
+        "first_name": "Stephen N.",
+        "last_name": "Freund",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/FlanaganF24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.11",
+    "title": "Regrading Policies for Flexible Information Flow Control in Session-Typed Concurrency",
+    "abstract": "Noninterference guarantees that an attacker cannot infer secrets by interacting with a program. Information flow control (IFC) type systems assert noninterference by tracking the level of information learned (pc) and disallowing communication to entities of lesser or unrelated level than the pc. Control flow constructs such as loops are at odds with this pattern because they necessitate downgrading the pc upon recursion to be practical. In a concurrent setting, however, downgrading is not generally safe. This paper utilizes session types to track the flow of information and contributes an IFC type system for message-passing concurrent processes that allows downgrading the pc upon recursion. To make downgrading safe, the paper introduces regrading policies. Regrading policies are expressed in terms of integrity labels, which are also key to safe composition of entities with different regrading policies. The paper develops the type system and proves progress-sensitive noninterference for well-typed processes, ruling out timing attacks that exploit the relative order of messages. The type system has been implemented in a type checker, which supports security-polymorphic processes.",
+    "date": "2023-09-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.11",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Balzer,",
+        "last_name": "Stephanie",
+        "institution": ""
+      },
+      {
+        "first_name": "Derakhshan,",
+        "last_name": "Farzaneh",
+        "institution": ""
+      },
+      {
+        "first_name": "Harper,",
+        "last_name": "Robert",
+        "institution": ""
+      },
+      {
+        "first_name": "Yue",
+        "last_name": "Yao",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/DerakhshanBY24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.17",
+    "title": "Fair Join Pattern Matching for Actors",
+    "abstract": "Join patterns provide a promising approach to the development of concurrent and distributed message-passing applications. Several variations and implementations have been presented in the literature - but various aspects remain under-explored: in particular, how to specify a suitable notion of message matching, how to implement it correctly and efficiently, and how to systematically evaluate the implementation performance. In this work we focus on actor-based programming, and study the application of join patterns with conditional guards (i.e., the most expressive and challenging version of join patterns in literature). We formalise a novel specification of fair and deterministic join pattern matching, ensuring that older messages are always consumed if they can be matched. We present a stateful, tree-based join pattern matching algorithm and prove that it correctly implements our fair and deterministic matching specification. We present a novel Scala 3 actor library (called JoinActors) that implements our join pattern formalisation, leveraging macros to provide an intuitive API. Finally, we evaluate the performance of our implementation, by introducing a systematic benchmarking approach that takes into account the nuances of join pattern matching (in particular, its sensitivity to input traffic and complexity of patterns and guards).",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.17",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Philipp",
+        "last_name": "Haller",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Abdallatif",
+        "last_name": "Hussein",
+        "institution": "Technical University of Denmark"
+      },
+      {
+        "first_name": "Hernán",
+        "last_name": "Melgratti",
+        "institution": "Consejo Nacional de Investigaciones Científicas y Técnicas"
+      },
+      {
+        "first_name": "Alceste",
+        "last_name": "Scalas",
+        "institution": "Technical University of Denmark"
+      },
+      {
+        "first_name": "Emilio",
+        "last_name": "Tuosto",
+        "institution": "Gran Sasso Science Institute"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HallerHMST24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.24",
+    "title": "Qafny: A Quantum-Program Verifier",
+    "abstract": "Because of the probabilistic/nondeterministic behavior of quantum programs, it is highly advisable to verify them formally to ensure that they correctly implement their specifications. Formal verification, however, also traditionally requires significant effort. To address this challenge, we present Qafny, an automated proof system based on the program verifier Dafny and designed for verifying quantum programs. At its core, Qafny uses a type-guided quantum proof system that translates quantum operations to classical array operations modeled within a classical separation logic framework. We prove the soundness and completeness of our proof system and implement a prototype compiler that transforms Qafny programs and specifications into Dafny for automated verification purposes. We then illustrate the utility of Qafny's automated capabilities in efficiently verifying important quantum algorithms, including quantum-walk algorithms, Grover's algorithm, and Shor's algorithm.",
+    "date": "2022-11-11",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.24",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Liyi",
+        "last_name": "Li",
+        "institution": "Iowa State University"
+      },
+      {
+        "first_name": "Mingwei",
+        "last_name": "Zhu",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Cleaveland,",
+        "last_name": "Rance",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Nicolellis,",
+        "last_name": "Alexander",
+        "institution": "Iowa State University"
+      },
+      {
+        "first_name": "Yi",
+        "last_name": "Lee",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Le",
+        "last_name": "Chang",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Xiaodi",
+        "last_name": "Wu",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/ecoop/0002ZCNLC024",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.18",
+    "title": "A CFL-Reachability Formulation of Callsite-Sensitive Pointer Analysis with Built-In On-The-Fly Call Graph Construction",
+    "abstract": "In object-oriented languages, the traditional CFL-reachability formulation for k-callsite-sensitive pointer analysis (kCFA) focuses on modeling field accesses and calling contexts, but it relies on a separate algorithm for call graph construction. This division can result in a loss of precision in kCFA, a problem that persists even when using the most precise call graphs, whether pre-constructed or generated on the fly. Moreover, pre-analyses based on this framework aiming to improve the efficiency of kCFA may inadvertently reduce its precision, due to the framework’s lack of native call graph construction, essential for precise analysis. Addressing this gap, this paper introduces a novel CFL-reachability formulation of kCFA for Java, uniquely integrating on-the-fly call graph construction. This advancement not only addresses the precision loss inherent in the traditional CFL-reachability-based approach but also enhances its overall applicability. In a significant secondary contribution, we present the first precision-preserving pre-analysis to accelerate kCFA. This pre-analysis leverages selective context sensitivity to improve the efficiency of kCFA without sacrificing its precision. Collectively, these contributions represent a substantial step forward in pointer analysis, offering both theoretical and practical advancements that could benefit future developments in the field.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.18",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "He,",
+        "last_name": "Dongjie",
+        "institution": "Chongqing University"
+      },
+      {
+        "first_name": "Lu,",
+        "last_name": "Jingbo",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Xue,",
+        "last_name": "Jingling",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HeLX24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.30",
+    "title": "Verifying Lock-Free Search Structure Templates",
+    "abstract": "We present and verify template algorithms for lock-free concurrent search structures that cover a broad range of existing implementations based on lists and skiplists. Our linearizability proofs are fully mechanized in the concurrent separation logic Iris. The proofs are modular and cover the broader design space of the underlying algorithms by parameterizing the verification over aspects such as the low-level representation of nodes and the style of data structure maintenance. As a further technical contribution, we present a mechanization of a recently proposed method for reasoning about future-dependent linearization points using hindsight arguments. The mechanization builds on Iris' support for prophecy reasoning and user-defined ghost resources. We demonstrate that the method can help to reduce the proof effort compared to direct prophecy-based proofs.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.30",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Patel,",
+        "last_name": "Nisarg",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Dennis",
+        "last_name": "Shasha",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Wies",
+        "institution": "New York University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/PatelSW24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.20",
+    "title": "Taking a Closer Look: An Outlier-Driven Approach to Compilation-Time Optimization",
+    "abstract": "Improving compilation time in optimizing compilers is challenging due to their large number of interconnected components. This includes compiler optimizations, compiler tiers, heuristics, and profiling information. Despite this complexity, research in compilation-time optimization is often guided by analyzing metrics of entire program runs, such as the total compilation time and overall memory footprint. This coarse-grained perspective hides relevant information, such as source program functions for which the compiler allocates a lot of memory or compiler optimizations with a high impact on the total compilation time. This leaves high-level metrics as the only reference point for driving optimization design. Consequently, compilation-time regressions in one program function that are obscured by improvements in other functions stay undetected, while the impacts of compiler changes on untouched parts of the compiler are mainly unknown. Furthermore, developers overlook long-standing compiler defects because their high-level metrics do not change over time. To address these limitations, we propose ICON, a new data-driven approach to compilation-time optimization that breaks up high-level metrics into individual source program functions, compiler optimizations, or even into individual instructions in the compiler source code. Our methodology enables an iterative in-depth compilation-time analysis, focusing on outliers to identify optimization opportunities. We show that outliers, both in terms of time spent in a particular compiler optimization, and in terms of individual compilations that take substantially longer, can reveal potential problems in the compiler implementation. We applied our approach to GraalVM and extracted data for multiple of its language runtimes. We analyzed the resulting data, present the first detailed look into the distribution of compilation time in the GraalVM compiler, a state-of-the-art multi-language compiler, and identified defects that led to regressions in overall compilation time or the compilation time of specific languages. We furthermore designed two optimizations based on the identified outliers that improve compilation time between 2.25% and 9.45%. We believe that our approach can guide compiler developers in finding usually overlooked optimization potential and defects, and focus future research efforts in making compilers more efficient.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.20",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Huemer,",
+        "last_name": "Florian",
+        "institution": "Johannes Kepler University of Linz"
+      },
+      {
+        "first_name": "Leopoldseder,",
+        "last_name": "David",
+        "institution": ""
+      },
+      {
+        "first_name": "Prokopec,",
+        "last_name": "Aleksandar",
+        "institution": ""
+      },
+      {
+        "first_name": "Mosaner,",
+        "last_name": "Raphael",
+        "institution": ""
+      },
+      {
+        "first_name": "Mössenböck,",
+        "last_name": "Hanspeter",
+        "institution": "Johannes Kepler University of Linz"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HuemerLPMM24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.21",
+    "title": "Learning Gradual Typing Performance",
+    "abstract": "Gradual typing has emerged as a promising typing discipline for reconciling static and dynamic typing, which have respective strengths and shortcomings. Thanks to its promises, gradual typing has gained tremendous momentum in both industry and academia. A main challenge in gradual typing is that, however, the performance of its programs can often be unpredictable, and adding or removing the type of a a single parameter may lead to wild performance swings. Many approaches have been proposed to optimize gradual typing performance, but little work has been done to aid the understanding of the performance landscape of gradual typing and navigating the migration process (which adds type annotations to make programs more static) to avert performance slowdowns. Motivated by this situation, this work develops a machine-learning-based approach to predict the performance of each possible way of adding type annotations to a program. On top of that, many supports for program migrations could be developed, such as finding the most performant neighbor of any given configuration. Our approach gauges runtime overheads of dynamic type checks inserted by gradual typing and uses that information to train a machine learning model, which is used to predict the running time of gradual programs. We have evaluated our approach on 12 Python benchmarks for both guarded and transient semantics. For guarded semantics, our evaluation results indicate that with only 40 training instances generated from each benchmark, the predicted times for all other instances differ on average by 4% from the measured times. For transient semantics, the time difference ratio is higher but the time difference is often within 0.1 seconds.",
+    "date": "2022-03-08",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.21",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Guo,",
+        "last_name": "Daya",
+        "institution": ""
+      },
+      {
+        "first_name": "Lu,",
+        "last_name": "Shuai",
+        "institution": ""
+      },
+      {
+        "first_name": "Duan,",
+        "last_name": "Nan",
+        "institution": ""
+      },
+      {
+        "first_name": "Yanlin",
+        "last_name": "Wang",
+        "institution": ""
+      },
+      {
+        "first_name": "Ming",
+        "last_name": "Zhou",
+        "institution": ""
+      },
+      {
+        "first_name": "Jian",
+        "last_name": "Yin",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/Khan0024",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.23",
+    "title": "InferType: A Compiler Toolkit for Implementing Efficient Constraint-Based Type Inference",
+    "abstract": "Over the last several decades, software has been woven into the fabric of every aspect of our society. As software development surges and code infrastructure of enterprise applications ages, it is now more critical than ever to increase software development productivity and modernize legacy applications. Advances in deep learning and machine learning algorithms have enabled numerous breakthroughs, motivating researchers to leverage AI techniques to improve software development efficiency. Thus, the fast-emerging research area of AI for Code has garnered new interest and gathered momentum. In this paper, we present a large-scale dataset CodeNet, consisting of over 14 million code samples and about 500 million lines of code in 55 different programming languages, which is aimed at teaching AI to code. In addition to its large scale, CodeNet has a rich set of high-quality annotations to benchmark and help accelerate research in AI techniques for a variety of critical coding tasks, including code similarity and classification, code translation between a large variety of programming languages, and code performance (runtime and memory) improvement techniques. Additionally, CodeNet provides sample input and output test sets for 98.5% of the code samples, which can be used as an oracle for determining code correctness and potentially guide reinforcement learning for code quality improvements. As a usability feature, we provide several pre-processing tools in CodeNet to transform source code into representations that can be readily used as inputs into machine learning models. Results of code classification and code similarity experiments using the CodeNet dataset are provided as a reference. We hope that the scale, diversity and rich, high-quality annotations of CodeNet will offer unprecedented research opportunities at the intersection of AI and Software Engineering.",
+    "date": "2021-05-25",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.23",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Puri,",
+        "last_name": "Ruchir",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Kung, David",
+        "last_name": "S.",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Janssen,",
+        "last_name": "Geert",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Zhang,",
+        "last_name": "Wei",
+        "institution": ""
+      },
+      {
+        "first_name": "Domeniconi,",
+        "last_name": "Giacomo",
+        "institution": ""
+      },
+      {
+        "first_name": "Zolotov,",
+        "last_name": "Vladimir",
+        "institution": ""
+      },
+      {
+        "first_name": "Dolby,",
+        "last_name": "Julian",
+        "institution": ""
+      },
+      {
+        "first_name": "Chen,",
+        "last_name": "Jie",
+        "institution": ""
+      },
+      {
+        "first_name": "Choudhury,",
+        "last_name": "Mihir",
+        "institution": ""
+      },
+      {
+        "first_name": "Decker,",
+        "last_name": "Lindsey",
+        "institution": ""
+      },
+      {
+        "first_name": "Thost,",
+        "last_name": "Veronika",
+        "institution": ""
+      },
+      {
+        "first_name": "Buratti,",
+        "last_name": "Luca",
+        "institution": ""
+      },
+      {
+        "first_name": "Pujar,",
+        "last_name": "Saurabh",
+        "institution": ""
+      },
+      {
+        "first_name": "Ramji,",
+        "last_name": "Shyam",
+        "institution": ""
+      },
+      {
+        "first_name": "Finkler,",
+        "last_name": "Ulrich",
+        "institution": ""
+      },
+      {
+        "first_name": "Malaika,",
+        "last_name": "Susan",
+        "institution": ""
+      },
+      {
+        "first_name": "Reiss,",
+        "last_name": "Frederick",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/LiYC24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.22",
+    "title": "Constrictor: Immutability as a Design Concept",
+    "abstract": "Many object-oriented applications in algorithm design rely on objects never changing during their lifetime. This is often tackled by marking object references as read-only, e.g., using the const keyword in C++. In other languages like Python or Java where such a concept does not exist, programmers rely on best practices that are entirely unenforced. While reliance on best practices is obviously too permissive, const-checking is too restrictive: it is possible for a method to mutate the internal state while still satisfying the property we expect from an \"immutable\" object in this setting. We would therefore like to enforce the immutability of an object’s abstract state. We check an object’s immutability through a view of its abstract state: for instances of an immutable class, the view does not change when running any of the class’s methods, even if some of the internal state does change. If all methods of a class are verified as non-mutating, we can deem the entire class view-immutable. We present an SMT-based algorithm to check view-immutability, and implement it in our linter/verifier, Constrictor. We evaluate Constrictor on 51 examples of immutability-related design violations. Our evaluation shows that Constrictor is effective at catching a variety of prototypical design violations, and does so in seconds. We also explore Constrictor with two real-world case studies.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.22",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Kinsbruner,",
+        "last_name": "Elad",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Itzhaky,",
+        "last_name": "Shachar",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Peleg,",
+        "last_name": "Hila",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/KinsbrunerIP24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.26",
+    "title": "Matching Plans for Frame Inference in Compositional Reasoning",
+    "abstract": "The use of function specifications to reason about function calls and the manipulation of user-defined predicates are two essential ingredients of modern compositional verification tools based on separation logic. To execute these operations successfully, these tools must be able to solve the frame inference problem, that is, to understand which parts of the state are relevant for the operation at hand. We introduce matching plans, a concept that is used in the Gillian verification platform to automate frame inference efficiently. We extract matching plans and their automation machinery from the Gillian implementation and present them in a tool-agnostic way, making the Gillian approach available to the broader verification community as a verification-tool design pattern.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.26",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Lööw,",
+        "last_name": "Andreas",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nantes-Sobrinho,",
+        "last_name": "Daniele",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Ayoun,",
+        "last_name": "Sacha-Élie",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Maksimović,",
+        "last_name": "Petar",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Gardner,",
+        "last_name": "Philippa",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LoowNAMG24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.27",
+    "title": "The Fault in Our Stars: Designing Reproducible Large-scale Code Analysis Experiments",
+    "abstract": "Large-scale software repositories are a source of insights for software engineering. They offer an unmatched window into the software development process at scale. Their sheer number and size holds the promise of broadly applicable results. At the same time, that very size presents practical challenges for scaling tools and algorithms to millions of projects. A reasonable approach is to limit studies to representative samples of the population of interest. Broadly applicable conclusions can then be obtained by generalizing to the entire population. The contribution of this paper is a standardized experimental design methodology for choosing the inputs of studies working with large-scale repositories. We advocate for a methodology that clearly lays out what the population of interest is, how to sample it, and that fosters reproducibility. Along the way, we discourage researchers from using extrinsic attributes of projects such as stars, that measure some unclear notion of popularity.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.27",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Maj,",
+        "last_name": "Petr",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Muroya,",
+        "last_name": "Stefanie",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Siek,",
+        "last_name": "Konrad",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Di Grazia,",
+        "last_name": "Luca",
+        "institution": "Università della Svizzera italiana"
+      },
+      {
+        "first_name": "Vitek,",
+        "last_name": "Jan",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MajMSGV24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.29",
+    "title": "Generalizing Shape Analysis with Gradual Types",
+    "abstract": "Frameworks for writing, compiling, and optimizing deep learning (DL) models have recently enabled progress in areas like computer vision and natural language processing. Extending these frameworks to accommodate the rapidly diversifying landscape of DL models and hardware platforms presents challenging tradeoffs between expressivity, composability, and portability. We present Relay, a new compiler framework for DL. Relay's functional, statically typed intermediate representation (IR) unifies and generalizes existing DL IRs to express state-of-the-art models. The introduction of Relay's expressive IR requires careful design of domain-specific optimizations, addressed via Relay's extension mechanisms. Using these extension mechanisms, Relay supports a unified compiler that can target a variety of hardware platforms. Our evaluation demonstrates Relay's competitive performance for a broad class of models and devices (CPUs, GPUs, and emerging accelerators). Relay's design demonstrates how a unified IR can provide expressivity, composability, and portability without compromising performance.",
+    "date": "2019-04-17",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.29",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Migeed,",
+        "last_name": "Zeina",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Reed,",
+        "last_name": "James",
+        "institution": "New York City Fire Department"
+      },
+      {
+        "first_name": "Ansel,",
+        "last_name": "Jason",
+        "institution": "Menlo School"
+      },
+      {
+        "first_name": "Palsberg,",
+        "last_name": "Jens",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MigeedRAP24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.28",
+    "title": "Static Basic Block Versioning",
+    "abstract": "Basic Block Versioning (BBV) is a compilation technique for optimizing program execution. It consists in duplicating and specializing basic blocks of code according to the execution contexts of the blocks, up to a version limit. BBV has been used in Just-In-Time (JIT) compilers for reducing the dynamic type checks of dynamic languages. Our work revisits the BBV technique to adapt it to Ahead-of-Time (AOT) compilation. This Static BBV (SBBV) raises new challenges, most importantly how to ensure the convergence of the algorithm when the specializations of the basic blocks are not based on profiled variable values and how to select the good specialization contexts. SBBV opens new opportunities for more precise optimizations as the compiler can explore multiple versions and only keep those within the version limit that yield better generated code. In this paper, we present the main SBBV algorithm and its use to optimize the dynamic type checks, array bound checks, and mixed-type arithmetic operators often found in dynamic languages. We have implemented SBBV in two AOT compilers for the Scheme programming language that we have used to evaluate the technique’s effectiveness. On a suite of benchmarks, we have observed that even with a low limit of 2 versions, SBBV greatly reduces the number of dynamic type tests (by 54% and 62% on average) and accelerates the execution time (by about 10% on average). Previous work has needed a higher version limit to achieve a similar level of optimization. We also observe a small impact on compilation time and code size (a decrease in some cases).",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.28",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Olivier",
+        "last_name": "Melançon",
+        "institution": "Université de Montréal"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Feeley",
+        "institution": "Université de Montréal"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Serrano",
+        "institution": "Centre Inria d'Université Côte d'Azur"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MelanconFS24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.31",
+    "title": "Ozone: Fully Out-of-Order Choreographies",
+    "abstract": "Choreographic programming is a paradigm for writing distributed applications. It allows programmers to write a single program, called a choreography, that can be compiled to generate correct implementations of each process in the application. Although choreographies provide good static guarantees, they can exhibit high latency when messages or processes are delayed. This is because processes in a choreography typically execute in a fixed, deterministic order, and cannot adapt to the order that messages arrive at runtime. In non-choreographic code, programmers can address this problem by allowing processes to execute out of order - for instance by using futures or reactive programming. However, in choreographic code, out-of-order process execution can lead to serious and subtle bugs, called communication integrity violations (CIVs). In this paper, we develop a model of choreographic programming for out-of-order processes that guarantees absence of CIVs and deadlocks. As an application of our approach, we also introduce an API for safe non-blocking communication via futures in the choreographic programming language Choral. The API allows processes to execute out of order, participate in multiple choreographies concurrently, and to handle unordered data messages. We provide an illustrative evaluation of our API, showing that out-of-order execution can reduce latency and increase throughput by overlapping communication with computation.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.31",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Dan",
+        "last_name": "Plyukhin",
+        "institution": ""
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Peressotti",
+        "institution": ""
+      },
+      {
+        "first_name": "Fabrizio",
+        "last_name": "Montesi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/PlyukhinPM24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.33",
+    "title": "Compiling with Arrays",
+    "abstract": "Linear algebra computations are foundational for neural networks and machine learning, often handled through arrays. While many functional programming languages feature lists and recursion, arrays in linear algebra demand constant-time access and bulk operations. To bridge this gap, some languages represent arrays as (eager) functions instead of lists. In this paper, we connect this idea to a formal logical foundation by interpreting functions as the usual negative types from polarized type theory, and arrays as the corresponding dual positive version of the function type. Positive types are defined to have a single elimination form whose computational interpretation is pattern matching. Just like (positive) product types bind two variables during pattern matching, (positive) array types bind variables with multiplicity during pattern matching. We follow a similar approach for Booleans by introducing conditionally-defined variables. The positive formulation for the array type enables us to combine typed partial evaluation and common subexpression elimination into an elegant algorithm whose result enjoys a property we call maximal fission, which we argue can be beneficial for further optimizations. For this purpose, we present the novel intermediate representation indexed administrative normal form (A_{i}NF), which relies on the formal logical foundation of the positive formulation for the array type to facilitate maximal loop fission and subsequent optimizations. A_{i}NF is normal with regard to commuting conversion for both let-bindings and for-loops, leading to flat and maximally fissioned terms. We mechanize the translation and normalization from a simple surface language to A_{i}NF, establishing that the process terminates, preserves types, and produces maximally fissioned terms.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.33",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Richter,",
+        "last_name": "David",
+        "institution": ""
+      },
+      {
+        "first_name": "Timon",
+        "last_name": "Böhler",
+        "institution": ""
+      },
+      {
+        "first_name": "Pascal",
+        "last_name": "Weisenburger",
+        "institution": ""
+      },
+      {
+        "first_name": "Mira",
+        "last_name": "Mezini",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/0001BWM24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.34",
+    "title": "Pipit on the Post: Proving Pre- and Post-Conditions of Reactive Systems",
+    "abstract": "Synchronous languages such as Lustre and Scade are used to implement safety-critical control systems; proving such programs correct and having the proved properties apply to the compiled code is therefore equally critical. We introduce Pipit, a small synchronous language embedded in F*, designed for verifying control systems and executing them in real-time. Pipit includes a verified translation to transition systems; by reusing F*’s existing proof automation, certain safety properties can be automatically proved by k-induction on the transition system. Pipit can also generate executable code in a subset of F* which is suitable for compilation and real-time execution on embedded devices. The executable code is deterministic and total and preserves the semantics of the original program.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.34",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Robinson,",
+        "last_name": "Amos",
+        "institution": ""
+      },
+      {
+        "first_name": "Potanin,",
+        "last_name": "Alex",
+        "institution": "Australian National University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/RobinsonP24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.32",
+    "title": "Tenspiler: A Verified-Lifting-Based Compiler for Tensor Operations",
+    "abstract": "Tensor processing infrastructures such as deep learning frameworks and specialized hardware accelerators have revolutionized how computationally intensive code from domains such as deep learning and image processing is executed and optimized. These infrastructures provide powerful and expressive abstractions while ensuring high performance. However, to utilize them, code must be written specifically using the APIs / ISAs of such software frameworks or hardware accelerators. Importantly, given the fast pace of innovation in these domains, code written today quickly becomes legacy as new frameworks and accelerators are developed, and migrating such legacy code manually is a considerable effort. To enable developers in leveraging such DSLs while preserving their current programming paradigm, we introduce Tenspiler, a verified lifting-based compiler that uses program synthesis to translate sequential programs written in general-purpose programming languages (e.g., C++ or Python code) into tensor operations. Central to Tenspiler is our carefully crafted yet simple intermediate language, named TensIR, that expresses tensor operations. TensIR enables efficient lifting, verification, and code generation. Currently, Tenspiler already supports $\\textbf{six}$ DSLs, spanning a broad spectrum of software and hardware environments. Furthermore, we show that new backends can be easily supported by Tenspiler by adding simple pattern-matching rules for TensIR. Using 10 real-world code benchmark suites, our experimental evaluation shows that by translating code to be executed on $\\textbf{6}$ different software frameworks and hardware devices, Tenspiler offers on average 105$\\times$ kernel and 9.65$\\times$ end-to-end execution time improvement over the fully-optimized sequential implementation of the same benchmarks.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.32",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jie",
+        "last_name": "Qiu",
+        "institution": "University of Pittsburgh"
+      },
+      {
+        "first_name": "C.R.",
+        "last_name": "Cai",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Sahil",
+        "last_name": "Bhatia",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Niranjan",
+        "last_name": "Hasabnis",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Sanjit A.",
+        "last_name": "Seshia",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Alvin",
+        "last_name": "Cheung",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/ecoop/QiuCBHSC24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.37",
+    "title": "Java Bytecode Normalization for Code Similarity Analysis",
+    "abstract": "Analyzing the similarity of two code fragments has many applications, including code clone, vulnerability and plagiarism detection. Most existing approaches for similarity analysis work on source code. However, in scenarios like plagiarism detection, copyright violation detection or Software Bill of Materials creation source code is often not available and thus similarity analysis has to be performed on binary formats. Java bytecode is a binary format executable by the Java Virtual Machine and obtained from the compilation of Java source code. Performing similarity detection on bytecode is challenging because different compilers can compile the same source code to syntactically vastly different bytecode. In this work we assess to what extent one can nonetheless enable similarity detection by bytecode normalization, a procedure to transform Java bytecode into a representation that is identical for the same original source code, irrespective of the Java compiler and Java version used during compilation. Our manual study revealed 16 classes of compilation differences that various compilation environments may induce. Based on these findings, we implemented bytecode normalization in a tool jNorm. It uses Jimple as intermediate representation, applies common code optimizations and transforms all classes of compilation difference to a normalized form, thus achieving a representation of the bytecode that is identical despite different compilation environments. Our evaluation, performed on more than 300 popular Java projects, shows that solely the act of incrementing a compiler version may cause differences in 46% of all resulting bytecode files. By applying bytecode normalization, one can remove more than 99% of these differences, thus acting as a crucial enabler for subsequent applications of bytecode similarity analysis.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.37",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Schott,",
+        "last_name": "Stefan",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Ponta, Serena",
+        "last_name": "Elisa",
+        "institution": ""
+      },
+      {
+        "first_name": "Fischer,",
+        "last_name": "Wolfram",
+        "institution": ""
+      },
+      {
+        "first_name": "Klauke,",
+        "last_name": "Jonas",
+        "institution": "Paderborn University"
+      },
+      {
+        "first_name": "Bodden,",
+        "last_name": "Eric",
+        "institution": "Paderborn University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SchottPFKB24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.36",
+    "title": "Scaling Interprocedural Static Data-Flow Analysis to Large C/C++ Applications: An Experience Report",
+    "abstract": "Interprocedural data-flow analysis is important for computing precise information on whole programs. In theory, the popular algorithmic framework interprocedural distributive environments (IDE) provides a tool to solve distributive interprocedural data-flow problems efficiently. Yet, unfortunately, available state-of-the-art implementations of the IDE framework start to run into scalability issues for programs with several thousands of lines of code, depending on the static analysis domain. Since the IDE framework is a basic building block for many static program analyses, this presents a serious limitation. In this paper, we report on our experience with making the IDE algorithm scale to C/C++ applications with up to 500 000 lines of code. We analyze the IDE algorithm and its state-of-the-art implementations to identify their weaknesses related to scalability at both a conceptual and implementation level. Based on this analysis, we propose several optimizations to overcome these weaknesses, aiming at a sweet spot between reducing running time and memory consumption. As a result, we provide an improved IDE solver that implements our optimizations within the PhASAR static analysis framework. Our evaluation on real-world C/C++ applications shows that applying the optimizations speeds up the analysis on average by up to 7×, while also reducing memory consumption by 7× on average as well. For the first time, these optimizations allow us to analyze programs with several hundreds of thousands of lines of LLVM-IR code in reasonable time and space.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.36",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Schiebel,",
+        "last_name": "Fabian",
+        "institution": "Fraunhofer Institute for Mechatronic Systems Design"
+      },
+      {
+        "first_name": "Sattler,",
+        "last_name": "Florian",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Schubert, Philipp",
+        "last_name": "Dominik",
+        "institution": "Heinz Nixdorf Stiftung"
+      },
+      {
+        "first_name": "Apel,",
+        "last_name": "Sven",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Bodden,",
+        "last_name": "Eric",
+        "institution": "Fraunhofer Institute for Mechatronic Systems Design"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SchiebelSSAB24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.35",
+    "title": "Partial Redundancy Elimination in Two Iterative Data Flow Analyses",
+    "abstract": "Partial Redundancy Elimination (PRE) is a powerful and well-known code optimization. The idea to combine Common Subexpression Elimination and Loop Invariant Code Motion optimizations into a single optimization was originally conceived by Morel and Renvoise. Their algorithm is bidirectional in nature and was not complete and optimal. Later, Knoop et al. proposed the first complete and optimal algorithm, Lazy Code Motion (LCM), which takes four unidirectional data flow analyses. In a recent paper, Roy et al. proposed an algorithm for PRE that uses three iterative data flow analyses. Here, we propose an efficient algorithm for PRE, which takes only two iterative data flow analyses followed by two computation passes over the program. The algorithm is both computationally and lifetime optimal. The proposed algorithm computes the information required for performing the transformation in two passes over the program without considering safety. The two iterative data flow analyses are required for making the transformation safe. The use of well-known data flow analyses, i.e., available expressions analysis and anticipated expressions analysis, makes the algorithm simple to understand and easy to prove its correctness. The proposed algorithm is more efficient than the existing algorithms since it takes only two iterative data flow analyses. The efficiency of the proposed algorithm is demonstrated by implementing it in LLVM Compiler Infrastructure and comparing the time taken with other selected best-known algorithms.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.35",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Roy,",
+        "last_name": "Reshma",
+        "institution": "National Institute of Technology Calicut"
+      },
+      {
+        "first_name": "S,",
+        "last_name": "Sreekala",
+        "institution": "National Institute of Technology Calicut"
+      },
+      {
+        "first_name": "Paleri,",
+        "last_name": "Vineeth",
+        "institution": "National Institute of Technology Calicut"
+      }
+    ],
+    "dblp_key": "conf/ecoop/RoySP24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.39",
+    "title": "Formalizing, Mechanizing, and Verifying Class-Based Refinement Types",
+    "abstract": "Refinement types have been extensively used in class-based languages to specify and verify fine-grained logical specifications. Despite the advances in practical aspects such as applicability and usability, two fundamental issues persist. First, the soundness of existing class-based refinement type systems is inadequately explored, casting doubts on their reliability. Second, the expressiveness of existing systems is limited, restricting the depiction of semantic properties related to object-oriented constructs. This work tackles these issues through a systematic framework. We formalize a declarative class-based refinement type calculus (named RFJ), that is expressive and concise. We rigorously develop the soundness meta-theory of this calculus, followed by its mechanization in Coq. Finally, to ensure the calculus’s verifiability, we propose an algorithmic verification approach based on a fragment of first-order logic (named LFJ), and implement this approach as a type checker.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.39",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Sun,",
+        "last_name": "Ke",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Wang,",
+        "last_name": "Di",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Chen,",
+        "last_name": "Sheng",
+        "institution": "University of Louisiana at Lafayette"
+      },
+      {
+        "first_name": "Wang,",
+        "last_name": "Meng",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Hao,",
+        "last_name": "Dan",
+        "institution": "Peking University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Sun000024",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.40",
+    "title": "Information Flow Control in Cyclic Process Networks",
+    "abstract": "Protection of confidential data is an important security consideration of today's applications. Of particular concern is to guard against unintentional leakage to a (malicious) observer, who may interact with the program and draw inference from made observations. Information flow control (IFC) type systems address this concern by statically ruling out such leakage. This paper contributes an IFC type system for message-passing concurrent programs, the computational model of choice for many of today's applications such as cloud computing and IoT applications. Such applications typically either implicitly or explicitly codify protocols according to which message exchange must happen, and to statically ensure protocol safety, behavioral type systems such as session types can be used. This paper marries IFC with session typing and contributes over prior work in the following regards: (1) support of realistic cyclic process networks as opposed to the restriction to tree-shaped networks, (2) more permissive, yet entirely secure, IFC control, exploiting cyclic process networks, and (3) considering deadlocks as another form of side channel, and asserting deadlock-sensitive noninterference (DSNI) for well-typed programs. To prove DSNI, the paper develops a novel logical relation that accounts for cyclic process networks. The logical relation is rooted in linear logic, but drops the tree-topology restriction imposed by prior work.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.40",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Bas van den",
+        "last_name": "Heuvel",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Farzaneh",
+        "last_name": "Derakhshan",
+        "institution": "Illinois Institute of Technology"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Balzer",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/0001DB24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.43",
+    "title": "Inductive Predicate Synthesis Modulo Programs",
+    "abstract": "A growing trend in program analysis is to encode verification conditions within the language of the input program. This simplifies the design of analysis tools by utilizing off-the-shelf verifiers, but makes communication with the underlying solver more challenging. Essentially, the analyzer operates at the level of input programs, whereas the solver operates at the level of problem encodings. To bridge this gap, the verifier must pass along proof-rules from the analyzer to the solver. For example, an analyzer for concurrent programs built on an inductive program verifier might need to declare Owicki-Gries style proof-rules for the underlying solver. Each such proof-rule further specifies how a program should be verified, meaning that the problem of passing proof-rules is a form of invariant synthesis. Similarly, many program analysis tasks reduce to the synthesis of pure, loop-free Boolean functions (i.e., predicates), relative to a program. From this observation, we propose Inductive Predicate Synthesis Modulo Programs (IPS-MP) which extends high-level languages with minimal synthesis features to guide analysis. In IPS-MP, unknown predicates appear under assume and assert statements, acting as specifications modulo the program semantics. Existing synthesis solvers are inefficient at IPS-MP as they target more general problems. In this paper, we show that IPS-MP admits an efficient solution in the Boolean case, despite being generally undecidable. Moreover, we show that IPS-MP reduces to the satisfiability of constrained Horn clauses, which is less general than existing synthesis problems, yet expressive enough to encode verification tasks. We provide reductions from challenging verification tasks -- such as parameterized model checking -- to IPS-MP. We realize these reductions with an efficient IPS-MP-solver based on SeaHorn, and describe a application to smart-contract verification.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.43",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Scott",
+        "last_name": "Wesley",
+        "institution": "Dalhousie University"
+      },
+      {
+        "first_name": "Maria",
+        "last_name": "Christakis",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "Jorge A.",
+        "last_name": "Navas",
+        "institution": ""
+      },
+      {
+        "first_name": "Richard",
+        "last_name": "Trefler",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Valentin",
+        "last_name": "Wüstholz",
+        "institution": ""
+      },
+      {
+        "first_name": "Arie",
+        "last_name": "Gurfinkel",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/ecoop/WesleyCNTWG24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.42",
+    "title": "Failure Transparency in Stateful Dataflow Systems",
+    "abstract": "Failure transparency enables users to reason about distributed systems at a higher level of abstraction, where complex failure-handling logic is hidden. This is especially true for stateful dataflow systems, which are the backbone of many cloud applications. In particular, this paper focuses on proving failure transparency in Apache Flink, a popular stateful dataflow system. Even though failure transparency is a critical aspect of Apache Flink, to date it has not been formally proven. Showing that the failure transparency mechanism is correct, however, is challenging due to the complexity of the mechanism itself. Nevertheless, this complexity can be effectively hidden behind a failure transparent programming interface. To show that Apache Flink is failure transparent, we model it in small-step operational semantics. Next, we provide a novel definition of failure transparency based on observational explainability, a concept which relates executions according to their observations. Finally, we provide a formal proof of failure transparency for the implementation model; i.e., we prove that the failure-free model correctly abstracts from the failure-related details of the implementation model. We also show liveness of the implementation model under a fair execution assumption. These results are a first step towards a verified stack for stateful dataflow systems.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.42",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Aleksey Kirillovich",
+        "last_name": "Veresov",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Jonas",
+        "last_name": "Spenger",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Paris",
+        "last_name": "Carbone",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Philipp",
+        "last_name": "Haller",
+        "institution": "KTH Royal Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/VeresovSCH24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.47",
+    "title": "Defining Name Accessibility Using Scope Graphs",
+    "abstract": "Many programming languages allow programmers to regulate accessibility; i.e., annotating a declaration with keywords such as export and private to indicate where it can be accessed. Despite the importance of name accessibility for, e.g., compilers, editor auto-completion and tooling, and automated refactorings, few existing type systems provide a formal account of name accessibility. We present a declarative, executable, and language-parametric model for name accessibility, which provides a formal specification of name accessibility in Java, C#, C++, Rust, and Eiffel. We achieve this by defining name accessibility as a predicate on resolution paths through scope graphs. Since scope graphs are a language-independent model of name resolution, our model provides a uniform approach to defining different accessibility policies for different languages. Our model is implemented in Statix, a logic language for executable type system specification using scope graphs. We evaluate its correctness on a test suite that compares it with the C#, Java, and Rust compilers, and show we can synthesize access modifiers in programs with holes accurately.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.47",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Zwaan,",
+        "last_name": "Aron",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Bach Poulsen,",
+        "last_name": "Casper",
+        "institution": "Delft University of Technology"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ZwaanP24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.45",
+    "title": "Higher-Order Specifications for Deductive Synthesis of Programs with Pointers",
+    "abstract": "Synthetic Separation Logic (SSL) is a formalism that powers SuSLik, the state-of-the-art approach for the deductive synthesis of provably-correct programs in C-like languages that manipulate heap-based linked data structures. Despite its expressivity, SSL suffers from two shortcomings that hinder its utility. First, its main specification component, inductive predicates, only admits first-order definitions of data structure shapes, which leads to the proliferation of “boiler-plate” predicates for specifying common patterns. Second, SSL requires concrete definitions of data structures to synthesise programs that manipulate them, which results in the need to change a specification for a synthesis task every time changes are introduced into the layout of the involved structures. We propose to significantly lift the level of abstraction used in writing Separation Logic specifications for synthesis – both simplifying the approach and making the specifications more usable and easy to read and follow. We avoid the need to repetitively re-state low-level representation details throughout the specifications – allowing the reuse of different implementations of the same data structure by abstracting away the details of a specific layout used in memory. Our novel high-level front-end language called Pika significantly improves the expressiveness of SuSLik. We implemented a layout-agnostic synthesiser from Pika to SuSLik enabling push-button synthesis of C programs with in-place memory updates, along with the accompanying full proofs that they meet Separation Logic-style specifications, from high-level specifications that resemble ordinary functional programs. Our experiments show that our tool can produce C code that is comparable in its performance characteristics and is sometimes faster than Haskell.",
+    "date": "2024-09-12",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.45",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Young",
+        "institution": ""
+      },
+      {
+        "first_name": "Ziyi",
+        "last_name": "Yang",
+        "institution": ""
+      },
+      {
+        "first_name": "Ilya",
+        "last_name": "Sergey",
+        "institution": ""
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Potanin",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/YoungYSP24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.44",
+    "title": "Type Tailoring",
+    "abstract": "Type systems evolve too slowly to keep up with the quick evolution of libraries - especially libraries that introduce abstractions. Type tailoring offers a lightweight solution by equipping the core language with an API for modifying the elaboration of surface code into the internal language of the typechecker. Through user-programmable elaboration, tailoring rules appear to improve the precision and expressiveness of the underlying type system. Furthermore, type tailoring cooperates with the host type system by expanding to code that the host then typechecks. In the context of a hygienic metaprogramming system, tailoring rules can even harmoniously compose with one another. Type tailoring has emerged as a theme across several languages and metaprogramming systems, but never with direct support and rarely in the same shape twice. For example, both OCaml and Typed Racket enable forms of tailoring, but in quite different ways. This paper identifies key dimensions of type tailoring systems and tradeoffs along each dimension. It demonstrates the usefulness of tailoring with examples that cover sized vectors, database queries, and optional types. Finally, it outlines a vision for future research at the intersection of types and metaprogramming.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.44",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Wiersdorf,",
+        "last_name": "Ashton",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Chang,",
+        "last_name": "Stephen",
+        "institution": "University of Massachusetts Boston"
+      },
+      {
+        "first_name": "Felleisen,",
+        "last_name": "Matthias",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Greenman,",
+        "last_name": "Ben",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Wiersdorf0FG24",
+    "venue": "ecoop",
+    "year": 2024
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2024.46",
+    "title": "{CtChecker}: A Precise, Sound and Efficient Static Analysis for Constant-Time Programming",
+    "abstract": "Timing channel attacks are emerging as real-world threats to computer security. In cryptographic systems, an effective countermeasure against timing attacks is the constant-time programming discipline. However, strictly enforcing the discipline manually is both time-consuming and error-prone. While various tools exist for analyzing/verifying constant-time programs, they sacrifice at least one feature among precision, soundness and efficiency. In this paper, we build CtChecker, a sound static analysis for constant-time programming. Under the hood, CtChecker uses a static information flow analysis to identify violations of constant-time discipline. Despite the common wisdom that sound, static information flow analysis lacks precision for real-world applications, we show that by enabling field-sensitivity, context-sensitivity and partial flow-sensitivity, CtChecker reports fewer false positives compared with existing sound tools. Evaluation on real-world cryptographic systems shows that CtChecker analyzes 24K lines of source code in under one minute. Moreover, CtChecker reveals that some repaired code generated by program rewriters supposedly remove timing channels are still not constant-time.",
+    "date": "2024-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2024.46",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Zhou,",
+        "last_name": "Quan",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Dang,",
+        "last_name": "Sixuan",
+        "institution": "Duke University"
+      },
+      {
+        "first_name": "Zhang,",
+        "last_name": "Danfeng",
+        "institution": "Duke University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ZhouDZ24",
+    "venue": "ecoop",
+    "year": 2024
+  }
+]
