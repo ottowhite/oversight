@@ -1,5 +1,4 @@
 import Head from "next/head";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import {
   useCallback,
@@ -8,13 +7,30 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type ComponentType,
 } from "react";
 
 // react-force-graph-2d touches `window` at import time, so it must be
-// loaded only on the client. Disable SSR via next/dynamic.
-const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), {
-  ssr: false,
-}) as any;
+// loaded only on the client. We previously used next/dynamic for this,
+// but next/dynamic in Next 12 doesn't reliably forward refs to the inner
+// component, so the imperative API (d3Force, d3ReheatSimulation, etc.)
+// was unreachable. Lazy-loading the module via a useEffect inside the
+// component lets us render the real component directly and forward the
+// ref natively.
+//
+// The module is module-cached, so subsequent mounts get the resolved
+// component synchronously after the first import has settled.
+let cachedForceGraph2D: ComponentType<any> | null = null;
+let forceGraph2DPromise: Promise<ComponentType<any>> | null = null;
+function loadForceGraph2D(): Promise<ComponentType<any>> {
+  if (cachedForceGraph2D) return Promise.resolve(cachedForceGraph2D);
+  if (forceGraph2DPromise) return forceGraph2DPromise;
+  forceGraph2DPromise = import("react-force-graph-2d").then((mod) => {
+    cachedForceGraph2D = mod.default as ComponentType<any>;
+    return cachedForceGraph2D;
+  });
+  return forceGraph2DPromise;
+}
 
 // ---------------------------------------------------------------------------
 // API contract types — must match docs/similarity-graph-plan.md exactly.
@@ -266,6 +282,23 @@ export default function GraphPage() {
 
   // Force-graph imperative handle for fit-to-view / reheat.
   const fgRef = useRef<any>(null);
+  // The library is dynamically imported so its window-touching code
+  // doesn't run during SSR. Once loaded we render it directly (no
+  // next/dynamic wrapper) so the ref forwards through to the real
+  // component and its imperative API is reachable.
+  const [ForceGraphCmp, setForceGraphCmp] = useState<ComponentType<any> | null>(
+    cachedForceGraph2D,
+  );
+  useEffect(() => {
+    if (cachedForceGraph2D) return;
+    let cancelled = false;
+    loadForceGraph2D().then((Cmp) => {
+      if (!cancelled) setForceGraphCmp(() => Cmp);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   // Track container size so the canvas fills its parent.
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [size, setSize] = useState<{ w: number; h: number }>({ w: 800, h: 600 });
@@ -496,35 +529,6 @@ export default function GraphPage() {
     return p?.title ?? null;
   }, [graph.nodes, seedId]);
 
-  // Force-graph spring-strength polish: more similar = stronger spring =
-  // shorter rest length. We reach into the d3-force "link" force via the
-  // imperative API exposed by react-force-graph-2d. When loaded through
-  // next/dynamic the ref isn't always forwarded to the inner component
-  // (Next 12 quirk), so guard everything and silently skip if the
-  // imperative methods aren't reachable — visual encoding via
-  // linkColor/linkWidth still communicates similarity to the user.
-  useEffect(() => {
-    const fg = fgRef.current;
-    if (!fg || typeof fg.d3Force !== "function") return;
-    const linkForce = fg.d3Force("link");
-    if (!linkForce || typeof linkForce.distance !== "function") return;
-    linkForce.distance((link: any) => {
-      // Map similarity 0.30..0.85 → distance 200..40.
-      const s = typeof link.similarity === "number" ? link.similarity : 0.5;
-      const norm = Math.max(0, Math.min(1, (s - 0.3) / 0.55));
-      return 200 - norm * 160;
-    });
-    if (typeof linkForce.strength === "function") {
-      linkForce.strength((link: any) => {
-        const s = typeof link.similarity === "number" ? link.similarity : 0.5;
-        return Math.max(0.05, Math.min(1, (s - 0.2) * 1.5));
-      });
-    }
-    if (typeof fg.d3ReheatSimulation === "function") {
-      fg.d3ReheatSimulation();
-    }
-  }, [fgData]);
-
   // -------------------------------------------------------------------------
   // Visual helpers.
   // -------------------------------------------------------------------------
@@ -543,73 +547,172 @@ export default function GraphPage() {
     return 0.6 + norm * 2.2;
   }, []);
 
-  const nodeVal = useCallback(
+  // Citation labels live INSIDE the node circle now, in world coordinates
+  // so text and circle scale together with zoom. Each node's radius is
+  // grown to fit its label (with padding); the force simulation then
+  // pushes overlapping nodes apart via collision detection driven by
+  // nodeVal/nodeRelSize.
+  //
+  // Layout constants are in world units (the same units the d3-force
+  // simulation uses for x/y). NODE_FONT_PX is a world-space size, NOT a
+  // screen-pixel size.
+  const NODE_FONT_PX = 4; // world-units; readable at default zoom
+  const NODE_TEXT_PAD = 2.5; // world-units of horizontal padding inside the circle
+  const NODE_MIN_RADIUS = 6; // world-units floor for tiny labels
+  const NODE_REL_SIZE = 1; // px per sqrt(nodeVal) unit; we fully drive radius via nodeVal
+
+  // Cache label + measured width per paper_id so we don't re-measure on
+  // every frame. Uses an off-screen canvas for measurement so the result
+  // is independent of whichever zoom the user is currently at.
+  const labelCache = useRef<
+    Map<string, { label: string; worldWidth: number }>
+  >(new Map());
+  const measureCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const getLabelInfo = useCallback(
+    (paper: Paper | undefined, paperId: string) => {
+      const cached = labelCache.current.get(paperId);
+      if (cached) return cached;
+      const label = formatCitation(paper);
+      if (!measureCanvasRef.current) {
+        measureCanvasRef.current = document.createElement("canvas");
+      }
+      const mctx = measureCanvasRef.current.getContext("2d");
+      if (!mctx) {
+        const fallback = { label, worldWidth: label.length * NODE_FONT_PX * 0.6 };
+        labelCache.current.set(paperId, fallback);
+        return fallback;
+      }
+      mctx.font = `${NODE_FONT_PX}px ui-sans-serif, system-ui, sans-serif`;
+      const worldWidth = label ? mctx.measureText(label).width : 0;
+      const info = { label, worldWidth };
+      labelCache.current.set(paperId, info);
+      return info;
+    },
+    [],
+  );
+
+  // Per-node world radius. Combines a degree-based "base" radius (so hubs
+  // visually pop) with the half-width-of-label requirement. Returned in
+  // world units.
+  const nodeRadius = useCallback(
     (node: any) => {
       const deg = degreeById[node.id] ?? 0;
-      // Seed node always reads as a hub.
-      const base = node.id === seedId ? 6 : 2;
-      return base + Math.sqrt(deg);
+      // Seed reads as a hub even before its neighbors connect back.
+      const baseRadius = (node.id === seedId ? 5 : 3) + Math.sqrt(deg) * 0.8;
+      const { worldWidth } = getLabelInfo(node.paper, node.id);
+      const labelRadius = worldWidth / 2 + NODE_TEXT_PAD;
+      return Math.max(NODE_MIN_RADIUS, baseRadius, labelRadius);
     },
-    [degreeById, seedId],
+    [degreeById, seedId, getLabelInfo],
+  );
+
+  // nodeVal feeds both the d3-force collision force and the click-hit
+  // area. Final pixel radius from the lib is sqrt(nodeVal) * nodeRelSize,
+  // and we set nodeRelSize=1, so nodeVal = radius^2 makes the lib agree
+  // with our drawNode radius.
+  const nodeVal = useCallback(
+    (node: any) => {
+      const r = nodeRadius(node);
+      return r * r;
+    },
+    [nodeRadius],
   );
 
   const drawNode = useCallback(
-    (node: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
+    (node: any, ctx: CanvasRenderingContext2D, _globalScale: number) => {
       const isSeed = node.id === seedId;
       const isLoading = loadingNodeId === node.id;
-      const r =
-        ((nodeVal(node) + 1) / Math.max(globalScale, 0.5)) *
-        Math.min(globalScale, 1.6);
+      const r = nodeRadius(node);
 
-      // 1) The node circle itself.
+      // 1) Circle.
       ctx.beginPath();
       ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
-      ctx.fillStyle = isSeed ? "#ffffff" : "#0070f3";
+      ctx.fillStyle = isSeed ? "#0a0a0a" : "#0050a8";
       ctx.fill();
-      if (isLoading) {
-        ctx.strokeStyle = "#f5a623";
-        ctx.lineWidth = 1.5 / globalScale;
-        ctx.stroke();
-      } else {
-        ctx.strokeStyle = "rgba(255,255,255,0.4)";
-        ctx.lineWidth = 0.8 / globalScale;
-        ctx.stroke();
-      }
-
-      // 2) Citation label sitting just below the node, with a translucent
-      //    pill behind the text so it stays readable when crossed by edges.
-      //    Skip when zoomed way out — labels would just be a smear.
-      if (globalScale < 0.6) return;
-      const label = formatCitation(node.paper);
-      if (!label) return;
-
-      // Font size is screen-pixel-stable: divide by globalScale so the
-      // label looks the same regardless of zoom.
-      const fontPx = 11 / globalScale;
-      ctx.font = `${fontPx}px ui-sans-serif, system-ui, sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "top";
-      const padX = 4 / globalScale;
-      const padY = 2 / globalScale;
-      const textW = ctx.measureText(label).width;
-      const pillW = textW + padX * 2;
-      const pillH = fontPx + padY * 2;
-      const pillX = node.x - pillW / 2;
-      // Clear the node radius (+ a small gap) before drawing the pill.
-      const pillY = node.y + r + 2 / globalScale;
-
-      ctx.fillStyle = "rgba(0, 0, 0, 0.72)";
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
-      ctx.lineWidth = 0.6 / globalScale;
-      roundedRect(ctx, pillX, pillY, pillW, pillH, 3 / globalScale);
-      ctx.fill();
+      ctx.strokeStyle = isLoading
+        ? "#f5a623"
+        : isSeed
+          ? "rgba(255,255,255,0.85)"
+          : "rgba(255,255,255,0.45)";
+      ctx.lineWidth = isLoading ? 0.8 : 0.5;
       ctx.stroke();
 
-      ctx.fillStyle = isSeed ? "#ffffff" : "rgba(237, 237, 237, 0.92)";
-      ctx.fillText(label, node.x, pillY + padY);
+      // 2) Citation label centered inside the circle. Both the font and
+      //    radius are in world coords, so they scale together with zoom
+      //    and never smear at low zoom.
+      const { label } = getLabelInfo(node.paper, node.id);
+      if (!label) return;
+      ctx.font = `${NODE_FONT_PX}px ui-sans-serif, system-ui, sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = isSeed
+        ? "rgba(255,255,255,0.95)"
+        : "rgba(237,237,237,0.95)";
+      ctx.fillText(label, node.x, node.y);
     },
-    [seedId, loadingNodeId, nodeVal],
+    [seedId, loadingNodeId, nodeRadius, getLabelInfo],
   );
+
+  // Reset the label cache when the cache shape changes (new paper added),
+  // so that newly-fetched neighbors get a fresh measurement and grow
+  // their nodes to fit.
+  useEffect(() => {
+    labelCache.current.clear();
+  }, [graph.cache]);
+
+  // d3-force tuning. Reach into the simulation via the imperative API
+  // exposed by react-force-graph-2d. When loaded through next/dynamic the
+  // ref isn't always forwarded to the inner component (Next 12 quirk),
+  // so guard everything and silently skip if the imperative methods
+  // aren't reachable — visual encoding via linkColor/linkWidth still
+  // communicates similarity to the user.
+  useEffect(() => {
+    const fg = fgRef.current;
+    if (!fg || typeof fg.d3Force !== "function") return;
+    const linkForce = fg.d3Force("link");
+    if (linkForce && typeof linkForce.distance === "function") {
+      // Map similarity 0.30..0.85 → distance 320..160 (world units).
+      // Citation labels live INSIDE each circle now, which makes nodes
+      // ~12-40 world units wide. Two adjacent nodes need their CENTERS
+      // at least (r1+r2) apart just to not overlap; bumping rest length
+      // gives the layout the room it needs.
+      linkForce.distance((link: any) => {
+        const s = typeof link.similarity === "number" ? link.similarity : 0.5;
+        const norm = Math.max(0, Math.min(1, (s - 0.3) / 0.55));
+        return 320 - norm * 160;
+      });
+    }
+    if (linkForce && typeof linkForce.strength === "function") {
+      linkForce.strength((link: any) => {
+        const s = typeof link.similarity === "number" ? link.similarity : 0.5;
+        return Math.max(0.05, Math.min(1, (s - 0.2) * 1.5));
+      });
+    }
+    // Stronger repulsion so wide-text nodes don't pile up. Default
+    // d3-forceManyBody strength is -30; bump to -800 to match the much
+    // larger node radii.
+    const chargeForce = fg.d3Force("charge");
+    if (chargeForce && typeof chargeForce.strength === "function") {
+      chargeForce.strength(-800);
+    }
+    // Pad the collision radius a few world units so labels never clip.
+    // The lib's own collide accessor uses sqrt(val)*nodeRelSize which
+    // already matches nodeRadius() in our setup; we just add a margin.
+    const collideForce = fg.d3Force("collide");
+    if (collideForce && typeof collideForce.radius === "function") {
+      collideForce.radius((node: any) => nodeRadius(node) + 4);
+      if (typeof collideForce.iterations === "function") {
+        collideForce.iterations(2); // tighter packing in fewer ticks
+      }
+    }
+    if (typeof fg.d3ReheatSimulation === "function") {
+      fg.d3ReheatSimulation();
+    }
+    // ForceGraphCmp is in the deps so the effect re-runs after the
+    // lazy import resolves and fgRef.current finally points at a real
+    // forwardRef-bound instance. Without it, the only first run sees
+    // fgRef.current === null and bails.
+  }, [fgData, nodeRadius, ForceGraphCmp]);
 
   // -------------------------------------------------------------------------
   // Slider configuration (mode-dependent).
@@ -739,33 +842,39 @@ export default function GraphPage() {
             ref={containerRef}
             className="relative min-h-0 w-full overflow-hidden"
           >
-            <ForceGraph2D
-              ref={fgRef}
-              graphData={fgData}
-              width={size.w}
-              height={size.h}
-              backgroundColor="#000000"
-              nodeId="id"
-              nodeRelSize={4}
-              nodeVal={nodeVal as any}
-              nodeCanvasObject={drawNode as any}
-              nodePointerAreaPaint={(node: any, color: string, ctx: CanvasRenderingContext2D) => {
-                ctx.fillStyle = color;
-                ctx.beginPath();
-                ctx.arc(node.x, node.y, 8, 0, 2 * Math.PI, false);
-                ctx.fill();
-              }}
-              linkColor={linkColor as any}
-              linkWidth={linkWidth as any}
-              onNodeHover={(node: any) => {
-                // Latch: only update on enter, never clear on leave. The
-                // user can move their cursor away to read long abstracts.
-                if (node && node.paper) setPanelPaper(node.paper);
-              }}
-              onNodeClick={(node: any) => expandNode(node.id, graph.mode)}
-              cooldownTicks={120}
-              d3VelocityDecay={0.35}
-            />
+            {ForceGraphCmp && (
+              <ForceGraphCmp
+                ref={fgRef}
+                graphData={fgData}
+                width={size.w}
+                height={size.h}
+                backgroundColor="#000000"
+                nodeId="id"
+                nodeRelSize={NODE_REL_SIZE}
+                nodeVal={nodeVal as any}
+                nodeCanvasObject={drawNode as any}
+                nodePointerAreaPaint={(node: any, color: string, ctx: CanvasRenderingContext2D) => {
+                  // Hit area = the same circle we draw, so the entire
+                  // label is clickable / hoverable. nodeRadius is in
+                  // world units; the lib applies the current zoom
+                  // transform itself.
+                  ctx.fillStyle = color;
+                  ctx.beginPath();
+                  ctx.arc(node.x, node.y, nodeRadius(node), 0, 2 * Math.PI, false);
+                  ctx.fill();
+                }}
+                linkColor={linkColor as any}
+                linkWidth={linkWidth as any}
+                onNodeHover={(node: any) => {
+                  // Latch: only update on enter, never clear on leave. The
+                  // user can move their cursor away to read long abstracts.
+                  if (node && node.paper) setPanelPaper(node.paper);
+                }}
+                onNodeClick={(node: any) => expandNode(node.id, graph.mode)}
+                cooldownTicks={120}
+                d3VelocityDecay={0.35}
+              />
+            )}
 
             {/* Empty state when no ?seed= was provided */}
             {router.isReady && !seedId && (
@@ -1270,29 +1379,6 @@ if (process.env.NODE_ENV !== "production") {
     unicodify("plain text") === "plain text",
     "unicodify must be a no-op on plain text",
   );
-}
-
-// Tiny helper: Path of a rounded rectangle on a 2D canvas context.
-function roundedRect(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  r: number,
-): void {
-  const rr = Math.min(r, w / 2, h / 2);
-  ctx.beginPath();
-  ctx.moveTo(x + rr, y);
-  ctx.lineTo(x + w - rr, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + rr);
-  ctx.lineTo(x + w, y + h - rr);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - rr, y + h);
-  ctx.lineTo(x + rr, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - rr);
-  ctx.lineTo(x, y + rr);
-  ctx.quadraticCurveTo(x, y, x + rr, y);
-  ctx.closePath();
 }
 
 function percentileLabel(t: number, d: SimilarityDistribution): string {
