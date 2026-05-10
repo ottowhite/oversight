@@ -756,16 +756,16 @@ export default function GraphPage() {
       const isPinned = node.id === pinnedId;
       const r = nodeRadius(node);
 
-      // 1) Circle. Clicked papers fill at full opacity; neighbors at
-      //    NEIGHBOR_OPACITY so the eye picks out the user's actively
+      // 1) Circle. Clicked papers use a darker blue to lift contrast
+      //    with the white citation text. Neighbors share the same hue
+      //    at NEIGHBOR_OPACITY so the eye picks out the user's actively
       //    chosen papers. Pinned (a clicked paper currently driving the
       //    side-panel) gets a subtle white halo to mark it as "active."
-      const fillAlpha = isClicked ? 1 : NEIGHBOR_OPACITY;
       ctx.beginPath();
       ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
       ctx.fillStyle = isClicked
-        ? `rgba(0, 80, 168, ${fillAlpha})` // solid Vercel-ish blue
-        : `rgba(0, 80, 168, ${fillAlpha})`;
+        ? "rgba(0, 60, 140, 1)" // darker so white text reads crisper
+        : `rgba(0, 80, 168, ${NEIGHBOR_OPACITY})`;
       ctx.fill();
       // Stroke: loading > pinned > clicked > neighbor.
       ctx.strokeStyle = isLoading
@@ -795,14 +795,29 @@ export default function GraphPage() {
       if (lines.length === 0) return;
       const fontPx = isClicked ? NODE_FONT_PX : NODE_FONT_PX * NEIGHBOR_FONT_SCALE;
       const lineHeight = fontPx * 1.2;
-      ctx.font = `${fontPx}px ui-sans-serif, system-ui, sans-serif`;
+      // Bumping clicked-node weight from regular to 600 reads as a
+      // crisp label rather than a thin overlay, especially against the
+      // darker-blue fill we picked above.
+      const fontWeight = isClicked ? 600 : 400;
+      ctx.font = `${fontWeight} ${fontPx}px ui-sans-serif, system-ui, sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillStyle = isClicked
-        ? "rgba(255,255,255,0.95)"
-        : "rgba(237,237,237,0.85)";
       // Vertically center the stack.
       const topY = node.y - ((lines.length - 1) * lineHeight) / 2;
+      // Text-stroke under the fill cleans up the AA on bright pixels —
+      // the eye reads the label as solid letters instead of a smear.
+      // Stroke matches the circle fill so the result is anti-aliased
+      // crispness rather than a visible outline.
+      if (isClicked) {
+        ctx.strokeStyle = "rgba(0, 60, 140, 1)";
+        ctx.lineWidth = 0.6;
+        for (let i = 0; i < lines.length; i++) {
+          ctx.strokeText(lines[i], node.x, topY + i * lineHeight);
+        }
+      }
+      ctx.fillStyle = isClicked
+        ? "rgba(255,255,255,1)"
+        : "rgba(237,237,237,0.85)";
       for (let i = 0; i < lines.length; i++) {
         ctx.fillText(lines[i], node.x, topY + i * lineHeight);
       }
@@ -963,26 +978,34 @@ export default function GraphPage() {
                 <path fillRule="evenodd" d="M9.78 4.22a.75.75 0 010 1.06L6.06 9h11.69a.75.75 0 010 1.5H6.06l3.72 3.72a.75.75 0 11-1.06 1.06l-5-5a.75.75 0 010-1.06l5-5a.75.75 0 011.06 0z" clipRule="evenodd" />
               </svg>
             </a>
-            <h1 className="text-lg font-semibold">Similarity graph</h1>
+            <h1 className="text-lg font-semibold shrink-0">Similarity graph</h1>
             {clickedIds.length > 0 && (
-              <span className="text-sm text-base-content/70 ml-2 truncate">
-                Exploring {clickedIds.length} paper
-                {clickedIds.length === 1 ? "" : "s"}
-                <span className="text-xs text-base-content/40 ml-2">
-                  {clickedIds
-                    .map(
-                      (id) =>
-                        unicodify(paperById[id]?.title ?? id).slice(0, 40) +
-                        (paperById[id]?.title && paperById[id].title.length > 40
-                          ? "…"
-                          : ""),
-                    )
-                    .join(" · ")}
+              <div className="flex items-baseline gap-2 min-w-0 flex-1">
+                <span className="text-sm text-base-content/70 shrink-0">
+                  Exploring {clickedIds.length} paper
+                  {clickedIds.length === 1 ? "" : "s"}
                 </span>
-              </span>
+                {/* Each title gets its own ellipsis at ~60ch with shared
+                    flex-shrink so the wider viewport gets fuller titles. */}
+                <span className="text-xs text-base-content/40 flex items-baseline gap-2 min-w-0">
+                  {clickedIds.map((id, i) => (
+                    <span
+                      key={id}
+                      className="truncate"
+                      style={{ maxWidth: "60ch" }}
+                      title={unicodify(paperById[id]?.title ?? id)}
+                    >
+                      {i > 0 && <span className="opacity-60 mr-2">·</span>}
+                      {unicodify(paperById[id]?.title ?? id)}
+                    </span>
+                  ))}
+                </span>
+              </div>
             )}
             {error && (
-              <span className="ml-auto text-xs text-error font-medium">{error}</span>
+              <span className="ml-auto shrink-0 text-xs text-error font-medium">
+                {error}
+              </span>
             )}
           </div>
         </header>
@@ -1198,11 +1221,6 @@ function RightSidebar({
             )}
           </svg>
         </button>
-        {open && (
-          <span className="text-[11px] uppercase tracking-wide text-base-content/40">
-            Controls
-          </span>
-        )}
       </div>
 
       {/* Body — only rendered when open. Collapsed state shows just the
@@ -1212,7 +1230,7 @@ function RightSidebar({
           {/* Controls section */}
           <div className="p-4 flex flex-col gap-4 border-b border-base-300/60">
             <div>
-              <div className="text-[11px] uppercase tracking-wide text-base-content/40 mb-2">
+              <div className="text-[11px] uppercase tracking-wider font-medium text-base-content/50 mb-2">
                 Mode
               </div>
               <div className="grid grid-cols-3 gap-1 rounded-lg bg-base-300 p-1">
@@ -1291,7 +1309,7 @@ function RightSidebar({
           {/* Hover preview section — latched, scrollable */}
           <div className="flex-1 min-h-0 overflow-y-auto p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] uppercase tracking-wide text-base-content/40">
+              <span className="text-[11px] uppercase tracking-wider font-medium text-base-content/50">
                 Hover preview
               </span>
               {panelPaper && (
@@ -1344,7 +1362,7 @@ function HoverPreview({
   }
   return (
     <>
-      <div className="flex items-center gap-2 mb-2 text-[11px] uppercase tracking-wide text-base-content/40">
+      <div className="flex items-center gap-2 mb-2 text-[11px] uppercase tracking-wider font-medium text-base-content/50">
         {isPinned ? (
           <span className="text-primary font-semibold">pinned</span>
         ) : isClicked ? (
