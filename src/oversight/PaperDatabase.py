@@ -19,7 +19,14 @@ logger = get_logger()
 class PaperDatabase:
     def __init__(self) -> None:
         load_dotenv()
-        self.ai_categories = ["cs:cs:AI", "cs:cs:CL", "cs:cs:LG", "cs:cs:MA"]
+        self.ai_categories = [
+            "cs:cs:AI",
+            "cs:cs:CL",
+            "cs:cs:LG",
+            "cs:cs:MA",
+            "cs:cs:LO",
+            "cs:cs:PL",
+        ]
         self.con: psycopg.Connection[tuple[Any, ...]] | None = None
         self.date_format = "%Y-%m-%d"
 
