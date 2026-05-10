@@ -425,25 +425,32 @@ export default function GraphPage() {
     return m;
   }, [graph.cache, seedId]);
 
-  // Force-graph spring-strength helper: more similar = stronger spring =
-  // shorter rest length. d3-force's link force takes a `distance` accessor;
-  // we expose it via the imperative API.
+  // Force-graph spring-strength polish: more similar = stronger spring =
+  // shorter rest length. We reach into the d3-force "link" force via the
+  // imperative API exposed by react-force-graph-2d. When loaded through
+  // next/dynamic the ref isn't always forwarded to the inner component
+  // (Next 12 quirk), so guard everything and silently skip if the
+  // imperative methods aren't reachable — visual encoding via
+  // linkColor/linkWidth still communicates similarity to the user.
   useEffect(() => {
     const fg = fgRef.current;
-    if (!fg) return;
+    if (!fg || typeof fg.d3Force !== "function") return;
     const linkForce = fg.d3Force("link");
-    if (linkForce && typeof linkForce.distance === "function") {
-      linkForce.distance((link: any) => {
-        // Map similarity 0.30..0.85 → distance 200..40.
-        const s = typeof link.similarity === "number" ? link.similarity : 0.5;
-        const norm = Math.max(0, Math.min(1, (s - 0.3) / 0.55));
-        return 200 - norm * 160;
-      });
+    if (!linkForce || typeof linkForce.distance !== "function") return;
+    linkForce.distance((link: any) => {
+      // Map similarity 0.30..0.85 → distance 200..40.
+      const s = typeof link.similarity === "number" ? link.similarity : 0.5;
+      const norm = Math.max(0, Math.min(1, (s - 0.3) / 0.55));
+      return 200 - norm * 160;
+    });
+    if (typeof linkForce.strength === "function") {
       linkForce.strength((link: any) => {
         const s = typeof link.similarity === "number" ? link.similarity : 0.5;
         return Math.max(0.05, Math.min(1, (s - 0.2) * 1.5));
       });
-      fg.d3ReheatSimulation?.();
+    }
+    if (typeof fg.d3ReheatSimulation === "function") {
+      fg.d3ReheatSimulation();
     }
   }, [fgData]);
 
