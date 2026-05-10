@@ -1,0 +1,647 @@
+[
+  {
+    "paper_id": "10.1145/582419.582423",
+    "title": "BuddyCache: high-performance object storage for collaborative strong-consistency applications in a WAN",
+    "abstract": "Collaborative applications provide a shared work environment for groups of networked clients collaborating on a common task. They require strong consistency for shared persistent data and efficient access to fine-grained objects. These properties are difficult to provide in wide area networks because of high network latency.BuddyCache is a new transactional caching approach that improves the latency of access to shared persistent objects for collaborative strong-consistency applications in high-latency network environments. The challenge is to improve performance while providing the correctness and availability properties of a transactional caching protocol in the presence of node failures and slow peers.We have implemented a BuddyCache prototype and evaluated its performance. Analytical results, confirmed by measurements of the BuddyCache prototype using the multi-user 007 benchmark indicate that for typical Internet latencies, e.g. ranging from 40 to 80 milliseconds round trip time to the storage server, peers using BuddyCache can reduce by up to 50% the latency of access to shared objects compared to accessing the remote servers directly.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582423",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Magnus E.",
+        "last_name": "Bjornsson",
+        "institution": "Brandeis University"
+      },
+      {
+        "first_name": "Liuba",
+        "last_name": "Shrira",
+        "institution": "Brandeis University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BjornssonS02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582444",
+    "title": "Incommunicado: efficient communication for isolates",
+    "abstract": "Executing computations in a single instance of safe language virtual machine can improve performance and overall platform scalability. It also poses various challenges. One of them is providing a fast inter-application communication mechanism. In addition to being efficient, such a mechanism should not violate any functional and non-functional properties of its environment, and should also support enforcement of application-specific security policies. This paper explores the design and implementation of a communication substrate for applications executing within a single Java virtual machine modified to enable safe and interference-free execution of isolated computations. Designing an efficient extension that does not break isolation properties and at the same time pragmatically offers an intuitive API has proven non-trivial. This paper demonstrates a set of techniques that lead to at least an eight-fold performance improvement over the in-process inter-application communication using standard mechanisms offered by the Java platform.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582444",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Krzysztof",
+        "last_name": "Palacz",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Grzegorz",
+        "last_name": "Czajkowski",
+        "institution": ""
+      },
+      {
+        "first_name": "Laurent",
+        "last_name": "Daynas",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/PalaczVCD02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582439",
+    "title": "Write barrier removal by static analysis",
+    "abstract": "We present a new analysis for removing unnecessary write barriers in programs that use generational garbage collection. To our knowledge, this is the first static program analysis for this purpose. Our algorithm uses a pointer analysis to locate assignments that always create a reference from a younger object to an older object, then transforms the program to remove the write barriers normally associated with such assignments. We have implemented two transformations that reorder object allocations; these transformations can significantly increase the effectiveness of our write barrier removal algorithm.Our base technique assumes that the collector promotes objects in age order. We have developed an extension that enables the optimistic removal of write barriers, with the collector lazily adding each newly promoted object into a remembered set of objects whenever the compiler may have removed write barriers involving the object at statements that have yet to execute. This mechanism enables the application of our technique to virtually any memory management system that uses write barriers to enable generational garbage collection.Results from our implemented system show that our technique can remove substantial numbers of write barriers from the majority of the programs in our benchmark set, producing modest performance improvements of up to 6% of the overall execution time. Moreover, by dynamically instrumenting the executable, we are able to show that for six of our nine benchmark programs, our analysis is close to optimal in the sense that it removes the write barriers for almost all assignments that do not, in the observed execution, create a reference from an older object to a younger object. Finally, our results show that the overhead of our optimistic extension is negligible.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582439",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Karen",
+        "last_name": "Zee",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ZeeR02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582436",
+    "title": "Design pattern implementation in Java and aspectJ",
+    "abstract": "AspectJ implementations of the GoF design patterns show modularity improvements in 17 of 23 cases. These improvements are manifested in terms of better code locality, reusability, composability, and (un)pluggability.The degree of improvement in implementation modularity varies, with the greatest improvement coming when the pattern solution structure involves crosscutting of some form, including one object playing multiple roles, many objects playing one role, or an object playing roles in multiple pattern instances.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582436",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jan",
+        "last_name": "Hannemann",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Gregor",
+        "last_name": "Kiczales",
+        "institution": "University of British Columbia"
+      }
+    ],
+    "dblp_key": "conf/oopsla/HannemannK02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582432",
+    "title": "Online feedback-directed optimization of Java",
+    "abstract": "This paper describes the implementation of an online feedback-directed optimization system. The system is fully automatic; it requires no prior (offline) profiling run. It uses a previously developed low-overhead instrumentation sampling framework to collect control flow graph edge profiles. This profile information is used to drive several traditional optimizations, as well as a novel algorithm for performing feedback-directed control flow graph node splitting. We empirically evaluate this system and demonstrate improvements in peak performance of up to 17% while keeping overhead low, with no individual execution being degraded by more than 2% because of instrumentation.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582432",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Arnold",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hind",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Barbara G.",
+        "last_name": "Ryder",
+        "institution": "Rutgers, The State University of New Jersey"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ArnoldHR02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582430",
+    "title": "A constraint-based architecture for local search",
+    "abstract": "Combinatorial optimization problems are ubiquitous in numerous practical applications. Yet most of them are challenging, both from computational complexity and programming standpoints. Local search is one of the main approaches to address these problems. However, it often requires sophisticated incremental algorithms and data structures, and considerable experimentation. This paper proposes a constraint-based, object-oriented, architecture to reduce the development time of local search algorithms significantly. The architecture consists of declarative and search components. The declarative component includes invariants, which maintain complex expressions incrementally, and differentiable objects, which maintain properties that can be queried to evaluate the effect of local moves. Differentiable objects are high-level modeling concepts, such as constraints and functions, that capture combinatorial substructures arising in many applications. The search component supports various abstractions to specify heuristics and meta-heuristics. We illustrate the architecture with the language Comet and several applications, such as car sequencing and the progressive party problem. The applications indicate that the architecture allows for very high-level modeling of local search algorithms, while preserving excellent performance.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582430",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Laurent",
+        "last_name": "Michel",
+        "institution": "Brown University"
+      },
+      {
+        "first_name": "Pascal Van",
+        "last_name": "Hentenryck",
+        "institution": "Brown University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/MichelH02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582425",
+    "title": "Workflow enactment with continuation and future objects",
+    "abstract": "An increasing number of software developers are turning to workflow to separate the logic and the control aspects in their applications, thus making them more amenable to change. However, in spite of recent efforts to standardize and provide reusable workflow components, many developers build their own. This is a challenging endeavor and involves solving problems which seem incompatible with the object paradigm and current object-oriented programming languages. In the context of an object-oriented workflow framework, this paper demonstrates a novel approach that resolves this impedance mismatch with techniques drawn from programming language theory. This successful cross-pollination narrows the gap between the results of decades of research in programming languages and developers working hard to cope with change.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582425",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Dragoş A.",
+        "last_name": "Manolescu",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/Manolescu02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582441",
+    "title": "An analyzable annotation language",
+    "abstract": "The Alloy Annotation Language (AAL) is a language (under development) for annotating Java code based on the Alloy modeling language. It offers a syntax similar to the Java Modeling Language (JML), and the same opportunities for generation of run-time assertions. In addition, however, AAL offers the possibility of fully automatic compile-time analysis. Several kinds of analysis are supported, including: checking the code of a method against its specification; checking that the specification of a method in a subclass is compatible with the specification in the superclass; and checking properties relating method calls on different objects, such as that the equals methods of a class (and its overridings) induce an equivalence. Using partial models in place of code, it is also possible to analyze object-oriented designs in the abstract: investigating, for example, a view relationship amongst objects.The paper gives examples of annotations and such analyses. It presents (informally) a systematic translation of annotations into Alloy, a simple first-order logic with relational operators. By doing so, it makes Alloy's automatic analysis, which is based on state-of-the-art SAT solvers, applicable to the analysis of object-oriented programs, and demonstrates the power of a simple logic as the basis for an annotation language.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582441",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sarfraz",
+        "last_name": "Khurshid",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Darko",
+        "last_name": "Marinov",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Jackson",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/KhurshidMJ02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582437",
+    "title": "Implementing distribution and persistence aspects with aspectJ",
+    "abstract": "This paper reports our experience using AspectJ, a generalpurpose aspect-oriented extension to Java, to implement distribution and persistence aspects in a web-based information system. This system was originally implemented in Java and restructured with AspectJ. Our main contribution is to show that AspectJ is useful for implementing several persistence and distribution concerns in the application considered, and other similar applications. We have also identified a few drawbacks in the language and suggest some minor modifications that could significantly improve similar implementations. Despite the drawbacks, we argue that the AspectJ implementation is superior to the pure Java implementation. Some of the aspects implemented in our experiment are abstract and constitute a simple aspect framework. The other aspects are application specific but we suggest that different implementations might follow the same aspect pattern. The framework and the pattern allow us to propose architecture-specific guidelines that provide practical advice for both restructuring and implementing certain kinds of persistent and distributed applications with AspectJ.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582437",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sérgio",
+        "last_name": "Soares",
+        "institution": "Universidade Federal de Pernambuco"
+      },
+      {
+        "first_name": "Eduardo",
+        "last_name": "Laureano",
+        "institution": "Universidade Federal de Pernambuco"
+      },
+      {
+        "first_name": "Paulo",
+        "last_name": "Borba",
+        "institution": "Universidade Federal de Pernambuco"
+      }
+    ],
+    "dblp_key": "conf/oopsla/SoaresLB02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582433",
+    "title": "Lock reservation: Java locks can mostly do without atomic operations",
+    "abstract": "Because of the built-in support for multi-threaded programming, Java programs perform many lock operations. Although the overhead has been significantly reduced in the recent virtual machines, One or more atomic operations are required for acquiring and releasing an object's lock even in the fastest cases.This paper presents a novel algorithm called lock reservation. It exploits thread locality of Java locks, which claims that the locking sequence of a Java lock contains a very long repetition of a specific thread. The algorithm allows locks to be reserved for threads. When a thread attempts to acquire a lock, it can do without any atomic operation if the lock is reserved for the thread. Otherwise, it cancels the reservation and falls back to a conventional locking algorithm.We have evaluated an implementation of lock reservation in IBM's production virtual machine and compiler. The results show that it achieved performance improvements up to 53% in real Java programs.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582433",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Kiyokuni",
+        "last_name": "Kawachiya",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Akira",
+        "last_name": "Koseki",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Tamiya",
+        "last_name": "Onodera",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/KawachiyaKO02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582443",
+    "title": "Performance and scalability of EJB applications",
+    "abstract": "We investigate the combined effect of application implementation method, container design, and efficiency of communication layers on the performance scalability of J2EE application servers by detailed measurement and profiling of an auction site server.We have implemented five versions of the auction site. The first version uses stateless session beans, making only minimal use of the services provided by the Enterprise JavaBeans (EJB) container. Two versions use entity beans, one with container-managed persistence and the other with bean-managed persistence. The fourth version applies the session fasade pattern, using session beans as a fasade to access entity beans. The last version uses EJB 2.0 local interfaces with the session fasade pattern. We evaluate these different implementations on two popular open-source EJB containers with orthogonal designs. JBoss uses dynamic proxies to generate the container classes at run time, making an extensive use of reflection. JOnAS pre-compiles classes during deployment, minimizing the use of reflection at run time. We also evaluate the communication optimizations provided by each of these EJB containers.The most important factor in determining performance is the application implementation method. EJB applications with session beans perform as well as a Java servlets-only implementation and an order-of-magnitude better than most of the implementations based on entity beans. The fine-granularity access exposed by the entity beans limits scalability. Use of session fasade beans improves performance for entity beans, but only if local communication is very efficient or EJB 2.0 local interfaces are used. Otherwise, session fasade beans degrade performance.For the implementation using session beans, communication cost forms the major component of the execution time on the EJB server. The design of the container has little effect on performance. With entity beans, the design of the container becomes important. In particular, the cost of reflection affects performance. For implementations using session fasade beans, local communication cost is critically important. EJB 2.0 local interfaces improve the performance by avoiding the communication layers for local communications.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582443",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Emmanuel",
+        "last_name": "Cecchet",
+        "institution": "Centre Inria de l'Université Grenoble Alpes"
+      },
+      {
+        "first_name": "Julie",
+        "last_name": "Marguerite",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Willy",
+        "last_name": "Zwaenepoel",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/CecchetMZ02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582440",
+    "title": "Ownership types for safe programming: preventing data races and deadlocks",
+    "abstract": "This paper presents a new static type system for multithreaded programs; well-typed programs in our system are guaranteed to be free of data races and deadlocks. Our type system allows programmers to partition the locks into a fixed number of equivalence classes and specify a partial order among the equivalence classes. The type checker then statically verifies that whenever a thread holds more than one lock, the thread acquires the locks in the descending order.Our system also allows programmers to use recursive tree-based data structures to describe the partial order. For example, programmers can specify that nodes in a tree must be locked in the tree order. Our system allows mutations to the data structure that change the partial order at runtime. The type checker statically verifies that the mutations do not introduce cycles in the partial order, and that the changing of the partial order does not lead to deadlocks. We do not know of any other sound static system for preventing deadlocks that allows changes to the partial order at runtime.Our system uses a variant of ownership types to prevent data races and deadlocks. Ownership types provide a statically enforceable way of specifying object encapsulation. Ownership types are useful for preventing data races and deadlocks because the lock that protects an object can also protect its encapsulated objects. This paper describes how to use our type system to statically enforce object encapsulation as well as prevent data races and deadlocks. The paper also contains a detailed discussion of different ownership type systems and the encapsulation guarantees they provide.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582440",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Chandrasekhar",
+        "last_name": "Boyapati",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Lee",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BoyapatiLR02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582428",
+    "title": "Portable serialization of CORBA objects: a reflective approach",
+    "abstract": "The objective of this work is to define, implement and illustrate a portable serialization technique for CORBA objects. We propose an approach based on reflection: through open compilers facilities the internal state of CORBA objects is obtained and transformed into a language independent format using CORBA mechanisms. This state can be restored and used by objects developed using different languages and running on different software platforms. A tool was developed and applied to a Chat application as a case study. The proposed technique is used to exchange state information between a C++ and a Java incarnation of this CORBA service. An observer tool enables the object state to be displayed and analyzed by the user. The applicability of this technique to various domains is discussed. Beyond the interest of language reflection, we finally advocate that operating system and middleware reflection would also be powerful concepts to extend the work presented in this paper.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582428",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Marc‐Olivier",
+        "last_name": "Killijian",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Juan–Carlos",
+        "last_name": "Ruiz",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Jean-Charles",
+        "last_name": "Fabre",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/oopsla/KillijianRF02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582426",
+    "title": "Integrating independent components with on-demand remodularization",
+    "abstract": "This paper proposes language concepts that facilitate the separation of an application into independent reusable building blocks and the integration of pre-build generic software components into applications that have been developed by third party vendors. A key element of our approach are on-demand remodularizations, meaning that the abstractions and vocabulary of an existing code base are translated into the vocabulary understood by a set of components that are connected by a common collaboration interface. This general concept allows us to mix-and-match remodularizations and components on demand.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582426",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mira",
+        "last_name": "Mezini",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "Klaus",
+        "last_name": "Ostermann",
+        "institution": "Siemens (Germany)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/MeziniO02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582422",
+    "title": "Creating and preserving locality of java applications at allocation and garbage collection times",
+    "abstract": "The growing gap between processor and memory speeds is motivating the need for optimization strategies that improve data locality. A major challenge is to devise techniques suitable for pointer-intensive applications. This paper presents two techniques aimed at improving the memory behavior of pointer-intensive applications with dynamic memory allocation, such as those written in Java. First, we present an allocation time object placement technique based on the recently introduced notion of prolific (frequently instantiated) types. We attempt to co-locate, at allocation time, objects of prolific types that are connected via object references. Then, we present a novel locality based graph traversal technique. The benefits of this technique, when applied to garbage collection (GC), are twofold: (i) it improves the performance of GC due to better locality during a heap traversal and (ii) it restructures surviving objects in a way that enhances locality. On multiprocessors, this technique can further reduce overhead due to synchronization and false sharing. The experimental results, on a well-known suite of Java benchmarks (SPECjvm98 [26], SPECjbb2000 [27], and jOlden [4]), from an implementation of these techniques in the Jikes RVM [1], are very encouraging. The object co-allocation technique improves application performance by up to 21% (10% on average) in the Jikes RVM configured with a non-copying mark-and-sweep collector. The locality-based traversal technique reduces GC times by up to 20% (10% on average) and improves the performance of applications by up to 14% (6% on average) in the Jikes RVM configured with a copying semi-space collector. Both techniques combined can improve application performance by up to 22% (10% on average) in the Jikes RVM configured with a non-copying mark-and-sweep collector.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582422",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yefim",
+        "last_name": "Shuf",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Manish",
+        "last_name": "Gupta",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Hubertus",
+        "last_name": "Franke",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Jaswinder",
+        "last_name": "Singh",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ShufGFAS02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582421",
+    "title": "Reconsidering custom memory allocation",
+    "abstract": "Programmers hoping to achieve performance improvements often use custom memory allocators. This in-depth study examines eight applications that use custom allocators. Surprisingly, for six of these applications, a state-of-the-art general-purpose allocator (the Lea allocator) performs as well as or better than the custom allocators. The two exceptions use regions, which deliver higher performance (improvements of up to 44%). Regions also reduce programmer burden and eliminate a source of memory leaks. However, we show that the inability of programmers to free individual objects within regions can lead to a substantial increase in memory consumption. Worse, this limitation precludes the use of regions for common programming idioms, reducing their usefulness.We present a generalization of general-purpose and region-based allocators that we call reaps. Reaps are a combination of regions and heaps, providing a full range of region semantics with the addition of individual object deletion. We show that our implementation of reaps provides high performance, outperforming other allocators with region-like semantics. We then use a case study to demonstrate the space advantages and software engineering benefits of reaps in practice. Our results indicate that programmers needing fast regions should use reaps, and that most programmers considering custom allocators should instead use the Lea allocator.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582421",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Emery D.",
+        "last_name": "Berger",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Benjamin G.",
+        "last_name": "Zorn",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BergerZM02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582434",
+    "title": "Fast algorithm for creating space efficient dispatching tables with application to multi-dispatching",
+    "abstract": "The dispatching problem can be solved very efficiently in the single-inheritance~(SI) setting. In this paper we show how to extend one such solution to the multiple-inheritance~(MI) setting. This generalization comes with an increase to the space requirement by a small factor of κ This factor can be thought of as a metric of the complexity of the topology of the inheritance hierarchy.On a data set of~35 hierarchies totaling some~64 thousand types, our dispatching data structure, based on a novel type slicing technique, exhibits very significant improvements over previous dispatching techniques, not only in terms of the time for creating the underlying data structure, but also in terms of total space used.The cost is in the dispatching time, which is no longer constant, but doubly logarithmic in the number of types. Conversely, by using a simple binary search, dispatching time is logarithmic in the number of different implementations. In practice dispatching uses one indirect branch and, on average, only~2.5 binary branches.Our results also have applications to the space-efficient implementation of the more general problem of dispatching multi-methods.A by-product of our type slicing technique is an incremental algorithm for constant-time subtyping tests with favorable memory requirements. (The incremental version of the subtyping problem is to maintain the subtyping data structure in presence of additions of types to the inheritance hierarchy.)",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582434",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yoav",
+        "last_name": "Zibin",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Gil",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ZibinG02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582429",
+    "title": "Multiple instances and symbolic variables in executable sequence charts",
+    "abstract": "We extend live sequence charts (LSCs), a highly expressive variant of sequence diagrams, and provide the extension with an executable semantics. The extension involves support for instances that can bind to multiple objects and symbolic variables that can bind to arbitrary values. The result is a powerful executable language for expressing behavioral requirements on the level of inter-object interaction. The extension is implemented in full in our play-engine tool, with which one can execute the requirements directly without the need to build or synthesize an intra-object system model. It seems that in addition to many advantages in testing and requirements engineering, for some kinds of systems this could lead to the requirements actually serving as the final implementation.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582429",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Rami",
+        "last_name": "Marelly",
+        "institution": "Weizmann Institute of Science"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Harel",
+        "institution": "Weizmann Institute of Science"
+      },
+      {
+        "first_name": "Hillel",
+        "last_name": "Kugler",
+        "institution": "Weizmann Institute of Science"
+      }
+    ],
+    "dblp_key": "conf/oopsla/MarellyHK02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582451",
+    "title": "GCspy: an adaptable heap visualisation framework",
+    "abstract": "GCspy is an architectural framework for the collection, transmission, storage and replay of memory management behaviour. It makes new contributions to the understanding of the dynamic memory behaviour of programming languages (and especially object-oriented languages that make heavy demands on the performance of memory managers). GCspy's architecture allows easy incorporation into any memory management system: it is not limited to garbage-collected languages. It requires only small changes to the system in which it is incorporated but provides a simple to use yet powerful data-gathering API. GCspy scales to allow very large heaps to be visualised effectively and efficiently. It allows already-running, local or remote systems to be visualised and those systems to run at full speed outside the points at which data is gathered. GCspy's visualisation tool presents this information in a number of novel ways.Deep understanding of program behaviour is essential to the design of the next generation of garbage collectors and explicit allocators. Until now, no satisfactory tools have been available to assist the implementer in gaining an understanding of heap behaviour. GCspy has been demonstrated to be a practical solution to this dilemma. It has been used to analyse production Java virtual machines running applications of realistic sizes. Its use has revealed important insights into the interaction between application program and JVM and has led to the development of better garbage collectors.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582451",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Tony",
+        "last_name": "Printezis",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Richard",
+        "last_name": "Jones",
+        "institution": "University of Kent"
+      }
+    ],
+    "dblp_key": "conf/oopsla/PrintezisJ02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582448",
+    "title": "Alias annotations for program understanding",
+    "abstract": "One of the primary challenges in building and evolving large object-oriented systems is understanding aliasing between objects. Unexpected aliasing can lead to broken invariants, mistaken assumptions, security holes, and surprising side effects, all of which may lead to software defects and complicate software evolution.This paper presents AliasJava, a capability-based alias annotation system for Java that makes alias patterns explicit in the source code, enabling developers to reason more effectively about the interactions in a complex system. We describe our implementation, prove the soundness of the annotation system, and give an algorithm for automatically inferring alias annotations. Our experience suggests that the annotation system is practical, that annotation inference is efficient and yields appropriate annotations, and that the annotations can express important invariants of data structures and of software architectures.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582448",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jonathan",
+        "last_name": "Aldrich",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Valentin",
+        "last_name": "Kostadinov",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/oopsla/AldrichKC02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582445",
+    "title": "Sifting out the mud: low level C++ code reuse",
+    "abstract": "More and more computers are being incorporated in devices where the available amount of memory is limited. This contrasts with the increasing need for additional functionality and the need for rapid application development. While object-oriented programming languages, providing mechanisms such as inheritance and templates, allow fast development of complex applications, they have a detrimental effect on program size. This paper introduces new techniques to reuse the code of whole procedures at the binary level and a supporting technique for data reuse. These techniques benefit specifically from program properties originating from the use of templates and inheritance. Together with our previous work on code abstraction at lower levels of granularity, they achieve additional code size reductions of up to 38% on already highly optimized and compacted binaries, without sacrificing execution speed. We have incorporated these techniques in Squeeze++, a prototype link-time binary rewriter for the Alpha architecture, and extensively evaluate them on a suite of 8 real-life C++ applications. The total code size reductions achieved post link-time (i.e. without requiring any change to the compiler) range from 27 to 70%, averaging at around 43%.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582445",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Bjorn De",
+        "last_name": "Sutter",
+        "institution": "Ghent University Hospital"
+      },
+      {
+        "first_name": "Bruno De",
+        "last_name": "Bus",
+        "institution": "Ghent University Hospital"
+      },
+      {
+        "first_name": "Koen De",
+        "last_name": "Bosschere",
+        "institution": "Ghent University Hospital"
+      }
+    ],
+    "dblp_key": "conf/oopsla/SutterBB02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582449",
+    "title": "Towards a formalization for COM part i: the primitive calculus",
+    "abstract": "We introduce in this paper a typed calculus intended to capture the execution model of COM. The innovation of this calculus is to model very low-level aspects of the COM framework, specifically the notion of interface pointers. This is handled by specifying an allocation semantics for the calculus, thereby modeling heap allocation of interfaces explicitly. Having an explicit way of talking about interface pointers allows us to model in a reasonable way the notions of interface sharing and object identity. We introduce a type system that can be used to disambiguate between specification and implementation of interfaces. The type system moreover can capture a notion of COM conformance, that is, the legality of COM components. We discuss extensions of the calculus to handle subtyping of interfaces, dynamic interface negotiation and aggregation.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582449",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Riccardo",
+        "last_name": "Pucella",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Pucella02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582452",
+    "title": "Access rights analysis for Java",
+    "abstract": "Java 2 has a security architecture that protects systems from unauthorized access by mobile or statically configured code. The problem is in manually determining the set of security access rights required to execute a library or application. The commonly used strategy is to execute the code, note authorization failures, allocate additional access rights, and test again. This process iterates until the code successfully runs for the test cases in hand. Test cases usually do not cover all paths through the code, so failures can occur in deployed systems. Conversely, a broad set of access rights is allocated to the code to prevent authorization failures from occurring. However, this often leads to a violation of the \"Principle of Least Privilege\"This paper presents a technique for computing the access rights requirements by using a context sensitive, flow sensitive, interprocedural data flow analysis. By using this analysis, we compute at each program point the set of access rights required by the code. We model features such as multi-threading, implicitly defined security policies, the semantics of the Permission.implies method and generation of a security policy description. We implemented the algorithms and present the results of our analysis on a set of programs. While the analysis techniques described in this paper are in the context of Java code, the basic techniques are applicable to access rights analysis issues in non-Java-based systems.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582452",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Larry",
+        "last_name": "Koved",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Pistoia",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Aaron",
+        "last_name": "Kershenbaum",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/oopsla/KovedPK02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582453",
+    "title": "Language-specific make technology for the Java programming language",
+    "abstract": "Keeping the code of a Java application consistent (code is consistent if all of the project classes can be recompiled together without errors) prevents late linking errors, and thus may significantly improve development turnaround time. In this paper we describe a make technology for the Java programming language, that is based on smart dependency checking, guarantees consistency of the project code, and at the same time reduces the number of source code recompilations to the minimum. After project code consistency is initially assured by complete recompilation, the information extracted from the binary classes is stored in a so-called project database. Whenever the source code for some class C is changed, its recompiled binary is compared to the old version of C preserved in the project database. As a result, we find a minimum subset of classes that depend on C and may be affected by the particular change made to it. These are recompiled in turn, and absence of compilation errors at this phase guarantees the consistency of the new project code. To determine which dependent classes to recompile, we categorize all source incompatible changes, and for each category establish a criterion for finding the smallest possible subset of dependent classes.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582453",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mikhail",
+        "last_name": "Dmitriev",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/Dmitriev02",
+    "venue": "oopsla",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/582419.582447",
+    "title": "Ownership, encapsulation and the disjointness of type and effect",
+    "abstract": "Ownership types provide a statically enforceable notion of object-level encapsulation. We extend ownership types with computational effects to support reasoning about object-oriented programs. The ensuing system provides both access control and effects reporting. Based on this type system, we codify two formal systems for reasoning about aliasing and the disjointness of computational effects. The first can be used to prove that evaluation of two expressions will never lead to aliases, while the latter can be used to show the non-interference of two expressions.",
+    "date": "2002-01-01",
+    "link": "https://doi.org/10.1145/582419.582447",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Dave",
+        "last_name": "Clarke",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Sophia",
+        "last_name": "Drossopoulou",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ClarkeD02",
+    "venue": "oopsla",
+    "year": 2002
+  }
+]
