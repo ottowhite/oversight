@@ -1,0 +1,583 @@
+[
+  {
+    "paper_id": "10.1145/567752.567777",
+    "title": "Data Flow Analysis of Communicating Processes",
+    "abstract": "Data flow analysis is a technique essential to the compile-time optimization of computer programs, wherein facts relevant to program optimizations are discovered by the global propagation of facts obvious locally.This paper extends flow analysis techniques developed for sequential programs to the analysis of communicating, concurrent processes.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567777",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John H.",
+        "last_name": "Reif",
+        "institution": "University of Rochester"
+      }
+    ],
+    "dblp_key": "conf/popl/Reif79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567760",
+    "title": "Recursion in Logics of Programs",
+    "abstract": "The problem of reasoning about recursive programs is considered. Utilizing a simple analogy between iterative and recursive programs viewed as unfinite unions of finite terms, we carry out an investigation analogous to that carried out recently for iterative programs. The main results are the arithmetical completeness of axiom systems for (1) context-free dynamic logic and (2) its extension for dealing with infinite computations. Having the power of expression of these logics in mind, these results can be seen to supply (as corollaries) complete proof methods for the various kinds of correctness of recursive programs.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567760",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Harel",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/Harel79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567766",
+    "title": "Characterization and Elimination of Redundancy in Recursive Programs",
+    "abstract": "Many well-known functions are computed by interpretations of the recursion schemaprocedure f(x) ;if p(x)then return a(x)else return b(x,f(c1(x)),…,f(cn(x)))Some of these interpretations define redundant computations because they lead to multiple calls on f with identical argument values. The existence and nature of the redundancy depend on properties of the functions ci. We explore four sets of assumptions about these functions. We analyze directed acyclic graphs formed by merging the nodes of the computation tree for f(x) which are known to be equal for each set of assumptions. In each case there is a transformed program which computes f(x) without redundancy, provided that certain additional assumptions about p, a, and the ci are satisfied. The transformed programs avoid redundancy by saving exactly those intermediate results which will be needed again later in the computation. These programs are all valueless recursive procedures which leave intermediate and final results in specified global locations; in each case recursion can be eliminated without use of a stack. We compare the storage requirements of the transformed programs, discuss the applicability of these transformations to an automatic program improvement system, and present a general criterion for establishing the existence of redundancy.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567766",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Norman",
+        "last_name": "Cohen",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/popl/Cohen79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567757",
+    "title": "Principles of Proving Programs Correct in Gypsy",
+    "abstract": "Concurrency in Gypsy is based on a unique, formal approach to specifying and proving systems of concurrent processes. The specification and proof methods are designed so that proofs of individual processes are totally independent, even when operating concurrently. These methods can be applied both to terminating and non-terminating processes, and the proof methods are well suited to automated verification aids. The basic principles of these methods and their interaction with the design of Gypsy are described.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567757",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Donald I.",
+        "last_name": "Good",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "R. M.",
+        "last_name": "Cohen",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Keeton-Williams",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/popl/GoodC79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567753",
+    "title": "A Compact, Machine-Independent Peephole Optimizer",
+    "abstract": "Object code optimizers pay dividends but are usually ad hoc and machine-dependent. They would be easier to understand if, instead of performing many ad hoc optimizations, they performed a few general optimizations that give the same effect. They would be easier to implement if they were machine-independent and parametrized by symbolic machine descriptions. This paper describes such a compact, machine-independent peephole optimizer.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567753",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Christopher W.",
+        "last_name": "Fraser",
+        "institution": "University of Arizona"
+      }
+    ],
+    "dblp_key": "conf/popl/Fraser79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567758",
+    "title": "The Evolution of List-Copying Algorithms",
+    "abstract": "How can one organize the understanding of complex algorithms? People have been thinking about this issue at least since Euclid first tried to explain his innovative greatest common divisor algorithm to his colleagues, but for current research into verifying state-of-the-art programs, some precise answers to the question are needed. Over the past decade the various verification methods which have been introduced (inductive assertions, structural induction, least-fixedpoint semantics, etc.) have established many basic principles of program verification (which we define as: establishing that a program text satisfies a given pair of input-output specifications). However, it is no coincidence that most published examples of the application of these methods have dealt with \"toy programs\" of carefully considered simplicity.Experience indicates that these \"first generation\" principles, with which one can easily verify a three-line greatest common divisor algorithm, do not directly enable one to verify a 10,000 line operating system (or even a 50 line list-processing algorithm) in complete detail. To verify complex programs, additional techniques of organization, analysis and manipulation are required. (That a similar situation exists in the writing of large, correct programs has long been recognized -- structured programming being one solution.)This paper examines the usefulness of correctness-preserving program transformations (see [6]) in structuring fairly complex correctness proofs. Using our approach one starts with a simple, high-level (or \"abstract\") algorithm which can be easily verified, then successively refines it by implementing the abstractions of the initial algorithm to obtain various final, detailed algorithms. In Section 2 we introduce the technique by deriving the Deutsch-Schorr-Waite list-marking algorithm [14]. Our main example is the more complex problem of verifying bounded-workspace list-copying algorithms: Section 3 defines the issues, Section 4 presents the key intermediate algorithm in detail and Section 5 considers three of the most complex (published) implementations of list-copying, one of which is discussed in detail. In Section 6 we make some general remarks on program verification and the relevance of our results to the (larger) field of program correctness; Section 7 mentions some related work.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567758",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Stanley Chun-Wei",
+        "last_name": "Lee",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "W.P.",
+        "last_name": "deRoever",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Susan L.",
+        "last_name": "Gerhart",
+        "institution": "Marina Del Rey Hospital"
+      }
+    ],
+    "dblp_key": "conf/popl/LeeGR79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567772",
+    "title": "Synthesis of Resource Invariants for Concurrent Programs",
+    "abstract": "Owicki and Gries have developed a proof system for conditional critical regions. In their system logically related variables accessed by more than one process are grouped together as resources, and processes are allowed access to a resource only in a critical region for that resource. Proofs of synchronization properties are constructed by devising predicates called resource invariants which describe relationships among the variables of a resource when no process is in a critical region for the resource. In constructing proofs using the system of Owicki and Gries, the programmer is required to supply the resource invariants.We show that convexity plays a key role in the derivation of strong resource invariants. We also develop methods for automatically synthesizing resource invariants. Specifically, we characterize the resource invariants of a concurrent program as least fixpoints of a functional which can be obtained from the text of the program. By using this fixpoint characterization and a widening operator which exploits our observation on the importance of convexity, good approximations may be obtained for the resource invariants of many concurrent programs.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567772",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Edmund M.",
+        "last_name": "Clarke",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/popl/Clarke79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567764",
+    "title": "Automatic Generation of Near-Optimal Translators for Noncircular Attribute Grammars",
+    "abstract": "Attribute grammars are an extension of context-free grammars devised by Knuth as a formalism for specifying the semantics of a context-free language along with the syntax of the language. The syntactic phase of the translation process has been extensively studied and many techniques are available for automatically generating efficient parsers for context-free grammars. Attribute grammars offer the prospect of similarly automating the implementation of the semantic phase. In this paper we present a general method of constructing, for any non-circular attribute grammar, a deterministic translator which will perform the semantic evaluation of each syntax tree of the grammar in time linear with the size of the tree. Each tree is traversed in a manner particularly suited to the shape of the tree, yielding a near optimal evaluation order for that tree. Basically, the translator consists of a finite set of \"Local Control Automata\", one for each production; these are ordinary finite-state acyclic automata augmented with some special features, which are used to regulate the evaluation process of each syntax tree. With each node in the tree there will be associated the Local Control Automaton of the production applying at the node. At any given time during the translation process all Local Control Automata are inactive, except for the one associated with the currently processed node, which is responsible for directing the next steps taken by the translator until control is finally passed to a neighbour node, reactivating its Local Control Automaton. The Local Control Automata of neighbour nodes communicate with each other.The construction of the translator is custom tailored to each individual attribute grammar. The dependencies among the attributes occurring in the semantic rules are analysed to produce a near-optimal evaluation strategy for that grammar. This strategy ensures that during the evaluation process, each time the translator enters some subtree of the syntax tree, at least one new attribute evaluation will occur at each node visited. It is this property which distinguishes the method presented here from previously known methods of generating translators for unrestricted attribute grammars, and which causes the translators to be near-optimal.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567764",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Rina",
+        "last_name": "Cohen",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Eli",
+        "last_name": "Harry",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/CohenH79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567759",
+    "title": "First Order Programming Logic",
+    "abstract": "First Order Programming Logic is a simple, yet powerful formal system for reasoning about recursive programs. In its simplest form, it has one major limitation: it cannot establish any property of the least fixed point of a recursive program which is false for some other fixed point. To rectify this weakness, we present two intuitively distinct approaches to strengthening First Order Programming Logic and prove that either extension makes the logic relatively complete. In the process, we prove that the two approaches are formally equivalent. The relative completeness of the extended logic is significant because it suggests it can establish all \"ordinary\" properties (obviously we cannot escape the Godelian incompleteness inherent in any programming logic) of recursive programs including those which compute partial functions.The second contribution of this paper is to establish that First Order Programming Logic is applicable to iterative programs as well. In particular, we show that the intermittent assertions method--an informal proof method for iterative programs which has not been formalized--is conveniently formalized simply as sugared First Order Programming Logic applied to the recursive translations of iterative programs.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567759",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Cartwright",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "McCarthy",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/CartwrightM79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567754",
+    "title": "A PL/CV Precis",
+    "abstract": "PL/CV is a new formal system which mixes commands and assertions. It includes axioms and rules for a theory of programming over integers and characters. Since arguments in the theory can be checked by the PL/CV Proof Checker, the system offers an approach to mechanical program verification. The Proof Checker is efficient enough for classroom use. Early experience with PL/CV indicates that it nicely supports formal verification of elementary arguments. Continued work should enable the formalization of non-elementary reasoning as well.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567754",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robert L.",
+        "last_name": "Constable",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Scott D.",
+        "last_name": "Johnson",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/ConstableJ79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567763",
+    "title": "The Universality of Data Retrieval Languages",
+    "abstract": "We consider the question of how powerful a relational query language should be and state two principles that we feel any query language should satisfy. We show that although relational algebra and relational calculus satisfy these principles, there are certain queries involving least fixed points that cannot be expressed by these languages, yet that also satisfy the principles. We then consider various extensions of relational algebra to enable it to answer such queries. Finally, we discuss our extensions to relational algebra in terms of a new programming language oriented model for queries.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567763",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Alfred V.",
+        "last_name": "Aho",
+        "institution": ""
+      },
+      {
+        "first_name": "Jeffrey D.",
+        "last_name": "Ullman",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/AhoU79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567767",
+    "title": "The Functional Power of Parameter Passage Mechanisms",
+    "abstract": "Article Free Access Share on The functional power of parameter passage mechanism Author: Adrienne Critcher Baylor University, Waco, Texas Baylor University, Waco, TexasView Profile Authors Info & Claims POPL '79: Proceedings of the 6th ACM SIGACT-SIGPLAN symposium on Principles of programming languagesJanuary 1979 Pages 158–168https://doi.org/10.1145/567752.567767Online:01 January 1979Publication History 2citation201DownloadsMetricsTotal Citations2Total Downloads201Last 12 Months5Last 6 weeks1 Get Citation AlertsNew Citation Alert added!This alert has been successfully added and will be sent to:You will be notified whenever a record that you have chosen has been cited.To manage your alert preferences, click on the button below.Manage my Alerts New Citation Alert!Please log in to your account Save to BinderSave to BinderCreate a New BinderNameCancelCreateExport CitationPublisher SiteeReaderPDF",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567767",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Adrienne",
+        "last_name": "Critcher",
+        "institution": "Baylor University"
+      }
+    ],
+    "dblp_key": "conf/popl/Critcher79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567776",
+    "title": "Flow Analysis and Optimization of Lisp-Like Structures",
+    "abstract": "In [12] the authors introduced the concept of binding time optimization and presented a series of data flow analytic methods for determining some of the binding time characteristics of programs. In this paper we extend that work by providing methods for determining the class of shapes which an unbounded data object may assume during execution of a LISP-like program, and describe a number of uses to which that information may be put to improve storage allocation in compilers and interpreters for advanced programming languages.We are concerned chiefly with finding, for each program point and variable a finite description of a set of graphs which includes all the shapes of values the variable could assume at that point during the execution of a program. If this set is small or regular in structure, this information can be used to optimize the program's execution, mainly by use of more efficient storage allocation schemes.In the first part we show how to construct from a program without selective updating a tree grammar whose nonterminals generate the desired sets of graphs; in this case they will all be trees. The tree grammars are of a more general form than is usually studied [8, 19], so we show that they may be converted to the usual form. The resulting tree grammar could naturally be viewed as a recursive type definition [11] of the values the variables may assume. Further, standard algorithms may be employed to test for infiniteness, emptiness or linearity of the tree structure.In the second part selective updating is allowed, so an alternate semantics is introduced which more closely resembles traditional LISP implementations, and which is equivalent to the tree model for programs without selective updating. In this model data objects are directed graphs. We devise a finite approximation method which provides enough information to detect cell sharing and cyclic structures whenever they can possibly occur. This information can be used to recognize when the use of garbage collection or of reference counts may be avoided.The work reported in the second part of this paper extends that of Schwartz [17] and Cousot and Cousot [7]. They have developed methods for determining whether the values of two or more variables share cells, while we provide information on the detailed structure of what is shared. The ability to detect cycles is also new. It also extends the work of Kaplan [13], who distinguishes only binary relations among the variables of a program, does not handle cycles, and does not distinguish selectors (so that his analysis applies to nodes representing sets rather than ordered tuples).",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567776",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Neil D.",
+        "last_name": "Jones",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Steven S.",
+        "last_name": "Muchnick",
+        "institution": "University of Kansas"
+      }
+    ],
+    "dblp_key": "conf/popl/JonesM79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567778",
+    "title": "Systematic Design of Program Analysis Frameworks",
+    "abstract": "Semantic analysis of programs is essential in optimizing compilers and program verification systems. It encompasses data flow analysis, data type determination, generation of approximate invariant assertions, etc.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567778",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Cousot",
+        "institution": "Laboratoire d'Informatique de Grenoble"
+      },
+      {
+        "first_name": "Radhia",
+        "last_name": "Cousot",
+        "institution": "Laboratoire d'Informatique de Grenoble"
+      }
+    ],
+    "dblp_key": "conf/popl/CousotC79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567769",
+    "title": "Specifying Programming Language Semantics",
+    "abstract": "Hoare and Lauer [1974] have advocated using a variety of styles of programming language definitions to fit the variety of users from implementers to program verifiers. They consider the question of whether different definitions and specifications determine the same language by showing that the definitions are what they call \"consistent\". However, their treatment skirts the question of whether their definitions can each be taken to specify the language adequately. Although, as we will show, any one of the kinds of semantics they discuss -- operational, relational, deductive -- can be used to specify meaning uniquely, Hoare and Lauer do not make the case in their paper. In fact, both their relational and deductive definitions are satisfied by several different semantics, only one of which is desired.Thus, the main point of this paper is to clarify the characteristics of a proper specification of language semantics and to formulate alternative specifications each of which is equally good as the language definition. We basically agree with Hoare and Lauer that several specifications can and should be given, but are disturbed by confusions about such specifications, some of which are illustrated in their paper. In particular we refer to confusions between the mathematical object which is designated to be the meaning of a program and methods for specifying that object; the similar confusion between predicate and expression; between consistency and equivalence of two definitions; between completeness of a theory and its having a unique model. While these issues are familiar in mathematical logic, we take this opportunity to survey them in the context of programming language semantics.This paper can be read without prior familiarity with Hoare and Lauer's paper. The authors plan another paper extending this work which will include a more comprehensive bibliography.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567769",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Irene",
+        "last_name": "Greif",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Albert R.",
+        "last_name": "Meyer",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/GreifM79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567762",
+    "title": "The Logic of a Relational Data Manipulation Language",
+    "abstract": "A logic for a relational data manipulation language is defined by augmenting a known logic of programs with rules for two new statements: the relational assignment, which assign a relational expression to a relation, and the random tuple selection, which extracts an arbitrary tuple from a relation. The usual operations on relations-retrieve, insert, delete, update-are then defined as special cases of the relational assignment, and the for-each construct scanning a relation tuple by tuple is introduced with the help of the random tuple selection.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567762",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Marco A.",
+        "last_name": "Casanova",
+        "institution": "Harvard University"
+      },
+      {
+        "first_name": "Philip A.",
+        "last_name": "Bernstein",
+        "institution": "Harvard University"
+      }
+    ],
+    "dblp_key": "conf/popl/CasanovaB79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567774",
+    "title": "Predicate Path Expressions",
+    "abstract": "Path expressions are a tool for synchronization of concurrent processes. They are an integral part of the data abstraction mechanism in a programming language, and specify synchronization entirely in terms of the allowable sequences of operations on an object of the abstract data type. This paper describes an attempt to push the path expression synchronization construct along three dimensions - specification, verification, and implementation - into a useful theoretical and practical tool. We define Predicate Path Expressions (PPEs), which allow for a more convenient specification of many synchronization problems. The predicate is a powerful extension to path expressions that increases their expressiveness. We formally define the semantics of PPEs by a transformation to a corresponding nondeterministic program, thus allowing the use of known verification techniques for nondeterministic programs to be used for proving properties of the PPE and the data abstraction of which it is a part. We also describe our existing implementation, in Algol 68, of a data abstraction mechanism that incorporates PPEs.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567774",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sten F.",
+        "last_name": "Andler",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/Andler79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567755",
+    "title": "Automatic Improvement of Programs in Very High Level Languages",
+    "abstract": "In this paper we study the profitability of applying the \"reduction in strength\" technique to programs in set-theoretic languages, focusing on the high level constructs involving set-formers. We define recursively two classes of expressions we shall call inductively computable set-formers and inductively computable predicates which can be evaluated with an order of magnitude improvement of the asymptotic running time as compared to the straightforward evaluation. The quantity developed for this comparison can be used to derive further results when additional information is known. For programs written in very high level languages, which often consist mostly of \"nested\" iterative constructs, this technique amounts to altering the \"algorithm\" used to compute the program by replacing it with an asymptotically faster algorithm.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567755",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Amelia C.",
+        "last_name": "Fong",
+        "institution": "University of Guelph"
+      }
+    ],
+    "dblp_key": "conf/popl/Fong79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567756",
+    "title": "An Efficient Way to Find Side Effects of Procedure Calls and Aliases of Variables",
+    "abstract": "Article Free Access Share on An efficient way to find the side effects of procedure calls and the aliases of variables Author: John P. Banning Stanford Linear Accelerator Center, Stanford, California and Amdahl Corporation, Sunnyvale, California Stanford Linear Accelerator Center, Stanford, California and Amdahl Corporation, Sunnyvale, CaliforniaView Profile Authors Info & Claims POPL '79: Proceedings of the 6th ACM SIGACT-SIGPLAN symposium on Principles of programming languagesJanuary 1979 Pages 29–41https://doi.org/10.1145/567752.567756Online:01 January 1979Publication History 161citation871DownloadsMetricsTotal Citations161Total Downloads871Last 12 Months15Last 6 weeks5 Get Citation AlertsNew Citation Alert added!This alert has been successfully added and will be sent to:You will be notified whenever a record that you have chosen has been cited.To manage your alert preferences, click on the button below.Manage my AlertsNew Citation Alert!Please log in to your account Save to BinderSave to BinderCreate a New BinderNameCancelCreateExport CitationPublisher SiteeReaderPDF",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567756",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Banning",
+        "institution": "SLAC National Accelerator Laboratory"
+      }
+    ],
+    "dblp_key": "conf/popl/Banning79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567770",
+    "title": "Decisions for &quot;Type&quot; in APL",
+    "abstract": "The meaning of \"type\" in an APL extended to contain nested arrays is discussed. It is shown that \"type\" is closely related to the variety of empty arrays of the same shape and to the possible fill values needed in the \"expand\" and \"take\" functions. Choices for fill functions are systematically presented. They are classified according to the possibility of maintaining important identities involving level-manipulating functions in the case of empty arguments, to their effect on other design choices still to be made (the restriction to homogeneous arrays and the definition of the nature of basic data), and to their ability to express \"type\" in a natural way.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567770",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "W. E.",
+        "last_name": "Gull",
+        "institution": "Queen's University"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Jenkins",
+        "institution": "Queen's University"
+      }
+    ],
+    "dblp_key": "conf/popl/GullJ79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567775",
+    "title": "Type Checking in an Imperfect World",
+    "abstract": "We present an algorithn for the determination of run-time types which functions in the presence of errors, and show that it provides more information than that obtained using a previously published algorithm.In Section 1 we define the problem and state the requirements for a practically useful type prediction algorithm. In Section 2 we introduce a model programing language and in Section 3 define type inference rules for that language. Section 4 presents a type prediction algorithm and Section 5 describes how to apply the results to solve the problems stated in Section 1. Section 6 presents an example of our procedure and demonstrates how previous work does not satisfy all requirements.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567775",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Terrence C.",
+        "last_name": "Miller",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "conf/popl/Miller79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567765",
+    "title": "Space-Time Tradeoffs for Linear Recursion",
+    "abstract": "A linear recursive procedure is one in which a procedural call can activate at most one other procedural call. When linear recursion cannot be replaced by iteration, it is usually implemented with a stack of size proportional to the depth of recursion. In this paper we analyze implementations of linear recursion which permit large reductions in storage space at the expense of a small increase in computation time. For example, if the depth of recursion is n, storage space can be reduced to √n at the cost of a constant factor increase in running time. The problem is treated by abstracting linear recursion into the pebbling of a simple graph and for this abstraction we exhibit the optimal space-time tradeoffs.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567765",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sowmitri",
+        "last_name": "Swamy",
+        "institution": "University of Illinois System"
+      },
+      {
+        "first_name": "John E.",
+        "last_name": "Savage",
+        "institution": "Brown University"
+      }
+    ],
+    "dblp_key": "conf/popl/SavageS79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567761",
+    "title": "Process Logic",
+    "abstract": "We discuss problems arising in reasoning about on-going processes, using the modal constructs after, throughout, during, and preserves. Earlier work established decidability of the theory whose language included only the first two of these, along with program connectives | , ; and *. Here we give a complete Gentzen-type axiomatizations for useful combinations of the other modalities. We also indicate how such Gentzen-type axiomatizations lead to deterministic exponential time upper bounds on the complexity of decision procedures for these languages. It remains an open problem how to completely axiomatize the combination of modalities during and preserves.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567761",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Vaughan",
+        "last_name": "Pratt",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Pratt79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567771",
+    "title": "Automatic Data Structure Selection in SETL",
+    "abstract": "SETL is a very high level programming language supporting set theoretical syntax and semantics. It allows algorithms to be programmed rapidly and succinctly without requiring data structure declarations to be supplied, though such declarations can be manually specified later, without recoding the program, to improve the efficiency of program execution. We describe a new technique for automatic selection of appropriate data representations during compile-time for undeclared, or partially declared programs,and present an efficient data structure selection algorithm, whose complexity is comparable with those of the fastest known general data-flow algorithms of Tarjan [TA2] and Reif [RE].",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567771",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Edmond",
+        "last_name": "Schonberg",
+        "institution": "Illinois Institute of Technology"
+      },
+      {
+        "first_name": "Jacob T.",
+        "last_name": "Schwartz",
+        "institution": "Courant Institute of Mathematical Sciences"
+      },
+      {
+        "first_name": "Micha",
+        "last_name": "Sharir",
+        "institution": "Courant Institute of Mathematical Sciences"
+      }
+    ],
+    "dblp_key": "conf/popl/SchonbergSS79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567779",
+    "title": "Certifying Information Flow Properties of Programs: An Axiomatic Approach",
+    "abstract": "Interesting program properties other than functional correctness can be addressed and proved using axiomatic logic. An information flow logic that defines the flow semantics of a parallel programming language is presented. Proofs in this logic can be used to certify programs with respect to information security policies. The flow logic can also be combined with correctness logics to form an even more powerful deductive system.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567779",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Richard P.",
+        "last_name": "Reitman",
+        "institution": "Syracuse University"
+      },
+      {
+        "first_name": "Gregory R.",
+        "last_name": "Andrews",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/ReitmanA79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567768",
+    "title": "Interpreter Generation Using Tree Pattern Matching",
+    "abstract": "Equations provide a rich, intuitively understandable notation for describing nonprocedural computing languages such as LISP and Lucid. In this paper, we present techniques for automatically generating interpreters from equations, analagous to well-known techniques for generating parsers from context-free grammars. The interpreters so generated are exactly faithful to the simple traditional mathematical meaning of the equations-no lattice-theoretic or fixpoint ideas are needed to explain the correspondence. The main technical problem involved is the extension of efficient practical string matching algorithms to trees. We present some new efficient table-driven matching techniques for a large class of trees, and point out unsolved problems in extending this class. We believe that the techniques of this paper form the beginnings of a useful discipline of interpreting, comparable to the existing discipline of parsing.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567768",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Christoph M.",
+        "last_name": "Hoffmann",
+        "institution": ""
+      },
+      {
+        "first_name": "Michael J.",
+        "last_name": "O’Donnell",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/HoffmanO79",
+    "venue": "popl",
+    "year": 1979
+  },
+  {
+    "paper_id": "10.1145/567752.567773",
+    "title": "String Pattern Matching in Polynomial Time",
+    "abstract": "There is a wide range of applications for string processing and SNOBOL4 (Griswold, et al. [1971]) has come to be the most widely implemented and accepted language for such applications. No doubt one of the principle reasons for this acceptance is the data structure around which the language is organized, the string pattern. This structure together with the associated pattern matching process provide great flexibility. Nevertheless it has been widely recognized in informal terms that the pattern matching process is often grossly inefficient (Ripley & Griswold [1975], Dewar & McCann [1977]) and that the pattern structure is notoriously difficult to explain and use (Ripley & Griswold [1975], Stewart [1975]). Each of these areas of difficulty relates to such things as two modes of operation (quick-full scan), problems with left-recursion, heuristics in the scan, etc. Some difficulties are inherent with string patterns but many are not; we feel the developments described here help to clarify this situation.In section 2 we describe the formal model upon which we base this work. This allows the careful analysis of the variety of sets of strings which may be specified by the patterns which we admit and deduction to be made concerning the possibility/impossibility of algorithms of interest. With SNOBOL4 it has been the case that the careful definition of the meaning of a pattern is in terms of the actions taken by the pattern matching algorithm. This has led to the incorporation of idiosyncrasies of a particular algorithm into the understanding of the pattern structure. This seems akin to using a compiler as the definition of a programming language and we believe it is important to future progress to have other alternatives.In section 3 we point out that the worst-case execution time of the usual SNOBOL pattern matching algorithm is exponential in the length of the subject string, even on some quite simple patterns. We then present an algorithm whose worst-case time is polynomial and that operates on patterns which include a true set complement operator. As side benefits we find that the algorithm is not multi-modal and correctly handles the null string as an alternative and left-recursion.In order to conserve space we will assume throughout this paper that the reader is familiar with the idea of a string pattern in the sense that it is described in Griswold et al. [1971]. Also it is probably necessary that the reader have some general knowledge of the formal languages area.",
+    "date": "1979-01-01",
+    "link": "https://doi.org/10.1145/567752.567773",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "K. C.",
+        "last_name": "Liu",
+        "institution": "University of Wisconsin–Milwaukee"
+      },
+      {
+        "first_name": "A. C.",
+        "last_name": "Fleck",
+        "institution": "University of Iowa"
+      }
+    ],
+    "dblp_key": "conf/popl/LiuF79",
+    "venue": "popl",
+    "year": 1979
+  }
+]

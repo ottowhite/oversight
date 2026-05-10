@@ -1,0 +1,597 @@
+[
+  {
+    "paper_id": "10.1145/292540.292557",
+    "title": "Representing Layered Monads",
+    "abstract": "There has already been considerable research on constructing modular, monad-based specifications of computational effects (state, exceptions, nondeterminism, etc.) in programming languages. We present a simple framework in this tradition, based on a Church-style effect-typing system for an ML-like language. The semantics of this language is formally defined by a series of monadic translations, each one expanding away a layer of effects. Such a layered specification is easy to reason about, but its direct implementation (whether by parameterized interpretation or by actual translation) is often prohibitively inefficient.By exploiting deeper semantic properties of monads, however, it is also possible to derive a vastly more efficient implementation: we show that each layer of effects can be uniformly simulated by continuation-passing, and further that multiple such layers can themselves be simulated by a standard semantics for call/cc and mutable state. Thus, even multi-effect programs can be executed in Scheme or SML/NJ at full native speed, generalizing an earlier single-effect result. As an example, we show how a simple resumption-based semantics of concurrency allows us to directly simulate a shared-state program across all possible dynamic interleavings of execution threads.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292557",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Andrzej",
+        "last_name": "Filinski",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/popl/Filinski99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292551",
+    "title": "Trust and Partial Typing in Open Systems of Mobile Agents",
+    "abstract": "We present a partially-typed semantics for Dπ, a distributed π-calculus. The semantics is designed for mobile agents in open distributed systems in which some sites may harbor malicious intentions. Nonetheless, the semantics guarantees traditional type-safety properties at \"good\" locations by using a mixture of static and dynamic type-checking. We show how the semantics can be extended to allow trust between sites, improving performance and expressiveness without compromising type-safety.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292551",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "James",
+        "last_name": "Riely",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Hennessy",
+        "institution": "University of Sussex"
+      }
+    ],
+    "dblp_key": "conf/popl/RielyH99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292547",
+    "title": "Improvement in a Lazy Context: An Operational Theory for Call-by-Need",
+    "abstract": "The standard implementation technique for lazy functional languages is call-by-need, which ensures that an argument to a function in any given call is evaluated at most once. A significant problem with call-by-need is that it is difficult -- even for compiler writers -- to predict the effects of program transformations. The traditional theories for lazy functional languages are based on call-by-name models, and offer no help in determining which transformations do indeed optimize a program.In this article we present an operational theory for call-by-need, based upon an improvement ordering on programs: M is improved by N if in all program-contexts C, when C[M] terminates then C[N] terminates at least as cheaply.We show that this improvement relation satisfies a \"context lemma\", and supports a rich inequational theory, subsuming the call-by-need lambda calculi of Ariola et al. [AFM+95]. The reduction-based call-by-need calculi are inadequate as a theory of lazy-program transformation since they only permit transformations which speed up programs by at most a constant factor (a claim we substantiate); we go beyond the various reduction-based calculi for call-by-need by providing powerful proof rules for recursion, including syntactic continuity -- the basis of fixed-point-induction style reasoning, and an improvement theorem, suitable for arguing the correctness and safety of recursion-based program transformations.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292547",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Andrew",
+        "last_name": "Moran",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Sands",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/MoranS99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292543",
+    "title": "AnnoDomini: From Type Theory to Year 2000 Conversion Tool",
+    "abstract": "AnnoDomini is a source-to-source conversion tool for making COBOL programs Year 2000 compliant. It is technically and conceptually built upon type-theoretic techniques and methods: type-based specification, program analysis by type inference and type-directed transformation. These are combined into an integrated software reengineering tool and method for finding and fixing Year 2000 problems. AnnoDomini's primary goals have been flexibility (support for multiple year representations), completeness (identifying all potential Year 2000 problems), correctness (correct fixes for Year 2000 problems) and a high degree of safe automation in all phases (declarative specification of conversions, no second-guessing or dangerous heuristics).In this paper we present the type-theoretic foundations of AnnoDomini: type system, type inference, unification theory, semantic soundness, and correctness of conversion. We also describe how these foundations have been applied and extended to a common COBOL mainframe dialect, and how AnnoDomini is packaged with graphical user interface and syntax-sensitive editor into a commercially available software tool.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292543",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Peter Harry",
+        "last_name": "Eidorff",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Fritz",
+        "last_name": "Henglein",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Mossin",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Henning",
+        "last_name": "Niss",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Morten Heine",
+        "last_name": "Sørensen",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Mads",
+        "last_name": "Tofte",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/popl/EidorffHMNST99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292550",
+    "title": "Types for Mobile Ambients",
+    "abstract": "Java has demonstrated the utility of type systems for mobile code, and in particular their use and implications for security. Security properties rest on the fact that a well-typed Java program (or the corresponding verified bytecode) cannot cause certain kinds of damage.In this paper we provide a type system for mobile computation, that is, for computation that is continuously active before and after movement. We show that a well-typed mobile computation cannot cause certain kinds of run-time fault: it cannot cause the exchange of values of the wrong kind, anywhere in a mobile system.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292550",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Luca",
+        "last_name": "Cardelli",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Andrew D.",
+        "last_name": "Gordon",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/CardelliG99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292565",
+    "title": "Type-Based Analysis of Uncaught Exceptions",
+    "abstract": "This paper presents a program analysis to estimate uncaught exceptions in ML programs. This analysis relies on unification-based type inference in a non-standard type system, using rows to approximate both the flow of escaping exceptions (a la effect systems) and the flow of result values (a la control-flow analyses). The resulting analysis is efficient and precise; in particular, arguments carried by exceptions are accurately handled.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292565",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Pessaux",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Xavier",
+        "last_name": "Leroy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/PessauxL99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292563",
+    "title": "Type-Safe Linking and Modular Assembly Language",
+    "abstract": "Linking is a low-level task that is usually vaguely specified, if at all, by language definitions. However, the security of web browsers and other extensible systems depends crucially upon a set of checks that must be performed at link time. Building upon the simple, but elegant ideas of Cardelli, and module constructs from high-level languages, we present a formal model of typed object files and a set of inference rules that are sufficient to guarantee that type safety is preserved by the linking process.\\n\\nWhereas Cardelli's link calculus is built on top of the simply-typed lambda calculus, our object files are based upon typed assembly language so that we may model important low-level implementation issues. Furthermore, unlike Cardelli, we provide support for abstract types and higher-order type constructors - features critical for building extensible systems or modern programming languages such as ML.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292563",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Neal",
+        "last_name": "Glew",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/GlewM99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292555",
+    "title": "A Core Calculus of Dependency",
+    "abstract": "Notions of program dependency arise in many settings: security, partial evaluation, program slicing, and call-tracking. We argue that there is a central notion of dependency common to these settings that can be captured within a single calculus, the Dependency Core Calculus (DCC), a small extension of Moggi's computational lambda calculus. To establish this thesis, we translate typed calculi for secure information flow, binding-time analysis, slicing, and call-tracking into DCC. The translations help clarify aspects of the source calculi. We also define a semantic model for DCC and use it to give simple proofs of noninterference results for each case.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292555",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martı́n",
+        "last_name": "Abadi",
+        "institution": ""
+      },
+      {
+        "first_name": "Anindya",
+        "last_name": "Banerjee",
+        "institution": "Stevens Institute of Technology"
+      },
+      {
+        "first_name": "Nevin",
+        "last_name": "Heintze",
+        "institution": "Bell (Canada)"
+      },
+      {
+        "first_name": "Jon G.",
+        "last_name": "Riecke",
+        "institution": "Nokia (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/AbadiBHR99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292553",
+    "title": "Aggregate Structure Identification and Its Application to Program Analysis",
+    "abstract": "In this paper, we describe an efficient algorithm for lazily decomposing aggregates such as records and arrays into simpler components based on the access patterns specific to a given program. This process allows us both to identify implicit aggregate structure not evident from declarative information in the program, and to simplify the representation of declared aggregates when references are made only to a subset of their components. We show that the structure identification process can be exploited to yield the following principal results: - A fast type analysis algorithm applicable to program maintenance applications such as date usage inference for the \"Year 2000\" problem. - An efficient algorithm for atomization of aggregates. Given a program, an aggregate atomization decomposes all of the data that can be manipulated by the program into a set of disjoint atoms such that each data reference can be modeled as one or more references to atoms without loss of semantic information. Aggregate atomization can be used to adapt program analyses and representations designed for scalar data to aggregate data. In particular, atomization can be used to build more precise versions of program representations such as SSA form or PDGs. Such representations can in turn yield more accurate results for problems such as program slicing.Our techniques are especially useful in weakly-typed languages such as Cobol (where a variable need not be declared as an aggregate to store an aggregate value) and in languages where references to statically-defined subranges of data such as arrays or strings are allowed.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292553",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "G.",
+        "last_name": "Ramalingam",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "John K.",
+        "last_name": "Field",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/RamalingamFT99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292569",
+    "title": "Software Watermarking: Models and Dynamic Embeddings",
+    "abstract": "Watermarking embeds a secret message into a cover message. In media watermarking the secret is usually a copyright notice and the cover a digital image. Watermarking an object discourages intellectual property theft, or when such theft has occurred, allows us to prove ownership.The Software Watermarking problem can be described as follows. Embed a structure W into a program P such that: W can be reliably located and extracted from P even after P has been subjected to code transformations such as translation, optimization and obfuscation; W is stealthy; W has a high data rate; embedding W into P does not adversely affect the performance of P; and W has a mathematical property that allows us to argue that its presence in P is the result of deliberate actions.In the first part of the paper we construct an informal taxonomy of software watermarking techniques. In the second part we formalize these results. Finally, we propose a new software watermarking technique in which a dynamic graphic watermark is stored in the execution state of a program.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292569",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Collberg",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Clark",
+        "last_name": "Thomborson",
+        "institution": "University of Auckland"
+      }
+    ],
+    "dblp_key": "conf/popl/CollbergT99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292554",
+    "title": "Relevant Context Inference",
+    "abstract": "Relevant context inference (RCI) is a modular technique for flow- and context-sensitive data-flow analysis of statically typed object-oriented programming languages such as C++ and Java. RCI can be used to analyze complete programs as well as incomplete programs such as libraries; this approach does not require that the entire program be memory-resident during the analysis. RCI is presented in the context of points-to analysis for a realistic subset of C++. The empirical evidence obtained from a prototype implementation argues the effectiveness of RCI.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292554",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ramkrishna",
+        "last_name": "Chatterjee",
+        "institution": "Rutgers, The State University of New Jersey"
+      },
+      {
+        "first_name": "Barbara G.",
+        "last_name": "Ryder",
+        "institution": "Rutgers, The State University of New Jersey"
+      },
+      {
+        "first_name": "William",
+        "last_name": "Landi",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/ChatterjeeRL99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292546",
+    "title": "Quasi-Linear Types",
+    "abstract": "Linear types (types of values that can be used just once) have been drawing a great deal of attention because they are useful for memory management, in-place update of data structures, etc.: an obvious advantage is that a value of a linear type can be immediately deallocated after being used. However, the linear types have not been applied so widely in practice, probably because linear values (values of linear types) in the traditional sense do not so often appear in actual programs. In order to increase the applicability of linear types, we relax the condition of linearity by extending the types with information on an evaluation order and simple dataflow information. The extended type system, called a quasi-linear type system, is formalized and its correctness is proved. We have implemented a prototype type inference system for the core-ML that can automatically find out which value is linear in the relaxed sense. Promising results were obtained from preliminary experiments with the prototype system.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292546",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Naoki",
+        "last_name": "Kobayashi",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/popl/Kobayashi99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292558",
+    "title": "Stochastic Processes as Concurrent Constraint Programs",
+    "abstract": ") Vineet Gupta Radha Jagadeesan Prakash Panangaden y vgupta@mail.arc.nasa.gov radha@cs.luc.edu prakash@cs.mcgill.ca Caelum Research Corporation Dept. of Math. and Computer Sciences School of Computer Science NASA Ames Research Center Loyola University--Lake Shore Campus McGill University Moffett Field CA 94035, USA Chicago IL 60626, USA Montreal, Quebec, Canada Abstract This paper describes a stochastic concurrent constraint language for the description and programming of concurrent probabilistic systems. The language can be viewed both as a calculus for describing and reasoning about stochastic processes and as an executable language for simulating stochastic processes. In this language programs encode probability distributions over (potentially infinite) sets of objects. We illustrate the subtleties that arise from the interaction of constraints, random choice and recursion. We describe operational semantics of these programs (programs are run by sampling random choices), deno...",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292558",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Vineet",
+        "last_name": "Gupta",
+        "institution": "Ames Research Center"
+      },
+      {
+        "first_name": "Radha",
+        "last_name": "Jagadeesan",
+        "institution": "Loyola University Chicago"
+      },
+      {
+        "first_name": "Prakash",
+        "last_name": "Panangaden",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/popl/GuptaJP99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292549",
+    "title": "A Simple, Comprehensive Type System for Java Bytecode Subroutines",
+    "abstract": "A type system with proven soundness is a prerequisite for the safe and efficient execution of Java bytecode programs. So far, efforts to construct such a type system have followed a forward dataflow approach, in the spirit of the original Java Virtual Machine bytecode verifier. We present an alternative type system, based on conventional ideas of type constraints, polymorphic recursion and continuations. We compare it to Stata and Abadi's JVML-0 type system for bytecode subroutines, and demonstrate that our system is simpler and able to type strictly more programs, including code that could be produced by Java compilers and cannot be typed in JVML-0. Examination of real Java programs shows that such code is rare but does occur. We explain some of the apparently arbitrary constraints imposed by previous approaches by showing that they are consequences of our simpler type rules, or actually unnecessary.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292549",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "O'Callahan",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/OCallahn99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292562",
+    "title": "Optimal Code Selection in DAGs",
+    "abstract": "We extend the tree parsing approach to code selection to DAGs. In general, our extension does not produce the optimal code selection for all DAGs (this problem would be NPcomplete) , but for certain code selection grammars, it does. We present a method for checking whether a code selection grammar belongs to this set of DAG-optimal grammars, and use this method to check code selection grammars adapted from lcc: the grammars for the MIPS and SPARC architectures are DAG-optimal, and the code selection grammar for the 386 architecture is almost DAG-optimal.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292562",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "M. Anton",
+        "last_name": "Ertl",
+        "institution": "TU Wien"
+      }
+    ],
+    "dblp_key": "conf/popl/Ertl99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292561",
+    "title": "JFlow: Practical Mostly-Static Information Flow Control",
+    "abstract": "A promising technique for protecting privacy and integrity of sensitive data is to statically check information flow within programs that manipulate the data. While previous work has proposed programming language extensions to allow this static checking, the resulting languages are too restrictive for practical use and have not been implemented. In this paper, we describe the new language JFlow, an extension to the Java language that adds statically-checked information flow annotations. JFlow provides several new features that make information flow checking more flexible and convenient than in previous models: a decentralized label model, label polymorphism, run-time label checking, and automatic label inference. JFlow also supports many language features that have never been integrated successfully with static information flow control, including objects, subclassing, dynamic type tests, access control, and exceptions. This paper defines the JFlow language and presents formal rules that are used to check JFlow programs for correctness. Because most checking is static, there is little code space, data space, or run-time overhead in the JFlow implementation.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292561",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Andrew C.",
+        "last_name": "Myers",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/Myers99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292556",
+    "title": "Principality and Decidable Type Inference for Finite-Rank Intersection Types",
+    "abstract": "Principality of typings is the property that for each typable term, there is a typing from which all other typings are obtained via some set of operations. Type inference is the problem of finding a typing for a given term, if possible. We define an intersection type system which has principal typings and types exactly the strongly normalizable α-terms. More interestingly, every finite-rank restriction of this system (using Leivant's first notion of rank) has principal typings and also has decidable type inference. This is in contrast to System F where the finite rank restriction for every finite rank at 3 and above has neither principal typings nor decidable type inference. This is also in contrast to earlier presentations of intersection types where the status (decidable or undecidable) of these properties is unknown for the finite-rank restrictions at 3 and above. Furthermore, the notion of principal typings for our system involves only one operation, substitution, rather than several operations (not all substitution-based) as in earlier presentations of principality for intersection types (without rank restrictions). In our system the earlier notion of expansion is integrated in the form of expansion variables, which are subject to substitution as are ordinary variables. A unification-based type inference algorithm is presented using a new form of unification, β-unification.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292556",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "A. J.",
+        "last_name": "Kfoury",
+        "institution": ""
+      },
+      {
+        "first_name": "J. B.",
+        "last_name": "Wells",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/KfouryW99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292564",
+    "title": "Typed Memory Management in a Calculus of Capabilities",
+    "abstract": "Abstract An increasing number of systems rely on programming language technology to ensure safety and security of low-level code. Unfortunately, these systems typically rely on a complex, trusted garbage collector. Region-based type systems provide an alternative to garbage collection by making memory management explicit but verifiably safe. However, it has not been clear how to use regions in low-level, type-safe code. We present a compiler intermediate language, called the Capability Calculus, that supports region-based memory management, enjoys a provably safe type system, and is straightforward to compile to a typed assembly language. Source languages may be compiled to our language using known region inference algorithms. Furthermore, region lifetimes need not be lexically scoped in our language, yet the language may be checked for safety without complex analyses. Finally, our soundness proof is relatively simple, employing only standard techniques.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292564",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/CraryWM99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292560",
+    "title": "Dependent Types in Practical Programming",
+    "abstract": "We present an approach to enriching the type system of ML with a restricted form of dependent types, where type index objects are drawn from a constraint domain C, leading to the DML(C) language schema. This allows specification and inference of significantly more precise type information, facilitating program error detection and compiler optimization. A major complication resulting from introducing dependent types is that pure type inference for the enriched system is no longer possible, but we show that type-checking a sufficiently annotated program in DML(C) can be reduced to constraint satisfaction in the constraint domain C. We exhibit the unobtrusiveness of our approach through practical examples and prove that DML(C) is conservative over ML. The main contribution of the paper lies in our language design, including the formulation of type-checking rules which makes the approach practical. To our knowledge, no previous type system for a general purpose programming language such as ML has combined dependent types with features including datatype declarations, higher-order functions, general recursions, let-polymorphism, mutable references, and exceptions. In addition, we have finished a prototype implementation of DML(C) for an integer constraint domain C, where constraints are linear inequalities (Xi and Pfenning 1998).",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292560",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hongwei",
+        "last_name": "Xi",
+        "institution": "Oregon Health & Science University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Pfenning",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/XiP99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292567",
+    "title": "Constraint Systems for Useless Variable Elimination",
+    "abstract": "A useless variable is one whose value contributes nothing to the final outcome of a computation. Such variables are unlikely to occur in human-produced code, but may be introduced by various program transformations. We would like to eliminate useless parameters from procedures and eliminate the corresponding actual parameters from their call sites. This transformation is the extension to higher-order programming of a variety of dead-code elimination optimizations that are important in compilers for first-order imperative languages.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292567",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Igor",
+        "last_name": "Siveroni",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/popl/WandS99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292552",
+    "title": "Parametric Shape Analysis via 3-Valued Logic",
+    "abstract": "We present a family of abstract-interpretation algorithms that are capable of determining \"shape invariants\" of programs that perform destructive updating on dynamically allocated storage. The main idea is to represent the stores that can possibly arise during execution using three-valued logical structures.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292552",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mooly",
+        "last_name": "Sagiv",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": ""
+      },
+      {
+        "first_name": "Reinhard",
+        "last_name": "Wilhelm",
+        "institution": "Saarland University"
+      }
+    ],
+    "dblp_key": "conf/popl/SagivRW99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292568",
+    "title": "Continuous Grammars",
+    "abstract": "After defining appropriate metrics on strings and parse trees, the classic definition of continuity is adapted and applied to functions from strings to parse trees. Grammars that yield continuous mappings are of special interest, because they provide a sound theoretical framework for syntax error correction. Continuity justifies the approach, taken by many error correctors, to use the function output (the parse tree), and all the additional information it provides, in order to find corrections to the function input (the string). We prove that all Bounded Context grammars are continuous and that all continuous grammars are Bounded Context Parseable grammars, giving a characterization of continuous grammars in terms of possible parsing algorithms.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292568",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Rückert",
+        "institution": "SUNY New Paltz"
+      }
+    ],
+    "dblp_key": "conf/popl/Ruckert99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292548",
+    "title": "A Compositional Account of the Java Virtual Machine",
+    "abstract": "The Java Virtual Machine (or JVM) is central to the system's aim of providing a secure program execution environment that operates identically on a wide variety of computing platforms. To be most effective in this role, the JVM needs a rigorous, complete description, to specify precisely the behavior required of implementations. In response, a number of researchers have produced formal accounts of the JVM that seek to define it in an unambiguous and comprehensible manner. Unfortunately, the size and complexity of the JVM means that many of these formal accounts must either restrict their scope substantially, or risk becoming unwieldy and intractable. This paper suggests an alternative approach to the specification of the JVM that seeks to ameliorate such problems by composing together a small set of \"microinstructions\" to produce the full bytecode set. These microinstructions are encapsulated as functions in the polymorphic functional programming language Haskell, using the familiar mechanisms of Hindley-Milner type inference to characterize the JVM's rather thorny verifier. In this way, its is hoped that a foundation will be laid for formal descriptions of the Java Virtual Machine that need not trade tractability for completeness.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292548",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Phillip M.",
+        "last_name": "Yelland",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Yelland99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292545",
+    "title": "Once Upon a Polymorphic Type",
+    "abstract": "We present a sound type-based `usage analysis&amp;apos; for a realistic lazy functional language. Accurate information on the usage of program subexpressions in a lazy functional language permits a compiler to perform a number of useful optimisations. However, existing analyses are either ad-hoc and approximate, or defined over restricted languages. Our work extends the Once Upon A Type system of Turner, Mossin, and Wadler (FPCA&amp;apos;95). Firstly, we add type polymorphism, an essential feature of typed functional programming languages. Secondly, we include general Haskell-style user-defined algebraic data types. Thirdly, we explain and solve the `poisoning problem&amp;apos;, which causes the earlier analysis to yield poor results. Interesting design choices turn up in each of these areas. Our analysis is sound with respect to a Launchbury-style operational semantics, and it is straightforward to implement. Good results have been obtained from a prototype implementation, and we are currently integrating the system into the Glasgow Haskell Compiler.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292545",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Keith",
+        "last_name": "Wansbrough",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/WansbroughJ99",
+    "venue": "popl",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/292540.292559",
+    "title": "Extending the Scope of Syntactic Abstraction",
+    "abstract": "The benefits of module systems and lexically scoped syntactic abstraction (macro) facilities are well-established in the literature. This paper presents a system that seamlessly integrates modules and lexically scoped macros. The system is fully static, permits mutually recursive modules, and supports separate compilation. We show that more dynamic module facilities are easily implemented at the source level in the extended language supported by the system.",
+    "date": "1999-01-01",
+    "link": "https://doi.org/10.1145/292540.292559",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Oscar",
+        "last_name": "Waddell",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "R. Kent",
+        "last_name": "Dybvig",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "conf/popl/WaddellD99",
+    "venue": "popl",
+    "year": 1999
+  }
+]
