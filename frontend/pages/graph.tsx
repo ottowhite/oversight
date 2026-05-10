@@ -890,19 +890,19 @@ function AbstractPanel({
                 <a
                   href={paper.link}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="hover:text-accent hover:underline"
                 >
-                  {paper.title}
+                  {unicodify(paper.title)}
                 </a>
               ) : (
-                paper.title
+                unicodify(paper.title)
               )}
             </h2>
 
             {paper.authors.length > 0 && (
               <p className="mt-2 text-xs text-base-content/60 leading-relaxed">
-                {paper.authors.join(", ")}
+                {paper.authors.map(unicodify).join(", ")}
               </p>
             )}
 
@@ -912,7 +912,7 @@ function AbstractPanel({
 
             {paper.abstract ? (
               <p className="mt-3 text-sm text-base-content/80 whitespace-pre-wrap leading-relaxed">
-                {paper.abstract}
+                {unicodify(paper.abstract)}
               </p>
             ) : (
               <p className="mt-3 text-sm text-base-content/40 italic">
@@ -1020,13 +1020,85 @@ function formatCitation(paper: Paper | undefined): string {
   if (firstAuthor) {
     // Surname = last whitespace-separated token. Handles "Daizhan Cheng"
     // → "Cheng" and "Van Den Berg" → "Berg" (acceptable for v1).
-    const surname = firstAuthor.trim().split(/\s+/).pop() ?? firstAuthor;
+    const cleaned = unicodify(firstAuthor);
+    const surname = cleaned.trim().split(/\s+/).pop() ?? cleaned;
     const suffix = paper.authors.length > 1 ? " et al." : "";
     return year ? `${surname}${suffix}, ${year}` : `${surname}${suffix}`;
   }
   // No authors → fall back to title slice so the node still says something.
-  const title = paper.title ?? paper.paper_id;
+  const title = unicodify(paper.title ?? paper.paper_id);
   return title.length > 14 ? `${title.slice(0, 14)}…` : title;
+}
+
+// Map common TeX accent macros into the corresponding Unicode characters.
+// Authors and titles arrive from the backend with raw TeX in them
+// (e.g. "Yama\c{c}", "\'{e}", "Sch\"on") because BibTeX is lossy. We
+// don't mutate the data model — this is applied at render time only.
+//
+// Strategy: rewrite each accent macro into "letter + combining diacritic"
+// then NFC-normalize so precomposed glyphs win where they exist (most do).
+// The combining-character approach handles every base letter without
+// having to enumerate them.
+//
+// Accents covered (per the round-3 spec):
+//   \c{x}          cedilla     U+0327
+//   \'{x}, \'x     acute       U+0301
+//   \`{x}, \`x     grave       U+0300
+//   \^{x}, \^x     circumflex  U+0302
+//   \"{x}, \"x     umlaut      U+0308
+//   \~{x}, \~x     tilde       U+0303
+//   \.x            dot above   U+0307
+//   \={x}          macron      U+0304
+//
+// Plus fallback: strip a stray backslash before a letter so junk like
+// "\foo" doesn't survive untouched.
+const TEX_ACCENT: Record<string, string> = {
+  c: "̧",
+  "'": "́",
+  "`": "̀",
+  "^": "̂",
+  '"': "̈",
+  "~": "̃",
+  ".": "̇",
+  "=": "̄",
+};
+function unicodify(s: string): string {
+  if (!s || s.indexOf("\\") < 0) return s;
+  // Pattern matches both braced (\c{c}) and unbraced (\'e) forms.
+  // Note the backslash is escaped twice here: once for the regex, once
+  // for the JS string literal.
+  const re = /\\([c'`^"~.=])(?:\{([A-Za-z])\}|([A-Za-z]))/g;
+  let out = s.replace(re, (_m, accent: string, braced?: string, bare?: string) => {
+    const letter = braced ?? bare;
+    const combiner = TEX_ACCENT[accent];
+    if (!letter || !combiner) return _m;
+    return (letter + combiner).normalize("NFC");
+  });
+  // Fallback: strip standalone backslashes before a letter ("\foo" → "foo").
+  // Skip already-handled accent macros (none should remain after the pass
+  // above, but be defensive).
+  out = out.replace(/\\([A-Za-z])/g, "$1");
+  return out;
+}
+
+if (process.env.NODE_ENV !== "production") {
+  // Tiny inline sanity asserts so a regression here trips on first load.
+  console.assert(
+    unicodify("Yama\\c{c}") === "Yamaç",
+    "unicodify cedilla failed",
+  );
+  console.assert(
+    unicodify("Sch\\\"on") === "Schön",
+    "unicodify umlaut (unbraced) failed",
+  );
+  console.assert(
+    unicodify("Andr\\'e") === "André",
+    "unicodify acute (unbraced) failed",
+  );
+  console.assert(
+    unicodify("plain text") === "plain text",
+    "unicodify must be a no-op on plain text",
+  );
 }
 
 // Tiny helper: Path of a rounded rectangle on a 2D canvas context.
