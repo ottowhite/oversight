@@ -54,4 +54,4 @@ typecheck:
 	uv run ty check src/
 
 oversight/sync:
-	uv run python -m oversight.ArXivRepository --sync
+	uv run oversight sync
