@@ -393,17 +393,29 @@ export default function GraphPage() {
   // -------------------------------------------------------------------------
 
   const fgData = useMemo(() => {
-    const nodes = graph.nodes.map((p) => ({
-      id: p.paper_id,
-      paper: p,
-    }));
+    // Hide nodes that have no edges in the current derived view, otherwise
+    // top-k with k<20 (or threshold mode) leaves orphan nodes floating
+    // disconnected. The cache still holds them, so they reappear instantly
+    // when the slider widens — no re-fetch needed.
+    //
+    // The seed always renders even if every edge filtered out, so the
+    // user can always see "where they are" in the graph.
+    const connected = new Set<string>();
+    if (seedId) connected.add(seedId);
+    for (const e of graph.edges) {
+      connected.add(typeof e.source === "string" ? e.source : String(e.source));
+      connected.add(typeof e.target === "string" ? e.target : String(e.target));
+    }
+    const nodes = graph.nodes
+      .filter((p) => connected.has(p.paper_id))
+      .map((p) => ({ id: p.paper_id, paper: p }));
     const links = graph.edges.map((e) => ({
       source: e.source,
       target: e.target,
       similarity: e.similarity,
     }));
     return { nodes, links };
-  }, [graph.nodes, graph.edges]);
+  }, [graph.nodes, graph.edges, seedId]);
 
   // Per-node degree, for sizing.
   const degreeById = useMemo(() => {
@@ -717,7 +729,15 @@ export default function GraphPage() {
               )}
 
               <div className="text-xs text-base-content/50 leading-relaxed">
-                <div>nodes: {graph.nodes.length}</div>
+                <div>
+                  nodes: {fgData.nodes.length}
+                  {fgData.nodes.length !== graph.nodes.length && (
+                    <span className="opacity-60">
+                      {" "}
+                      ({graph.nodes.length - fgData.nodes.length} hidden)
+                    </span>
+                  )}
+                </div>
                 <div>edges: {graph.edges.length}</div>
                 <div>cached expansions: {Object.keys(graph.cache).length}</div>
                 {loadingNodeId && (
