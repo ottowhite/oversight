@@ -1,0 +1,582 @@
+[
+  {
+    "paper_id": "10.1145/3178372.3179519",
+    "title": "An efficient data structure for must-alias analysis",
+    "abstract": "A must-alias (or “definite-alias”) analysis computes sets of expressions that are guaranteed to be aliased at a given pro- gram point. The analysis has been shown to have significant practical impact, and it is actively used in popular research frameworks and commercial tools. We present a custom data structure that speeds up must-alias analysis by nearly two orders of magnitude (while computing identical results). The data structure achieves efficiency by encoding multiple alias sets in a single linked structure, and compactly representing the aliasing relations of arbitrarily long expressions. We ex- plore the data structure’s performance in both an imperative and a declarative setting and contrast it extensively with prior techniques. With our approach, must-alias analysis can be performed efficiently, over large Java benchmarks, in under half a minute, making the analysis cost acceptable for most practical uses.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179519",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "George",
+        "last_name": "Kastrinis",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "George",
+        "last_name": "Balatsouras",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Kostas",
+        "last_name": "Ferles",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Nefeli",
+        "last_name": "Prokopaki-Kostopoulou",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "National and Kapodistrian University of Athens"
+      }
+    ],
+    "dblp_key": "conf/cc/KastrinisBFPS18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179517",
+    "title": "Parallel sparse flow-sensitive points-to analysis",
+    "abstract": "This paper aims to contribute to further advances in pointer (or points-to) analysis algorithms along the combined dimen- sions of precision, scalability, and performance. For precision, we aim to support interprocedural ow-sensitive analysis. For scalability, we aim to show that our approach scales to large applications with reasonable memory requirements. For performance, we aim to design a points-to analysis algo- rithm that is amenable to parallel execution. The algorithm introduced in this paper achieves all these goals. As an ex- ample, our experimental results show that our algorithm can analyze the 2.2MLOC Tizen OS framework with < 16GB of memory while delivering an average analysis rate of > 10KLOC/second. Our points-to analysis algorithm, PSEGPT, is based on the Pointer Sparse Evaluation Graph (PSEG) form, a new analysis representation that combines both points-to and heap def-use information. PSEGPT is a scalable interprocedural flow-sensitive context-insensitive points-to analy- sis that is amenable to efficient task-parallel implementa- tions, even though points-to analysis is usually viewed as a challenge problem for parallelization. Our experimental results with 6 real-world applications on a 12-core machine show an average parallel speedup of 4.45× and maximum speedup of 7.35×. The evaluation also includes precision results by demonstrating that our algorithm identifies significantly more inlinable indirect calls (IICs) than SUPT and SS, two states of the art SSA-based points-to analyses implemented in LLVM.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179517",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Jisheng",
+        "last_name": "Zhao",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Burke",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/cc/ZhaoBS18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3183634",
+    "title": "Rethinking compilers in the rise of machine learning and AI (keynote)",
+    "abstract": "Recent years have witnessed some influential progresses in Machine Learning (ML) and Artificial Intelligence (AI). The progresses may lead to some significant changes to future programming. Many programs, for instance, may be not code written in some specially designed programming languages, but high-level user intentions expressed in natural languages. Deep Learning-based software, despite the difficulties in interpreting their results, may continue its rapid growth in the software market and its influence in people's everyday life. This talk will first examine the implications of these changes to compiler research, and then discuss the potential opportunities that ML and AI could bring to possibly transform the field of compiler research.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3183634",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Xipeng",
+        "last_name": "Shen",
+        "institution": "North Carolina State University"
+      }
+    ],
+    "dblp_key": "conf/cc/Shen18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179521",
+    "title": "Finding missed compiler optimizations by differential testing",
+    "abstract": "Randomized differential testing of compilers has had great success in finding compiler crashes and silent miscompilations. In this paper we investigate whether we can use similar techniques to improve the quality of the generated code: Can we compare the code generated by different compilers to find optimizations performed by one but missed by another?",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179521",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Gergö",
+        "last_name": "Barany",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/cc/Barany18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179499",
+    "title": "Tail call elimination and data representation for functional languages on the Java virtual machine",
+    "abstract": "The Java Virtual Machine (JVM) offers an attractive runtime environment for programming language implementers. The JVM has a simple bytecode format, excellent performance, multiple state-of-the art garbage collectors, robust backwards compatibility, and it runs on almost all platforms. Further, the Java ecosystem grants access to a plethora of libraries and tooling, including debuggers and profilers.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179499",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Magnus",
+        "last_name": "Madsen",
+        "institution": "Aalborg University"
+      },
+      {
+        "first_name": "Ramin",
+        "last_name": "Zarifi",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/cc/MadsenZL18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179529",
+    "title": "Polyhedral expression propagation",
+    "abstract": "Polyhedral techniques have proven to be powerful for various optimizations, from automatic parallelization to accelerator programming. At their core, these techniques compute accurate dependences among statement instances in order to apply complex program transformations. Such transformations comprise memory layout or program order modifications by optimizing memory access functions or scheduling functions. However, these approaches treat statements as opaque entities and do not consider changing the structure of the contained expressions or the memory accesses involved.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179529",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Johannes",
+        "last_name": "Doerfert",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Shrey",
+        "last_name": "Sharma",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Hack",
+        "institution": "Saarland University"
+      }
+    ],
+    "dblp_key": "conf/cc/DoerfertSH18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179523",
+    "title": "PAYJIT: space-optimal JIT compilation and its practical implementation",
+    "abstract": "Just-in-time (JIT) compilation in dynamic programming languages can improve execution speed in code with hot sections. However, that comes at the cost of increased memory usage for the storage of compiled code and associated bookkeeping data, as well as up-front compilation time for the hot code.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179523",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Jacob",
+        "last_name": "Brock",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Chen",
+        "last_name": "Ding",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Xiaoran",
+        "last_name": "Xu",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Yan",
+        "last_name": "Zhang",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/cc/BrockDXZ18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3183636",
+    "title": "Compiler and language design for quantum computing (keynote)",
+    "abstract": "Quantum computing, once merely a curious concept discussed within the field of theoretical physics, has long-since become of practical interest in numerous fields and caught the attention of mainstream media. The reason for the widespread interest stems from the tremendous impact it could have on today’s technology. Quantum computing could revolutionize how we develop new materials, how we approach machine learning and optimization tasks, and provide answers to some of the most intriguing questions in physics, chemistry and biology.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3183636",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Bettina",
+        "last_name": "Heim",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/Heim18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179505",
+    "title": "Compiling for concise code and efficient I/O",
+    "abstract": "Large infrastructures of Internet companies, such as Facebook and Twitter, are composed of several layers of micro-services. While this modularity provides scalability to the system, the I/O associated with each service request strongly impacts its performance. In this context, writing concise programs which execute I/O efficiently is especially challenging. In this paper, we introduce Ÿauhau, a novel compile-time solution. Ÿauhau reduces the number of I/O calls through rewrites on a simple expression language. To execute I/O concurrently, it lowers the expression language to a dataflow representation. Our approach can be used alongside an existing programming language, permitting the use of legacy code. We describe an implementation in the JVM and use it to evaluate our approach. Experiments show that Ÿauhau can significantly improve I/O, both in terms of the number of I/O calls and concurrent execution. Ÿauhau outperforms state-of-the-art approaches with similar goals.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179505",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Ertel",
+        "institution": "TU Dresden"
+      },
+      {
+        "first_name": "Andrés",
+        "last_name": "Goens",
+        "institution": "TU Dresden"
+      },
+      {
+        "first_name": "Justus",
+        "last_name": "Adam",
+        "institution": "TU Dresden"
+      },
+      {
+        "first_name": "Jerónimo",
+        "last_name": "Castrillón",
+        "institution": "TU Dresden"
+      }
+    ],
+    "dblp_key": "conf/cc/ErtelGAC18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179507",
+    "title": "Modeling the conflicting demands of parallelism and Temporal/Spatial locality in affine scheduling",
+    "abstract": "The construction of effective loop nest optimizers and parallelizers remains challenging despite decades of work in the area. Due to the increasing diversity of loop-intensive applications and to the complex memory/computation hierarchies in modern processors, optimization heuristics are pulled towards conflicting goals, highlighting the lack of a systematic approach to optimizing locality and parallelism. Acknowledging these conflicting demands on loop nest optimization, we propose an algorithmic template capable of modeling the multi-level parallelism and the temporal/spatial locality of multiprocessors and accelerators. This algorithmic template orchestrates a collection of parameterizable, linear optimization problems over a polyhedral space of semantics-preserving transformations. While the overall problem is not convex, effective algorithms can be derived from this template delivering unprecedented performance portability over GPU and multicore CPU. We discuss the rationale for this algorithmic template and validate it on representative computational kernels/benchmarks.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179507",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Oleksandr",
+        "last_name": "Zinenko",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Sven",
+        "last_name": "Verdoolaege",
+        "institution": "Statistics Belgium"
+      },
+      {
+        "first_name": "Chandan",
+        "last_name": "Reddy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Jun",
+        "last_name": "Shirako",
+        "institution": "Atlanta Technical College"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Grosser",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Albert",
+        "last_name": "Cohen",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/cc/ZinenkoVRSGS018",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179497",
+    "title": "Computing partially path-sensitive MFP solutions in data flow analyses",
+    "abstract": "Data flow analysis traverses paths in a control flow graph (CFG) representation of programs to compute useful information. Many of these paths are infeasible, i.e. they cannot arise in any possible execution. The information computed along these paths adds imprecision to the conventional Maximal Fixed Point (MFP) solution of a data flow analysis. Existing approaches for removing this imprecision are either specific to a data flow problem or involve control flow graph restructuring which has exponential complexity.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179497",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Komal",
+        "last_name": "Pathade",
+        "institution": "Tata Consultancy Services (India)"
+      },
+      {
+        "first_name": "Uday P.",
+        "last_name": "Khedker",
+        "institution": "Indian Institute of Technology Bombay"
+      }
+    ],
+    "dblp_key": "conf/cc/PathadeK18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179515",
+    "title": "CAnDL: a domain specific language for compiler analysis",
+    "abstract": "Optimizing compilers require sophisticated program analysis and transformations to exploit modern hardware. Implementing the appropriate analysis for a compiler optimization is a time consuming activity. For example, in LLVM, tens of thousands of lines of code are required to detect appropriate places to apply peephole optimizations. It is a barrier to the rapid prototyping and evaluation of new optimizations.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179515",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Philip",
+        "last_name": "Ginsbach",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Lewis",
+        "last_name": "Crawford",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "O’Boyle",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/GinsbachCO18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179501",
+    "title": "Fast and flexible instruction selection with constraints",
+    "abstract": "Tree-parsing instruction selection as used in, e.g., lcc, uses dynamic costs to gain flexibility and handle situations (such as read-modify-write instructions) that do not fit into the basic tree-parsing model. The disadvantage of dynamic costs is that we can no longer turn the tree grammar into a tree automaton (as is done by burg) for fast instruction selection for JIT compilers. In this paper we introduce constraints that say whether a tree-grammar rule is applicable or not. While theoretically less powerful than dynamic costs, constraints cover the practical uses of dynamic costs; more importantly, they allow turning the tree grammar with constraints into a tree automaton (with instruction-selection-time checks), resulting in faster instruction selection than with pure instruction-selection-time dynamic programming. We integrate constraints in an instruction selector that matches DAGs with tree rules. We evaluate this concept in lcc and the CACAO JavaVM JIT compiler, and see instruction selector speedups by a factor 1.33--1.89.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179501",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Thier",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "M. Anton",
+        "last_name": "Ertl",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Krall",
+        "institution": "TU Wien"
+      }
+    ],
+    "dblp_key": "conf/cc/ThierEK18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179495",
+    "title": "A session type provider: compile-time API generation of distributed protocols with refinements in F#",
+    "abstract": "We present a library for the specification and implementation of distributed protocols in native F# (and other .NET languages) based on multiparty session types (MPST). There are two main contributions. Our library is the first practical development of MPST to support what we refer to as interaction refinements: a collection of features related to the refinement of protocols, such as message-type refinements (value constraints) and message value dependent control flow. A well-typed endpoint program using our library is guaranteed to perform only compliant session I/O actions w.r.t. to the refined protocol, up to premature termination.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179495",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Rumyana",
+        "last_name": "Neykova",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Raymond",
+        "last_name": "Hu",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Fahd",
+        "last_name": "Abdeljallal",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/cc/NeykovaHYA18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179509",
+    "title": "A polyhedral compilation framework for loops with dynamic data-dependent bounds",
+    "abstract": "We study the parallelizing compilation and loop nest optimization of an important class of programs where counted loops have a dynamic data-dependent upper bound. Such loops are amenable to a wider set of transformations than general while loops with inductively defined termination conditions: for example, the substitution of closed forms for induction variables remains applicable, removing the loop-carried data dependences induced by termination conditions. We propose an automatic compilation approach to parallelize and optimize dynamic counted loops. Our approach relies on affine relations only, as implemented in state-of-the-art polyhedral libraries. Revisiting a state-of-the-art framework to parallelize arbitrary while loops, we introduce additional control dependences on data-dependent predicates. Our method goes beyond the state of the art in fully automating the process, specializing the code generation algorithm to the case of dynamic counted loops and avoiding the introduction of spurious loop-carried dependences. We conduct experiments on representative irregular computations, from dynamic programming, computer vision and finite element methods to sparse matrix linear algebra. We validate that the method is applicable to general affine transformations for locality optimization, vectorization and parallelization.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179509",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Jie",
+        "last_name": "Zhao",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Kruse",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Albert",
+        "last_name": "Cohen",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/cc/ZhaoK018",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179525",
+    "title": "Termination checking and task decomposition for task-based intermittent programs",
+    "abstract": "Emerging energy-harvesting computer systems extract energy from their environment to compute, sense, and communicate with no battery or tethered power supply. Building software for energy-harvesting devices is a challenge, because they operate only intermittently as energy is available. Programs frequently reboot due to power loss, which can corrupt program state and prevent forward progress. Task-based programming models allow intermittent execution of long-running applications, but require the programmer to decompose code into tasks that will eventually complete between two power failures. Task decomposition is challenging and no tools exist to aid in task decomposition.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179525",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Alexei",
+        "last_name": "Colin",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Brandon",
+        "last_name": "Lucia",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/cc/ColinL18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179503",
+    "title": "Semantic reasoning about the sea of nodes",
+    "abstract": "The Sea of Nodes intermediate representation was introduced by Cliff Click in the mid 90s as an enhanced Static Single Assignment (SSA) form. It improves on the initial SSA form by relaxing the total order on instructions in basic blocks into explicit data and control dependencies. This makes programs more flexible to optimize. This graph-based representation is now used in many industrial-strength compilers, such as HotSpot or Graal. While the SSA form is now well understood from a semantic perspective -- even formally verified optimizing compilers use it in their middle-end -- very few semantic studies have been conducted about the Sea of Nodes.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179503",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Delphine",
+        "last_name": "Demange",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "Yon Fernández de",
+        "last_name": "Retana",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Pichardie",
+        "institution": "Université de Rennes"
+      }
+    ],
+    "dblp_key": "conf/cc/DemangeRP18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179513",
+    "title": "Towards a compiler analysis for parallel algorithmic skeletons",
+    "abstract": "Parallelizing compilers aim to detect data-parallel loops in sequential programs, which -- after suitable transformation -- can be safely and profitably executed in parallel. However, in the traditional model safe parallelization requires provable absence of dependences. At the same time, several well-known parallel algorithmic skeletons cannot be easily expressed in a data dependence framework due to spurious depedences, which prevent parallel execution. In this paper we argue that commutativity is a more suitable concept supporting formal characterization of parallel algorithmic skeletons. We show that existing commutativity definitions cannot be easily adapted for practical use, and develop a new concept of commutativity based on liveness, which readily integrates with existing compiler analyses. This enables us to develop formal definitions of parallel algorithmic skeletons such as task farms, MapReduce and Divide&Conquer. We show that existing informal characterizations of various parallel algorithmic skeletons are captured by our abstract formalizations. In this way we provide the urgently needed formal characterization of widely used parallel constructs allowing their immediate use in novel parallelizing compilers.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179513",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Tobias J.K. Edler von",
+        "last_name": "Koch",
+        "institution": "Qualcomm (United States)"
+      },
+      {
+        "first_name": "Stanislav",
+        "last_name": "Manilov",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Christos",
+        "last_name": "Vasiladiotis",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Murray",
+        "last_name": "Cole",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Björn",
+        "last_name": "Franke",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/KochMVCF18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179511",
+    "title": "Generalized profile-guided iterator recognition",
+    "abstract": "Iterators prescribe the traversal of data structures and determine loop termination, and many loop analyses and transformations require their exact identification. While recognition of iterators is a straight-forward task for affine loops, the situation is different for loops iterating over dynamic data structures or involving control flow dependent computations to determine the next data element. In this paper we propose a compiler analysis for recognizing loop iterators code for a wide class of loops. We initially develop a static analysis, which is then enhanced with profiling information to support speculative code optimizations. We have prototyped our analysis in the LLVM framework and demonstrate its capabilities using the SPEC CPU2006 benchmarks. Our approach is applicable to all loops and we show that we can recognize iterators in, on average, 88.1% of over 75,000 loops using static analysis alone, and up to 94.9% using additional profiling information. Existing techniques perform substantially worse, especially for C and C++ applications, and cover only 35-44% of the loops. Our analysis enables advanced loop optimizations such as decoupled software pipelining, commutativity analysis and source code rejuvenation for real-world applications, which escape analysis and transformation if loop iterators are not recognized accurately.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179511",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Stanislav",
+        "last_name": "Manilov",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Christos",
+        "last_name": "Vasiladiotis",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Björn",
+        "last_name": "Franke",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/ManilovVF18",
+    "venue": "cc",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3178372.3179527",
+    "title": "Efficient dynamic analysis for Node.js",
+    "abstract": "Due to its popularity, there is an urgent need for dynamic program-analysis tools for Node.js, helping developers find bugs, performance bottlenecks, and bad coding practices. Frameworks based on code-level instrumentation enable dynamic analyses close to program semantics and are more flexible than Node.js built-in profiling tools. However, existing code-level instrumentation frameworks for JavaScript suffer from enormous overheads and difficulties in instrumenting the built-in module library of Node.js. In this paper, we introduce a new dynamic analysis framework for JavaScript and Node.js called NodeProf. While offering similar flexibility as code-level instrumentation frameworks, NodeProf significantly improves analysis performance while ensuring comprehensive code coverage. NodeProf supports runtime (de)activation of analyses and incurs zero overhead when no analysis is active. NodeProf is based on dynamic instrumentation of the JavaScript runtime and leverages automatic partial evaluation to generate efficient machine code. In addition, NodeProf makes use of the language interoperability provided by the runtime and thus allows dynamic analyses to be written in Java and JavaScript with compatibility to Jalangi, a state-of-the-art code-level JavaScript instrumentation framework. Our experiments show that the peak performance of running the same dynamic analyses using NodeProf can be up to three orders of magnitude faster than Jalangi.",
+    "date": "2018-02-21",
+    "link": "https://doi.org/10.1145/3178372.3179527",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Haiyang",
+        "last_name": "Sun",
+        "institution": "Università della Svizzera italiana"
+      },
+      {
+        "first_name": "Daniele",
+        "last_name": "Bonetta",
+        "institution": "Oracle (United States)"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Humer",
+        "institution": ""
+      },
+      {
+        "first_name": "Walter",
+        "last_name": "Binder",
+        "institution": "Università della Svizzera italiana"
+      }
+    ],
+    "dblp_key": "conf/cc/SunBHB18",
+    "venue": "cc",
+    "year": 2018
+  }
+]

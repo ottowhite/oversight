@@ -1,0 +1,650 @@
+[
+  {
+    "paper_id": "10.1145/3497776.3526941",
+    "title": "Writing and verifying a Quantum optimizing compiler (keynote)",
+    "abstract": "As quantum computing hardware evolves, it will continue to face four key limitations: low qubit counts, limited connectivity, high error rates, and short coherence times. Quantum compilers play a key role in addressing these issues, reducing the number of qubits needed to perform a computation, mapping those qubits to the desired hardware, and minimizing the number of costly operations, both in terms of error rates and execution time. However, we cannot afford for compilers to become another source of bugs: Quantum computing is an inherently probabilistic and error-prone process and any additional sources of error are unlikely to be properly diagnosed. To address this, we present VOQC, a verified optimizing compiler for quantum circuits. VOQC heavily optimizes quantum programs while guaranteeing that the output is quantum-mechanically indistinguishable from the input program, up to permutation of qubits. This ensures that compilation produces an equivalent program that is executable on the given hardware. In this talk, we will address the key differences between classical and quantum compilation and the challenges unique to the latter. We will discuss the design decisions that underlie VOQC and how they enable its most powerful optimizations. Finally, we will discuss the developments since VOQC was first published, both within the VOQC toolchain and competing compilers, verified and unverified.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3526941",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Robert W.",
+        "last_name": "Rand",
+        "institution": "University of Chicago"
+      }
+    ],
+    "dblp_key": "conf/cc/000122",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517780",
+    "title": "Performant portable OpenMP",
+    "abstract": "Accelerated computing has increased the need to specialize how a program is parallelized depending on the target. Fully exploiting a highly parallel accelerator, such as a GPU, demands more parallelism and sometimes more levels of parallelism than a multicore CPU. OpenMP has a directive for each level of parallelism, but choosing directives for each target can incur a significant productivity cost. We argue that using the new OpenMP loop directive with an appropriate compiler decision process can achieve the same performance benefits of target-specific parallelization with the productivity advantage of a single directive for all targets. In this paper, we introduce a fully descriptive model and demonstrate its benefits with an implementation of the loop directive, comparing performance, productivity, and portability against other production compilers using the SPEC ACCEL benchmark suite. We provide an implementation of our proposal in NVIDIA's HPC compiler. It yields up to 56X speedup and an average of 1.91x-1.79x speedup compared to the baseline performance (depending on the host system) on GPUs, and preserves CPU performance. In addition, our proposal requires 60% fewer parallelism directives.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517780",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Güray",
+        "last_name": "Özen",
+        "institution": ""
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Wolfe",
+        "institution": "Nvidia (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/OzenW22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517782",
+    "title": "On the computation of interprocedural weak control closure",
+    "abstract": "Many program analysis techniques depend on capturing the control dependencies of the program. Most existing control dependence algorithms either compute intraprocedural control dependencies only, or they compute control dependence relations that are not precise in general including nonterminating systems. Weak control closure (WCC) subsumes all known nontermination insensitive control dependence relations, including those that are appropriate for nonterminating systems. In this paper, we provide the first formal development of an algorithm to compute the WCC for interprocedural programs capturing the weak form of interprocedural control dependencies. The method is widely applicable due to the generality of WCC. Theorems on the theoretical results of soundness, precision, and the worst-case complexity of our method are also included. We have compared our algorithm with a WCC computation algorithm based on a state-of-the-art interprocedural control dependence computation algorithm. The latter algorithm loses soundness, and we improve the precision by 15.21% on all our experimental benchmarks. This empirical evidence suggests that our algorithm is more effective for any client application of WCC requiring interprocedural program analysis.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517782",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Abu Naser",
+        "last_name": "Masud",
+        "institution": "Mälardalen University"
+      },
+      {
+        "first_name": "Björn",
+        "last_name": "Lisper",
+        "institution": "Mälardalen University"
+      }
+    ],
+    "dblp_key": "conf/cc/MasudL22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517779",
+    "title": "Seamless deductive inference via macros",
+    "abstract": "We present an approach to integrating state-of-art bottom-up logic programming within the Rust ecosystem, demonstrating it with Ascent, an extension of Datalog that performs well against comparable systems. Rust’s powerful macro system permits Ascent to be compiled uniformly with the Rust code it’s embedded in and to interoperate with arbitrary user-defined components written in Rust, addressing a challenge in real-world use of logic programming languages: the fact that logical programs are parts of bigger software systems and need to interoperate with other components written in imperative programming languages.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517779",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Arash",
+        "last_name": "Sahebolamri",
+        "institution": "Syracuse University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Gilray",
+        "institution": "University of Alabama at Birmingham"
+      },
+      {
+        "first_name": "Kristopher",
+        "last_name": "Micinski",
+        "institution": "Syracuse University"
+      }
+    ],
+    "dblp_key": "conf/cc/SahebolamriGM22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517776",
+    "title": "BinPointer: towards precise, sound, and scalable binary-level pointer analysis",
+    "abstract": "Binary-level pointer analysis is critical to binary-level applications such as reverse engineering and binary debloating. In this paper, we propose BinPointer, a new binary-level interprocedural pointer analysis that relies on an offset-sensitive value-tracking analysis to achieve high precision. We also propose a soundness and precision evaluation methodology based on runtime memory accesses triggered by reference input data. Our experimental results demonstrate that BinPointer has higher precision over prior work, while maintaining acceptable scalability. The soundness of BinPointer is also validated through runtime data.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517776",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Sun Hyoung",
+        "last_name": "Kim",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Dongrui",
+        "last_name": "Zeng",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Cong",
+        "last_name": "Sun",
+        "institution": "Xidian University"
+      },
+      {
+        "first_name": "Gang",
+        "last_name": "Tan",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "conf/cc/KimZ0T22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517772",
+    "title": "QSSA: an SSA-based IR for Quantum computing",
+    "abstract": "Quantum computing hardware has progressed rapidly. Simultaneously, there has been a proliferation of programming languages and program optimization tools for quantum computing. Existing quantum compilers use intermediate representations (IRs) where quantum programs are described as circuits. Such IRs fail to leverage existing work on compiler optimizations. In such IRs, it is non-trivial to statically check for physical constraints such as the no-cloning theorem, which states that qubits cannot be copied. We introduce QSSA, a novel quantum IR based on static single assignment (SSA) that enables decades of research in compiler optimizations to be applied to quantum compilation. QSSA models quantum operations as being side-effect-free. The inputs and outputs of the operation are in one-to-one correspondence; qubits cannot be created or destroyed. As a result, our IR supports a static analysis pass that verifies no-cloning at compile-time. The quantum circuit is fully encoded within the def-use chain of the IR, allowing us to leverage existing optimization passes on SSA representations such as redundancy elimination and dead-code elimination. Running our QSSA-based compiler on the QASMBench and IBM Quantum Challenge datasets, we show that our optimizations perform comparably to IBM’s Qiskit quantum compiler infrastructure. QSSA allows us to represent, analyze, and transform quantum programs using the robust theory of SSA representations, bringing quantum compilation into the realm of well-understood theory and practice.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517772",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Anurudh",
+        "last_name": "Peduri",
+        "institution": "Indian Institute of Technology Hyderabad"
+      },
+      {
+        "first_name": "Siddharth",
+        "last_name": "Bhat",
+        "institution": "Indian Institute of Technology Hyderabad"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Grosser",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/PeduriBG22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517766",
+    "title": "Training of deep learning pipelines on memory-constrained GPUs via segmented fused-tiled execution",
+    "abstract": "Training models with massive inputs is a significant challenge in the development of Deep Learning pipelines to process very large digital image datasets as required by Whole Slide Imaging (WSI) in computational pathology and analysis of brain fMRI images in computational neuroscience. Graphics Processing Units (GPUs) represent the primary workhorse in training and inference of Deep Learning models. In order to use GPUs to run inference or training on a neural network pipeline, state-of-the-art machine learning frameworks like PyTorch and TensorFlow currently require that the collective memory on the GPUs must be larger than the size of the activations at any stage in the pipeline. Therefore, existing Deep Learning pipelines for these use cases have been forced to develop sub-optimal \"patch-based\" modeling approaches, where images are processed in small segments of an image. In this paper, we present a solution to this problem by employing tiling in conjunction with check-pointing, thereby enabling arbitrarily large images to be directly processed, irrespective of the size of global memory on a GPU and the number of available GPUs. Experimental results using PyTorch demonstrate enhanced functionality/performance over existing frameworks.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517766",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Yufan",
+        "last_name": "Xu",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Saurabh",
+        "last_name": "Raje",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Atanas",
+        "last_name": "Rountev",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Gerald",
+        "last_name": "Sabin",
+        "institution": "RNET Technologies (United States)"
+      },
+      {
+        "first_name": "Aravind",
+        "last_name": "Sukumaran-Rajam",
+        "institution": "Washington State University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Sadayappan",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/cc/XuRRSSS22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517771",
+    "title": "Graph transformations for register-pressure-aware instruction scheduling",
+    "abstract": "This paper presents graph transformation algorithms for register-pressure-aware instruction scheduling. The proposed transformations add edges to the data dependence graph (DDG) to eliminate solutions that are either redundant or sub-optimal. Register-pressure-aware instruction scheduling aims at balancing two conflicting objectives: maximizing instruction-level parallelism (ILP) and minimizing register pressure (RP). Graph transformations have been previously proposed for the problem of maximizing ILP without considering RP, which is a problem of limited practical value. In the current paper, we extend that work by proposing graph transformations for the RP minimization objective, which is an important objective in practice. Various cost functions are considered for representing RP, and we show that the proposed transformations preserve optimality with respect to each of them. The proposed transformations are used to reduce the size of the solution space before applying a Branch-and-Bound (B&B) algorithm that exhaustively searches for an optimal solution. The proposed transformations and the B&B algorithm were implemented in the LLVM compiler, and their performance was evaluated experimentally on a CPU target and a GPU target. The SPEC CPU2017 floating-point benchmarks were used on the CPU and the PlaidML benchmarks were used on the GPU. The results show that the proposed transformations significantly reduce the compile time while giving approximately the same execution-time performance.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517771",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Ghassan",
+        "last_name": "Shobaki",
+        "institution": "California State University, Sacramento"
+      },
+      {
+        "first_name": "Justin",
+        "last_name": "Bassett",
+        "institution": "California State University, Sacramento"
+      },
+      {
+        "first_name": "Mark",
+        "last_name": "Heffernan",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Austin",
+        "last_name": "Kerbow",
+        "institution": "California State University, Sacramento"
+      }
+    ],
+    "dblp_key": "conf/cc/ShobakiBHK22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517769",
+    "title": "Automating reinforcement learning architecture design for code optimization",
+    "abstract": "Reinforcement learning (RL) is emerging as a powerful technique for solving complex code optimization tasks with an ample search space. While promising, existing solutions require a painstaking manual process to tune the right task-specific RL architecture, for which compiler developers need to determine the composition of the RL exploration algorithm, its supporting components like state, reward, and transition functions, and the hyperparameters of these models. This paper introduces SuperSonic, a new open-source framework to allow compiler developers to integrate RL into compilers easily, regardless of their RL expertise. SuperSonic supports customizable RL architecture compositions to target a wide range of optimization tasks. A key feature of SuperSonic is the use of deep RL and multi-task learning techniques to develop a meta-optimizer to automatically find and tune the right RL architecture from training benchmarks. The tuned RL can then be deployed to optimize new programs. We demonstrate the efficacy and generality of SuperSonic by applying it to four code optimization problems and comparing it against eight auto-tuning frameworks. Experimental results show that SuperSonic consistently improves hand-tuned methods by delivering better overall performance, accelerating the deployment-stage search by 1.75x on average (up to 100x).",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517769",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Huanting",
+        "last_name": "Wang",
+        "institution": "University of Leeds"
+      },
+      {
+        "first_name": "Zhanyong",
+        "last_name": "Tang",
+        "institution": "Northwest University"
+      },
+      {
+        "first_name": "Cheng",
+        "last_name": "Zhang",
+        "institution": "Northwest University"
+      },
+      {
+        "first_name": "Jiaqi",
+        "last_name": "Zhao",
+        "institution": "Northwest University"
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Cummins",
+        "institution": ""
+      },
+      {
+        "first_name": "Hugh",
+        "last_name": "Leather",
+        "institution": ""
+      },
+      {
+        "first_name": "Zheng",
+        "last_name": "Wang",
+        "institution": "University of Leeds"
+      }
+    ],
+    "dblp_key": "conf/cc/WangTZZCL022",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517778",
+    "title": "Cape: compiler-aided program transformation for HTM-based cache side-channel defense",
+    "abstract": "Cache side-channel attacks pose real threats to computer system security. Prior work called Cloak leverages commodity hardware transactional memory (HTM) to protect sensitive data and code from cache side-channel attacks. However, Cloak requires tedious and error-prone manual modifications to vulnerable software by programmers. This paper presents Cape, a compiler analysis and transformation that soundly and automatically protects programs from cache side-channel attacks using Cloak’s defense. An evaluation shows that Cape provides protection that is as strong as Cloak’s, while performing competitively with Cloak.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517778",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Rui",
+        "last_name": "Zhang",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Bond",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Yinqian",
+        "last_name": "Zhang",
+        "institution": "Southern University of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/ZhangBZ22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517770",
+    "title": "MLIR-based code generation for GPU tensor cores",
+    "abstract": "The state-of-the-art in high-performance deep learning today is primarily driven by manually developed libraries optimized and highly tuned by expert programmers using low-level abstractions with significant effort. This effort is often repeated for similar hardware and future ones. In this work, we pursue and evaluate the more modular and reusable approach of using compiler IR infrastructure to generate libraries by encoding all the required optimizations as a sequence of transformations and customized passes on an IR. We believe that until the recent introduction of MLIR (Multi-level intermediate representation), it had been hard to represent and transform computation at various levels of abstraction within a single IR.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517770",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Navdeep",
+        "last_name": "Katel",
+        "institution": "Indian Institute of Science Bangalore"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Khandelwal",
+        "institution": "Indian Institute of Science Bangalore"
+      },
+      {
+        "first_name": "Uday",
+        "last_name": "Bondhugula",
+        "institution": "Indian Institute of Science Bangalore"
+      }
+    ],
+    "dblp_key": "conf/cc/KatelKB22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517774",
+    "title": "One-shot tuner for deep learning compilers",
+    "abstract": "Auto-tuning DL compilers are gaining ground as an optimizing back-end for DL frameworks. While existing work can generate deep learning models that exceed the performance of hand-tuned libraries, they still suffer from prohibitively long auto-tuning time due to repeated hardware measurements in large search spaces. In this paper, we take a neural-predictor inspired approach to reduce the auto-tuning overhead and show that a performance predictor model trained prior to compilation can produce optimized tensor operation codes without repeated search and hardware measurements. To generate a sample-efficient training dataset, we extend input representation to include task-specific information and to guide data sampling methods to focus on learning high-performing codes. We evaluated the resulting predictor model, One-Shot Tuner, against AutoTVM and other prior work, and the results show that One-Shot Tuner speeds up compilation by 2.81x to 67.7x compared to prior work while providing comparable or improved inference time for CNN and Transformer models.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517774",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Jaehun",
+        "last_name": "Ryu",
+        "institution": "Pohang University of Science and Technology"
+      },
+      {
+        "first_name": "Eunhyeok",
+        "last_name": "Park",
+        "institution": "Pohang University of Science and Technology"
+      },
+      {
+        "first_name": "Hyojin",
+        "last_name": "Sung",
+        "institution": "Pohang University of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/RyuPS22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517781",
+    "title": "Caviar: an e-graph based TRS for automatic code optimization",
+    "abstract": "Term Rewriting Systems (TRSs) are used in compilers to simplify and prove expressions. State-of-the-art TRSs in compilers use a greedy algorithm that applies a set of rewriting rules in a predefined order (where some of the rules are not axiomatic). This leads to a loss of the ability to simplify certain expressions. E-graphs and equality saturation sidestep this issue by representing the different equivalent expressions in a compact manner from which the optimal expression can be extracted. While an e-graph-based TRS can be more powerful than a TRS that uses a greedy algorithm, it is slower because expressions may have a large or sometimes infinite number of equivalent expressions. Accelerating e-graph construction is crucial for making the use of e-graphs practical in compilers. In this paper, we present Caviar, an e-graph-based TRS for proving expressions within compilers. The main advantage of Caviar is its speed. It can prove expressions much faster than base e-graph TRSs. It relies on three techniques: 1) a technique that stops e-graphs from growing when the goal is reached, called Iteration Level Check; 2) a mechanism that balances exploration and exploitation in the equality saturation algorithm, called Pulsing Caviar; 3) a technique to stop e-graph construction before reaching saturation when a non-provable pattern is detected, called Non-Provable Patterns Detection (NPPD). We evaluate caviar on Halide, an optimizing compiler that relies on a greedy-algorithm-based TRS to simplify and prove its expressions. The proposed techniques allow Caviar to accelerate e-graph expansion for the task of proving expressions. They also allow Caviar to prove expressions that Halide’s TRS cannot prove while being only 0.68x slower. Caviar is publicly available at: <a>https://github.com/caviar-trs/caviar</a>.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517781",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Smail",
+        "last_name": "Kourta",
+        "institution": "New York University Abu Dhabi"
+      },
+      {
+        "first_name": "Adel",
+        "last_name": "Namani",
+        "institution": "New York University Abu Dhabi"
+      },
+      {
+        "first_name": "Fatima Benbouzid-Si",
+        "last_name": "Tayeb",
+        "institution": "École Nationale Supérieure d'Informatique"
+      },
+      {
+        "first_name": "Kim",
+        "last_name": "Hazelwood",
+        "institution": "Meta (Israel)"
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Cummins",
+        "institution": "Meta (Israel)"
+      },
+      {
+        "first_name": "Hugh",
+        "last_name": "Leather",
+        "institution": "Meta (Israel)"
+      },
+      {
+        "first_name": "Riyadh",
+        "last_name": "Baghdadi",
+        "institution": "Supélec"
+      }
+    ],
+    "dblp_key": "conf/cc/KourtaNTHCLB22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517768",
+    "title": "Memory access scheduling to reduce thread migrations",
+    "abstract": "It has been widely observed that data movement is emerging as the primary bottleneck to scalability and energy efficiency in future hardware, especially for applications and algorithms that are not cache-friendly and achieve below 1% of peak performance on today’s systems. The idea of “moving compute to data” has been suggested as one approach to address this challenge. While there are approaches that can achieve this migration in software, hardware support is a promising direction from the perspectives of lower overheads and programmer productivity. Migratory thread architectures migrate lightweight hardware thread contexts to the location of the data instead of transferring data to the requesting processor. However, while transporting thread contexts is cheaper than moving data, thread migrations still incur energy and bandwidth overheads and can be particularly expensive if threads frequently migrate in a ping-pong manner between processors due to poor locality of access. In this paper, we propose Memory Access Scheduling, a new compiler optimization that aims to reduce the number of overall thread migrations when executing a program on migratory thread architectures. Our experiments show performance improvements with a geometric mean speedup of 1.23× for a set of 7 explicitly-parallelized kernels, and of 1.10× for a set of 15 automatically-parallelized kernels. We believe that memory access scheduling will also be an important optimization for other locality-centric architectures that benefit from software thread migrations, such as multi-threaded NUMA architectures.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517768",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Sana",
+        "last_name": "Damani",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Prithayan",
+        "last_name": "Barua",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/DamaniBS22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517775",
+    "title": "QRANE: lifting QASM programs to an affine IR",
+    "abstract": "This paper introduces QRANE, a tool that produces the affine intermediate representation (IR) from a quantum program expressed in Quantum Assembly language such as OpenQASM. QRANE finds subsets of quantum gates prescribed by the same operation type and linear relationships, and constructs a structured program representation expressed with polyhedral iteration domains and access relations, all while preserving the original semantics of the quantum program. We explore various policies for deciding amongst different delinearization strategies and discuss their effect on the quality of the reconstruction. Our evaluation demonstrates the high coverage and efficiency obtained with QRANE while enabling research on the benefits of affine transformations for large quantum circuits. Specifically, QRANE reconstructs affine iteration domains of up to 6 dimensions and up to 184 points per domain.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517775",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Blake",
+        "last_name": "Gerard",
+        "institution": "University of Oklahoma"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Grosser",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Kong",
+        "institution": "University of Oklahoma"
+      }
+    ],
+    "dblp_key": "conf/cc/GerardGK22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517773",
+    "title": "A polynomial time exact solution to the bit-aware register binding problem",
+    "abstract": "Finding the minimum register bank is an optimization problem related to the synthesis of hardware. Given a program, the problem asks for the minimum number of registers plus their minimum size, in bits, that suffices to compile said program. This problem is NP-complete; hence, usually solved via heuristics. In this paper, we show that this problem has an optimal solution in polynomial time, as long as swaps can be inserted in the program to move variables across registers. This observation sets a lower bound to heuristics that minimize the size of register banks. We have compared the optimal algorithm with two classic heuristics. Our approach uses, on average, 6 to 10% less bits than that previous work.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517773",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Canesche",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Ricardo",
+        "last_name": "Ferreira",
+        "institution": "Universidade Federal de Viçosa"
+      },
+      {
+        "first_name": "José Augusto M.",
+        "last_name": "Nacif",
+        "institution": "Universidade Federal de Viçosa"
+      },
+      {
+        "first_name": "Fernando Magno Quintão",
+        "last_name": "Pereira",
+        "institution": "Universidade Federal de Minas Gerais"
+      }
+    ],
+    "dblp_key": "conf/cc/CanescheFNP22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517764",
+    "title": "Efficient profile-guided size optimization for native mobile applications",
+    "abstract": "Positive user experience of mobile apps demands they not only launch fast and run fluidly, but are also small in order to reduce network bandwidth from regular updates. Conventional optimizations often trade off size regressions for performance wins, making them impractical in the mobile space. Indeed, profile-guided optimization (PGO) is successful in server workloads, but is not effective at reducing size and page faults for mobile apps. Also, profiles must be collected from instrumenting builds that are up to 2X larger, so they cannot run normally on real mobile devices.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517764",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Kyungwoo",
+        "last_name": "Lee",
+        "institution": ""
+      },
+      {
+        "first_name": "Ellis",
+        "last_name": "Hoag",
+        "institution": ""
+      },
+      {
+        "first_name": "Nikolai",
+        "last_name": "Tillmann",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/cc/LeeHT22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517783",
+    "title": "Software pre-execution for irregular memory accesses in the HBM era",
+    "abstract": "The introduction of High Bandwidth Memory (HBM) necessitates the use of intelligent software prefetching in irregular applications to utilize the surplus bandwidth. In this work, we propose Software Pre-execution (SPE), a technique that relies on pre-executing a minimal copy of the loop of concern (we call the pre-execution loop) for the purpose of prefetching irregular accesses. This is complemented by the compiler's enforcing a certain prefetch distance through apriori strip-mining of the original loop such that the execution of the pre-execution loop is interspersed with the main loop to ensure timeliness of prefetches. We find that this approach provides natural advantages over prior art such as preservation of loop vectorization, handling short loops, avoiding performance bottlenecks, amenability to threading and most importantly, effective coverage. We demonstrate these advantages using a variety of benchmarks on Fujitsu's A64FX processor with HBM2 memory - we outperform prior art by 1.3x and 1.2x when using small and huge pages, respectively. Simulations further show that our approach holds stronger promise on upcoming processors with HBM2e.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517783",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Sanyam",
+        "last_name": "Mehta",
+        "institution": "Hewlett Packard Enterprise (United States)"
+      },
+      {
+        "first_name": "Gary",
+        "last_name": "Elsesser",
+        "institution": "Hewlett Packard Enterprise (United States)"
+      },
+      {
+        "first_name": "Terry",
+        "last_name": "Greyzck",
+        "institution": "Hewlett Packard Enterprise (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/MehtaEG22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517765",
+    "title": "Making no-fuss compiler fuzzing effective",
+    "abstract": "Developing a bug-free compiler is difficult; modern optimizing compilers are among the most complex software systems humans build. Fuzzing is one way to identify subtle compiler bugs that are hard to find with human-constructed tests. Grammar-based fuzzing, however, requires a grammar for a compiler’s input language, and can miss bugs induced by code that does not actually satisfy the grammar the compiler should accept. Grammar-based fuzzing also seldom uses advanced modern fuzzing techniques based on coverage feedback. However, modern mutation-based fuzzers are often ineffective for testing compilers because most inputs they generate do not even come close to getting past the parsing stage of compilation. This paper introduces a technique for taking a modern mutation-based fuzzer (AFL in our case, but the method is general) and augmenting it with operators taken from mutation testing, and program splicing. We conduct a controlled study to show that our hybrid approaches significantly improve fuzzing effectiveness qualitatively (consistently finding unique bugs that baseline approaches do not) and quantitatively (typically finding more unique bugs in the same time span, despite fewer program executions). Our easy-to-apply approach has allowed us to report more than 100 confirmed and fixed bugs in production compilers, and found a bug in the Solidity compiler that earned a security bounty.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517765",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Alex",
+        "last_name": "Groce",
+        "institution": "Northern Arizona University"
+      },
+      {
+        "first_name": "Rijnard van",
+        "last_name": "Tonder",
+        "institution": ""
+      },
+      {
+        "first_name": "Goutamkumar Tulajappa",
+        "last_name": "Kalburgi",
+        "institution": "Northern Arizona University"
+      },
+      {
+        "first_name": "Claire Le",
+        "last_name": "Goues",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/cc/GroceTKG22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517767",
+    "title": "Loner: utilizing the CPU vector datapath to process scalar integer data",
+    "abstract": "Modern CPUs utilize SIMD vector instructions and hardware extensions to accelerate code with data-level parallelism. This allows for high performance gains in select application domains such as image and signal processing. However, general purpose code often lacks data-level parallelism or has complex control and data dependencies, which prevents vectorization. Thus, CPU vector registers and functional units frequently sit idle while the scalar datapath unilaterally executes code.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517767",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Armand",
+        "last_name": "Behroozi",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Sunghyun",
+        "last_name": "Park",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Mahlke",
+        "institution": "University of Michigan–Ann Arbor"
+      }
+    ],
+    "dblp_key": "conf/cc/BehrooziPM22",
+    "venue": "cc",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3497776.3517777",
+    "title": "Mapping parallelism in a functional IR through constraint satisfaction: a case study on convolution for mobile GPUs",
+    "abstract": "Graphics Processing Units (GPUs) are notoriously hard to optimize for manually. What is needed are good automatic code generators and optimizers. Accelerate, Futhark and Lift demonstrated that a functional approach is well suited for this challenge. Lift, for instance, uses a system of rewrite rules with a multi-stage approach. Algorithmic optimizations are first explored, followed by hardware-specific optimizations such as using shared memory and mapping parallelism.",
+    "date": "2022-03-18",
+    "link": "https://doi.org/10.1145/3497776.3517777",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Naums",
+        "last_name": "Mogers",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Lu",
+        "last_name": "Li",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Valentin",
+        "last_name": "Radu",
+        "institution": "University of Sheffield"
+      },
+      {
+        "first_name": "Christophe",
+        "last_name": "Dubach",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/cc/MogersLRD22",
+    "venue": "cc",
+    "year": 2022
+  }
+]
