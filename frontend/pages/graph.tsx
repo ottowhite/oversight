@@ -69,59 +69,19 @@ type GraphState = {
 };
 
 // ---------------------------------------------------------------------------
-// Mock data + mock fetchers.
+// API fetchers.
 //
-// USE_MOCK is the swap point for Phase 2: flip to false (or delete the
-// mock branch) and the page hits the real backend with the same contract.
+// Phase 2: real /api/papers/<id>/neighbors is wired in. The corpus
+// similarity-distribution endpoint (Phase 1B) is not yet implemented on
+// the backend, so fetchDistribution falls back to FALLBACK_DISTRIBUTION
+// — hard-coded percentiles that are roughly representative of our
+// embedding model. The threshold slider remains usable in the meantime.
 // ---------------------------------------------------------------------------
 
-const USE_MOCK = true;
-
-// 30 canned papers across a few PL/systems/ML themes so the graph looks
-// believable when expanded. Titles and authors are intentionally
-// realistic-looking but obviously synthetic.
-const MOCK_PAPERS: Paper[] = [
-  { paper_id: "p001", title: "Adaptive Type Inference for Gradually Typed Lambda Calculi", authors: ["Alice Mendes", "Hiroshi Tanaka", "Riya Kapoor"] },
-  { paper_id: "p002", title: "Region-Based Memory Management Without Garbage Collection", authors: ["Daniel Okafor", "Elena Petrova"] },
-  { paper_id: "p003", title: "A Calculus of Capabilities for Effect Polymorphism", authors: ["Wei Chen", "Marcus Holm", "Priya Iyer"] },
-  { paper_id: "p004", title: "Verified Compilation of a Dependently Typed Core Language", authors: ["Sofia Romano", "Jiro Ueda"] },
-  { paper_id: "p005", title: "Scalable kNN Search over Halfvec Embeddings with HNSW", authors: ["Kenji Hara", "Olivia Bennett"] },
-  { paper_id: "p006", title: "Learning Sparse Mixture-of-Experts via Routed Activation Decay", authors: ["Anika Volkov", "Tariq Hassan", "Mei Lin"] },
-  { paper_id: "p007", title: "On the Hubness Problem in High-Dimensional Cosine Spaces", authors: ["Lukas Berger", "Yui Tanaka"] },
-  { paper_id: "p008", title: "Region-Based Type Systems for Concurrent Channels", authors: ["Carmen Diaz", "Nathaniel Olsen"] },
-  { paper_id: "p009", title: "Differentiable Programming for Implicit Surface Reconstruction", authors: ["Ravi Sundaram", "Helena Vogel"] },
-  { paper_id: "p010", title: "A Linear-Time Algorithm for HNSW Graph Construction", authors: ["Yuto Sasaki", "Anna Kowalski"] },
-  { paper_id: "p011", title: "Effect Handlers in a Production-Grade ML Compiler", authors: ["Jack Pemberton", "Asha Rao"] },
-  { paper_id: "p012", title: "Token-Efficient Retrieval Augmentation for Long-Context LLMs", authors: ["Mira Foster", "Daichi Kuroda"] },
-  { paper_id: "p013", title: "Provable Bounds on Embedding Drift Across Model Versions", authors: ["Eitan Schmidt", "Lara Bianchi"] },
-  { paper_id: "p014", title: "Compositional Refinement Types for Asynchronous Programs", authors: ["Sven Larsson", "Nadia Khalil"] },
-  { paper_id: "p015", title: "Postgres pgvector Internals: From IVF to HNSW Halfvec", authors: ["Owen Mackenzie", "Yui Tanaka", "Eduardo Silva"] },
-  { paper_id: "p016", title: "A Bidirectional Type Checker for Algebraic Effects", authors: ["Petra Halmi", "Joon-Ho Park"] },
-  { paper_id: "p017", title: "Beyond Top-k: Mutual Nearest Neighbor Graphs in Practice", authors: ["Lukas Berger", "Olivia Bennett"] },
-  { paper_id: "p018", title: "Gradient Surgery for Multi-Task Embedding Models", authors: ["Tariq Hassan", "Sofia Romano"] },
-  { paper_id: "p019", title: "Verified Borrow Checking via Separation Logic", authors: ["Daniel Okafor", "Sven Larsson"] },
-  { paper_id: "p020", title: "Calibrating Cosine: Percentile-Anchored Similarity Thresholds", authors: ["Mira Foster", "Eitan Schmidt"] },
-  { paper_id: "p021", title: "An Empirical Study of GPU Memory Fragmentation in Deep Learning", authors: ["Helena Vogel", "Ravi Sundaram"] },
-  { paper_id: "p022", title: "Type-Directed Synthesis of Algebraic Refactorings", authors: ["Wei Chen", "Petra Halmi"] },
-  { paper_id: "p023", title: "Deterministic Parallelism with Algebraic Effect Rows", authors: ["Marcus Holm", "Carmen Diaz"] },
-  { paper_id: "p024", title: "Embedding-Aware Cache Eviction for Vector Databases", authors: ["Owen Mackenzie", "Mei Lin"] },
-  { paper_id: "p025", title: "Hindley–Milner with Row-Polymorphic Records, Revisited", authors: ["Sofia Romano", "Jack Pemberton"] },
-  { paper_id: "p026", title: "Sparse Hopfield Networks for Approximate Nearest Neighbor Search", authors: ["Anna Kowalski", "Lukas Berger"] },
-  { paper_id: "p027", title: "Capability-Safe Module Linking in Modern Web Runtimes", authors: ["Nathaniel Olsen", "Asha Rao"] },
-  { paper_id: "p028", title: "A Survey of Graph Neural Networks for Code Representation", authors: ["Mei Lin", "Joon-Ho Park"] },
-  { paper_id: "p029", title: "Online Learning Rate Adaptation for Stochastic Gradient Methods", authors: ["Eduardo Silva", "Mira Foster"] },
-  { paper_id: "p030", title: "Linear Algebra Subroutines for Half-Precision Vector Search", authors: ["Hiroshi Tanaka", "Owen Mackenzie"] },
-];
-
-const MOCK_PAPER_INDEX: Record<string, Paper> = MOCK_PAPERS.reduce(
-  (acc, p) => {
-    acc[p.paper_id] = p;
-    return acc;
-  },
-  {} as Record<string, Paper>,
-);
-
-const MOCK_DISTRIBUTION: SimilarityDistribution = {
+// Sensible defaults for gemini-embedding-001 abstract cosines, used until
+// /api/embeddings/similarity_distribution exists. Replace by deleting the
+// fallback branch once Phase 1B ships.
+const FALLBACK_DISTRIBUTION: SimilarityDistribution = {
   p50: 0.42,
   p90: 0.58,
   p95: 0.62,
@@ -130,83 +90,42 @@ const MOCK_DISTRIBUTION: SimilarityDistribution = {
   p99_9: 0.79,
 };
 
-// Deterministic hash for stable per-(seed, target) similarity in mocks. Real
-// backend will return the actual cosine; we just need values that span the
-// 0.30–0.85 range and stay consistent across re-renders so the graph is
-// usable for testing.
-function mockSimilarity(seedId: string, targetId: string): number {
-  const a = seedId < targetId ? seedId : targetId;
-  const b = seedId < targetId ? targetId : seedId;
-  let h = 2166136261;
-  const s = `${a}|${b}`;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = (h * 16777619) >>> 0;
-  }
-  // Map to [0.30, 0.85] — covers the realistic abstract-cosine range.
-  const u = (h % 10000) / 10000;
-  return 0.3 + u * 0.55;
-}
-
-function pickMockNeighbors(seedId: string, k: number): NeighborApiEntry[] {
-  const others = MOCK_PAPERS.filter((p) => p.paper_id !== seedId);
-  // If the seed isn't in our mock corpus (e.g. ?seed=external_id), still
-  // produce a believable neighborhood — first paper acts as the "anchor."
-  const scored = others
-    .map((p) => ({ paper: p, sim: mockSimilarity(seedId, p.paper_id) }))
-    .sort((a, b) => b.sim - a.sim)
-    .slice(0, k);
-  return scored.map(({ paper, sim }) => ({
-    paper_id: paper.paper_id,
-    title: paper.title,
-    authors: paper.authors,
-    similarity: sim,
-  }));
-}
-
-function ensureSeedPaper(seedId: string): Paper {
-  return (
-    MOCK_PAPER_INDEX[seedId] ?? {
-      paper_id: seedId,
-      title: `Seed paper ${seedId}`,
-      authors: ["Unknown Author"],
-    }
-  );
-}
-
 async function fetchNeighbors(
   paperId: string,
   opts: { k: number; mutual: boolean },
 ): Promise<NeighborsResponse> {
-  if (USE_MOCK) {
-    // Tiny artificial latency so the loading state is observable in dev.
-    await new Promise((r) => setTimeout(r, 120));
-    const seed = ensureSeedPaper(paperId);
-    let neighbors = pickMockNeighbors(paperId, opts.k);
-    if (opts.mutual) {
-      // Mutual edges are a strict subset — drop ~half of the top-k to
-      // simulate the asymmetric neighborhoods you'd see for real.
-      neighbors = neighbors.filter((_, i) => i % 2 === 0);
-    }
-    return { seed, neighbors };
-  }
   const params = new URLSearchParams({
     k: String(opts.k),
     mutual: opts.mutual ? "true" : "false",
   });
-  const resp = await fetch(`/api/papers/${encodeURIComponent(paperId)}/neighbors?${params}`);
-  if (!resp.ok) throw new Error(`neighbors fetch failed: ${resp.status}`);
+  const resp = await fetch(
+    `/api/papers/${encodeURIComponent(paperId)}/neighbors?${params}`,
+  );
+  if (!resp.ok) {
+    let detail = "";
+    try {
+      const body = await resp.json();
+      if (body && typeof body.error === "string") detail = `: ${body.error}`;
+    } catch {
+      /* response was not JSON */
+    }
+    throw new Error(`neighbors fetch failed (${resp.status})${detail}`);
+  }
   return (await resp.json()) as NeighborsResponse;
 }
 
 async function fetchDistribution(): Promise<SimilarityDistribution> {
-  if (USE_MOCK) {
-    await new Promise((r) => setTimeout(r, 60));
-    return MOCK_DISTRIBUTION;
+  // TODO Phase 1B: remove the try/catch fallback once the
+  // /api/embeddings/similarity_distribution endpoint exists.
+  try {
+    const resp = await fetch(`/api/embeddings/similarity_distribution`);
+    if (resp.ok) {
+      return (await resp.json()) as SimilarityDistribution;
+    }
+  } catch {
+    /* fall through to the static fallback */
   }
-  const resp = await fetch(`/api/embeddings/similarity_distribution`);
-  if (!resp.ok) throw new Error(`distribution fetch failed: ${resp.status}`);
-  return (await resp.json()) as SimilarityDistribution;
+  return FALLBACK_DISTRIBUTION;
 }
 
 // ---------------------------------------------------------------------------
@@ -270,12 +189,16 @@ const MODE_LABEL: Record<Mode, string> = {
 
 export default function GraphPage() {
   const router = useRouter();
-  const seedId = useMemo(() => {
+  // router.query is empty until router.isReady on first client render.
+  // Wait for it before triggering any fetches so we don't hit the API
+  // with an empty seed.
+  const seedId = useMemo<string | null>(() => {
+    if (!router.isReady) return null;
     const raw = router.query.seed;
     if (typeof raw === "string" && raw.length > 0) return raw;
     if (Array.isArray(raw) && raw.length > 0) return raw[0];
-    return "p001"; // sensible default for direct visits to /graph
-  }, [router.query.seed]);
+    return null;
+  }, [router.isReady, router.query.seed]);
 
   const [graph, setGraph] = useState<GraphState>({
     nodes: [],
@@ -412,6 +335,7 @@ export default function GraphPage() {
 
   // Initial seed expansion. Re-runs if the user navigates to a new ?seed=.
   useEffect(() => {
+    if (!seedId) return;
     expandNode(seedId, "topk");
     // We intentionally depend only on seedId — expandNode closes over the
     // current cache, but for the bootstrap call the cache is empty anyway.
@@ -442,7 +366,7 @@ export default function GraphPage() {
       // un-fetched in mutual mode until clicked — matches the plan's
       // "first switch into mutual-kNN for a node already in the graph"
       // wording.)
-      if (mode === "mutual_knn") {
+      if (mode === "mutual_knn" && seedId) {
         const entry = graph.cache[seedId];
         if (entry && !entry.mutualN) {
           await expandNode(seedId, "mutual_knn");
@@ -493,6 +417,7 @@ export default function GraphPage() {
 
   // Similarity-of-each-neighbor-to-the-seed, for the hover tooltip.
   const simToSeed = useMemo(() => {
+    if (!seedId) return {} as Record<string, number>;
     const seedCache = graph.cache[seedId];
     if (!seedCache) return {} as Record<string, number>;
     const m: Record<string, number> = { [seedId]: 1.0 };
@@ -639,7 +564,11 @@ export default function GraphPage() {
               </svg>
             </a>
             <h1 className="text-lg font-semibold">Similarity graph</h1>
-            <span className="text-xs text-base-content/50 font-mono ml-2">seed: {seedId}</span>
+            {seedId && (
+              <span className="text-xs text-base-content/50 font-mono ml-2">
+                seed: {seedId}
+              </span>
+            )}
             {error && (
               <span className="ml-auto text-xs text-error font-medium">{error}</span>
             )}
@@ -670,6 +599,22 @@ export default function GraphPage() {
             cooldownTicks={120}
             d3VelocityDecay={0.35}
           />
+
+          {/* Empty state when no ?seed= was provided */}
+          {router.isReady && !seedId && (
+            <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+              <div className="rounded-xl bg-[#111111] border border-[#333333] px-6 py-4 text-center max-w-md">
+                <div className="text-base font-semibold text-base-content/80">
+                  No seed paper selected
+                </div>
+                <div className="mt-1 text-xs text-base-content/50">
+                  Open this page from a search result, or pass{" "}
+                  <span className="font-mono">?seed=&lt;paper_id&gt;</span> in
+                  the URL.
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Hover tooltip */}
           {hoverNode && (
