@@ -49,7 +49,16 @@ export default function HomePage() {
     NSDI: true,
     MLSys: true,
     EuroSys: true,
-    VLDB: true
+    VLDB: true,
+    // PL conferences
+    POPL: true,
+    PLDI: true,
+    ICFP: true,
+    OOPSLA: true,
+    ESOP: true,
+    ECOOP: true,
+    CC: true,
+    Haskell: true
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLElement>(null);
@@ -58,6 +67,7 @@ export default function HomePage() {
   const [eyeSpinning, setEyeSpinning] = useState(false);
   const [systemsExpanded, setSystemsExpanded] = useState(false);
   const [aiExpanded, setAiExpanded] = useState(false);
+  const [plExpanded, setPlExpanded] = useState(false);
   const [loading, setLoading] = useState(false);
   const lastRequestIdRef = useRef<number>(0);
   const [error, setError] = useState<string | null>(null);
@@ -149,10 +159,12 @@ export default function HomePage() {
   // Conference categories
   const aiConferences = ['ICML', 'NeurIPS', 'ICLR'];
   const systemsConferences = ['OSDI', 'SOSP', 'ASPLOS', 'ATC', 'NSDI', 'MLSys', 'EuroSys', 'VLDB'];
+  const plConferences = ['POPL', 'PLDI', 'ICFP', 'OOPSLA', 'ESOP', 'ECOOP', 'CC', 'Haskell'];
 
   // Check if all conferences in a category are selected
   const isAllAISelected = aiConferences.every(conf => sources[conf as keyof typeof sources]);
   const isAllSystemsSelected = systemsConferences.every(conf => sources[conf as keyof typeof sources]);
+  const isAllPLSelected = plConferences.every(conf => sources[conf as keyof typeof sources]);
 
   function toggleSource(key: keyof typeof sources) {
     setSources((s) => ({ ...s, [key]: !s[key] }));
@@ -174,6 +186,17 @@ export default function HomePage() {
     setSources((s) => {
       const updated = { ...s };
       systemsConferences.forEach(conf => {
+        updated[conf as keyof typeof sources] = newValue;
+      });
+      return updated;
+    });
+  }
+
+  function toggleAllPL() {
+    const newValue = !isAllPLSelected;
+    setSources((s) => {
+      const updated = { ...s };
+      plConferences.forEach(conf => {
         updated[conf as keyof typeof sources] = newValue;
       });
       return updated;
@@ -429,6 +452,44 @@ export default function HomePage() {
                 ))}
               </div>
 
+              {/* PL conferences */}
+              <div>
+                <label className="label cursor-pointer justify-start gap-3 py-2">
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-sm"
+                    checked={isAllPLSelected}
+                    onChange={toggleAllPL}
+                    ref={(el) => {
+                      if (el) {
+                        el.indeterminate = plConferences.some(conf => sources[conf as keyof typeof sources]) && !isAllPLSelected;
+                      }
+                    }}
+                  />
+                  <span className="label-text font-medium flex-1">PL conferences</span>
+                  <button
+                    type="button"
+                    className="btn btn-ghost btn-xs btn-circle"
+                    onClick={() => setPlExpanded((v) => !v)}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`h-4 w-4 transition-transform duration-150 ${plExpanded ? 'rotate-180' : ''}`}>
+                      <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </label>
+                {plExpanded && plConferences.map(conf => (
+                  <label key={conf} className="label cursor-pointer justify-start gap-3 py-1 ml-6">
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-sm"
+                      checked={sources[conf as keyof typeof sources]}
+                      onChange={() => toggleSource(conf as keyof typeof sources)}
+                    />
+                    <span className="label-text text-sm">{conf}</span>
+                  </label>
+                ))}
+              </div>
+
               {/* arXiv */}
               <label className="label cursor-pointer justify-start gap-3 py-2">
                 <input type="checkbox" className="checkbox checkbox-sm" checked={sources.arxiv} onChange={() => toggleSource("arxiv")} />
@@ -618,10 +679,11 @@ export default function HomePage() {
                 const yearColumns: number[] = [];
                 for (let y = minYear; y <= maxYear; y++) yearColumns.push(y);
 
-                // Fixed display order: systems, AI, then arxiv
+                // Fixed display order: systems, AI, PL, then arxiv
                 const SOURCE_ORDER = [
                   'OSDI', 'SOSP', 'ASPLOS', 'ATC', 'NSDI', 'EuroSys', 'VLDB',
                   'ICML', 'NeurIPS', 'ICLR', 'MLSys',
+                  'POPL', 'PLDI', 'ICFP', 'OOPSLA', 'ESOP', 'ECOOP', 'CC', 'Haskell',
                   'arxiv',
                 ];
                 const knownSources = new Set(SOURCE_ORDER);
