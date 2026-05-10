@@ -1,0 +1,876 @@
+[
+  {
+    "paper_id": "10.1145/512529.512567",
+    "title": "The Embedded Machine: Predictable, Portable Real-Time Code",
+    "abstract": "The Embedded Machine is a virtual machine that mediates in real time the interaction between software processes and physical processes. It separates the compilation of embedded programs into two phases. The first, platform-independent compiler phase generates E code (code executed by the Embedded Machine), which supervises the timing ---not the scheduling--- of application tasks relative to external events, such as clock ticks and sensor interrupts. E~code is portable and exhibits, given an input behavior, predictable (i.e., deterministic) timing and output behavior. The second, platform-dependent compiler phase checks the time safety of the E code, that is, whether platform performance (determined by the hardware) and platform utilization (determined by the scheduler of the operating system) enable its timely execution. We have used the Embedded Machine to compile and execute high-performance control applications written in Giotto, such as the flight control system of an autonomous model helicopter.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512567",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Thomas A.",
+        "last_name": "Henzinger",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Christoph",
+        "last_name": "Kirsch",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/HenzingerK02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512536",
+    "title": "A Sparse Algorithm for Predicated Global Value Numbering",
+    "abstract": "This paper presents a new algorithm for performing global value numbering on a routine in static single assignment form. Our algorithm has all the strengths of the most powerful existing practical methods of global value numbering; it unifies optimistic value numbering with constant folding, algebraic simplification and unreachable code elimination. It goes beyond existing methods by unifying optimistic value numbering with further analyses: it canonicalizes the structure of expressions in order to expose more congruences by performing global reassociation, it exploits the congruences induced by the predicates of conditional jumps (predicate inference and value inference), and it associates the arguments of acyclic ø functions with the predicates controlling their arrival (ø predication), thus enabling congruence finding on conditional control structures. Finally, it implements an efficient sparse formulation and offers a range of tradeoffs between compilation time and optimization strength. We describe an implementation of the algorithm and present measurements of its strength and efficiency collected when optimizing the SPEC CINT2000 C benchmarks.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512536",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Karthik",
+        "last_name": "Gargi",
+        "institution": "Hewlett-Packard (India)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Gargi02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512564",
+    "title": "MaJIC: Compiling MATLAB for Speed and Responsiveness",
+    "abstract": "This paper presents and evaluates techniques to improve the execution performance of MATLAB. Previous efforts concentrated on source to source translation and batch compilation; MaJIC provides an interactive frontend that looks like MATLAB and compiles/optimizes code behind the scenes in real time, employing a combination of just-in-time and speculative ahead-of-time compilation. Performance results show that the proper mixture of these two techniques can yield near-zero response time as well as performance gains previously achieved only by batch compilers.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512564",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "George",
+        "last_name": "Almási",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Padua",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/pldi/AlmasiP02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512531",
+    "title": "Flow-Sensitive Type Qualifiers",
+    "abstract": "We present a system for extending standard type systems with flow-sensitive type qualifiers. Users annotate their programs with type qualifiers, and inference checks that the annotations are correct. In our system only the type qualifiers are modeled flow-sensitively---the underlying standard types are unchanged, which allows us to obtain an efficient constraint-based inference algorithm that integrates flow-insensitive alias analysis, effect inference, and ideas from linear type systems to support strong updates. We demonstrate the usefulness of flow-sensitive type qualifiers by finding a number of new locking bugs in the Linux kernel.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512531",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Tachio",
+        "last_name": "Terauchi",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/FosterTA02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512538",
+    "title": "ESP: Path-Sensitive Program Verification in Polynomial Time",
+    "abstract": "In this paper, we present a new algorithm for partial program verification that runs in polynomial time and space. We are interested in checking that a program satisfies a given temporal safety property. Our insight is that by accurately modeling only those branches in a program for which the property-related behavior differs along the arms of the branch, we can design an algorithm that is accurate enough to verify the program with respect to the given property, without paying the potentially exponential cost of full path-sensitive analysis.We have implemented this \"property simulation\" algorithm as part of a partial verification tool called ESP. We present the results of applying ESP to the problem of verifying the file I/O behavior of a version of the GNU C compiler (gcc, 140,000 LOC). We are able to prove that all of the 646 calls to .fprintf in the source code of gcc are guaranteed to print to valid, open files. Our results show that property simulation scales to large programs and is accurate enough to verify meaningful properties.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512538",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Manuvir",
+        "last_name": "Das",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Sorin",
+        "last_name": "Lerner",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Mark",
+        "last_name": "Seigle",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/DasLS02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512558",
+    "title": "Extended Static Checking for Java",
+    "abstract": "Software development and maintenance are costly endeavors. The cost can be reduced if more software defects are detected earlier in the development cycle. This paper introduces the Extended Static Checker for Java (ESC/Java), an experimental compile-time program checker that finds common programming errors. The checker is powered by verification-condition generation and automatic theorem-proving techniques. It provides programmers with a simple annotation language with which programmer design decisions can be expressed formally. ESC/Java examines the annotated software and warns of inconsistencies between the design decisions recorded in the annotations and the actual code, and also warns of potential runtime errors in the code. This paper gives an overview of the checker architecture and annotation language and describes our experience applying the checker to tens of thousands of lines of Java programs.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512558",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "K. Rustan M.",
+        "last_name": "Leino",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Mark",
+        "last_name": "Lillibridge",
+        "institution": ""
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Nelson",
+        "institution": ""
+      },
+      {
+        "first_name": "James B.",
+        "last_name": "Saxe",
+        "institution": ""
+      },
+      {
+        "first_name": "Raymie",
+        "last_name": "Stata",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/FlanaganLLNSS02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512556",
+    "title": "Static Load Classification for Improving the Value Predictability of Data-Cache Misses",
+    "abstract": "While caches are effective at avoiding most main-memory accesses, the few remaining memory references are still expensive. Even one cache miss per one hundred accesses can double a program's execution time. To better tolerate the data-cache miss latency, architects have proposed various speculation mechanisms, including load-value prediction. A load-value predictor guesses the result of a load so that the dependent instructions can immediately proceed without having to wait for the memory access to complete. To use the prediction resources most effectively, speculation should be restricted to loads that are likely to miss in the cache and that are likely to be predicted correctly. Prior work has considered hardware- and profile-based methods to make these decisions. Our work focuses on making these decisions at compile time. We show that a simple compiler classification is effective at separating the loads that should be speculated from the loads that should not. We present results for a number of C and Java programs and demonstrate that our results are consistent across programming languages and across program inputs.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512556",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Burtscher",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Amer",
+        "last_name": "Diwan",
+        "institution": "University of Colorado System"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Hauswirth",
+        "institution": "University of Colorado System"
+      }
+    ],
+    "dblp_key": "conf/pldi/BurtscherDH02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512560",
+    "title": "Efficient and Precise Datarace Detection for Multithreaded Object-Oriented Programs",
+    "abstract": "We present a novel approach to dynamic datarace detection for multithreaded object-oriented programs. Past techniques for on-the-fly datarace detection either sacrificed precision for performance, leading to many false positive datarace reports, or maintained precision but incurred significant overheads in the range of 3x to 30x. In contrast, our approach results in very few false positives and runtime overhead in the 13% to 42% range, making it both efficient and precise. This performance improvement is the result of a unique combination of complementary static and dynamic optimization techniques.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512560",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jong-Deok",
+        "last_name": "Choi",
+        "institution": ""
+      },
+      {
+        "first_name": "Keun‐Woo",
+        "last_name": "Lee",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "А. А.",
+        "last_name": "Логинов",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "O'Callahan",
+        "institution": ""
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": ""
+      },
+      {
+        "first_name": "Manu",
+        "last_name": "Sridharan",
+        "institution": "Moscow Institute of Thermal Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChoiLLOSS02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512548",
+    "title": "Beltway: Getting Around Garbage Collection Gridlock",
+    "abstract": "We present the design and implementation of a new garbage collection framework that significantly generalizes existing copying collectors. The Beltway framework exploits and separates object age and incrementality. It groups objects in one or more increments on queues called belts, collects belts independently, and collects increments on a belt in first-in-first-out order. We show that Beltway configurations, selected by command line options, act and perform the same as semi-space, generational, and older-first collectors, and encompass all previous copying collectors of which we are aware. The increasing reliance on garbage collected languages such as Java requires that the collector perform well. We show that the generality of Beltway enables us to design and implement new collectors that are robust to variations in heap size and improve total execution time over the best generational copying collectors of which we are aware by up to 40%, and on average by 5 to 10%, for small to moderate heap sizes. New garbage collection algorithms are rare, and yet we define not just one, but a new family of collectors that subsumes previous work. This generality enables us to explore a larger design space and build better collectors.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512548",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Stephen M.",
+        "last_name": "Blackburn",
+        "institution": "Australian National University"
+      },
+      {
+        "first_name": "Richard",
+        "last_name": "Jones",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "J. Eliot B.",
+        "last_name": "Moss",
+        "institution": "University of Massachusetts Amherst"
+      }
+    ],
+    "dblp_key": "conf/pldi/BlackburnJMM02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512552",
+    "title": "Effective Sign Extension Elimination",
+    "abstract": "Computer designs are shifting from 32-bit architectures to 64-bit architectures, while most of the programs available today are still designed for 32-bit architectures. Java™, for example, specifies the frequently used int\" as a 32-bit data type. If such Java programs are executed on a 64-bit architecture, many 32-bit values must be sign-extended to 64-bit values for integer operations. This causes serious performance overhead. In this paper, we present a fast and effective algorithm for eliminating sign extensions. We implemented this algorithm in the IBM Java Just-in-Time (JIT) compiler for IA-64™. Our experimental results show that our algorithm effectively eliminates the majority of sign extensions. They also show that it significantly improves performance, while it increases JIT compilation time by only 0.11%. We implemented our algorithm for programs in Java, but it can be applied to any language requiring sign extensions.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512552",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Motohiro",
+        "last_name": "Kawahito",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Hideaki",
+        "last_name": "Komatsu",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Toshio",
+        "last_name": "Nakatani",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/pldi/KawahitoKN02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512534",
+    "title": "Fast Copy Coalescing and Live-Range Identification",
+    "abstract": "This paper presents a fast new algorithm for modeling and reasoning about interferences for variables in a program without constructing an interference graph. It then describes how to use this information to minimize copy insertion for φ-node instantiation during the conversion of the static single assignment (SSA) form into the control-flow graph (CFG), effectively yielding a new, very fast copy coalescing and live-range identification algorithm. This paper proves some properties of the SSA form that enable construction of data structures to compute interference information for variables that are considered for folding. The asymptotic complexity of our SSA-to-CFG conversion algorithm is O(nα(n)), where n is the number of instructions in the program. Performing copy folding during the SSA-to-CFG conversion eliminates the need for a separate coalescing phase while simplifying the intermediate code. This may make graph-coloring register allocation more practical in just in time (JIT) and other time-critical compilers For example, Sun’s Hotspot Server Compiler already employs a graph-coloring register allocator[10]. This paper also presents an improvement to the classical interference-graph based coalescing optimization that shows a decrease in memory usage of up to three orders of magnitude and a decrease of a factor of two in compilation time, while providing the exact same results. We present experimental results that demonstrate that our algorithm is almost as precise (within one percent on average) as the improved interference-graph-based coalescing algorithm, while requiring three times less compilation time.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512534",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Zoran",
+        "last_name": "Budimlić",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Keith D.",
+        "last_name": "Cooper",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Timothy J.",
+        "last_name": "Harvey",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Ken",
+        "last_name": "Kennedy",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Timothy S.",
+        "last_name": "Oberg",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Steven W.",
+        "last_name": "Reeves",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BudimlicCHKOR02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512551",
+    "title": "Space-Time Trade-Off Optimization for a Class of Electronic Structure Calculations",
+    "abstract": "The accurate modeling of the electronic structure of atoms and molecules is very computationally intensive. Many models of electronic structure, such as the Coupled Cluster approach, involve collections of tensor contractions. There are usually a large number of alternative ways of implementing the tensor contractions, representing different trade-offs between the space required for temporary intermediates and the total number of arithmetic operations. In this paper, we present an algorithm that starts with an operation-minimal form of the computation and systematically explores the possible space-time trade-offs to identify the form with lowest cost that fits within a specified memory limit. Its utility is demonstrated by applying it to a computation representative of a component in the CCSD(T) formulation in the NWChem quantum chemistry suite from Pacific Northwest National Laboratory.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512551",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Cociorva",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Gerald",
+        "last_name": "Baumgartner",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Chi‐Chung",
+        "last_name": "Lam",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Sadayappan",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "J.",
+        "last_name": "Ramanujam",
+        "institution": "Louisiana State University"
+      },
+      {
+        "first_name": "Marcel",
+        "last_name": "Nooijen",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David E.",
+        "last_name": "Bernholdt",
+        "institution": "Oak Ridge National Laboratory"
+      },
+      {
+        "first_name": "Robert J.",
+        "last_name": "Harrison",
+        "institution": "Pacific Northwest National Laboratory"
+      }
+    ],
+    "dblp_key": "conf/pldi/CociorvaBLSRNBH02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512542",
+    "title": "Profile-Guided Code Compression",
+    "abstract": "As computers are increasingly used in contexts where the amount of available memory is limited, it becomes important to devise techniques that reduce the memory footprint of application programs while leaving them in an executable form. This paper describes an approach to applying data compression techniques to reduce the size of infrequently executed portions of a program. The compressed code is decompressed dynamically (via software) if needed, prior to execution. The use of data compression techniques increases the amount of code size reduction that can be achieved; their application to infrequently executed code limits the runtime overhead due to dynamic decompression; and the use of software decompression renders the approach generally applicable, without requiring specialized hardware. The code size reductions obtained depend on the threshold used to determine what code is \"infrequently executed\" and hence should be compressed: for low thresholds, we see size reductions of 13.7% to 18.8%, on average, for a set of embedded applications, without excessive runtime overhead.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512542",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Saumya",
+        "last_name": "Debray",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "William",
+        "last_name": "Evans",
+        "institution": "University of British Columbia"
+      }
+    ],
+    "dblp_key": "conf/pldi/DebrayE02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512554",
+    "title": "Dynamic Hot Data Stream Prefetching for General-Purpose Programs",
+    "abstract": "Prefetching data ahead of use has the potential to tolerate the growing processor-memory performance gap by overlapping long latency memory accesses with useful computation. While sophisticated prefetching techniques have been automated for limited domains, such as scientific codes that access dense arrays in loop nests, a similar level of success has eluded general-purpose programs, especially pointer-chasing codes written in languages such as C and C++. We address this problem by describing, implementing and evaluating a dynamic prefetching scheme. Our technique runs on stock hardware, is completely automatic, and works for generalpurpose programs, including pointer-chasing codes written in weakly-typed languages, such as C and C++. It operates in three phases. First, the profiling phase gathers a temporal data reference profile from a running program with low-overhead. Next, the profiling is turned off and a fast analysis algorithm extracts hot data streams, which are data reference sequences that frequently repeat in the same order, from the temporal profile. Then, the system dynamically injects code at appropriate program points to detect and prefetch these hot data streams. Finally, the process enters the hibernation phase where no profiling or analysis is performed, and the program continues to execute with the added prefetch instructions. At the end of the hibernation phase, the program is deoptimized to remove the inserted checks and prefetch instructions, and control returns to the profiling phase. For long-running programs, this profile, analyze and optimize, hibernate, cycle will repeat multiple times. Our initial results from applying dynamic prefetching are promising, indicating overall execution time improvements of 5–19 % for several memory-performance-limited SPECint2000 benchmarks running their largest (ref) inputs.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512554",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Trishul",
+        "last_name": "Chilimbi",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Hirzel",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChilimbiH02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512532",
+    "title": "Adoption and Focus: Practical Linear Types for Imperative Programming",
+    "abstract": "A type system with linearity is useful for checking software protocols andresource management at compile time. Linearity provides powerful reasoning about state changes, but at the price of restrictions on aliasing. The hard division between linear and nonlinear types forces the programmer to make a trade-off between checking a protocol on an object and aliasing the object. Most onerous is the restriction that any type with a linear component must itself be linear. Because of this, checking a protocol on an object imposes aliasing restrictions on any data structure that directly or indirectly points to the object. We propose a new type system that reduces these restrictions with the adoption and focus constructs. Adoption safely allows a programmer to alias objects on which she is checking protocols, and focus allows the reverse. A programmer can alias data structures that point to linear objects and use focus for safe access to those objects. We discuss how we implemented these ideas in the Vault programming language.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512532",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Fähndrich",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "DeLine",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/FahndrichD02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512562",
+    "title": "Maya: Multiple-Dispatch Syntax Extension in Java",
+    "abstract": "We have designed and implemented Maya, a version of Java that allows programmers to extend and reinterpret its syntax. Maya generalizes macro systems by treating grammar productions as generic functions, and semantic actions on productions as multimethods on the corresponding generic functions. Programmers can write new generic functions (i.e., grammar productions) and new multimethods (i.e., semantic actions), through which they can extend the grammar of the language and change the semantics of its syntactic constructs, respectively. Maya's multimethods are compile-time metaprograms that transform abstract syntax: they execute at program compile-time, because they are semantic actions executed by the parser. Maya's multimethods can be dispatched on the syntactic structure of the input, as well as the static, source-level types of expressions in the input. In this paper we describe what Maya can do and how it works. We describe how its novel parsing techniques work and how Maya can statically detect certain kinds of errors, such as code that generates references to free variables. Finally, to demonstrate Maya's expressiveness, we describe how Maya can be used to implement the MultiJava language, which was described by Clifton et al. at OOPSLA 2000.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512562",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jason D.",
+        "last_name": "Baker",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Wilson C.",
+        "last_name": "Hsieh",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/pldi/BakerH02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512563",
+    "title": "Region-Based Memory Management in Cyclone",
+    "abstract": "Cyclone is a type-safe programming language derived from C. The primary design goal of Cyclone is to let programmers control data representation and memory management without sacrificing type-safety. In this paper, we focus on the region-based memory management of Cyclone and its static typing discipline. The design incorporates several advancements, including support for region subtyping and a coherent integration with stack allocation and a garbage collector. To support separate compilation, Cyclone requires programmers to write some explicit region annotations, but a combination of default annotations, local type inference, and a novel treatment of region effects reduces this burden. As a result, we integrate C idioms in a region-based framework. In our experience, porting legacy C to Cyclone has required altering about 8% of the code; of the changes, only 6% (of the 8%) were region annotations.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512563",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Trevor",
+        "last_name": "Jim",
+        "institution": "AT&T (United States)"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Yanling",
+        "last_name": "Wang",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Cheney",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/pldi/GrossmanMJHWC02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512566",
+    "title": "Denali: A Goal-directed Superoptimizer",
+    "abstract": "This paper provides a preliminary report on a new research project that aims to construct a code generator that uses an automatic theorem prover to produce very high-quality (in fact, nearly mathematically optimal) machine code for modern architectures. The code generator is not intended for use in an ordinary compiler, but is intended to be used for inner loops and critical subroutines in those cases where peak performance is required, no available compiler generates adequately efficient code, and where current engineering practice is to use hand-coded machine language. The paper describes the design of the superoptimizer, and presents some encouraging preliminary results.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512566",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rajeev",
+        "last_name": "Joshi",
+        "institution": ""
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Nelson",
+        "institution": ""
+      },
+      {
+        "first_name": "Keith H.",
+        "last_name": "Randall",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/JoshiNR02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512547",
+    "title": "Combining Region Inference and Garbage Collection",
+    "abstract": "This paper describes a memory discipline that combines region-based memory management and copying garbage collection by extending Cheney&amp;apos;s copying garbage collection algorithm to work with regions. The paper presents empirical evidence that region inference very significantly reduces the number of garbage collections; and evidence that the fastest execution is obtained by using regions alone, without garbage collection.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512547",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Niels",
+        "last_name": "Hallenberg",
+        "institution": "IT University of Copenhagen"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Elsman",
+        "institution": "IT University of Copenhagen"
+      },
+      {
+        "first_name": "Mads",
+        "last_name": "Tofte",
+        "institution": "IT University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/pldi/HallenbergET02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512535",
+    "title": "Preference-Directed Graph Coloring",
+    "abstract": "This paper describes a new framework of register allocation based on Chaitin-style coloring. Our focus is on maximizing the chances for live ranges to be allocated to the most preferred registers while not destroying the colorability obtained by graph simplification. Our coloring algorithm uses a graph representation of preferences called a Register Preference Graph, which helps find a good register selection. We then try to relax the register selection order created by the graph simplification. The relaxed order is defined as a partial order, represented using a graph called a Coloring Precedence Graph. Our algorithm utilizes such a partial order for the register selection instead of using the traditional simplification-driven order so that the chances of honoring the preferences are effectively increased. Experimental results show that our coloring algorithm is powerful to simultaneously handle spill decisions, register coalescing, and preference resolutions.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512535",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Akira",
+        "last_name": "Koseki",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Hideaki",
+        "last_name": "Komatsu",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Toshio",
+        "last_name": "Nakatani",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/pldi/KosekiKN02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512539",
+    "title": "A System and Language for Building System-Specific, Static Analyses",
+    "abstract": "This paper presents a novel approach to bug-finding analysis and an implementation of that approach. Our goal is to find as many serious bugs as possible. To do so, we designed a flexible, easy-to-use extension language for specifying analyses and an efficent algorithm for executing these extensions. The language, metal, allows the users of our system to specify a broad class of analyses in terms that resemble the intuitive description of the rules that they check. The system, xgcc, executes these analyses efficiently using a context-sensitive, interprocedural analysis. Our prior work has shown that the approach described in this paper is effective: it has successfully found thousands of bugs in real systems code. This paper describes the underlying system used to achieve these results. We believe that our system is an effective framework for deploying new bug-finding analyses quickly and easily.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512539",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Seth",
+        "last_name": "Hallem",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Chelf",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Yichen",
+        "last_name": "Xie",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Dawson",
+        "last_name": "Engler",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/HallemCXE02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512544",
+    "title": "Post-Pass Binary Adaptation for Software-Based Speculative Precomputation",
+    "abstract": "Recently, a number of thread-based prefetching techniques have been proposed. These techniques aim at improving the latency of single-threaded applications by leveraging multithreading resources to perform memory prefetching via speculative prefetch threads. Software-based speculative precomputation (SSP) is one such technique, proposed for multithreaded Itanium models. SSP does not require expensive hardware support-instead it relies on the compiler to adapt binaries to perform prefetching on otherwise idle hardware thread contexts at run time. This paper presents a post-pass compilation tool for generating SSP-enhanced binaries. The tool is able to: (1) analyze a single-threaded application to generate prefetch threads; (2) identify and embed trigger points in the original binary; and (3) produce a new binary that has the prefetch threads attached. The execution of the new binary spawns the speculative prefetch threads, which are executed concurrently with the main thread. Our results indicate that for a set of pointer-intensive benchmarks, the prefetching performed by the speculative threads achieves an average of 87% speedup on an in-order processor and 5% speedup on an out-of-order processor.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512544",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Steve S.W.",
+        "last_name": "Liao",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Perry H.",
+        "last_name": "Wang",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Hong",
+        "last_name": "Wang",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Gerolf F.",
+        "last_name": "Hoflehner",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Daniel J.",
+        "last_name": "Lavery",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "John Paul",
+        "last_name": "Shen",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/LiaoWWSHL02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512546",
+    "title": "A Parallel, Incremental and Concurrent GC for Servers",
+    "abstract": "Multithreaded applications with multi-gigabyte heaps running on modern servers provide new challenges for garbage collection (GC). The challenges for \"server-oriented\" GC include: ensuring short pause times on a multi-gigabyte heap, while minimizing throughput penalty, good scaling on multiprocessor hardware, and keeping the number of expensive multi-cycle fence instructions required by weak ordering to a minimum. We designed and implemented a fully parallel, incremental, mostly concurrent collector, which employs several novel techniques to meet these challenges. First, it combines incremental GC to ensure short pause times with concurrent low-priority background GC threads to take advantage of processor idle time. Second, it employs a low-overhead work packet mechanism to enable full parallelism among the incremental and concurrent collecting threads and ensure load balancing. Third, it reduces memory fence instructions by using batching techniques: one fence for each block of small objects allocated, one fence for each group of objects marked, and no fence at all in the write barrier. When compared to the mature well-optimized parallel stop-the-world mark-sweep collector already in the IBM JVM, our collector prototype reduces the maximum pause time from 284 ms to 101 ms, and the average pause time from 266 ms to 66 ms while only losing 10% throughput when running the SPECjbb2000 benchmark on a 256 MB heap on a 4-way 550 MHz Pentium multiprocessor.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512546",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yoav",
+        "last_name": "Ossia",
+        "institution": "IBM Research - Haifa"
+      },
+      {
+        "first_name": "Ori",
+        "last_name": "Ben-Yitzhak",
+        "institution": "IBM Research - Haifa"
+      },
+      {
+        "first_name": "Irit",
+        "last_name": "Goft",
+        "institution": "IBM Research - Haifa"
+      },
+      {
+        "first_name": "Elliot K.",
+        "last_name": "Kolodner",
+        "institution": "IBM Research - Haifa"
+      },
+      {
+        "first_name": "Victor",
+        "last_name": "Leikehman",
+        "institution": "IBM Research - Haifa"
+      },
+      {
+        "first_name": "Avi",
+        "last_name": "Owshanko",
+        "institution": "IBM Research - Haifa"
+      }
+    ],
+    "dblp_key": "conf/pldi/OssiaBGKLO02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512540",
+    "title": "Deriving Specialized Program Analyses for Certifying Component-Client Conformance",
+    "abstract": "We are concerned with the problem of statically certifying (verifying) whether the client of a software component conforms to the component's constraints for correct usage. We show how conformance certification can be efficiently carried out in a staged fashion for certain classes of first-order safety (FOS) specifications, which can express relationship requirements among potentially unbounded collections of runtime objects. In the first stage of the certification process, we systematically derive an abstraction that is used to model the component state during analysis of arbitrary clients. In general, the derived abstraction will utilize first-order predicates, rather than the propositions often used by model checkers. In the second stage, the generated abstraction is incorporated into a static analysis engine to produce a certifier. In the final stage, the resulting certifier is applied to a client to conservatively determine whether the client violates the component's constraints. Unlike verification approaches that analyze a specification and client code together, our technique can take advantage of computationally-intensive symbolic techniques during the abstraction generation phase, without affecting the performance of client analysis. Using as a running example the Concurrent Modification Problem (CMP), which arises when certain classes defined by the Java Collections Framework are misused, we describe several different classes of certifiers with varying time/space/precision tradeoffs. Of particular note are precise, polynomial-time, flow- and context-sensitive certifiers for certain classes of FOS specifications and client programs. Finally, we evaluate a prototype implementation of a certifier for CMP on a variety of test programs. The results of the evaluation show that our approach, though conservative, yields very few \"false alarms,\" with acceptable performance.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512540",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "G.",
+        "last_name": "Ramalingam",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Warshavsky",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "John K.",
+        "last_name": "Field",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "Goyal",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Mooly",
+        "last_name": "Sagiv",
+        "institution": "Tel Aviv University"
+      }
+    ],
+    "dblp_key": "conf/pldi/RamalingamWFGS02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512559",
+    "title": "Using Data Groups to Specify and Check Side Effects",
+    "abstract": "Reasoning precisely about the side effects of procedure calls is important to many program analyses. This paper introduces a technique for specifying and statically checking the side effects of methods in an object-oriented language. The technique uses data groups, which abstract over variables that are not in scope, and limits program behavior by two alias-confining restrictions, pivot uniqueness and owner exclusion. The technique is shown to achieve modular soundness and is simpler than previous attempts at solving this problem.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512559",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "K. Rustan M.",
+        "last_name": "Leino",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Arnd",
+        "last_name": "Poetzsch‐Heffter",
+        "institution": "University of Kaiserslautern"
+      },
+      {
+        "first_name": "Yunhong",
+        "last_name": "Zhou",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/LeinoPZ02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512550",
+    "title": "A Compiler Approach to Fast Hardware Design Space Exploration in FPGA-based Systems",
+    "abstract": "The current practice of mapping computations to custom hardware implementations requires programmers to assume the role of hardware designers. In tuning the performance of their hardware implementation, designers manually apply loop transformations such as loop unrolling. designers manually apply loop transformations. For example, loop unrolling is used to expose instruction-level parallelism at the expense of more hardware resources for concurrent operator evaluation. Because unrolling also increases the amount of data a computation requires, too much unrolling can lead to a memory bound implementation where resources are idle. To negotiate inherent hardware space-time trade-offs, designers must engage in an iterative refinement cycle, at each step manually applying transformations and evaluating their impact. This process is not only error-prone and tedious but also prohibitively expensive given the large search spaces and with long synthesis times. This paper describes an automated approach to hardware design space exploration, through a collaboration between parallelizing compiler technology and high-level synthesis tools. We present a compiler algorithm that automatically explores the large design spaces resulting from the application of several program transformations commonly used in application-specific hardware designs. Our approach uses synthesis estimation techniques to quantitatively evaluate alternate designs for a loop nest computation. We have implemented this design space exploration algorithm in the context of a compilation and synthesis system called DEFACTO, and present results of this implementation on five multimedia kernels. Our algorithm derives an implementation that closely matches the performance of the fastest design in the design space, and among implementations with comparable performance, selects the smallest design. We search on average only 0.3% of the design space. This technology thus significantly raises the level of abstraction for hardware design and explores a design space much larger than is feasible for a human designer.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512550",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Byoungro",
+        "last_name": "So",
+        "institution": "University of Southern California"
+      },
+      {
+        "first_name": "Mary",
+        "last_name": "Hall",
+        "institution": "Marina Del Rey Hospital"
+      },
+      {
+        "first_name": "Pedro C.",
+        "last_name": "Diniz",
+        "institution": "Marina Del Rey Hospital"
+      }
+    ],
+    "dblp_key": "conf/pldi/SoHD02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512555",
+    "title": "Efficient Discovery of Regular Stride Patterns in Irregular Programs",
+    "abstract": "Irregular data references are difficult to prefetch, as the future memory address of a load instruction is hard to anticipate by a compiler. However, recent studies as well as our experience indicate that some important load instructions in irregular programs contain stride access patterns. Although the load instructions with stride patterns are difficult to identify with static compiler techniques, we developed an efficient profiling method to discover these load instructions. The new profiling method integrates the profiling for stride information and the traditional profiling for edge frequency into a single profiling pass. The integrated profiling pass runs only 17% slower than the frequency profiling alone. The collected stride information helps the compiler to identify load instructions with stride patterns that can be prefetched efficiently and beneficially. We implemented the new profiling and prefetching techniques in a research compiler for Itanium Processor Family (IPF), and obtained significant performance improvement for the SPECINT2000 programs running on Itanium machines. For example, we achieved a 1.59x speedup for 181.mcf, 1.14x for 254.gap, and 1.08x for 197.parser. We also showed that the performance gain is stable across input data sets. These benefits make the new profiling and prefetching techniques suitable for production compilers.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512555",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Youfeng",
+        "last_name": "Wu",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Wu02",
+    "venue": "pldi",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/512529.512543",
+    "title": "Profile-Directed Optimization of Event-Based Programs",
+    "abstract": "Event-based systems provide a simple way to create flexible, extensible, and customizable system architectures and give a &amp;quot;user-driven&amp;quot; feel to the system. However, the indirect coupling between the raising and handling of events introduces a number of overheads into the system. Such overheads can be surprisingly large,and are especially significant in small mobile systems. This paper describes a framework for profile-guided optimization of event-based systems. Experiments using our approach on two different event-based systems, Cactus and X-windows, indicates that it can achieve significant reductions in event handling overheads and lead to considerable improvements in overall system performance.",
+    "date": "2002-05-17",
+    "link": "https://doi.org/10.1145/512529.512543",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mohan",
+        "last_name": "Rajagopalan",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Saumya",
+        "last_name": "Debray",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Matti",
+        "last_name": "Hiltunen",
+        "institution": "AT&T (United States)"
+      },
+      {
+        "first_name": "Richard D.",
+        "last_name": "Schlichting",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/RajagopalanDHS02",
+    "venue": "pldi",
+    "year": 2002
+  }
+]

@@ -1,0 +1,3038 @@
+[
+  {
+    "paper_id": "10.1145/3453483.3454090",
+    "title": "Snapshot-free, transparent, and robust memory reclamation for lock-free data structures",
+    "abstract": "We present a family of safe memory reclamation schemes, Hyaline, which are fast, scalable, and transparent to the underlying lock-free data structures. Hyaline is based on reference counting -- considered impractical for memory reclamation in the past due to high overheads. Hyaline uses reference counters only during reclamation, but not while accessing individual objects, which reduces overheads for object accesses. Since with reference counters, an arbitrary thread ends up freeing memory, Hyaline's reclamation workload is (almost) balanced across all threads, unlike most prior reclamation schemes such as epoch-based reclamation (EBR) or hazard pointers (HP). Hyaline often yields (excellent) EBR-grade performance with (good) HP-grade memory efficiency, which is a challenging trade-off with all existing schemes.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454090",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ruslan",
+        "last_name": "Nikolaev",
+        "institution": "Virginia Tech"
+      },
+      {
+        "first_name": "Binoy",
+        "last_name": "Ravindran",
+        "institution": "Virginia Tech"
+      }
+    ],
+    "dblp_key": "conf/pldi/0001R21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454110",
+    "title": "Termination analysis without the tears",
+    "abstract": "Determining whether a given program terminates is the quintessential undecidable problem. Algorithms for termination analysis may be classified into two groups: (1) algorithms with strong behavioral guarantees that work in limited circumstances (e.g., complete synthesis of linear ranking functions for polyhedral loops), and (2) algorithms that are widely applicable, but have weak behavioral guarantees (e.g., Terminator). This paper investigates the space in between: how can we design practical termination analyzers with useful behavioral guarantees?",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454110",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Shaowei",
+        "last_name": "Zhu",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Zachary",
+        "last_name": "Kincaid",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/0001K21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454034",
+    "title": "Compiler-assisted object inlining with value fields",
+    "abstract": "Object Oriented Programming has flourished in many areas ranging from web-oriented microservices, data processing, to databases. However, while representing domain entities as objects is appealing to developers, it leads to data fragmentation, resulting in high memory footprint and poor locality.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454034",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rodrigo",
+        "last_name": "Bruno",
+        "institution": ""
+      },
+      {
+        "first_name": "Vojin",
+        "last_name": "Jovanović",
+        "institution": ""
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Wimmer",
+        "institution": "Oracle (United States)"
+      },
+      {
+        "first_name": "Gustavo",
+        "last_name": "Alonso",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/pldi/BrunoJWA21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454044",
+    "title": "Demanded abstract interpretation",
+    "abstract": "We consider the problem of making expressive static analyzers interactive. Formal static analysis is seeing increasingly widespread adoption as a tool for verification and bug-finding, but even with powerful cloud infrastructure it can take minutes or hours to get batch analysis results after a code change. While existing techniques offer some demand-driven or incremental aspects for certain classes of analysis, the fundamental challenge we tackle is doing both for arbitrary abstract interpreters. Our technique, demanded abstract interpretation, lifts program syntax and analysis state to a dynamically evolving graph structure, in which program edits, client-issued queries, and evaluation of abstract semantics are all treated uniformly. The key difficulty addressed by our approach is the application of general incremental computation techniques to the complex, cyclic dependency structure induced by abstract interpretation of loops with widening operators. We prove that desirable abstract interpretation meta-properties, including soundness and termination, are preserved in our approach, and that demanded analysis results are equal to those computed by a batch abstract interpretation. Experimental results suggest promise for a prototype demanded abstract interpretation framework: by combining incremental and demand-driven techniques, our framework consistently delivers analysis results at interactive speeds, answering 95% of queries within 1.2 seconds.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454044",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Benno",
+        "last_name": "Stein",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Bor-Yuh Evan",
+        "last_name": "Chang",
+        "institution": "Amazon (United States)"
+      },
+      {
+        "first_name": "Manu",
+        "last_name": "Sridharan",
+        "institution": "University of California, Riverside"
+      }
+    ],
+    "dblp_key": "conf/pldi/0002CS21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454076",
+    "title": "Polynomial reachability witnesses via Stellensätze",
+    "abstract": "We consider the fundamental problem of reachability analysis over imperative programs with real variables. Previous works that tackle reachability are either unable to handle programs consisting of general loops (e.g. symbolic execution), or lack completeness guarantees (e.g. abstract interpretation), or are not automated (e.g. incorrectness logic). In contrast, we propose a novel approach for reachability analysis that can handle general and complex loops, is complete, and can be entirely automated for a wide family of programs. Through the notion of Inductive Reachability Witnesses (IRWs), our approach extends ideas from both invariant generation and termination to reachability analysis.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454076",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ali Al",
+        "last_name": "Asadi",
+        "institution": "Sharif University of Technology"
+      },
+      {
+        "first_name": "Krishnendu",
+        "last_name": "Chatterjee",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Hongfei",
+        "last_name": "Fu",
+        "institution": "Shanghai Jiao Tong University"
+      },
+      {
+        "first_name": "Amir Kafshdar",
+        "last_name": "Goharshady",
+        "institution": "Hong Kong University of Science and Technology"
+      },
+      {
+        "first_name": "Mohammad",
+        "last_name": "Mahdavi",
+        "institution": "Sharif University of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/AsadiC0GM21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454041",
+    "title": "Zooid: a DSL for certified multiparty computation: from mechanised metatheory to certified multiparty processes",
+    "abstract": "We design and implement Zooid, a domain specific language for certified multiparty communication, embedded in Coq and implemented atop our mechanisation framework of asynchronous multiparty session types (the first of its kind). Zooid provides a fully mechanised metatheory for the semantics of global and local types, and a fully verified end-point process language that faithfully reflects the type-level behaviours and thus inherits the global types properties such as deadlock freedom, protocol compliance, and liveness guarantees.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454041",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Castro",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Francisco",
+        "last_name": "Ferreira",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Lorenzo",
+        "last_name": "Gheri",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/pldi/Castro-Perez0GY21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454037",
+    "title": "Wire sorts: a language abstraction for safe hardware composition",
+    "abstract": "Effective digital hardware design fundamentally requires decomposing a design into a set of interconnected modules, each a distinct unit of computation and state. However, naively connecting hardware modules leads to real-world pathological cases which are surprisingly far from obvious when looking at the interfaces alone and which are very difficult to debug after synthesis. We show for the first time that it is possible to soundly abstract even complex combinational dependencies of arbitrary hardware modules through the assignment of IO ports to one of four new sorts which we call: to-sync, to-port, from-sync, and from-port. This new taxonomy, and the reasoning it enables, facilitates modularity by escalating problematic aspects of module input/output interaction to the language-level interface specification. We formalize and prove the soundness of our new wire sorts, implement them in a practical hardware description language, and demonstrate they can be applied and even inferred automatically at scale. Through an examination of the BaseJump STL, the OpenPiton manycore research platform, and a complete RISC-V implementation, we find that even on our biggest design containing 1.5 million primitive gates, analysis takes less than 31 seconds; that across 172 unique modules analyzed, the inferred sorts are widely distributed across our taxonomy; and that by using wire sorts, our tool is 2.6–33.9x faster at finding loops than standard synthesis-time cycle detection.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454037",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Christensen",
+        "institution": "University of California, Santa Barbara"
+      },
+      {
+        "first_name": "Timothy",
+        "last_name": "Sherwood",
+        "institution": "University of California, Santa Barbara"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Balkind",
+        "institution": "University of California, Santa Barbara"
+      },
+      {
+        "first_name": "Ben",
+        "last_name": "Hardekopf",
+        "institution": "University of California, Santa Barbara"
+      }
+    ],
+    "dblp_key": "conf/pldi/0001SBH21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454056",
+    "title": "Fast and precise certification of transformers",
+    "abstract": "We present DeepT, a novel method for certifying Transformer networks based on abstract interpretation. The key idea behind DeepT is our new Multi-norm Zonotope abstract domain, an extension of the classical Zonotope designed to handle ℓ1 and ℓ2-norm bound perturbations. We introduce all Multi-norm Zonotope abstract transformers necessary to handle these complex networks, including the challenging softmax function and dot product. Our evaluation shows that DeepT can certify average robustness radii that are 28× larger than the state-of-the-art, while scaling favorably. Further, for the first time, we certify Transformers against synonym attacks on long sequences of words, where each word can be replaced by any synonym. DeepT achieves a high certification success rate on sequences of words where enumeration-based verification would take 2 to 3 orders of magnitude more time.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454056",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Gregory",
+        "last_name": "Bonaert",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Dimitar I.",
+        "last_name": "Dimitrov",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Baader",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/pldi/BonaertDBV21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454099",
+    "title": "Canary: practical static detection of inter-thread value-flow bugs",
+    "abstract": "Concurrent programs are still prone to bugs arising from the subtle interleavings of threads. Traditional static analysis for concurrent programs, such as data-flow analysis and symbolic execution, has to explicitly explore redundant control states, leading to prohibitive computational complexity.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454099",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yuandao",
+        "last_name": "Cai",
+        "institution": "Hong Kong University of Science and Technology"
+      },
+      {
+        "first_name": "Peisen",
+        "last_name": "Yao",
+        "institution": "Hong Kong University of Science and Technology"
+      },
+      {
+        "first_name": "Charles",
+        "last_name": "Zhang",
+        "institution": "Hong Kong University of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/CaiYZ21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454107",
+    "title": "Frequent background polling on a shared thread, using light-weight compiler interrupts",
+    "abstract": "Recent work in networking, storage and multi-threading has demonstrated improved performance and scalability by replacing kernel-mode interrupts with high-rate user-space polling. Typically, such polling is performed by a dedicated core. Compiler Interrupts (CIs) instead enable efficient, automatic high-rate polling on a shared thread, which performs other work between polls. CIs are instrumentation-based and light-weight, allowing frequent interrupts with little performance impact. For example, when targeting a 5,000 cycle interval, the median overhead of our fastest CI design is 4% vs. 800% for hardware interrupts, across programs in the SPLASH-2, Phoenix and Parsec benchmark suites running with 32 threads. We evaluate CIs on three systems-level applications: (a) kernel bypass networking with mTCP, (b) joint kernel bypass networking and CPU scheduling with Shenango, and (c) delegation, a message-passing alternative to locking, with FFWD. For each application, we find that CIs offer compelling qualitative and quantitative improvements over the current state of the art. For example, CI-based mTCP achieves ≈2× stock mTCP throughput on a sample HTTP application.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454107",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Nilanjana",
+        "last_name": "Basu",
+        "institution": "University of Illinois Chicago"
+      },
+      {
+        "first_name": "Claudio",
+        "last_name": "Montanari",
+        "institution": "University of Illinois Chicago"
+      },
+      {
+        "first_name": "Jakob",
+        "last_name": "Eriksson",
+        "institution": "University of Illinois Chicago"
+      }
+    ],
+    "dblp_key": "conf/pldi/BasuME21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454060",
+    "title": "Concurrent deferred reference counting with constant-time overhead",
+    "abstract": "We present a safe automatic memory reclamation approach for concurrent programs, and show that it is both theoretically and practically efficient. Our approach combines ideas from referencing counting and hazard pointers in a novel way to implement concurrent reference counting with wait-free, constant-time overhead. It overcomes the limitations of previous approaches by significantly reducing modifications to, and hence contention on, the reference counts. Furthermore, it is safer and easier to use than manual approaches. Our technique involves using a novel generalization of hazard pointers to defer reference-count decrements until no other process can be incrementing them, and to defer or elide reference-count increments for short-lived references.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454060",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Anderson",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Guy E.",
+        "last_name": "Blelloch",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Yuanhao",
+        "last_name": "Wei",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/AndersonBW21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454058",
+    "title": "Compiling Stan to generative probabilistic languages and extension to deep probabilistic programming",
+    "abstract": "Stan is a probabilistic programming language that is popular in the statistics community, with a high-level syntax for expressing probabilistic models. Stan differs by nature from generative probabilistic programming languages like Church, Anglican, or Pyro. This paper presents a comprehensive compilation scheme to compile any Stan model to a generative language and proves its correctness. We use our compilation scheme to build two new backends for the Stanc3 compiler targeting Pyro and NumPyro. Experimental results show that the NumPyro backend yields a 2.3x speedup compared to Stan in geometric mean over 26 benchmarks. Building on Pyro we extend Stan with support for explicit variational inference guides and deep probabilistic models. That way, users familiar with Stan get access to new features without having to learn a fundamentally new language.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454058",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Guillaume",
+        "last_name": "Baudart",
+        "institution": "Université Paris Sciences et Lettres"
+      },
+      {
+        "first_name": "Javier",
+        "last_name": "Burroni",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Hirzel",
+        "institution": "IBM Research - Austin"
+      },
+      {
+        "first_name": "Louis",
+        "last_name": "Mandel",
+        "institution": "IBM Research - Austin"
+      },
+      {
+        "first_name": "Avraham",
+        "last_name": "Shinnar",
+        "institution": "IBM Research - Austin"
+      }
+    ],
+    "dblp_key": "conf/pldi/BaudartBHMS21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454074",
+    "title": "Viaduct: an extensible, optimizing compiler for secure distributed programs",
+    "abstract": "Modern distributed systems involve interactions between principals with limited trust, so cryptographic mechanisms are needed to protect confidentiality and integrity. At the same time, most developers lack the training to securely employ cryptography. We present Viaduct, a compiler that transforms high-level programs into secure, efficient distributed realizations. Viaduct's source language allows developers to declaratively specify security policies by annotating their programs with information flow labels. The compiler uses these labels to synthesize distributed programs that use cryptography efficiently while still defending the source-level security policy. The Viaduct approach is general, and can be easily extended with new security mechanisms.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454074",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Coşku",
+        "last_name": "Acay",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Rolph",
+        "last_name": "Recto",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Joshua",
+        "last_name": "Gancher",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Andrew C.",
+        "last_name": "Myers",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Elaine",
+        "last_name": "Shi",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/pldi/AcayRGMS21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454085",
+    "title": "Chianina: an evolving graph system for flow- and context-sensitive analyses of million lines of C code",
+    "abstract": "Sophisticated static analysis techniques often have complicated implementations, much of which provides logic for tuning and scaling rather than basic analysis functionalities. This tight coupling of basic algorithms with special treatments for scalability makes an analysis implementation hard to (1) make correct, (2) understand/work with, and (3) reuse for other clients. This paper presents Chianina, a graph system we developed for fully context- and flow-sensitive analysis of large C programs. Chianina overcomes these challenges by allowing the developer to provide only the basic algorithm of an analysis and pushing the tuning/scaling work to the underlying system. Key to the success of Chianina is (1) an evolving graph formulation of flow sensitivity and (2) the leverage of out-of-core, disk support to deal with memory blowup resulting from context sensitivity. We implemented three context- and flow-sensitive analyses on top of Chianina and scaled them to large C programs like Linux (17M LoC) on a single commodity PC.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454085",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Zhiqiang",
+        "last_name": "Zuo",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Yiyu",
+        "last_name": "Zhang",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Qiuhong",
+        "last_name": "Pan",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Shenming",
+        "last_name": "Lu",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Yue",
+        "last_name": "Li",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Linzhang",
+        "last_name": "Wang",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Xuandong",
+        "last_name": "Li",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Guoqing",
+        "last_name": "Xu",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/pldi/0002ZPLLWLX21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454096",
+    "title": "JPortal: precise and efficient control-flow tracing for JVM programs with Intel processor trace",
+    "abstract": "Hardware tracing modules such as Intel Processor Trace perform continuous control-flow tracing of an end-to-end program execution with an ultra-low overhead. PT has been used in a variety of contexts to support applications such as testing, debugging, and performance diagnosis. However, these hardware modules have so far been used only to trace native programs, which are directly compiled down to machine code. As high-level languages (HLL) such as Java and Go become increasingly popular, there is a pressing need to extend these benefits to the HLL community. This paper presents JPortal, a JVM-based profiling tool that bridges the gap between HLL applications and low-level hardware traces by using a set of algorithms to precisely recover an HLL program’s control flow from PT traces. An evaluation of JPortal with the DaCapo benchmark shows that JPortal achieves an overall 80% accuracy for end-to-end control flow profiling with only a 4-16% runtime overhead.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454096",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Zhiqiang",
+        "last_name": "Zuo",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Kai",
+        "last_name": "Ji",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Yi-Fei",
+        "last_name": "Wang",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Tao",
+        "last_name": "Wei",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Linzhang",
+        "last_name": "Wang",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Xuandong",
+        "last_name": "Li",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Guoqing",
+        "last_name": "Xu",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/pldi/0002JWTWLX21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454111",
+    "title": "On probabilistic termination of functional programs with continuous distributions",
+    "abstract": "We study termination of higher-order probabilistic functional programs with recursion, stochastic conditioning and sampling from continuous distributions. Reasoning about the termination probability of programs with continuous distributions is hard, because the enumeration of terminating executions cannot provide any non-trivial bounds. We present a new operational semantics based on traces of intervals, which is sound and complete with respect to the standard sampling-based semantics, in which (countable) enumeration can provide arbitrarily tight lower bounds. Consequently we obtain the first proof that deciding almost-sure termination (AST) for programs with continuous distributions is Π20-complete (for CbN). We also provide a compositional representation of our semantics in terms of an intersection type system. In the second part, we present a method of proving AST for non-affine programs, i.e., recursive programs that can, during the evaluation of the recursive body, make multiple recursive calls (of a first-order function) from distinct call sites. Unlike in a deterministic language, the number of recursion call sites has direct consequences on the termination probability. Our framework supports a proof system that can verify AST for programs that are well beyond the scope of existing methods. We have constructed prototype implementations of our methods for computing lower bounds on the termination probability, and AST verification.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454111",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Raven",
+        "last_name": "Beutner",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Luke",
+        "last_name": "Ong",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/pldi/BeutnerO21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454047",
+    "title": "Web question answering with neurosymbolic program synthesis",
+    "abstract": "In this paper, we propose a new technique based on program synthesis for extracting information from webpages. Given a natural language query and a few labeled webpages, our method synthesizes a program that can be used to extract similar types of information from other unlabeled webpages. To handle websites with diverse structure, our approach employs a neurosymbolic DSL that incorporates both neural NLP models as well as standard language constructs for tree navigation and string manipulation. We also propose an optimal synthesis algorithm that generates all DSL programs that achieve optimal F1 score on the training examples. Our synthesis technique is compositional, prunes the search space by exploiting a monotonicity property of the DSL, and uses transductive learning to select programs with good generalization power. We have implemented these ideas in a new tool called WebQA and evaluate it on 25 different tasks across multiple domains. Our experiments show that WebQA significantly outperforms existing tools such as state-of-the-art question answering models and wrapper induction systems.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454047",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Qiaochu",
+        "last_name": "Chen",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Aaron",
+        "last_name": "Lamoreaux",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Xinyu",
+        "last_name": "Wang",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Durrett",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Osbert",
+        "last_name": "Bastani",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChenL0DBD21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454093",
+    "title": "Proving non-termination by program reversal",
+    "abstract": "We present a new approach to proving non-termination of non-deterministic integer programs. Our technique is rather simple but efficient. It relies on a purely syntactic reversal of the program's transition system followed by a constraint-based invariant synthesis with constraints coming from both the original and the reversed transition system. The latter task is performed by a simple call to an off-the-shelf SMT-solver, which allows us to leverage the latest advances in SMT-solving. Moreover, our method offers a combination of features not present (as a whole) in previous approaches: it handles programs with non-determinism, provides relative completeness guarantees and supports programs with polynomial arithmetic. The experiments performed with our prototype tool RevTerm show that our approach, despite its simplicity and stronger theoretical guarantees, is at least on par with the state-of-the-art tools, often achieving a non-trivial improvement under a proper configuration of its parameters.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454093",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Krishnendu",
+        "last_name": "Chatterjee",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Ehsan Kafshdar",
+        "last_name": "Goharshady",
+        "institution": "Ferdowsi University of Mashhad"
+      },
+      {
+        "first_name": "Petr",
+        "last_name": "Novotný",
+        "institution": "Masaryk University"
+      },
+      {
+        "first_name": "Đorđe",
+        "last_name": "Žikelić",
+        "institution": "Institute of Science and Technology Austria"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChatterjeeG0Z21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454082",
+    "title": "Modular data-race-freedom guarantees in the promising semantics",
+    "abstract": "Local data-race-freedom guarantees, ensuring strong semantics for locations accessed by non-racy instructions, provide a fruitful methodology for modular reasoning in relaxed memory concurrency. We observe that standard compiler optimizations are in inherent conflict with such guarantees in general fully-relaxed memory models. Nevertheless, for a certain strengthening of the promising model by Lee et al. that only excludes relaxed RMW-store reorderings, we establish multiple useful local data-racefreedom guarantees that enhance the programmability aspect of the model.We also demonstrate that the performance price of forbidding these reorderings is insignificant. To the best of our knowledge, these results are the first to identify a model that includes the standard concurrency constructs, supports the efficient mapping of relaxed reads and writes to plain hardware loads and stores, and yet validates several local data-race-freedom guarantees. To gain confidence, our results are fully mechanized in Coq.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454082",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Minki",
+        "last_name": "Cho",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Sung-Hwan",
+        "last_name": "Lee",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Chung-Kil",
+        "last_name": "Hur",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Ori",
+        "last_name": "Lahav",
+        "institution": "Tel Aviv University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChoLHL21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454052",
+    "title": "Concise, type-safe, and efficient structural diffing",
+    "abstract": "A structural diffing algorithm compares two pieces of tree-shaped data and computes their difference. Existing structural diffing algorithms either produce concise patches or ensure type safety, but never both. We present a new structural diffing algorithm called truediff that achieves both properties by treating subtrees as mutable, yet linearly typed resources. Mutation is required to derive concise patches that only mention changed nodes, but, in contrast to prior work, truediff guarantees all intermediate trees are well-typed. We formalize type safety, prove truediff has linear run time, and evaluate its performance and the conciseness of the derived patches empirically for real-world Python documents. While truediff ensures type safety, the size of its patches is on par with Gumtree, a popular untyped diffing implementation. Regardless, truediff outperforms Gumtree and a typed diffing implementation by an order of magnitude.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454052",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Erdweg",
+        "institution": ""
+      },
+      {
+        "first_name": "Tamás",
+        "last_name": "Szabó",
+        "institution": ""
+      },
+      {
+        "first_name": "André",
+        "last_name": "Pacak",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/ErdwegSP21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454089",
+    "title": "Phased synthesis of divide and conquer programs",
+    "abstract": "We propose a fully automated method that takes as input an iterative or recursive reference implementation and produces divide-and-conquer implementations that are functionally equivalent to the input. Three interdependent components have to be synthesized: a function that divides the original problem instance, a function that solves each sub-instance, and a function that combines the results of sub-computations. We propose a methodology that splits the synthesis problem into three successive phases, each with a substantially reduced state space compared to the original monolithic task, and therefore substantially more tractable. Our methodology is implemented as an addition to the existing synthesis tool Parsynt, and we demonstrate the efficacy of it by synthesizing highly nontrivial divide-and-conquer implementations of a set of benchmarks fully automatically.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454089",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Azadeh",
+        "last_name": "Farzan",
+        "institution": "University of Toronto"
+      },
+      {
+        "first_name": "Victor",
+        "last_name": "Nicolet",
+        "institution": "University of Toronto"
+      }
+    ],
+    "dblp_key": "conf/pldi/FarzanN21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454105",
+    "title": "Mirror: making lock-free data structures persistent",
+    "abstract": "With the recent launch of the Intel Optane memory platform, non-volatile main memory in the form of fast, dense, byte-addressable non-volatile memory has now become available. Nevertheless, designing crash-resilient algorithms and data structures is complex and error-prone as caches and machine registers are still volatile and the data residing in memory after a crash might not reflect a consistent view of the program state. This complex setting has often led to durable data structures being inefficient or incorrect, especially in the concurrent setting.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454105",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michal",
+        "last_name": "Friedman",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Erez",
+        "last_name": "Petrank",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Pedro",
+        "last_name": "Ramalhete",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/FriedmanPR21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454070",
+    "title": "An efficient interpreter for Datalog by de-specializing relations",
+    "abstract": "Datalog is becoming increasingly popular as a standard tool for a variety of use cases. Modern Datalog engines can achieve high performance by specializing data structures for relational operations. For example, the Datalog engine Soufflé achieves high performance with a synthesizer that specializes data structures for relations. However, the synthesizer cannot always be deployed, and a fast interpreter is required.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454070",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Xiaowen",
+        "last_name": "Hu",
+        "institution": "The University of Sydney"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Zhao",
+        "institution": "The University of Sydney"
+      },
+      {
+        "first_name": "Herbert",
+        "last_name": "Jordan",
+        "institution": "Universität Innsbruck"
+      },
+      {
+        "first_name": "Bernhard",
+        "last_name": "Scholz",
+        "institution": "The University of Sydney"
+      }
+    ],
+    "dblp_key": "conf/pldi/HuZJS21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454080",
+    "title": "DreamCoder: bootstrapping inductive program synthesis with wake-sleep library learning",
+    "abstract": "We present a system for inductive program synthesis called DreamCoder, which inputs a corpus of synthesis problems each specified by one or a few examples, and automatically derives a library of program components and a neural search policy that can be used to efficiently solve other similar synthesis problems. The library and search policy bootstrap each other iteratively through a variant of \"wake-sleep\" approximate Bayesian learning. A new refactoring algorithm based on E-graph matching identifies common sub-components across synthesized programs, building a progressively deepening library of abstractions capturing the structure of the input domain. We evaluate on eight domains including classic program synthesis areas and AI tasks such as planning, inverse graphics, and equation discovery. We show that jointly learning the library and neural search policy leads to solving more problems, and solving them more quickly.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454080",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Kevin",
+        "last_name": "Ellis",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Catherine",
+        "last_name": "Wong",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Maxwell",
+        "last_name": "Nye",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Mathias",
+        "last_name": "Sablé-Meyer",
+        "institution": "Collège de France"
+      },
+      {
+        "first_name": "Lucas",
+        "last_name": "Morales",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Luke",
+        "last_name": "Hewitt",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Luc",
+        "last_name": "Cary",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Armando",
+        "last_name": "Solar-Lezama",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Joshua B.",
+        "last_name": "Tenenbaum",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/EllisWNSMHCST21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454027",
+    "title": "Revamping hardware persistency models: view-based and axiomatic persistency models for Intel-x86 and Armv8",
+    "abstract": "Non-volatile memory (NVM) is a cutting-edge storage technology that promises the performance of DRAM with the durability of SSD. Recent work has proposed several persistency models for mainstream architectures such as Intel-x86 and Armv8, describing the order in which writes are propagated to NVM. However, these models have several limitations; most notably, they either lack operational models or do not support persistent synchronization patterns.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454027",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Kyeongmin",
+        "last_name": "Cho",
+        "institution": "Korea Advanced Institute of Science and Technology"
+      },
+      {
+        "first_name": "Sung-Hwan",
+        "last_name": "Lee",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Azalea",
+        "last_name": "Raad",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Jeehoon",
+        "last_name": "Kang",
+        "institution": "Korea Advanced Institute of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChoLRK21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454050",
+    "title": "Porcupine: a synthesizing compiler for vectorized homomorphic encryption",
+    "abstract": "Homomorphic encryption (HE) is a privacy-preserving technique that enables computation directly on encrypted data. Despite its promise, HE has seen limited use due to performance overheads and compilation challenges. Recent work has made significant advances to address the performance overheads but automatic compilation of efficient HE kernels remains relatively unexplored.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454050",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Meghan",
+        "last_name": "Cowan",
+        "institution": "Meta (Israel)"
+      },
+      {
+        "first_name": "Deeksha",
+        "last_name": "Dangwal",
+        "institution": "Meta (Israel)"
+      },
+      {
+        "first_name": "Armin",
+        "last_name": "Alaghi",
+        "institution": "Meta (Israel)"
+      },
+      {
+        "first_name": "Caroline",
+        "last_name": "Trippel",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Vincent T.",
+        "last_name": "Lee",
+        "institution": "Meta (Israel)"
+      },
+      {
+        "first_name": "Brandon",
+        "last_name": "Reagen",
+        "institution": "Supélec"
+      }
+    ],
+    "dblp_key": "conf/pldi/CowanDATLR21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454108",
+    "title": "Satisfiability modulo ordering consistency theory for multi-threaded program verification",
+    "abstract": "Analyzing multi-threaded programs is hard due to the number of thread interleavings. Partial orders can be used for modeling and analyzing multi-threaded programs. However, there is no dedicated decision procedure for solving partial-order constraints. In this paper, we propose a novel ordering consistency theory for multi-threaded program verification under sequential consistency, and we elaborate its theory solver, which realizes incremental consistency checking, minimal conflict clause generation, and specialized theory propagation to improve the efficiency of SMT solving. We conducted extensive experiments on credible benchmarks; the results show significant promotion of our approach.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454108",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Fei",
+        "last_name": "He",
+        "institution": "Tsinghua University"
+      },
+      {
+        "first_name": "Zhihang",
+        "last_name": "Sun",
+        "institution": "Tsinghua University"
+      },
+      {
+        "first_name": "Hongyu",
+        "last_name": "Fan",
+        "institution": "Tsinghua University"
+      }
+    ],
+    "dblp_key": "conf/pldi/HeSF21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454065",
+    "title": "Integration verification across software and hardware for a simple embedded system",
+    "abstract": "The interfaces between layers of a system are susceptible to bugs if developers of adjacent layers proceed under subtly different assumptions. Formal verification of two layers against the same formal model of the interface between them can be used to shake out these bugs. Doing so for every interface in the system can, in principle, yield unparalleled assurance of the correctness and security of the system as a whole. However, there have been remarkably few efforts that carry out this exercise, and all of them have simplified the task by restricting interactivity of the application, inventing new simplified instruction sets, and using unrealistic input and output mechanisms. We report on the first verification of a realistic embedded system, with its application software, device drivers, compiler, and RISC-V processor represented inside the Coq proof assistant as one mathematical object, with a machine-checked proof of functional correctness. A key challenge is structuring the proof modularly, so that further refinement of the components or expansion of the system can proceed without revisiting the rest of the system.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454065",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Andres",
+        "last_name": "Erbsen",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Samuel",
+        "last_name": "Gruetter",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Joonwon",
+        "last_name": "Choi",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Clark",
+        "last_name": "Wood",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Chlipala",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/ErbsenGCWC21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454092",
+    "title": "Test-case reduction and deduplication almost for free with transformation-based compiler testing",
+    "abstract": "Recent transformation-based approaches to compiler testing look for mismatches between the results of pairs of equivalent programs, where one program is derived from the other by randomly applying semantics-preserving transformations. We present a formulation of transformation-based compiler testing that provides effective test-case reduction almost for free: if transformations are designed to be as small and independent as possible, standard delta debugging can be used to shrink a bug-inducing transformation sequence to a smaller subsequence that still triggers the bug. The bug can then be reported as a delta between an original and minimally-transformed program. Minimized transformation sequences can also be used to heuristically deduplicate a set of bug-inducing tests, recommending manual investigation of those that involve disparate types of transformations and thus may have different root causes. We demonstrate the effectiveness of our approach via a new tool, spirv-fuzz, the first compiler-testing tool for the SPIR-V intermediate representation that underpins the Vulkan GPU programming model.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454092",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Alastair F.",
+        "last_name": "Donaldson",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Thomson",
+        "institution": "Google (United Kingdom)"
+      },
+      {
+        "first_name": "Vasyl",
+        "last_name": "Teliman",
+        "institution": "Central Ukrainian National Technical University"
+      },
+      {
+        "first_name": "Stefano",
+        "last_name": "Milizia",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "André Perez",
+        "last_name": "Maselco",
+        "institution": "Universidade Federal do ABC"
+      },
+      {
+        "first_name": "Antoni",
+        "last_name": "Karpiński",
+        "institution": "Warsaw University of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/DonaldsonTTMMK21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454048",
+    "title": "RbSyn: type- and effect-guided program synthesis",
+    "abstract": "In recent years, researchers have explored component-based synthesis, which aims to automatically construct programs that operate by composing calls to existing APIs. However, prior work has not considered efficient synthesis of methods with side effects, e.g., web app methods that update a database. In this paper, we introduce RbSyn, a novel type- and effect-guided synthesis tool for Ruby. An RbSyn synthesis goal is specified as the type for the target method and a series of test cases it must pass. RbSyn works by recursively generating well-typed candidate method bodies whose write effects match the read effects of the test case assertions. After finding a set of candidates that separately satisfy each test, RbSyn synthesizes a solution that branches to execute the correct candidate code under the appropriate conditions. We formalize RbSyn on a core, object-oriented language λsyn and describe how the key ideas of the model are scaled-up in our implementation for Ruby. We evaluated RbSyn on 19 benchmarks, 12 of which come from popular, open-source Ruby apps. We found that RbSyn synthesizes correct solutions for all benchmarks, with 15 benchmarks synthesizing in under 9 seconds, while the slowest benchmark takes 83 seconds. Using observed reads to guide synthesize is effective: using type-guidance alone times out on 10 of 12 app benchmarks. We also found that using less precise effect annotations leads to worse synthesis performance. In summary, we believe type- and effect-guided synthesis is an important step forward in synthesis of effectful methods from test cases.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454048",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sankha Narayan",
+        "last_name": "Guria",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "David Van",
+        "last_name": "Horn",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/GuriaFH21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454046",
+    "title": "DIY assistant: a multi-modal end-user programmable virtual assistant",
+    "abstract": "While Alexa can perform over 100,000 skills, its capability covers only a fraction of what is possible on the web. Individuals need and want to automate a long tail of web-based tasks which often involve visiting different websites and require programming concepts such as function composition, conditional, and iterative evaluation. This paper presents DIYA (Do-It-Yourself Assistant), a new system that empowers users to create personalized web-based virtual assistant skills that require the full generality of composable control constructs, without having to learn a formal programming language.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454046",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Fischer",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Giovanni",
+        "last_name": "Campagna",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Euirim",
+        "last_name": "Choi",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Monica S.",
+        "last_name": "Lam",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/FischerCCL21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454045",
+    "title": "Learning to find naming issues with big code and small supervision",
+    "abstract": "We introduce a new approach for finding and fixing naming issues in source code. The method is based on a careful combination of unsupervised and supervised procedures: (i) unsupervised mining of patterns from Big Code that express common naming idioms. Program fragments violating such idioms indicates likely naming issues, and (ii) supervised learning of a classifier on a small labeled dataset which filters potential false positives from the violations.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454045",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jingxuan",
+        "last_name": "He",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Cheng-Chun",
+        "last_name": "Lee",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Veselin",
+        "last_name": "Raychev",
+        "institution": ""
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/pldi/HeLRV21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454097",
+    "title": "CompCertO: compiling certified open C components",
+    "abstract": "Since the introduction of CompCert, researchers have been refining its language semantics and correctness theorem, and used them as components in software verification efforts. Meanwhile, artifacts ranging from CPU designs to network protocols have been successfully verified, and there is interest in making them interoperable to tackle end-to-end verification at an even larger scale.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454097",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jérémie",
+        "last_name": "Koenig",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/pldi/KoenigS21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454038",
+    "title": "DeepCuts: a deep learning optimization framework for versatile GPU workloads",
+    "abstract": "Widely used Deep Learning (DL) frameworks, such as TensorFlow, PyTorch, and MXNet, heavily rely on the NVIDIA cuDNN for performance. However, using cuDNN does not always give the best performance. One reason is that it is hard to handle every case of versatile DNN models and GPU architectures with a library that has a fixed implementation. Another reason is that cuDNN lacks kernel fusion functionality that gives a lot of chances to improve performance. In this paper, we propose a DL optimization framework for versatile GPU workloads, called DeepCuts. It considers both kernel implementation parameters and GPU architectures. It analyzes the DL workload, groups multiple DL operations into a single GPU kernel, and generates optimized GPU kernels considering kernel implementation parameters and GPU architecture parameters. The evaluation result with various DL workloads for inference and training indicates that DeepCuts outperforms cuDNN/cuBLAS-based implementations and the state-of-the-art DL optimization frameworks, such as TVM, TensorFlow XLA, and TensorRT.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454038",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Wookeun",
+        "last_name": "Jung",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Thanh Tuan",
+        "last_name": "Dao",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Jaejin",
+        "last_name": "Lee",
+        "institution": "Seoul National University"
+      }
+    ],
+    "dblp_key": "conf/pldi/JungDL21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454071",
+    "title": "Adaptive restarts for stochastic synthesis",
+    "abstract": "We consider the problem of program synthesis from input-output examples via stochastic search. We identify a robust feature of stochastic synthesis: The search often progresses through a series of discrete plateaus. We observe that the distribution of synthesis times is often heavy-tailed and analyze how these distributions arise. Based on these insights, we present an algorithm that speeds up synthesis by an order of magnitude over the naive algorithm currently used in practice. Our experimental results are obtained in part using a new program synthesis benchmark for superoptimization distilled from widely used production code.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454071",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jason R.",
+        "last_name": "Koenig",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Oded",
+        "last_name": "Padon",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/KoenigPA21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454087",
+    "title": "Cyclic program synthesis",
+    "abstract": "We describe the first approach to automatically synthesizing heap-manipulating programs with auxiliary recursive procedures. Such procedures occur routinely in data structure transformations (e.g., flattening a tree into a list) or traversals of composite structures (e.g., n-ary trees). Our approach, dubbed cyclic program synthesis, enhances deductive program synthesis with a novel application of cyclic proofs. Specifically, we observe that the machinery used to form cycles in cyclic proofs can be reused to systematically and efficiently abduce recursive auxiliary procedures.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454087",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Shachar",
+        "last_name": "Itzhaky",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Hila",
+        "last_name": "Peleg",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Nadia",
+        "last_name": "Polikarpova",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Reuben N. S.",
+        "last_name": "Rowe",
+        "institution": "Royal Holloway University of London"
+      },
+      {
+        "first_name": "Ilya",
+        "last_name": "Sergey",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "conf/pldi/ItzhakyPPRS21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454069",
+    "title": "Distance-in-time versus distance-in-space",
+    "abstract": "Cache behavior is one of the major factors that influence the performance of applications. Most of the existing compiler techniques that target cache memories focus exclusively on reducing data reuse distances in time (DIT). However, current manycore systems employ distributed on-chip caches that are connected using an on-chip network. As a result, a reused data element/block needs to travel over this on-chip network, and the distance to be traveled -- reuse distance in space (DIS) -- can be as influential in dictating application performance as reuse DIT. This paper represents the first attempt at defining a compiler framework that accommodates both DIT and DIS. Specifically, it first classifies data reuses into four groups: G1: (low DIT, low DIS), G2: (high DIT, low DIS), G3: (low DIT, high DIS), and G4: (high DIT, high DIS). Then, observing that reuses in G1 represent the ideal case and there is nothing much to be done in computations in G4, it proposes a \"reuse transfer\" strategy that transfers select reuses between G2 and G3, eventually, transforming each reuse to either G1 or G4. Finally, it evaluates the proposed strategy using a set of 10 multithreaded applications. The collected results reveal that the proposed strategy reduces parallel execution times of the tested applications between 19.3% and 33.3%.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454069",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mahmut",
+        "last_name": "Kandemir",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Xulong",
+        "last_name": "Tang",
+        "institution": "University of Pittsburgh"
+      },
+      {
+        "first_name": "Hui",
+        "last_name": "Zhao",
+        "institution": "University of North Texas"
+      },
+      {
+        "first_name": "Jihyun",
+        "last_name": "Ryoo",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Mustafa",
+        "last_name": "Karaköy",
+        "institution": "TUBITAK BILGEM"
+      }
+    ],
+    "dblp_key": "conf/pldi/KandemirT0RK21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454091",
+    "title": "Logical bytecode reduction",
+    "abstract": "Reducing a failure-inducing input to a smaller one is challenging for input with internal dependencies because most sub-inputs are invalid. Kalhauge and Palsberg made progress on this problem by mapping the task to a reduction problem for dependency graphs that avoids invalid inputs entirely. Their tool J-Reduce efficiently reduces Java bytecode to 24 percent of its original size, which made it the most effective tool until now. However, the output from their tool is often too large to be helpful in a bug report. In this paper, we show that more fine-grained modeling of dependencies leads to much more reduction. Specifically, we use propositional logic for specifying dependencies and we show how this works for Java bytecode. Once we have a propositional formula that specifies all valid sub-inputs, we run an algorithm that finds a small, valid, failure-inducing input. Our algorithm interleaves runs of the buggy program and calls to a procedure that finds a minimal satisfying assignment. Our experiments show that we can reduce Java bytecode to 4.6 percent of its original size, which is 5.3 times better than the 24.3 percent achieved by J-Reduce. The much smaller output is more suitable for bug reports.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454091",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Christian Gram",
+        "last_name": "Kalhauge",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Jens",
+        "last_name": "Palsberg",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/pldi/KalhaugeP21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454042",
+    "title": "Fluid: a framework for approximate concurrency via controlled dependency relaxation",
+    "abstract": "In this work, we introduce the Fluid framework, a set of language, compiler and runtime extensions that allow for the expression of regions within which dataflow dependencies can be approximated in a disciplined manner. Our framework allows the eager execution of dependent tasks before their inputs have finalized in order to capitalize on situations where an eagerly-consumed input has a high probability of sufficiently resembling the value or structure of the final value that would have been produced in a conservative/precise execution schedule. We introduce controlled access to the early consumption of intermediate values and provide hooks for user-specified quality assurance mechanisms that can automatically enforce re-execution of eagerly-executed tasks if their output values do not meet heuristic expectations. Our experimental analysis indicates that the fluidized versions of the applications bring 22.2% average execution time improvements, over their original counterparts, under the default values of our fluidization parameters. The Fluid approach is largely orthogonal to approaches that aim to reduce the task effort itself and we show that utilizing the Fluid framework can yield benefits for both originally precise and originally approximate versions of computation.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454042",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Huaipan",
+        "last_name": "Jiang",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Haibo",
+        "last_name": "Zhang",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Xulong",
+        "last_name": "Tang",
+        "institution": "University of Pittsburgh"
+      },
+      {
+        "first_name": "Vineetha",
+        "last_name": "Govindaraj",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Jack",
+        "last_name": "Sampson",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Mahmut",
+        "last_name": "Kandemir",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Danfeng",
+        "last_name": "Zhang",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Jiang0TGSKZ21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454088",
+    "title": "Hashing modulo alpha-equivalence",
+    "abstract": "In many applications one wants to identify identical subtrees of a program syntax tree. This identification should ideally be robust to alpha-renaming of the program, but no existing technique has been shown to achieve this with good efficiency (better than O(n2) in expression size). We present a new, asymptotically efficient way to hash modulo alpha-equivalence. A key insight of our method is to use a weak (commutative) hash combiner at exactly one point in the construction, which admits an algorithm with O(n (logn)2) time complexity. We prove that the use of the commutative combiner nevertheless yields a strong hash with low collision probability. Numerical benchmarks attest to the asymptotic behaviour of the method.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454088",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Krzysztof",
+        "last_name": "Maziarz",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "T. M. R.",
+        "last_name": "Ellis",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Alan",
+        "last_name": "Lawrence",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Fitzgibbon",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/pldi/MaziarzELFJ21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454053",
+    "title": "CoStar: a verified ALL(*) parser",
+    "abstract": "Parsers are security-critical components of many software systems, and verified parsing therefore has a key role to play in secure software design. However, existing verified parsers for context-free grammars are limited in their expressiveness, termination properties, or performance characteristics. They are only compatible with a restricted class of grammars, they are not guaranteed to terminate on all inputs, or they are not designed to be performant on grammars for real-world programming languages and data formats.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454053",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sam",
+        "last_name": "Lasser",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Casinghino",
+        "institution": "Draper Laboratory"
+      },
+      {
+        "first_name": "Kathleen",
+        "last_name": "Fisher",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Cody",
+        "last_name": "Roux",
+        "institution": "Draper Laboratory"
+      }
+    ],
+    "dblp_key": "conf/pldi/LasserCFR21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454067",
+    "title": "Abstraction for conflict-free replicated data types",
+    "abstract": "Strong eventual consistency (SEC) has been used as a classic notion of correctness for Conflict-Free Replicated Data Types (CRDTs). However, it does not give proper abstractions of functionality, thus is not helpful for modular verification of client programs using CRDTs. We propose a new correctness formulation for CRDTs, called Abstract Converging Consistency (ACC), to specify both data consistency and functional correctness. ACC gives abstract atomic specifications (as an abstraction) to CRDT operations, and establishes consistency between the concrete execution traces and the execution using the abstract atomic operations. The abstraction allows us to verify the CRDT implementation and its client programs separately, resulting in more modular and elegant proofs than monolithic approaches for whole program verification. We give a generic proof method to verify ACC of CRDT implementations, and a rely-guarantee style program logic to verify client programs. Our Abstraction theorem shows that ACC is equivalent to contextual refinement, linking the verification of CRDT implementations and clients together to derive functional correctness of whole programs.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454067",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Hongjin",
+        "last_name": "Liang",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Xinyu",
+        "last_name": "Feng",
+        "institution": "Nanjing University"
+      }
+    ],
+    "dblp_key": "conf/pldi/LiangF21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454030",
+    "title": "Alive2: bounded translation validation for LLVM",
+    "abstract": "We designed, implemented, and deployed Alive2: a bounded translation validation tool for the LLVM compiler’s intermediate representation (IR). It limits resource consumption by, for example, unrolling loops up to some bound, which means there are circumstances in which it misses bugs. Alive2 is designed to avoid false alarms, is fully automatic through the use of an SMT solver, and requires no changes to LLVM. By running Alive2 over LLVM’s unit test suite, we discovered and reported 47 new bugs, 28 of which have been fixed already. Moreover, our work has led to eight patches to the LLVM Language Reference—the definitive description of the semantics of its IR—and we have participated in numerous discussions with the goal of clarifying ambiguities and fixing errors in these semantics. Alive2 is open source and we also made it available on the web, where it has active users from the LLVM community.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454030",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Nuno P.",
+        "last_name": "Lopes",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Juneyoung",
+        "last_name": "Lee",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Chung-Kil",
+        "last_name": "Hur",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Zhengyang",
+        "last_name": "Liu",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Regehr",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/pldi/LopesLHLR21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454055",
+    "title": "Beyond the elementary representations of program invariants over algebraic data types",
+    "abstract": "First-order logic is a natural way of expressing properties of computation. It is traditionally used in various program logics for expressing the correctness properties and certificates. Although such representations are expressive for some theories, they fail to express many interesting properties of algebraic data types (ADTs). In this paper, we explore three different approaches to represent program invariants of ADT-manipulating programs: tree automata, and first-order formulas with or without size constraints. We compare the expressive power of these representations and prove the negative definability of both first-order representations using the pumping lemmas. We present an approach to automatically infer program invariants of ADT-manipulating programs by a reduction to a finite model finder. The implementation called RInGen has been evaluated against state-of-the-art invariant synthesizers and has been experimentally shown to be competitive. In particular, program invariants represented by automata are capable of expressing more complex properties of computation and their automatic construction is often less expensive.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454055",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yurii",
+        "last_name": "Kostyukov",
+        "institution": "St Petersburg University"
+      },
+      {
+        "first_name": "Dmitry",
+        "last_name": "Mordvinov",
+        "institution": ""
+      },
+      {
+        "first_name": "Grigory",
+        "last_name": "Fedyukovich",
+        "institution": "Florida State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/KostyukovMF21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454073",
+    "title": "When threads meet events: efficient and precise static race detection with origins",
+    "abstract": "Data races are among the worst bugs in software in that they exhibit non-deterministic symptoms and are notoriously difficult to detect. The problem is exacerbated by interactions between threads and events in real-world applications. We present a novel static analysis technique, O2, to detect data races in large complex multithreaded and event-driven software. O2 is powered by “origins”, an abstraction that unifies threads and events by treating them as entry points of code paths attributed with data pointers. Origins in most cases are inferred automatically, but can also be specified by developers. More importantly, origins provide an efficient way to precisely reason about shared memory and pointer aliases.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454073",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Bozhen",
+        "last_name": "Liu",
+        "institution": "Texas A&M University"
+      },
+      {
+        "first_name": "Pei-Ming",
+        "last_name": "Liu",
+        "institution": "Texas A&M University"
+      },
+      {
+        "first_name": "Yanze",
+        "last_name": "Li",
+        "institution": "Texas A&M University"
+      },
+      {
+        "first_name": "Chia-Che",
+        "last_name": "Tsai",
+        "institution": "Texas A&M University"
+      },
+      {
+        "first_name": "Dilma Da",
+        "last_name": "Silva",
+        "institution": "Texas A&M University"
+      },
+      {
+        "first_name": "Jeff",
+        "last_name": "Huang",
+        "institution": "Texas A&M University"
+      }
+    ],
+    "dblp_key": "conf/pldi/LiuLLTS021",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454094",
+    "title": "Vectorized secure evaluation of decision forests",
+    "abstract": "As the demand for machine learning–based inference increases in tandem with concerns about privacy, there is a growing recognition of the need for secure machine learning, in which secret models can be used to classify private data without the model or data being leaked. Fully Homomorphic Encryption (FHE) allows arbitrary computation to be done over encrypted data, providing an attractive approach to providing such secure inference. While such computation is often orders of magnitude slower than its plaintext counterpart, the ability of FHE cryptosystems to do ciphertext packing—that is, encrypting an entire vector of plaintexts such that operations are evaluated elementwise on the vector—helps ameliorate this overhead, effectively creating a SIMD architecture where computation can be vectorized for more efficient evaluation. Most recent research in this area has targeted regular, easily vectorizable neural network models. Applying similar techniques to irregular ML models such as decision forests remains unexplored, due to their complex, hard-to-vectorize structures.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454094",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Raghav",
+        "last_name": "Malik",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Vidush",
+        "last_name": "Singhal",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Gottfried",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Milind",
+        "last_name": "Kulkarni",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/pldi/MalikSG021",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454049",
+    "title": "High performance correctly rounded math libraries for 32-bit floating point representations",
+    "abstract": "This paper proposes a set of techniques to develop correctly rounded math libraries for 32-bit float and posit types. It enhances our RLIBM approach that frames the problem of generating correctly rounded libraries as a linear programming problem in the context of 16-bit types to scale to 32-bit types. Specifically, this paper proposes new algorithms to (1) generate polynomials that produce correctly rounded outputs for all inputs using counterexample guided polynomial generation, (2) generate efficient piecewise polynomials with bit-pattern based domain splitting, and (3) deduce the amount of freedom available to produce correct results when range reduction involves multiple elementary functions. The resultant math library for the 32-bit float type is faster than state-of-the-art math libraries while producing the correct output for all inputs. We have also developed a set of correctly rounded elementary functions for 32-bit posits.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454049",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jay P.",
+        "last_name": "Lim",
+        "institution": "Rutgers, The State University of New Jersey"
+      },
+      {
+        "first_name": "Santosh",
+        "last_name": "Nagarakatte",
+        "institution": "Rutgers, The State University of New Jersey"
+      }
+    ],
+    "dblp_key": "conf/pldi/LimN21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454100",
+    "title": "Robustness certification with generative models",
+    "abstract": "Generative neural networks are powerful models capable of learning a wide range of rich semantic image transformations such as altering person's age, head orientation, adding mustache, changing the hair color and many more. At a high level, a generative model effectively produces new and previously unseen images with the desired properties, which can then be used to improve the accuracy of existing models. In this work, we advance the state-of-the-art in verification by bridging the gap between (i) the well studied but limited norm-based and geometric transformations, and (ii) the rich set of semantic transformations used in practice. This problem is especially hard since the images are generated from a highly non-convex image manifold, preventing the use of most existing verifiers, which often rely on convex relaxations. We present a new verifier, called GenProve, which is capable of certifying the rich set of semantic transformations of generative models. GenProve can provide both sound deterministic and probabilistic guarantees, by capturing infinite non-convex sets of activation vectors and distributions over them, while scaling to realistic networks.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454100",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Mirman",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Hägele",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Pavol",
+        "last_name": "Bielik",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Timon",
+        "last_name": "Gehr",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/pldi/MirmanHBGV21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454057",
+    "title": "Trace-based control-flow analysis",
+    "abstract": "We define a small-step semantics for the untyped λ-calculus, that traces the β-reductions that occur during evaluation. By abstracting the computation traces, we reconstruct k-CFA using abstract interpretation, and justify constraint-based k-CFA in a semantic way. The abstract interpretation of the trace semantics also paves the way for introducing widening operators in CFA that go beyond existing analyses, that are all based on exploring a finite state space. We define ∇CFA, a widening-based analysis that limits the cycles in call stacks, and can achieve better precision than k-CFA at a similar cost.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454057",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Benoît",
+        "last_name": "Montagu",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Thomas Wiben",
+        "last_name": "Jensen",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      }
+    ],
+    "dblp_key": "conf/pldi/MontaguJ21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454079",
+    "title": "Reverse engineering for reduction parallelization via semiring polynomials",
+    "abstract": "Parallel reduction, which summarizes a given dataset, e.g., the total, average, and maximum, plays a crucial role in parallel programming. This paper presents a new approach, reverse engineering, to automatically discovering nontrivial parallel reductions in sequential programs. The body of the sequential reduction loop is regarded as a black box, and its input-output behaviors are sampled. If the behaviors correspond to a set of linear polynomials over a semiring, a divide-and-conquer parallel reduction is generated. Auxiliary reverse-engineering methods enable a long and nested loop body to be decomposed, which makes our parallelization scheme applicable to various types of reduction loops. This approach is not only simple and efficient but also agnostic to the details of the input program. Its potential is demonstrated through several use case scenarios. A proof-of-concept implementation successfully inferred linear polynomials for nearly all of the 74 benchmarks exhaustively collected from the literature. These characteristics and experimental results demonstrate the promise of the proposed approach, despite its inherent unsoundness.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454079",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Akimasa",
+        "last_name": "Morihata",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Shigeyuki",
+        "last_name": "Sato",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/pldi/MorihataS21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454059",
+    "title": "Filling typed holes with live GUIs",
+    "abstract": "Text editing is powerful, but some types of expressions are more naturally represented and manipulated graphically. Examples include expressions that compute colors, music, animations, tabular data, plots, diagrams, and other domain-specific data structures. This paper introduces live literals, or livelits, which allow clients to fill holes of types like these by directly manipulating a user-defined GUI embedded persistently into code. Uniquely, livelits are compositional: a livelit GUI can itself embed spliced expressions, which are typed, lexically scoped, and can in turn embed other livelits. Livelits are also uniquely live: a livelit can provide continuous feedback about the run-time implications of the client’s choices even when splices mention bound variables, because the system continuously gathers closures associated with the hole that the livelit is filling. We integrate livelits into Hazel, a live hole-driven programming environment, and describe case studies that exercise these novel capabilities. We then define a simply typed livelit calculus, which specifies how livelits operate as live graphical macros. The metatheory of macro expansion has been mechanized in Agda.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454059",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cyrus",
+        "last_name": "Omar",
+        "institution": "University of Michigan"
+      },
+      {
+        "first_name": "David A.",
+        "last_name": "Moon",
+        "institution": "University of Michigan"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Blinn",
+        "institution": "University of Michigan"
+      },
+      {
+        "first_name": "Ian",
+        "last_name": "Voysey",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Nick",
+        "last_name": "Collins",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Ravi",
+        "last_name": "Chugh",
+        "institution": "University of Chicago"
+      }
+    ],
+    "dblp_key": "conf/pldi/OmarMBVCC21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454083",
+    "title": "DNNFusion: accelerating deep neural networks execution with advanced operator fusion",
+    "abstract": "Deep Neural Networks (DNNs) have emerged as the core enabler of many major applications on mobile devices. To achieve high accuracy, DNN models have become increasingly deep with hundreds or even thousands of operator layers, leading to high memory and computational requirements for inference. Operator fusion (or kernel/layer fusion) is key optimization in many state-of-the-art DNN execution frameworks, such as TensorFlow, TVM, and MNN, that aim to improve the efficiency of the DNN inference. However, these frameworks usually adopt fusion approaches based on certain patterns that are too restrictive to cover the diversity of operators and layer connections, especially those seen in many extremely deep models. Polyhedral-based loop fusion techniques, on the other hand, work on a low-level view of the computation without operator-level information, and can also miss potential fusion opportunities. To address this challenge, this paper proposes a novel and extensive loop fusion framework called DNNFusion. The basic idea of this work is to work at an operator view of DNNs, but expand fusion opportunities by developing a classification of both individual operators and their combinations. In addition, DNNFusion includes 1) a novel mathematical-property-based graph rewriting framework to reduce evaluation costs and facilitate subsequent operator fusion, 2) an integrated fusion plan generation that leverages the high-level analysis and accurate light-weight profiling, and 3) additional optimizations during fusion code generation. DNNFusion is extensively evaluated on 15 DNN models with varied types of tasks, model sizes, and layer counts. The evaluation results demonstrate that DNNFusion finds up to 8.8 × higher fusion opportunities, outperforms four state-of-the-art DNN execution frameworks with 9.3× speedup. The memory requirement reduction and speedups can enable the execution of many of the target models on mobile devices and even make them part of a real-time application.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454083",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Wei",
+        "last_name": "Niu",
+        "institution": "William & Mary"
+      },
+      {
+        "first_name": "Jiexiong",
+        "last_name": "Guan",
+        "institution": "William & Mary"
+      },
+      {
+        "first_name": "Yanzhi",
+        "last_name": "Wang",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Gagan",
+        "last_name": "Agrawal",
+        "institution": "Augusta University"
+      },
+      {
+        "first_name": "Bin",
+        "last_name": "Ren",
+        "institution": "William & Mary"
+      }
+    ],
+    "dblp_key": "conf/pldi/NiuGWAR21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454063",
+    "title": "Synthesizing data structure refinements from integrity constraints",
+    "abstract": "Implementations of many data structures use several correlated fields to improve their performance; however, inconsistencies between these fields can be a source of serious program errors. To address this problem, we propose a new technique for automatically refining data structures from integrity constraints. In particular, consider a data structure D with fields F and methods M, as well as a new set of auxiliary fields F′ that should be added to D. Given this input and an integrity constraint Φ relating F and F′, our method automatically generates a refinement of D that satisfies the provided integrity constraint. Our method is based on a modular instantiation of the CEGIS paradigm and uses a novel inductive synthesizer that augments top-down search with three key ideas. First, it computes necessary preconditions of partial programs to dramatically prune its search space. Second, it augments the grammar with promising new productions by leveraging the computed preconditions. Third, it guides top-down search using a probabilistic context-free grammar obtained by statically analyzing the integrity checking function and the original code base. We evaluated our method on 25 data structures from popular Java projects and show that our method can successfully refine 23 of them. We also compare our method against two state-of-the-art synthesis tools and perform an ablation study to justify our design choices. Our evaluation shows that (1) our method is successful at refining many data structure implementations in the wild, (2) it advances the state-of-the-art in synthesis, and (3) our proposed ideas are crucial for making this technique practical.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454063",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Shankara",
+        "last_name": "Pailoor",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Yuepeng",
+        "last_name": "Wang",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Xinyu",
+        "last_name": "Wang",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/pldi/Pailoor00D21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454043",
+    "title": "Developer and user-transparent compiler optimization for interactive applications",
+    "abstract": "Traditional offline optimization frameworks rely on representative hardware, software, and inputs to compare different optimization decisions on. With application-specific optimization for mobile systems though, the idea of a representative test bench is unrealistic while creating offline inputs is non-trivial. Online approaches partially overcome these problems but they might expose users to suboptimal or even erroneously optimized code. As a result, our mobile code is poorly optimized and this results in wasted performance, wasted energy, and user frustration. In this paper, we introduce a novel compiler optimization approach designed for mobile applications. It requires no developer effort, it tunes applications for the user’s device and usage patterns, and has no negative impact on the user experience. It is based on a lightweight capture and replay mechanism. In its online stage, it captures the state accessed by any targeted code region. By re-purposing existing OS capabilities, it keeps the overhead low. In its offline stage, it replays the code region but under different optimization decisions to enable sound comparisons of different optimizations under realistic conditions. Coupled with a search heuristic for the compiler optimization space, it allows us to discover optimization decisions that improve performance without testing these decisions directly on the user. We implemented a prototype system in Android based on LLVM combined with a genetic search engine. We evaluated it on both benchmarks and real Android applications. Online captures are infrequent and each one introduces an overhead of less than 15ms on average. For this negligible effect on user experience, we achieve speedups of 44% on average over the Android compiler and 35% over LLVM -O3.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454043",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Paschalis",
+        "last_name": "Mpeis",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Pavlos",
+        "last_name": "Petoumenos",
+        "institution": "University of Manchester"
+      },
+      {
+        "first_name": "Kim",
+        "last_name": "Hazelwood",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Hugh",
+        "last_name": "Leather",
+        "institution": "Meta (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/MpeisPHL21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454103",
+    "title": "IOOpt: automatic derivation of I/O complexity bounds for affine programs",
+    "abstract": "Evaluating the complexity of an algorithm is an important step when developing applications, as it impacts both its time and energy performance. Computational complexity, which is the number of dynamic operations regardless of the execution order, is easy to characterize for affine programs. Data movement (or, I/O) complexity is more complex to evaluate as it refers, when considering all possible valid schedules, to the minimum required number of I/O between a slow (e.g. main memory) and a fast (e.g. local scratchpad) storage location.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454103",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Auguste",
+        "last_name": "Olivry",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Guillaume",
+        "last_name": "Iooss",
+        "institution": "Université Grenoble Alpes"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Tollenaere",
+        "institution": "Centre Inria de l'Université Grenoble Alpes"
+      },
+      {
+        "first_name": "Atanas",
+        "last_name": "Rountev",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Sadayappan",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Fabrice",
+        "last_name": "Rastello",
+        "institution": "Université Grenoble Alpes"
+      }
+    ],
+    "dblp_key": "conf/pldi/OlivryITRSR21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454040",
+    "title": "Unqomp: synthesizing uncomputation in Quantum circuits",
+    "abstract": "A key challenge when writing quantum programs is the need for uncomputation: temporary values produced during the computation must be reset to zero before they can be safely discarded. Unfortunately, most existing quantum languages require tedious manual uncomputation, often leading to inefficient and error-prone programs. We present Unqomp, the first procedure to automatically synthesize uncomputation in a given quantum circuit. Unqomp can be readily integrated into popular quantum languages, allowing the programmer to allocate and use temporary values analogously to classical computation, knowing they will be uncomputed by Unqomp. Our evaluation shows that programs leveraging Unqomp are not only shorter (-19% on average), but also generate more efficient circuits (-71% gates and -19% qubits on average).",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454040",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Anouk",
+        "last_name": "Paradis",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Bichsel",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Samuel",
+        "last_name": "Steffen",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/pldi/ParadisBSV21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454028",
+    "title": "Repairing serializability bugs in distributed database programs via automated schema refactoring",
+    "abstract": "Serializability is a well-understood concurrency control mechanism that eases reasoning about highly-concurrent database programs. Unfortunately, enforcing serializability has a high performance cost, especially on geographically distributed database clusters. Consequently, many databases allow programmers to choose when a transaction must be executed under serializability, with the expectation that transactions would only be so marked when necessary to avoid serious concurrency bugs. However, this is a significant burden to impose on developers, requiring them to (a) reason about subtle concurrent interactions among potentially interfering transactions, (b) determine when such interactions would violate desired invariants, and (c) then identify the minimum number of transactions whose executions should be serialized to prevent these violations. To mitigate this burden, this paper presents a sound fully-automated schema refactoring procedure that refactors a program’s data layout – rather than its concurrency control logic – to eliminate statically identified concurrency bugs, allowing more transactions to be safely executed under weaker and more performant database guarantees. Experimental results over a range of realistic database benchmarks indicate that our approach is highly effective in eliminating concurrency bugs, with safe refactored programs showing an average of 120% higher throughput and 45% lower latency compared to a serialized baseline.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454028",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Kia",
+        "last_name": "Rahmani",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Kartik",
+        "last_name": "Nagar",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Delaware",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/pldi/RahmaniNDJ21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454072",
+    "title": "Scooter &amp; Sidecar: a domain-specific approach to writing secure database migrations",
+    "abstract": "Web applications often handle large amounts of sensitive user data. Modern secure web frameworks protect this data by (1) using declarative languages to specify security policies alongside database schemas and (2) automatically enforcing these policies at runtime. Unfortunately, these frameworks do not handle the very common situation in which the schemas or the policies need to evolve over time---and updates to schemas and policies need to be performed in a carefully coordinated way. Mistakes during schema or policy migrations can unintentionally leak sensitive data or introduce privilege escalation bugs. In this work, we present a domain-specific language (Scooter) for expressing schema and policy migrations, and an associated SMT-based verifier (Sidecar) which ensures that migrations are secure as the application evolves. We describe the design of Scooter and Sidecar and show that our framework can be used to express realistic schemas, policies, and migrations, without giving up on runtime or verification performance.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454072",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "John W.",
+        "last_name": "Renner",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Sanchez-Stern",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Fraser",
+        "last_name": "Brown",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Sorin",
+        "last_name": "Lerner",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Deian",
+        "last_name": "Stefan",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "conf/pldi/RennerSBLS21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454112",
+    "title": "Practical smart contract sharding with ownership and commutativity analysis",
+    "abstract": "Sharding is a popular way to achieve scalability in blockchain protocols, increasing their throughput by partitioning the set of transaction validators into a number of smaller committees, splitting the workload. Existing approaches for blockchain sharding, however, do not scale well when concurrent transactions alter the same replicated state component—a common scenario in Ethereum-style smart contracts.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454112",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "George",
+        "last_name": "Pîrlea",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Amrit",
+        "last_name": "Kumar",
+        "institution": ""
+      },
+      {
+        "first_name": "Ilya",
+        "last_name": "Sergey",
+        "institution": "Yale-NUS College"
+      }
+    ],
+    "dblp_key": "conf/pldi/Pirlea0S21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454032",
+    "title": "Perceus: garbage free reference counting with reuse",
+    "abstract": "We introduce Perceus, an algorithm for precise reference counting with reuse and specialization. Starting from a functional core language with explicit control-flow, Perceus emits precise reference counting instructions such that (cycle-free) programs are _garbage free_, where only live references are retained. This enables further optimizations, like reuse analysis that allows for guaranteed in-place updates at runtime. This in turn enables a novel programming paradigm that we call _functional but in-place_ (FBIP). Much like tail-call optimization enables writing loops with regular function calls, reuse analysis enables writing in-place mutating algorithms in a purely functional way. We give a novel formalization of reference counting in a linear resource calculus, and prove that Perceus is sound and garbage free. We show evidence that Perceus, as implemented in Koka, has good performance and is competitive with other state-of-the-art memory collectors.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454032",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Alex",
+        "last_name": "Reinking",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Ningning",
+        "last_name": "Xie",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Leonardo de",
+        "last_name": "Moura",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Daan",
+        "last_name": "Leijen",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/ReinkingXML21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3460969",
+    "title": "Task parallel assembly language for uncompromising parallelism",
+    "abstract": "Achieving parallel performance and scalability involves making compromises between parallel and sequential computation. If not contained, the overheads of parallelism can easily outweigh its benefits, sometimes by orders of magnitude. Today, we expect programmers to implement this compromise by optimizing their code manually. This process is labor intensive, requires deep expertise, and reduces code quality. Recent work on heartbeat scheduling shows a promising approach that manifests the potentially vast amounts of available, latent parallelism, at a regular rate, based on even beats in time. The idea is to amortize the overheads of parallelism over the useful work performed between the beats. Heartbeat scheduling is promising in theory, but the reality is complicated: it has no known practical implementation.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3460969",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mike",
+        "last_name": "Rainey",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Newton",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Kyle C.",
+        "last_name": "Hale",
+        "institution": "Illinois Institute of Technology"
+      },
+      {
+        "first_name": "Nikos",
+        "last_name": "Hardavellas",
+        "institution": "Northwestern University"
+      },
+      {
+        "first_name": "Simone",
+        "last_name": "Campanoni",
+        "institution": "Northwestern University"
+      },
+      {
+        "first_name": "Peter A.",
+        "last_name": "Dinda",
+        "institution": "Northwestern University"
+      },
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/RaineyNHHCDA21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454035",
+    "title": "Unleashing the hidden power of compiler optimization on binary code difference: an empirical study",
+    "abstract": "Hunting binary code difference without source code (i.e., binary diffing) has compelling applications in software security. Due to the high variability of binary code, existing solutions have been driven towards measuring semantic similarities from syntactically different code. Since compiler optimization is the most common source contributing to binary code differences in syntax, testing the resilience against the changes caused by different compiler optimization settings has become a standard evaluation step for most binary diffing approaches. For example, 47 top-venue papers in the last 12 years compared different program versions compiled by default optimization levels (e.g., -Ox in GCC and LLVM). Although many of them claim they are immune to compiler transformations, it is yet unclear about their resistance to non-default optimization settings. Especially, we have observed that adversaries explored non-default compiler settings to amplify malware differences.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454035",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Xiaolei",
+        "last_name": "Ren",
+        "institution": "The University of Texas at Arlington"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Ho",
+        "institution": "The University of Texas at Arlington"
+      },
+      {
+        "first_name": "Jiang",
+        "last_name": "Ming",
+        "institution": "The University of Texas at Arlington"
+      },
+      {
+        "first_name": "Yu",
+        "last_name": "Lei",
+        "institution": "The University of Texas at Arlington"
+      },
+      {
+        "first_name": "Li",
+        "last_name": "Li",
+        "institution": "Monash University"
+      }
+    ],
+    "dblp_key": "conf/pldi/RenHMLL21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454033",
+    "title": "Proof repair across type equivalences",
+    "abstract": "We describe a new approach to automatically repairing broken proofs in the Coq proof assistant in response to changes in types. Our approach combines a configurable proof term transformation with a decompiler from proof terms to suggested tactic scripts. The proof term transformation implements transport across equivalences in a way that removes references to the old version of the changed type and does not rely on axioms beyond those Coq assumes.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454033",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Talia",
+        "last_name": "Ringer",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "RanDair",
+        "last_name": "Porter",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Nathaniel",
+        "last_name": "Yazdani",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Leo",
+        "institution": ""
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/RingerPYLG21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454104",
+    "title": "Specification synthesis with constrained Horn clauses",
+    "abstract": "The problem of synthesizing specifications of undefined procedures has a broad range of applications, but the usefulness of the generated specifications depends on their quality. In this paper, we propose a technique for finding maximal and non-vacuous specifications. Maximality allows for more choices for implementations of undefined procedures, and non-vacuity ensures that safety assertions are reachable. To handle programs with complex control flow, our technique discovers not only specifications but also inductive invariants. Our iterative algorithm lazily generalizes non-vacuous specifications in a counterexample-guided loop. The key component of our technique is an effective non-vacuous specification synthesis algorithm. We have implemented the approach in a tool called HornSpec, taking as input systems of constrained Horn clauses. We have experimentally demonstrated the tool's effectiveness, efficiency, and the quality of generated specifications on a range of benchmarks.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454104",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sumanth",
+        "last_name": "Prabhu",
+        "institution": "Tata Consultancy Services (India)"
+      },
+      {
+        "first_name": "Grigory",
+        "last_name": "Fedyukovich",
+        "institution": "Florida State University"
+      },
+      {
+        "first_name": "Kumar",
+        "last_name": "Madhukar",
+        "institution": "Tata Consultancy Services (India)"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "D’Souza",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/SFMD21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454109",
+    "title": "Bliss: auto-tuning complex applications using a pool of diverse lightweight learning models",
+    "abstract": "As parallel applications become more complex, auto-tuning becomes more desirable, challenging, and time-consuming. We propose, Bliss, a novel solution for auto-tuning parallel applications without requiring apriori information about applications, domain-specific knowledge, or instrumentation. Bliss demonstrates how to leverage a pool of Bayesian Optimization models to find the near-optimal parameter setting 1.64× faster than the state-of-the-art approaches.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454109",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rohan Basu",
+        "last_name": "Roy",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Tirthak",
+        "last_name": "Patel",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Vijay",
+        "last_name": "Gadepally",
+        "institution": "MIT Lincoln Laboratory"
+      },
+      {
+        "first_name": "Devesh",
+        "last_name": "Tiwari",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/pldi/RoyPGT21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454078",
+    "title": "SPPL: probabilistic programming with fast exact symbolic inference",
+    "abstract": "We present the Sum-Product Probabilistic Language (SPPL), a new probabilistic programming language that automatically delivers exact solutions to a broad range of probabilistic inference queries. SPPL translates probabilistic programs into sum-product expressions, a new symbolic representation and associated semantic domain that extends standard sum-product networks to support mixed-type distributions, numeric transformations, logical formulas, and pointwise and set-valued constraints. We formalize SPPL via a novel translation strategy from probabilistic programs to sum-product expressions and give sound exact algorithms for conditioning on and computing probabilities of events. SPPL imposes a collection of restrictions on probabilistic programs to ensure they can be translated into sum-product expressions, which allow the system to leverage new techniques for improving the scalability of translation and inference by automatically exploiting probabilistic structure. We implement a prototype of SPPL with a modular architecture and evaluate it on benchmarks the system targets, showing that it obtains up to 3500x speedups over state-of-the-art symbolic systems on tasks such as verifying the fairness of decision tree classifiers, smoothing hidden Markov models, conditioning transformed random variables, and computing rare event probabilities.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454078",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Feras A.",
+        "last_name": "Saad",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Vikash K.",
+        "last_name": "Mansinghka",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/SaadRM21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454036",
+    "title": "RefinedC: automating the foundational verification of C code with refined ownership types",
+    "abstract": "Given the central role that C continues to play in systems software, and the difficulty of writing safe and correct C code, it remains a grand challenge to develop effective formal methods for verifying C programs. In this paper, we propose a new approach to this problem: a type system we call RefinedC, which combines ownership types (for modular reasoning about shared state and concurrency) with refinement types (for encoding precise invariants on C data types and Hoare-style specifications for C functions).",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454036",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Sammler",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Rodolphe",
+        "last_name": "Lepigre",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Robbert",
+        "last_name": "Krebbers",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Kayvan",
+        "last_name": "Memarian",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Derek",
+        "last_name": "Dreyer",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "Garg",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/pldi/SammlerLKMD021",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454084",
+    "title": "SyRust: automatic testing of Rust libraries with semantic-aware program synthesis",
+    "abstract": "Rust’s type system ensures the safety of Rust programs; however, programmers can side-step some of the strict typing rules by using the unsafe keyword. A common use of unsafe Rust is by libraries. Bugs in these libraries undermine the safety of the entire Rust program. Therefore, it is crucial to thoroughly test library APIs to rule out bugs. Unfortunately, such testing relies on programmers to manually construct test cases, which is an inefficient and ineffective process.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454084",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yoshiki",
+        "last_name": "Takashima",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Ruben",
+        "last_name": "Martins",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Limin",
+        "last_name": "Jia",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Corina S.",
+        "last_name": "Păsăreanu",
+        "institution": "Ames Research Center"
+      }
+    ],
+    "dblp_key": "conf/pldi/TakashimaM0P21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454064",
+    "title": "Provable repair of deep neural networks",
+    "abstract": "Deep Neural Networks (DNNs) have grown in popularity over the past decade and are now being used in safety-critical domains such as aircraft collision avoidance. This has motivated a large number of techniques for finding unsafe behavior in DNNs. In contrast, this paper tackles the problem of correcting a DNN once unsafe behavior is found. We introduce the provable repair problem, which is the problem of repairing a network N to construct a new network N′ that satisfies a given specification. If the safety specification is over a finite set of points, our Provable Point Repair algorithm can find a provably minimal repair satisfying the specification, regardless of the activation functions used. For safety specifications addressing convex polytopes containing infinitely many points, our Provable Polytope Repair algorithm can find a provably minimal repair satisfying the specification for DNNs using piecewise-linear activation functions. The key insight behind both of these algorithms is the introduction of a Decoupled DNN architecture, which allows us to reduce provable repair to a linear programming problem. Our experimental results demonstrate the efficiency and effectiveness of our Provable Repair algorithms on a variety of challenging tasks.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454064",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Sotoudeh",
+        "institution": "University of California, Davis"
+      },
+      {
+        "first_name": "Aditya",
+        "last_name": "Thakur",
+        "institution": "University of California, Davis"
+      }
+    ],
+    "dblp_key": "conf/pldi/SotoudehT21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454039",
+    "title": "Retrofitting effect handlers onto OCaml",
+    "abstract": "Effect handlers have been gathering momentum as a mechanism for modular programming with user-defined effects. Effect handlers allow for non-local control flow mechanisms such as generators, async/await, lightweight threads and coroutines to be composably expressed. We present a design and evaluate a full-fledged efficient implementation of effect handlers for OCaml, an industrial-strength multi-paradigm programming language. Our implementation strives to maintain the backwards compatibility and performance profile of existing OCaml code. Retrofitting effect handlers onto OCaml is challenging since OCaml does not currently have any non-local control flow mechanisms other than exceptions. Our implementation of effect handlers for OCaml: (i) imposes a mean 1% overhead on a comprehensive macro benchmark suite that does not use effect handlers; (ii) remains compatible with program analysis tools that inspect the stack; and (iii) is efficient for new code that makes use of effect handlers.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454039",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "KC",
+        "last_name": "Sivaramakrishnan",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Dolan",
+        "institution": ""
+      },
+      {
+        "first_name": "Leo",
+        "last_name": "White",
+        "institution": ""
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Kelly",
+        "institution": ""
+      },
+      {
+        "first_name": "Sadiq",
+        "last_name": "Jaffer",
+        "institution": ""
+      },
+      {
+        "first_name": "Anil",
+        "last_name": "Madhavapeddy",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/pldi/Sivaramakrishnan21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454051",
+    "title": "Concolic program repair",
+    "abstract": "Automated program repair reduces the manual effort in fixing program errors. However, existing repair techniques modify a buggy program such that it passes given tests. Such repair techniques do not discriminate between correct patches and patches that overfit the available tests (breaking untested but desired functionality). We propose an integrated approach for detecting and discarding overfitting patches via systematic co-exploration of the patch space and input space. We leverage concolic path exploration to systematically traverse the input space (and generate inputs), while ruling out significant parts of the patch space. Given a long enough time budget, this approach allows a significant reduction in the pool of patch candidates, as shown by our experiments. We implemented our technique in the form of a tool called 'CPR' and evaluated its efficacy in reducing the patch space by discarding overfitting patches from a pool of plausible patches. We evaluated our approach for fixing real-world software vulnerabilities and defects, for fixing functionality errors in programs drawn from SV-COMP benchmarks used in software verification, as well as for test-suite guided repair. In our experiments, we observed a patch space reduction due to our concolic exploration of up to 74% for fixing software vulnerabilities and up to 63% for SV-COMP programs. Our technique presents the viewpoint of gradual correctness - repair run over longer time leads to less overfitting fixes.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454051",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ridwan",
+        "last_name": "Shariffdeen",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Yannic",
+        "last_name": "Noller",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Grunske",
+        "institution": "Humboldt-Universität zu Berlin"
+      },
+      {
+        "first_name": "Abhik",
+        "last_name": "Roychoudhury",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "conf/pldi/ShariffdeenNGR21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454086",
+    "title": "Path-sensitive sparse analysis without path conditions",
+    "abstract": "Sparse program analysis is fast as it propagates data flow facts via data dependence, skipping unnecessary control flows. However, when path-sensitively checking millions of lines of code, it is still prohibitively expensive because a huge number of path conditions have to be computed and solved via an SMT solver. This paper presents Fusion, a fused approach to inter-procedurally path-sensitive sparse analysis. In Fusion, the SMT solver does not work as a standalone tool on path conditions but directly on the program together with the sparse analysis. Such a fused design allows us to determine the path feasibility without explicitly computing path conditions, not only saving the cost of computing path conditions but also providing an opportunity to enhance the SMT solving algorithm. To the best of our knowledge, Fusion, for the first time, enables whole program bug detection on millions of lines of code in a common personal computer, with the precision of inter-procedural path-sensitivity. Compared to two state-of-the-art tools, Fusion is 10× faster but consumes only 10% of memory on average. Fusion has detected over a hundred bugs in mature open-source software, some of which have even been assigned CVE identifiers due to their security impact.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454086",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Qingkai",
+        "last_name": "Shi",
+        "institution": "Hong Kong University of Science and Technology"
+      },
+      {
+        "first_name": "Peisen",
+        "last_name": "Yao",
+        "institution": "Hong Kong University of Science and Technology"
+      },
+      {
+        "first_name": "Rongxin",
+        "last_name": "Wu",
+        "institution": "Xiamen University"
+      },
+      {
+        "first_name": "Charles",
+        "last_name": "Zhang",
+        "institution": "Hong Kong University of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/ShiYWZ21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454031",
+    "title": "Transfinite Iris: resolving an existential dilemma of step-indexed separation logic",
+    "abstract": "Step-indexed separation logic has proven to be a powerful tool for modular reasoning about higher-order stateful programs. However, it has only been used to reason about safety properties, never liveness properties. In this paper, we observe that the inability of step-indexed separation logic to support liveness properties stems fundamentally from its failure to validate the existential property, connecting the meaning of existential quantification inside and outside the logic. We show how to validate the existential property—and thus enable liveness reasoning—by moving from finite step-indices (natural numbers) to transfinite step-indices (ordinals). Concretely, we transform the Coq-based step-indexed logic Iris to Transfinite Iris, and demonstrate its effectiveness in proving termination and termination-preserving refinement for higher-order stateful programs.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454031",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Spies",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Lennard",
+        "last_name": "Gäher",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Gratzer",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Tassarotti",
+        "institution": "Boston College"
+      },
+      {
+        "first_name": "Robbert",
+        "last_name": "Krebbers",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Derek",
+        "last_name": "Dreyer",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/pldi/SpiesGGTKDB21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454066",
+    "title": "Symbolic Boolean derivatives for efficiently solving extended regular expression constraints",
+    "abstract": "The manipulation of raw string data is ubiquitous in security-critical software, and verification of such software relies on efficiently solving string and regular expression constraints via SMT. However, the typical case of Boolean combinations of regular expression constraints exposes blowup in existing techniques. To address solvability of such constraints, we propose a new theory of derivatives of symbolic extended regular expressions (extended meaning that complement and intersection are incorporated), and show how to apply this theory to obtain more efficient decision procedures. Our implementation of these ideas, built on top of Z3, matches or outperforms state-of-the-art solvers on standard and handwritten benchmarks, showing particular benefits on examples with Boolean combinations.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454066",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Caleb",
+        "last_name": "Stanford",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Margus",
+        "last_name": "Veanes",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Nikolaj",
+        "last_name": "Bjørner",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/StanfordVB21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454081",
+    "title": "Automatically enforcing fresh and consistent inputs in intermittent systems",
+    "abstract": "Intermittently powered energy-harvesting devices enable new applications in inaccessible environments. Program executions must be robust to unpredictable power failures, introducing new challenges in programmability and correctness. One hard problem is that input operations have implicit constraints, embedded in the behavior of continuously powered executions, on when input values can be collected and used. This paper aims to develop a formal framework for enforcing these constraints. We identify two key properties---freshness (i.e., uses of inputs must satisfy the same time constraints as in continuous executions) and temporal consistency (i.e., the collection of a set of inputs must satisfy the same time constraints as in continuous executions). We formalize these properties and show that they can be enforced using atomic regions. We develop Ocelot, an LLVM-based analysis and transformation tool targeting Rust, to enforce these properties automatically. Ocelot provides the programmer with annotations to express these constraints and infers atomic region placement in a program to satisfy them. We then formalize Ocelot's design and show that Ocelot generates correct programs with little performance cost or code changes.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454081",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Milijana",
+        "last_name": "Surbatovich",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Limin",
+        "last_name": "Jia",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Brandon",
+        "last_name": "Lucia",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Surbatovich0L21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454026",
+    "title": "Incremental whole-program analysis in Datalog with lattices",
+    "abstract": "Incremental static analyses provide up-to-date analysis results in time proportional to the size of a code change, not the entire code base. This promises fast feedback to programmers in IDEs and when checking in commits. However, existing incremental analysis frameworks fail to deliver on this promise for whole-program lattice-based data-flow analyses. In particular, prior Datalog-based frameworks yield good incremental performance only for intra-procedural analyses.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454026",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Tamás",
+        "last_name": "Szabó",
+        "institution": ""
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Erdweg",
+        "institution": ""
+      },
+      {
+        "first_name": "Gábor",
+        "last_name": "Bergmann",
+        "institution": "Budapest University of Technology and Economics"
+      }
+    ],
+    "dblp_key": "conf/pldi/SzaboEB21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454029",
+    "title": "Gleipnir: toward practical error analysis for Quantum programs",
+    "abstract": "Practical error analysis is essential for the design, optimization, and evaluation of Noisy Intermediate-Scale Quantum(NISQ) computing. However, bounding errors in quantum programs is a grand challenge, because the effects of quantum errors depend on exponentially large quantum states. In this work, we present Gleipnir, a novel methodology toward practically computing verified error bounds in quantum programs. Gleipnir introduces the (ρ,δ)-diamond norm, an error metric constrained by a quantum predicate consisting of the approximate state ρ and its distance δ to the ideal state ρ. This predicate (ρ,δ) can be computed adaptively using tensor networks based on the Matrix Product States. Gleipnir features a lightweight logic for reasoning about error bounds in noisy quantum programs, based on the (ρ,δ)-diamond norm metric. Our experimental results show that Gleipnir is able to efficiently generate tight error bounds for real-world quantum programs with 10 to 100 qubits, and can be used to evaluate the error mitigation performance of quantum compiler transformations.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454029",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Runzhou",
+        "last_name": "Tao",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "Yunong",
+        "last_name": "Shi",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Jianan",
+        "last_name": "Yao",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Hui",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "Frederic T.",
+        "last_name": "Chong",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Ronghui",
+        "last_name": "Gu",
+        "institution": "Columbia University"
+      }
+    ],
+    "dblp_key": "conf/pldi/TaoSYHCG21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454098",
+    "title": "Example-guided synthesis of relational queries",
+    "abstract": "Program synthesis tasks are commonly specified via input-output examples. Existing enumerative techniques for such tasks are primarily guided by program syntax and only make indirect use of the examples. We identify a class of synthesis algorithms for programming-by-examples, which we call Example-Guided Synthesis (EGS), that exploits latent structure in the provided examples while generating candidate programs. We present an instance of EGS for the synthesis of relational queries and evaluate it on 86 tasks from three application domains: knowledge discovery, program analysis, and database querying. Our evaluation shows that EGS outperforms state-of-the-art synthesizers based on enumerative search, constraint solving, and hybrid techniques in terms of synthesis time, quality of synthesized programs, and ability to prove unrealizability.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454098",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Aalok",
+        "last_name": "Thakkar",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Aaditya",
+        "last_name": "Naik",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Nathaniel",
+        "last_name": "Sands",
+        "institution": "University of Southern California"
+      },
+      {
+        "first_name": "Rajeev",
+        "last_name": "Alur",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Mayur",
+        "last_name": "Naik",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Mukund",
+        "last_name": "Raghothaman",
+        "institution": "University of Southern California"
+      }
+    ],
+    "dblp_key": "conf/pldi/ThakkarNSANR21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454062",
+    "title": "Central moment analysis for cost accumulators in probabilistic programs",
+    "abstract": "For probabilistic programs, it is usually not possible to automatically derive exact information about their properties, such as the distribution of states at a given program point. Instead, one can attempt to derive approximations, such as upper bounds on tail probabilities. Such bounds can be obtained via concentration inequalities, which rely on the moments of a distribution, such as the expectation (the first raw moment) or the variance (the second central moment). Tail bounds obtained using central moments are often tighter than the ones obtained using raw moments, but automatically analyzing central moments is more challenging.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454062",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Di",
+        "last_name": "Wang",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Hoffmann",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Wang0R21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454075",
+    "title": "Reticle: a virtual machine for programming modern FPGAs",
+    "abstract": "Modern field-programmable gate arrays (FPGAs) have recently powered high-profile efficiency gains in systems from datacenters to embedded devices by offering ensembles of heterogeneous, reconfigurable hardware units. Programming stacks for FPGAs, however, are stuck in the past—they are based on traditional hardware languages, which were appropriate when FPGAs were simple, homogeneous fabrics of basic programmable primitives. We describe Reticle, a new low-level abstraction for FPGA programming that, unlike existing languages, explicitly represents the special-purpose units available on a particular FPGA device. Reticle has two levels: a portable intermediate language and a target-specific assembly language. We show how to use a standard instruction selection approach to lower intermediate programs to assembly programs, which can be both faster and more effective than the complex metaheuristics that existing FPGA toolchains use. We use Reticle to implement linear algebra operators and coroutines and find that Reticle compilation runs up to 100 times faster than current approaches while producing comparable or better run-time and utilization.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454075",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Luis",
+        "last_name": "Vega",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "McMahan",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Adrian",
+        "last_name": "Sampson",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Luís",
+        "last_name": "Ceze",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/VegaMSGC21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454102",
+    "title": "Quantitative analysis of assertion violations in probabilistic programs",
+    "abstract": "We consider the fundamental problem of deriving quantitative bounds on the probability that a given assertion is violated in a probabilistic program. We provide automated algorithms that obtain both lower and upper bounds on the assertion violation probability. The main novelty of our approach is that we prove new and dedicated fixed-point theorems which serve as the theoretical basis of our algorithms and enable us to reason about assertion violation bounds in terms of pre and post fixed-point functions. To synthesize such fixed-points, we devise algorithms that utilize a wide range of mathematical tools, including repulsing ranking supermartingales, Hoeffding's lemma, Minkowski decompositions, Jensen's inequality, and convex optimization. On the theoretical side, we provide (i) the first automated algorithm for lower-bounds on assertion violation probabilities, (ii) the first complete algorithm for upper-bounds of exponential form in affine programs, and (iii) provably and significantly tighter upper-bounds than the previous approaches. On the practical side, we show our algorithms can handle a wide variety of programs from the literature and synthesize bounds that are remarkably tighter than previous results, in some cases by thousands of orders of magnitude.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454102",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jinyi",
+        "last_name": "Wang",
+        "institution": "Shanghai Jiao Tong University"
+      },
+      {
+        "first_name": "Yican",
+        "last_name": "Sun",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Hongfei",
+        "last_name": "Fu",
+        "institution": "Shanghai Jiao Tong University"
+      },
+      {
+        "first_name": "Krishnendu",
+        "last_name": "Chatterjee",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Amir Kafshdar",
+        "last_name": "Goharshady",
+        "institution": "Hong Kong University of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/WangS0CG21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454068",
+    "title": "Boosting SMT solver performance on mixed-bitwise-arithmetic expressions",
+    "abstract": "Satisfiability Modulo Theories (SMT) solvers have been widely applied in automated software analysis to reason about the queries that encode the essence of program semantics, relieving the heavy burden of manual analysis. Many SMT solving techniques rely on solving Boolean satisfiability problem (SAT), which is an NP-complete problem, so they use heuristic search strategies to seek possible solutions, especially when no known theorem can efficiently reduce the problem. An emerging challenge, named Mixed-Bitwise-Arithmetic (MBA) obfuscation, impedes SMT solving by constructing identity equations with both bitwise operations (and, or, negate) and arithmetic computation (add, minus, multiply). Common math theorems for bitwise or arithmetic computation are inapplicable to simplifying MBA equations, leading to performance bottlenecks in SMT solving.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454068",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dongpeng",
+        "last_name": "Xu",
+        "institution": "University of New Hampshire"
+      },
+      {
+        "first_name": "Binbin",
+        "last_name": "Liu",
+        "institution": "University of New Hampshire"
+      },
+      {
+        "first_name": "Weijie",
+        "last_name": "Feng",
+        "institution": "University of Science and Technology of China"
+      },
+      {
+        "first_name": "Jiang",
+        "last_name": "Ming",
+        "institution": "The University of Texas at Arlington"
+      },
+      {
+        "first_name": "Qilong",
+        "last_name": "Zheng",
+        "institution": "University of Science and Technology of China"
+      },
+      {
+        "first_name": "Jing",
+        "last_name": "Li",
+        "institution": "University of Science and Technology of China"
+      },
+      {
+        "first_name": "Qiaoyan",
+        "last_name": "Yu",
+        "institution": "University of New Hampshire at Manchester"
+      }
+    ],
+    "dblp_key": "conf/pldi/XuLFMZLY21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454054",
+    "title": "Automated conformance testing for JavaScript engines via deep compiler fuzzing",
+    "abstract": "JavaScript (JS) is a popular, platform-independent programming language. To ensure the interoperability of JS programs across different platforms, the implementation of a JS engine should conform to the ECMAScript standard. However, doing so is challenging as there are many subtle definitions of API behaviors, and the definitions keep evolving.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454054",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Guixin",
+        "last_name": "Ye",
+        "institution": "Northwest University"
+      },
+      {
+        "first_name": "Zhanyong",
+        "last_name": "Tang",
+        "institution": "Northwest University"
+      },
+      {
+        "first_name": "Shin Hwei",
+        "last_name": "Tan",
+        "institution": "Southern University of Science and Technology"
+      },
+      {
+        "first_name": "Songfang",
+        "last_name": "Huang",
+        "institution": "Alibaba Group (China)"
+      },
+      {
+        "first_name": "Dingyi",
+        "last_name": "Fang",
+        "institution": "Northwest University"
+      },
+      {
+        "first_name": "Xiaoyang",
+        "last_name": "Sun",
+        "institution": "University of Leeds"
+      },
+      {
+        "first_name": "Lizhong",
+        "last_name": "Bian",
+        "institution": "Alibaba Group (China)"
+      },
+      {
+        "first_name": "Haibo",
+        "last_name": "Wang",
+        "institution": "University of Leeds"
+      },
+      {
+        "first_name": "Zheng",
+        "last_name": "Wang",
+        "institution": "University of Leeds"
+      }
+    ],
+    "dblp_key": "conf/pldi/YeTTHFSBW021",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454077",
+    "title": "Sound probabilistic inference via guide types",
+    "abstract": "Probabilistic programming languages aim to describe and automate Bayesian modeling and inference. Modern languages support programmable inference, which allows users to customize inference algorithms by incorporating guide programs to improve inference performance. For Bayesian inference to be sound, guide programs must be compatible with model programs. One pervasive but challenging condition for model-guide compatibility is absolute continuity, which requires that the model and guide programs define probability distributions with the same support.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454077",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Di",
+        "last_name": "Wang",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Hoffmann",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Wang0R21a",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454061",
+    "title": "Quantum abstract interpretation",
+    "abstract": "In quantum computing, the basic unit of information is a qubit. Simulation of a general quantum program takes exponential time in the number of qubits, which makes simulation infeasible beyond 50 qubits on current supercomputers. So, for the understanding of larger programs, we turn to static techniques. In this paper, we present an abstract interpretation of quantum programs and we use it to automatically verify assertions in polynomial time. Our key insight is to let an abstract state be a tuple of projections. For such domains, we present abstraction and concretization functions that form a Galois connection and we use them to define abstract operations. Our experiments on a laptop have verified assertions about the Bernstein-Vazirani, GHZ, and Grover benchmarks with 300 qubits.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454061",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Nengkun",
+        "last_name": "Yu",
+        "institution": "University of Technology Sydney"
+      },
+      {
+        "first_name": "Jens",
+        "last_name": "Palsberg",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/pldi/YuP21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454106",
+    "title": "AKG: automatic kernel generation for neural processing units using polyhedral transformations",
+    "abstract": "Existing tensor compilers have proven their effectiveness in deploying deep neural networks on general-purpose hardware like CPU and GPU, but optimizing for neural processing units (NPUs) is still challenging due to the heterogeneous compute units and complicated memory hierarchy.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454106",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jie",
+        "last_name": "Zhao",
+        "institution": ""
+      },
+      {
+        "first_name": "Bojie",
+        "last_name": "Li",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Wang",
+        "last_name": "Nie",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Zhen",
+        "last_name": "Geng",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Renwei",
+        "last_name": "Zhang",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Xiong",
+        "last_name": "Gao",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Bin",
+        "last_name": "Cheng",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Chen",
+        "last_name": "Wu",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Yun",
+        "last_name": "Cheng",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Zheng",
+        "last_name": "Li",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Peng",
+        "last_name": "Di",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Kun",
+        "last_name": "Zhang",
+        "institution": "Huawei Technologies (China)"
+      },
+      {
+        "first_name": "Xuefeng",
+        "last_name": "Jin",
+        "institution": "Huawei Technologies (China)"
+      }
+    ],
+    "dblp_key": "conf/pldi/ZhaoLNGZGCWCLDZ21",
+    "venue": "pldi",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3453483.3454101",
+    "title": "Execution reconstruction: harnessing failure reoccurrences for failure reproduction",
+    "abstract": "Reproducing production failures is crucial for software reliability. Alas, existing bug reproduction approaches are not suitable for production systems because they are not simultaneously efficient, effective, and accurate. In this work, we survey prior techniques and show that existing approaches over-prioritize a subset of these properties, and sacrifice the remaining ones. As a result, existing tools do not enable the plethora of proposed failure reproduction use-cases (e.g., debugging, security forensics, fuzzing) for production failures.",
+    "date": "2021-06-18",
+    "link": "https://doi.org/10.1145/3453483.3454101",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Gefei",
+        "last_name": "Zuo",
+        "institution": "University of Michigan"
+      },
+      {
+        "first_name": "Jiacheng",
+        "last_name": "Ma",
+        "institution": "University of Michigan"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Quinn",
+        "institution": "University of Michigan"
+      },
+      {
+        "first_name": "Pramod",
+        "last_name": "Bhatotia",
+        "institution": ""
+      },
+      {
+        "first_name": "Pedro",
+        "last_name": "Fonseca",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Baris",
+        "last_name": "Kasikci",
+        "institution": "University of Michigan"
+      }
+    ],
+    "dblp_key": "conf/pldi/ZuoM0B0K21",
+    "venue": "pldi",
+    "year": 2021
+  }
+]

@@ -1,0 +1,727 @@
+[
+  {
+    "paper_id": "10.1145/143095.143142",
+    "title": "Probalistic Register Allocation",
+    "abstract": "A new global register allocation technique, probabilistic register allocation, is described. Probabilistic register allocation quantifies the costs and benefits of allocating variables to registers over live ranges so that excellent allocation choices can be made. Local allocation is done first, and then global allocation is done iteratively beginning in the most deeply nested loops. Because local allocation precedes global allocation, probabilistic allocation does not interfere with the use of well-known, high-quality local register allocation and instruction scheduling techniques.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143142",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Todd A.",
+        "last_name": "Proebsting",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Charles N.",
+        "last_name": "Fischer",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/ProebstingF92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143130",
+    "title": "Delinearization: An Efficient Way to Break Multiloop Dependence Equations",
+    "abstract": "Exact and efficient data dependence testing is a key to success of loop-parallelizing compiler for computationally intensive programs. A number of algorithms has been created to test array references contained in parameter loops for dependence but most of them are unable to answer the following question correctly: Are references C(i1 + 10j1) and C(i2 + 5), 0 ≤ i1, i2 ≤ 4, 0 ≤ j1,j2 ≤ 9 independent? The technique introduced in this paper recognizes that i1, i2 and j1, j2 make different order contributions to the subscript index, and breaks dependence equation i1 + 10j1 = i2 + 10j2 + 5 into two equations i1 = i2 and 10j1 = 10j2 which then can be solved independently. Since resulting equations contain less variables it is less expensive to solve them. We call this technique delinearization because it is reverse of the linearization much discussed in the literature.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143130",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "V.O.",
+        "last_name": "Maslov",
+        "institution": "Lomonosov Moscow State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Maslov92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143136",
+    "title": "Lazy Code Motion",
+    "abstract": "We present a bit-vector algorithm for the optimal and economical placement of computations within flow graphs, which is as efficient as standard uni-directional analyses. The point of our algorithm is the decomposition of the bi-directional structure of the known placement algorithms into a sequence of a backward and a forward analysis, which directly implies the efficiency result. Moreover, the new compositional structure opens the algorithm for modification: two further uni-directional analysis components exclude any unnecessary code motion. This laziness of our algorithm minimizes the register pressure, which has drastic effects on the run-time behaviour of the optimized programs in practice, where an economical use of registers is essential.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143136",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jens",
+        "last_name": "Knoop",
+        "institution": "University of Hagen"
+      },
+      {
+        "first_name": "Oliver",
+        "last_name": "Rüthing",
+        "institution": "TU Dortmund University"
+      },
+      {
+        "first_name": "Bernhard",
+        "last_name": "Steffen",
+        "institution": "TU Dortmund University"
+      }
+    ],
+    "dblp_key": "conf/pldi/KnoopRS92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143144",
+    "title": "Avoiding Unconditional Jumps by Code Replication",
+    "abstract": "This study evaluates a global optimization technique that avoids unconditional jumps by replicating code. When implemented in the back-end of an optimizing compiler, this technique can be generalized to work on almost all instances of unconditional jumps, including those generated from conditional statements and unstructured loops. The replication method is based on the idea of finding a replacement for each unconditional jump which minimizes the growth in code size. This is achieved by choosing the shortest sequence of instructions as a replacement. Measurements taken from a variety of programs showed that not only the number of executed instructions decreased, but also that the total cache work was reduced (except for small caches) despite increases in code size. Pipelined and superscalar machines may also benefit from an increase in the average basic block size.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143144",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Frank",
+        "last_name": "Mueller",
+        "institution": ""
+      },
+      {
+        "first_name": "David",
+        "last_name": "Whalley",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/MuellerW92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143127",
+    "title": "An Abstract Machine for CLP(R)",
+    "abstract": "An abstract machine is described for the CLP(ℜ) programming language. It is intended as a first step toward enabling CLP(ℜ) programs to be executed with efficiency approaching that of conventional languages. The core Constraint Logic Arithmetic Machine (CLAM) extends the Warren Abstract Machine (WAM) for compiling Prolog with facilities for handling real arithmetic constraints. The full CLAM includes facilities for taking advantage of information obtained from global program analysis.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143127",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Joxan",
+        "last_name": "Jaffar",
+        "institution": "IBM Research - Austin"
+      },
+      {
+        "first_name": "Peter J.",
+        "last_name": "Stuckey",
+        "institution": "The University of Melbourne"
+      },
+      {
+        "first_name": "Spiro",
+        "last_name": "Michaylov",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Roland H. C.",
+        "last_name": "Yap",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/JaffarMSY92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143138",
+    "title": "Abstractions for Recursive Pointer Data Structures: Improving the Analysis of Imperative Programs",
+    "abstract": "Even though impressive progress has been made in the area of optimizing and parallelizing programs with arrays, the application of similar techniques to programs with pointer data structures has remained difficult. In this paper we introduce a new approach that leads to improved analysis and transformation of programs with recursively-defined pointer data structures.We discuss how an abstract data structure description can improve program analysis by presenting an analysis approach that combines an alias analysis technique, path matrix, with information available from an ADDS declaration. Given this improved alias analysis technique, we provide a concrete example of applying a software pipelining transformation to loops involving pointer data structures.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143138",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Laurie",
+        "last_name": "Hendren",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Hummell",
+        "institution": ""
+      },
+      {
+        "first_name": "Alexandru",
+        "last_name": "Nicolau",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/pldi/HendrenHN92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143122",
+    "title": "Prototyping Fortran-90 Compilers for Massively Parallel Machines",
+    "abstract": "Massively parallel architectures, and the languages used to program them, are among both the most difficult and the most rapidly-changing subjects for compilation. This has created a demand for new compiler prototyping technologies that allow novel styles of compilation and optimization to be tested in a reasonable amount of time. Using formal specification techniques, we have produced a data-parallel Fortran-90 subset compiler for Thinking Machines&amp;apos; Connection Machine/2 and Connection Machine/5. The prototype produces code from initial Fortran-90 benchmarks demonstrating sustained performance superior to hand-coded *Lisp and competitive with Thinking Machines&amp;apos; CM Fortran compiler. This paper presents some new specification techniques necessary to construct competitive, easily retargetable prototype compilers. 1 Introduction Existing compilers for massively parallel machines have generally been constructed using traditional methods, combining generation from specification for a few su...",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143122",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Marina",
+        "last_name": "Chen",
+        "institution": ""
+      },
+      {
+        "first_name": "James",
+        "last_name": "Cowie",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/ChenC92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143143",
+    "title": "Rematerialization",
+    "abstract": "This paper examines a problem that arises during global register allocation – rematerialization. If a value cannot be kept in a register, the allocator should recognize when it is cheaper to recompute the value (rematerialize it) than to store and reload it. Chaitin's original graph-coloring allocator handled simple instance of this problem correctly. This paper details a general solution to the problem and presents experimental evidence that shows its importance.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143143",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Preston",
+        "last_name": "Briggs",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Keith D.",
+        "last_name": "Cooper",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Linda",
+        "last_name": "Torczon",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BriggsCT92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143129",
+    "title": "Eliminating False Data Dependences using the Omega Test",
+    "abstract": "Array data dependence analysis methods currently in use generate false dependences that can prevent useful program transformations. These false dependences arise because the questions asked are conservative approximations to the questions we really should be asking. Unfortunately, the questions we really should be asking go beyond integer programming and require decision procedures for a sublcass of Presburger formulas. In this paper, we describe how to extend the Omega test so that it can answer these queries and allow us to eliminate these false data dependences. We have implemented the techniques described here and believe they are suitable for use in production compilers.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143129",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "William",
+        "last_name": "Pugh",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Wonnacott",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/PughW92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143120",
+    "title": "Sharlit - A Tool for Building Optimizers",
+    "abstract": "This paper presents Sharlit, a tool to support the construction of modular and extensible global optimizers. We will show how Sharlit helps in constructing data-flow analyzers and the transformations that use data-flow analysis information, both are major components of any optimizer. Sharlit is implemented in C++ and uses C++ in the same way that YACC uses C. Thus we assume the reader has some familiarity with C++ [9].",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143120",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Steven",
+        "last_name": "Tjiang",
+        "institution": ""
+      },
+      {
+        "first_name": "John L.",
+        "last_name": "Hennessy",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/TjiangH92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143140",
+    "title": "Compiler Support for Garbage Collection in a Statically Typed Language",
+    "abstract": "We consider the problem of supporting compacting garbage collection in the presence of modern compiler optimizations. Since our collector may move any heap object, it must accurately locate, follow, and update all pointers and values derived from pointers. To assist the collector, we extend the compiler to emit tables describing live pointers, and values derived from pointers, at each program location where collection may occur. Significant results include identification of a number of problems posed by optimizations, solutions to those problems, a working compiler, and experimental data concerning table sizes, table compression, and time overhead of decoding tables during collection. While gc support can affect the code produced, our sample programs show no significant changes, the table sizes are a modest fraction of the size of the optimized code, and stack tracing is a small fraction of total gc time. Since the compiler enhancements are also modest, we conclude that the approach is practical.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143140",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Amer",
+        "last_name": "Diwan",
+        "institution": ""
+      },
+      {
+        "first_name": "J. Eliot B.",
+        "last_name": "Moss",
+        "institution": ""
+      },
+      {
+        "first_name": "Richard L.",
+        "last_name": "Hudson",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/DiwanMH92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143133",
+    "title": "Relaxing SIMD Control Flow Constraints using Loop Transformations",
+    "abstract": "Many loop nests in scientific codes contain a parallelizable outer loop but have an inner loop for which the number of iterations varies between different iterations of the outer loop. When running this kind of loop nest on a SIMD machine, the SIMD-inherent restriction to single program counter common to all processors will cause a performance degradation relative to comparable MIMD implementations. This problem is not due to limited parallelism or bad load balance, it is merely a problem of control flow.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143133",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Reinhard von",
+        "last_name": "Hanxleden",
+        "institution": ""
+      },
+      {
+        "first_name": "Ken",
+        "last_name": "Kennedy",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/HanxledenK92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143137",
+    "title": "A Safe Approximate Algorithm for Interprocedural Pointer Aliasing",
+    "abstract": "During execution, when two or more names exist for the same location at some program point, we call them aliases. In a language which allows arbitrary pointers, the problem of determining aliases at a program point is ρ-space-hard [Lan92]. We present an algorithm for the Conditional May Alias problem, which can be used to safely approximate Interprocedural May Alias in the presence of pointers. This algorithm is as precise as possible in the worst case and has been implemented in a prototype analysis tool for C programs. Preliminary speed and precision results are presented.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143137",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "William",
+        "last_name": "Landi",
+        "institution": "Rutgers, The State University of New Jersey"
+      },
+      {
+        "first_name": "Barbara G.",
+        "last_name": "Ryder",
+        "institution": "Rutgers, The State University of New Jersey"
+      }
+    ],
+    "dblp_key": "conf/pldi/LandiR92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143146",
+    "title": "Eliminating Branches using a Superoptimizer and the GNU C Compiler",
+    "abstract": "this paper uses the RS/6000 for all its examples, the techniques described here are applicable to most machines",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143146",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Torbjörn",
+        "last_name": "Granlund",
+        "institution": ""
+      },
+      {
+        "first_name": "Richard",
+        "last_name": "Kenner",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/GranlundK92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143134",
+    "title": "A Dynamic Scheduling Technique for Irregular Parallel Programs",
+    "abstract": "This paper develops a methodology for compiling and executing irregular parallel programs. Such programs implement parallel operations whose size and work distribution depend on input data. We show a fundamental relationship between three quantities that characterize an irregular parallel computation: the total available parallelism, the optimal grain size, and the statistical variance of execution times for individual tasks. This relationship yields a dynamic scheduling algorithm that substantially reduces the overhead of executing irregular parallel operations.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143134",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Steven",
+        "last_name": "Lucco",
+        "institution": "Berkeley College"
+      }
+    ],
+    "dblp_key": "conf/pldi/Lucco92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143135",
+    "title": "How to Analyze Large Programs Efficiently and Informatively",
+    "abstract": "Elimination of partial redundancies is a powerful optimization that has been implemented in at least three important production compilers and has inspired several similar optimizations. The global data flow analysis that supports this family of optimizations includes some bidirectional problems. (A bidirectional problem is one in which the global information at each basic block depends on both control flow predecessors and control flow successors.) This paper contributes two ways to simplify and expedite the analysis, especially for large programs. For each global data flow question, we examine only the places in the program where the question might have an answer different from a trivial default answer. In a large program, we may examine only a small fraction of the places conventional algorithms would examine. We reduce the relevant bidirectional problems to simpler unidirectional problems. These bidirectional problems can be solved by applying a quick correction to a unidirectional approximation.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143135",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dhananjay M.",
+        "last_name": "Dhamdhere",
+        "institution": ""
+      },
+      {
+        "first_name": "Barry K.",
+        "last_name": "Rosen",
+        "institution": ""
+      },
+      {
+        "first_name": "F. Kenneth",
+        "last_name": "Zadeck",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/DhamdhereRZ92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143108",
+    "title": "A New Approach to Debugging Optimized Code",
+    "abstract": "Debugging optimized code is a desirable capability not provided by most current debuggers. Users are forced to debug the unoptimized code when a bug occurs in the optimized version. Current research offers partial solutions for a small class of optimizations, but not a unified approach that handles a wide range of optimizations, such as the sophisticated optimizations performed by supercomputer compilers.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143108",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Gary",
+        "last_name": "Brooks",
+        "institution": ""
+      },
+      {
+        "first_name": "Gilbert J.",
+        "last_name": "Hansen",
+        "institution": ""
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Simmons",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/BrooksHS92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143119",
+    "title": "A Customizable Substrate for Concurrent Languages",
+    "abstract": "We describe an approach to implementing a wide-range of concurrency paradigms in high-level (symbolic) programming languages. The focus of our discussion is STING, a dialect of Scheme, that supports lightweight threads of control and virtual processors as first-class objects. Given the significant degree to which the behavior of these objects may be customized, we can easily express a variety of concurrency paradigms and linguistic structures within a common framework without loss of efficiency.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143119",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": ""
+      },
+      {
+        "first_name": "Jim",
+        "last_name": "Philbin",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/JagannathanP92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143139",
+    "title": "Alphonse: Incremental Computation as a Programming Abstraction",
+    "abstract": "Alphonse is a program transformation system that uses dynamic dependency analysis and incremental computation techniques to automatically generate efficient dynamic implementations from simple exhaustive imperative program specifications.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143139",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Roger",
+        "last_name": "Hoover",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Hoover92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143114",
+    "title": "Debugging Optimized Code with Dynamic Deoptimization",
+    "abstract": "SELF's debugging system provides complete source-level debugging (expected behavior) with globally optimized code. It shields the debugger from optimizations performed by the compiler by dynamically deoptimizing code on demand. Deoptimization only affects the procedure activations that are actively being debugged; all other code runs at full speed. Deoptimization requires the compiler to supply debugging information at discrete interrupt points; the compiler can still perform extensive optimizations between interrupt points without affecting debuggability. At the same time, the inability to interrupt between interrupt points is invisible to the user. Our debugging system also handles programming changes during debugging. Again, the system provides expected behavior: it is possible to change a running program and immediately observe the effects of the change. Dynamic deoptimization transforms old compiled code (which may contain inlined copies of the old version of the changed procedure) into new versions reflecting the current source-level state. To the best of our knowledge, SELF is the first practical system providing full expected behavior with globally optimized code.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143114",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Urs",
+        "last_name": "Hölzle",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Ungar",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/HolzleCU92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143125",
+    "title": "Escape Analysis on Lists",
+    "abstract": "Higher order functional programs constantly allocate objects dynamically. These objects are typically cons cells, closures, and records and are generally allocated in the heap and reclaimed later by some garbage collection process. This paper describes a compile time analysis, called escape analysis, for determining the lifetime of dynamically created objects in higher order functional programs, and describes optimizations that can be performed, based on the analysis, to improve storage allocation and reclamation of such objects. In particular, our analysis can be applied to programs manipulating lists, in which case optimizations can be performed to allow cons cells in spines of lists to be either reclaimed immediately or reused without incurring any garbage collection overhead. In a previous paper on escape analysis [10], we had left open the problem of performing escape analysis on lists.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143125",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Young Gil",
+        "last_name": "Park",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Goldberg",
+        "institution": "New York University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ParkG92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143117",
+    "title": "The Design and Implementation of HoME",
+    "abstract": "HoME is a version of Smalltalk which can be efficiently executed on a multiprocessor and can be executed in parallel by combining a Smalltalk process with a Mach thread and executing the process on the thread. HoME is nearly the same as ordinary Smalltalk except that multiple processes may execute in parallel. Thus, almost all applications running on ordinary Smalltalk can be executed on HoME without changes in their code.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143117",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Kazuhiro",
+        "last_name": "Ogata",
+        "institution": "Keio University"
+      },
+      {
+        "first_name": "Satoshi",
+        "last_name": "Kurihara",
+        "institution": ""
+      },
+      {
+        "first_name": "Mikio",
+        "last_name": "Inari",
+        "institution": ""
+      },
+      {
+        "first_name": "Norihisa",
+        "last_name": "Doi",
+        "institution": "Keio University"
+      }
+    ],
+    "dblp_key": "conf/pldi/OgataKID92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143132",
+    "title": "A General Framework for Iteration-Reordering Loop Transformations",
+    "abstract": "This paper describes a general framework for representing iteration-reordering transformations. These transformations can be both matrix-based and non-matrix-based. Transformations are defined by rules for mapping dependence vectors, rules for mapping loop bound expressions, and rules for creating new initialization statements. The framework is extensible, and can be used to represent any iteration-reordering transformation. Mapping rules for several common transformations are included in the paper.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143132",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": ""
+      },
+      {
+        "first_name": "Radhika",
+        "last_name": "Thekkath",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/SarkarT92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143145",
+    "title": "Simple and Efficient BURS Table Generation",
+    "abstract": "A simple and efficient algorithm for generating bottom-up rewrite system (BURS) tables is described. A small prototype implementation produces tables 10 to 30 times more quickly than the best current techniques. The algorithm does not require novel data structures or complicated algorithmic techniques. Previously published methods for the on-the-fly elimination of states are generalized and simplified to create a new method, triangle trimming, that is employed in the algorithm.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143145",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Todd A.",
+        "last_name": "Proebsting",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/Proebsting92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143110",
+    "title": "Dynascope: A Tool for Program Directing",
+    "abstract": "This paper introduces program directing, a new way of program interaction. Directing enables one program, the director, to monitor and to control another program, the executor. One important application of program directing is human interaction with complex computer simulations.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143110",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rok",
+        "last_name": "Sosič",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/pldi/Sosic92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143141",
+    "title": "Register Allocation for Software Pipelined Loops",
+    "abstract": "Software pipelining is an important instruction scheduling technique for efficiently overlapping successive iterations of loops and executing them in parallel. This paper studies the task of register allocation for software pipelined loops, both with and without hardware features that are specifically aimed at supporting software pipelines. Register allocation for software pipelines presents certain novel problems leading to unconventional solutions, especially in the presence of hardware support. This paper formulates these novel problems and presents a number of alternative solution strategies. These alternatives are comprehensively tested against over one thousand loops to determine the best register allocation strategy, both with and without the hardware support for software pipelining.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143141",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "B. Ramakrishna",
+        "last_name": "Rau",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "M.",
+        "last_name": "Lee",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Tirumalai",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Schlansker",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/RauLTS92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143112",
+    "title": "A Retargetable Debugger",
+    "abstract": "We are developing techniques for building retargetable debuggers. Our prototype, 1db, debugs C programs compiled for the MIPS R3000, Motorola 68020, SPARC, and VAX architectures. It can use a network to connect to faulty processes and can do cross-architecture debugging. 1db's total code size is about 16,000 lines, but it needs only 250–550 lines of machine-dependent code for each target.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143112",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David R.",
+        "last_name": "Hanson",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/RamseyH92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.120025",
+    "title": "A Concurrent Compiler for Modula-2+",
+    "abstract": "In this paper we describe a collection of techniques for the design and implementation of concurrent compilers. We begin by describing a technique for dividing a source program into many streams so that each stream can be compiled concurrently. We discuss several compiler design issues unique to concurrent compilers including source program partitioning, symbol table management, compiler task scheduling and information flow constraints. The application of our techniques is illustrated by a complete design for a concurrent Modula-2+ compiler. After describing the structure of this compiler's performance that demonstrates that significant improvements in compilation time can be achieved through the use of concurrency.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.120025",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David B.",
+        "last_name": "Wortman",
+        "institution": "University of Toronto"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Junkin",
+        "institution": "University of Toronto"
+      }
+    ],
+    "dblp_key": "conf/pldi/WortmanJ92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143131",
+    "title": "Beyond Induction Variables",
+    "abstract": "Induction variable detection is usually closely tied to the strength reduction optimization. This paper studies induction variable analysis from a different perspective, that of finding induction variables for data dependence analysis. While classical induction variable analysis techniques have been used successfully up to now, we have found a simple algorithm based on the Static Single Assignment form of a program that finds all linear induction variables in a loop. Moreover, this algorithm is easily extended to find induction variables in multiple nested loops, to find nonlinear induction variables, and to classify other integer scalar assignments in loops, such as monotonic, periodic and wrap-around variables. Some of these other variables are now classified using ad hoc pattern recognition, while others are not analyzed by current compilers. Giving a unified approach improves the speed of compilers and allows a more general classification scheme. We also show how to use these variables in data dependence testing.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143131",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Wolfe",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Wolfe92",
+    "venue": "pldi",
+    "year": 1992
+  },
+  {
+    "paper_id": "10.1145/143095.143123",
+    "title": "Compiling Dataflow Analysis of Logic Programs",
+    "abstract": "Abstract interpretation is a technique extensively used for global dataflow analyses of logic programs. Existing implementations of abstract interpretation are slow due to interpretive or transforming overhead and the inefficiency in manipulation of global information. Since abstract interpretation mimics standard interpretation, it is a promising alternative to compile abstract interpretation into the framework of the WAM (Warren Abstract Machine) for better performance. In this paper, we show how this approach can be effectively implemented in a low-cost manner. To evaluate the possible benefits of this approach, a prototype dataflow analyzer has been implemented for inference of mode, type and variable aliasing information of logic programs. For a subset of benchmark programs in [15], it significantly improves the performance by a factor of over 150 on the average.",
+    "date": "1992-01-01",
+    "link": "https://doi.org/10.1145/143095.143123",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jichang",
+        "last_name": "Tan",
+        "institution": "National Taiwan University"
+      },
+      {
+        "first_name": "I-Peng",
+        "last_name": "Lin",
+        "institution": "National Taiwan University"
+      }
+    ],
+    "dblp_key": "conf/pldi/TanL92",
+    "venue": "pldi",
+    "year": 1992
+  }
+]

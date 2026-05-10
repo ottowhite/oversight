@@ -1,0 +1,1551 @@
+[
+  {
+    "paper_id": "10.1145/2254064.2254099",
+    "title": "Self-stabilizing Java",
+    "abstract": "Self-stabilizing programs automatically recover from state corruption caused by software bugs and other sources to reach the correct state. A number of applications are inherently self-stabilizing---such programs typically overwrite all non-constant data with new input data. We present a type system and static analyses that together check whether a program is self-stabilizing. We combine this with a code generation strategy that ensures that a program continues executing long enough to self-stabilize. Our experience using SJava indicates that (1) SJava annotations are easy to write once one understands a program and (2) SJava successfully checked that several benchmarks were self-stabilizing.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254099",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yong hun",
+        "last_name": "Eom",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Brian",
+        "last_name": "Demsky",
+        "institution": "University of California, Irvine"
+      }
+    ],
+    "dblp_key": "conf/pldi/EomD12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254070",
+    "title": "The implicit calculus: a new foundation for generic programming",
+    "abstract": "Generic programming (GP) is an increasingly important trend in programming languages. Well-known GP mechanisms, such as type classes and the C++0x concepts proposal, usually combine two features: 1) a special type of interfaces; and 2) implicit instantiation of implementations of those interfaces.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254070",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "Ghent University"
+      },
+      {
+        "first_name": "Wontae",
+        "last_name": "Choi",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Wonchan",
+        "last_name": "Lee",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Kwangkeun",
+        "last_name": "Yi",
+        "institution": "Seoul National University"
+      }
+    ],
+    "dblp_key": "conf/pldi/OliveiraSCLY12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254100",
+    "title": "Type-directed automatic incrementalization",
+    "abstract": "Application data often changes slowly or incrementally over time. Since incremental changes to input often result in only small changes in output, it is often feasible to respond to such changes asymptotically more efficiently than by re-running the whole computation. Traditionally, realizing such asymptotic efficiency improvements requires designing problem-specific algorithms known as dynamic or incremental algorithms, which are often significantly more complicated than conventional algorithms to design, analyze, implement, and use. A long-standing open problem is to develop techniques that automatically transform conventional programs so that they correctly and efficiently respond to incremental changes.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254100",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yan",
+        "last_name": "Chen",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Jana",
+        "last_name": "Dunfield",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChenDA12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254124",
+    "title": "Logical inference techniques for loop parallelization",
+    "abstract": "This paper presents a fully automatic approach to loop parallelization that integrates the use of static and run-time analysis and thus overcomes many known difficulties such as nonlinear and indirect array indexing and complex control flow. Our hybrid analysis framework validates the parallelization transformation by verifying the independence of the loop's memory references. To this end it represents array references using the USR (uniform set representation) language and expresses the independence condition as an equation, S=0, where S is a set expression representing array indexes. Using a language instead of an array-abstraction representation for S results in a smaller number of conservative approximations but exhibits a potentially-high runtime cost. To alleviate this cost we introduce a language translation F from the USR set-expression language to an equally rich language of predicates (F(S) ==> S = 0). Loop parallelization is then validated using a novel logic inference algorithm that factorizes the obtained complex predicates (F(S)) into a sequence of sufficient independence conditions that are evaluated first statically and, when needed, dynamically, in increasing order of their estimated complexities. We evaluate our automated solution on 26 benchmarks from PERFECT-Club and SPEC suites and show that our approach is effective in parallelizing large, complex loops and obtains much better full program speedups than the Intel and IBM Fortran compilers.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254124",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cosmin E.",
+        "last_name": "Oancea",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Lawrence",
+        "last_name": "Rauchwerger",
+        "institution": "Texas A&M University"
+      }
+    ],
+    "dblp_key": "conf/pldi/OanceaR12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254110",
+    "title": "Verifying GPU kernels by test amplification",
+    "abstract": "We present a novel technique for verifying properties of data parallel GPU programs via test amplification. The key insight behind our work is that we can use the technique of static information flow to amplify the result of a single test execution over the set of all inputs and interleavings that affect the property being verified. We empirically demonstrate the effectiveness of test amplification for verifying race-freedom and determinism over a large number of standard GPU kernels, by showing that the result of verifying a single dynamic execution can be amplified over the massive space of possible data inputs and thread interleavings.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254110",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Alan",
+        "last_name": "Leung",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Manish",
+        "last_name": "Gupta",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Yuvraj",
+        "last_name": "Agarwal",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Rajesh K.",
+        "last_name": "Gupta",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Sorin",
+        "last_name": "Lerner",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "conf/pldi/LeungGAGJL12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254072",
+    "title": "Speculative linearizability",
+    "abstract": "Linearizability is a key design methodology for reasoning about implementations of concurrent abstract data types in both shared memory and message passing systems. It provides the illusion that operations execute sequentially and fault-free, despite the asynchrony and faults inherent to a concurrent system, especially a distributed one. A key property of linearizability is inter-object composability: a system composed of linearizable objects is itself linearizable. However, devising linearizable objects is very difficult, requiring complex algorithms to work correctly under general circumstances, and often resulting in bad average-case behavior. Concurrent algorithm designers therefore resort to speculation: optimizing algorithms to handle common scenarios more efficiently. The outcome are even more complex protocols, for which it is no longer tractable to prove their correctness.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254072",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rachid",
+        "last_name": "Guerraoui",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Kunčak",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Giuliano",
+        "last_name": "Losa",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/pldi/GuerraouiKL12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254086",
+    "title": "Proving acceptability properties of relaxed nondeterministic approximate programs",
+    "abstract": "Approximate program transformations such as skipping tasks [29, 30], loop perforation [21, 22, 35], reduction sampling [38], multiple selectable implementations [3, 4, 16, 38], dynamic knobs [16], synchronization elimination [20, 32], approximate function memoization [11],and approximate data types [34] produce programs that can execute at a variety of points in an underlying performance versus accuracy tradeoff space. These transformed programs have the ability to trade accuracy of their results for increased performance by dynamically and nondeterministically modifying variables that control their execution.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254086",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Carbin",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Deokhwan",
+        "last_name": "Kim",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Saša",
+        "last_name": "Misailovíc",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/CarbinKMR12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254094",
+    "title": "Fast and precise hybrid type inference for JavaScript",
+    "abstract": "JavaScript performance is often bound by its dynamically typed nature. Compilers do not have access to static type information, making generation of efficient, type-specialized machine code difficult. We seek to solve this problem by inferring types. In this paper we present a hybrid type inference algorithm for JavaScript based on points-to analysis. Our algorithm is fast, in that it pays for itself in the optimizations it enables. Our algorithm is also precise, generating information that closely reflects the program's actual behavior even when analyzing polymorphic code, by augmenting static analysis with run-time type barriers.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254094",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Brian",
+        "last_name": "Hackett",
+        "institution": "Mozilla Foundation"
+      },
+      {
+        "first_name": "Shuyu",
+        "last_name": "Guo",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/pldi/HackettG12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254067",
+    "title": "Adaptive input-aware compilation for graphics engines",
+    "abstract": "While graphics processing units (GPUs) provide low-cost and efficient platforms for accelerating high performance computations, the tedious process of performance tuning required to optimize applications is an obstacle to wider adoption of GPUs. In addition to the programmability challenges posed by GPU's complex memory hierarchy and parallelism model, a well-known application design problem is target portability across different GPUs. However, even for a single GPU target, changing a program's input characteristics can make an already-optimized implementation of a program perform poorly. In this work, we propose Adaptic, an adaptive input-aware compilation system to tackle this important, yet overlooked, input portability problem. Using this system, programmers develop their applications in a high-level streaming language and let Adaptic undertake the difficult task of input portable optimizations and code generation. Several input-aware optimizations are introduced to make efficient use of the memory hierarchy and customize thread composition. At runtime, a properly optimized version of the application is executed based on the actual program input. We perform a head-to-head comparison between the Adaptic generated and hand-optimized CUDA programs. The results show that Adaptic is capable of generating codes that can perform on par with their hand-optimized counterparts over certain input ranges and outperform them when the input falls out of the hand-optimized programs' \"comfort zone\". Furthermore, we show that input-aware results are sustainable across different GPU targets making it possible to write and optimize applications once and run them anywhere.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254067",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mehrzad",
+        "last_name": "Samadi",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Amir",
+        "last_name": "Hormati",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Mojtaba",
+        "last_name": "Mehrara",
+        "institution": "Nvidia (United States)"
+      },
+      {
+        "first_name": "Janghaeng",
+        "last_name": "Lee",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Mahlke",
+        "institution": "University of Michigan–Ann Arbor"
+      }
+    ],
+    "dblp_key": "conf/pldi/SamadiHMLM12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254120",
+    "title": "Static analysis and compiler design for idempotent processing",
+    "abstract": "Recovery functionality has many applications in computing systems, from speculation recovery in modern microprocessors to fault recovery in high-reliability systems. Modern systems commonly recover using checkpoints. However, checkpoints introduce overheads, add complexity, and often save more state than necessary.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254120",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Marc A. de",
+        "last_name": "Kruijf",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Karthikeyan",
+        "last_name": "Sankaralingam",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Somesh",
+        "last_name": "Jha",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/KruijfSJ12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254075",
+    "title": "Understanding and detecting real-world performance bugs",
+    "abstract": "Developers frequently use inefficient code sequences that could be fixed by simple patches. These inefficient code sequences can cause significant performance degradation and resource waste, referred to as performance bugs. Meager increases in single threaded performance in the multi-core era and increasing emphasis on energy efficiency call for more effort in tackling performance bugs.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254075",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Guoliang",
+        "last_name": "Jin",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Linhai",
+        "last_name": "Song",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Xiaoming",
+        "last_name": "Shi",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Joel",
+        "last_name": "Scherpelz",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Shan",
+        "last_name": "Lu",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/JinSSSL12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254114",
+    "title": "Concurrent data representation synthesis",
+    "abstract": "We describe an approach for synthesizing data representations for concurrent programs. Our compiler takes as input a program written using concurrent relations and synthesizes a representation of the relations as sets of cooperating data structures as well as the placement and acquisition of locks to synchronize concurrent access to those data structures. The resulting code is correct by construction: individual relational operations are implemented correctly and the aggregate set of operations is serializable and deadlock free. The relational specification also permits a high-level optimizer to choose the best performing of many possible legal data representations and locking strategies, which we demonstrate with an experiment autotuning a graph benchmark.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254114",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Peter",
+        "last_name": "Hawkins",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Kathleen",
+        "last_name": "Fisher",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Mooly",
+        "last_name": "Sagiv",
+        "institution": "Tel Aviv University"
+      }
+    ],
+    "dblp_key": "conf/pldi/HawkinsAFRS12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254111",
+    "title": "RockSalt: better, faster, stronger SFI for the x86",
+    "abstract": "Software-based fault isolation (SFI), as used in Google's Native Client (NaCl), relies upon a conceptually simple machine-code analysis to enforce a security policy. But for complicated architectures such as the x86, it is all too easy to get the details of the analysis wrong. We have built a new checker that is smaller, faster, and has a much reduced trusted computing base when compared to Google's original analysis. The key to our approach is automatically generating the bulk of the analysis from a declarative description which we relate to a formal model of a subset of the x86 instruction set architecture. The x86 model, developed in Coq, is of independent interest and should be usable for a wide range of machine-level verification tasks.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254111",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Gang",
+        "last_name": "Tan",
+        "institution": "Lehigh University"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Tassarotti",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Jean-Baptiste",
+        "last_name": "Tristan",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Edward",
+        "last_name": "Gan",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/pldi/MorrisettTTTG12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254088",
+    "title": "Efficient state merging in symbolic execution",
+    "abstract": "Symbolic execution has proven to be a practical technique for building automated test case generation and bug finding tools. Nevertheless, due to state explosion, these tools still struggle to achieve scalability. Given a program, one way to reduce the number of states that the tools need to explore is to merge states obtained on different paths. Alas, doing so increases the size of symbolic path conditions (thereby stressing the underlying constraint solver) and interferes with optimizations of the exploration process (also referred to as search strategies). The net effect is that state merging may actually lower performance rather than increase it.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254088",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Volodymyr",
+        "last_name": "Kuznetsov",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Johannes",
+        "last_name": "Kinder",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Ștefan",
+        "last_name": "Bucur",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "George",
+        "last_name": "Candea",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/pldi/KuznetsovKBC12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254071",
+    "title": "Deterministic parallelism via liquid effects",
+    "abstract": "Shared memory multithreading is a popular approach to parallel programming, but also fiendishly hard to get right. We present Liquid Effects, a type-and-effect system based on refinement types which allows for fine-grained, low-level, shared memory multi-threading while statically guaranteeing that a program is deterministic. Liquid Effects records the effect of an expression as a for- mula in first-order logic, making our type-and-effect system highly expressive. Further, effects like Read and Write are recorded in Liquid Effects as ordinary uninterpreted predicates, leaving the effect system open to extension by the user. By building our system as an extension to an existing dependent refinement type system, our system gains precise value- and branch-sensitive reasoning about effects. Finally, our system exploits the Liquid Types refinement type inference technique to automatically infer refinement types and effects. We have implemented our type-and-effect checking techniques in CSOLVE, a refinement type inference system for C programs. We demonstrate how CSOLVE uses Liquid Effects to prove the determinism of a variety of benchmarks.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254071",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ming",
+        "last_name": "Kawaguchi",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Patrick M.",
+        "last_name": "Rondon",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Bakst",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "conf/pldi/KawaguchiRBJ12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254066",
+    "title": "Compiling a high-level language for GPUs: (via language support for architectures and compilers)",
+    "abstract": "Languages such as OpenCL and CUDA offer a standard interface for general-purpose programming of GPUs. However, with these languages, programmers must explicitly manage numerous low-level details involving communication and synchronization. This burden makes programming GPUs difficult and error-prone, rendering these powerful devices inaccessible to most programmers.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254066",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Christophe",
+        "last_name": "Dubach",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Perry",
+        "last_name": "Cheng",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Rodric",
+        "last_name": "Rabbah",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "David F.",
+        "last_name": "Bacon",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Stephen J.",
+        "last_name": "Fink",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/DubachCRBF12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254079",
+    "title": "Diderot: a parallel DSL for image analysis and visualization",
+    "abstract": "Research scientists and medical professionals use imaging technology, such as computed tomography (CT) and magnetic resonance imaging (MRI) to measure a wide variety of biological and physical objects. The increasing sophistication of imaging technology creates demand for equally sophisticated computational techniques to analyze and visualize the image data. Analysis and visualization codes are often crafted for a specific experiment or set of images, thus imaging scientists need support for quickly developing codes that are reliable, robust, and efficient.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254079",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Charisee",
+        "last_name": "Chiw",
+        "institution": "University of Illinois Chicago"
+      },
+      {
+        "first_name": "Gordon",
+        "last_name": "Kindlmann",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Reppy",
+        "institution": "University of Illinois Chicago"
+      },
+      {
+        "first_name": "Lamont",
+        "last_name": "Samuels",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Nick",
+        "last_name": "Seltzer",
+        "institution": "University of Chicago"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChiwKRSS12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254080",
+    "title": "Synthesising graphics card programs from DSLs",
+    "abstract": "Over the last five years, graphics cards have become a tempting target for scientific computing, thanks to unrivaled peak performance, often producing a runtime speed-up of x10 to x25 over comparable CPU solutions.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254080",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Luke",
+        "last_name": "Cartey",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Rune B.",
+        "last_name": "Lyngsø",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Oege de",
+        "last_name": "Moor",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/pldi/CarteyLM12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254123",
+    "title": "Polyhedra scanning revisited",
+    "abstract": "This paper presents a new polyhedra scanning system called CodeGen+ to address the challenge of generating high-performance code for complex iteration spaces resulting from compiler optimization and autotuning systems. The strength of our approach lies in two new algorithms. First, a loop overhead removal algorithm provides precise control of trade-offs between loop overhead and code size based on actual loop nesting depth. Second, an if-statement simplification algorithm further reduces the number of comparisons in the code. These algorithms combined with the expressive power of Presburger arithmetic enable CodeGen+ to support complex optimization strategies expressed in iteration spaces. We compare with the state-of-the-art polyhedra scanning tool CLooG on five loop nest computations, demonstrating that CodeGen+ generates code that is simpler and up to 1.15x faster.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254123",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Chun",
+        "last_name": "Chen",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/pldi/Chen12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254122",
+    "title": "Effective parallelization of loops in the presence of I/O operations",
+    "abstract": "Software-based thread-level parallelization has been widely studied for exploiting data parallelism in purely computational loops to improve program performance on multiprocessors. However, none of the previous efforts deal with efficient parallelization of hybrid loops, i.e., loops that contain a mix of computation and I/O operations. In this paper, we propose a set of techniques for efficiently parallelizing hybrid loops. Our techniques apply DOALL parallelism to hybrid loops by breaking the cross-iteration dependences caused by I/O operations. We also support speculative execution of I/O operations to enable speculative parallelization of hybrid loops. Helper threading is used to reduce the I/O bus contention caused by the improved parallelism. We provide an easy-to-use programming model for exploiting parallelism in loops with I/O operations. Parallelizing hybrid loops using our model requires few modifications to the code. We have developed a prototype implementation of our programming model. We have evaluated our implementation on a 24-core machine using eight applications, including a widely-used genomic sequence assembler and a multi-player game server, and others from PARSEC and SPEC CPU2000 benchmark suites. The hybrid loops in these applications take 23%-99% of the total execution time on our 24-core machine. The parallelized applications achieve speedups of 3.0x-12.8x with hybrid loop parallelization over the sequential versions of the same applications. Compared to the versions of applications where only computation loops are parallelized, hybrid loop parallelization improves the application performance by 68% on average.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254122",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Min",
+        "last_name": "Feng",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Rajiv",
+        "last_name": "Gupta",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Iulian",
+        "last_name": "Neamtiu",
+        "institution": "University of California, Riverside"
+      }
+    ],
+    "dblp_key": "conf/pldi/FengGN12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254126",
+    "title": "Fully automatic and precise detection of thread safety violations",
+    "abstract": "Concurrent, object-oriented programs often use thread-safe library classes. Existing techniques for testing a thread-safe class either rely on tests using the class, on formal specifications, or on both. Unfortunately, these techniques often are not fully automatic as they involve the user in analyzing the output. This paper presents an automatic testing technique that reveals concurrency bugs in supposedly thread-safe classes. The analysis requires as input only the class under test and reports only true positives. The key idea is to generate tests in which multiple threads call methods on a shared instance of the tested class. If a concurrent test exhibits an exception or a deadlock that cannot be triggered in any linearized execution of the test, the analysis reports a thread safety violation. The approach is easily applicable, because it is independent of hand-written tests and explicit specifications. The analysis finds 15 concurrency bugs in popular Java libraries, including two previously unknown bugs in the Java standard library.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254126",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Pradel",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Thomas R.",
+        "last_name": "Gross",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/pldi/PradelG12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254087",
+    "title": "Automated error diagnosis using abductive inference",
+    "abstract": "When program verification tools fail to verify a program, either the program is buggy or the report is a false alarm. In this situation, the burden is on the user to manually classify the report, but this task is time-consuming, error-prone, and does not utilize facts already proven by the analysis. We present a new technique for assisting users in classifying error reports. Our technique computes small, relevant queries presented to a user that capture exactly the information the analysis is missing to either discharge or validate the error. Our insight is that identifying these missing facts is an instance of the abductive inference problem in logic, and we present a new algorithm for computing the smallest and most general abductions in this setting. We perform the first user study to rigorously evaluate the accuracy and effort involved in manual classification of error reports. Our study demonstrates that our new technique is very useful for improving both the speed and accuracy of error report classification. Specifically, our approach improves classification accuracy from 33% to 90% and reduces the time programmers take to classify error reports from approximately 5 minutes to under 1 minute.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254087",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "Williams (United States)"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Dillig",
+        "institution": "William & Mary"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/DilligDA12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254076",
+    "title": "Input-sensitive profiling",
+    "abstract": "In this paper we present a profiling methodology and toolkit for helping developers discover hidden asymptotic inefficiencies in the code. From one or more runs of a program, our profiler automatically measures how the performance of individual routines scales as a function of the input size, yielding clues to their growth rate. The output of the profiler is, for each executed routine of the program, a set of tuples that aggregate performance costs by input size. The collected profiles can be used to produce performance plots and derive trend functions by statistical curve fitting or bounding techniques. A key feature of our method is the ability to automatically measure the size of the input given to a generic code fragment: to this aim, we propose an effective metric for estimating the input size of a routine and show how to compute it efficiently. We discuss several case studies, showing that our approach can reveal asymptotic bottlenecks that other profilers may fail to detect and characterize the workload and behavior of individual routines in the context of real applications. To prove the feasibility of our techniques, we implemented a Valgrind tool called aprof and performed an extensive experimental evaluation on the SPEC CPU2006 benchmarks. Our experiments show that aprof delivers comparable performance to other prominent Valgrind tools, and can generate informative plots even from single runs on typical workloads for most algorithmically-critical routines.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254076",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Emilio",
+        "last_name": "Coppa",
+        "institution": "Sapienza University of Rome"
+      },
+      {
+        "first_name": "Camil",
+        "last_name": "Demetrescu",
+        "institution": "Sapienza University of Rome"
+      },
+      {
+        "first_name": "Irene",
+        "last_name": "Finocchi",
+        "institution": "Sapienza University of Rome"
+      }
+    ],
+    "dblp_key": "conf/pldi/CoppaDF12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254112",
+    "title": "Synthesizing software verifiers from proof rules",
+    "abstract": "Automatically generated tools can significantly improve programmer productivity. For example, parsers and dataflow analyzers can be automatically generated from declarative specifications in the form of grammars, which tremendously simplifies the task of implementing a compiler. In this paper, we present a method for the automatic synthesis of software verification tools. Our synthesis procedure takes as input a description of the employed proof rule, e.g., program safety checking via inductive invariants, and produces a tool that automatically discovers the auxiliary assertions required by the proof rule, e.g., inductive loop invariants and procedure summaries. We rely on a (standard) representation of proof rules using recursive equations over the auxiliary assertions. The discovery of auxiliary assertions, i.e., solving the equations, is based on an iterative process that extrapolates solutions obtained for finitary unrollings of equations. We show how our method synthesizes automatic safety and liveness verifiers for programs with procedures, multi-threaded programs, and functional programs. Our experimental comparison of the resulting verifiers with existing state-of-the-art verification tools confirms the practicality of the approach.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254112",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sergey",
+        "last_name": "Grebenshchikov",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Nuno P.",
+        "last_name": "Lopes",
+        "institution": "Instituto de Engenharia de Sistemas e Computadores Investigação e Desenvolvimento"
+      },
+      {
+        "first_name": "Corneliu",
+        "last_name": "Popeea",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Andrey",
+        "last_name": "Rybalchenko",
+        "institution": "Technical University of Munich"
+      }
+    ],
+    "dblp_key": "conf/pldi/GrebenshchikovLPR12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254068",
+    "title": "And then there were none: a stall-free real-time garbage collector for reconfigurable hardware",
+    "abstract": "Programmers are turning to radical architectures such as reconfigurable hardware (FPGAs) to achieve performance. But such systems, programmed at a very low level in languages with impoverished abstractions, are orders of magnitude more complex to use than conventional CPUs. The continued exponential increase in transistors, combined with the desire to implement ever more sophisticated algorithms, makes it imperative that such systems be programmed at much higher levels of abstraction. One of the fundamental high-level language features is automatic memory management in the form of garbage collection.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254068",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David F.",
+        "last_name": "Bacon",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Perry",
+        "last_name": "Cheng",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Sunil",
+        "last_name": "Shukla",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/BaconCS12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254091",
+    "title": "Parallelizing top-down interprocedural analyses",
+    "abstract": "Modularity is a central theme in any scalable program analysis. The core idea in a modular analysis is to build summaries at procedure boundaries, and use the summary of a procedure to analyze the effect of calling it at its calling context. There are two ways to perform a modular program analysis: (1) top-down and (2) bottomup. A bottom-up analysis proceeds upwards from the leaves of the call graph, and analyzes each procedure in the most general calling context and builds its summary. In contrast, a top-down analysis starts from the root of the call graph, and proceeds downward, analyzing each procedure in its calling context. Top-down analyses have several applications in verification and software model checking. However, traditionally, bottom-up analyses have been easier to scale and parallelize than top-down analyses.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254091",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Aws",
+        "last_name": "Albarghouthi",
+        "institution": "University of Toronto"
+      },
+      {
+        "first_name": "Rahul",
+        "last_name": "Kumar",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Aditya V.",
+        "last_name": "Nori",
+        "institution": "Microsoft Research (India)"
+      },
+      {
+        "first_name": "Sriram K.",
+        "last_name": "Rajamani",
+        "institution": "Microsoft Research (India)"
+      }
+    ],
+    "dblp_key": "conf/pldi/AlbarghouthiKNR12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254119",
+    "title": "Chimera: hybrid program analysis for determinism",
+    "abstract": "Chimera uses a new hybrid program analysis to provide deterministic replay for commodity multiprocessor systems. Chimera leverages the insight that it is easy to provide deterministic multiprocessor replay for data-race-free programs (one can just record non-deterministic inputs and the order of synchronization operations), so if we can somehow transform an arbitrary program to be data-race-free, then we can provide deterministic replay cheaply for that program. To perform this transformation, Chimera uses a sound static data-race detector to find all potential data-races. It then instruments pairs of potentially racing instructions with a weak-lock, which provides sufficient guarantees to allow deterministic replay but does not guarantee mutual exclusion.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254119",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dongyoon",
+        "last_name": "Lee",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Peter M.",
+        "last_name": "Chen",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Jason",
+        "last_name": "Flinn",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Satish",
+        "last_name": "Narayanasamy",
+        "institution": "University of Michigan–Ann Arbor"
+      }
+    ],
+    "dblp_key": "conf/pldi/LeeCFN12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254106",
+    "title": "A compiler framework for extracting superword level parallelism",
+    "abstract": "SIMD (single-instruction multiple-data) instruction set extensions are quite common today in both high performance and embedded microprocessors, and enable the exploitation of a specific type of data parallelism called SLP (Superword Level Parallelism). While prior research shows that significant performance savings are possible when SLP is exploited, placing SIMD instructions in an application code manually can be very difficult and error prone. In this paper, we propose a novel automated compiler framework for improving superword level parallelism exploitation. The key part of our framework consists of two stages: superword statement generation and data layout optimization. The first stage is our main contribution and has two phases, statement grouping and statement scheduling, of which the primary goals are to increase SIMD parallelism and, more importantly, capture more superword reuses among the superword statements through global data access and reuse pattern analysis. Further, as a complementary optimization, our data layout optimization organizes data in memory space such that the price of memory operations for SLP is minimized. The results from our compiler implementation and tests on two systems indicate performance improvements as high as 15.2% over a state-of-the-art SLP optimization algorithm.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254106",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jun",
+        "last_name": "Liu",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Yuanrui",
+        "last_name": "Zhang",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Ohyoung",
+        "last_name": "Jang",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "W.",
+        "last_name": "Ding",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Mahmut",
+        "last_name": "Kandemir",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/LiuZJDK12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254116",
+    "title": "Automated synthesis of symbolic instruction encodings from I/O samples",
+    "abstract": "Symbolic execution is a key component of precise binary program analysis tools. We discuss how to automatically boot-strap the construction of a symbolic execution engine for a processor instruction set such as x86, x64 or ARM. We show how to automatically synthesize symbolic representations of individual processor instructions from input/output examples and express them as bit-vector constraints. We present and compare various synthesis algorithms and instruction sampling strategies. We introduce a new synthesis algorithm based on smart sampling which we show is one to two orders of magnitude faster than previous synthesis algorithms in our context. With this new algorithm, we can automatically synthesize bit-vector circuits for over 500 x86 instructions (8/16/32-bits, outputs, EFLAGS) using only 6 synthesis templates and in less than two hours using the Z3 SMT solver on a regular machine. During this work, we also discovered several inconsistencies across x86 processors, errors in the x86 Intel spec, and several bugs in previous manually-written x86 instruction handlers.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254116",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Patrice",
+        "last_name": "Godefroid",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Ankur",
+        "last_name": "Taly",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/GodefroidT12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254118",
+    "title": "A dynamic program analysis to find floating-point accuracy problems",
+    "abstract": "Programs using floating-point arithmetic are prone to accuracy problems caused by rounding and catastrophic cancellation. These phenomena provoke bugs that are notoriously hard to track down: the program does not necessarily crash and the results are not necessarily obviously wrong, but often subtly inaccurate. Further use of these values can lead to catastrophic errors.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254118",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Florian",
+        "last_name": "Benz",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Hildebrandt",
+        "institution": "Johannes Gutenberg University Mainz"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Hack",
+        "institution": "Saarland University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BenzHH12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254108",
+    "title": "Dynamic trace-based analysis of vectorization potential of applications",
+    "abstract": "Recent hardware trends with GPUs and the increasing vector lengths of SSE-like ISA extensions for multicore CPUs imply that effective exploitation of SIMD parallelism is critical for achieving high performance on emerging and future architectures. A vast majority of existing applications were developed without any attention by their developers towards effective vectorizability of the codes. While developers of production compilers such as GNU gcc, Intel icc, PGI pgcc, and IBM xlc have invested considerable effort and made significant advances in enhancing automatic vectorization capabilities, these compilers still cannot effectively vectorize many existing scientific and engineering codes. It is therefore of considerable interest to analyze existing applications to assess the inherent latent potential for SIMD parallelism, exploitable through further compiler advances and/or via manual code changes.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254108",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Justin",
+        "last_name": "Holewinski",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Ragavendar",
+        "last_name": "Ramamurthi",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "M.",
+        "last_name": "Ravishankar",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Naznin",
+        "last_name": "Fauzia",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Louis-Noël",
+        "last_name": "Pouchet",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Atanas",
+        "last_name": "Rountev",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Sadayappan",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/HolewinskiRRFPRS12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254096",
+    "title": "Engage: a deployment management system",
+    "abstract": "Many modern applications are built by combining independently developed packages and services that are distributed over many machines with complex inter-dependencies. The assembly, installation, and management of such applications is hard, and usually performed either manually or by writing customized scripts. We present Engage, a system for configuring, installing, and managing complex application stacks. Engage consists of three components: a domain-specific model to describe component metadata and inter-component dependencies; a constraint-based algorithm that takes a partial installation specification and computes a full installation plan; and a runtime system that co-ordinates the deployment of the application across multiple machines and manages the deployed system. By explicitly modeling configuration metadata and inter-component dependencies, Engage enables static checking of application configurations and automated, constraint-driven, generation of installation plans across multiple machines. This reduces the tedious manual process of application configuration, installation, and management.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254096",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jeffrey",
+        "last_name": "Fischer",
+        "institution": ""
+      },
+      {
+        "first_name": "Rupak",
+        "last_name": "Majumdar",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Shahram",
+        "last_name": "Esmaeilsabzali",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/pldi/FischerME12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254103",
+    "title": "SuperC: parsing all of C by taming the preprocessor",
+    "abstract": "C tools, such as source browsers, bug finders, and automated refactorings, need to process two languages: C itself and the preprocessor. The latter improves expressivity through file includes, macros, and static conditionals. But it operates only on tokens, making it hard to even parse both languages. This paper presents a complete, performant solution to this problem. First, a configuration-preserving preprocessor resolves includes and macros yet leaves static conditionals intact, thus preserving a program's variability. To ensure completeness, we analyze all interactions between preprocessor features and identify techniques for correctly handling them. Second, a configuration-preserving parser generates a well-formed AST with static choice nodes for conditionals. It forks new subparsers when encountering static conditionals and merges them again after the conditionals. To ensure performance, we present a simple algorithm for table-driven Fork-Merge LR parsing and four novel optimizations. We demonstrate the effectiveness of our approach on the x86 Linux kernel.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254103",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Gazzillo",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Grimm",
+        "institution": "New York University"
+      }
+    ],
+    "dblp_key": "conf/pldi/GazzilloG12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254107",
+    "title": "Speculative separation for privatization and reductions",
+    "abstract": "Automatic parallelization is a promising strategy to improve application performance in the multicore era. However, common programming practices such as the reuse of data structures introduce artificial constraints that obstruct automatic parallelization. Privatization relieves these constraints by replicating data structures, thus enabling scalable parallelization. Prior privatization schemes are limited to arrays and scalar variables because they are sensitive to the layout of dynamic data structures. This work presents Privateer, the first fully automatic privatization system to handle dynamic and recursive data structures, even in languages with unrestricted pointers. To reduce sensitivity to memory layout, Privateer speculatively separates memory objects. Privateer's lightweight runtime system validates speculative separation and speculative privatization to ensure correct parallel execution. Privateer enables automatic parallelization of general-purpose C/C++ applications, yielding a geomean whole-program speedup of 11.4x over best sequential execution on 24 cores, while non-speculative parallelization yields only 0.93x.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254107",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Nick",
+        "last_name": "Johnson",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Hanjun",
+        "last_name": "Kim",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Prakash",
+        "last_name": "Prabhu",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Ayal",
+        "last_name": "Zaks",
+        "institution": "Israel Electric (Israel)"
+      },
+      {
+        "first_name": "David I.",
+        "last_name": "August",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/JohnsonKPZA12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254128",
+    "title": "Multicore acceleration of priority-based schedulers for concurrency bug detection",
+    "abstract": "Testing multithreaded programs is difficult as threads can interleave in a nondeterministic fashion. Untested interleavings can cause failures, but testing all interleavings is infeasible. Many interleaving exploration strategies for bug detection have been proposed, but their relative effectiveness and performance remains unclear as they often lack publicly available implementations and have not been evaluated using common benchmarks. We describe NeedlePoint, an open-source framework that allows selection and comparison of a wide range of interleaving exploration policies for bug detection proposed by prior work.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254128",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Santosh",
+        "last_name": "Nagarakatte",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Burckhardt",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Milo M. K.",
+        "last_name": "Martin",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Madanlal",
+        "last_name": "Musuvathi",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/NagarakatteBMM12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254095",
+    "title": "Race detection for web applications",
+    "abstract": "Modern web pages are becoming increasingly full-featured, and this additional functionality often requires greater use of asynchrony. Unfortunately, this asynchrony can trigger unexpected concurrency errors, even though web page scripts are executed sequentially.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254095",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Boris",
+        "last_name": "Petrov",
+        "institution": "Sofia University \"St. Kliment Ohridski\""
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Manu",
+        "last_name": "Sridharan",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Julian",
+        "last_name": "Dolby",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/PetrovVSD12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254078",
+    "title": "Language-based control and mitigation of timing channels",
+    "abstract": "We propose a new language-based approach to mitigating timing channels. In this language, well-typed programs provably leak only a bounded amount of information over time through external timing channels. By incorporating mechanisms for predictive mitigation of timing channels, this approach also permits a more expressive programming model. Timing channels arising from interaction with underlying hardware features such as instruction caches are controlled. Assumptions about the underlying hardware are explicitly formalized, supporting the design of hardware that efficiently controls timing channels. One such hardware design is modeled and used to show that timing channels can be controlled in some simple programs of real-world significance.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254078",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Danfeng",
+        "last_name": "Zhang",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Aslan",
+        "last_name": "Askarov",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Andrew C.",
+        "last_name": "Myers",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ZhangAM12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254104",
+    "title": "Test-case reduction for C compiler bugs",
+    "abstract": "To report a compiler bug, one must often find a small test case that triggers the bug. The existing approach to automated test-case reduction, delta debugging, works by removing substrings of the original input; the result is a concatenation of substrings that delta cannot remove. We have found this approach less than ideal for reducing C programs because it typically yields test cases that are too large or even invalid (relying on undefined behavior). To obtain small and valid test cases consistently, we designed and implemented three new, domain-specific test-case reducers. The best of these is based on a novel framework in which a generic fixpoint computation invokes modular transformations that perform reduction operations. This reducer produces outputs that are, on average, more than 25 times smaller than those produced by our other reducers or by the existing reducer that is most commonly used by compiler developers. We conclude that effective program reduction requires more than straightforward delta debugging.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254104",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Regehr",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Yang",
+        "last_name": "Chen",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Pascal",
+        "last_name": "Cuoq",
+        "institution": "Laboratoire d'Intégration des Systèmes et des Technologies"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Eide",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Chucky",
+        "last_name": "Ellison",
+        "institution": "University of Illinois System"
+      },
+      {
+        "first_name": "Xuejun",
+        "last_name": "Yang",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/pldi/RegehrCCEEY12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254082",
+    "title": "Parcae: a system for flexible parallel execution",
+    "abstract": "Workload, platform, and available resources constitute a parallel program's execution environment. Most parallelization efforts statically target an anticipated range of environments, but performance generally degrades outside that range. Existing approaches address this problem with dynamic tuning but do not optimize a multiprogrammed system holistically. Further, they either require manual programming effort or are limited to array-based data-parallel programs.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254082",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Arun",
+        "last_name": "Raman",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Ayal",
+        "last_name": "Zaks",
+        "institution": "Israel Electric (Israel)"
+      },
+      {
+        "first_name": "Jae W.",
+        "last_name": "Lee",
+        "institution": "Sungkyunkwan University"
+      },
+      {
+        "first_name": "David I.",
+        "last_name": "August",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/RamanZLA12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254092",
+    "title": "Design and implementation of sparse global analyses for C-like languages",
+    "abstract": "In this article we present a general method for achieving global static analyzers that are precise, sound, yet also scalable. Our method generalizes the sparse analysis techniques on top of the abstract interpretation framework to support relational as well as non-relational semantics properties for C-like languages. We first use the abstract interpretation framework to have a global static analyzer whose scalability is unattended. Upon this underlying sound static analyzer, we add our generalized sparse analysis techniques to improve its scalability while preserving the precision of the underlying analysis. Our framework determines what to prove to guarantee that the resulting sparse version should preserve the precision of the underlying analyzer.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254092",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Hakjoo",
+        "last_name": "Oh",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Kihong",
+        "last_name": "Heo",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Wonchan",
+        "last_name": "Lee",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Woosuk",
+        "last_name": "Lee",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Kwangkeun",
+        "last_name": "Yi",
+        "institution": "Seoul National University"
+      }
+    ],
+    "dblp_key": "conf/pldi/OhHLLY12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254115",
+    "title": "Dynamic synthesis for relaxed memory models",
+    "abstract": "Modern architectures implement relaxed memory models which may reorder memory operations or execute them non-atomically. Special instructions called memory fences are provided, allowing control of this behavior.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254115",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Feng",
+        "last_name": "Liu",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Nayden",
+        "last_name": "Nedev",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Nedyalko",
+        "last_name": "Prisadnikov",
+        "institution": "Sofia University \"St. Kliment Ohridski\""
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Eran",
+        "last_name": "Yahav",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/LiuNPVY12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254074",
+    "title": "Algorithmic profiling",
+    "abstract": "Traditional profilers identify where a program spends most of its resources. They do not provide information about why the program spends those resources or about how resource consumption would change for different program inputs. In this paper we introduce the idea of algorithmic profiling. While a traditional profiler determines a set of measured cost values, an algorithmic profiler determines a cost function. It does that by automatically determining the \"inputs\" of a program, by measuring the program's \"cost\" for any given input, and by inferring an empirical cost function.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254074",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dmitrijs",
+        "last_name": "Zaparanuks",
+        "institution": "Università della Svizzera italiana"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Hauswirth",
+        "institution": "Università della Svizzera italiana"
+      }
+    ],
+    "dblp_key": "conf/pldi/ZaparanuksH12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254102",
+    "title": "Synchronising C/C++ and POWER",
+    "abstract": "Shared memory concurrency relies on synchronisation primitives: compare-and-swap, load-reserve/store-conditional (aka LL/SC), language-level mutexes, and so on. In a sequentially consistent setting, or even in the TSO setting of x86 and Sparc, these have well-understood semantics. But in the very relaxed settings of IBM®, POWER®, ARM, or C/C++, it remains surprisingly unclear exactly what the programmer can depend on.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254102",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Susmit",
+        "last_name": "Sarkar",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Kayvan",
+        "last_name": "Memarian",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Owens",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Mark",
+        "last_name": "Batty",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Luc",
+        "last_name": "Maranget",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Jade",
+        "last_name": "Alglave",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Derek",
+        "last_name": "Williams",
+        "institution": "IBM Research - Austin"
+      }
+    ],
+    "dblp_key": "conf/pldi/SarkarMOBSMAW12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254083",
+    "title": "JANUS: exploiting parallelism via hindsight",
+    "abstract": "This paper addresses the problem of reducing unnecessary conflicts in optimistic synchronization. Optimistic synchronization must ensure that any two concurrently executing transactions that commit are properly synchronized. Conflict detection is an approximate check for this condition. For efficiency, the traditional approach to conflict detection conservatively checks that the memory locations mutually accessed by two concurrent transactions are accessed only for reading.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254083",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Omer",
+        "last_name": "Tripp",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Roman",
+        "last_name": "Manevich",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "John K.",
+        "last_name": "Field",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Mooly",
+        "last_name": "Sagiv",
+        "institution": "Tel Aviv University"
+      }
+    ],
+    "dblp_key": "conf/pldi/TrippMFS12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254084",
+    "title": "Reagents: expressing and composing fine-grained concurrency",
+    "abstract": "Efficient communication and synchronization is crucial for fine grained parallelism. Libraries providing such features, while indispensable, are difficult to write, and often cannot be tailored or composed to meet the needs of specific users. We introduce reagents, a set of combinators for concisely expressing concurrency algorithms. Reagents scale as well as their hand-coded counterparts, while providing the composability existing libraries lack.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254084",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Aaron",
+        "last_name": "Turon",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Turon12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254127",
+    "title": "Scalable and precise dynamic datarace detection for structured parallelism",
+    "abstract": "Existing dynamic race detectors suffer from at least one of the following three limitations:",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254127",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Raghavan",
+        "last_name": "Raman",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Jisheng",
+        "last_name": "Zhao",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Eran",
+        "last_name": "Yahav",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/RamanZSVY12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254098",
+    "title": "Type-directed completion of partial expressions",
+    "abstract": "Modern programming frameworks provide enormous libraries arranged in complex structures, so much so that a large part of modern programming is searching for APIs that surely exist\" somewhere in an unfamiliar part of the framework. We present a novel way of phrasing a search for an unknown API: the programmer simply writes an expression leaving holes for the parts they do not know. We call these expressions partial expressions. We present an efficient algorithm that produces likely completions ordered by a ranking scheme based primarily on the similarity of the types of the APIs suggested to the types of the known expressions. This gives a powerful language for both API discovery and code completion with a small impedance mismatch from writing code. In an automated experiment on mature C# projects, we show our algorithm can place the intended expression in the top 10 choices over 80% of the time.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254098",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Perelman",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Ball",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/PerelmanGBG12",
+    "venue": "pldi",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2254064.2254090",
+    "title": "Sound and precise analysis of parallel programs through schedule specialization",
+    "abstract": "Parallel programs are known to be difficult to analyze. A key reason is that they typically have an enormous number of execution interleavings, or schedules. Static analysis over all schedules requires over-approximations, resulting in poor precision; dynamic analysis rarely covers more than a tiny fraction of all schedules. We propose an approach called schedule specialization to analyze a parallel program over only a small set of schedules for precision, and then enforce these schedules at runtime for soundness of the static analysis results. We build a schedule specialization framework for C/C++ multithreaded programs that use Pthreads. Our framework avoids the need to modify every analysis to be schedule-aware by specializing a program into a simpler program based on a schedule, so that the resultant program can be analyzed with stock analyses for improved precision. Moreover, our framework provides a precise schedule-aware def-use analysis on memory locations, enabling us to build three highly precise analyses: an alias analyzer, a data-race detector, and a path slicer. Evaluation on 17 programs, including 2 real-world programs and 15 popular benchmarks, shows that analyses using our framework reduced may-aliases by 61.9%, false race reports by 69%, and path slices by 48.7%; and detected 7 unknown bugs in well-checked programs.",
+    "date": "2012-06-11",
+    "link": "https://doi.org/10.1145/2254064.2254090",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jingyue",
+        "last_name": "Wu",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "Yang",
+        "last_name": "Tang",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "Gang",
+        "last_name": "Hu",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "Heming",
+        "last_name": "Cui",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "Junfeng",
+        "last_name": "Yang",
+        "institution": "Columbia University"
+      }
+    ],
+    "dblp_key": "conf/pldi/WuTHCY12",
+    "venue": "pldi",
+    "year": 2012
+  }
+]
