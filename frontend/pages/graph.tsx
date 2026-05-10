@@ -83,9 +83,13 @@ type NodeCache = {
 
 type GraphEdge = { source: string; target: string; similarity: number };
 
+// Note: `edges` is NOT stored in GraphState. It's a pure derivation
+// from (cache, clickedIds, mode, k, threshold) and is recomputed via
+// useMemo on every render. Storing it would invite the URL-vs-graph
+// drift bug from round 5: dropping a paper from ?papers= via the back
+// button leaves stale edges in state for the dropped cluster.
 type GraphState = {
   nodes: Paper[];
-  edges: GraphEdge[];
   mode: Mode;
   k: number;
   threshold: number;
@@ -182,13 +186,20 @@ const NEIGHBOR_CEILING = 20;
 
 function deriveEdges(
   cache: Record<string, NodeCache>,
+  clickedIds: readonly string[],
   mode: Mode,
   k: number,
   threshold: number,
 ): GraphEdge[] {
+  // Only derive edges for currently-clicked papers. The cache itself
+  // persists across clickedIds changes (so a back-then-forward
+  // round-trip is instant), but the rendered graph must track the URL
+  // exactly: dropping a paper from ?papers= must drop its cluster.
   const edges: GraphEdge[] = [];
   const seen = new Set<string>();
-  for (const entry of Object.values(cache)) {
+  for (const id of clickedIds) {
+    const entry = cache[id];
+    if (!entry) continue;
     const list =
       mode === "mutual_knn"
         ? entry.mutualN ?? []
@@ -201,7 +212,7 @@ function deriveEdges(
     }
     for (const n of selected) {
       // Dedupe undirected edges so we don't double-render A↔B when both
-      // endpoints are in the cache.
+      // endpoints are clicked papers.
       const key =
         entry.paper_id < n.paper_id
           ? `${entry.paper_id}|${n.paper_id}`
@@ -258,7 +269,6 @@ export default function GraphPage() {
 
   const [graph, setGraph] = useState<GraphState>({
     nodes: [],
-    edges: [],
     mode: "topk",
     k: DEFAULT_K,
     threshold: 0,
@@ -414,8 +424,9 @@ export default function GraphPage() {
             merged.push(p);
           }
 
-          const edges = deriveEdges(cache, g.mode, g.k, g.threshold);
-          return { ...g, cache, nodes: merged, edges };
+          // edges is derived (useMemo on the render side); no need to
+          // recompute it here.
+          return { ...g, cache, nodes: merged };
         });
       } catch (err) {
         setError(String(err));
@@ -446,18 +457,14 @@ export default function GraphPage() {
 
   const setMode = useCallback(
     async (mode: Mode) => {
-      setGraph((g) => {
-        const next: GraphState = {
-          ...g,
-          mode,
-          threshold:
-            mode === "threshold" && g.threshold === 0 && distribution
-              ? distribution.p99
-              : g.threshold,
-        };
-        next.edges = deriveEdges(next.cache, next.mode, next.k, next.threshold);
-        return next;
-      });
+      setGraph((g) => ({
+        ...g,
+        mode,
+        threshold:
+          mode === "threshold" && g.threshold === 0 && distribution
+            ? distribution.p99
+            : g.threshold,
+      }));
       // Entering mutual-kNN: fetch the mutual edge set for every clicked
       // paper that doesn't have it yet. Each expandNode call is
       // idempotent so this is safe to fire-and-forget.
@@ -474,15 +481,11 @@ export default function GraphPage() {
   );
 
   const setK = useCallback((k: number) => {
-    setGraph((g) => ({ ...g, k, edges: deriveEdges(g.cache, g.mode, k, g.threshold) }));
+    setGraph((g) => ({ ...g, k }));
   }, []);
 
   const setThreshold = useCallback((t: number) => {
-    setGraph((g) => ({
-      ...g,
-      threshold: t,
-      edges: deriveEdges(g.cache, g.mode, g.k, t),
-    }));
+    setGraph((g) => ({ ...g, threshold: t }));
   }, []);
 
   // Click → pin + (if not yet clicked) push to URL. The URL push
@@ -507,6 +510,15 @@ export default function GraphPage() {
   // Derived graph data for ForceGraph2D.
   // -------------------------------------------------------------------------
 
+  // Edges are derived purely from (cache, clickedIds, mode, slider).
+  // No state lives here — this is what makes the URL the single source
+  // of truth. Dropping a paper from ?papers= via the back button drops
+  // its cluster on the very next render.
+  const edges = useMemo(
+    () => deriveEdges(graph.cache, clickedIds, graph.mode, graph.k, graph.threshold),
+    [graph.cache, clickedIds, graph.mode, graph.k, graph.threshold],
+  );
+
   const fgData = useMemo(() => {
     // Hide nodes that have no edges in the current derived view,
     // otherwise top-k with k<20 (or threshold mode) leaves orphan nodes
@@ -516,30 +528,30 @@ export default function GraphPage() {
     // Clicked papers always render even if every edge filtered out, so
     // the user can always see "what they've explored."
     const connected = new Set<string>(clickedIds);
-    for (const e of graph.edges) {
+    for (const e of edges) {
       connected.add(typeof e.source === "string" ? e.source : String(e.source));
       connected.add(typeof e.target === "string" ? e.target : String(e.target));
     }
     const nodes = graph.nodes
       .filter((p) => connected.has(p.paper_id))
       .map((p) => ({ id: p.paper_id, paper: p }));
-    const links = graph.edges.map((e) => ({
+    const links = edges.map((e) => ({
       source: e.source,
       target: e.target,
       similarity: e.similarity,
     }));
     return { nodes, links };
-  }, [graph.nodes, graph.edges, clickedIds]);
+  }, [graph.nodes, edges, clickedIds]);
 
   // Per-node degree, for sizing.
   const degreeById = useMemo(() => {
     const d: Record<string, number> = {};
-    for (const e of graph.edges) {
+    for (const e of edges) {
       d[e.source] = (d[e.source] ?? 0) + 1;
       d[e.target] = (d[e.target] ?? 0) + 1;
     }
     return d;
-  }, [graph.edges]);
+  }, [edges]);
 
   // For each paper, compute max similarity to any clicked paper. Drives
   // the panel's "sim = X.XXX" display. Clicked papers themselves get
@@ -1017,7 +1029,7 @@ export default function GraphPage() {
                 stats={{
                   renderedNodes: fgData.nodes.length,
                   totalNodes: graph.nodes.length,
-                  edges: graph.edges.length,
+                  edges: edges.length,
                   cachedExpansions: Object.keys(graph.cache).length,
                   loadingNodeId,
                 }}
