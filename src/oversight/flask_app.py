@@ -2,13 +2,17 @@ from __future__ import annotations
 
 from datetime import date, timedelta
 import os
+import threading
 from typing import Any
 
+import psycopg
 from flask import Flask, request
 from flask_cors import CORS
 from dotenv import load_dotenv
+from pgvector.psycopg import register_vector
 from psycopg import sql
 
+from .Paper import Paper
 from .PaperDatabase import PaperDatabase
 from .PaperRepository import PaperRepository
 from .ArXivRepository import ArXivRepository
@@ -21,6 +25,27 @@ app = Flask(__name__)
 # Allow local Next.js dev server by default; can be customized with CORS_ORIGINS
 cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
 CORS(app, resources={r"/api/*": {"origins": cors_origins}})
+
+
+_neighbors_conn_lock = threading.Lock()
+_neighbors_conn: psycopg.Connection[tuple[Any, ...]] | None = None
+
+
+def _get_neighbors_connection() -> psycopg.Connection[tuple[Any, ...]]:
+    """Return a process-local pgvector-registered connection.
+
+    The neighbors endpoint is read-only and latency-sensitive (target p95 30ms),
+    so we amortize the ~25ms connect + ``register_vector`` cost across requests
+    by reusing one connection per worker. Threaded WSGI servers serialize
+    access through the lock; for higher concurrency, swap in psycopg_pool.
+    """
+    global _neighbors_conn
+    if _neighbors_conn is None or _neighbors_conn.closed:
+        database_url = os.getenv("DATABASE_URL")
+        assert database_url is not None, "Database URL is not set"
+        _neighbors_conn = psycopg.connect(database_url, autocommit=True)
+        register_vector(_neighbors_conn)
+    return _neighbors_conn
 
 
 @app.get("/api/health")
@@ -184,6 +209,75 @@ def search() -> tuple[dict[str, Any], int]:
         )
 
     return {"results": results}, 200
+
+
+def _serialize_paper(paper: Any, similarity: float | None = None) -> dict[str, Any]:
+    """Serialize a Paper object for JSON responses."""
+    out: dict[str, Any] = {
+        "paper_id": paper.paper_id,
+        "title": paper.title,
+        "abstract": paper.abstract,
+        "source": paper.source,
+        "link": paper.link,
+        "authors": paper.authors,
+        "institutions": paper.institutions,
+        "paper_date": paper.paper_date.isoformat()
+        if hasattr(paper.paper_date, "isoformat")
+        else str(paper.paper_date),
+    }
+    if similarity is not None:
+        out["similarity"] = similarity
+    return out
+
+
+@app.get("/api/papers/<paper_id>/neighbors")
+def paper_neighbors(paper_id: str) -> tuple[dict[str, Any], int]:
+    """Return the seed paper and its similarity-graph neighbors.
+
+    Query params:
+      k       int in [1, 50] (default 20)
+      mutual  bool (default false). When true, restrict to mutual-kNN edges.
+    """
+    k_raw = request.args.get("k", "20")
+    try:
+        k = int(k_raw)
+    except (TypeError, ValueError):
+        return {"error": "k must be an integer"}, 400
+    if k < 1 or k > 50:
+        return {"error": "k must be between 1 and 50"}, 400
+
+    mutual_raw = request.args.get("mutual", "false").strip().lower()
+    if mutual_raw not in {"true", "false", "1", "0", "yes", "no"}:
+        return {"error": "mutual must be a boolean"}, 400
+    mutual = mutual_raw in {"true", "1", "yes"}
+
+    # Skip the PaperRepository wrapper here: this endpoint does no embedding
+    # work (the seed embedding is fetched from the DB), so loading the Google
+    # client per request would only add latency. Reuse a process-local
+    # connection so we don't pay 15-25ms of connect + register_vector per call.
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        db = PaperDatabase.from_connection(con)
+        neighbor_pairs = db.find_neighbors(paper_id, k=k, mutual=mutual)
+        ids_to_fetch = [paper_id] + [pid for pid, _ in neighbor_pairs]
+        rows = db.get_papers_by_ids(ids_to_fetch)
+
+    by_id = {row[2]: row for row in rows}
+    if paper_id not in by_id:
+        return {"error": f"paper {paper_id!r} not found"}, 404
+
+    seed_paper, _ = Paper.from_database_row(by_id[paper_id])
+    neighbors_out: list[dict[str, Any]] = []
+    for pid, sim in neighbor_pairs:
+        if pid not in by_id:
+            continue  # very rare: paper deleted between the two queries
+        nb_paper, _ = Paper.from_database_row(by_id[pid])
+        neighbors_out.append(_serialize_paper(nb_paper, similarity=sim))
+
+    return {
+        "seed": _serialize_paper(seed_paper),
+        "neighbors": neighbors_out,
+    }, 200
 
 
 def _next_conference_dates(
