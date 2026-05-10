@@ -1,0 +1,833 @@
+[
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_6",
+    "title": "Concise Read-Only Specifications for Better Synthesis of Programs with Pointers",
+    "abstract": "Abstract In program synthesis there is a well-known trade-off between concise and strong specifications: if a specification is too verbose, it might be harder to write than the program; if it is too weak, the synthesised program might not match the user’s intent. In this work we explore the use of annotations for restricting memory access permissions in program synthesis, and show that they can make specifications much stronger while remaining surprisingly concise. Specifically, we enhance Synthetic Separation Logic (SSL), a framework for synthesis of heap-manipulating programs, with the logical mechanism of read-only borrows . We observe that this minimalistic and conservative SSL extension benefits the synthesis in several ways, making it more (a) expressive (stronger correctness guarantees are achieved with a modest annotation overhead), (b) effective (it produces more concise and easier-to-read programs), (c) efficient (faster synthesis), and (d) robust (synthesis efficiency is less affected by the choice of the search heuristic). We explain the intuition and provide formal treatment for read-only borrows. We substantiate the claims (a)–(d) by describing our quantitative evaluation of the borrowing-aware synthesis implementation on a series of standard benchmark specifications for various heap-manipulating programs.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_6",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Andreea",
+        "last_name": "Costea",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Amy",
+        "last_name": "Zhu",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Nadia",
+        "last_name": "Polikarpova",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Ilya",
+        "last_name": "Sergey",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "conf/esop/CosteaZPS20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_9",
+    "title": "SMT-Friendly Formalization of the Solidity Memory Model",
+    "abstract": "Abstract Solidity is the dominant programming language for Ethereum smart contracts. This paper presents a high-level formalization of the Solidity language with a focus on the memory model. The presented formalization covers all features of the language related to managing state and memory. In addition, the formalization we provide is effective: all but few features can be encoded in the quantifier-free fragment of standard SMT theories. This enables precise and efficient reasoning about the state of smart contracts written in Solidity. The formalization is implemented in the SOLC-VERIFY verifier and we provide an extensive set of tests that covers the breadth of the required semantics. We also provide an evaluation on the test set that validates the semantics and shows the novelty of the approach compared to other Solidity-level contract analysis tools.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_9",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Ákos",
+        "last_name": "Hajdu",
+        "institution": "Budapest University of Technology and Economics"
+      },
+      {
+        "first_name": "Dejan",
+        "last_name": "Jovanović",
+        "institution": "SRI International"
+      }
+    ],
+    "dblp_key": "conf/esop/HajduJ20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_12",
+    "title": "Local Reasoning for Global Graph Properties",
+    "abstract": "Abstract Separation logics are widely used for verifying programs that manipulate complex heap-based data structures. These logics build on so-called separation algebras , which allow expressing properties of heap regions such that modifications to a region do not invalidate properties stated about the remainder of the heap. This concept is key to enabling modular reasoning and also extends to concurrency. While heaps are naturally related to mathematical graphs, many ubiquitous graph properties are non-local in character, such as reachability between nodes, path lengths, acyclicity and other structural invariants, as well as data invariants which combine with these notions. Reasoning modularly about such graph properties remains notoriously difficult, since a local modification can have side-effects on a global property that cannot be easily confined to a small region. In this paper, we address the question: What separation algebra can be used to avoid proof arguments reverting back to tedious global reasoning in such cases? To this end, we consider a general class of global graph properties expressed as fixpoints of algebraic equations over graphs. We present mathematical foundations for reasoning about this class of properties, imposing minimal requirements on the underlying theory that allow us to define a suitable separation algebra. Building on this theory, we develop a general proof technique for modular reasoning about global graph properties expressed over program heaps, in a way which can be directly integrated with existing separation logics. To demonstrate our approach, we present local proofs for two challenging examples: a priority inheritance protocol and the non-blocking concurrent Harris list.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_12",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Siddharth",
+        "last_name": "Krishna",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Alexander J.",
+        "last_name": "Summers",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Wies",
+        "institution": "New York University"
+      }
+    ],
+    "dblp_key": "conf/esop/KrishnaSW20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_11",
+    "title": "Verifying Visibility-Based Weak Consistency",
+    "abstract": "Abstract Multithreaded programs generally leverage efficient and thread-safe concurrent objects like sets, key-value maps, and queues. While some concurrent-object operations are designed to behave atomically, each witnessing the atomic effects of predecessors in a linearization order, others forego such strong consistency to avoid complex control and synchronization bottlenecks. For example, contains (value) methods of key-value maps may iterate through key-value entries without blocking concurrent updates, to avoid unwanted performance bottlenecks, and consequently overlook the effects of some linearization-order predecessors. While such weakly-consistent operations may not be atomic, they still offer guarantees, e.g., only observing values that have been present. In this work we develop a methodology for proving that concurrent object implementations adhere to weak-consistency specifications. In particular, we consider (forward) simulation-based proofs of implementations against relaxed-visibility specifications , which allow designated operations to overlook some of their linearization-order predecessors, i.e., behaving as if they never occurred. Besides annotating implementation code to identify linearization points , i.e., points at which operations’ logical effects occur, we also annotate code to identify visible operations , i.e., operations whose effects are observed; in practice this annotation can be done automatically by tracking the writers to each accessed memory location. We formalize our methodology over a general notion of transition systems, agnostic to any particular programming language or memory model, and demonstrate its application, using automated theorem provers, by verifying models of Java concurrent object implementations.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_11",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Siddharth",
+        "last_name": "Krishna",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Emmi",
+        "institution": "SRI International"
+      },
+      {
+        "first_name": "Constantin",
+        "last_name": "Enea",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Dejan",
+        "last_name": "Jovanović",
+        "institution": "SRI International"
+      }
+    ],
+    "dblp_key": "conf/esop/KrishnaEEJ20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_3",
+    "title": "On the Versatility of Open Logical Relations - Continuity, Automatic Differentiation, and a Containment Theorem",
+    "abstract": "Abstract Logical relations are one among the most powerful techniques in the theory of programming languages, and have been used extensively for proving properties of a variety of higher-order calculi. However, there are properties that cannot be immediately proved by means of logical relations, for instance program continuity and differentiability in higher-order languages extended with real-valued functions. Informally, the problem stems from the fact that these properties are naturally expressed on terms of non-ground type (or, equivalently, on open terms of base type), and there is no apparent good definition for a base case (i.e. for closed terms of ground types). To overcome this issue, we study a generalization of the concept of a logical relation, called open logical relation , and prove that it can be fruitfully applied in several contexts in which the property of interest is about expressions of first-order type. Our setting is a simply-typed $$\\lambda $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:mi>λ</mml:mi></mml:math> -calculus enriched with real numbers and real-valued first-order functions from a given set, such as the one of continuous or differentiable functions. We first prove a containment theorem stating that for any collection of real-valued first-order functions including projection functions and closed under function composition, any well-typed term of first-order type denotes a function belonging to that collection. Then, we show by way of open logical relations the correctness of the core of a recently published algorithm for forward automatic differentiation. Finally, we define a refinement-based type system for local continuity in an extension of our calculus with conditionals, and prove the soundness of the type system using open logical relations.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_3",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Gilles",
+        "last_name": "Barthe",
+        "institution": "Max Planck Institute for Security and Privacy"
+      },
+      {
+        "first_name": "Raphaëlle",
+        "last_name": "Crubillé",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Ugo Dal",
+        "last_name": "Lago",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Francesco",
+        "last_name": "Gavazzo",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      }
+    ],
+    "dblp_key": "conf/esop/BartheCLG20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_4",
+    "title": "Constructive Game Logic",
+    "abstract": "Abstract Game Logic is an excellent setting to study proofs-about-programs via the interpretation of those proofs as programs, because constructive proofs for games correspond to effective winning strategies to follow in response to the opponent’s actions. We thus develop Constructive Game Logic , which extends Parikh’s Game Logic (GL) with constructivity and with first-order programs à la Pratt’s first-order dynamic logic (DL). Our major contributions include: 1. a novel realizability semantics capturing the adversarial dynamics of games, 2. a natural deduction calculus and operational semantics describing the computational meaning of strategies via proof-terms, and 3. theoretical results including soundness of the proof calculus w.r.t. realizability semantics, progress and preservation of the operational semantics of proofs, and Existential Properties on support of the extraction of computational artifacts from game proofs. Together, these results provide the most general account of a Curry-Howard interpretation for any program logic to date, and the first at all for Game Logic.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_4",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Rose",
+        "last_name": "Bohrer",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "André",
+        "last_name": "Platzer",
+        "institution": "Technical University of Munich"
+      }
+    ],
+    "dblp_key": "conf/esop/BohrerP20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_2",
+    "title": "Runners in Action",
+    "abstract": "Abstract Runners of algebraic effects, also known as comodels, provide a mathematical model of resource management. We show that they also give rise to a programming concept that models top-level external resources, as well as allows programmers to modularly define their own intermediate “virtual machines”. We capture the core ideas of programming with runners in an equational calculus $$\\lambda _{\\mathsf {coop}}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msub> <mml:mi>λ</mml:mi> <mml:mi>coop</mml:mi> </mml:msub> </mml:math> , which we equip with a sound and coherent denotational semantics that guarantees the linear use of resources and execution of finalisation code. We accompany $$\\lambda _{\\mathsf {coop}}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msub> <mml:mi>λ</mml:mi> <mml:mi>coop</mml:mi> </mml:msub> </mml:math> with examples of runners in action, provide a prototype language implementation in OCaml , as well as a Haskell library based on $$\\lambda _{\\mathsf {coop}}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msub> <mml:mi>λ</mml:mi> <mml:mi>coop</mml:mi> </mml:msub> </mml:math> .",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_2",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Danel",
+        "last_name": "Ahman",
+        "institution": "University of Ljubljana"
+      },
+      {
+        "first_name": "Andrej",
+        "last_name": "Bauer",
+        "institution": "University of Ljubljana"
+      }
+    ],
+    "dblp_key": "conf/esop/AhmanB20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_16",
+    "title": "Connecting Higher-Order Separation Logic to a First-Order Outside World",
+    "abstract": "Abstract Separation logic is a useful tool for proving the correctness of programs that manipulate memory, especially when the model of memory includes higher-order state: Step-indexing, predicates in the heap, and higher-order ghost state have been used to reason about function pointers, data structure invariants, and complex concurrency patterns. On the other hand, the behavior of system features (e.g., operating systems) and the external world (e.g., communication between components) is usually specified using first-order formalisms. In principle, the soundness theorem of a separation logic is its interface with first-order theorems, but the soundness theorem may implicitly make assumptions about how other components are specified, limiting its use. In this paper, we show how to extend the higher-order separation logic of the Verified Software Toolchain to interface with a first-order verified operating system, in this case CertiKOS, that mediates its interaction with the outside world. The resulting system allows us to prove the correctness of C programs in separation logic based on the semantics of system calls implemented in CertiKOS. It also demonstrates that the combination of interaction trees + CompCert memories serves well as a lingua franca to interface and compose two quite different styles of program verification.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_16",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "William",
+        "last_name": "Mansky",
+        "institution": "University of Illinois Chicago"
+      },
+      {
+        "first_name": "Wolf",
+        "last_name": "Honoré",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/esop/ManskyHA20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_5",
+    "title": "Optimal and Perfectly Parallel Algorithms for On-demand Data-Flow Analysis",
+    "abstract": "Abstract Interprocedural data-flow analyses form an expressive and useful paradigm of numerous static analysis applications, such as live variables analysis, alias analysis and null pointers analysis. The most widely-used framework for interprocedural data-flow analysis is IFDS , which encompasses distributive data-flow functions over a finite domain. On-demand data-flow analyses restrict the focus of the analysis on specific program locations and data facts. This setting provides a natural split between (i) an offline (or preprocessing) phase , where the program is partially analyzed and analysis summaries are created, and (ii) an online (or query) phase , where analysis queries arrive on demand and the summaries are used to speed up answering queries. In this work, we consider on-demand IFDS analyses where the queries concern program locations of the same procedure (aka same-context queries). We exploit the fact that flow graphs of programs have low treewidth to develop faster algorithms that are space and time optimal for many common data-flow analyses, in both the preprocessing and the query phase. We also use treewidth to develop query solutions that are embarrassingly parallelizable , i.e. the total work for answering each query is split to a number of threads such that each thread performs only a constant amount of work. Finally, we implement a static analyzer based on our algorithms, and perform a series of on-demand analysis experiments on standard benchmarks. Our experimental results show a drastic speed-up of the queries after only a lightweight preprocessing phase, which significantly outperforms existing techniques.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_5",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Krishnendu",
+        "last_name": "Chatterjee",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Amir Kafshdar",
+        "last_name": "Goharshady",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Rasmus",
+        "last_name": "Ibsen-Jensen",
+        "institution": "University of Liverpool"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Pavlogiannis",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/esop/ChatterjeeGIP20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_1",
+    "title": "Trace-Relating Compiler Correctness and Secure Compilation",
+    "abstract": "Abstract Compiler correctness is, in its simplest form, defined as the inclusion of the set of traces of the compiled program into the set of traces of the original program, which is equivalent to the preservation of all trace properties. Here traces collect, for instance, the externally observable events of each execution. This definition requires, however, the set of traces of the source and target languages to be exactly the same, which is not the case when the languages are far apart or when observations are fine-grained. To overcome this issue, we study a generalized compiler correctness definition, which uses source and target traces drawn from potentially different sets and connected by an arbitrary relation. We set out to understand what guarantees this generalized compiler correctness definition gives us when instantiated with a non-trivial relation on traces. When this trace relation is not equality, it is no longer possible to preserve the trace properties of the source program unchanged. Instead, we provide a generic characterization of the target trace property ensured by correctly compiling a program that satisfies a given source property, and dually, of the source trace property one is required to show in order to obtain a certain target property for the compiled code. We show that this view on compiler correctness can naturally account for undefined behavior, resource exhaustion, different source and target values, side-channels, and various abstraction mismatches. Finally, we show that the same generalization also applies to many secure compilation definitions, which characterize the protection of a compiled program against linked adversarial code.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_1",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Carmine",
+        "last_name": "Abate",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Roberto",
+        "last_name": "Blanco",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Ştefan",
+        "last_name": "Ciobâcă",
+        "institution": ""
+      },
+      {
+        "first_name": "Adrien",
+        "last_name": "Durier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "Garg",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Cătălin",
+        "last_name": "Hriţcu",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Patrignani",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "University of Chile"
+      },
+      {
+        "first_name": "Jérémy",
+        "last_name": "Thibault",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/esop/AbateBCD0HPTT20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_13",
+    "title": "Aneris: A Mechanised Logic for Modular Reasoning about Distributed Systems",
+    "abstract": "Abstract Building network-connected programs and distributed systems is a powerful way to provide scalability and availability in a digital, always-connected era. However, with great power comes great complexity. Reasoning about distributed systems is well-known to be difficult. In this paper we present , a novel framework based on separation logic supporting modular, node-local reasoning about concurrent and distributed systems. The logic is higher-order, concurrent, with higher-order store and network sockets, and is fully mechanized in the Coq proof assistant. We use our framework to verify an implementation of a load balancer that uses multi-threading to distribute load amongst multiple servers and an implementation of the two-phase-commit protocol with a replicated logging service as a client. The two examples certify that is well-suited for both horizontal and vertical modular reasoning.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_13",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Morten",
+        "last_name": "Krogh-Jespersen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Amin",
+        "last_name": "Timany",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Marit Edna",
+        "last_name": "Ohlenbusch",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Simon Oddershede",
+        "last_name": "Gregersen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/esop/Krogh-Jespersen20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_7",
+    "title": "Soundness Conditions for Big-Step Semantics",
+    "abstract": "Abstract We propose a general proof technique to show that a predicate is sound , that is, prevents stuck computation, with respect to a big-step semantics . This result may look surprising, since in big-step semantics there is no difference between non-terminating and stuck computations, hence soundness cannot even be expressed . The key idea is to define constructions yielding an extended version of a given arbitrary big-step semantics, where the difference is made explicit. The extended semantics are exploited in the meta-theory, notably they are necessary to show that the proof technique works. However, they remain transparent when using the proof technique, since it consists in checking three conditions on the original rules only, as we illustrate by several examples.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_7",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Francesco",
+        "last_name": "Dagnino",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Viviana",
+        "last_name": "Bono",
+        "institution": "University of Turin"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Zucca",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Mariangiola",
+        "last_name": "Dezani-Ciancaglini",
+        "institution": "University of Turin"
+      }
+    ],
+    "dblp_key": "conf/esop/DagninoBZD20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_8",
+    "title": "Liberate Abstract Garbage Collection from the Stack by Decomposing the Heap",
+    "abstract": "Abstract Abstract garbage collection and the use of pushdown systems each enhance the precision of control-flow analysis (CFA). However, their respective needs conflict: abstract garbage collection requires the stack but pushdown systems obscure it. Though several existing techniques address this conflict, none take full advantage of the underlying interplay. In this paper, we dissolve this conflict with a technique which exploits the precision of pushdown systems to decompose the heap across the continuation.This technique liberates abstract garbage collection from the stack, increasing its effectiveness and the compositionality of its host analysis. We generalize our approach to apply compositional treatment to abstract timestamps which induces the context abstraction of m -CFA, an abstraction more precise than k -CFA’s for many common programming patterns.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_8",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Kimball",
+        "last_name": "Germane",
+        "institution": "Brigham Young University"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Adams",
+        "institution": "University of Michigan–Ann Arbor"
+      }
+    ],
+    "dblp_key": "conf/esop/Germane020",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_10",
+    "title": "Exploring Type-Level Bisimilarity towards More Expressive Multiparty Session Types",
+    "abstract": "Abstract A key open problem with multiparty session types (MPST) concerns their expressiveness: current MPST have inflexible choice, no existential quantification over participants, and limited parallel composition. This precludes many real protocols to be represented by MPST. To overcome these bottlenecks of MPST, we explore a new technique using weak bisimilarity between global types and endpoint types, which guarantees deadlock-freedom and absence of protocol violations. Based on a process algebraic framework, we present well-formed conditions for global types that guarantee weak bisimilarity between a global type and its endpoint types and prove their check is decidable. Our main practical result, obtained through benchmarks, is that our well-formedness conditions can be checked orders of magnitude faster than directly checking weak bisimilarity using a state-of-the-art model checker.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_10",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Sung-Shik",
+        "last_name": "Jongmans",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/esop/JongmansY20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_15",
+    "title": "Semantic Foundations for Deterministic Dataflow and Stream Processing",
+    "abstract": "Abstract We propose a denotational semantic framework for deterministic dataflow and stream processing that encompasses a variety of existing streaming models. Our proposal is based on the idea that data streams, stream transformations, and stream-processing programs should be classified using types. The type of a data stream is captured formally by a monoid, an algebraic structure with a distinguished binary operation and a unit. The elements of a monoid model the finite fragments of a stream, the binary operation represents the concatenation of stream fragments, and the unit is the empty fragment. Stream transformations are modeled using monotone functions on streams, which we call stream transductions. These functions can be implemented using abstract machines with a potentially infinite state space, which we call stream transducers. This abstract typed framework of stream transductions and transducers can be used to (1) verify the correctness of streaming computations, that is, that an implementation adheres to the desired behavior, (2) prove the soundness of optimizing transformations, e.g. for parallelization and distribution, and (3) inform the design of programming models and query languages for stream processing. In particular, we show that several useful combinators can be supported by the full class of stream transductions and transducers: serial composition, parallel composition, and feedback composition.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_15",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Konstantinos",
+        "last_name": "Mamouras",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/esop/Mamouras20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_14",
+    "title": "Continualization of Probabilistic Programs With Correction",
+    "abstract": "Abstract Probabilistic Programming offers a concise way to represent stochastic models and perform automated statistical inference. However, many real-world models have discrete or hybrid discrete-continuous distributions, for which existing tools may suffer non-trivial limitations. Inference and parameter estimation can be exceedingly slow for these models because many inference algorithms compute results faster (or exclusively) when the distributions being inferred are continuous. To address this discrepancy, this paper presents Leios. Leios is the first approach for systematically approximating arbitrary probabilistic programs that have discrete, or hybrid discrete-continuous random variables. The approximate programs have all their variables fully continualized. We show that once we have the fully continuous approximate program, we can perform inference and parameter estimation faster by exploiting the existing support that many languages offer for continuous distributions. Furthermore, we show that the estimates obtained when performing inference and parameter estimation on the continuous approximation are still comparably close to both the true parameter values and the estimates obtained when performing inference on the original model.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_14",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Jacob",
+        "last_name": "Laurel",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Saša",
+        "last_name": "Misailovíc",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/esop/LaurelM20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_17",
+    "title": "Modular Inference of Linear Types for Multiplicity-Annotated Arrows",
+    "abstract": "Abstract Bernardy et al. [2018] proposed a linear type system $$\\lambda ^q_\\rightarrow $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msubsup> <mml:mi>λ</mml:mi> <mml:mo>→</mml:mo> <mml:mi>q</mml:mi> </mml:msubsup> </mml:math> as a core type system of Linear Haskell. In the system, linearity is represented by annotated arrow types $$A \\rightarrow _m B$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mrow> <mml:mi>A</mml:mi> <mml:msub> <mml:mo>→</mml:mo> <mml:mi>m</mml:mi> </mml:msub> <mml:mi>B</mml:mi> </mml:mrow> </mml:math> , where m denotes the multiplicity of the argument. Thanks to this representation, existing non-linear code typechecks as it is, and newly written linear code can be used with existing non-linear code in many cases. However, little is known about the type inference of $$\\lambda ^q_\\rightarrow $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msubsup> <mml:mi>λ</mml:mi> <mml:mo>→</mml:mo> <mml:mi>q</mml:mi> </mml:msubsup> </mml:math> . Although the Linear Haskell implementation is equipped with type inference, its algorithm has not been formalized, and the implementation often fails to infer principal types, especially for higher-order functions. In this paper, based on OutsideIn(X) [Vytiniotis et al., 2011], we propose an inference system for a rank 1 qualified-typed variant of $$\\lambda ^q_\\rightarrow $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msubsup> <mml:mi>λ</mml:mi> <mml:mo>→</mml:mo> <mml:mi>q</mml:mi> </mml:msubsup> </mml:math> , which infers principal types. A technical challenge in this new setting is to deal with ambiguous types inferred by naive qualified typing. We address this ambiguity issue through quantifier elimination and demonstrate the effectiveness of the approach with examples.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_17",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Kazutaka",
+        "last_name": "Matsuda",
+        "institution": "Tohoku University"
+      }
+    ],
+    "dblp_key": "conf/esop/Matsuda20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_19",
+    "title": "A First-Order Logic with Frames",
+    "abstract": "Abstract We propose a novel logic, called Frame Logic (FL), that extends first-order logic (with recursive definitions) using a construct $$\\textit{Sp}(\\cdot )$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mrow> <mml:mi>Sp</mml:mi> <mml:mo>(</mml:mo> <mml:mo>·</mml:mo> <mml:mo>)</mml:mo> </mml:mrow> </mml:math> that captures the implicit supports of formulas— the precise subset of the universe upon which their meaning depends. Using such supports, we formulate proof rules that facilitate frame reasoning elegantly when the underlying model undergoes change. We show that the logic is expressive by capturing several data-structures and also exhibit a translation from a precise fragment of separation logic to frame logic. Finally, we design a program logic based on frame logic for reasoning with programs that dynamically update heaps that facilitates local specifications and frame reasoning. This program logic consists of both localized proof rules as well as rules that derive the weakest tightest preconditions in FL.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_19",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Adithya",
+        "last_name": "Murali",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Lucas",
+        "last_name": "Peña",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Christof",
+        "last_name": "Löding",
+        "institution": "RWTH Aachen University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Madhusudan",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/esop/MuraliPLM20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_20",
+    "title": "Proving the Safety of Highly-Available Distributed Objects",
+    "abstract": "Abstract To provide high availability in distributed systems, object replicas allow concurrent updates. Although replicas eventually converge, they may diverge temporarily, for instance when the network fails. This makes it difficult for the developer to reason about the object’s properties, and in particular, to prove invariants over its state. For the subclass of state-based distributed systems, we propose a proof methodology for establishing that a given object maintains a given invariant, taking into account any concurrency control. Our approach allows reasoning about individual operations separately. We demonstrate that our rules are sound, and we illustrate their use with some representative examples. We automate the rule using Boogie, an SMT-based tool.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_20",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Sreeja",
+        "last_name": "Nair",
+        "institution": "Sorbonne Université"
+      },
+      {
+        "first_name": "Gustavo",
+        "last_name": "Petri",
+        "institution": "ARM (United Kingdom)"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Shapiro",
+        "institution": "Sorbonne Université"
+      }
+    ],
+    "dblp_key": "conf/esop/NairP020",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_25",
+    "title": "ConSORT: Context- and Flow-Sensitive Ownership Refinement Types for Imperative Programs",
+    "abstract": "Abstract We present ConSORT, a type system for safety verification in the presence of mutability and aliasing. Mutability requires strong updates to model changing invariants during program execution, but aliasing between pointers makes it difficult to determine which invariants must be updated in response to mutation. Our type system addresses this difficulty with a novel combination of refinement types and fractional ownership types. Fractional ownership types provide flow-sensitive and precise aliasing information for reference variables. ConSORT interprets this ownership information to soundly handle strong updates of potentially aliased references. We have proved ConSORT sound and implemented a prototype, fully automated inference tool. We evaluated our tool and found it verifies non-trivial programs including data structure implementations.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_25",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Toman",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Ren",
+        "last_name": "Siqi",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Kohei",
+        "last_name": "Suenaga",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Atsushi",
+        "last_name": "Igarashi",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Naoki",
+        "last_name": "Kobayashi",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/esop/TomanSSI020",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_18",
+    "title": "RustHorn: CHC-Based Verification for Rust Programs",
+    "abstract": "Abstract Reduction to the satisfiablility problem for constrained Horn clauses (CHCs) is a widely studied approach to automated program verification. The current CHC-based methods for pointer-manipulating programs, however, are not very scalable. This paper proposes a novel translation of pointer-manipulating Rust programs into CHCs, which clears away pointers and heaps by leveraging ownership. We formalize the translation for a simplified core of Rust and prove its correctness. We have implemented a prototype verifier for a subset of Rust and confirmed the effectiveness of our method.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_18",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Yusuke",
+        "last_name": "Matsushita",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Takeshi",
+        "last_name": "Tsukada",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Naoki",
+        "last_name": "Kobayashi",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/esop/0002T020",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_22",
+    "title": "Modular Relaxed Dependencies in Weak Memory Concurrency",
+    "abstract": "Abstract We present a denotational semantics for weak memory concurrency that avoids thin-air reads , provides data-race free programs with sequentially consistent semantics (DRF-SC), and supports a compositional refinement relation for validating optimisations. Our semantics identifies false program dependencies that might be removed by compiler optimisation, and leaves in place just the dependencies necessary to rule out thin-air reads. We show that our dependency calculation can be used to rule out thin-air reads in any axiomatic concurrency model, in particular C++. We present a tool that automatically evaluates litmus tests, show that we can augment C++ to fix the thin-air problem, and we prove that our augmentation is compatible with the previously used compilation mappings over key processor architectures. We argue that our dependency calculation offers a practical route to fixing the longstanding problem of thin-air reads in the C++ specification.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_22",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Marco",
+        "last_name": "Paviotti",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Cooksey",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Anouk",
+        "last_name": "Paradis",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Wright",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Owens",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Mark",
+        "last_name": "Batty",
+        "institution": "University of Kent"
+      }
+    ],
+    "dblp_key": "conf/esop/PaviottiCPWOB20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_24",
+    "title": "Higher-Ranked Annotation Polymorphic Dependency Analysis",
+    "abstract": "Abstract The precision of a static analysis can be improved by increasing the context-sensitivity of the analysis. In a type-based formulation of static analysis for functional languages this can be achieved by, e.g., introducing let-polyvariance or subtyping. In this paper we go one step further by defining a higher-ranked polyvariant type system so that even properties of lambda-bound identifiers can be generalized over. We do this for dependency analysis, a generic analysis that can be instantiated to a range of different analyses that in this way all can profit. We prove that our analysis is sound with respect to a call-by-name semantics and that it satisfies a so-called noninterference property. We provide a type reconstruction algorithm that we have proven to be terminating, and sound and complete with respect to its declarative specification. Our principled description can serve as a blueprint for making other analyses higher-ranked.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_24",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Fabian",
+        "last_name": "Thorand",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Jurriaan",
+        "last_name": "Hage",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/esop/ThorandH20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_23",
+    "title": "ARMv8-A System Semantics: Instruction Fetch in Relaxed Architectures",
+    "abstract": "Abstract Computing relies on architecture specifications to decouple hardware and software development. Historically these have been prose documents, with all the problems that entails, but research over the last ten years has developed rigorous and executable-as-test-oracle specifications of mainstream architecture instruction sets and “user-mode” concurrency, clarifying architectures and bringing them into the scope of programming-language semantics and verification. However, the system semantics , of instruction-fetch and cache maintenance, exceptions and interrupts, and address translation, remains obscure, leaving us without a solid foundation for verification of security-critical systems software. In this paper we establish a robust model for one aspect of system semantics: instruction fetch and cache maintenance for ARMv8-A. Systems code relies on executing instructions that were written by data writes, e.g. in program loading, dynamic linking, JIT compilation, debugging, and OS configuration, but hardware implementations are often highly optimised, e.g. with instruction caches, linefill buffers, out-of-order fetching, branch prediction, and instruction prefetching, which can affect programmer-observable behaviour. It is essential, both for programming and verification, to abstract from such microarchitectural details as much as possible, but no more. We explore the key architecture design questions with a series of examples, discussed in detail with senior Arm staff; capture the architectural intent in operational and axiomatic semantic models, extending previous work on “user-mode” concurrency; make these models executable as test oracles for small examples; and experimentally validate them against hardware behaviour (finding a bug in one hardware device). We thereby bring these subtle issues into the mathematical domain, clarifying the architecture and enabling future work on system software verification.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_23",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Ben",
+        "last_name": "Simner",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Shaked",
+        "last_name": "Flur",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "Pulte",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Alasdair",
+        "last_name": "Armstrong",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Jean",
+        "last_name": "Pichon-Pharabod",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Luc",
+        "last_name": "Maranget",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/esop/SimnerFPAPMS20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_21",
+    "title": "Solving Program Sketches with Large Integer Values",
+    "abstract": "Abstract Program sketching is a program synthesis paradigm in which the programmer provides a partial program with holes and assertions. The goal of the synthesizer is to automatically find integer values for the holes so that the resulting program satisfies the assertions. The most popular sketching tool, Sketch , can efficiently solve complex program sketches, but uses an integer encoding that often performs poorly if the sketched program manipulates large integer values. In this paper, we propose a new solving technique that allows Sketch to handle large integer values while retaining its integer encoding. Our technique uses a result from number theory, the Chinese Remainder Theorem, to rewrite program sketches to only track the remainders of certain variable values with respect to several prime numbers. We prove that our transformation is sound and the encoding of the resulting programs are exponentially more succinct than existing Sketch encodings. We evaluate our technique on a variety of benchmarks manipulating large integer values. Our technique provides speedups against both existing Sketch solvers and can solve benchmarks that existing Sketch solvers cannot handle.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_21",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Rong",
+        "last_name": "Pan",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Qinheping",
+        "last_name": "Hu",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Rishabh",
+        "last_name": "Singh",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Loris",
+        "last_name": "D’Antoni",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/esop/PanHSD20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_27",
+    "title": "Higher-Order Spreadsheets with Spilled Arrays",
+    "abstract": "Abstract We develop a theory for two recently-proposed spreadsheet mechanisms: gridlets allow for abstraction and reuse in spreadsheets, and build on spilled arrays , where an array value spills out of one cell into nearby cells. We present the first formal calculus of spreadsheets with spilled arrays. Since spilled arrays may collide, the semantics of spilling is an iterative process to determine which arrays spill successfully and which do not. Our first theorem is that this process converges deterministically. To model gridlets, we propose the grid calculus , a higher-order extension of our calculus of spilled arrays with primitives to treat spreadsheets as values. We define a semantics of gridlets as formulas in the grid calculus. Our second theorem shows the correctness of a remarkably direct encoding of the Abadi and Cardelli object calculus into the grid calculus. This result is the first rigorous analogy between spreadsheets and objects; it substantiates the intuition that gridlets are an object-oriented counterpart to functional programming extensions to spreadsheets, such as sheet-defined functions.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_27",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Jack M.",
+        "last_name": "Williams",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Nima",
+        "last_name": "Joharizadeh",
+        "institution": "University of California, Davis"
+      },
+      {
+        "first_name": "Andrew D.",
+        "last_name": "Gordon",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Advait",
+        "last_name": "Sarkar",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/esop/WilliamsJGS20",
+    "venue": "esop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1007/978-3-030-44914-8_26",
+    "title": "Mixed Sessions",
+    "abstract": "Abstract Session types describe patterns of interaction on communicating channels. Traditional session types include a form of choice whereby servers offer a collection of options, of which each client picks exactly one. This sort of choice constitutes a particular case of separated choice: offering on one side, selecting on the other. We introduce mixed choices in the context of session types and argue that they increase the flexibility of program development at the same time that they reduce the number of synchronisation primitives to exactly one. We present a type system incorporating subtyping and prove preservation and absence of runtime errors for well-typed processes. We further show that classical (conventional) sessions can be faithfully and tightly embedded in mixed choices. Finally, we discuss algorithmic type checking and a runtime system built on top of a conventional (choice-less) message-passing architecture.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-44914-8_26",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Vasco T.",
+        "last_name": "Vasconcelos",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Filipe",
+        "last_name": "Casal",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Bernardo Pinto de",
+        "last_name": "Almeida",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Andreia",
+        "last_name": "Mordido",
+        "institution": "University of Lisbon"
+      }
+    ],
+    "dblp_key": "conf/esop/VasconcelosCAM20",
+    "venue": "esop",
+    "year": 2020
+  }
+]

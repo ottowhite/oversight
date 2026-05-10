@@ -1,0 +1,664 @@
+[
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_2",
+    "title": "Data Flow Analysis of Asynchronous Systems using Infinite Abstract Domains",
+    "abstract": "Abstract Asynchronous message-passing systems are employed frequently to implement distributed mechanisms, protocols, and processes. This paper addresses the problem of precise data flow analysis for such systems. To obtain good precision, data flow analysis needs to somehow skip execution paths that read more messages than the number of messages sent so far in the path, as such paths are infeasible at run time. Existing data flow analysis techniques do elide a subset of such infeasible paths, but have the restriction that they admit only finite abstract analysis domains. In this paper we propose a generalization of these approaches to admit infinite abstract analysis domains, as such domains are commonly used in practice to obtain high precision. We have implemented our approach, and have analyzed its performance on a set of 14 benchmarks. On these benchmarks our tool obtains significantly higher precision compared to a baseline approach that does not elide any infeasible paths and to another baseline that elides infeasible paths but admits only finite abstract domains.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_2",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Snigdha",
+        "last_name": "Athaiya",
+        "institution": "Indian Institute of Science Bangalore"
+      },
+      {
+        "first_name": "Raghavan",
+        "last_name": "Komondoor",
+        "institution": "Indian Institute of Science Bangalore"
+      },
+      {
+        "first_name": "K. Narayan",
+        "last_name": "Kumar",
+        "institution": "Chennai Mathematical Institute"
+      }
+    ],
+    "dblp_key": "conf/esop/AthaiyaKK21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_8",
+    "title": "Coupled Relational Symbolic Execution for Differential Privacy",
+    "abstract": "Abstract Differential privacy is a de facto standard in data privacy with applications in the private and public sectors. Most of the techniques that achieve differential privacy are based on a judicious use of randomness. However, reasoning about randomized programs is difficult and error prone. For this reason, several techniques have been recently proposed to support designer in proving programs differentially private or in finding violations to it. In this work we propose a technique based on symbolic execution for reasoning about differential privacy. Symbolic execution is a classic technique used for testing, counterexample generation and to prove absence of bugs. Here we use symbolic execution to support these tasks specifically for differential privacy. To achieve this goal, we design a relational symbolic execution technique which supports reasoning about probabilistic coupling, a formal notion that has been shown useful to structure proofs of differential privacy. We show how our technique can be used to both verify and find violations to differential privacy.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_8",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Gian Pietro",
+        "last_name": "Farina",
+        "institution": "University at Buffalo, State University of New York"
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Chong",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Gaboardi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/esop/FarinaCG21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_12",
+    "title": "Run-time Complexity Bounds Using Squeezers",
+    "abstract": "Abstract Determining upper bounds on the time complexity of a program is a fundamental problem with a variety of applications, such as performance debugging, resource certification, and compile-time optimizations. Automated techniques for cost analysis excel at bounding the resource complexity of programs that use integer values and linear arithmetic. Unfortunately, they fall short when execution traces become more involved, esp. when data dependencies may affect the termination conditions of loops. In such cases, state-of-the-art analyzers have shown to produce loose bounds, or even no bound at all. We propose a novel technique that generalizes the common notion of recurrence relations based on ranking functions. Existing methods usually unfold one loop iteration, and examine the resulting relations between variables. These relations assist in establishing a recurrence that bounds the number of loop iterations. We propose a different approach, where we derive recurrences by comparing whole traces with whole traces of a lower rank, avoiding the need to analyze the complexity of intermediate states. We offer a set of global properties, defined with respect to whole traces, that facilitate such a comparison, and show that these properties can be checked efficiently using a handful of local conditions. To this end, we adapt state squeezers , an induction mechanism previously used for verifying safety properties. We demonstrate that this technique encompasses the reasoning power of bounded unfolding, and more. We present some seemingly innocuous, yet intricate, examples where previous tools based on cost relations and control flow analysis fail to solve, and that our squeezer-powered approach succeeds.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_12",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Oren",
+        "last_name": "Ish-Shalom",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Shachar",
+        "last_name": "Itzhaky",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Noam",
+        "last_name": "Rinetzky",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Sharon",
+        "last_name": "Shoham",
+        "institution": "Tel Aviv University"
+      }
+    ],
+    "dblp_key": "conf/esop/Ish-ShalomIRS21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_7",
+    "title": "Nested Session Types",
+    "abstract": "Abstract Session types statically describe communication protocols between concurrent message-passing processes. Unfortunately, parametric polymorphism even in its restricted prenex form is not fully understood in the context of session types. In this paper, we present the metatheory of session types extended with prenex polymorphism and, as a result, nested recursive datatypes. Remarkably, we prove that type equality is decidable by exhibiting a reduction to trace equivalence of deterministic first-order grammars. Recognizing the high theoretical complexity of the latter, we also propose a novel type equality algorithm and prove its soundness. We observe that the algorithm is surprisingly efficient and, despite its incompleteness, sufficient for all our examples. We have implemented our ideas by extending the Rast programming language with nested session types. We conclude with several examples illustrating the expressivity of our enhanced type system.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_7",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Ankush",
+        "last_name": "Das",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Henry",
+        "last_name": "DeYoung",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Andreia",
+        "last_name": "Mordido",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Pfenning",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/esop/DasDMP21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_5",
+    "title": "Verified Software Units",
+    "abstract": "Abstract Modularity - the partitioning of software into units of functionality that interact with each other via interfaces - has been the mainstay of software development for half a century. In case of the C language, the main mechanism for modularity is the compilation unit / header file abstraction. This paper complements programmatic modularity for C with modularity idioms for specification and verification in the context of Verifiable C, an expressive separation logic for CompCert . Technical innovations include (i) abstract predicate declarations – existential packages that combine Parkinson &amp; Bierman’s abstract predicates with their client-visible reasoning principles; (ii) residual predicates, which help enforcing data abstraction in callback-rich code; and (iii) an application to pure (Smalltalk-style) objects that connects code verification to model-level reasoning about features such as subtyping, self , inheritance, and late binding. We introduce our techniques using concrete example modules that have all been verified using the Coq proof assistant and combine to fully linked verified programs using a novel, abstraction-respecting component composition rule for Verifiable C.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_5",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Lennart",
+        "last_name": "Beringer",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/esop/Beringer21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_3",
+    "title": "Types for Complexity of Parallel Computation in Pi-Calculus",
+    "abstract": "Abstract Type systems as a technique to analyse or control programs have been extensively studied for functional programming languages. In particular some systems allow to extract from a typing derivation a complexity bound on the program. We explore how to extend such results to parallel complexity in the setting of the pi-calculus, considered as a communication-based model for parallel computation. Two notions of time complexity are given: the total computation time without parallelism (the work) and the computation time under maximal parallelism (the span). We define operational semantics to capture those two notions, and present two type systems from which one can extract a complexity bound on a process. The type systems are inspired both by size types and by input/output types, with additional temporal information about communications.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_3",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Baillot",
+        "institution": "École Normale Supérieure de Lyon"
+      },
+      {
+        "first_name": "Alexis",
+        "last_name": "Ghyselen",
+        "institution": "École Normale Supérieure de Lyon"
+      }
+    ],
+    "dblp_key": "conf/esop/BaillotG21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_11",
+    "title": "For a Few Dollars More - Verified Fine-Grained Algorithm Analysis Down to LLVM",
+    "abstract": "Abstract We present a framework to verify both, functional correctness and worst-case complexity of practically efficient algorithms. We implemented a stepwise refinement approach, using the novel concept of resource currencies to naturally structure the resource analysis along the refinement chain, and allow a fine-grained analysis of operation counts. Our framework targets the LLVM intermediate representation. We extend its semantics from earlier work with a cost model. As case study, we verify the correctness and $$O(n\\log n)$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mrow> <mml:mi>O</mml:mi> <mml:mo>(</mml:mo> <mml:mi>n</mml:mi> <mml:mo>log</mml:mo> <mml:mi>n</mml:mi> <mml:mo>)</mml:mo> </mml:mrow> </mml:math> worst-case complexity of an implementation of the introsort algorithm, whose performance is on par with the state-of-the-art implementation found in the GNU C++ Library.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_11",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Maximilian P. L.",
+        "last_name": "Haslbeck",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Lammich",
+        "institution": "University of Manchester"
+      }
+    ],
+    "dblp_key": "conf/esop/HaslbeckL21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_4",
+    "title": "Checking Robustness Between Weak Transactional Consistency Models",
+    "abstract": "Abstract Concurrent accesses to databases are typically encapsulated in transactions in order to enable isolation from other concurrent computations and resilience to failures. Modern databases provide transactions with various semantics corresponding to different trade-offs between consistency and availability. Since a weaker consistency model provides better performance, an important issue is investigating the weakest level of consistency needed by a given program (to satisfy its specification). As a way of dealing with this issue, we investigate the problem of checking whether a given program has the same set of behaviors when replacing a consistency model with a weaker one. This property known as robustness generally implies that any specification of the program is preserved when weakening the consistency. We focus on the robustness problem for consistency models which are weaker than standard serializability, namely, causal consistency, prefix consistency, and snapshot isolation. We show that checking robustness between these models is polynomial time reducible to a state reachability problem under serializability. We use this reduction to also derive a pragmatic proof technique based on Lipton’s reduction theory that allows to prove programs robust. We have applied our techniques to several challenging applications drawn from the literature of distributed systems and databases.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_4",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Sidi Mohamed",
+        "last_name": "Beillahi",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Ahmed",
+        "last_name": "Bouajjani",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Constantin",
+        "last_name": "Enea",
+        "institution": "Université Paris Cité"
+      }
+    ],
+    "dblp_key": "conf/esop/BeillahiBE21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_13",
+    "title": "Complete trace models of state and control",
+    "abstract": "Abstract We consider a hierarchy of four typed call-by-value languages with either higher-order or ground-type references and with either $$\\mathrm {call/cc}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mrow> <mml:mi>call</mml:mi> <mml:mo>/</mml:mo> <mml:mi>cc</mml:mi> </mml:mrow> </mml:math> or no control operator. Our first result is a fully abstract trace model for the most expressive setting, featuring both higher-order references and $$\\mathrm {call/cc}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mrow> <mml:mi>call</mml:mi> <mml:mo>/</mml:mo> <mml:mi>cc</mml:mi> </mml:mrow> </mml:math> , constructed in the spirit of operational game semantics. Next we examine the impact of suppressing higher-order references and callcc in contexts and provide an operational explanation for the game-semantic conditions known as visibility and bracketing respectively. This allows us to refine the original model to provide fully abstract trace models of interaction with contexts that need not use higher-order references or $$\\mathrm {call/cc}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mrow> <mml:mi>call</mml:mi> <mml:mo>/</mml:mo> <mml:mi>cc</mml:mi> </mml:mrow> </mml:math> . Along the way, we discuss the relationship between error- and termination-based contextual testing in each case, and relate the two to trace and complete trace equivalence respectively. Overall, the paper provides a systematic development of operational game semantics for all four cases, which represent the state-based face of the so-called semantic cube.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_13",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Guilhem",
+        "last_name": "Jaber",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Andrzej S.",
+        "last_name": "Murawski",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/esop/JaberM21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_6",
+    "title": "An Automated Deductive Verification Framework for Circuit-building Quantum Programs",
+    "abstract": "Abstract While recent progress in quantum hardware open the door for significant speedup in certain key areas, quantum algorithms are still hard to implement right, and the validation of such quantum programs is a challenge. In this paper we propose Qbricks , a formal verification environment for circuit-building quantum programs, featuring both parametric specifications and a high degree of proof automation. We propose a logical framework based on first-order logic, and develop the main tool we rely upon for achieving the automation of proofs of quantum specification: PPS, a parametric extension of the recently developed path sum semantics. To back-up our claims, we implement and verify parametric versions of several famous and non-trivial quantum algorithms, including the quantum parts of Shor’s integer factoring , quantum phase estimation (QPE) and Grover’s search.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_6",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Christophe",
+        "last_name": "Chareton",
+        "institution": "Commissariat à l'Énergie Atomique et aux Énergies Alternatives"
+      },
+      {
+        "first_name": "Sébastien",
+        "last_name": "Bardin",
+        "institution": "Commissariat à l'Énergie Atomique et aux Énergies Alternatives"
+      },
+      {
+        "first_name": "François",
+        "last_name": "Bobot",
+        "institution": "Université Paris-Saclay"
+      },
+      {
+        "first_name": "Valentin",
+        "last_name": "Perrelle",
+        "institution": "Commissariat à l'Énergie Atomique et aux Énergies Alternatives"
+      },
+      {
+        "first_name": "Benoît",
+        "last_name": "Valiron",
+        "institution": "Université Paris-Saclay"
+      }
+    ],
+    "dblp_key": "conf/esop/CharetonBBPV21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_9",
+    "title": "Graded Hoare Logic and its Categorical Semantics",
+    "abstract": "Abstract Deductive verification techniques based on program logics (i.e., the family of Floyd-Hoare logics) are a powerful approach for program reasoning. Recently, there has been a trend of increasing the expressive power of such logics by augmenting their rules with additional information to reason about program side-effects. For example, general program logics have been augmented with cost analyses, logics for probabilistic computations have been augmented with estimate measures, and logics for differential privacy with indistinguishability bounds. In this work, we unify these various approaches via the paradigm of grading , adapted from the world of functional calculi and semantics. We propose Graded Hoare Logic (GHL), a parameterisable framework for augmenting program logics with a preordered monoidal analysis. We develop a semantic framework for modelling GHL such that grading, logical assertions (pre- and post-conditions) and the underlying effectful semantics of an imperative language can be integrated together. Central to our framework is the notion of a graded category which we extend here, introducing graded Freyd categories which provide a semantics that can interpret many examples of augmented program logics from the literature. We leverage coherent fibrations to model the base assertion language, and thus the overall setting is also fibrational.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_9",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Marco",
+        "last_name": "Gaboardi",
+        "institution": ""
+      },
+      {
+        "first_name": "Shin-ya",
+        "last_name": "Katsumata",
+        "institution": "National Institute of Informatics"
+      },
+      {
+        "first_name": "Dominic",
+        "last_name": "Orchard",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Tetsuya",
+        "last_name": "Sato",
+        "institution": "Tokyo Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/esop/GaboardiKOS21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_14",
+    "title": "Session Coalgebras: A Coalgebraic View on Session Types and Communication Protocols",
+    "abstract": "Abstract Compositional methods are central to the development and verification of software systems. They allow breaking down large systems into smaller components, while enabling reasoning about the behaviour of the composed system. For concurrent and communicating systems, compositional techniques based on behavioural type systems have received much attention. By abstracting communication protocols as types, these type systems can statically check that programs interact with channels according to a certain protocol, whether the intended messages are exchanged in a certain order. In this paper, we put on our coalgebraic spectacles to investigate session types , a widely studied class of behavioural type systems. We provide a syntax-free description of session-based concurrency as states of coalgebras. As a result, we rediscover type equivalence, duality, and subtyping relations in terms of canonical coinductive presentations. In turn, this coinductive presentation makes it possible to elegantly derive a decidable type system with subtyping for $$\\pi $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mi>π</mml:mi> </mml:math> -calculus processes, in which the states of a coalgebra will serve as channel protocols. Going full circle, we exhibit a coalgebra structure on an existing session type system, and show that the relations and type system resulting from our coalgebraic perspective agree with the existing ones.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_14",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Alex C.",
+        "last_name": "Keizer",
+        "institution": "University of Amsterdam"
+      },
+      {
+        "first_name": "Henning",
+        "last_name": "Basold",
+        "institution": "Leiden University"
+      },
+      {
+        "first_name": "Jorge A.",
+        "last_name": "Pérez",
+        "institution": "Centrum Wiskunde & Informatica"
+      }
+    ],
+    "dblp_key": "conf/esop/KeizerB021",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_16",
+    "title": "Densities of Almost Surely Terminating Probabilistic Programs are Differentiable Almost Everywhere",
+    "abstract": "Abstract We study the differential properties of higher-order statistical probabilistic programs with recursion and conditioning. Our starting point is an open problem posed by Hongseok Yang: what class of statistical probabilistic programs have densities that are differentiable almost everywhere? To formalise the problem, we consider Statistical PCF (SPCF), an extension of call-by-value PCF with real numbers, and constructs for sampling and conditioning. We give SPCF a sampling-style operational semantics à la Borgström et al., and study the associated weight (commonly referred to as the density) function and value function on the set of possible execution traces. Our main result is that almost surely terminating SPCF programs, generated from a set of primitive functions (e.g. the set of analytic functions) satisfying mild closure properties, have weight and value functions that are almost everywhere differentiable. We use a stochastic form of symbolic execution to reason about almost everywhere differentiability. A by-product of this work is that almost surely terminating deterministic (S)PCF programs with real parameters denote functions that are almost everywhere differentiable. Our result is of practical interest, as almost everywhere differentiability of the density function is required to hold for the correctness of major gradient-based inference algorithms.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_16",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Carol",
+        "last_name": "Mak",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "C.-H. Luke",
+        "last_name": "Ong",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Hugo",
+        "last_name": "Paquet",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Dominik",
+        "last_name": "Wagner",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/esop/MakOPW21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_15",
+    "title": "Correctness of Sequential Monte Carlo Inference for Probabilistic Programming Languages",
+    "abstract": "Abstract Probabilistic programming is an approach to reasoning under uncertainty by encoding inference problems as programs. In order to solve these inference problems, probabilistic programming languages (PPLs) employ different inference algorithms, such as sequential Monte Carlo (SMC), Markov chain Monte Carlo (MCMC), or variational methods. Existing research on such algorithms mainly concerns their implementation and efficiency, rather than the correctness of the algorithms themselves when applied in the context of expressive PPLs. To remedy this, we give a correctness proof for SMC methods in the context of an expressive PPL calculus, representative of popular PPLs such as WebPPL, Anglican, and Birch. Previous work have studied correctness of MCMC using an operational semantics, and correctness of SMC and MCMC in a denotational setting without term recursion. However, for SMC inference—one of the most commonly used algorithms in PPLs as of today—no formal correctness proof exists in an operational setting. In particular, an open question is if the resample locations in a probabilistic program affects the correctness of SMC. We solve this fundamental problem, and make four novel contributions: (i) we extend an untyped PPL lambda calculus and operational semantics to include explicit resample terms, expressing synchronization points in SMC inference; (ii) we prove, for the first time, that subject to mild restrictions, any placement of the explicit resample terms is valid for a generic form of SMC inference; (iii) as a result of (ii), our calculus benefits from classic results from the SMC literature: a law of large numbers and an unbiased estimate of the model evidence; and (iv) we formalize the bootstrap particle filter for the calculus and discuss how our results can be further extended to other SMC algorithms.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_15",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Lundén",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Johannes",
+        "last_name": "Borgström",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Broman",
+        "institution": "KTH Royal Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/esop/LundenBB21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_1",
+    "title": "The Decidability of Verification under PS 2.0",
+    "abstract": "Abstract We consider the reachability problem for finite-state multi-threaded programs under the promising semantics () of Lee et al., which captures most common program transformations. Since reachability is already known to be undecidable in the fragment of with only release-acquire accesses (-), we consider the fragment with only relaxed accesses and promises (). We show that reachability under is undecidable in general and that it becomes decidable, albeit non-primitive recursive, if we bound the number of promises. Given these results, we consider a bounded version of the reachability problem. To this end, we bound both the number of promises and of “ view-switches ”, i.e., the number of times the processes may switch their local views of the global memory. We provide a code-to-code translation from an input program under (with relaxed and release-acquire memory accesses along with promises) to a program under SC, thereby reducing the bounded reachability problem under to the bounded context-switching problem under SC. We have implemented a tool and tested it on a set of benchmarks, demonstrating that typical bugs in programs can be found with a small bound.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_1",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Parosh Aziz",
+        "last_name": "Abdulla",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Mohamed Faouzi",
+        "last_name": "Atig",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Adwait",
+        "last_name": "Godbole",
+        "institution": "Indian Institute of Technology Bombay"
+      },
+      {
+        "first_name": "Shankara Narayanan",
+        "last_name": "Krishna",
+        "institution": "Indian Institute of Technology Bombay"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Vafeiadis",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/esop/AbdullaAGKV21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_10",
+    "title": "Do Judge a Test by its Cover - Combining Combinatorial and Property-Based Testing",
+    "abstract": "Abstract Property-based testing uses randomly generated inputs to validate high-level program specifications. It can be shockingly effective at finding bugs, but it often requires generating a very large number of inputs to do so. In this paper, we apply ideas from combinatorial testing , a powerful and widely studied testing methodology, to modify the distributions of our random generators so as to find bugs with fewer tests. The key concept is combinatorial coverage , which measures the degree to which a given set of tests exercises every possible choice of values for every small combination of input features. In its “classical” form, combinatorial coverage only applies to programs whose inputs have a very particular shape—essentially, a Cartesian product of finite sets. We generalize combinatorial coverage to the richer world of algebraic data types by formalizing a class of sparse test descriptions based on regular tree expressions. This new definition of coverage inspires a novel combinatorial thinning algorithm for improving the coverage of random test generators, requiring many fewer tests to catch bugs. We evaluate this algorithm on two case studies, a typed evaluator for System F terms and a Haskell compiler, showing significant improvements in both.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_10",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Harrison",
+        "last_name": "Goldstein",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Hughes",
+        "institution": "Quviq (Sweden)"
+      },
+      {
+        "first_name": "Leonidas",
+        "last_name": "Lampropoulos",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/esop/GoldsteinHLP21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_17",
+    "title": "Graded Modal Dependent Type Theory",
+    "abstract": "Abstract Graded type theories are an emerging paradigm for augmenting the reasoning power of types with parameterizable, fine-grained analyses of program properties. There have been many such theories in recent years which equip a type theory with quantitative dataflow tracking, usually via a semiring-like structure which provides analysis on variables (often called ‘quantitative’ or ‘coeffect’ theories). We present Graded Modal Dependent Type Theory ( Grtt for short), which equips a dependent type theory with a general, parameterizable analysis of the flow of data, both in and between computational terms and types. In this theory, it is possible to study, restrict, and reason about data use in programs and types, enabling, for example, parametric quantifiers and linearity to be captured in a dependent setting. We propose Grtt , study its metatheory, and explore various case studies of its use in reasoning about programs and studying other type theories. We have implemented the theory and highlight the interesting details, including showing an application of grading to optimising the type checking procedure itself.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_17",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Benjamin",
+        "last_name": "Moon",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Harley",
+        "last_name": "Eades",
+        "institution": "Augusta University"
+      },
+      {
+        "first_name": "Dominic",
+        "last_name": "Orchard",
+        "institution": "University of Kent"
+      }
+    ],
+    "dblp_key": "conf/esop/MoonEO21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_19",
+    "title": "Bayesian strategies: probabilistic programs as generalised graphical models",
+    "abstract": "Abstract We introduce Bayesian strategies , a new interpretation of probabilistic programs in game semantics. This interpretation can be seen as a refinement of Bayesian networks. Bayesian strategies are based on a new form of event structure , with two causal dependency relations respectively modelling control flow and data flow. This gives a graphical representation for probabilistic programs which resembles the concrete representations used in modern implementations of probabilistic programming. From a theoretical viewpoint, Bayesian strategies provide a rich setting for denotational semantics. To demonstrate this we give a model for a general higher-order programming language with recursion, conditional statements, and primitives for sampling from continuous distributions and trace re-weighting. This is significant because Bayesian networks do not easily support higher-order functions or conditionals.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_19",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Hugo",
+        "last_name": "Paquet",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/esop/Paquet21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_21",
+    "title": "Query Lifting - Language-integrated query for heterogeneous nested collections",
+    "abstract": "Abstract Language-integrated query based on comprehension syntax is a powerful technique for safe database programming, and provides a basis for advanced techniques such as query shredding or query flattening that allow efficient programming with complex nested collections. However, the foundations of these techniques are lacking: although SQL, the most widely-used database query language, supports heterogeneous queries that mix set and multiset semantics, these important capabilities are not supported by known correctness results or implementations that assume homogeneous collections. In this paper we study language-integrated query for a heterogeneous query language $$\\mathcal {NRC}_{\\lambda }( Set,Bag )$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mrow> <mml:msub> <mml:mi>NRC</mml:mi> <mml:mi>λ</mml:mi> </mml:msub> <mml:mrow> <mml:mo>(</mml:mo> <mml:mi>S</mml:mi> <mml:mi>e</mml:mi> <mml:mi>t</mml:mi> <mml:mo>,</mml:mo> <mml:mi>B</mml:mi> <mml:mi>a</mml:mi> <mml:mi>g</mml:mi> <mml:mo>)</mml:mo> </mml:mrow> </mml:mrow> </mml:math> that combines set and multiset constructs. We show how to normalize and translate queries to SQL, and develop a novel approach to querying heterogeneous nested collections, based on the insight that “local” query subexpressions that calculate nested subcollections can be “lifted” to the top level analogously to lambda-lifting for local function definitions.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_21",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Wilmer",
+        "last_name": "Ricciotti",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Cheney",
+        "institution": "The Alan Turing Institute"
+      }
+    ],
+    "dblp_key": "conf/esop/RicciottiC21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_23",
+    "title": "Sound and Complete Concolic Testing for Higher-order Functions",
+    "abstract": "Abstract Higher-order functions have become a staple of modern programming languages. However, such values stymie concolic testers, as the SMT solvers at their hearts are inherently first-order. This paper lays a formal foundations for concolic testing higher-order functional programs. Three ideas enable our results: (i) our tester considers only program inputs in a canonical form; (ii) it collects novel constraints from the evaluation of the canonical inputs to search the space of inputs with partial help from an SMT solver and (iii) it collects constraints from canonical inputs even when they are arguments to concretized calls. We prove that (i) concolic evaluation is sound with respect to concrete evaluation; (ii) modulo concretization and SMT solver incompleteness, the search for a counter-example succeeds if a user program has a bug and (iii) this search amounts to directed evolution of inputs targeting hard-to-reach corners of the program.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_23",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Shu-Hung",
+        "last_name": "You",
+        "institution": "Northwestern University"
+      },
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "Northwestern University"
+      },
+      {
+        "first_name": "Christos",
+        "last_name": "Dimoulas",
+        "institution": "Northwestern University"
+      }
+    ],
+    "dblp_key": "conf/esop/YouFD21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_18",
+    "title": "Automated Termination Analysis of Polynomial Probabilistic Programs",
+    "abstract": "Abstract The termination behavior of probabilistic programs depends on the outcomes of random assignments. Almost sure termination (AST) is concerned with the question whether a program terminates with probability one on all possible inputs. Positive almost sure termination (PAST) focuses on termination in a finite expected number of steps. This paper presents a fully automated approach to the termination analysis of probabilistic while-programs whose guards and expressions are polynomial expressions. As proving (positive) AST is undecidable in general, existing proof rules typically provide sufficient conditions. These conditions mostly involve constraints on supermartingales. We consider four proof rules from the literature and extend these with generalizations of existing proof rules for (P)AST. We automate the resulting set of proof rules by effectively computing asymptotic bounds on polynomials over the program variables. These bounds are used to decide the sufficient conditions – including the constraints on supermartingales – of a proof rule. Our software tool Amber can thus check AST, PAST, as well as their negations for a large class of polynomial probabilistic programs, while carrying out the termination reasoning fully with polynomial witnesses. Experimental results show the merits of our generalized proof rules and demonstrate that Amber can handle probabilistic programs that are out of reach for other state-of-the-art tools.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_18",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Marcel",
+        "last_name": "Moosbrugger",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "Ezio",
+        "last_name": "Bartocci",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "Joost-Pieter",
+        "last_name": "Katoen",
+        "institution": "RWTH Aachen University"
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Kovács",
+        "institution": "TU Wien"
+      }
+    ],
+    "dblp_key": "conf/esop/MoosbruggerBKK21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_24",
+    "title": "Strong-Separation Logic",
+    "abstract": "Abstract Most automated verifiers for separation logic are based on the symbolic-heap fragment, which disallows both the magic-wand operator and the application of classical Boolean operators to spatial formulas. This is not surprising, as support for the magic wand quickly leads to undecidability, especially when combined with inductive predicates for reasoning about data structures. To circumvent these undecidability results, we propose assigning a more restrictive semantics to the separating conjunction. We argue that the resulting logic, strong-separation logic, can be used for symbolic execution and abductive reasoning just like “standard” separation logic, while remaining decidable even in the presence of both the magic wand and the list-segment predicate—a combination of features that leads to undecidability for the standard semantics.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_24",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Jens",
+        "last_name": "Katelaan",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "Florian",
+        "last_name": "Zuleger",
+        "institution": "TU Wien"
+      }
+    ],
+    "dblp_key": "conf/esop/PagelZ21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_22",
+    "title": "Reverse AD at Higher Types: Pure, Principled and Denotationally Correct",
+    "abstract": "Abstract We show how to define forward- and reverse-mode automatic differentiation source-code transformations or on a standard higher-order functional language. The transformations generate purely functional code, and they are principled in the sense that their definition arises from a categorical universal property. We give a semantic proof of correctness of the transformations. In their most elegant formulation, the transformations generate code with linear types. However, we demonstrate how the transformations can be implemented in a standard functional language without sacrificing correctness. To do so, we make use of abstract data types to represent the required linear types, e.g. through the use of a basic module system.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_22",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Matthijs",
+        "last_name": "Vákár",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/esop/Vakar21",
+    "venue": "esop",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1007/978-3-030-72019-3_20",
+    "title": "Temporal Refinements for Guarded Recursive Types",
+    "abstract": "Abstract We propose a logic for temporal properties of higher-order programs that handle infinite objects like streams or infinite trees, represented via coinductive types. Specifications of programs use safety and liveness properties. Programs can then be proven to satisfy their specification in a compositional way, our logic being based on a type system. The logic is presented as a refinement type system over the guarded $$\\lambda $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:mi>λ</mml:mi></mml:math> -calculus, a $$\\lambda $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:mi>λ</mml:mi></mml:math> -calculus with guarded recursive types. The refinements are formulae of a modal $$\\mu $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:mi>μ</mml:mi></mml:math> -calculus which embeds usual temporal modal logics such as and . The semantics of our system is given within a rich structure, the topos of trees, in which we build a realizability model of the temporal refinement type system.",
+    "date": "2021-01-01",
+    "link": "https://doi.org/10.1007/978-3-030-72019-3_20",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Guilhem",
+        "last_name": "Jaber",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "Riba",
+        "institution": "Université Claude Bernard Lyon 1"
+      }
+    ],
+    "dblp_key": "conf/esop/JaberR21",
+    "venue": "esop",
+    "year": 2021
+  }
+]
