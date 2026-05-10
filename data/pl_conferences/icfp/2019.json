@@ -1,0 +1,1184 @@
+[
+  {
+    "paper_id": "10.1145/3341713",
+    "title": "Simply RaTT: a fitch-style modal calculus for reactive programming without space leaks",
+    "abstract": "Functional reactive programming (FRP) is a paradigm for programming with signals and events, allowing the user to describe reactive programs on a high level of abstraction. For this to make sense, an FRP language must ensure that all programs are causal, and can be implemented without introducing space leaks and time leaks. To this end, some FRP languages do not give direct access to signals, but just to signal functions.<br/><br/>Recently, modal types have been suggested as an alternative approach to ensuring causality in FRP languages in the synchronous case, giving direct access to the signal and event abstractions. This paper presents Simply RaTT, a new modal calculus for reactive programming. Unlike prior calculi, Simply RaTT uses a Fitch-style approach to modal types, which simplifies the type system and makes programs more concise. Echoing a previous result by Krishnaswami for a different language, we devise an operational semantics that safely executes Simply RaTT programs without space leaks.<br/><br/>We also identify a source of time leaks present in other modal FRP languages: The unfolding of fixed points in delayed computations. The Fitch-style presentation allows an easy way to rules out these leaks, which appears not to be possible in the more traditional dual context approach.",
+    "date": "2019-03-14",
+    "link": "https://doi.org/10.1145/3341713",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Bahr",
+        "institution": ""
+      },
+      {
+        "first_name": "Christian Uldal",
+        "last_name": "Graulund",
+        "institution": ""
+      },
+      {
+        "first_name": "Rasmus Ejlers",
+        "last_name": "Møgelberg",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BahrGM19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341719",
+    "title": "Teaching the art of functional programming using automated grading (experience report)",
+    "abstract": "Online programming platforms have immense potential to improve students' educational experience. They make programming more accessible, as no installation is required; and automatic grading facilities provide students with immediate feedback on their code, allowing them to to fix bugs and address errors in their understanding right away. However, these graders tend to focus heavily on the functional correctness of a solution, neglecting other aspects of students' code and thereby causing students to miss out on a significant amount of valuable feedback. In this paper, we recount our experience in using the Learn-OCaml online programming platform to teach functional programming in a second-year university course on programming languages and paradigms. Moreover, we explore how to leverage Learn-OCaml's automated grading infrastructure to make it easy to write more expressive graders that give students feedback on properties of their code beyond simple input/output correctness, in order to effectively teach elements of functional programming style. In particular, we describe our extensions to the Learn-OCaml platform that evaluate students on test quality and code style. By providing these tools and a suite of our own homework problems and associated graders, we aim to promote functional programming education, enhance students' educational experience, and make teaching and learning typed functional programming more accessible to instructors and students alike, in our community and beyond.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341719",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Aliya",
+        "last_name": "Hameer",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Brigitte",
+        "last_name": "Pientka",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HameerP19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341715",
+    "title": "Mixed linear and non-linear recursive types",
+    "abstract": "We describe a type system with mixed linear and non-linear recursive types called LNL-FPC (the linear/non-linear fixpoint calculus). The type system supports linear typing which enhances the safety properties of programs, but also supports non-linear typing as well which makes the type system more convenient for programming. Just like in FPC, we show that LNL-FPC supports type-level recursion which in turn induces term-level recursion. We also provide sound and computationally adequate categorical models for LNL-FPC which describe the categorical structure of the substructural operations of Intuitionistic Linear Logic at all non-linear types, including the recursive ones. In order to do so, we describe a new technique for solving recursive domain equations within the category CPO by constructing the solutions over pre-embeddings. The type system also enjoys implicit weakening and contraction rules which we are able to model by identifying the canonical comonoid structure of all non-linear types. We also show that the requirements of our abstract model are reasonable by constructing a large class of concrete models that have found applications not only in classical functional programming, but also in emerging programming paradigms that incorporate linear types, such as quantum programming and circuit description programming languages.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341715",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Bert",
+        "last_name": "Lindenhovius",
+        "institution": "Tulane University"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Mislove",
+        "institution": "Tulane University"
+      },
+      {
+        "first_name": "Vladimir",
+        "last_name": "Zamdzhiev",
+        "institution": "Université de Lorraine"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LindenhoviusMZ19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341642",
+    "title": "Rebuilding racket on chez scheme (experience report)",
+    "abstract": "We rebuilt Racket on Chez Scheme, and it works well&amp;mdash;as long as we're allowed a few patches to Chez Scheme. DrRacket runs, the Racket distribution can build itself, and nearly all of the core Racket test suite passes. Maintainability and performance of the resulting implementation are good, although some work remains to improve end-to-end performance. The least predictable part of our effort was how big the differences between Racket and Chez Scheme would turn out to be and how we would manage those differences. We expect Racket on Chez Scheme to become the main Racket implementation, and we encourage other language implementers to consider Chez Scheme as a target virtual machine.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341642",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Flatt",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Caner",
+        "last_name": "Derici",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "R. Kent",
+        "last_name": "Dybvig",
+        "institution": "Cisco Systems (United States)"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Keep",
+        "institution": "Cisco Systems (United States)"
+      },
+      {
+        "first_name": "Gustavo E.",
+        "last_name": "Massaccesi",
+        "institution": "University of Buenos Aires"
+      },
+      {
+        "first_name": "Sarah",
+        "last_name": "Spall",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Tobin-Hochstadt",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Jon",
+        "last_name": "Zeppieri",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "journals/pacmpl/FlattDDKMSTZ19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341706",
+    "title": "Higher-order type-level programming in Haskell",
+    "abstract": "Type family applications in Haskell must be fully saturated. This means that all type-level functions have to be first-order, leading to code that is both messy and longwinded. In this paper we detail an extension to GHC that removes this restriction. We augment Haskell’s existing type arrow, |-&gt;|, with an unmatchable arrow, | &gt;|, that supports partial application of type families without compromising soundness. A soundness proof is provided. We show how the techniques described can lead to substantial code-size reduction (circa 80%) in the type-level logic of commonly-used type-level libraries whilst simultaneously improving code quality and readability.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341706",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Csongor",
+        "last_name": "Kiss",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Tony",
+        "last_name": "Field",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Susan",
+        "last_name": "Eisenbach",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KissFEJ19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341710",
+    "title": "Sequential programming for replicated data stores",
+    "abstract": "We introduce Carol, a refinement-typed programming language for replicated data stores. The salient feature of Carol is that it allows programming and verifying replicated store operations modularly , without consideration of other operations that might interleave, and sequentially , without requiring reference to or knowledge of the concurrent execution model. This is in stark contrast with existing systems, which require understanding the concurrent interactions of all pairs of operations when developing or verifying them. The key enabling idea is the consistency guard , a two-state predicate relating the locally-viewed store and the hypothetical remote store that an operation’s updates may eventually be applied to, which is used by the Carol programmer to declare their precise consistency requirements. Guards appear to the programmer and refinement typechecker as simple data pre-conditions, enabling sequential reasoning, while appearing to the distributed runtime as consistency control instructions. We implement and evaluate the Carol system in two parts: (1) the algorithm used to statically translate guards into the runtime coordination actions required to enforce them, and (2) the networked-replica runtime which executes arbitrary operations, written in a Haskell DSL, according to the Carol language semantics.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341710",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nicholas V.",
+        "last_name": "Lewchenko",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Arjun",
+        "last_name": "Radhakrishna",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Akash",
+        "last_name": "Gaonkar",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Pavol",
+        "last_name": "Černý",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LewchenkoRGC19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341686",
+    "title": "Narcissus: correct-by-construction derivation of decoders and encoders from binary formats",
+    "abstract": "It is a neat result from functional programming that libraries of parser combinators can support rapid construction of decoders for quite a range of formats. With a little more work, the same combinator program can denote both a decoder and an encoder. Unfortunately, the real world is full of gnarly formats, as with the packet formats that make up the standard Internet protocol stack. Most past parser-combinator approaches cannot handle these formats, and the few exceptions require redundancy – one part of the natural grammar needs to be hand-translated into hints in multiple parts of a parser program. We show how to recover very natural and nonredundant format specifications, covering all popular network packet formats and generating both decoders and encoders automatically. The catch is that we use the Coq proof assistant to derive both kinds of artifacts using tactics, automatically, in a way that guarantees that they form inverses of each other. We used our approach to reimplement packet processing for a full Internet protocol stack, inserting our replacement into the OCaml-based MirageOS unikernel, resulting in minimal performance degradation.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341686",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Benjamin",
+        "last_name": "Delaware",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Sorawit",
+        "last_name": "Suriyakarn",
+        "institution": "Mayo Hospital"
+      },
+      {
+        "first_name": "Clément",
+        "last_name": "Pit-Claudel",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Qianchuan",
+        "last_name": "Ye",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Chlipala",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/DelawareSPYC19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341643",
+    "title": "Compiling with continuations, or without? whatever",
+    "abstract": "What makes a good compiler IR? In the context of functional languages, there has been an extensive debate on the advantages and disadvantages of continuation-passing-style (CPS). The consensus seems to be that some form of explicit continuations is necessary to model jumps in a functional style, but that they should have a 2nd-class status, separate from regular functions, to ensure efficient code generation. Building on this observation, a recent study from PLDI 2017 proposed a direct-style IR with explicit join points, which essentially represent local continuations, i.e., functions that do not return or escape. While this IR can work well in practice, as evidenced by the implementation of join points in the Glasgow Haskell Compiler (GHC), there still seems to be room for improvement, especially with regard to the way continuations are handled in the course of optimization. In this paper, we contribute to the CPS debate by developing a novel IR with the following features. First, we integrate a control operator that resembles Felleisen’s C , eliminating certain redundant rewrites observed in the previous study. Second, we treat the non-returning and non-escaping aspects of continuations separately, allowing efficient compilation of well-behaved functions defined by the user. Third, we define a selective CPS translation of our IR, which erases control operators while preserving the meaning and typing of programs. These features enable optimizations in both direct style and full CPS, as well as in any intermediate style with selectively exposed continuations. Thus, we change the spectrum of available options from “CPS yes or no” to “as much or as little CPS as you want, when you want it”.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341643",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Youyou",
+        "last_name": "Cong",
+        "institution": "Tokyo Institute of Technology"
+      },
+      {
+        "first_name": "Leo",
+        "last_name": "Osvald",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Grégory M.",
+        "last_name": "Essertel",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Tiark",
+        "last_name": "Rompf",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CongOER19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341711",
+    "title": "Implementing a modal dependent type theory",
+    "abstract": "Modalities are everywhere in programming and mathematics! Despite this, however, there are still significant technical challenges in formulating a core dependent type theory with modalities. We present a dependent type theory MLTT 🔒 supporting the connectives of standard Martin-Löf Type Theory as well as an S4 -style necessity operator. MLTT 🔒 supports a smooth interaction between modal and dependent types and provides a common basis for the use of modalities in programming and in synthetic mathematics. We design and prove the soundness and completeness of a type checking algorithm for MLTT 🔒 , using a novel extension of normalization by evaluation. We have also implemented our algorithm in a prototype proof assistant for MLTT 🔒 , demonstrating the ease of applying our techniques.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341711",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Gratzer",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Sterling",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GratzerSB19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341693",
+    "title": "Simple noninterference from parametricity",
+    "abstract": "In this paper we revisit the connection between parametricity and noninterference. Our primary contribution is a proof of noninterference for a polyvariant variation of the Dependency Core Calculus of in the Calculus of Constructions. The proof is modular: it leverages parametricity for the Calculus of Constructions and the encoding of data abstraction using existential types. This perspective gives rise to simple and understandable proofs of noninterference from parametricity. All our contributions have been mechanised in the Agda proof assistant.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341693",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Algehed",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Jean-Philippe",
+        "last_name": "Bernardy",
+        "institution": "University of Gothenburg"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AlgehedB19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341695",
+    "title": "Coherence of type class resolution",
+    "abstract": "Elaboration-based type class resolution, as found in languages like Haskell, Mercury and PureScript, is generally nondeterministic: there can be multiple ways to satisfy a wanted constraint in terms of global instances and locally given constraints. Coherence is the key property that keeps this sane; it guarantees that, despite the nondeterminism, programs still behave predictably. Even though elaboration-based resolution is generally assumed coherent, as far as we know, there is no formal proof of this property in the presence of sources of nondeterminism, like superclasses and flexible contexts. This paper provides a formal proof to remedy the situation. The proof is non-trivial because the semantics elaborates resolution into a target language where different elaborations can be distinguished by contexts that do not have a source language counterpart. Inspired by the notion of full abstraction, we present a two-step strategy that first elaborates nondeterministically into an intermediate language that preserves contextual equivalence, and then deterministically elaborates from there into the target language. We use an approach based on logical relations to establish contextual equivalence and thus coherence for the first step of elaboration, while the second step’s determinism straightforwardly preserves this coherence property.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341695",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Gert-Jan",
+        "last_name": "Bottu",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Ningning",
+        "last_name": "Xie",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Koar",
+        "last_name": "Marntirosian",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BottuXMS19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341704",
+    "title": "Dependently typed Haskell in industry (experience report)",
+    "abstract": "Recent versions of the Haskell compiler GHC have a number of advanced features that allow many idioms from dependently typed programming to be encoded. We describe our experiences using this \"dependently typed Haskell\" to construct a performance-critical library that is a key component in a number of verification tools. We have discovered that it can be done, and it brings significant value, but also at a high cost. In this experience report, we describe the ways in which programming at the edge of what is expressible in Haskell's type system has brought us value, the difficulties that it has imposed, and some of the ways we coped with the difficulties.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341704",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David Thrane",
+        "last_name": "Christiansen",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Iavor S.",
+        "last_name": "Diatchki",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Dockins",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Joe",
+        "last_name": "Hendrix",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Tristan",
+        "last_name": "Ravitch",
+        "institution": "Galois (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ChristiansenDDH19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341718",
+    "title": "Call-by-need is clairvoyant call-by-value",
+    "abstract": "Call-by-need evaluation, also known as lazy evaluation, provides two key benefits: compositional programming and infinite data. The standard semantics for laziness is Launchbury’s natural semantics DBLP:conf/popl/Launchbury93, which uses a heap to memoise the results of delayed evaluations. However, the stateful nature of this heap greatly complicates reasoning about the operational behaviour of lazy programs. In this article, we propose an alternative semantics for laziness, clairvoyant evaluation , that replaces the state effect with nondeterminism, and prove this semantics equivalent in a strong sense to the standard semantics. We show how this new semantics greatly simplifies operational reasoning, admitting much simpler proofs of a number of results from the literature, and how it leads to the first denotational cost semantics for lazy evaluation.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341718",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jennifer",
+        "last_name": "Hackett",
+        "institution": "University of Nottingham"
+      },
+      {
+        "first_name": "Graham",
+        "last_name": "Hutton",
+        "institution": "University of Nottingham"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HackettH19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341692",
+    "title": "Approximate normalization for gradual dependent types",
+    "abstract": "Dependent types help programmers write highly reliable code. However, this reliability comes at a cost: it can be challenging to write new prototypes in (or migrate old code to) dependently-typed programming languages. Gradual typing makes static type disciplines more flexible, so an appropriate notion of gradual dependent types could fruitfully lower this cost. However, dependent types raise unique challenges for gradual typing. Dependent typechecking involves the execution of program code, but gradually-typed code can signal runtime type errors or diverge. These runtime errors threaten the soundness guarantees that make dependent types so attractive, while divergence spoils the type-driven programming experience. This paper presents GDTL, a gradual dependently-typed language that emphasizes pragmatic dependently-typed programming. GDTL fully embeds both an untyped and dependently-typed language, and allows for smooth transitions between the two. In addition to gradual types we introduce gradual terms , which allow the user to be imprecise in type indices and to omit proof terms; runtime checks ensure type safety. To account for nontermination and failure, we distinguish between compile-time normalization and run-time execution: compile-time normalization is approximate but total, while runtime execution is exact , but may fail or diverge. We prove that GDTL has decidable typechecking and satisfies all the expected properties of gradual languages. In particular, GDTL satisfies the static and dynamic gradual guarantees: reducing type precision preserves typedness, and altering type precision does not change program behavior outside of dynamic type failures. To prove these properties, we were led to establish a novel normalization gradual guarantee that captures the monotonicity of approximate normalization with respect to imprecision.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341692",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Joseph",
+        "last_name": "Eremondi",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "University of Chile"
+      },
+      {
+        "first_name": "Ronald",
+        "last_name": "Garcia",
+        "institution": "University of British Columbia"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/EremondiTG19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341689",
+    "title": "The next 700 compiler correctness theorems (functional pearl)",
+    "abstract": "Compiler correctness is an old problem, with results stretching back beyond the last half-century. Founding the field, John McCarthy and James Painter set out to build a \"completely trustworthy compiler\". And yet, until quite recently, even despite truly impressive verification efforts, the theorems being proved were only about the compilation of whole programs, a theoretically quite appealing but practically unrealistic simplification. For a compiler correctness theorem to assure complete trust, the theorem must reflect the reality of how the compiler will be used. There has been much recent work on more realistic \"compositional\" compiler correctness aimed at proving correct compilation of components while supporting linking with components compiled from different languages using different compilers. However, the variety of theorems, stated in remarkably different ways, raises questions about what researchers even mean by a \"compiler is correct.\" In this pearl, we develop a new framework with which to understand compiler correctness theorems in the presence of linking, and apply it to understanding and comparing this diversity of results. In doing so, not only are we better able to assess their relative strengths and weaknesses, but gain insight into what we as a community should expect from compiler correctness theorems of the future.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341689",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Patterson",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Amal",
+        "last_name": "Ahmed",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/0001A19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341708",
+    "title": "Dijkstra monads for all",
+    "abstract": "This paper proposes a general semantic framework for verifying programs with arbitrary monadic side-effects using Dijkstra monads, which we define as monad-like structures indexed by a specification monad. We prove that any monad morphism between a computational monad and a specification monad gives rise to a Dijkstra monad, which provides great flexibility for obtaining Dijkstra monads tailored to the verification task at hand. We moreover show that a large variety of specification monads can be obtained by applying monad transformers to various base specification monads, including predicate transformers and Hoare-style pre- and postconditions. For defining correct monad transformers, we propose a language inspired by Moggi's monadic metalanguage that is parameterized by a dependent type theory. We also develop a notion of algebraic operations for Dijkstra monads, and start to investigate two ways of also accommodating effect handlers. We implement our framework in both Coq and F*, and illustrate that it supports a wide variety of verification styles for effects such as exceptions, nondeterminism, state, input-output, and general recursion.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341708",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kenji",
+        "last_name": "Maillard",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Danel",
+        "last_name": "Ahman",
+        "institution": "University of Ljubljana"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Atkey",
+        "institution": "University of Strathclyde"
+      },
+      {
+        "first_name": "Guido",
+        "last_name": "Martínez",
+        "institution": "Consejo Nacional de Investigaciones Científicas y Técnicas"
+      },
+      {
+        "first_name": "Cătălin",
+        "last_name": "Hriţcu",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Exequiel",
+        "last_name": "Rivas",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "Inria Chile"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MaillardAAMHRT19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341699",
+    "title": "Synthesizing symmetric lenses",
+    "abstract": "Lenses are programs that can be run both \"front to back\" and \"back to front,\" allowing updates to either their source or their target data to be transferred in both directions. Since their introduction by Foster et al., lenses have been extensively studied, extended, and applied. Recent work has also demonstrated how techniques from type-directed program synthesis can be used to efficiently synthesize a simple class of lenses---so-called bijective lenses over string data---given a pair of types (regular expressions) and a small number of examples. We extend this synthesis algorithm to a much broader class of lenses, called simple symmetric lenses, including all bijective lenses, all of the popular category of \"asymmetric\" lenses, and a rich subset of the more powerful \"symmetric lenses\" proposed by Hofmann et al. Intuitively, simple symmetric lenses allow some information to be present on one side but not the other and vice versa. They are of independent theoretical interest, being the largest class of symmetric lenses that do not rely on persistent internal state. Synthesizing simple symmetric lenses is substantially more challenging than synthesizing bijective lenses: Since some of the information on each side can be \"disconnected\" from the other side, there will, in general, be many lenses that agree with a given example. To guide the search process, we use stochastic regular expressions and ideas from information theory to estimate the amount of information propagated by a candidate lens, generally preferring lenses that propagate more information, as well as user annotations marking parts of the source and target data structures as either irrelevant or essential. We describe an implementation of simple symmetric lenses and our synthesis procedure as extensions to the Boomerang language. We evaluate its performance on 48 benchmark examples drawn from Flash Fill, Augeas, the bidirectional programming literature, and electronic file format synchronization tasks. Our implementation can synthesize each of these lenses in under 30 seconds.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341699",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Anders",
+        "last_name": "Miltner",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Solomon",
+        "last_name": "Maina",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Kathleen",
+        "last_name": "Fisher",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MiltnerMFPWZ19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341717",
+    "title": "An efficient algorithm for type-safe structural diffing",
+    "abstract": "Effectively computing the difference between two version of a source file has become an indispensable part of software development. The de facto standard tool used by most version control systems is the UNIX diff utility, that compares two files on a line-by-line basis without any regard for the structure of the data stored in these files. This paper presents an alternative datatype generic algorithm for computing the difference between two values of any algebraic datatype. This algorithm maximizes sharing between the source and target trees, while still running in linear time. Finally, this paper demonstrates that by instantiating this algorithm to the Lua abstract syntax tree and mining the commit history of repositories found on GitHub, the resulting patches can often be merged automatically, even when existing technology has failed.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341717",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Victor Cacciari",
+        "last_name": "Miraldo",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Wouter",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MiraldoS19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341714",
+    "title": "Quantitative program reasoning with graded modal types",
+    "abstract": "In programming, some data acts as a resource (e.g., file handles, channels) subject to usage constraints. This poses a challenge to software correctness as most languages are agnostic to constraints on data. The approach of linear types provides a partial remedy, delineating data into resources to be used but never copied or discarded, and unconstrained values. Bounded Linear Logic provides a more fine-grained approach, quantifying non-linear use via an indexed-family of modalities. Recent work on coeffect types generalises this idea to graded comonads, providing type systems which can capture various program properties. Here, we propose the umbrella notion of graded modal types, encompassing coeffect types and dual notions of type-based effect reasoning via graded monads. In combination with linear and indexed types, we show that graded modal types provide an expressive type theory for quantitative program reasoning, advancing the reach of type systems to capture and verify a broader set of program properties. We demonstrate this approach via a type system embodied in a fully-fledged functional language called Granule, exploring various examples.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341714",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dominic",
+        "last_name": "Orchard",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Vilem-Benjamin",
+        "last_name": "Liepelt",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Harley",
+        "last_name": "Eades",
+        "institution": "Augusta University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/OrchardLE19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341644",
+    "title": "Lambda calculus with algebraic simplification for reduction parallelization by equational reasoning",
+    "abstract": "Parallel reduction is a major component of parallel programming and widely used for summarization and aggregation. It is not well understood, however, what sorts of nontrivial summarizations can be implemented as parallel reductions. This paper develops a calculus named λ as , a simply typed lambda calculus with algebraic simplification. This calculus provides a foundation for studying parallelization of complex reductions by equational reasoning. Its key feature is δ abstraction. A δ abstraction is observationally equivalent to the standard λ abstraction, but its body is simplified before the arrival of its arguments by using algebraic properties such as associativity and commutativity. In addition, the type system of λ as guarantees that simplifications due to δ abstractions do not lead to serious overheads. The usefulness of λ as is demonstrated on examples of developing complex parallel reductions, including those containing more than one reduction operator, loops with jumps, prefix-sum patterns, and even tree manipulations.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341644",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Akimasa",
+        "last_name": "Morihata",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Morihata19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341687",
+    "title": "Closure conversion is safe for space",
+    "abstract": "We formally prove that closure conversion with flat environments for CPS lambda calculus is correct (preserves semantics) and safe for time and space, meaning that produced code preserves the time and space required for the execution of the source program. We give a cost model to pre- and post-closure-conversion code by formalizing profiling semantics that keep track of the time and space resources needed for the execution of a program, taking garbage collection into account. To show preservation of time and space we set up a general, \"garbage-collection compatible\", binary logical relation that establishes invariants on resource consumption of the related programs, along with functional correctness. Using this framework, we show semantics preservation and space and time safety for terminating source programs, and divergence preservation and space safety for diverging source programs. We formally prove that closure conversion with flat environments for CPS lambda calculus is correct (preserves semantics) and safe for time and space, meaning that produced code preserves the time and space required for the execution of the source program. We give a cost model to pre- and post-closure-conversion code by formalizing profiling semantics that keep track of the time and space resources needed for the execution of a program, taking garbage collection into account. To show preservation of time and space we set up a general, \"garbage-collection compatible\", binary logical relation that establishes invariants on resource consumption of the related programs, along with functional correctness. Using this framework, we show semantics preservation and space and time safety for terminating source programs, and divergence preservation and space safety for diverging source programs. This is the first formal proof of space-safety of a closure-conversion transformation. The transformation and the proof are parts of the CertiCoq compiler pipeline from Coq (Gallina) through CompCert Clight to assembly language. Our results are mechanized in the Coq proof assistant.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341687",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zoe",
+        "last_name": "Paraskevopoulou",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Paraskevopoulou19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341694",
+    "title": "Selective applicative functors",
+    "abstract": "Applicative functors and monads have conquered the world of functional programming by providing general and powerful ways of describing effectful computations using pure functions. Applicative functors provide a way to compose independent effects that cannot depend on values produced by earlier computations, and all of which are declared statically. Monads extend the applicative interface by making it possible to compose dependent effects, where the value computed by one effect determines all subsequent effects, dynamically. This paper introduces an intermediate abstraction called selective applicative functors that requires all effects to be declared statically, but provides a way to select which of the effects to execute dynamically. We demonstrate applications of the new abstraction on several examples, including two industrial case studies.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341694",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Andrey",
+        "last_name": "Mokhov",
+        "institution": "Newcastle University"
+      },
+      {
+        "first_name": "Georgy",
+        "last_name": "Lukyanov",
+        "institution": "Newcastle University"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Meta (United Kingdom)"
+      },
+      {
+        "first_name": "Jeremie",
+        "last_name": "Dimino",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MokhovLMD19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341696",
+    "title": "Relational cost analysis for functional-imperative programs",
+    "abstract": "Relational cost analysis aims at formally establishing bounds on the difference in the evaluation costs of two programs. As a particular case, one can also use relational cost analysis to establish bounds on the difference in the evaluation cost of the same program on two different inputs. One way to perform relational cost analysis is to use a relational type-and-effect system that supports reasoning about relations between two executions of two programs. Building on this basic idea, we present a type-and-effect system, called ARel, for reasoning about the relative cost of array-manipulating, higher-order functional-imperative programs. The key ingredient of our approach is a new lightweight type refinement discipline that we use to track relations (differences) between two mutable arrays. This discipline combined with Hoare-style triples built into the types allows us to express and establish precise relative costs of several interesting programs which imperatively update their data. We have implemented ARel using ideas from bidirectional type checking.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341696",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Weihao",
+        "last_name": "Qu",
+        "institution": "Buffalo State University"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Gaboardi",
+        "institution": "Buffalo State University"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "Garg",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/QuG019",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341685",
+    "title": "Fairness in responsive parallelism",
+    "abstract": "Research on parallel computing has historically revolved around compute-intensive applications drawn from traditional areas such as high-performance computing. With the growing availability and usage of multicore chips, applications of parallel computing now include interactive parallel applications that mix compute-intensive tasks with interaction, e.g., with the user or more generally with the external world. Recent theoretical work on responsive parallelism presents abstract cost models and type systems for ensuring and reasoning about responsiveness and throughput of such interactive parallel programs. In this paper, we extend prior work by considering a crucial metric: fairness. To express rich interactive parallel programs, we allow programmers to assign priorities to threads and instruct the scheduler to obey a notion of fairness. We then propose the fairly prompt scheduling principle for executing such programs; the principle specifies the schedule for multithreaded programs on multiple processors. For such schedules, we prove theoretical bounds on the execution and response times of jobs of various priorities. In particular, we bound the amount, i.e., stretch, by which a low-priority job can be delayed by higher-priority work. We also present an algorithm designed to approximate the fairly prompt scheduling principle on multicore computers, implement the algorithm by extending the Standard ML language, and present an empirical evaluation.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341685",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Stefan K.",
+        "last_name": "Muller",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Westrick",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MullerWA19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341703",
+    "title": "Sound and robust solid modeling via exact real arithmetic and continuity",
+    "abstract": "Algorithms for solid modeling, i.e., Computer-Aided Design (CAD) and computer graphics, are often specified on real numbers and then implemented with finite-precision arithmetic, such as floating-point. The result is that these implementations do not soundly compute the results that are expected from their specifications. We present a new library, StoneWorks, that provides sound and robust solid modeling primitives. We implement StoneWorks in MarshallB, a pure functional programming language for exact real arithmetic in which types denote topological spaces and functions denote continuous maps, ensuring that all programs are sound and robust. We developed MarshallB as an extension of the Marshall language. We also define a new shape representation, compact representation ( K-rep ), that enables constructions such as Minkowski sum and analyses such as Hausdorff distance that are not possible with traditional representations. K-rep is a nondeterminism monad for describing all the points in a shape. With our library, language, and representation together, we show that short StoneWorks programs can specify and execute sound and robust solid modeling algorithms and tasks.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341703",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Benjamin",
+        "last_name": "Sherman",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Jesse",
+        "last_name": "Michel",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Carbin",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ShermanMC19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341701",
+    "title": "Efficient differentiable programming in a functional array-processing language",
+    "abstract": "We present a system for the automatic differentiation (AD) of a higher-order functional array-processing language. The core functional language underlying this system simultaneously supports both source-to-source forward-mode AD and global optimisations such as loop transformations. In combination, gradient computation with forward-mode AD can be as efficient as reverse mode, and that the Jacobian matrices required for numerical algorithms such as Gauss-Newton and Levenberg-Marquardt can be efficiently computed.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341701",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Amir",
+        "last_name": "Shaikhha",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Fitzgibbon",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Dimitrios",
+        "last_name": "Vytiniotis",
+        "institution": "DeepMind (United Kingdom)"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ShaikhhaFVJ19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341707",
+    "title": "A predicate transformer semantics for effects (functional pearl)",
+    "abstract": "Reasoning about programs that use effects can be much harder than reasoning about their pure counterparts. This paper presents a predicate transformer semantics for a variety of effects, including exceptions, state, non-determinism, and general recursion. The predicate transformer semantics gives rise to a refinement relation that can be used to relate a program to its specification, or even calculate effectful programs that are correct by construction.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341707",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Wouter",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Tim",
+        "last_name": "Baanen",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SwierstraB19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341690",
+    "title": "Equations reloaded: high-level dependently-typed functional programming and proving in Coq",
+    "abstract": "Equations is a plugin for the Coq proof assistant which provides a notation for defining programs by dependent pattern-matching and structural or well-founded recursion. It additionally derives useful high-level proof principles for demonstrating properties about them, abstracting away from the implementation details of the function and its compiled form. We present a general design and implementation that provides a robust and expressive function definition package as a definitional extension to the Coq kernel. At the core of the system is a new simplifier for dependent equalities based on an original handling of the no-confusion property of constructors.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341690",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthieu",
+        "last_name": "Sozeau",
+        "institution": "Université Paris Cité"
+      },
+      {
+        "first_name": "Cyprien",
+        "last_name": "Mangin",
+        "institution": "Délégation Paris 7"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SozeauM19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341712",
+    "title": "A reasonably exceptional type theory",
+    "abstract": "Traditional approaches to compensate for the lack of exceptions in type theories for proof assistants have severe drawbacks from both a programming and a reasoning perspective. Pédrot and Tabareau recently extended the Calculus of Inductive Constructions (CIC) with exceptions. The new exceptional type theory is interpreted by a translation into CIC, covering full dependent elimination, decidable type-checking and canonicity. However, the exceptional theory is inconsistent as a logical system. To recover consistency, Pédrot and Tabareau propose an additional translation that uses parametricity to enforce that all exceptions are caught locally. While this enforcement brings logical expressivity gains over CIC, it completely prevents reasoning about exceptional programs such as partial functions. This work addresses the dilemma between exceptions and consistency in a more flexible manner, with the Reasonably Exceptional Type Theory (RETT). RETT is structured in three layers: (a) the exceptional layer, in which all terms can raise exceptions; (b) the mediation layer, in which exceptional terms must be provably parametric; (c) the pure layer, in which terms are non-exceptional, but can refer to exceptional terms. We present the general theory of RETT, where each layer is realized by a predicative hierarchy of universes, and develop an instance of RETT in Coq: the impure layer corresponds to the predicative universe hierarchy, the pure layer is realized by the impredicative universe of propositions, and the mediation layer is reified via a parametricity type class. RETT is the first full dependent type theory to support consistent reasoning about exceptional terms, and the CoqRETT plugin readily brings this ability to Coq programmers.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341712",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Pierre-Marie",
+        "last_name": "Pédrot",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Tabareau",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Hans Jacob",
+        "last_name": "Fehrmann",
+        "institution": "Laboratoire d'Informatique de Paris-Nord"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "Inria Chile"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PedrotTFT19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341688",
+    "title": "Linear capabilities for fully abstract compilation of separation-logic-verified code",
+    "abstract": "Separation logic is a powerful program logic for the static modular verification of imperative programs. However, dynamic checking of separation logic contracts on the boundaries between verified and untrusted modules is hard, because it requires one to enforce (among other things) that outcalls from a verified to an untrusted module do not access memory resources currently owned by the verified module. This paper proposes an approach to dynamic contract checking by relying on support for capabilities, a well-studied form of unforgeable memory pointers that enables fine-grained, efficient memory access control. More specifically, we rely on a form of capabilities called linear capabilities for which the hardware enforces that they cannot be copied. We formalize our approach as a fully abstract compiler from a statically verified source language to an unverified target language with support for linear capabilities. The key insight behind our compiler is that memory resources described by spatial separation logic predicates can be represented at run time by linear capabilities. The compiler is separation-logic-proof-directed: it uses the separation logic proof of the source program to determine how memory accesses in the source program should be compiled to linear capability accesses in the target program. The full abstraction property of the compiler essentially guarantees that compiled verified modules can interact with untrusted target language modules as if they were compiled from verified code as well.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341688",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Thomas Van",
+        "last_name": "Strydonck",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Piessens",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Dominique",
+        "last_name": "Devriese",
+        "institution": "Vrije Universiteit Brussel"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/StrydonckPD19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341698",
+    "title": "Synthesizing differentially private programs",
+    "abstract": "Inspired by the proliferation of data-analysis tasks, recent research in program synthesis has had a strong focus on enabling users to specify data-analysis programs through intuitive specifications, like examples and natural language. However, with the ever-increasing threat to privacy through data analysis, we believe it is imperative to reimagine program synthesis technology in the presence of formal privacy constraints. In this paper, we study the problem of automatically synthesizing randomized, differentially private programs, where the user can provide the synthesizer with a constraint on the privacy of the desired algorithm. We base our technique on a linear dependent type system that can track the resources consumed by a program, and hence its privacy cost. We develop a novel type-directed synthesis algorithm that constructs randomized differentially private programs. We apply our technique to the problems of synthesizing database-like queries as well as recursive differential privacy mechanisms from the literature.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341698",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Calvin",
+        "last_name": "Smith",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Aws",
+        "last_name": "Albarghouthi",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SmithA19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341709",
+    "title": "Mechanized relational verification of concurrent programs with continuations",
+    "abstract": "Concurrent higher-order imperative programming languages with continuations are very flexible and allow for the implementation of sophisticated programming patterns. For instance, it is well known that continuations can be used to implement cooperative concurrency. Continuations can also simplify web server implementations. This, in particular, helps simplify keeping track of the state of server’s clients. However, such advanced programming languages are very challenging to reason about. One of the main challenges in reasoning about programs in the presence of continuations is due to the fact that the non-local flow of control breaks the bind rule, one of the important modular reasoning principles of Hoare logic. In this paper we present the first completely formalized tool for interactive mechanized relational verification of programs written in a concurrent higher-order imperative programming language with continuations (call/cc and throw). We develop novel logical relations which can be used to give mechanized proofs of relational properties. In particular, we prove correctness of an implementation of cooperative concurrency with continuations. In addition, we show that that a rudimentary web server implemented using the continuation-based pattern is contextually equivalent to one implemented without the continuation-based pattern. We introduce context-local reasoning principles for our calculus which allows us to regain modular reasoning principles for the fragment of the language without non-local control flow. These novel reasoning principles can be used in tandem with our (non-context-local) Hoare logic for reasoning about programs that do feature non-local control flow. Indeed, we use the combination of context-local and non-context-local reasoning to simplify reasoning about the examples.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341709",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Amin",
+        "last_name": "Timany",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/TimanyB19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341691",
+    "title": "Cubical agda: a dependently typed programming language with univalence and higher inductive types",
+    "abstract": "Proof assistants based on dependent type theory provide expressive languages for both programming and proving within the same system. However, all of the major implementations lack powerful extensionality principles for reasoning about equality, such as function and propositional extensionality. These principles are typically added axiomatically which disrupts the constructive properties of these systems. Cubical type theory provides a solution by giving computational meaning to Homotopy Type Theory and Univalent Foundations, in particular to the univalence axiom and higher inductive types. This paper describes an extension of the dependently typed functional programming language Agda with cubical primitives, making it into a full-blown proof assistant with native support for univalence and a general schema of higher inductive types. These new primitives make function and propositional extensionality as well as quotient types directly definable with computational content. Additionally, thanks also to copatterns, bisimilarity is equivalent to equality for coinductive types. This extends Agda with support for a wide range of extensionality principles, without sacrificing type checking and constructivity.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341691",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Andrea",
+        "last_name": "Vezzosi",
+        "institution": "IT University of Copenhagen"
+      },
+      {
+        "first_name": "Anders",
+        "last_name": "Mörtberg",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Abel",
+        "institution": "University of Gothenburg"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/VezzosiM019",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3342713",
+    "title": "Lambda: the ultimate sublanguage (experience report)",
+    "abstract": "We describe our experience teaching an advanced typed functional programming course based around the use of System Fω as a programming language.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3342713",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jeremy",
+        "last_name": "Yallop",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Leo",
+        "last_name": "White",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "journals/pacmpl/YallopW19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341702",
+    "title": "From high-level inference algorithms to efficient code",
+    "abstract": "Probabilistic programming languages are valuable because they allow domain experts to express probabilistic models and inference algorithms without worrying about irrelevant details. However, for decades there remained an important and popular class of probabilistic inference algorithms whose efficient implementation required manual low-level coding that is tedious and error-prone. They are algorithms whose idiomatic expression requires random array variables that are latent or whose likelihood is conjugate . Although that is how practitioners communicate and compose these algorithms on paper, executing such expressions requires eliminating the latent variables and recognizing the conjugacy by symbolic mathematics. Moreover, matching the performance of handwritten code requires speeding up loops by more than a constant factor. We show how probabilistic programs that directly and concisely express these desired inference algorithms can be compiled while maintaining efficiency. We introduce new transformations that turn high-level probabilistic programs with arrays into pure loop code. We then make great use of domain-specific invariants and norms to optimize the code, and to specialize and JIT-compile the code per execution. The resulting performance is competitive with manual implementations.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341702",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Rajan",
+        "last_name": "Walia",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "P. J.",
+        "last_name": "Narayanan",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Jacques",
+        "last_name": "Carette",
+        "institution": "McMaster University"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Tobin-Hochstadt",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Chung-chieh",
+        "last_name": "Shan",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WaliaNCTS19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341697",
+    "title": "Fuzzi: a three-level logic for differential privacy",
+    "abstract": "Curators of sensitive datasets sometimes need to know whether queries against the data are differentially private . Two sorts of logics have been proposed for checking this property: (1) type systems and other static analyses, which fully automate straightforward reasoning with concepts like “program sensitivity” and “privacy loss,” and (2) full-blown program logics such as apRHL (an approximate, probabilistic, relational Hoare logic), which support more flexible reasoning about subtle privacy-preserving algorithmic techniques but offer only minimal automation. We propose a three-level logic for differential privacy in an imperative setting and present a prototype implementation called Fuzzi. Fuzzi’s lowest level is a general-purpose logic; its middle level is apRHL; and its top level is a novel sensitivity logic adapted from the linear-logic-inspired type system of Fuzz, a differentially private functional language. The key novelty is a high degree of integration between the sensitivity logic and the two lower-level logics: the judgments and proofs of the sensitivity logic can be easily translated into apRHL; conversely, privacy properties of key algorithmic building blocks can be proved manually in apRHL and the base logic, then packaged up as typing rules that can be applied by a checker for the sensitivity logic to automatically construct privacy proofs for composite programs of arbitrary size. We demonstrate Fuzzi’s utility by implementing four different private machine-learning algorithms and showing that Fuzzi’s checker is able to derive tight sensitivity bounds.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341697",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Hengchu",
+        "last_name": "Zhang",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Edo",
+        "last_name": "Roth",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Haeberlen",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Aaron",
+        "last_name": "Roth",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhangRHP019",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341705",
+    "title": "A role for dependent types in Haskell",
+    "abstract": "Modern Haskell supports zero-cost coercions, a mechanism where types that share the same run-time representation may be freely converted between. To make sure such conversions are safe and desirable, this feature relies on a mechanism of roles to prohibit invalid coercions. In this work, we show how to incorporate roles into dependent types systems and prove, using the Coq proof assistant, that the resulting system is sound. We have designed this work as a foundation for the addition of dependent types to the Glasgow Haskell Compiler, but we also expect that it will be of use to designers of other dependently-typed languages who might want to adopt Haskell’s safe coercions feature.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341705",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Pritam",
+        "last_name": "Choudhury",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Antoine",
+        "last_name": "Voizard",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": "Bryn Mawr College"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WeirichCVE19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341700",
+    "title": "Demystifying differentiable programming: shift/reset the penultimate backpropagator",
+    "abstract": "Deep learning has seen tremendous success over the past decade in computer vision, machine translation, and gameplay. This success rests crucially on gradient-descent optimization and the ability to “learn” parameters of a neural network by backpropagating observed errors. However, neural network architectures are growing increasingly sophisticated and diverse, which motivates an emerging quest for even more general forms of differentiable programming, where arbitrary parameterized computations can be trained by gradient descent. In this paper, we take a fresh look at automatic differentiation (AD) techniques, and especially aim to demystify the reverse-mode form of AD that generalizes backpropagation in neural networks. We uncover a tight connection between reverse-mode AD and delimited continuations, which permits implementing reverse-mode AD purely via operator overloading and without managing any auxiliary data structures. We further show how this formulation of AD can be fruitfully combined with multi-stage programming (staging), leading to an efficient implementation that combines the performance benefits of deep learning frameworks based on explicit reified computation graphs (e.g., TensorFlow) with the expressiveness of pure library approaches (e.g., PyTorch).",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341700",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Fei",
+        "last_name": "Wang",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Zheng",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Decker",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Xilun",
+        "last_name": "Wu",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Grégory M.",
+        "last_name": "Essertel",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Tiark",
+        "last_name": "Rompf",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WangZDWER19",
+    "venue": "icfp",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3341716",
+    "title": "A mechanical formalization of higher-ranked polymorphic type inference",
+    "abstract": "Modern functional programming languages, such as Haskell or OCaml, use sophisticated forms of type inference. While an important topic in the Programming Languages research, there is little work on the mechanization of the metatheory of type inference in theorem provers. In particular we are unaware of any complete formalization of the type inference algorithms that are the backbone of modern functional languages. This paper presents the first full mechanical formalization of the metatheory for higher-ranked polymorphic type inference. The system that we formalize is the bidirectional type system by Dunfield and Krishnaswami (DK). The DK type system has two variants (a declarative and an algorithmic one) that have been manually proven sound , complete and decidable . We present a mechanical formalization in the Abella theorem prover of DK’s declarative type system with a novel algorithmic system. We have a few reasons to use a new algorithm. Firstly, our new algorithm employs worklist judgments , which precisely capture the scope of variables and simplify the formalization of scoping in a theorem prover. Secondly, while DK’s original formalization comes with very well-written manual proofs, there are several details missing and some incorrect proofs, which complicate the task of writing a mechanized proof. Despite the use of a different algorithm we prove the same results as DK, although with significantly different proofs and proof techniques. Since such type inference algorithms are quite subtle and have a complex metatheory, mechanical formalizations are an important advance in type-inference research.",
+    "date": "2019-07-26",
+    "link": "https://doi.org/10.1145/3341716",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jinxu",
+        "last_name": "Zhao",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhaoOS19",
+    "venue": "icfp",
+    "year": 2019
+  }
+]

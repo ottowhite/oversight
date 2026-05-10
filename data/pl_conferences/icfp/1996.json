@@ -1,0 +1,572 @@
+[
+  {
+    "paper_id": "10.1145/232627.232633",
+    "title": "Lag, Drag, Void and Use - Heap Profiling and Space-Efficient Compilation Revisited",
+    "abstract": "The context for this paper is functional computation by graph reduction. Our overall aim is more efficient use of memory. The specific topic is the detection of dormant cells in the live graph --- those retained in heap memory though not actually playing a useful role in computation. We describe a profiler that can identify heap consumption by such 'useless' cells. Unlike heap profilers based on traversals of the live heap, this profiler works by examining cells postmortem. The new profiler has revealed a surprisingly large proportion of 'useless' cells, even in some programs that previously seemed space-efficient such as the boot-strapping Haskell compiler nhc.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232633",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Niklas",
+        "last_name": "Röjemo",
+        "institution": "University of York"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "Runciman",
+        "institution": "University of York"
+      }
+    ],
+    "dblp_key": "conf/icfp/RojemoR96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232654",
+    "title": "Mixin Modules",
+    "abstract": "Mixin modules are proposed as a new construct for module languages, allowing recursive definitions to span module boundaries. Mixin modules are proposed specifically for the Standard ML language. Several applications are described, including the resolution of cycles in module import dependency graphs, as well as functionality related to Haskell type classes and CLOS generic functions, though without any complications to the core language semantics. Mixin modules require no changes to the core ML type system, and only a very minor change to its run-time semantics. A type system and reduction semantics are provided, and the former is verified to be sound relative to the latter.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232654",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dominic",
+        "last_name": "Duggan",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Constantinos",
+        "last_name": "Sourelis",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/DugganS96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232644",
+    "title": "The Semantics of Scheme with Future",
+    "abstract": "We present the formal semantics of future in a Scheme-like language which has both side-effects and first-class continuations. Correctness is established by proving that programs annotated by future have the same observable behaviour as their non-annotated counterparts, even though evaluation may be parallel.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232644",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Luc",
+        "last_name": "Moreau",
+        "institution": "University of Southampton"
+      }
+    ],
+    "dblp_key": "conf/icfp/Moreau96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232635",
+    "title": "Storage Use Analysis and its Applications",
+    "abstract": "In this paper we present a new program analysis method which we call Storage Use Analysis. This analysis deduces how objects are used by the program and allows the optimization of their allocation. This analysis can be applied to both statically typed languages (e.g. ML) and latently typed languages (e.g. Scheme). It handles side-effects, higher order functions, separate compilation and does not require CPS transformation. We show the application of our analysis to two important optimizations: stack allocation and unboxing. The first optimization replaces some heap allocations by stack allocations for user and system data storage (e.g. lists, vectors, procedures). The second optimization avoids boxing some objects. This analysis and associated optimitations have been implemented in the Bigloo Scheme/ML compiler. Experimental results show that for many allocation intensive programs we get a significant speedup. In particular, numerically intensive programs are almost 20 times faster because floating point numbers are unboxed and no longer heap allocated.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232635",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Serrano",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Feeley",
+        "institution": "Université de Montréal"
+      }
+    ],
+    "dblp_key": "conf/icfp/SerranoF96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232630",
+    "title": "Let-floating: Moving Bindings to Give Faster Programs",
+    "abstract": "Virtually every compiler performs transformations on the program it is compiling in an attempt to improve efficiency. Despite their importance, however, there have been few systematic attempts to categorise such transformations and measure their impact.In this paper we describe a particular group of transformations --- the \"let-floating\" transformations --- and give detailed measurements of their effect in an optimizing compiler for the non-strict functional language Haskell. Let-floating has not received much explicit attention in the past, but our measurements show that it is an important group of transformations (at least for lazy languages), offering a reduction of more than 30% in heap allocation and 15% in execution time.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232630",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Will",
+        "last_name": "Partain",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "André L. M.",
+        "last_name": "Santos",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/icfp/JonesPS96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232638",
+    "title": "Analysis and Caching of Dependencies",
+    "abstract": "We address the problem of dependency analysis and caching in the context of the &lambda;-calculus. The dependencies of a &lambda;-term are (roughly) the parts of the &lambda;-term that contribute to the result of evaluating it. We introduce a mechanism for keeping track of dependencies, and discuss how to use these dependencies in caching.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232638",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Martı́n",
+        "last_name": "Abadi",
+        "institution": ""
+      },
+      {
+        "first_name": "Butler",
+        "last_name": "Lampson",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Jean-Jacques",
+        "last_name": "Lévy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/AbadiLL96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232632",
+    "title": "Functional Back-Ends within the Lambda-Sigma Calculus",
+    "abstract": "We dene a weak -calculus, w , as a subsystem of the full -calculus with explicit substitutions * . We claim that w could be the archetypal output language of functional compilers, just as the -calculus is their universal input language. Furthermore, * could be the adequate theory to establish the correctness of simplied functional compilers. Here, we illustrate these claims by proving the correctness of two simplied compilers and runtime systems modeled as abstract machines. We rst present the Krivine machine. Then, we give the rst formal proofs of Cardelli&amp;apos;s FAM and of its compiler. 1 Introduction It is folklore to dene a compiler as a translator from a highlevel language intended for humans to a low-level language intended for machines. For mostly theoretical issues such as semantics or correctness of high-level program transformations, real programming languages are too complicated and lack generality. Instead, it is convenient to use an archetypal language, sta...",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232632",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Thérèse",
+        "last_name": "Hardin",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Luc",
+        "last_name": "Maranget",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Bruno",
+        "last_name": "Pagano",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/HardinMP96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232642",
+    "title": "Simplifying Subtyping Constraints",
+    "abstract": "This paper studies type inference for a functional, ML-style language with subtyping, and focuses on the issue of simplifying inferred constraint sets. We propose a powerful notion of entailment between constraint sets, as well as an algorithm to check it, which we prove to be sound. The algorithm, although very powerful in practice, is not complete. We also introduce two new typing rules which allow simplifying constraint sets. These rules give very good practical results.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232642",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/Pottier96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232637",
+    "title": "Deriving Structural Hylomorphisms From Recursive Definitions",
+    "abstract": "... this paper, we propose an algorithm which can automatically turn all practical recursive definitions into structural hylomorphisms making program fusion be easily applied.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232637",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zhenjiang",
+        "last_name": "Hu",
+        "institution": "Tokyo University of Information Sciences"
+      },
+      {
+        "first_name": "Hideya",
+        "last_name": "Iwasaki",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Masato",
+        "last_name": "Takeichi",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/icfp/HuIT96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232648",
+    "title": "A Probabilistic Approach to the Problem of Automatic Selection of Data Representations",
+    "abstract": "The designs and implementations of efficient aggregate data structures have been important issues in functional programming. It is not clear how to select a good representation for an aggregate when access patterns to the aggregate are highly variant, or even unpredictable. Previous approaches rely on compile--time analyses or programmer annotations. These methods can be unreliable because they try to predict a program's behavior before it is executed.We propose a probabilistic approach, which is based on Markov processes, for automatic selection of data representations. The selection is modeled as a random process moving in a graph with weighted edges. The proposed approach employs coin tossing at run--time to help choosing a suitable data representation. The transition probability function used by the coin tossing is constructed in a simple and common way from a measured cost function. We show that, under this setting, random selections of data representations can be quite effective. The probabilistic approach is used to implement bag aggregates, and the performance results are compared to those of deterministic selection strategies.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232648",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Tyng–Ruey",
+        "last_name": "Chuang",
+        "institution": "Institute of Information Science, Academia Sinica"
+      },
+      {
+        "first_name": "Wen-Liang",
+        "last_name": "Hwang",
+        "institution": "Institute of Information Science, Academia Sinica"
+      }
+    ],
+    "dblp_key": "conf/icfp/ChuangH96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232650",
+    "title": "A Provable Time and Space Efficient Implementation of NESL",
+    "abstract": "In this paper we prove time and space bounds for the implementation of the programming language NESL on various parallel machine models. NESL is a sugared typed &lambda;-calculus with a set of array primitives and an explicit parallel map over arrays. Our results extend previous work on provable implementation bounds for functional languages by considering space and by including arrays. For modeling the cost of NESL we augment a standard call-by-value operational semantics to return two cost measures: a DAG representing the sequential dependence in the computation, and a measure of the space taken by a sequential implementation. We show that a NESL program with w work (nodes in the DAG), d depth (levels in the DAG), and s sequential space can be implemented on a p processor butterfly network, hypercube, or CRCW PRAM using O(w/p + d log p) time and O(s + dp log p) reachable space.1 For programs with sufficient parallelism these bounds are optimal in that they give linear speedup and use space within a constant factor of the sequential space.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232650",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Guy E.",
+        "last_name": "Blelloch",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Greiner",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/BlellochG96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232652",
+    "title": "Enriching the Lambda Calculus with Contexts: Toward a Theory of Incremental Program Construction",
+    "abstract": "A context in the &lambda;-calculus is a term with some holes. Hole filling differs from &beta;-substitution in that name capture is intended. This seemingly simple feature transcends static scope and lies at the heart of modular and object-oriented programming. Still, the name capture feature of hole filling is at odds with hygienic &beta;-substitution. In this paper we conservatively extend the &lambda;-calculus to incorporate the notion of contexts without jeopardizing the &beta;-rule. We perceive contexts as source code and &lambda;-terms as target code. Context filling is encoded as compilation operations and the enriched calculus is a theory of separate compilation and incremental program construction. Linking of separately-developed programs is done by coherent renaming of free variables.We apply our context-enriching schema to the &lambda;-calculus extended with definitions and devise a calculus of first-class modules. We show that module linking can be modeled solely by the renaming of import and export variables. We add relinkable variable references to model virtual method references essential to object systems.The inclusion of contexts introduces parameters whose linking is based on names (symbols, identifiers, or keywords). We simulate in the context-enriched calculus other extensions of the &lambda;-calculus with name-based programming notions such as Dami's &lambda;-calculus with names, A&iuml;t-Kaci and Garrigue's label-selective &lambda;-calculus, Lamping's transparent data parameters, and our quasi-static procedures.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232652",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Shinn-Der",
+        "last_name": "Lee",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Daniel P.",
+        "last_name": "Friedman",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/icfp/LeeF96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232636",
+    "title": "The Role of Lazy Evaluation in Amortized Data Structures",
+    "abstract": "Traditional techniques for designing and analyzing amortized data structures in an imperative setting are of limited use in a functional setting because they apply only to single-threaded data structures, yet functional data structures can be non-single-threaded. In earlier work, we showed how lazy evaluation supports functional amortized data structures and described a technique (the banker's method) for analyzing such data structures. In this paper, we present a new analysis technique (the physicist's method) and show how one can sometimes derive a worst-case data structure from an amortized data structure by appropriately scheduling the premature execution of delayed components. We use these techniques to develop new implementations of FIFO queues and binomial queues.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232636",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Okasaki",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Okasaki96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232653",
+    "title": "Sharing Code through First-class Environments",
+    "abstract": "Nowadays the Net is one of the most obvious driving forces. Yet, to consider it as one global store through which values and code may be shared is still immature. This paper suggests first-class environments as a means to achieve that goal in a multi-user Scheme framework. We propose two new special forms with a simple semantics. Our model allows precise control over environments (including extensible environments) and does not require (but does not prevent) reflective operations.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232653",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Queinnec",
+        "institution": "Laboratoire d'Informatique de l'École Polytechnique"
+      },
+      {
+        "first_name": "David De",
+        "last_name": "Roure",
+        "institution": "University of Southampton"
+      }
+    ],
+    "dblp_key": "conf/icfp/QueinnecR96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232640",
+    "title": "Inductive, Coinductive, and Pointed Types",
+    "abstract": "An extension of the simply-typed lambda calculus is presented which contains both well-structured inductive and coinductive types, and which also identifies a class of types for which general recursion is possible. The motivations for this work are certain natural constructions in category theory, in particular the notion of an algebraically bounded functor, due to Freyd. We propose that this is a particularly elegant core language in which to work with recursive objects, since the potential for general recursion is contained in a single operator which interacts well with the facilities for bounded iteration and coiteration.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232640",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Brian",
+        "last_name": "Howard",
+        "institution": "Kansas State University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Howard96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232641",
+    "title": "A New Look to Pattern Matching in Abstract Data Types",
+    "abstract": "In this paper we present a construction smoothly integrating pattern matching with abstract data types. We review some previous proposals [19, 23, 20, 6, 1] and their drawbacks, and show how our proposal can solve them. In particular we pay attention to equational reasoning about programs containing this new facility. We also give its formal syntax and semantics, as well as some guidelines in order to compile the construction efficiently.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232641",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Pedro Palao",
+        "last_name": "Gostanza",
+        "institution": "Universidad Complutense de Madrid"
+      },
+      {
+        "first_name": "Ricardo",
+        "last_name": "Peña",
+        "institution": "Universidad Complutense de Madrid"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Núñez",
+        "institution": "Universidad Complutense de Madrid"
+      }
+    ],
+    "dblp_key": "conf/icfp/GostanzaPN96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232649",
+    "title": "A Theory of Weak Bisimulation for Core CML",
+    "abstract": "Concurrent ML (CML) is an extension of Standard ML of New Jersey with concurrent features similar to those of process algebra. In this papes we build upon John Reppy's reduction semantics for CML by constructing a compositional operational semantics for a fragment of CML, based on higher-order process algebra. We use this to build a semantic theory for CML, based on weak bisimulation equivalence. We give some small examples of proofs about CML expressions, and show that our semantics corresponds to Reppy's up to weak first-order bisimulation.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232649",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "William",
+        "last_name": "Ferreira",
+        "institution": "University of Sussex"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Hennessy",
+        "institution": "University of Sussex"
+      },
+      {
+        "first_name": "Alan",
+        "last_name": "Jeffrey",
+        "institution": "University of Sussex"
+      }
+    ],
+    "dblp_key": "conf/icfp/FerreiraHJ96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232643",
+    "title": "Complexity of Kernel Fun Subtype Checking",
+    "abstract": "System kernel Fun is an abstract version of the system Fun defined by Cardelli's and Wegner's seminal paper [CW85], and is strictly related to system F&le;. Extensions of these two systems are currently the basis of most proposals for strong type systems for object-oriented languages.We study here the problem of subtype checking for system kernel Fun, presenting the following results. We show that the standard kernel Fun subtype checking algorithm has an exponential complexity, and generates an exponential number of different subproblems. We then present a new subtype checking algorithm which has a polynomial complexity. In the process we study how variable names can be managed by a kernel Fun subtype checker which is not based on the De Bruijn encoding, and we show how to perform kernel Fun subtype checking with a \"constraint generating\" technique.The algorithm we give is described by a set of type rules, which we prove to be equivalent to the standard one. This new presentation of kernel Fun type system is characterized by a \"multiplicative\" behaviour, and it may open the way to new presentations for system F&le; as well.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232643",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Giorgio",
+        "last_name": "Ghelli",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/Ghelli96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232651",
+    "title": "Synchronous Kahn Networks",
+    "abstract": "Synchronous data-flow is a programming paradigm which has been successfully applied in reactive systems. In this context, it can be characterized as some class of static bounded memory data-flow networks. In particular, these networks are not recursively defined, and obey some kind of \"synchronous\" constraints (clock calculus). Based on Kahn's relationship between data-flow and stream functions, the synchronous constraints can be related to Wadler's listlessness, and can be seen as sufficient conditions ensuring listless evaluation. As a by-product, those networks enjoy efficient compiling techniques. In this paper, we show that it is possible to extend the class of static synchronous data-flow to higher order and dynamical networks, thus giving sense to a larger class of synchronous data-flow networks.This is done by extending both the synchronous operational semantics, the clock calculus and the compiling technique of static data-flow networks, to these more general networks.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232651",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Caspi",
+        "institution": "Verimag"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Pouzet",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/icfp/CaspiP96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232631",
+    "title": "A Reflection on Call-by-Value",
+    "abstract": "A number of compilers exploit the following strategy: translate a term to continuation-passing style (CPS) and optimize the resulting term using a sequence of reductions. Recent work suggests that an alternative strategy is superior: optimize directly in an extended source calculus. We suggest that the appropriate relation between the source and target calculi may be captured by a special case of a Galois connection known as a reflection. Previous work has focused on the weaker notion of an equational correspondence, which is based on equality rather than reduction. We show that Moggi's monad translation and Plotkin's CPS translation can both be regarded as reflections, and thereby strengthen a number of results in the literature.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232631",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Philip",
+        "last_name": "Wadler",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/icfp/SabryW96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232639",
+    "title": "Optimality and Inefficiency: What Isn&apos;t a Cost Model of the Lambda Calculus?",
+    "abstract": "We investigate the computational efficiency of the sharing graphs of Lamping [Lam90], Gonthier, Abadi, and L&eacute;vy [GAL92], and Asperti [Asp94], designed to effect so-called optimal evaluation, with the goal of reconciling optimality, efficiency, and the clarification of reasonable cost models for the &lambda;-calculus. Do these graphs suggest reasonable cost models for the &lambda;-calculus? If they are optimal, are they efficient?We present a brief survey of these optimal evaluators, identifying their common characteristics, as well as their shared failures. We give a lower bound on the efficiency of sharing graphs by identifying a class of &lambda;-terms that are normalizable in &Theta;(n) time, and require &Theta;(n) \"fan interactions,\" but require &Omega;(2n) bookkeeping steps. For [GAL92], we analyze this anomaly in terms of the dynamic maintenance of deBruijn indices for intermediate terms. We give another lower bound showing that sharing graphs can do &Omega;(2n) work (via fan interactions) on graphs that have no &beta;-redexes. Finally, we criticize a proposed cost model for &lambda;-calculus given by Frandsen and Sturtivant [FS91], showing by example that the model does not take account of the size of intermediate forms. Our example is a term requiring &Theta;(2n) steps while having proposed cost &Theta;(n). We propose some cost models that both reflect this parameter, and simultaneously reconcile key concepts from optimal reduction.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232639",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Julia L.",
+        "last_name": "Lawall",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "Harry G.",
+        "last_name": "Mairson",
+        "institution": "Brandeis University"
+      }
+    ],
+    "dblp_key": "conf/icfp/LawallM96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232646",
+    "title": "pHluid: The Design of a Parallel Functional Language Implementation on Workstations",
+    "abstract": "This paper describes the distributed memory implementation of a shared memory parallel functional language. The language is Id, an implicitly parallel, mostly functional language that is currently evolving into a dialect of Haskell. The target is a distributed memory machine, because we expect these to be the most widely available parallel platforms in the future. The difficult problem is to bridge the gap between the shared memory language model and the distributed memory machine model. The language model assumes that all data is uniformly accessible, whereas the machine has a severe memory hierarchy: a processor's access to remote memory (using explicit communication) is orders of magnitude slower than its access to local memory. Thus, avoiding communication is crucial for good performance. The Id language, and its general dataflow-inspierd compilation to multithreaded code are described elsewhere. In this paper, we focus on our new parallel runtime system and its features for avoiding communication and for tolerating its latency when necessary: multithreading, scheduling and load balancing; the distributed heap model and distributed coherent cacheing, and parallel garbage collection. We have completed the first implementation, and we present some preliminary performance mearsurements.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232646",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Rishiyur S.",
+        "last_name": "Nikhil",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/FlanaganN96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232645",
+    "title": "First-Class Synchronization Barriers",
+    "abstract": "Our purpose is to promote a second-class mechanism --- the synchronization barrier --- to a first-class value. We introduce the synchron, a novel synchronization mechanism that enables the coordination of a dynamically varying set of concurrent threads that share access to a first-class synchronization token. We demonstrate how synchrons can be used to modularly manage resources in cases where existing techniques are either inapplicable or non-modular. In particular, synchronized lazy aggregates enable the first space-efficient aggregate data decomposition of a wide range of algorithms. We also introduce explicit-demand graph reduction, a new semantic framework that we have developed to describe concurrency and explain the meaning of a synchron rendezvous.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232645",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Franklyn",
+        "last_name": "Turbak",
+        "institution": "Wellesley College"
+      }
+    ],
+    "dblp_key": "conf/icfp/Turbak96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232647",
+    "title": "Cogen in Six Lines",
+    "abstract": "We have designed and implemented a program-generator generator (PGG) for an untyped higher-order functional programming language. The program generators perform continuation-based multi-level offline specialization and thus combine the most powerful and general offline partial evaluation techniques. The correctness of the PGG is ensured by deriving it from a multi-level specialize. Our PGG is extremely simple to implement due to the use of multi-level techniques and higher-order abstract syntax.",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232647",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "conf/icfp/Thiemann96",
+    "venue": "icfp",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/232627.232634",
+    "title": "Static and Dynamic Partitioning of Pointers as Links and Threads",
+    "abstract": "Identifying some pointers as invisible threads, for the purposes of storage management, is a generalization from several widely used programming conventions, like threaded trees. The necessary invariant is that nodes that are accessible (without threads) emit threads only to other accessible nodes. Dynamic tagging or static typing of threads ameliorates storage recycling both in functional and imperative languages. We have seen the distinction between threads and links sharpen both hardware- and software-supported storage management in Scheme, and also in C. Certainly, therefore, implementations of languages that already have abstract management and concrete typing, should detect and use this as a new static type. Categories and subject descriptors: D.3.3 [Programming Languages]: Language Constructs and Features---data types and structures, dynamic storage management, abstract data types; E.2 [Data Storage Representations ]: Linked representations; B.3.2 [Memory Structures]: Design S...",
+    "date": "1996-06-15",
+    "link": "https://doi.org/10.1145/232627.232634",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David S.",
+        "last_name": "Wise",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Joshua",
+        "last_name": "Walgenbach",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/icfp/WiseW96",
+    "venue": "icfp",
+    "year": 1996
+  }
+]

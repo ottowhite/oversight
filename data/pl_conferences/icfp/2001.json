@@ -1,0 +1,534 @@
+[
+  {
+    "paper_id": "10.1145/507635.507661",
+    "title": "Functional Array Fusion",
+    "abstract": "This paper introduces a new approach to optimizing array algorithms in functional languages. We are specifically aiming at an efficient implementation of irregular array algorithms that are hard to implement in conventional array languages such as Fortran. We optimize the storage layout of arrays containing complex data structures and reduce the running time of functions operating on these arrays by means of equational program transformations. In particular, this paper discusses a novel form of combinator loop fusion, which by removing intermediate structures optimizes the use of the memory hierarchy. We identify a combinator named loop P that provides a general scheme for iterating over an array and that in conjunction with an array constructor replicate P is sufficient to express a wide range of array algorithms. On this basis, we define equational transformation rules that combine traversals of loop P and replicate P as well as sequences of applications of loop P into a single loop P traversal. Our approach naturally generalizes to a parallel implementation and includes facilities for optimizing load balancing and communication. A prototype implementation based on the rewrite rule pragma of the Glasgow Haskell Compiler is significantly faster than standard Haskell arrays and approaches the speed of hand coded C for simple examples.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507661",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Gabriele",
+        "last_name": "Keller",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/icfp/ChakravartyK01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507659",
+    "title": "Compositional Explanation of Types and Algorithmic Debugging of Type Errors",
+    "abstract": "The type systems of most typed functional programming languages are based on the Hindley-Milner type system. A practical problem with these type systems is that it is often hard to understand why a program is not type correct or a function does not have the intended type. We suggest that at the core of this problem is the difficulty of explaining why a given expression has a certain type. The type system is not defined compositionally. We propose to explain types using a variant of the Hindley-Milner type system that defines a compositional type explanation graph of principal typing. We describe how the programmer understands types by interactive navigation through the explanation graph. Furthermore, the explanation graph can be the foundation for algorithmic debugging of type errors, that is, semi-automatic localisation of the source of a type error without even having to understand the type inference steps. We implemented a prototype of a tool to explore the usefulness of the proposed methods.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507659",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Olaf",
+        "last_name": "Chitil",
+        "institution": "University of York"
+      }
+    ],
+    "dblp_key": "conf/icfp/Chitil01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507640",
+    "title": "Functioning without Closure: Type-Safe Customized Function Representations for Standard ML",
+    "abstract": "The CIL compiler for core Standard ML compiles whole ML programs using a novel typed intermediate language that supports the generation of type-safe customized data representations. In this paper, we present empirical data comparing the relative efficacy of several different flow-based customization strategies for function representations. We develop a cost model to interpret dynamic counts of operations required for each strategy. In this cost model, customizing the representation of closed functions gives a 12-17% improvement on average over uniform closure representations, depending on the layout of the closure. We also present data on the relative effectiveness of various strategies for reducing representation pollution, i.e., situations where flow constraints require the representation of a value to be less efficient than it would be in ideal circumstances. For the benchmarks tested and the types of representation pollution detected by our compiler, the pollution removal strategies we consider often cost more in overhead than they gain via enabled customizations. Notable exceptions are selective defunctionalization, a function representation strategy that often achieves significant customization benefits via aggressive pollution removal, and a simple form of flow-directed inlining, in which pollution removal allows multiple functions to be inlined at the same call site.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507640",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Allyn",
+        "last_name": "Dimock",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Ian",
+        "last_name": "Westmacott",
+        "institution": ""
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Muller",
+        "institution": "Boston College"
+      },
+      {
+        "first_name": "Franklyn",
+        "last_name": "Turbak",
+        "institution": "Wellesley College"
+      },
+      {
+        "first_name": "J. B.",
+        "last_name": "Wells",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/DimockWMTW01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507664",
+    "title": "A New Notation for Arrows",
+    "abstract": "The categorical notion of monad, used by Moggi to structure denotational descriptions, has proved to be a powerful tool for structuring combinator libraries. Moreover, the monadic programming style provides a convenient syntax for many kinds of computation, so that each library defines a new sublanguage. Recently, several workers have proposed a generalization of monads, called variously \"arrows\" or Freyd-categories. The extra generality promises to increase the power, expressiveness and efficiency of the embedded approach, but does not mesh as well with the native abstraction and application. Definitions are typically given in a point-free style, which is useful for proving general properties, but can be awkward for programming specific instances. In this paper we define a simple extension to the functional language Haskell that makes these new notions of computation more convenient to use. Our language is similar to the monadic style, and has similar reasoning properties. Moreover, it is extensible, in the sense that new combining forms can be defined as expressions in the host language.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507664",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ross",
+        "last_name": "Paterson",
+        "institution": "City, University of London"
+      }
+    ],
+    "dblp_key": "conf/icfp/Paterson01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507662",
+    "title": "Automatic Generation of Staged Geometric Predicates",
+    "abstract": "Algorithms in Computational Geometry and Computer Aided Design are often developed for the Real RAM model of computation, which assumes exactness of all the input arguments and operations. In practice, however, the exactness imposes tremendous limitations on the algorithms --- even the basic operations become uncomputable, or prohibitively slow. When the computations of interest are limited to determining the sign of polynomial expressions over floating point numbers, faster approaches are available. One can evaluate the polynomial in floating-point first, together with some estimate of the rounding error, and fall back to exact arithmetic only if this error is too big to determine the sign reliably. A particularly efficient variation on this approach has been used by Shewchuk in his robust implementations of Orient and InSphere geometric predicates. We extend Shewchuk's method to arbitrary polynomial expressions. The expressions are given as programs in a suitable source language featuring basic arithmetic operations of addition, subtraction, multiplication and squaring, which are to be perceived by the programmer as exact. The source language also allows for anonymous functions, and thus enables the common functional programming technique of staging. The method is presented formally through several judgments that govern the compilation of the source expression into target code, which is then easily transformed into SML or, in case of single-stage expressions, into C.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507662",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Aleksandar",
+        "last_name": "Nanevski",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Guy E.",
+        "last_name": "Blelloch",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/NanevskiBH01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507646",
+    "title": "Macros as Multi-Stage Computations: Type-Safe, Generative, Binding Macros in MacroML",
+    "abstract": "With few exceptions, macros have traditionally been viewed as operations on syntax trees or even on plain strings. This view makes macros seem ad hoc, and is at odds with two desirable features of contemporary typed functional languages: static typing and static scoping. At a deeper level, there is a need for a simple, usable semantics for macros. This paper argues that these problems can be addressed by formally viewing macros as multi-stage computations. This view eliminates the need for freshness conditions and tests on variable names, and provides a compositional interpretation that can serve as a basis for designing a sound type system for languages supporting macros, or even for compilation. To illustrate our approach, we develop and present MacroML, an extension of ML that supports inlining, recursive macros, and the definition of new binding constructs. The latter is subtle, and is the most novel addition in a statically typed setting. The semantics of a core subset of MacroML is given by an interpretation into MetaML, a statically-typed multi-stage programming language. It is then easy to show that MacroML is stage- and type-safe: macro expansion does not depend on runtime evaluation, and both stages do not \"go wrong.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507646",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Steven E.",
+        "last_name": "Ganz",
+        "institution": ""
+      },
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": ""
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Taha",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/GanzST01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507641",
+    "title": "Optimizing Pattern Matching",
+    "abstract": "We present improvements to the backtracking technique of pattern-matching compilation. Several optimizations are introduced, such as commutation of patterns, use of exhaustiveness information, and control flow optimization through the use of labeled static exceptions and context information. These optimizations have been integrated in the Objective-Caml compiler. They have shown good results in increasing the speed of pattern-matching intensive programs, without increasing final code size.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507641",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Fabrice Le",
+        "last_name": "Fessant",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Luc",
+        "last_name": "Maranget",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/FessantM01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507666",
+    "title": "Cost Recurrences for DML Programs",
+    "abstract": "A cost recurrence describes an upper bound for the running time of a program in terms of the size of its input. Finding cost recurrences is a frequent intermediate step in complexity analysis, and this step requires an abstraction from data to data size. In this article, we use information contained in dependent types to achieve such an abstraction: Dependent ML (DML), a conservative extension of ML, provides dependent types that can be used to associate data with size information, thus describing a possible abstraction. We automatically extract cost recurrences from first-order DML programs, guiding the abstraction from data to data size with information contained in DML type derivations.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507666",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Bernd",
+        "last_name": "Grobauer",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Grobauer01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507642",
+    "title": "Down with Emacs Lisp: Dynamic Scope Analysis",
+    "abstract": "It is possible to translate code written in Emacs Lisp or another Lisp dialect which uses dynamic scoping to a more modern programming language with lexical scoping while largely preserving structure and readability of the code. The biggest obstacle to such an idiomatic translation from Emacs Lisp is the translation of dynamic binding into suitable instances of lexical binding: Many binding constructs in real programs in fact exhibit identical behavior under both dynamic and lexical binding. An idiomatic translation needs to detect as many of these binding constructs as possible and convert them into lexical binding constructs in the target language to achieve readability and efficiency of the target code. The basic prerequisite for such an idiomatic translation is thus a dynamic scope analysis which associates variable occurrences with binding constructs. We present such an analysis. It is an application of the Nielson/Nielson framework for flow analysis to a semantics for dynamic binding akin to Moreau's. Its implementation handles a substantial portion of Emacs Lisp, has been applied to realistic Emacs Lisp code, and is highly accurate and reasonably efficient in practice.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507642",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Neubauer",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Sperber",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "conf/icfp/NeubauerS01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507645",
+    "title": "Type-Based Hot Swapping of Running Modules",
+    "abstract": "While dynamic linking has become an integral part of the run-time execution of modem programming languages, there is increasing recognition of the need for support for hot swapping of running modules, particularly in long-lived server applications. The interesting challenge for such a facility is to allow the new module to change the types exported by the original module, while preserving type safety. This paper describes a type-based approach to hot swapping running modules. The approach is based on a reflective mechanism for dynamically adding type sharing constraints to the type system, realized by programmer-defined version adapters in the run-time.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507645",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dominic",
+        "last_name": "Duggan",
+        "institution": "Stevens Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/Duggan01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507650",
+    "title": "A Simple Implementation Technique for Priority Search Queues",
+    "abstract": "This paper presents a new implementation technique for priority search queues. This abstract data type is an amazing blend of finite maps and priority queues. Our implementation supports logarithmic access to a binding with a given key and constant access to a binding with the minimum value. Priority search queues can be used, for instance, to give a simple, purely functional implementation of Dijkstra's single-source shortest-paths algorithm. A non-technical concern of the paper is to foster abstract data types and views. Priority search queues have been largely ignored by the functional programming community and we believe that they deserve to be known better. Views prove their worth both in defining a convenient interface to the abstract data type and in providing a readable implementation.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507650",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ralf",
+        "last_name": "Hinze",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Hinze01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507639",
+    "title": "Contification Using Dominators",
+    "abstract": "Contification is a compiler optimization that turns a function that always returns to the same place into a continuation. Compilers for functional languages use contification to expose the control-flow information that is required by many optimizations, including traditional loop optimizations. This paper gives a formal presentation of contification in MLton, a whole-program optimizing Standard ML compiler. We present two existing algorithms for contification in our framework, as well as a new algorithm based on the dominator tree of a program's call graph. We prove that the dominator algorithm is optimal. We present benchmark results on realistic SML programs demonstrating that contification has minimal overhead on compile time and significantly improves run time.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507639",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Fluet",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Weeks",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/FluetW01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507653",
+    "title": "Charting Patterns on Price History",
+    "abstract": "It is an established notion among financial analysts that price moves in patterns and these patterns can be used to forecast future price. As the definitions of these patterns are often subjective, every analyst has a need to define and search meaningful patterns from historical time series quickly and efficiently. However, such discovery process can be extremely laborious and technically challenging in the absence of a high level pattern definition language. In this paper, we propose a chart-pattern language (CPL for short) to facilitate pattern discovery process. Our language enables financial analysts to (1) define patterns with subjective criteria, through introduction of fuzzy constraints, and (2) incrementally compose complex patterns from simpler patterns. We demonstrate through an array of examples how real life patterns can be expressed in CPL. In short, CPL provides a high-level platform upon which analysts can define and search patterns easily and without any programming expertise. CPL is a domain-specific language embedded in Haskell. We show how various features of a functional language, such as pattern matching, higher-order functions, lazy evaluation, facilitate pattern definitions and implementation. Furthermore, Haskell&amp;apos;s type system frees the programmers from annotating the programs with types.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507653",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Saswat",
+        "last_name": "Anand",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Wei-Ngan",
+        "last_name": "Chin",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Siau‐Cheng",
+        "last_name": "Khoo",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "conf/icfp/AnandCK01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507649",
+    "title": "Generic Validation of Structural Content with Parametric Modules",
+    "abstract": "In this paper, we demonstrate a natural mapping from element types of XML to module expressions of ML-like programming languages. The mapping is inductive, and the definitions of common XML operations can be derived as the module expressions are constructed. We show how to derive, in a generic way, the validation function, which checks an XML document for conformance to the content model specified by its DTD (Document Type Definition). One can view the validation function as giving types to XML elements, and the validation procedure a pre-requirement for typeful XML programming in ML.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507649",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Tyng–Ruey",
+        "last_name": "Chuang",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/Chuang01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507637",
+    "title": "A Fresh Approach to Representing Syntax with Static Binders in Functional Programming",
+    "abstract": "Tell category theorists about the concept of abstract syntax for a language and they may say \"that's just the initial algebra for a sum-of-products functor on the category of sets\". Despite what you might think, they are trying to be helpful since the initiality property is the common denominator of both definitions by structural recursion and proofs by structural induction [5, Sect. 4.4]. In recent years we have learned how to extend this initial algebra view of abstract syntax to encompass languages with statically scoped binders. In the presence of such binders one wants to abstract away from the specific names of bound variables, either by quotienting parse trees by a suitable notion of alpha-equivalence, or by replacing conventional trees with ones containing de Bruijn indices [1]. By changing from the category of sets to other well-known, but still 'set-like' categories of sheaves or presheaves, one can regain an initial algebra view of this even more than normally abstract syntax---the pay-off being new and automatically generated forms of structural recursion and induction that respect alpha-equivalence [2, 3]. One good test of these new ideas is to see if they give rise to new forms of functional programming. In fact they do. The paper [6] sketches a functional programming language for representing and manipulating syntactical structure involving binders, based on the mathematical model of variable-binding in [3, 4]. In this ML-like language there are new forms of type for names and name-binding that come along with facilities for declaring fresh names, for binding names in abstractions and for pulling apart such name-abstractions via pattern-matching. The key idea is that properly abstract uses of names, i.e. ones that do not descend below the level of alpha-conversion, can be imposed on the user by a static type system that deduces information about the freshness of names. Even though we appear to be giving users a 'gensym' facility, the type system restricts the way it can be used to the extent that we keep within effect-free functional programming, in the sense that the usual laws of pure functional programming remain valid (augmented with new laws for names and name-abstractions). In this talk I will introduce this new approach to representing languages static binders in functional programming and discuss some of the difficulties we have had verifying its semantic properties.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507637",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Andrew M.",
+        "last_name": "Pitts",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/icfp/Pitts01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507667",
+    "title": "Possibilities and Limitations of Call-by-Need Space Improvement",
+    "abstract": "Innocent-looking program transformations can easily change the space complexity of lazy functional programs. The theory of space improvement seeks to characterize those local program transformations which are guaranteed never to worsen asymptotic space complexity of any program. Previous work by the authors introduced the space improvement relation and showed that a number of simple local transformation laws are indeed space improvements. This paper seeks an answer to the following questions: is the improvement relation inhabited by interesting program transformations, and, if so, how might they be established? We show that the asymptotic space improvement relation is semantically badly behaved, but that the theory of strong space improvement possesses a fixed-point induction theorem which permits the derivation of improvement properties for recursive definitions. With the help of this tool we explore the landscape of space improvement by considering a range of classical program transformation.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507667",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jörgen",
+        "last_name": "Gustavsson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Sands",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/GustavssonS01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507644",
+    "title": "Recursive Structures for Standard ML",
+    "abstract": "Standard ML is a statically typed programming language that is suited for the construction of both small and large programs. \"Programming in the small\" is captured by Standard ML's Core language. \"Programming in the large\" is captured by Standard ML's Modules language that provides constructs for organizing related Core language definitions into self-contained modules with descriptive interfaces. While the Core is used to express details of algorithms and data structures, Modules is used to express the overall architecture of a software system. In Standard ML, modular programs must have a strictly hierarchical structure: the dependency between modules can never be cyclic. In particular, definitions of mutually recursive Core types and values, that arise frequently in practice, can never span module boundaries. This limitation compromises modular programming, forcing the programmer to merge conceptually (i.e. architecturally) distinct modules. We propose a practical and simple extension of the Modules language that caters for cyclic dependencies between both types and terms defined in separate modules. Our design leverages existing features of the language, supports separate compilation of mutually recursive modules and is easy to implement.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507644",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Claudio",
+        "last_name": "Russo",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Russo01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507648",
+    "title": "Generic Unification via Two-Level Types and Parameterized Modules",
+    "abstract": "As a functional pearl, we describe an efficient, modularized implementation of unification using the state of mutable reference cells to encode substitutions. We abstract our algorithms along two dimensions, first abstracting away from the structure of the terms to be unified, and second over the monad in which the mutable state is encapsulated. We choose this example to illustrate two important techniques that we believe many functional programmers would find useful. The first of these is the definition of recursive data types using two levels: a structure defining level, and a recursive knot-tying level. The second is the use of rank-2 polymorphism inside Haskell's record types to implement a form of type parameterized modules.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507648",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Tim",
+        "last_name": "Sheard",
+        "institution": "Oregon Research Institute"
+      }
+    ],
+    "dblp_key": "conf/icfp/Sheard01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507655",
+    "title": "Events in Haskell, and How to Implement Them",
+    "abstract": "We describe a new and simpler implementation in Haskell of CML's events, which encode reactions by a thread to combinations of messages from other threads. We add a new type of Guarded Events, by which recipients can filter messages with conditions on their value known as Guards. We implement guarded channels. The guard type and the indexing algorithm are not part of the channel definition, so that the user can trade off what guards are required against the cost of indexing. As an example we sketch the encapsulation of a graphical user interface toolkit. This can be done concisely not only because of guarded events, but also because we construct events monadically. Monadic events are especially helpful for representing concurrent processes which transform themselves in reaction to external communications.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507655",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "George",
+        "last_name": "Russell",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/Russell01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507654",
+    "title": "Real-Time FRP",
+    "abstract": "Functional reactive programming (FRP) is a declarative programming paradigm where the basic notions are continuous, time-varying behaviors and discrete, event-based reactivity. FRP has been used successfully in many reactive programming domains such as animation, robotics, and graphical user interfaces. The success of FRP in these domains encourages us to consider its use in real-time applications, where it is crucial that the cost of running a program be bounded and known before run-time. But previous work on the semantics and implementation of FRP was not explicitly concerned about the issues of cost. In fact, the resource consumption of FRP programs in the current implementation is often hard to predict. As a first step towards addressing these concerns, this paper presents real-time FRP (RT-FRP), a statically-typed language where the time and space cost of each execution step for a given program is statically bounded. To take advantage of existing work on languages with bounded resources, we split RT-FRP into two parts: a reactive part that captures the essential ingredients of FRP programs, and a base language part that can be instantiated to any generic programming language that has been shown to be terminating and resource-bounded. This allows us to focus on the issues specific to RT-FRP, namely, two forms of recursion. After presenting the operational explanation of what can go wrong due to the presence of recursion, we show how the typed version of the language is terminating and resource-bounded. Most of our FRP programs are expressible directly in RT. The rest are expressible via a simple mechanism that integrates RT-FRP with the base language.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507654",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zhanyong",
+        "last_name": "Wan",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Taha",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Hudak",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/WanTH01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507652",
+    "title": "Developing a Stage Lighting System from Scratch",
+    "abstract": "Lula is a system for computer-assisted stage lighting design and control. Whereas other systems for the same purpose are usually the results of long chains of incremental improvements of historic concepts, Lula represents a complete redesign. Whereas other systems focus on control aspects of lighting, Lula focuses on design and generates control information from it. This approach gives significantly more flexibility to the lighting designer and shortens the design process itself. Lula's design and implementation draw from a number of disciplines in advanced programming. It is written in Scheme and runs atop PLT Scheme, and benefits from its high-level GUI library. Lula uses an algebraic model for lighting looks based on just three combinators. It employs Functional Reactive Programming for all dynamic aspects of lighting, and is programmable via a functional reactive domain-specific language. Lula is an actual product and has users who have neither interest in nor knowledge of functional programming.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507652",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Sperber",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "conf/icfp/Sperber01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507658",
+    "title": "On Regions and Linear Types",
+    "abstract": "We explore how two different mechanisms for reasoning about state, linear typing and the type, region and effect discipline, complement one another in the design of a strongly typed functional programming language. The basis for our language is a simple lambda calculus containing first-class memory regions, which are explicitly passed as arguments to functions, returned as results and stored in user-defined data structures. In order to ensure appropriate memory safety properties, we draw upon the literature on linear type systems to help control access to and deallocation of regions. In fact, we use two different interpretations of linear types, one in which multiple-use values are freely copied and discarded and one in which multiple-use values are explicitly reference-counted, and show that both interpretations give rise to interesting invariants for manipulating regions. We also explore new programming paradigms that arise by mixing first-class regions and conventional linear data structures.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507658",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Kevin",
+        "last_name": "Watkins",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/WalkerW01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507657",
+    "title": "A Dependently Typed Assembly Language",
+    "abstract": "We present a dependently typed assembly language (DTAL) in which the type system supports the use of a restricted form of dependent types, reaping some benefits of dependent types at the assembly level. DTAL improves upon TAL , enabling certain important compiler optimizations such as run-time array bound check elimination and tag check elimination. Also, DTAL formally addresses the issue of representing sum types at assembly level, making it suitable for handling not only datatypes in ML but also dependent datatypes in Dependent ML (DML).",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507657",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Hongwei",
+        "last_name": "Xi",
+        "institution": "University of Cincinnati"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/XiH01",
+    "venue": "icfp",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/507635.507665",
+    "title": "Extensible Algebraic Datatypes with Defaults",
+    "abstract": "A major problem for writing extensible software arises when recursively defined datatypes and operations on these types have to be extended simultaneously without modifying existing code. This paper introduces Extensible Algebraic Datatypes with defaults, which promote a simple programming pattern to solve this well-known problem. We show that it is possible to encode extensible algebraic datatypes in an object-oriented language, using a new design pattern for extensible visitors. Extensible algebraic datatypes have been successfully applied in the implementation of an extensible Java compiler. Our technique allows for the reuse of existing components in compiler extensions without the need for any adaptations.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/507635.507665",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Zenger",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Odersky",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/icfp/ZengerO01",
+    "venue": "icfp",
+    "year": 2001
+  }
+]

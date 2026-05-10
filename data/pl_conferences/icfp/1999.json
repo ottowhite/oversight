@@ -1,0 +1,597 @@
+[
+  {
+    "paper_id": "10.1145/317636.317784",
+    "title": "On Embedding a Microarchitectural Design Language within Haskell",
+    "abstract": "Based on our experience with modelling and verifying microarchitectural designs within Haskell, this paper examines our use of Haskell as host for an embedded language. In particular, we highlight our use of Haskell's lazy lists, type classes, lazy state monad, and unsafe Perform I0, and point to several areas where Haskell could be improved in the future. We end with an example of a benefit gained by bringing the functional perspective to microarchitectural modelling.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317784",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": "Oregon Museum of Science and Industry"
+      },
+      {
+        "first_name": "Jeffrey R.",
+        "last_name": "Lewis",
+        "institution": "Oregon Museum of Science and Industry"
+      },
+      {
+        "first_name": "Byron",
+        "last_name": "Cook",
+        "institution": "Oregon Museum of Science and Industry"
+      }
+    ],
+    "dblp_key": "conf/icfp/LaunchburyLC99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317790",
+    "title": "Calling Hell From Heaven and Heaven From Hell",
+    "abstract": "The increasing popularity of component-based programming tools offer a big opportunity to designers of advanced programming languages, such as Haskell. If we can package our programs as COM objects, then it is easy to integrate them into applications written in other languages. In earlier work we described a preliminary integration of Haskell with Microsoft&amp;apos;s Component Object Model (COM), focusing on how Haskell can create and invoke COM objects. This paper develops that work, concentrating on the mechanisms that support externally-callable Haskell functions, and the encapsulation of a Haskell program as a COM object. 1 Introduction &amp;quot;Component-based programming&amp;quot; is all the rage. It has come to mean an approach to software construction in which a program is an assembly software components, perhaps written in different languages, glued together by some common substrate [16]. The most widely used substrates are Microsoft&amp;apos;s Component Object Model (COM), and the Common Object Request Broke...",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317790",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sigbjørn",
+        "last_name": "Finne",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Daan",
+        "last_name": "Leijen",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Erik",
+        "last_name": "Meijer",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/icfp/FinneLMJ99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317787",
+    "title": "A Simple Proof Technique for Certain Parametricity Results",
+    "abstract": "Many properties of parametric, polymorphic functions can be determined simply by inspection of their types. Such results are usually proven using Reynolds's parametricity theorem. However, Reynolds's theorem can be difficult to show in some settings, particularly ones involving computational effects. I present an alternative technique for proving some parametricity results. This technique is considerably simpler and easily generalizes to effectful settings. It works by instantiating polymorphic functions with singleton types that fully specify the behavior of the functions. Using this technique, I show that callers' stacks are protected from corruption during function calls in Typed Assembly Language programs.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317787",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Crary99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317799",
+    "title": "Principals in Programming Languages: A Syntactic Proof Technique",
+    "abstract": "Programs are often structured around the idea that di#erent pieces of code comprise distinct principals, each with a view of its environment. Typical examples include the modules of a large program, a host and its clients, or a collection of interactive agents. In this paper, we formalize this notion of principal in the programming language itself. The result is a language in which intuitive statements such as, &amp;quot;the client must call open to obtain a file handle&amp;quot; can be phrased and proven formally. We add principals to variants of the simply-typed #-calculus and show how we can track the code corresponding to each principal throughout evaluation. We use this multiagent calculus to give syntactic proofs of some type abstraction properties that traditionally require semantic arguments. 1 Introduction Programmers often have a notion of principal in mind when designing the structure of a program. Examples of such principals include modules of a large system, a host and its clients, and, ...",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317799",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/icfp/ZdancewicGM99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317797",
+    "title": "Type Dispatch for Named Hierarchical Types",
+    "abstract": "Type dispatch constructs are an important feature of many programming languages. Scheme has predicates for testing the runtime type of a value. Java has a class cast expression and a try statement for switching on an exception&amp;apos;s class. Crucial to these mechanisms, in typed languages, is type renement: The static type system will use type dispatch to rene types in successful dispatch branches. Existing work in functional languages has addressed certain kinds of type dispatch, namely, intensional type analysis. However, this work does not extend to languages with subtyping nor to named types. This paper describes a number of type dispatch constructs that share a common theme: class cast and class case constructs in object oriented languages, ML style exceptions, hier-archical extensible sums, and multimethods. I describe a unifying mechanism, tagging, that abstracts the operation of these constructs, and formalise a small tagging language. After discussing how to implement the tagging language, I present a more primitive language and give a formal translation from the tagging language. 1",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317797",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Neal",
+        "last_name": "Glew",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Glew99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317801",
+    "title": "Transparent Modules with Fully Syntactic Signatures",
+    "abstract": "ML-style modules are valuable in the development and maintenance of large software systems, unfortunately, none of the existing languages support them in a fully satisfactory manner. The Official SML'97 Definition does not allow higher-order functors, so a module that refers to externally defined functors cannot accurately describe its import interface. MacQueen and Tofte [26] extended SML'97 with fully transparent higher-order functors, but their system does not have a type-theoretic semantics thus fails to support fully syntactic signatures. The systems of manifest types [19, 20] and translucent sums [12] support fully syntactic signatures but they may propagate fewer type equalities than fully transparent functors. This paper presents a module calculus that supports both fully transparent higher-order functors and fully syntactic signatures (and thus true separate compilation). We give a simple type-theoretic semantics to our calculus and show how to compile it into an F&omega;-like &lambda;-calculus extended with existential types.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317801",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Shao99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317798",
+    "title": "Representing Java Classes in a Typed Intermediate Language",
+    "abstract": "We propose a conservative extension of the polymorphic lambda calculus (F&omega;) as an intermediate language for compiling languages with name-based class and interface hierarchies. Our extension enriches standard F&omega; with recursive types, existential types, and row polymorphism, but only ordered records with no subtyping. Basing our language on F&omega; makes it also a suitable target for translation from other higher-order languages; this enables the safe interoperation between class-based and higher-order languages and the reuse of common type-directed optimization techniques, compiler back ends, and runtime support.We present the formal semantics of our intermediate language and illustrate its features by providing a formal translation from a subset of Java, including classes, interfaces, and private instance variables. The translation preserves the name-based hierarchical relation between Java classes and interfaces, and allows access to private instance variables of parameters of the same class as the one defining the method. It also exposes the details of method invocation and instance variable access and allows many standard optimizations to be performed on the object-oriented code.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317798",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Christopher",
+        "last_name": "League",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Valery",
+        "last_name": "Trifonov",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/LeagueST99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317800",
+    "title": "Static Interpretation of Modules",
+    "abstract": "Berkeley* This paper presents a technique for compiling Standard ML Modules into typed intermediate language fragments, which may be compiled separately and linked using traditional linking technology to form executable code. The technique is called static inteqretataon and allows compile-time implementation details to propagate across module boundaries. Static interpretation eliminates all module-level code at compile time. The technique scales to full Standard ML and is used in the ML Kit with Regions compiler. A framework for smart recompilation makes the technique useful for compiling large programs. 1",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317800",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Elsman",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/icfp/Elsman99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317791",
+    "title": "Interlanguage Working Without Tears: Blending SML with Java",
+    "abstract": "A good foreign-language interface is crucial for the success of any modern programming language implementation. Although all serious compilers for functional languages have some facility for interlanguage working, these are often limited and awkward to use.This article describes the features for bidirectional interlanguage working with Java that are built into the latest version of the MLj compiler. Because the MLj foreign interface is to another high-level typed language which shares a garbage collector with compiled ML code, and because we are willing to extend the ML language, we are able to provide unusually powerful, safe and easy to use interlanguage working features. Indeed, rather then being a traditional foreign interface, our language extensions are more a partial integration of Java features into SML.We describe this integration of Standard ML and Java, first informally with example program fragments, and then formally in the notation used by The Definition of Standard ML.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317791",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nick",
+        "last_name": "Benton",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Kennedy",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/BentonK99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317793",
+    "title": "Programming Languages as Operating Systems (or Revenge of the Son of the Lisp Machine)",
+    "abstract": "The MrEd virtual machine serves both as the implementation platform for the DrScheme programming environment, and as the underlying Scheme engine for executing expressions and programs entered into DrScheme's read-eval-print loop. We describe the key elements of the MrEd virtual machine for building a programming environment, and we step through the implementation of a miniature version of DrScheme in MrEd. More generally, we show how MrEd defines a high-level operating system for graphical programs.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317793",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Flatt",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Shriram",
+        "last_name": "Krishnamurthi",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/icfp/FlattFKF99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317789",
+    "title": "Type Fixpoints: Iteration vs. Recursion",
+    "abstract": "Positive recursive (fixpoint) types can be added to the polymorphic (Church-style) lambda calculus λ2 (System F) in several different ways, depending on the choice of the elimination operator. We compare several such definitions and we show that they fall into two equivalence classes with respect to mutual interpretability by means of beta-eta reductions. Elimination operators for fixpoint types are thus classified as either or recursors. This classification has an interpretation in terms of the Curry-Howard correspondence: types of iterators and recursors can be seen as images of induction axioms under different dependency-erasing maps. Systems with recursors are beta-eta equivalent to a calculus λ2U of recursive types with the operators Fold: σ[μα.σ/α]←μα.σ and Unfold: μα.σ←σ[μα.σ/α], where the composition Unfold or Fold reduces to identity.It is known that systems with iterators can be defined within λ2, by means of beta reductions. We conjecture that systems with recursors can not. In this paper we show that the system λ2U does not have such a property. For this we study the notion of polymorphic type embeddability (via (beta) left-invertible terms) and we show that if a type σ is embedded into another type τ then τ must be of depth at least equal to the depth of σ.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317789",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zdzisław",
+        "last_name": "Spławski",
+        "institution": "Wrocław University of Science and Technology"
+      },
+      {
+        "first_name": "Paweł",
+        "last_name": "Urzyczyn",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/SplawskiU99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317906",
+    "title": "Flexible Type Analysis",
+    "abstract": "Run-time type dispatch enables a variety of advanced optimization techniques for polymorphic languages, including tag-free garbage collection, unboxed function arguments, and flattened data structures. However, modern type-preserving compilers transform types between stages of compilation, making type dispatch prohibitively complex at low levels of typed compilation. It is crucial therefore for type analysis at these low levels to refer to the types of previous stages. Unfortunately, no current intermediate language supports this facility.To fill this gap, we present the language LX, which provides a rich language of type constructors supporting type analysis (possibly of previous-stage types) as a programming idiom. This language is quite flexible, supporting a variety of other applications such as analysis of quantified types, analysis with incomplete type information, and type classes. We also show that LX is compatible with a type-erasure semantics.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317906",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/icfp/CraryW99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317779",
+    "title": "Trampolined Style",
+    "abstract": "A trampolined program is organized as a single loop in which computations are scheduled and their execution allowed to proceed in discrete steps. Writing programs in trampolined style supports primitives for multithreading without language support for continuations. Various forms of trampolining allow for different degrees of interaction between threads. We present two architectures based on an only mildly intrusive trampolined style. Concurrency can be supported at multiple levels of granularity by performing the trampolining transformation multiple times.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317779",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Steven E.",
+        "last_name": "Ganz",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Daniel P.",
+        "last_name": "Friedman",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/icfp/GanzFW99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317788",
+    "title": "Relating Typability and Expressiveness in Finite-Rank Intersection Type Systems (Extended Abstract)",
+    "abstract": "We investigate finite-rank intersection type systems, analyzing the complexity of their type inference problems and their relation to the problem of recognizing semantically equivalent terms. Intersection types allow something of type &tau;1 &Lambda; &tau;2 to be used in some places at type &tau;1 and in other places at type &tau;2. A finite-rank intersection type system bounds how deeply the &Lambda; can appear in type expressions. Such type systems enjoy strong normalization, subject reduction, and computable type inference, and they support a pragmatics for implementing parametric polymorphism. As a consequence, they provide a conceptually simple and tractable alternative to the impredicative polymorphism of System F and its extensions, while typing many more programs than the Hindley-Milner type system found in ML and Haskell.While type inference is computable at every rank, we show that its complexity grows exponentially as rank increases. Let K(0, n) = n and K(t + 1, n) = 2K(t,n); we prove that recognizing the pure &lambda;-terms of size n that are typable at rank k is complete for DTIME[K(k&minus;1, n)]. We then consider the problem of deciding whether two &lambda;-terms typable at rank k have the same normal form, generalizing a well-known result of Statman from simple types to finite-rank intersection types. We show that the equivalence problem is DTIME[K(K(k &minus; 1, n), 2)]-complete. This relationship between the complexity of typability and expressiveness is identical in wellknown decidable type systems such as simple types and Hindley-Milner types, but seems to fail for System F and its generalizations. The correspondence gives rise to a conjecture that if &Tau; is a predicative type system where typability has complexity t(n) and expressiveness has complexity e(n), then t(n) = &Omega;(log* e(n)).",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317788",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "A. J.",
+        "last_name": "Kfoury",
+        "institution": ""
+      },
+      {
+        "first_name": "Harry G.",
+        "last_name": "Mairson",
+        "institution": "Brandeis University"
+      },
+      {
+        "first_name": "Franklyn",
+        "last_name": "Turbak",
+        "institution": "Wellesley College"
+      },
+      {
+        "first_name": "J. B.",
+        "last_name": "Wells",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/KfouryMTW99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317782",
+    "title": "Tracing Piece by Piece: Affordable Debugging for Lazy Functional Languages",
+    "abstract": "The advantage of lazy functional languages is that programs may be written declaratively without specifying the exact evaluation order. The ensuing order of evaluation can however be quite involved which makes it difficult to debug such programs using traditional, operational techniques. A solution is to trace the computation in a way which focuses on the declarative aspects and hides irrelevant operational details. The main problem with this approach is the immense cost in time and space of tracing large computations. Dealing with these performance issues is thus the key to practical, general purpose debuggers for lazy functional languages. In this paper we show that computing partial traces on demand by re-executing the traced program is a viable way to overcome these difficulties. This allows any program to be traced using only a fixed amount of extra storage. Since it takes a lot of time to build a complete trace, most of which is wasted since only a fraction of a typical trace is investigated during debugging, partial tracing and repeated re-execution is also attractive from a time perspective. Performance figures are presented to substantiate our claims.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317782",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Henrik",
+        "last_name": "Nilsson",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/Nilsson99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317907",
+    "title": "Type Inference Builds a Short Cut to Deforestation",
+    "abstract": "Deforestation optimises a functional program by transforming it into another one that does not create certain intermediate data structures. Short cut deforestation is a deforestation method which is based on a single, local transformation rule. In return, short cut deforestation expects both producer and consumer of the intermediate structure in a certain form. Warm fusion wan proposed to automatically transform functions into this form. Unfortunately, it is costly and hard to implement. Starting from the fact that short cut deforestation is based on a parametricity theorem of the second-order typed &lambda;-calculus, we show how the required form of a list producer can be derived by the use of type inference. Typability for the second-order typed &lambda;-calculus is undecidable. However, we present a linear-time algorithm that solves a partial type inference problem and that, together with controlled inlining and polymorphic type instantiation, suffices for deforestation. The resulting new short cut deforestation algorithm is efficient and removes more intermediate lists than the original.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317907",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Olaf",
+        "last_name": "Chitil",
+        "institution": "RWTH Aachen University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Chitil99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317908",
+    "title": "Verification of Erlang Programs using Abstract Interpretation and Model Mhecking",
+    "abstract": "We present an approach for the verification of Erlang programs using abstract interpretation and model checking. In general model checking for temporal logics like LTL and Erlang programs is undecidable. Therefore we define a frame-work for abstract interpretations for a core fragment of Erlang. In this framework it is guaranteed, that the abstract operational semantics preserves all paths of the standard operational semantics. We consider properties that have to hold on all paths of a system, like properties in LTL. If these properties can be proved for the abstract operational semantics, they also hold for the Erlang program. They can be proved with model checking if the abstract operational semantics is a finite transition system. Therefore we introduce a example abstract interpretation, which has this property. We have implemented this approach as a prototype and were able to prove properties like mutual exclusion or the absence of deadlocks and lifelocks for some Erlang programs.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317908",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Frank",
+        "last_name": "Huch",
+        "institution": "RWTH Aachen University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Huch99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317910",
+    "title": "Specialization of Inductively Sequential Functional Logic Programs",
+    "abstract": "Functional logic languages combine the operational principles of the most important declarative programming paradigms, namely functional and logic programming. Inductively sequential programs admit the definition of optimal computation strategies and are the basis of several recent (lazy) functional logic languages. In this paper, we define a partial evaluator for inductively sequential functional logic programs. We prove strong correctness of this partial evaluator and show that the nice properties of inductively sequential programs carry over to the specialization process and the specialized programs. In particular, the structure of the programs is preserved by the specialization process. This is in contrast to other partial evaluation methods for functional logic programs which can destroy the original program structure. Finally, we present some experiments which highlight the practical advantages of our approach.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317910",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Marı́a",
+        "last_name": "Alpuente",
+        "institution": ""
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hanus",
+        "institution": "RWTH Aachen University"
+      },
+      {
+        "first_name": "Salvador",
+        "last_name": "Lucas",
+        "institution": ""
+      },
+      {
+        "first_name": "Germán",
+        "last_name": "Vidal",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/AlpuenteHLV99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317775",
+    "title": "When is a Functional Program Not a Functional Program?",
+    "abstract": "In an impure functional language, there are programs whose behaviour is completely functional (in that they behave extensionally on inputs), but the functions they compute cannot be written in the purely functional fragment of the language. That is, the class of programs with functional behaviour is more expressive than the usual class of pure functional programs. In this paper we introduce this extended class of \"functional\" programs by means of examples in Standard ML, and explore what they might have to offer to programmers and language implementors.After reviewing some theoretical background, we present some examples of functions of the above kind, and discuss how they may be implemented. We then consider two possible programming applications for these functions: the implementation of a search algorithm, and an algorithm for exact real-number integration. We discuss the advantages and limitations of this style of programming relative to other approaches. We also consider the increased scope for compiler optimizations that these functions would offer.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317775",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Longley",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/Longley99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317794",
+    "title": "Haskell and XML: Generic Combinators or Type-Based Translation?",
+    "abstract": "We present two complementary approaches to writing XML document-processing applications in a functional language.In the first approach, the generic tree structure of XML documents is used as the basis for the design of a library of combinators for generic processing: selection, generation, and transformation of XML trees.The second approach is to use a type-translation framework for treating XML document type definitions (DTDs) as declarations of algebraic data types, and a derivation of the corresponding functions for reading and writing documents as typed values in Haskell.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317794",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Malcolm",
+        "last_name": "Wallace",
+        "institution": "University of York"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "Runciman",
+        "institution": "University of York"
+      }
+    ],
+    "dblp_key": "conf/icfp/WallaceR99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317785",
+    "title": "Recursion and Dynamic Data-structures in Bounded Space: Towards Embedded ML Programming",
+    "abstract": "We present a functional language with a type system such that well typed programs run within stated space-bounds. The language is a strict, first-order variant of ML with constructs for explicit storage management. The type system is a variant of Tofte and Talpin's region inference system to which the notion of sized types, of Hughes, Pareto and Sabry, has been added.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317785",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Hughes",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Pareto",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/HughesP99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317796",
+    "title": "Type Inference with Rank 1 Polymorphism for Type-Directed Compilation of ML",
+    "abstract": "This paper defines an extended polymorphic type system for an ML-style programming language, and develops a sound and complete type inference algorithm. Different frdm the conventional ML type discipline, the proposed type system allows full rank 1 polymorphism, where polymorphic types can appear in other types such as product types, disjoint union types and range types of function types. Because of this feature, the proposed type system significantly reduces the value-only restriction of polymorphism, which is currently adopted in most of ML-style impure languages. It also serves as a basis for efficient implementation of type-directed compilation of polymorphism. The extended type system achieves more efficient type inference algorithm, and it also contributes to develop more efficient type-passing implementation of polymorphism. We show that the conventional ML polymorphism sometimes introduces exponential overhead both at compile-time elaboration and run-time type-passing execution, and that these problems can be eliminated by our type inference system. Compared with a more powerful rank 2 type inference systems based on semi-unification, the proposed type inference algorithm infers a most general type for any typable expression by using the conventional first-order unification, and it is therefore easily adopted in existing implementation of ML family of languages.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317796",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Atsushi",
+        "last_name": "Ohori",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Nobuaki",
+        "last_name": "Yoshida",
+        "institution": "Kyoto University"
+      }
+    ],
+    "dblp_key": "conf/icfp/OhoriY99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317783",
+    "title": "Atomic Heap Transactions and Fine-grain Interrupts",
+    "abstract": "Languages such as Java, ML, Scheme, and Haskell provide automatic storage management, that is, garbage collection. The two fundamental operations performed on a garbage-collected heap are \"allocate\" and \"collect.\" Because the heap is in an inconsistent state during these operations, they must be performed atomically. Otherwise, a heap client might access the heap during a time when its fundamental invariants do not hold, corrupting the heap.Standard techniques for providing this atomicity guarantee have large latencies and other performance problems that impede their application in high-performance, interruptladen, thread-based systems applications. In particular, the standard techniques prevent thread schedulers from switching threads on VM page faults.We cast the space of possible implementations into a general taxonomy, and describe a new technique that provides a simple, low-overhead, low-latency interlock. We have implemented this technique in a version of SML/NJ, and, because of its applicability to thread-based systems, are currently implementing it in the scheduler of our raw-hardware SML-based kernel, ML/OS. Our technique can be extended to provide other atomic sequences besides storage allocation.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317783",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": ""
+      },
+      {
+        "first_name": "JAMES W.",
+        "last_name": "CLARK",
+        "institution": ""
+      },
+      {
+        "first_name": "Roland",
+        "last_name": "McGrath",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/ShiversCM99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317777",
+    "title": "Monadic Encapsulation in ML",
+    "abstract": "In a programming language with procedures and assignments, it is often important to isolate uses of state to particular program fragments. The frameworks of type, region, and effect inference, and monadic state are technologies that have been used to state and enforce the property that an expression has no visible side-effects. This property has been exploited",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317777",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Miley",
+        "last_name": "Semmelroth",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "University of Oregon"
+      }
+    ],
+    "dblp_key": "conf/icfp/SemmelrothS99",
+    "venue": "icfp",
+    "year": 1999
+  },
+  {
+    "paper_id": "10.1145/317636.317781",
+    "title": "From Fast Exponentiation to Square Matrices: An Adventure in Types",
+    "abstract": "Square matrices serve as an interesting case study in functional programming. Common representations, such as lists of lists, are both inefficient---at least for access to individual elements---and error-prone, because the compiler cannot enforce \"squareness\". Switching to a typical balanced-tree representation solves the first problem, but not the second. We develop a representation that solves both problems: it offers logarithmic access to each individual element and it captures the shape invariants in the type, where they can be checked by the compiler. One interesting feature of our solution is that it translates the well-known fast exponentiation algorithm to the level of types. Our implementation also provides a stress test for today's advanced type systems---it uses nested types, polymorphic recursion, higher-order kinds, and rank-2 polymorphism.",
+    "date": "1999-09-01",
+    "link": "https://doi.org/10.1145/317636.317781",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Okasaki",
+        "institution": "Columbia University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Okasaki99",
+    "venue": "icfp",
+    "year": 1999
+  }
+]
