@@ -32,9 +32,11 @@ from __future__ import annotations
 import json
 import logging
 import re
+import threading
 import time
 import xml.etree.ElementTree as ET
 from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable, Iterator, Sequence
@@ -362,9 +364,10 @@ class PLConferenceHarvester:
         year: int,
         output_dir: str | Path = "data/pl_conferences",
         cache_dir: str | Path | None = None,
-        request_delay_s: float = 0.1,
+        request_delay_s: float = 0.0,
         skip_existing_doi: Callable[[str], bool] | None = None,
         toc_entries: Sequence[TOCEntry] | None = None,
+        max_workers: int = 16,
     ) -> None:
         venue = venue.lower()
         if venue not in VENUES:
@@ -380,9 +383,15 @@ class PLConferenceHarvester:
         self.request_delay_s = request_delay_s
         self.skip_existing_doi = skip_existing_doi
         self._toc_entries = list(toc_entries) if toc_entries is not None else None
+        self.max_workers = max_workers
 
+        # Sessions are not thread-safe for concurrent reads/writes of the
+        # same connection pool entry; use a thread-local store so each
+        # worker has its own. The "main" session is used for serial work
+        # (DBLP TOC discovery and fetch).
         self._session = requests.Session()
         self._session.headers.update({"User-Agent": _USER_AGENT})
+        self._tls = threading.local()
 
     # ------------------------------------------------------------------
     # Top-level entry point
@@ -415,6 +424,9 @@ class PLConferenceHarvester:
         skipped_no_abstract: list[str] = []
         skipped_already_in_db = 0
 
+        # Pre-filter: drop entries with no DOI or already in DB before we
+        # spend any HTTP budget on them.
+        actionable: list[tuple[dict[str, Any], str]] = []
         for entry in dblp_entries:
             title = (entry.get("title") or "").rstrip(".")
             doi = entry.get("doi")
@@ -422,16 +434,36 @@ class PLConferenceHarvester:
                 skipped_no_doi.append(title)
                 logger.debug("Skipping %r: no DOI in DBLP entry", title)
                 continue
-
             if self.skip_existing_doi is not None and self.skip_existing_doi(doi):
                 skipped_already_in_db += 1
                 continue
+            actionable.append((entry, doi))
 
-            paper = self._build_paper(entry, doi)
-            if paper is None:
-                skipped_no_abstract.append(title)
-                continue
-            papers.append(paper)
+        # Per-paper fetch is the dominant cost — fan out across workers.
+        if actionable:
+            workers = max(1, min(self.max_workers, len(actionable)))
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                futures = {
+                    pool.submit(self._build_paper, entry, doi): (entry, doi)
+                    for entry, doi in actionable
+                }
+                for fut in as_completed(futures):
+                    entry, doi = futures[fut]
+                    title = (entry.get("title") or "").rstrip(".")
+                    try:
+                        paper = fut.result()
+                    except Exception:  # noqa: BLE001
+                        logger.exception(
+                            "Failed to build paper for DOI %s (%r); skipping",
+                            doi,
+                            title,
+                        )
+                        skipped_no_abstract.append(title)
+                        continue
+                    if paper is None:
+                        skipped_no_abstract.append(title)
+                        continue
+                    papers.append(paper)
 
         logger.info(
             "Built %d papers (%d in DB; %d no-DOI; %d no-abstract)",
@@ -625,11 +657,14 @@ class PLConferenceHarvester:
         url = f"https://api.openalex.org/works/https://doi.org/{doi}"
         params = {"mailto": _OPENALEX_MAILTO}
         try:
-            resp = _request_with_retries(self._session, url, params=params, timeout=30)
+            resp = _request_with_retries(
+                self._thread_session(), url, params=params, timeout=30
+            )
         except requests.RequestException as exc:
             logger.warning("OpenAlex request failed for %s: %s", doi, exc)
             return None
-        time.sleep(self.request_delay_s)
+        if self.request_delay_s:
+            time.sleep(self.request_delay_s)
         if resp.status_code == 404:
             self._cache_store(cache_key, {})
             return None
@@ -658,11 +693,14 @@ class PLConferenceHarvester:
         url = f"https://api.semanticscholar.org/graph/v1/paper/DOI:{doi}"
         params = {"fields": "abstract,authors,year"}
         try:
-            resp = _request_with_retries(self._session, url, params=params, timeout=30)
+            resp = _request_with_retries(
+                self._thread_session(), url, params=params, timeout=30
+            )
         except requests.RequestException as exc:
             logger.warning("Semantic Scholar request failed for %s: %s", doi, exc)
             return None
-        time.sleep(self.request_delay_s)
+        if self.request_delay_s:
+            time.sleep(self.request_delay_s)
         if resp.status_code == 404:
             self._cache_store(cache_key, {})
             return None
@@ -677,6 +715,24 @@ class PLConferenceHarvester:
         data = resp.json()
         self._cache_store(cache_key, data)
         return data
+
+    # ------------------------------------------------------------------
+    # Thread-local HTTP session
+    # ------------------------------------------------------------------
+
+    def _thread_session(self) -> requests.Session:
+        """Return a per-thread :class:`requests.Session`.
+
+        :class:`requests.Session` is not safe for fully concurrent use of
+        the same instance (the urllib3 connection pool can race), so each
+        worker thread gets its own.
+        """
+        sess = getattr(self._tls, "session", None)
+        if sess is None:
+            sess = requests.Session()
+            sess.headers.update({"User-Agent": _USER_AGENT})
+            self._tls.session = sess
+        return sess
 
     # ------------------------------------------------------------------
     # Cache helpers
@@ -856,7 +912,19 @@ def _main() -> None:
     parser.add_argument(
         "--request-delay",
         type=float,
-        default=0.1,
+        default=0.0,
+    )
+    parser.add_argument(
+        "--max-workers",
+        type=int,
+        default=16,
+        help="Worker threads per (venue, year) for OpenAlex/SS fetches.",
+    )
+    parser.add_argument(
+        "--year-workers",
+        type=int,
+        default=4,
+        help="Years to process concurrently per venue.",
     )
     args = parser.parse_args()
 
@@ -895,7 +963,8 @@ def _main() -> None:
             if len(years) <= 10
             else f"{years[0]}–{years[-1]}",
         )
-        for year in years:
+
+        def _harvest_year(year: int) -> None:
             harvester = PLConferenceHarvester(
                 venue=venue,
                 year=year,
@@ -904,6 +973,7 @@ def _main() -> None:
                 request_delay_s=args.request_delay,
                 skip_existing_doi=skip_doi,
                 toc_entries=year_to_entries[year],
+                max_workers=args.max_workers,
             )
             try:
                 harvester.harvest()
@@ -911,6 +981,18 @@ def _main() -> None:
                 logger.exception(
                     "Failed to harvest %s %s; continuing", spec.label, year
                 )
+
+        if args.year_workers <= 1 or len(years) <= 1:
+            for year in years:
+                _harvest_year(year)
+        else:
+            workers = max(1, min(args.year_workers, len(years)))
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                futs = [pool.submit(_harvest_year, y) for y in years]
+                for f in as_completed(futs):
+                    # Surface any unexpected exception (each call already
+                    # catches its own; this is just for hard runtime errors).
+                    f.result()
 
 
 def _make_db_doi_skipper() -> Callable[[str], bool]:
