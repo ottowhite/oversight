@@ -437,6 +437,15 @@ export default function GraphPage() {
     return m;
   }, [graph.cache, seedId]);
 
+  // Look up the seed paper's title for the header. The /neighbors response
+  // includes the seed's metadata in `response.seed`, which expandNode
+  // merges into graph.nodes — no separate paper-metadata fetch required.
+  const seedTitle = useMemo(() => {
+    if (!seedId) return null;
+    const p = graph.nodes.find((n) => n.paper_id === seedId);
+    return p?.title ?? null;
+  }, [graph.nodes, seedId]);
+
   // Force-graph spring-strength polish: more similar = stronger spring =
   // shorter rest length. We reach into the d3-force "link" force via the
   // imperative API exposed by react-force-graph-2d. When loaded through
@@ -609,8 +618,19 @@ export default function GraphPage() {
             </a>
             <h1 className="text-lg font-semibold">Similarity graph</h1>
             {seedId && (
-              <span className="text-xs text-base-content/50 font-mono ml-2">
-                seed: {seedId}
+              <span className="text-sm text-base-content/70 ml-2 truncate">
+                {seedTitle ? (
+                  <>
+                    {seedTitle}
+                    <span className="text-xs text-base-content/40 font-mono ml-2">
+                      {seedId}
+                    </span>
+                  </>
+                ) : (
+                  <span className="font-mono text-xs text-base-content/50">
+                    seed: {seedId}
+                  </span>
+                )}
               </span>
             )}
             {error && (
