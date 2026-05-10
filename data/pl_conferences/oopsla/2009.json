@@ -1,0 +1,961 @@
+[
+  {
+    "paper_id": "10.1145/1640089.1640106",
+    "title": "The design of a task parallel library",
+    "abstract": "The Task Parallel Library (TPL) is a library for .NET that makes it easy to take advantage of potential parallelism in a program. The library relies heavily on generics and delegate expressions to provide custom control structures expressing structured parallelism such as map-reduce in user programs. The library implementation is built around the notion of a task as a finite CPU-bound computation. To capture the ubiquitous apply-to-all pattern the library also introduces the novel concept of a replicable task. Tasks and replicable tasks are assigned to threads using work stealing techniques, but unlike traditional implementations based on the THE protocol, the library uses a novel data structure called a 'duplicating queue'. A surprising feature of duplicating queues is that they have sequentially inconsistent behavior on architectures with weak memory models, but capture this non-determinism in a benign way by sometimes duplicating elements. TPL ships as part of the Microsoft Parallel Extensions for the .NET framework 4.0, and forms the foundation of Parallel LINQ queries (however, note that the productized TPL library may differ in significant ways from the basic design described in this article).",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640106",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Daan",
+        "last_name": "Leijen",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Wolfram",
+        "last_name": "Schulte",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Burckhardt",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/LeijenSB09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640108",
+    "title": "Strictly declarative specification of sophisticated points-to analyses",
+    "abstract": "We present the DOOP framework for points-to analysis of Java programs. DOOP builds on the idea of specifying pointer analysis algorithms declaratively, using Datalog: a logic-based language for defining (recursive) relations. We carry the declarative approach further than past work by describing the full end-to-end analysis in Datalog and optimizing aggressively using a novel technique specifically targeting highly recursive Datalog programs.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640108",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Bravenboer",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "University of Massachusetts Amherst"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BravenboerS09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640100",
+    "title": "How a Java VM can get more from a hardware performance monitor",
+    "abstract": "This paper describes our sampling-based profiler that exploits a processor's HPM (Hardware Performance Monitor) to collect information on running Java applications for use by the Java VM. Our profiler provides two novel features: Java-level event profiling and lightweight context-sensitive event profiling. For Java events, we propose new techniques to leverage the sampling facility of the HPM to generate object creation profiles and lock activity profiles. The HPM sampling is the key to achieve a smaller overhead compared to profilers that do not rely on hardware helps. To sample the object creations with the HPM, which can only sample hardware events such as executed instructions or cache misses, we correlate the object creations with the store instructions for Java object headers. For the lock activity profile, we introduce an instrumentation-based technique, called ProbeNOP, which uses a special NOP instruction whose executions are counted by the HPM. For the context-sensitive event profiling, we propose a new technique called CallerChaining, which detects the calling context of HPM events based on the call stack depth (the value of the stack frame pointer). We show that it can detect the calling contexts in many programs including a large commercial application. Our proposed techniques enable both programmers and runtime systems to get more valuable information from the HPM to understand and optimize the programs without adding significant runtime overhead.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640100",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Hiroshi",
+        "last_name": "Inoue",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Toshio",
+        "last_name": "Nakatani",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/oopsla/InoueN09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640102",
+    "title": "Inferred call path profiling",
+    "abstract": "Prior work has found call path profiles to be useful for optimizers and programmer-productivity tools. Unfortunately, previous approaches for collecting path profiles are expensive: they need to either execute additional instructions (to track calls and returns) or they need to walk the stack. The state-of-the-art techniques for call path profiling slow down the program by 7% (for C programs) and 20% (for Java programs). This paper describes an innovative technique that collects minimal information from the running program and later (offline) infers the full call paths from this information.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640102",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Todd",
+        "last_name": "Mytkowicz",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Devin",
+        "last_name": "Coughlin",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Amer",
+        "last_name": "Diwan",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/oopsla/MytkowiczCD09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640095",
+    "title": "Parallel programming with object assemblies",
+    "abstract": "We present Chorus, a high-level parallel programming model suitable for irregular, heap-manipulating applications like mesh refinement and epidemic simulations, and JChorus, an implementation of the model on top of Java. One goal of Chorus is to express the dynamic and instance-dependent patterns of memory access that are common in typical irregular applications. Its other focus is locality of effects: the property that in many of the same applications, typical imperative commands only affect small, local regions in the shared heap.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640095",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Roberto",
+        "last_name": "Lublinerman",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Swarat",
+        "last_name": "Chaudhuri",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Pavol",
+        "last_name": "Černý",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/oopsla/LublinermanCC09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640110",
+    "title": "Profile-guided static typing for dynamic scripting languages",
+    "abstract": "Many popular scripting languages such as Ruby, Python, and Perl include highly dynamic language constructs, such as an eval method that evaluates a string as program text. While these constructs allow terse and expressive code, they have traditionally obstructed static analysis. In this paper we present PRuby, an extension to Diamondback Ruby (DRuby), a static type inference system for Ruby. PRuby augments DRuby with a novel dynamic analysis and transformation that allows us to precisely type uses of highly dynamic constructs. PRuby's analysis proceeds in three steps. First, we use run-time instrumentation to gather per-application profiles of dynamic feature usage. Next, we replace dynamic features with statically analyzable alternatives based on the profile. We also add instrumentation to safely handle cases when subsequent runs do not match the profile. Finally, we run DRuby's static type inference on the transformed code to enforce type safety.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640110",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Furr",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Jong-hoon",
+        "last_name": "An",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/oopsla/FurrAF09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640109",
+    "title": "Self type constructors",
+    "abstract": "Bruce and Foster proposed the language LOOJ, an extension of Java with the notion of MyType, which represents the type of a self reference and changes its meaning along with inheritance. MyType is useful to write extensible yet type-safe classes for objects with recursive interfaces, that is, ones with methods that take or return objects of the same type as the receiver.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640109",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Chieri",
+        "last_name": "Saito",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Atsushi",
+        "last_name": "Igarashi",
+        "institution": "Kyoto University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/SaitoI09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640105",
+    "title": "Debug all your code: portable mixed-environment debugging",
+    "abstract": "Programmers build large-scale systems with multiple languages to reuse legacy code and leverage languages best suited to their problems. For instance, the same program may use Java for ease-of-programming and C to interface with the operating system. These programs pose significant debugging challenges, because programmers need to understand and control code across languages, which may execute in different environments. Unfortunately, traditional multilingual debuggers require a single execution environment.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640105",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Byeongcheol",
+        "last_name": "Lee",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Hirzel",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Grimm",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/oopsla/LeeHGM09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640101",
+    "title": "A concurrent dynamic analysis framework for multicore hardware",
+    "abstract": "Software has spent the bounty of Moore's law by solving harder problems and exploiting abstractions, such as high-level languages, virtual machine technology, binary rewriting, and dynamic analysis. Abstractions make programmers more productive and programs more portable, but usually slow them down. Since Moore's law is now delivering multiple cores instead of faster processors, future systems must either bear a relatively higher cost for abstractions or use some cores to help tolerate abstraction costs.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640101",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jung-Woo",
+        "last_name": "Ha",
+        "institution": "University of Southern California"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Arnold",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Stephen M.",
+        "last_name": "Blackburn",
+        "institution": "Australian National University"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/oopsla/HaABM09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640097",
+    "title": "A type and effect system for deterministic parallel Java",
+    "abstract": "Today's shared-memory parallel programming models are complex and error-prone.While many parallel programs are intended to be deterministic, unanticipated thread interleavings can lead to subtle bugs and nondeterministic semantics. In this paper, we demonstrate that a practical type and effect system can simplify parallel programming by guaranteeing deterministic semantics with modular, compile-time type checking even in a rich, concurrent object-oriented language such as Java. We describe an object-oriented type and effect system that provides several new capabilities over previous systems for expressing deterministic parallel algorithms.We also describe a language called Deterministic Parallel Java (DPJ) that incorporates the new type system features, and we show that a core subset of DPJ is sound. We describe an experimental validation showing thatDPJ can express a wide range of realistic parallel programs; that the new type system features are useful for such programs; and that the parallel programs exhibit good performance gains (coming close to or beating equivalent, nondeterministic multithreaded programs where those are available).",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640097",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Robert L.",
+        "last_name": "Bocchino",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Vikram",
+        "last_name": "Adve",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Danny",
+        "last_name": "Dig",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Sarita V.",
+        "last_name": "Adve",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Heumann",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Rakesh",
+        "last_name": "Komuravelli",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Jeffrey",
+        "last_name": "Overbey",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Simmons",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Hyojin",
+        "last_name": "Sung",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Mohsen",
+        "last_name": "Vakilian",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BocchinoADAHKOSSV09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640096",
+    "title": "Grace: safe multithreaded programming for C/C++",
+    "abstract": "The shift from single to multiple core architectures means that programmers must write concurrent, multithreaded programs in order to increase application performance. Unfortunately, multithreaded applications are susceptible to numerous errors, including deadlocks, race conditions, atomicity violations, and order violations. These errors are notoriously difficult for programmers to debug.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640096",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Emery D.",
+        "last_name": "Berger",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Ting",
+        "last_name": "Yang",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Tongping",
+        "last_name": "Liu",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Gene",
+        "last_name": "Novark",
+        "institution": "University of Massachusetts Amherst"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BergerYLN09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640092",
+    "title": "CZ: multiple inheritance without diamonds",
+    "abstract": "Multiple inheritance has long been plagued with the \"diamond\" inheritance problem, leading to solutions that restrict expressiveness, such as mixins and traits. Instead, we address the diamond problem directly, considering two difficulties it causes: ensuring a correct semantics for object initializers, and typechecking multiple dispatch in a modular fashion-the latter problem arising even with multiple interface inheritance. We show that previous solutions to these problems are either unsatisfactory or cumbersome, and suggest a novel approach: supporting multiple inheritance but forbidding diamond inheritance. Expressiveness is retained through two features: a \"requires\" construct that provides a form of subtyping without inheritance (inspired by Scala), and a dynamically-dispatched \"super\" call similar to that found in traits. Through examples, we illustrate that inheritance diamonds can be eliminated via a combination of \"requires\" and ordinary inheritance. We provide a sound formal model for our language and demonstrate its modularity and expressiveness.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640092",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Donna",
+        "last_name": "Malayeri",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Aldrich",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/MalayeriA09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640093",
+    "title": "Empirical assessment of object-oriented implementations with multiple inheritance and static typing",
+    "abstract": "Object-oriented languages involve a threefold tradeoff between runtime efficiency, expressiveness (multiple inheritance), and modularity, i.e. open-world assumption (OWA). Runtime efficiency is conditioned by both the implementation technique and compilation scheme. The former specifies the data structures that support method invocation, attribute access and subtype testing. The latter consists of the production line of an executable from the source code. Many implementation techniques have been proposed and several compilation schemes can be considered from fully global compilation under the closed-world assumption (CWA) to separate compilation with dynamic loading under the OWA, with midway solutions. This article reviews a significant subset of possible combinations and presents a systematic, empirical comparison of their respective efficiencies with all other things being equal. The testbed consists of the Prm compiler that has been designed for this purpose. The considered techniques include C++ subobjects, coloring, perfect hashing, binary tree dispatch and caching. A variety of processors were considered. Qualitatively, these first results confirm the intuitive or theoretical abstract assessments of the tested approaches. As expected, efficiency increases as CWA strengthens. From a quantitative standpoint, the results are the first to precisely compare the efficiency of techniques that are closely associated with specific languages like C++ and Eiffel. They also confirm that perfect hashing should be considered for implementing Java and .Net interfaces.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640093",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Roland",
+        "last_name": "Ducournau",
+        "institution": "Université de Montpellier"
+      },
+      {
+        "first_name": "Floréal",
+        "last_name": "Morandat",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Jean",
+        "last_name": "Privat",
+        "institution": "Université du Québec à Montréal"
+      }
+    ],
+    "dblp_key": "conf/oopsla/DucournauMP09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640104",
+    "title": "Accelerating the creation of customized, language-Specific IDEs in Eclipse",
+    "abstract": "Full-featured integrated development environments have become critical to the adoption of new programming languages. Key to the success of these IDEs is the provision of services tailored to the languages. However, modern IDEs are large and complex, and the cost of constructing one from scratch can be prohibitive. Generators that work from language specifications reduce costs but produce environments that do not fully reflect distinctive language characteristics.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640104",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Philippe",
+        "last_name": "Charles",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Robert M.",
+        "last_name": "Fuhrer",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Stanley M.",
+        "last_name": "Sutton",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Evelyn",
+        "last_name": "Duesterwald",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Jurgen",
+        "last_name": "Vinju",
+        "institution": "Centrum Wiskunde & Informatica"
+      }
+    ],
+    "dblp_key": "conf/oopsla/CharlesFSDV09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640091",
+    "title": "Flapjax: a programming language for Ajax applications",
+    "abstract": "This paper presents Flapjax, a language designed for contemporary Web applications. These applications communicate with servers and have rich, interactive interfaces. Flapjax provides two key features that simplify writing these applications. First, it provides event streams, a uniform abstraction for communication within a program as well as with external Web services. Second, the language itself is reactive: it automatically tracks data dependencies and propagates updates along those dataflows. This allows developers to write reactive interfaces in a declarative and compositional style.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640091",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Leo A.",
+        "last_name": "Meyerovich",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Arjun",
+        "last_name": "Guha",
+        "institution": "Brown University"
+      },
+      {
+        "first_name": "Jacob",
+        "last_name": "Baskin",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Gregory H.",
+        "last_name": "Cooper",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Greenberg",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Aleks",
+        "last_name": "Bromfield",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Shriram",
+        "last_name": "Krishnamurthi",
+        "institution": "Brown University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/MeyerovichGBCGBK09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640098",
+    "title": "Thorn: robust, concurrent, extensible scripting on the JVM",
+    "abstract": "Scripting languages enjoy great popularity due to their support for rapid and exploratory development. They typically have lightweight syntax, weak data privacy, dynamic typing, powerful aggregate data types, and allow execution of the completed parts of incomplete programs. The price of these features comes later in the software life cycle. Scripts are hard to evolve and compose, and often slow. An additional weakness of most scripting languages is lack of support for concurrency - though concurrency is required for scalability and interacting with remote services. This paper reports on the design and implementation of Thorn, a novel programming language targeting the JVM. Our principal contributions are a careful selection of features that support the evolution of scripts into industrial grade programs - e.g., an expressive module system, an optional type annotation facility for declarations, and support for concurrency based on message passing between lightweight, isolated processes. On the implementation side, Thorn has been designed to accommodate the evolution of the language itself through a compiler plugin mechanism and target the Java virtual machine.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640098",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Bard",
+        "last_name": "Bloom",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "John K.",
+        "last_name": "Field",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Nathaniel",
+        "last_name": "Nystrom",
+        "institution": "The University of Texas at Arlington"
+      },
+      {
+        "first_name": "Johan",
+        "last_name": "Östlund",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Gregor",
+        "last_name": "Richards",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Rok",
+        "last_name": "Strniša",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Wrigstad",
+        "institution": "Stockholm University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BloomFNORSVW09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640112",
+    "title": "Enhancing source-level programming tools with an awareness of transparent program transformations",
+    "abstract": "Programs written in managed languages are compiled to a platform-independent intermediate representation, such as Java bytecode. The relative high level of Java bytecode has engendered a widespread practice of changing the bytecode directly, without modifying the maintained version of the source code. This practice, called bytecode engineering or enhancement, has become indispensable in introducing various concerns, including persistence, distribution, and security, transparently. For example, transparent persistence architectures help avoid the entanglement of business and persistence logic in the source code by changing the bytecode directly to synchronize objects with stable storage. With functionality added directly at the bytecode level, the source code reflects only partial semantics of the program. Specifically, the programmer can neither ascertain the program's runtime behavior by browsing its source code, nor map the runtime behavior back to the original source code.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640112",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Myoungkyu",
+        "last_name": "Song",
+        "institution": "Virginia Tech"
+      },
+      {
+        "first_name": "Eli",
+        "last_name": "Tilevich",
+        "institution": "Virginia Tech"
+      }
+    ],
+    "dblp_key": "conf/oopsla/SongT09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640117",
+    "title": "NUMA-aware memory manager with dominant-thread-based copying GC",
+    "abstract": "We propose a novel online method of identifying the preferred NUMA nodes for objects with negligible overhead during the garbage collection time as well as object allocation time. Since the number of CPUs (or NUMA nodes) is increasing recently, it is critical for the memory manager of the runtime environment of an object-oriented language to exploit the low latency of local memory for high performance. To locate the CPU of a thread that frequently accesses an object, prior research uses the runtime information about memory accesses as sampled by the hardware. However, the overhead of this approach is high for a garbage collector.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640117",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Takeshi",
+        "last_name": "Ogasawara",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Ogasawara09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640120",
+    "title": "Optimizing programs with intended semantics",
+    "abstract": "Modern object-oriented languages have complex features that cause programmers to overspecify their programs. This overspecification hinders automatic optimizers, since they must preserve the overspecified semantics. If an optimizer knew which semantics the programmer intended, it could do a better job.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640120",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Daniel von",
+        "last_name": "Dincklage",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Amer",
+        "last_name": "Diwan",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/oopsla/DincklageD09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640125",
+    "title": "Design pattern density defined",
+    "abstract": "Design pattern density is a metric that measures how much of an object-oriented design can be understood and represented as instances of design patterns. Expert developers have long believed that a high design pattern density implies a high maturity of the design under inspection. This paper presents a quantifiable and observable definition of this metric. The metric is illustrated and qualitatively validated using four real-world case studies. We present several hypotheses of the metric's meaning and their implications, including the one about design maturity. We propose that the design pattern density of a maturing framework has a fixed point and we show that if software design patterns make learning frameworks easier, a framework's design pattern density is a measure of how much easier it will become.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640125",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Dirk",
+        "last_name": "Riehle",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/Riehle09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640126",
+    "title": "Writing code for other people: cognitive psychology and the fundamentals of good software design principles",
+    "abstract": "This paper demonstrates how the cognitive model of the mind can explain the core fundamentals behind widely accepted design principles. The conclusion is that software design is largely a task of chunking analogies and presents a theory that is detailed enough to be accessible to even the most inexperienced programmer. The corollary of which is a pedagogical approach to understanding design principles rather than the necessity of years of software development experience.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640126",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Mullen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/Mullen09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640113",
+    "title": "Static extraction and conformance analysis of hierarchical runtime architectural structure using annotations",
+    "abstract": "An object diagram makes explicit the object structures that are only implicit in a class diagram. An object diagram may be missing and must extracted from the code. Alternatively, an existing diagram may be inconsistent with the code, and must be analyzed for conformance with the implementation. One can generalize the global object diagram of a system into a runtime architecture which abstracts objects into components, represents how those components interact, and can decompose a component into a nested sub-architecture.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640113",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Marwan",
+        "last_name": "Abi-Antoun",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Aldrich",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Abi-AntounA09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640128",
+    "title": "pi: a pattern language",
+    "abstract": "Current programming languages and techniques realize many features which allow their users to extend these languages on a semantic basis: classes, functions, interfaces, aspects and other entities can be defined. However, there is a lack of modern programming languages which are both semantically and syntactically extensible from within the language itself, i.e., with no additional tool or meta-language. In this paper we present π as an approach that aims to overcome this lack. π provides an abstraction mechanism based on parameterized symbols which is capable of semantically and syntactically unifying programming concepts like variables, control-structures, procedures and functions into one concept: the pattern. We have evaluated the abstraction potential and the syntactic extensibility of π by successfully creating patterns for the aforementioned programming concepts. π could serve as a tool for designing new experimental languages and might generally influence the view we have on current programming concepts.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640128",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Roman",
+        "last_name": "Knöll",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "Mira",
+        "last_name": "Mezini",
+        "institution": "Technical University of Darmstadt"
+      }
+    ],
+    "dblp_key": "conf/oopsla/KnollM09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640118",
+    "title": "Executing code in the past: efficient in-memory object graph versioning",
+    "abstract": "Object versioning refers to how an application can have access to previous states of its objects. Implementing this mechanism is hard because it needs to be efficient in space and time, and well integrated with the programming language. This paper presents HistOOry, an object versioning system that uses an efficient data structure to store and retrieve past states. It needs only three primitives, and existing code does not need to be modified to be versioned. It provides fine-grained control over what parts of objects are versioned and when. It stores all states, past and present, in memory. Code can be executed in the past of the system and will see the complete system at that point in time. We have implemented our model in Smalltalk and used it for three applications that need versioning: checked postconditions, stateful execution tracing and a planar point location implementation. Benchmarks are provided to asses the practical complexity of our implementation.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640118",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Frédéric",
+        "last_name": "Pluquet",
+        "institution": "Université Libre de Bruxelles"
+      },
+      {
+        "first_name": "Stefan",
+        "last_name": "Langerman",
+        "institution": "Université Libre de Bruxelles"
+      },
+      {
+        "first_name": "Roel",
+        "last_name": "Wuyts",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/oopsla/PluquetLW09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640130",
+    "title": "Software evolution and the moving picture metaphor",
+    "abstract": "Software systems evolve over time. Currently we do not do a good job of documenting this evolution. This essay discusses the need to better document software evolution and introduces the Moving Picture Metaphor. Source Control Management systems are more like collections of still photographs than moving pictures. Still photography is not ideal when trying to capture evolutional changes. Moving pictures do a much better job. A storyteller can use moving pictures to tell compelling stories that are easier to digest than traditional documentation. We can learn a great deal from watching stories that document a system's evolution.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640130",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mark",
+        "last_name": "Mahoney",
+        "institution": "Carthage College"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Mahoney09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640127",
+    "title": "Regrowing a language: refactoring tools allow programming languages to evolve",
+    "abstract": "Successful programming languages change as they age. They tend to become more complex, and eventually some features become outdated or are rarely used. Programming tools for these languages become more complex as well, since they have to support archaic features. Old programs are hard to maintain, since these archaic features are unfamiliar to modern programmers. These problems can be solved by refactoring tools that can transform programs to use the modern form. We show that refactoring tools can ease the cost of program evolution by examining the evolution of two languages, Fortran and Java, and showing that each change corresponds to an automatable refactoring.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640127",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jeffrey",
+        "last_name": "Overbey",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Ralph E.",
+        "last_name": "Johnson",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/oopsla/OverbeyJ09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640114",
+    "title": "Demystifying model transformations: an approach based on automated rule inference",
+    "abstract": "Model-driven development (MDD) is widely used to develop modern business applications. MDD involves creating models at different levels of abstractions. Starting with models of domain concepts, these abstractions are successively refined, using transforms, to design-level models and, eventually, code-level artifacts. Although many tools exist that support transform creation and verification, tools that help users in understanding and using transforms are rare. In this paper, we present an approach for assisting users in understanding model transformations and debugging their input models. We use automated program-analysis techniques to analyze the transform code and compute constraints under which a transformation may fail or be incomplete. These code-level constraints are mapped to the input model elements to generate model-level rules. The rules can be used to validate whether an input model violates transform constraints, and to support general user queries about a transformation. We have implemented the analysis in a tool called XYLEM. We present empirical results, which indicate that (1) our approach can be effective in inferring useful rules, and (2) the rules let users efficiently diagnose a failing transformation without examining the transform source code.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640114",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mangala Gowri",
+        "last_name": "Nanda",
+        "institution": "IBM Research - India"
+      },
+      {
+        "first_name": "Senthil",
+        "last_name": "Mani",
+        "institution": "IBM Research - India"
+      },
+      {
+        "first_name": "Vibha Singhal",
+        "last_name": "Sinha",
+        "institution": "IBM Research - India"
+      },
+      {
+        "first_name": "Saurabh",
+        "last_name": "Sinha",
+        "institution": "IBM Research - India"
+      }
+    ],
+    "dblp_key": "conf/oopsla/NandaMSS09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640131",
+    "title": "Agile anthropology and Alexander's architecture: an essay in three voices",
+    "abstract": "During its formative decades the software community looked twice to the theories of Christopher Alexander for inspiration, both times failing to completely master the architect's most useful insights. Now a third opportunity presents itself with Alexander's recent publication, The Nature of Order. Serious apprenticeship, however, imposes a prerequisite of sober self-reflection and evaluation. What, really, is the nature of the developer's tasks? Under what philosophical umbrella has the software community matured until now? Do other philosophical traditions offer alternative and perhaps more pertinent epistemologies? What voices, besides Alexander's, might contribute to the community's evolution? We address these questions along with theory building, ethnography, weak links, design heuristics, agility, and complex systems, all of which combine with Alexander's new theories to suggest different ways of doing what we do, better.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640131",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jenny",
+        "last_name": "Quillien",
+        "institution": "Museum of Indian Arts and Culture"
+      },
+      {
+        "first_name": "Pam",
+        "last_name": "Rostal",
+        "institution": ""
+      },
+      {
+        "first_name": "Dave",
+        "last_name": "West",
+        "institution": "New Mexico Highlands University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/QuillienRW09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640116",
+    "title": "Allocation wall: a limiting factor of Java applications on emerging multi-core platforms",
+    "abstract": "Multi-core processors are widely used in computer systems. As the performance of microprocessors greatly exceeds that of memory, the memory wall becomes a limiting factor. It is important to understand how the large disparity of speed between processor and memory influences the performance and scalability of Java applications on emerging multi-core platforms.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640116",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yi",
+        "last_name": "Zhao",
+        "institution": "IBM Research (China)"
+      },
+      {
+        "first_name": "Jin",
+        "last_name": "Shi",
+        "institution": "Tsinghua University"
+      },
+      {
+        "first_name": "Kai",
+        "last_name": "Zheng",
+        "institution": "IBM Research (China)"
+      },
+      {
+        "first_name": "Haichuan",
+        "last_name": "Wang",
+        "institution": "IBM Research (China)"
+      },
+      {
+        "first_name": "Haibo",
+        "last_name": "Lin",
+        "institution": "IBM Research (China)"
+      },
+      {
+        "first_name": "Ling",
+        "last_name": "Shao",
+        "institution": "IBM Research (China)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ZhaoSZWLS09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640122",
+    "title": "Providing rapid feedback in generated modular language environments: adding error recovery to scannerless generalized-LR parsing",
+    "abstract": "Integrated development environments (IDEs) increase programmer productivity, providing rapid, interactive feedback based on the syntax and semantics of a language. A heavy burden lies on developers of new languages to provide adequate IDE support. Code generation techniques provide a viable, efficient approach to semi-automatically produce IDE plugins. Key components for the realization of plugins are the language's grammar and parser. For embedded languages and language extensions, constituent IDE plugin modules and their grammars can be combined. Unlike conventional parsing algorithms, scannerless generalized-LR parsing supports the full set of context-free grammars, which is closed under composition, and hence can parse language embeddings and extensions composed from separate grammar modules. To apply this algorithm in an interactive environment, this paper introduces a novel error recovery mechanism, which allows it to be used with files with syntax errors -- common in interactive editing. Error recovery is vital for providing rapid feedback in case of syntax errors, as most IDE services depend on the parser from syntax highlighting to semantic analysis and cross-referencing. We base our approach on the principles of island grammars, and derive permissive grammars with error recovery productions from normal SDF grammars. To cope with the added complexity of these grammars, we adapt the parser to support backtracking. We evaluate the recovery quality and performance of our approach using a set of composed languages, based on Java and Stratego.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640122",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Lennart C.L.",
+        "last_name": "Kats",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "M. de",
+        "last_name": "Jonge",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Emma",
+        "last_name": "Nilsson-Nyman",
+        "institution": "Lund University"
+      },
+      {
+        "first_name": "Eelco",
+        "last_name": "Visser",
+        "institution": "Delft University of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/KatsJNV09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640121",
+    "title": "Minimizing dependencies within generic classes for faster and smaller programs",
+    "abstract": "Generic classes can be used to improve performance by allowing compile-time polymorphism. But the applicability of compile-time polymorphism is narrower than that of runtime polymorphism, and it might bloat the object code. We advocate a programming principle whereby a generic class should be implemented in a way that minimizes the dependencies between its members (nested types, methods) and its generic type parameters. Conforming to this principle (1) reduces the bloat and (2) gives rise to a previously unconceived manner of using the language that expands the applicability of compile-time polymorphism to a wider range of problems. Our contribution is thus a programming technique that generates faster and smaller programs. We apply our ideas to GCC's STL containers and iterators, and we demonstrate notable speedups and reduction in object code size (real application runs 1.2x to 2.1x faster and STL code is 1x to 25x smaller). We conclude that standard generic APIs (like STL) should be amended to reflect the proposed principle in the interest of efficiency and compactness. Such modifications will not break old code, simply increase flexibility. Our findings apply to languages like C++, C#, and D, which realize generic programming through multiple instantiations.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640121",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Dan",
+        "last_name": "Tsafrir",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Robert W.",
+        "last_name": "Wisniewski",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "David F.",
+        "last_name": "Bacon",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Bjarne",
+        "last_name": "Stroustrup",
+        "institution": "Texas A&M University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/TsafrirWBS09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640133",
+    "title": "On understanding data abstraction, revisited",
+    "abstract": "In 1985 Luca Cardelli and Peter Wegner, my advisor, published an ACM Computing Surveys paper called \"On understanding types, data abstraction, and polymorphism\". Their work kicked off a flood of research on semantics and type theory for object-oriented programming, which continues to this day. Despite 25 years of research, there is still widespread confusion about the two forms of data abstraction, abstract data types and objects. This essay attempts to explain the differences and also why the differences matter.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640133",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "William R.",
+        "last_name": "Cook",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Cook09",
+    "venue": "oopsla",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1640089.1640132",
+    "title": "An exploration of program as language",
+    "abstract": "In this paper we explore the idea that the code that constitutes a program actually forms a higher-level, program specific language. The symbols of the language are the abstractions of the program, and the grammar of the language is the set of (generally unwritten) rules about the allowable combinations of those abstractions. As such, a program is both a language definition, and the only use of that language. This specificity means that reading a never-before encountered program involves learning a new natural language, and that porting code from one program to another requires translation from one natural language into another. We suggest that the complexity and depth of the program language is affected by the gap between the program semantics (what the program is meant to do) and the code semantics (the way in which the machine runs). We believe that in seeing that programs are languages, we gain new insight into our own experience as programmers, and are able to gain new perspective on the intense complexity of code and its creation.",
+    "date": "2009-10-25",
+    "link": "https://doi.org/10.1145/1640089.1640132",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Elisa",
+        "last_name": "Baniassad",
+        "institution": "Chinese University of Hong Kong"
+      },
+      {
+        "first_name": "C. E.",
+        "last_name": "Myers",
+        "institution": "Chinese University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BaniassadM09",
+    "venue": "oopsla",
+    "year": 2009
+  }
+]

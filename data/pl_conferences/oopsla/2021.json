@@ -1,0 +1,2505 @@
+[
+  {
+    "paper_id": "10.1145/3485493",
+    "title": "Data-driven abductive inference of library specifications",
+    "abstract": "Programmers often leverage data structure libraries that provide useful and reusable abstractions. Modular verification of programs that make use of these libraries naturally rely on specifications that capture important properties about how the library expects these data structures to be accessed and manipulated. However, these specifications are often missing or incomplete, making it hard for clients to be confident they are using the library safely. When library source code is also unavailable, as is often the case, the challenge to infer meaningful specifications is further exacerbated. In this paper, we present a novel data-driven abductive inference mechanism that infers specifications for library methods sufficient to enable verification of the library's clients. Our technique combines a data-driven learning-based framework to postulate candidate specifications, along with SMT-provided counterexamples to refine these candidates, taking special care to prevent generating specifications that overfit to sampled tests. The resulting specifications form a minimal set of requirements on the behavior of library implementations that ensures safety of a particular client program. Our solution thus provides a new multi-abduction procedure for precise specification inference of data structure libraries guided by client-side verification tasks. Experimental results on a wide range of realistic OCaml data structure programs demonstrate the effectiveness of the approach.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485493",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Z.",
+        "last_name": "Zhou",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Dickerson",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Delaware",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhouDDJ21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485518",
+    "title": "Interpretable noninterference measurement and its application to processor designs",
+    "abstract": "Noninterference measurement quantifies the secret information that might leak to an adversary from what the adversary can observe and influence about the computation. Static and high-fidelity noninterference measurement has been difficult to scale to complex computations, however. This paper scales a recent framework for noninterference measurement to the open-source RISC-V BOOM core as specified in Verilog, through three key innovations: logically characterizing the core’s execution incrementally, applying specific optimizations between each cycle; permitting information to be declassified, to focus leakage measurement to only secret information that cannot be inferred from the declassified information; and interpreting leakage measurements for the analyst in terms of simple rules that characterize when leakage occurs. Case studies on cache-based side channels generally, and on specific instances including Spectre attacks, show that the resulting toolchain, called DINoMe, effectively scales to this modern processor design.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485518",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ziqiao",
+        "last_name": "Zhou",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Michael K.",
+        "last_name": "Reiter",
+        "institution": "Duke University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhouR21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485505",
+    "title": "Compilation of sparse array programming models",
+    "abstract": "This paper shows how to compile sparse array programming languages. A sparse array programming language is an array programming language that supports element-wise application, reduction, and broadcasting of arbitrary functions over dense and sparse arrays with any fill value. Such a language has great expressive power and can express sparse and dense linear and tensor algebra, functions over images, exclusion and inclusion filters, and even graph algorithms. Our compiler strategy generalizes prior work in the literature on sparse tensor algebra compilation to support any function applied to sparse arrays, instead of only addition and multiplication. To achieve this, we generalize the notion of sparse iteration spaces beyond intersections and unions. These iteration spaces are automatically derived by considering how algebraic properties annotated onto functions interact with the fill values of the arrays. We then show how to compile these iteration spaces to efficient code. When compared with two widely-used Python sparse array packages, our evaluation shows that we generate built-in sparse array library features with a performance of 1.4× to 53.7× when measured against PyData/Sparse for user-defined functions and between 0.98× and 5.53× when measured against SciPy/Sparse for sparse array slicing. Our technique outperforms PyData/Sparse by 6.58× to 70.3×, and (where applicable) performs between 0.96× and 28.9× that of a dense NumPy implementation, on end-to-end sparse array applications. We also implement graph linear algebra kernels in our system with a performance of between 0.56× and 3.50× compared to that of the hand-optimized SuiteSparse:GraphBLAS library.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485505",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Rawn",
+        "last_name": "Henry",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Olivia",
+        "last_name": "Hsu",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Rohan",
+        "last_name": "Yadav",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Stephen Y.",
+        "last_name": "Chou",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Kunle",
+        "last_name": "Olukotun",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Saman",
+        "last_name": "Amarasinghe",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Fredrik",
+        "last_name": "Kjølstad",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HenryHYCOAK21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485513",
+    "title": "Copy-and-patch compilation: a fast compilation algorithm for high-level languages and bytecode",
+    "abstract": "Fast compilation is important when compilation occurs at runtime, such as query compilers in modern database systems and WebAssembly virtual machines in modern browsers. We present copy-and-patch, an extremely fast compilation technique that also produces good quality code. It is capable of lowering both high-level languages and low-level bytecode programs to binary code, by stitching together code from a large library of binary implementation variants. We call these binary implementations stencils because they have holes where missing values must be inserted during code generation. We show how to construct a stencil library and describe the copy-and-patch algorithm that generates optimized binary code. We demonstrate two use cases of copy-and-patch: a compiler for a high-level C-like language intended for metaprogramming and a compiler for WebAssembly. Our high-level language compiler has negligible compilation cost: it produces code from an AST in less time than it takes to construct the AST. We have implemented an SQL database query compiler on top of this metaprogramming system and show that on TPC-H database benchmarks, copy-and-patch generates code two orders of magnitude faster than LLVM -O0 and three orders of magnitude faster than higher optimization levels. The generated code runs an order of magnitude faster than interpretation and 14% faster than LLVM -O0. Our WebAssembly compiler generates code 4.9X-6.5X faster than Liftoff, the WebAssembly baseline compiler in Google Chrome. The generated code also outperforms Liftoff's by 39%-63% on the Coremark and PolyBenchC WebAssembly benchmarks.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485513",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Haoran",
+        "last_name": "Xu",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Fredrik",
+        "last_name": "Kjølstad",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/XuK21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485530",
+    "title": "LooPy: interactive program synthesis with control structures",
+    "abstract": "One vision for program synthesis, and specifically for programming by example (PBE), is an interactive programmer's assistant, integrated into the development environment. To make program synthesis practical for interactive use, prior work on Small-Step Live PBE has proposed to limit the scope of synthesis to small code snippets, and enable the users to provide local specifications for those snippets. This paradigm, however, does not work well in the presence of loops. We present LooPy, a synthesizer integrated into a live programming environment, which extends Small-Step Live PBE to work inside loops and scales it up to synthesize larger code snippets, while remaining fast enough for interactive use. To allow users to effectively provide examples at various loop iterations, even when the loop body is incomplete, LooPy makes use of live execution , a technique that leverages the programmer as an oracle to step over incomplete parts of the loop. To enable synthesis of loop bodies at interactive speeds, LooPy introduces Intermediate State Graph , a new data structure, which compactly represents a large space of code snippets composed of multiple assignment statements and conditionals. We evaluate LooPy empirically using benchmarks from competitive programming and previous synthesizers, and show that it can solve a wide variety of synthesis tasks at interactive speeds. We also perform a small qualitative user study which shows that LooPy's block-level specifications are easy for programmers to provide.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485530",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Kasra",
+        "last_name": "Ferdowsi",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Shraddha",
+        "last_name": "Barke",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Hila",
+        "last_name": "Peleg",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Sorin",
+        "last_name": "Lerner",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Nadia",
+        "last_name": "Polikarpova",
+        "institution": "University of California San Diego"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/FerdowsifardBPL21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485479",
+    "title": "Efficient compilation of algebraic effect handlers",
+    "abstract": "The popularity of algebraic effect handlers as a programming language feature for user-defined computational effects is steadily growing. Yet, even though efficient runtime representations have already been studied, most handler-based programs are still much slower than hand-written code. This paper shows that the performance gap can be drastically narrowed (in some cases even closed) by means of type-and-effect directed optimising compilation. Our approach consists of source-to-source transformations in two phases of the compilation pipeline. Firstly, elementary rewrites, aided by judicious function specialisation, exploit the explicit type and effect information of the compiler’s core language to aggressively reduce handler applications. Secondly, after erasing the effect information further rewrites in the backend of the compiler emit tight code. This work comes with a practical implementation: an optimising compiler from Eff, an ML style language with algebraic effect handlers, to OCaml. Experimental evaluation with this implementation demonstrates that in a number of benchmarks, our approach eliminates much of the overhead of handlers, outperforms capability-passing style compilation and yields competitive performance compared to hand-written OCaml code as well Multicore OCaml’s dedicated runtime support.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485479",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Georgios",
+        "last_name": "Karachalias",
+        "institution": ""
+      },
+      {
+        "first_name": "Filip",
+        "last_name": "Koprivec",
+        "institution": "University of Ljubljana"
+      },
+      {
+        "first_name": "Matija",
+        "last_name": "Pretnar",
+        "institution": "University of Ljubljana"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KarachaliasKPS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485521",
+    "title": "VESPA: static profiling for binary optimization",
+    "abstract": "Over the past few years, there has been a surge in the popularity of binary optimizers such as BOLT, Propeller, Janus and HALO. These tools use dynamic profiling information to make optimization decisions. Although effective, gathering runtime data presents developers with inconveniences such as unrepresentative inputs, the need to accommodate software modifications, and longer build times. In this paper, we revisit the static profiling technique proposed by Calder et al. in the late 90’s, and investigate its application to drive binary optimizations, in the context of the BOLT binary optimizer, as a replacement for dynamic profiling. A few core modifications to Calder et al.’s original proposal, consisting of new program features and a new regression model, are sufficient to enable some of the gains obtained through runtime profiling. An evaluation of BOLT powered by our static profiler on four large benchmarks (clang, GCC, MySQL and PostgreSQL) yields binaries that are 5.47 % faster than the executables produced by clang -O3.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485521",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Angélica Aparecida",
+        "last_name": "Moreira",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Guilherme",
+        "last_name": "Ottoni",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Fernando Magno Quintão",
+        "last_name": "Pereira",
+        "institution": "Universidade Federal de Minas Gerais"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MoreiraOP21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485502",
+    "title": "What we eval in the shadows: a large-scale study of eval in R programs",
+    "abstract": "Most dynamic languages allow users to turn text into code using various functions, often named &lt;tt&gt;eval&lt;/tt&gt;, with language-dependent semantics. The widespread use of these reflective functions hinders static analysis and prevents compilers from performing optimizations. This paper aims to provide a better sense of why programmers use &lt;tt&gt;eval&lt;/tt&gt;. Understanding why &lt;tt&gt;eval&lt;/tt&gt; is used in practice is key to finding ways to mitigate its negative impact. We have reasons to believe that reflective feature usage is language and application domain-specific; we focus on data science code written in R and compare our results to previous work that analyzed web programming in JavaScript. We analyze 49,296,059 calls to &lt;tt&gt;eval&lt;/tt&gt; from 240,327 scripts extracted from 15,401 R packages. We find that &lt;tt&gt;eval&lt;/tt&gt; is indeed in widespread use; R’s &lt;tt&gt;eval&lt;/tt&gt; is more pervasive and arguably dangerous than what was previously reported for JavaScript.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485502",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Aviral",
+        "last_name": "Goel",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Pierre",
+        "last_name": "Donat-Bouillud",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Filip",
+        "last_name": "Křikava",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Christoph M.",
+        "last_name": "Kirsch",
+        "institution": "University of Salzburg"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GoelDKKV21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485484",
+    "title": "ECROs: building global scale systems from sequential code",
+    "abstract": "To ease the development of geo-distributed applications, replicated data types (RDTs) offer a familiar programming interface while ensuring state convergence, low latency, and high availability. However, RDTs are still designed exclusively by experts using ad-hoc solutions that are error-prone and result in brittle systems. Recent works statically detect conflicting operations on existing data types and coordinate those at runtime to guarantee convergence and preserve application invariants. However, these approaches are too conservative, imposing coordination on a large number of operations. In this work, we propose a principled approach to design and implement efficient RDTs taking into account application invariants. Developers extend sequential data types with a distributed specification, which together form an RDT. We statically analyze the specification to detect conflicts and unravel their cause. This information is then used at runtime to serialize concurrent operations safely and efficiently. Our approach derives a correct RDT from any sequential data type without changes to the data type's implementation and with minimal coordination. We implement our approach in Scala and develop an extensive portfolio of RDTs. The evaluation shows that our approach provides performance similar to conflict-free replicated data types for commutative operations, and considerably improves the performance of non-commutative operations, compared to existing solutions.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485484",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Kevin De",
+        "last_name": "Porre",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Carla",
+        "last_name": "Ferreira",
+        "institution": "Universidade Nova de Lisboa"
+      },
+      {
+        "first_name": "Nuno",
+        "last_name": "Preguiça",
+        "institution": "Universidade Nova de Lisboa"
+      },
+      {
+        "first_name": "Elisa Gonzalez",
+        "last_name": "Boix",
+        "institution": "Vrije Universiteit Brussel"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PorreFPB21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485474",
+    "title": "Much ADO about failures: a fault-aware model for compositional verification of strongly consistent distributed systems",
+    "abstract": "Despite recent advances, guaranteeing the correctness of large-scale distributed applications without compromising performance remains a challenging problem. Network and node failures are inevitable and, for some applications, careful control over how they are handled is essential. Unfortunately, existing approaches either completely hide these failures behind an atomic state machine replication (SMR) interface, or expose all of the network-level details, sacrificing atomicity. We propose a novel, compositional, atomic distributed object (ADO) model for strongly consistent distributed systems that combines the best of both options. The object-oriented API abstracts over protocol-specific details and decouples high-level correctness reasoning from implementation choices. At the same time, it intentionally exposes an abstract view of certain key distributed failure cases, thus allowing for more fine-grained control over them than SMR-like models. We demonstrate that proving properties even of composite distributed systems can be straightforward with our Coq verification framework, Advert, thanks to the ADO model. We also show that a variety of common protocols including multi-Paxos and Chain Replication refine the ADO semantics, which allows one to freely choose among them for an application's implementation without modifying ADO-level correctness proofs.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485474",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Wolf",
+        "last_name": "Honoré",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Jieung",
+        "last_name": "Kim",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Ji-Yong",
+        "last_name": "Shin",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HonoreKSS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485519",
+    "title": "Reconciling optimization with secure compilation",
+    "abstract": "Software protections against side-channel and physical attacks are essential to the development of secure applications. Such protections are meaningful at machine code or micro-architectural level, but they typically do not carry observable semantics at source level. This renders them susceptible to miscompilation, and security engineers embed input/output side-effects to prevent optimizing compilers from altering them. Yet these side-effects are error-prone and compiler-dependent. The current practice involves analyzing the generated machine code to make sure security or privacy properties are still enforced. These side-effects may also be too expensive in fine-grained protections such as control-flow integrity. We introduce observations of the program state that are intrinsic to the correct execution of security protections, along with means to specify and preserve observations across the compilation flow. Such observations complement the input/output semantics-preservation contract of compilers. We introduce an opacification mechanism to preserve and enforce a partial ordering of observations. This approach is compatible with a production compiler and does not incur any modification to its optimization passes. We validate the effectiveness and performance of our approach on a range of benchmarks, expressing the secure compilation of these applications in terms of observations to be made at specific program points.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485519",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Son Tuan",
+        "last_name": "Vu",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Albert",
+        "last_name": "Cohen",
+        "institution": ""
+      },
+      {
+        "first_name": "Arnaud de",
+        "last_name": "Grandmaison",
+        "institution": "ARM (United Kingdom)"
+      },
+      {
+        "first_name": "Christophe",
+        "last_name": "Guillon",
+        "institution": "STMicroelectronics (Switzerland)"
+      },
+      {
+        "first_name": "Karine",
+        "last_name": "Heydemann",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/VuCGGH21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485517",
+    "title": "Static detection of silent misconfigurations with deep interaction analysis",
+    "abstract": "The behavior of large systems is guided by their configurations: users set parameters in the configuration file to dictate which corresponding part of the system code is executed. However, it is often the case that, although some parameters are set in the configuration file, they do not influence the system runtime behavior, thus failing to meet the user’s intent. Moreover, such misconfigurations rarely lead to an error message or raising an exception. We introduce the notion of silent misconfigurations which are prohibitively hard to identify due to (1) lack of feedback and (2) complex interactions between configurations and code. This paper presents ConfigX, the first tool for the detection of silent misconfigurations. The main challenge is to understand the complex interactions between configurations and the code that they affected. Our goal is to derive a specification describing non-trivial interactions between the configuration parameters that lead to silent misconfigurations. To this end, ConfigX uses static analysis to determine which parts of the system code are associated with configuration parameters. ConfigX then infers the connections between configuration parameters by analyzing their associated code blocks. We design customized control- and data-flow analysis to derive a specification of configurations. Additionally, we conduct reachability analysis to eliminate spurious rules to reduce false positives. Upon evaluation on five real-world datasets across three widely-used systems, Apache, vsftpd, and PostgreSQL, ConfigX detected more than 2200 silent misconfigurations. We additionally conducted a user study where we ran ConfigX on misconfigurations reported on user forums by real-world users. ConfigX easily detected issues and suggested repairs for those misconfigurations. Our solutions were accepted and confirmed in the interaction with the users, who originally posted the problems.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485517",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jialu",
+        "last_name": "Zhang",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Ružica",
+        "last_name": "Piskač",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Ennan",
+        "last_name": "Zhai",
+        "institution": "Alibaba Group (United States)"
+      },
+      {
+        "first_name": "Tianyin",
+        "last_name": "Xu",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhangPZX21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485501",
+    "title": "A multiparty session typing discipline for fault-tolerant event-driven distributed programming",
+    "abstract": "This paper presents a formulation of multiparty session types (MPSTs) for practical fault-tolerant distributed programming. We tackle the challenges faced by session types in the context of distributed systems involving asynchronous and concurrent partial failures – such as supporting dynamic replacement of failed parties and retrying failed protocol segments in an ongoing multiparty session – in the presence of unreliable failure detection. Key to our approach is that we develop a novel model of event-driven concurrency for multiparty sessions. Inspired by real-world practices, it enables us to unify the session-typed handling of regular I/O events with failure handling and the combination of features needed to express practical fault-tolerant protocols. Moreover, the characteristics of our model allow us to prove a global progress property for well-typed processes engaged in multiple concurrent sessions, which does not hold in traditional MPST systems. To demonstrate its practicality, we implement our framework as a toolchain and runtime for Scala, and use it to specify and implement a session-typed version of the cluster management system of the industrial-strength Apache Spark data analytics framework. Our session-typed cluster manager composes with other vanilla Spark components to give a functioning Spark runtime; e.g., it can execute existing third-party Spark applications without code modification. A performance evaluation using the TPC-H benchmark shows our prototype implementation incurs an average overhead below 10%.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485501",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Malte",
+        "last_name": "Viering",
+        "institution": "Technische Universität Darmstadt"
+      },
+      {
+        "first_name": "Raymond",
+        "last_name": "Hu",
+        "institution": "Queen Mary University of London"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Eugster",
+        "institution": "Università della Svizzera italiana"
+      },
+      {
+        "first_name": "Lukasz",
+        "last_name": "Ziarek",
+        "institution": "University at Buffalo, State University of New York"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/VieringHEZ21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485543",
+    "title": "Programming and execution models for parallel bounded exhaustive testing",
+    "abstract": "Bounded-exhaustive testing (BET), which exercises a program under test for all inputs up to some bounds, is an effective method for detecting software bugs. Systematic property-based testing is a BET approach where developers write test generation programs that describe properties of test inputs. Hybrid test generation programs offer the most expressive way to write desired properties by freely combining declarative filters and imperative generators. However, exploring hybrid test generation programs, to obtain test inputs, is both computationally demanding and challenging to parallelize. We present the first programming and execution models, dubbed Tempo, for parallel exploration of hybrid test generation programs. We describe two different strategies for mapping the computation to parallel hardware and implement them both for GPUs and CPUs. We evaluated Tempo by generating instances of various data structures commonly used for benchmarking in the BET domain. Additionally, we generated CUDA programs to stress test CUDA compilers, finding four bugs confirmed by the developers.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485543",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Nader Al",
+        "last_name": "Awar",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Kush",
+        "last_name": "Jain",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Christopher J.",
+        "last_name": "Rossbach",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Milos",
+        "last_name": "Gligoric",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AwarJRG21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485483",
+    "title": "SimTyper: sound type inference for Ruby using type equality prediction",
+    "abstract": "Many researchers have explored type inference for dynamic languages. However, traditional type inference computes most general types which, for complex type systems—which are often needed to type dynamic languages—can be verbose, complex, and difficult to understand. In this paper, we introduce SimTyper, a Ruby type inference system that aims to infer usable types—specifically, nominal and generic types—that match the types programmers write. SimTyper builds on InferDL, a recent Ruby type inference system that soundly combines standard type inference with heuristics. The key novelty of SimTyper is type equality prediction , a new, machine learning-based technique that predicts when method arguments or returns are likely to have the same type. SimTyper finds pairs of positions that are predicted to have the same type yet one has a verbose, overly general solution and the other has a usable solution. It then guesses the two types are equal, keeping the guess if it is consistent with the rest of the program, and discarding it if not. In this way, types inferred by SimTyper are guaranteed to be sound. To perform type equality prediction, we introduce the deep similarity (DeepSim) neural network. DeepSim is a novel machine learning classifier that follows the Siamese network architecture and uses CodeBERT, a pre-trained model, to embed source tokens into vectors that capture tokens and their contexts. DeepSim is trained on 100,000 pairs labeled with type similarity information extracted from 371 Ruby programs with manually documented, but not checked, types. We evaluated SimTyper on eight Ruby programs and found that, compared to standard type inference, SimTyper finds 69% more types that match programmer-written type information. Moreover, DeepSim can predict rare types that appear neither in the Ruby standard library nor in the training data. Our results show that type equality prediction can help type inference systems effectively produce more usable types.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485483",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Milod",
+        "last_name": "Kazerounian",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Bonan",
+        "last_name": "Min",
+        "institution": "RTX (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KazerounianFM21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485516",
+    "title": "Reachability types: tracking aliasing and separation in higher-order functional programs",
+    "abstract": "Ownership type systems, based on the idea of enforcing unique access paths, have been primarily focused on objects and top-level classes. However, existing models do not as readily reflect the finer aspects of nested lexical scopes, capturing, or escaping closures in higher-order functional programming patterns, which are increasingly adopted even in mainstream object-oriented languages. We present a new type system, λ * , which enables expressive ownership-style reasoning across higher-order functions. It tracks sharing and separation through reachability sets, and layers additional mechanisms for selectively enforcing uniqueness on top of it. Based on reachability sets, we extend the type system with an expressive flow-sensitive effect system, which enables flavors of move semantics and ownership transfer. In addition, we present several case studies and extensions, including applications to capabilities for algebraic effects, one-shot continuations, and safe parallelization.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485516",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yuyan",
+        "last_name": "Bao",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Guannan",
+        "last_name": "Wei",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Oliver",
+        "last_name": "Bračevac",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Yuxuan",
+        "last_name": "Jiang",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Qiyang",
+        "last_name": "He",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Tiark",
+        "last_name": "Rompf",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BaoWBJHR21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485514",
+    "title": "Study of the subtyping machine of nominal subtyping with variance",
+    "abstract": "This is a study of the computing power of the subtyping machine behind Kennedy and Pierce's nominal subtyping with variance. We depict the lattice of fragments of Kennedy and Pierce's type system and characterize their computing power in terms of regular, context-free, deterministic, and non-deterministic tree languages. Based on the theory, we present Treetop---a generator of C# implementations of subtyping machines. The software artifact constitutes the first feasible (yet POC) fluent API generator to support context-free API protocols in a decidable type system fragment.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485514",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ori",
+        "last_name": "Roth",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Roth21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485500",
+    "title": "Well-typed programs can go wrong: a study of typing-related bugs in JVM compilers",
+    "abstract": "Despite the substantial progress in compiler testing, research endeavors have mainly focused on detecting compiler crashes and subtle miscompilations caused by bugs in the implementation of compiler optimizations. Surprisingly, this growing body of work neglects other compiler components, most notably the front-end. In statically-typed programming languages with rich and expressive type systems and modern features, such as type inference or a mix of object-oriented with functional programming features, the process of static typing in compiler front-ends is complicated by a high-density of bugs. Such bugs can lead to the acceptance of incorrect programs (breaking code portability or the type system's soundness), the rejection of correct (e.g. well-typed) programs, and the reporting of misleading errors and warnings. We conduct, what is to the best of our knowledge, the first empirical study for understanding and characterizing typing-related compiler bugs. To do so, we manually study 320 typing-related bugs (along with their fixes and test cases) that are randomly sampled from four mainstream JVM languages, namely Java, Scala, Kotlin, and Groovy. We evaluate each bug in terms of several aspects, including their symptom, root cause, bug fix's size, and the characteristics of the bug-revealing test cases. Some representative observations indicate that: (1) more than half of the typing-related bugs manifest as unexpected compile-time errors: the buggy compiler wrongly rejects semantically correct programs, (2) the majority of typing-related bugs lie in the implementations of the underlying type systems and in other core components related to operations on types, (3) parametric polymorphism is the most pervasive feature in the corresponding test cases, (4) one third of typing-related bugs are triggered by non-compilable programs. We believe that our study opens up a new research direction by driving future researchers to build appropriate methods and techniques for a more holistic testing of compilers.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485500",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Stefanos",
+        "last_name": "Chaliasos",
+        "institution": "Athens University of Economics and Business"
+      },
+      {
+        "first_name": "Thodoris",
+        "last_name": "Sotiropoulos",
+        "institution": "Athens University of Economics and Business"
+      },
+      {
+        "first_name": "Georgios-Petros",
+        "last_name": "Drosos",
+        "institution": "Athens University of Economics and Business"
+      },
+      {
+        "first_name": "Charalambos",
+        "last_name": "Mitropoulos",
+        "institution": "Technical University of Crete"
+      },
+      {
+        "first_name": "Dimitris",
+        "last_name": "Mitropoulos",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Diomidis",
+        "last_name": "Spinellis",
+        "institution": "Athens University of Economics and Business"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ChaliasosSDMMS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485535",
+    "title": "Multi-modal program inference: a marriage of pre-trained language models and component-based synthesis",
+    "abstract": "Multi-modal program synthesis refers to the task of synthesizing programs (code) from their specification given in different forms, such as a combination of natural language and examples. Examples provide a precise but incomplete specification, and natural language provides an ambiguous but more \"complete\" task description. Machine-learned pre-trained models (PTMs) are adept at handling ambiguous natural language, but struggle with generating syntactically and semantically precise code. Program synthesis techniques can generate correct code, often even from incomplete but precise specifications, such as examples, but they are unable to work with the ambiguity of natural languages. We present an approach that combines PTMs with component-based synthesis (CBS): PTMs are used to generate candidates programs from the natural language description of the task, which are then used to guide the CBS procedure to find the program that matches the precise examples-based specification. We use our combination approach to instantiate multi-modal synthesis systems for two programming domains: the domain of regular expressions and the domain of CSS selectors. Our evaluation demonstrates the effectiveness of our domain-agnostic approach in comparison to a state-of-the-art specialized system, and the generality of our approach in providing multi-modal program synthesis from natural language and examples in different programming domains.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485535",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Kia",
+        "last_name": "Rahmani",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Mohammad",
+        "last_name": "Raza",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Vu",
+        "last_name": "Le",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Morris",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Arjun",
+        "last_name": "Radhakrishna",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Gustavo",
+        "last_name": "Soares",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Ashish",
+        "last_name": "Tiwari",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RahmaniRGLMRST21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485481",
+    "title": "Synthesizing contracts correct modulo a test generator",
+    "abstract": "We present an approach to learn contracts for object-oriented programs where guarantees of correctness of the contracts are made with respect to a test generator. Our contract synthesis approach is based on a novel notion of tight contracts and an online learning algorithm that works in tandem with a test generator to synthesize tight contracts. We implement our approach in a tool called Precis and evaluate it on a suite of programs written in C#, studying the safety and strength of the synthesized contracts, and compare them to those synthesized by Daikon.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485481",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Angello",
+        "last_name": "Astorga",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Shambwaditya",
+        "last_name": "Saha",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Ahmad",
+        "last_name": "Dinkins",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Felicia",
+        "last_name": "Wang",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Madhusudan",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Tao",
+        "last_name": "Xie",
+        "institution": "Peking University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AstorgaSDWMX21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485527",
+    "title": "Type stability in Julia: avoiding performance pathologies in JIT compilation",
+    "abstract": "As a scientific programming language, Julia strives for performance but also provides high-level productivity features. To avoid performance pathologies, Julia users are expected to adhere to a coding discipline that enables so-called type stability. Informally, a function is type stable if the type of the output depends only on the types of the inputs, not their values. This paper provides a formal definition of type stability as well as a stronger property of type groundedness, shows that groundedness enables compiler optimizations, and proves the compiler correct. We also perform a corpus analysis to uncover how these type-related properties manifest in practice.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485527",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Artem",
+        "last_name": "Pelenitsyn",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Julia",
+        "last_name": "Belyakova",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Chung",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Ross",
+        "last_name": "Tate",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PelenitsynBCTV21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485529",
+    "title": "Generative type-aware mutation for testing SMT solvers",
+    "abstract": "We propose Generative Type-Aware Mutation, an effective approach for testing SMT solvers. The key idea is to realize generation through the mutation of expressions rooted with parametric operators from the SMT-LIB specification. Generative Type-Aware Mutation is a hybrid of mutation-based and grammar-based fuzzing and features an infinite mutation space—overcoming a major limitation of OpFuzz, the state-of-the-art fuzzer for SMT solvers. We have realized Generative Type-Aware Mutation in a practical SMT solver bug hunting tool, TypeFuzz. During our testing period with TypeFuzz, we reported over 237 bugs in the state-of-the-art SMT solvers Z3 and CVC4. Among these, 189 bugs were confirmed and 176 bugs were fixed. Most notably, we found 18 soundness bugs in CVC4’s default mode alone. Several of them were two years latent (7/18). CVC4 has been proved to be a very stable SMT solver and has resisted several fuzzing campaigns.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485529",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jiwon",
+        "last_name": "Park",
+        "institution": "École Polytechnique"
+      },
+      {
+        "first_name": "Dominik",
+        "last_name": "Winterer",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Chengyu",
+        "last_name": "Zhang",
+        "institution": "East China Normal University"
+      },
+      {
+        "first_name": "Zhendong",
+        "last_name": "Su",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ParkWZS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485522",
+    "title": "Modular specification and verification of closures in Rust",
+    "abstract": "Closures are a language feature supported by many mainstream languages, combining the ability to package up references to code blocks with the possibility of capturing state from the environment of the closure's declaration. Closures are powerful, but complicate understanding and formal reasoning, especially when closure invocations may mutate objects reachable from the captured state or from closure arguments. This paper presents a novel technique for the modular specification and verification of closure-manipulating code in Rust. Our technique combines Rust's type system guarantees and novel specification features to enable formal verification of rich functional properties. It encodes higher-order concerns into a first-order logic, which enables automation via SMT solvers. Our technique is implemented as an extension of the deductive verifier Prusti, with which we have successfully verified many common idioms of closure usage.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485522",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Fabian",
+        "last_name": "Wolff",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Aurel",
+        "last_name": "Bílý",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Christoph",
+        "last_name": "Matheja",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Péter",
+        "last_name": "Müller",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Alexander J.",
+        "last_name": "Summers",
+        "institution": "University of British Columbia"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WolffBMMS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485508",
+    "title": "Specifying and testing GPU workgroup progress models",
+    "abstract": "As GPU availability has increased and programming support has matured, a wider variety of applications are being ported to these platforms. Many parallel applications contain fine-grained synchronization idioms; as such, their correct execution depends on a degree of relative forward progress between threads (or thread groups). Unfortunately, many GPU programming specifications (e.g. Vulkan and Metal) say almost nothing about relative forward progress guarantees between workgroups. Although prior work has proposed a spectrum of plausible progress models for GPUs, cross-vendor specifications have yet to commit to any model. This work is a collection of tools and experimental data to aid specification designers when considering forward progress guarantees in programming frameworks. As a foundation, we formalize a small parallel programming language that captures the essence of fine-grained synchronization. We then provide a means of formally specifying a progress model, and develop a termination oracle that decides whether a given program is guaranteed to eventually terminate with respect to a given progress model. Next, we formalize a set of constraints that describe concurrent programs that require forward progress to terminate. This allows us to synthesize a large set of 483 progress litmus tests. Combined with the termination oracle, we can determine the expected status of each litmus test -- i.e. whether it is guaranteed to eventually terminate -- under various progress models. We present a large experimental campaign running the litmus tests across 8 GPUs from 5 different vendors. Our results highlight that GPUs have significantly different termination behaviors under our test suite. Most notably, we find that Apple and ARM GPUs do not support the linear occupancy-bound model, as was hypothesized by prior work.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485508",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Tyler",
+        "last_name": "Sorensen",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Lucas F.",
+        "last_name": "Salvador",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Harmit",
+        "last_name": "Raval",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Hugues",
+        "last_name": "Evrard",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Wickerson",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Margaret",
+        "last_name": "Martonosi",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Alastair F.",
+        "last_name": "Donaldson",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SorensenSREWMD21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485496",
+    "title": "Rewrite rule inference using equality saturation",
+    "abstract": "Many compilers, synthesizers, and theorem provers rely on rewrite rules to simplify expressions or prove equivalences. Developing rewrite rules can be difficult: rules may be subtly incorrect, profitable rules are easy to miss, and rulesets must be rechecked or extended whenever semantics are tweaked. Large rulesets can also be challenging to apply: redundant rules slow down rule-based search and frustrate debugging. This paper explores how equality saturation, a promising technique that uses e-graphs to apply rewrite rules, can also be used to infer rewrite rules. E-graphs can compactly represent the exponentially large sets of enumerated terms and potential rewrite rules. We show that equality saturation efficiently shrinks both sets, leading to faster synthesis of smaller, more general rulesets. We prototyped these strategies in a tool dubbed Ruler. Compared to a similar tool built on CVC4, Ruler synthesizes 5.8× smaller rulesets 25× faster without compromising on proving power. In an end-to-end case study, we show Ruler-synthesized rules which perform as well as those crafted by domain experts, and addressed a longstanding issue in a popular open source tool.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485496",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Chandrakana",
+        "last_name": "Nandi",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Max",
+        "last_name": "Willsey",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Amy",
+        "last_name": "Zhu",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Yisu Remy",
+        "last_name": "Wang",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Brett",
+        "last_name": "Saiki",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Anderson",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Adriana",
+        "last_name": "Schulz",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Zachary",
+        "last_name": "Tatlock",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/NandiWZWSASGT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485524",
+    "title": "Making pointer analysis more precise by unleashing the power of selective context sensitivity",
+    "abstract": "Traditional context-sensitive pointer analysis is hard to scale for large and complex Java programs. To address this issue, a series of selective context-sensitivity approaches have been proposed and exhibit promising results. In this work, we move one step further towards producing highly-precise pointer analyses for hard-to-analyze Java programs by presenting the Unity-Relay framework, which takes selective context sensitivity to the next level. Briefly, Unity-Relay is a one-two punch: given a set of different selective context-sensitivity approaches, say S = S1, . . . , Sn, Unity-Relay first provides a mechanism (called Unity)to combine and maximize the precision of all components of S. When Unity fails to scale, Unity-Relay offers a scheme (called Relay) to pass and accumulate the precision from one approach Si in S to the next, Si+1, leading to an analysis that is more precise than all approaches in S. As a proof-of-concept, we instantiate Unity-Relay into a tool called Baton and extensively evaluate it on a set of hard-to-analyze Java programs, using general precision metrics and popular clients. Compared with the state of the art, Baton achieves the best precision for all metrics and clients for all evaluated programs. The difference in precision is often dramatic — up to 71% of alias pairs reported by previously-best algorithms are found to be spurious and eliminated.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485524",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Tian",
+        "last_name": "Tan",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Yue",
+        "last_name": "Li",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Xiaoxing",
+        "last_name": "Ma",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Chang",
+        "last_name": "Xu",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "National and Kapodistrian University of Athens"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/TanLMXS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485476",
+    "title": "SecRSL: security separation logic for C11 release-acquire concurrency",
+    "abstract": "We present Security Relaxed Separation Logic (SecRSL), a separation logic for proving information-flow security of C11 programs in the Release-Acquire fragment with relaxed accesses. SecRSL is the first security logic that (1) supports weak-memory reasoning about programs in a high-level language; (2) inherits separation logic’s virtues of compositional, local reasoning about (3) expressive security policies like value-dependent classification. SecRSL is also, to our knowledge, the first security logic developed over an axiomatic memory model. Thus we also present the first definitions of information-flow security for an axiomatic weak memory model, against which we prove SecRSL sound. SecRSL ensures that programs satisfy a constant-time security guarantee, while being free of undefined behaviour. We apply SecRSL to implement and verify the functional correctness and constant-time security of a range of concurrency primitives, including a spinlock module, a mixed-sensitivity mutex, and multiple synchronous channel implementations. Empirical performance evaluations of the latter demonstrate SecRSL’s power to support the development of secure and performant concurrent C programs.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485476",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Pengbo",
+        "last_name": "Yan",
+        "institution": "The University of Melbourne"
+      },
+      {
+        "first_name": "Toby",
+        "last_name": "Murray",
+        "institution": "The University of Melbourne"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/YanM21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485533",
+    "title": "Fully automated functional fuzzing of Android apps for detecting non-crashing logic bugs",
+    "abstract": "Android apps are GUI-based event-driven software and have become ubiquitous in recent years. Obviously, functional correctness is critical for an app’s success. However, in addition to crash bugs, non-crashing functional bugs (in short as “non-crashing bugs” in this work) like inadvertent function failures, silent user data lost and incorrect display information are prevalent, even in popular, well-tested apps. These non-crashing functional bugs are usually caused by program logic errors and manifest themselves on the graphic user interfaces (GUIs). In practice, such bugs pose significant challenges in effectively detecting them because (1) current practices heavily rely on expensive, small-scale manual validation ( the lack of automation ); and (2) modern fully automated testing has been limited to crash bugs ( the lack of test oracles ). This paper fills this gap by introducing independent view fuzzing , a novel, fully automated approach for detecting non-crashing functional bugs in Android apps. Inspired by metamorphic testing, our key insight is to leverage the commonly-held independent view property of Android apps to manufacture property-preserving mutant tests from a set of seed tests that validate certain app properties. The mutated tests help exercise the tested apps under additional, adverse conditions. Any property violations indicate likely functional bugs for further manual confirmation. We have realized our approach as an automated, end-to-end functional fuzzing tool, Genie. Given an app, (1) Genie automatically detects non-crashing bugs without requiring human-provided tests and oracles (thus fully automated ); and (2) the detected non-crashing bugs are diverse (thus general and not limited to specific functional properties ), which set Genie apart from prior work. We have evaluated Genie on 12 real-world Android apps and successfully uncovered 34 previously unknown non-crashing bugs in their latest releases — all have been confirmed, and 22 have already been fixed. Most of the detected bugs are nontrivial and have escaped developer (and user) testing for at least one year and affected many app releases, thus clearly demonstrating Genie’s effectiveness. According to our analysis, Genie achieves a reasonable true positive rate of 40.9%, while these 34 non-crashing bugs could not be detected by prior fully automated GUI testing tools (as our evaluation confirms). Thus, our work complements and enhances existing manual testing and fully automated testing for crash bugs.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485533",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ting",
+        "last_name": "Su",
+        "institution": "East China Normal University"
+      },
+      {
+        "first_name": "Yichen",
+        "last_name": "Yan",
+        "institution": "East China Normal University"
+      },
+      {
+        "first_name": "Jue",
+        "last_name": "Wang",
+        "institution": "Nanjing University"
+      },
+      {
+        "first_name": "Jingling",
+        "last_name": "Sun",
+        "institution": "East China Normal University"
+      },
+      {
+        "first_name": "Yiheng",
+        "last_name": "Xiong",
+        "institution": "East China Normal University"
+      },
+      {
+        "first_name": "Geguang",
+        "last_name": "Pu",
+        "institution": "East China Normal University"
+      },
+      {
+        "first_name": "Ke",
+        "last_name": "Wang",
+        "institution": "Visa (United States)"
+      },
+      {
+        "first_name": "Zhendong",
+        "last_name": "Su",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SuYWSXPWS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485547",
+    "title": "Compacting points-to sets through object clustering",
+    "abstract": "Inclusion-based set constraint solving is the most popular technique for whole-program points-to analysis whereby an analysis is typically formulated as repeatedly resolving constraints between points-to sets of program variables. The set union operation is central to this process. The number of points-to sets can grow as analyses become more precise and input programs become larger, resulting in more time spent performing unions and more space used storing these points-to sets. Most existing approaches focus on improving scalability of precise points-to analyses from an algorithmic perspective and there has been less research into improving the data structures behind the analyses. Bit-vectors as one of the more popular data structures have been used in several mainstream analysis frameworks to represent points-to sets. To store memory objects in bit-vectors, objects need to mapped to integral identifiers. We observe that this object-to-identifier mapping is critical for a compact points-to set representation and the set union operation. If objects in the same points-to sets (co-pointees) are not given numerically close identifiers, points-to resolution can cost significantly more space and time. Without data on the unpredictable points-to relations which would be discovered by the analysis, an ideal mapping is extremely challenging. In this paper, we present a new approach to inclusion-based analysis by compacting points-to sets through object clustering. Inspired by recent staged analysis where an auxiliary analysis produces results approximating a more precise main analysis, we formulate points-to set compaction as an optimisation problem solved by integer programming using constraints generated from the auxiliary analysis’s results in order to produce an effective mapping. We then develop a more approximate mapping, yet much more efficiently, using hierarchical clustering to compact bit-vectors. We also develop an improved representation of bit-vectors (called core bit-vectors) to fully take advantage of the newly produced mapping. Our approach requires no algorithmic change to the points-to analysis. We evaluate our object clustering on flow sensitive points-to analysis using 8 open-source programs (&gt;3.1 million lines of LLVM instructions) and our results show that our approach can successfully improve the analysis with an up to 1.83× speed up and an up to 4.05× reduction in memory usage.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485547",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mohamad",
+        "last_name": "Barbar",
+        "institution": "University of Technology Sydney"
+      },
+      {
+        "first_name": "Yulei",
+        "last_name": "Sui",
+        "institution": "University of Technology Sydney"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BarbarS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485528",
+    "title": "A derivative-based parser generator for visibly Pushdown grammars",
+    "abstract": "In this paper, we present a derivative-based, functional recognizer and parser generator for visibly pushdown grammars. The generated parser accepts ambiguous grammars and produces a parse forest containing all valid parse trees for an input string in linear time. Each parse tree in the forest can then be extracted also in linear time. Besides the parser generator, to allow more flexible forms of the visibly pushdown grammars, we also present a translator that converts a tagged CFG to a visibly pushdown grammar in a sound way, and the parse trees of the tagged CFG are further produced by running the semantic actions embedded in the parse trees of the translated visibly pushdown grammar. The performance of the parser is compared with a popular parsing tool ANTLR and other popular hand-crafted parsers. The correctness of the core parsing algorithm is formally verified in the proof assistant Coq.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485528",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Xiaodong",
+        "last_name": "Jia",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Ashish",
+        "last_name": "Kumar",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Gang",
+        "last_name": "Tan",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/JiaKT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485537",
+    "title": "Automatic migration from synchronous to asynchronous JavaScript APIs",
+    "abstract": "The JavaScript ecosystem provides equivalent synchronous and asynchronous Application Programming Interfaces (APIs) for many commonly used I/O operations. Synchronous APIs involve straightforward sequential control flow that makes them easy to use and understand, but their \"blocking\" behavior may result in poor responsiveness or performance. Asynchronous APIs impose a higher syntactic burden that relies on callbacks, promises, and higher-order functions. On the other hand, their nonblocking behavior enables applications to scale better and remain responsive while I/O requests are being processed. While it is generally understood that asynchronous APIs have better performance characteristics, many applications still rely on synchronous APIs. In this paper, we present a refactoring technique for assisting programmers with the migration from synchronous to asynchronous APIs. The technique relies on static analysis to determine where calls to synchronous API functions can be replaced with their asynchronous counterparts, relying on JavaScript's async/await feature to minimize disruption to the source code. Since the static analysis is potentially unsound, the proposed refactorings are presented as suggestions that must be reviewed and confirmed by the programmer. The technique was implemented in a tool named Desynchronizer. In an empirical evaluation on 12 subject applications containing 316 synchronous API calls, Desynchronizer identified 256 of these as candidates for refactoring. Of these candidates, 244 were transformed successfully, and only 12 resulted in behavioral changes. Further inspection of these cases revealed that the majority of these issues can be attributed to unsoundness in the call graph.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485537",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Satyajit",
+        "last_name": "Gokhale",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Alexi",
+        "last_name": "Turcotte",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GokhaleTT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485510",
+    "title": "Durable functions: semantics for stateful serverless",
+    "abstract": "Serverless, or Functions-as-a-Service (FaaS), is an increasingly popular paradigm for application development, as it provides implicit elastic scaling and load based billing. However, the weak execution guarantees and intrinsic compute-storage separation of FaaS create serious challenges when developing applications that require persistent state, reliable progress, or synchronization. This has motivated a new generation of serverless frameworks that provide stateful abstractions. For instance, Azure's Durable Functions (DF) programming model enhances FaaS with actors, workflows, and critical sections. As a programming model, DF is interesting because it combines task and actor parallelism, which makes it suitable for a wide range of serverless applications. We describe DF both informally, using examples, and formally, using an idealized high-level model based on the untyped lambda calculus. Next, we demystify how the DF runtime can (1) execute in a distributed unreliable serverless environment with compute-storage separation, yet still conform to the fault-free high-level model, and (2) persist execution progress without requiring checkpointing support by the language runtime. To this end we define two progressively more complex execution models, which contain the compute-storage separation and the record-replay, and prove that they are equivalent to the high-level model.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485510",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Burckhardt",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Gillum",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Justo",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Κωνσταντίνος",
+        "last_name": "Καλλάς",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Connor",
+        "last_name": "McMahon",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "Meiklejohn",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BurckhardtGJKMM21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485477",
+    "title": "Semantic programming by example with pre-trained models",
+    "abstract": "The ability to learn programs from few examples is a powerful technology with disruptive applications in many domains, as it allows users to automate repetitive tasks in an intuitive way. Existing frameworks on inductive synthesis only perform syntactic manipulations, where they rely on the syntactic structure of the given examples and not their meaning. Any semantic manipulations, such as transforming dates, have to be manually encoded by the designer of the inductive programming framework. Recent advances in large language models have shown these models to be very adept at performing semantic transformations of its input by simply providing a few examples of the task at hand. When it comes to syntactic transformations, however, these models are limited in their expressive power. In this paper, we propose a novel framework for integrating inductive synthesis with few-shot learning language models to combine the strength of these two popular technologies. In particular, the inductive synthesis is tasked with breaking down the problem in smaller subproblems, among which those that cannot be solved syntactically are passed to the language model. We formalize three semantic operators that can be integrated with inductive synthesizers. To minimize invoking expensive semantic operators during learning, we introduce a novel deferred query execution algorithm that considers the operators to be oracles during learning. We evaluate our approach in the domain of string transformations: the combination methodology can automate tasks that cannot be handled using either technologies by themselves. Finally, we demonstrate the generality of our approach via a case study in the domain of string profiling.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485477",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Gust",
+        "last_name": "Verbruggen",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Vu",
+        "last_name": "Le",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/VerbruggenLG21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485507",
+    "title": "Coarsening optimization for differentiable programming",
+    "abstract": "This paper presents a novel optimization for differentiable programming named coarsening optimization. It offers a systematic way to synergize symbolic differentiation and algorithmic differentiation (AD). Through it, the granularity of the computations differentiated by each step in AD can become much larger than a single operation, and hence lead to much reduced runtime computations and data allocations in AD. To circumvent the difficulties that control flow creates to symbolic differentiation in coarsening, this work introduces phi-calculus, a novel method to allow symbolic reasoning and differentiation of computations that involve branches and loops. It further avoids \"expression swell\" in symbolic differentiation and balance reuse and coarsening through the design of reuse-centric segment of interest identification. Experiments on a collection of real-world applications show that coarsening optimization is effective in speeding up AD, producing several times to two orders of magnitude speedups.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485507",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Xipeng",
+        "last_name": "Shen",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Guoqiang",
+        "last_name": "Zhang",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Irene",
+        "last_name": "Dea",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Samantha",
+        "last_name": "Andow",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Emilio",
+        "last_name": "Arroyo-Fang",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Neal",
+        "last_name": "Gafter",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Johann",
+        "last_name": "George",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Melissa",
+        "last_name": "Grueter",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Erik",
+        "last_name": "Meijer",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Steffi",
+        "last_name": "Stumpos",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Alanna",
+        "last_name": "Tempest",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Christy",
+        "last_name": "Warden",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Shannon",
+        "last_name": "Yang",
+        "institution": "Meta (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ShenZDAAGGGMSST21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485489",
+    "title": "UDF to SQL translation through compositional lazy inductive synthesis",
+    "abstract": "Many data processing systems allow SQL queries that call user-defined functions (UDFs) written in conventional programming languages. While such SQL extensions provide convenience and flexibility to users, queries involving UDFs are not as efficient as their pure SQL counterparts that invoke SQL’s highly-optimized built-in functions. Motivated by this problem, we propose a new technique for translating SQL queries with UDFs to pure SQL expressions. Unlike prior work in this space, our method is not based on syntactic rewrite rules and can handle a much more general class of UDFs. At a high-level, our method is based on counterexample-guided inductive synthesis (CEGIS) but employs a novel compositional strategy that decomposes the synthesis task into simpler sub-problems. However, because there is no universal decomposition strategy that works for all UDFs, we propose a novel lazy inductive synthesis approach that generates a sequence of decompositions that correspond to increasingly harder inductive synthesis problems. Because most realistic UDF-to-SQL translation tasks are amenable to a fine-grained decomposition strategy, our lazy inductive synthesis method scales significantly better than traditional CEGIS. We have implemented our proposed technique in a tool called CLIS for optimizing Spark SQL programs containing Scala UDFs. To evaluate CLIS, we manually study 100 randomly selected UDFs and find that 63 of them can be expressed in pure SQL. Our evaluation on these 63 UDFs shows that CLIS can automatically synthesize equivalent SQL expressions in 92% of the cases and that it can solve 2.4× more benchmarks compared to a baseline that does not use our compositional approach. We also show that CLIS yields an average speed-up of 3.5× for individual UDFs and 1.3× to 3.1× in terms of end-to-end application performance.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485489",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Guo‐Qiang",
+        "last_name": "Zhang",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Yuanchao",
+        "last_name": "Xu",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Xipeng",
+        "last_name": "Shen",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhangXSD21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485526",
+    "title": "Permchecker: a toolchain for debugging memory managers with typestate",
+    "abstract": "Dynamic memory managers are a crucial component of almost every modern software system. In addition to implementing efficient allocation and reclamation, memory managers provide the essential abstraction of memory as distinct objects, which underpins the properties of memory safety and type safety. Bugs in memory managers, while not common, are extremely hard to diagnose and fix. One reason is that their implementations often involve tricky pointer calculations, raw memory manipulation, and complex memory state invariants. While these properties are often documented, they are not specified in any precise, machine-checkable form. A second reason is that memory manager bugs can break the client application in bizarre ways that do not immediately implicate the memory manager at all. A third reason is that existing tools for debugging memory errors, such as Memcheck, cannot help because they rely on correct allocation and deallocation information to work. In this paper we present Permchecker, a tool designed specifically to detect and diagnose bugs in memory managers. The key idea in Permchecker is to make the expected structure of the heap explicit by associating typestates with each piece of memory. Typestate captures elements of both type (e.g., page, block, or cell) and state (e.g., allocated, free, or forwarded). Memory manager developers annotate their implementation with information about the expected typestates of memory and how heap operations change those typestates. At runtime, our system tracks the typestates and ensures that each memory access is consistent with the expected typestates. This technique detects errors quickly, before they corrupt the application or the memory manager itself, and it often provides accurate information about the reason for the error. The implementation of Permchecker uses a combination of compile-time annotation and instrumentation, and dynamic binary instrumentation (DBI). Because the overhead of DBI is fairly high, Permchecker is suitable for a testing and debugging setting and not for deployment. It works on a wide variety of existing systems, including explicit malloc/free memory managers and garbage collectors, such as those found in JikesRVM and OpenJDK. Since bugs in these systems are not numerous, we developed a testing methodology in which we automatically inject bugs into the code using bug patterns derived from real bugs. This technique allows us to test Permchecker on hundreds or thousands of buggy variants of the code. We find that Permchecker effectively detects and localizes errors in the vast majority of cases; without it, these bugs result in strange, incorrect behaviors usually long after the actual error occurs.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485526",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Karl",
+        "last_name": "Cronburg",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Samuel Z.",
+        "last_name": "Guyer",
+        "institution": "Tufts University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CronburgG21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485475",
+    "title": "Making weak memory models fair",
+    "abstract": "Liveness properties, such as termination, of even the simplest shared-memory concurrent programs under sequential consistency typically require some fairness assumptions about the scheduler. Under weak memory models, we observe that the standard notions of thread fairness are insufficient, and an additional fairness property, which we call memory fairness, is needed. In this paper, we propose a uniform definition for memory fairness that can be integrated into any declarative memory model enforcing acyclicity of the union of the program order and the reads-from relation. For the well-known models, SC, x86-TSO, RA, and StrongCOH, that have equivalent operational and declarative presentations, we show that our declarative memory fairness condition is equivalent to an intuitive model-specific operational notion of memory fairness, which requires the memory system to fairly execute its internal propagation steps. Our fairness condition preserves the correctness of local transformations and the compilation scheme from RC11 to x86-TSO, and also enables the first formal proofs of termination of mutual exclusion lock implementations under declarative weak memory models.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485475",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ori",
+        "last_name": "Lahav",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Egor",
+        "last_name": "Namakonov",
+        "institution": "St Petersburg University"
+      },
+      {
+        "first_name": "Jonas",
+        "last_name": "Oberhauser",
+        "institution": "Huawei German Research Center"
+      },
+      {
+        "first_name": "Anton",
+        "last_name": "Podkopaev",
+        "institution": "National Research University Higher School of Economics"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Vafeiadis",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LahavNOPV21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485497",
+    "title": "The semantics of shared memory in Intel CPU/FPGA systems",
+    "abstract": "Heterogeneous CPU/FPGA devices, in which a CPU and an FPGA can execute together while sharing memory, are becoming popular in several computing sectors. In this paper, we study the shared-memory semantics of these devices, with a view to providing a firm foundation for reasoning about the programs that run on them. Our focus is on Intel platforms that combine an Intel FPGA with a multicore Xeon CPU. We describe the weak-memory behaviours that are allowed (and observable) on these devices when CPU threads and an FPGA thread access common memory locations in a fine-grained manner through multiple channels. Some of these behaviours are familiar from well-studied CPU and GPU concurrency; others are weaker still. We encode these behaviours in two formal memory models: one operational, one axiomatic. We develop executable implementations of both models, using the CBMC bounded model-checking tool for our operational model and the Alloy modelling language for our axiomatic model. Using these, we cross-check our models against each other via a translator that converts Alloy-generated executions into queries for the CBMC model. We also validate our models against actual hardware by translating 583 Alloy-generated executions into litmus tests that we run on CPU/FPGA devices; when doing this, we avoid the prohibitive cost of synthesising a hardware design per litmus test by creating our own 'litmus-test processor' in hardware. We expect that our models will be useful for low-level programmers, compiler writers, and designers of analysis tools. Indeed, as a demonstration of the utility of our work, we use our operational model to reason about a producer/consumer buffer implemented across the CPU and the FPGA. When the buffer uses insufficient synchronisation -- a situation that our model is able to detect -- we observe that its performance improves at the cost of occasional data corruption.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485497",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Dan",
+        "last_name": "Iorga",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Alastair F.",
+        "last_name": "Donaldson",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Tyler",
+        "last_name": "Sorensen",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Wickerson",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/IorgaDSW21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485499",
+    "title": "One down, 699 to go: or, synthesising compositional desugarings",
+    "abstract": "Programming or scripting languages used in real-world systems are seldom designed with a formal semantics in mind from the outset. Therefore, developing well-founded analysis tools for these systems requires reverse-engineering a formal semantics as a first step. This can take months or years of effort. Can we (at least partially) automate this process? Though desirable, automatically reverse-engineering semantics rules from an implementation is very challenging, as found by Krishnamurthi, Lerner and Elberty. In this paper, we highlight that scaling methods with the size of the language is very difficult due to state space explosion, so we propose to learn semantics incrementally. We give a formalisation of Krishnamurthi et al.'s desugaring learning framework in order to clarify the assumptions necessary for an incremental learning algorithm to be feasible. We show that this reformulation allows us to extend the search space and express rules that Krishnamurthi et al. described as challenging, while still retaining feasibility. We evaluate enumerative synthesis as a baseline algorithm, and demonstrate that, with our reformulation of the problem, it is possible to learn correct desugaring rules for the example source and core languages proposed by Krishnamurthi et al., in most cases identical to the intended rules. In addition, with user guidance, our system was able to synthesize rules for desugaring list comprehensions and try/catch/finally constructs.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485499",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sándor",
+        "last_name": "Bartha",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Cheney",
+        "institution": "Turing Institute"
+      },
+      {
+        "first_name": "Vaishak",
+        "last_name": "Belle",
+        "institution": "Turing Institute"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BarthaCB21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485544",
+    "title": "Generalizable synthesis through unification",
+    "abstract": "The generalizability of PBE solvers is the key to the empirical synthesis performance. Despite the importance of generalizability, related studies on PBE solvers are still limited. In theory, few existing solvers provide theoretical guarantees on generalizability, and in practice, there is a lack of PBE solvers with satisfactory generalizability on important domains such as conditional linear integer arithmetic (CLIA). In this paper, we adopt a concept from the computational learning theory, Occam learning, and perform a comprehensive study on the framework of synthesis through unification (STUN), a state-of-the-art framework for synthesizing programs with nested if-then-else operators. We prove that Eusolver, a state-of-the-art STUN solver, does not satisfy the condition of Occam learning, and then we design a novel STUN solver, PolyGen, of which the generalizability is theoretically guaranteed by Occam learning. We evaluate PolyGen on the domains of CLIA and demonstrate that PolyGen significantly outperforms two state-of-the-art PBE solvers on CLIA, Eusolver and Euphony, on both generalizability and efficiency.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485544",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ruyi",
+        "last_name": "Ji",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Jingtao",
+        "last_name": "Xia",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Yingfei",
+        "last_name": "Xiong",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Zhenjiang",
+        "last_name": "Hu",
+        "institution": "Peking University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/JiXXH21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485542",
+    "title": "JavaDL: automatically incrementalizing Java bug pattern detection",
+    "abstract": "Static checker frameworks support software developers by automatically discovering bugs that fit general-purpose bug patterns. These frameworks ship with hundreds of detectors for such patterns and allow developers to add custom detectors for their own projects. However, existing frameworks generally encode detectors in imperative specifications, with extensive details of not only what to detect but also how . These details complicate detector maintenance and evolution, and also interfere with the framework’s ability to change how detection is done, for instance, to make the detectors incremental. In this paper, we present JavaDL, a Datalog-based declarative specification language for bug pattern detection in Java code. JavaDL seamlessly supports both exhaustive and incremental evaluation from the same detector specification. This specification allows developers to describe local detector components via syntactic pattern matching , and nonlocal (e.g., interprocedural) reasoning via Datalog-style logical rules . We compare our approach against the well-established SpotBugs and Error Prone tools by re-implementing several of their detectors in JavaDL. We find that our implementations are substantially smaller and similarly effective at detecting bugs on the Defects4J benchmark suite, and run with competitive runtime performance. In our experiments, neither incremental nor exhaustive analysis can consistently outperform the other, which highlights the value of our ability to transparently switch execution modes. We argue that our approach showcases the potential of clear-box static checker frameworks that constrain the bug detector specification language to enable the framework to adapt and enhance the detectors.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485542",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Alexandru",
+        "last_name": "Dura",
+        "institution": "Lund University"
+      },
+      {
+        "first_name": "Christoph",
+        "last_name": "Reichenbach",
+        "institution": "Lund University"
+      },
+      {
+        "first_name": "Emma",
+        "last_name": "Söderberg",
+        "institution": "Lund University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/DuraRS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485504",
+    "title": "Transitioning from structural to nominal code with efficient gradual typing",
+    "abstract": "Gradual typing is a principled means for mixing typed and untyped code. But typed and untyped code often exhibit different programming patterns. There is already substantial research investigating gradually giving types to code exhibiting typical untyped patterns, and some research investigating gradually removing types from code exhibiting typical typed patterns. This paper investigates how to extend these established gradual-typing concepts to give formal guarantees not only about how to change types as code evolves but also about how to change such programming patterns as well. In particular, we explore mixing untyped \"structural\" code with typed \"nominal\" code in an object-oriented language. But whereas previous work only allowed \"nominal\" objects to be treated as \"structural\" objects, we also allow \"structural\" objects to dynamically acquire certain nominal types, namely interfaces. We present a calculus that supports such \"cross-paradigm\" code migration and interoperation in a manner satisfying both the static and dynamic gradual guarantees, and demonstrate that the calculus can be implemented efficiently.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485504",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Fabian",
+        "last_name": "Muehlboeck",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Ross",
+        "last_name": "Tate",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MuehlboeckT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485538",
+    "title": "APIfix: output-oriented program synthesis for combating breaking changes in libraries",
+    "abstract": "Use of third-party libraries is extremely common in application software. The libraries evolve to accommodate new features or mitigate security vulnerabilities, thereby breaking the Application Programming Interface(API) used by the software. Such breaking changes in the libraries may discourage client code from using the new library versions thereby keeping the application vulnerable and not up-to-date. We propose a novel output-oriented program synthesis algorithm to automate API usage adaptations via program transformation. Our aim is not only to rely on the few example human adaptations of the clients from the old library version to the new library version, since this can lead to over-fitting transformation rules. Instead, we also rely on example usages of the new updated library in clients, which provide valuable context for synthesizing and applying the transformation rules. Our tool APIFix provides an automated mechanism to transform application code using the old library versions to code using the new library versions - thereby achieving automated API usage adaptation to fix the effect of breaking changes. Our evaluation shows that the transformation rules inferred by APIFix achieve 98.7% precision and 91.5% recall. By comparing our approach to state-of-the-art program synthesis approaches, we show that our approach significantly reduces over-fitting while synthesizing transformation rules for API usage adaptations.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485538",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Xiang",
+        "last_name": "Gao",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Arjun",
+        "last_name": "Radhakrishna",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Gustavo",
+        "last_name": "Soares",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Ridwan",
+        "last_name": "Shariffdeen",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Abhik",
+        "last_name": "Roychoudhury",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GaoRSSGR21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485523",
+    "title": "Rich specifications for Ethereum smart contract verification",
+    "abstract": "Smart contracts are programs that execute in blockchains such as Ethereum to manipulate digital assets. Since bugs in smart contracts may lead to substantial financial losses, there is considerable interest in formally proving their correctness. However, the specification and verification of smart contracts faces challenges that rarely arise in other application domains. Smart contracts frequently interact with unverified, potentially adversarial outside code, which substantially weakens the assumptions that formal analyses can (soundly) make. Moreover, the core functionality of smart contracts is to manipulate and transfer resources; describing this functionality concisely requires dedicated specification support. Current reasoning techniques do not fully address these challenges, being restricted in their scope or expressiveness (in particular, in the presence of re-entrant calls), and offering limited means of expressing the resource transfers a contract performs. In this paper, we present a novel specification methodology tailored to the domain of smart contracts. Our specifications and associated reasoning technique are the first to enable: (1) sound and precise reasoning in the presence of unverified code and arbitrary re-entrancy, (2) modular reasoning about collaborating smart contracts, and (3) domain-specific specifications for resources and resource transfers, expressing a contract's behaviour in intuitive and concise ways and excluding typical errors by default. We have implemented our approach in 2vyper, an SMT-based automated verification tool for Ethereum smart contracts written in Vyper, and demonstrated its effectiveness for verifying strong correctness guarantees for real-world contracts.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485523",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Bräm",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Eilers",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Péter",
+        "last_name": "Müller",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Robin",
+        "last_name": "Sierra",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Alexander J.",
+        "last_name": "Summers",
+        "institution": "University of British Columbia"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BramEMSS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485541",
+    "title": "The reads-from equivalence for the TSO and PSO memory models",
+    "abstract": "The verification of concurrent programs remains an open challenge due to the non-determinism in inter-process communication. One recurring algorithmic problem in this challenge is the consistency verification of concurrent executions. In particular, consistency verification under a reads-from map allows to compute the reads-from (RF) equivalence between concurrent traces, with direct applications to areas such as Stateless Model Checking (SMC). Importantly, the RF equivalence was recently shown to be coarser than the standard Mazurkiewicz equivalence, leading to impressive scalability improvements for SMC under SC (sequential consistency). However, for the relaxed memory models of TSO and PSO (total/partial store order), the algorithmic problem of deciding the RF equivalence, as well as its impact on SMC, has been elusive. In this work we solve the algorithmic problem of consistency verification for the TSO and PSO memory models given a reads-from map, denoted VTSO-rf and VPSO-rf, respectively. For an execution of n events over k threads and d variables, we establish novel bounds that scale as n k +1 for TSO and as n k +1 · min( n k 2 , 2 k · d ) for PSO. Moreover, based on our solution to these problems, we develop an SMC algorithm under TSO and PSO that uses the RF equivalence. The algorithm is exploration-optimal , in the sense that it is guaranteed to explore each class of the RF partitioning exactly once, and spends polynomial time per class when k is bounded. Finally, we implement all our algorithms in the SMC tool Nidhugg, and perform a large number of experiments over benchmarks from existing literature. Our experimental results show that our algorithms for VTSO-rf and VPSO-rf provide significant scalability improvements over standard alternatives. Moreover, when used for SMC, the RF partitioning is often much coarser than the standard Shasha-Snir partitioning for TSO/PSO, which yields a significant speedup in the model checking task.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485541",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Truc Lam",
+        "last_name": "Bui",
+        "institution": "Comenius University Bratislava"
+      },
+      {
+        "first_name": "Krishnendu",
+        "last_name": "Chatterjee",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Tushar",
+        "last_name": "Gautam",
+        "institution": "Indian Institute of Technology Bombay"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Pavlogiannis",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Toman",
+        "institution": "Institute of Science and Technology Austria"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BuiCGPT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485532",
+    "title": "How statically-typed functional programmers write code",
+    "abstract": "How working statically-typed functional programmers write code is largely understudied. And yet, a better understanding of developer practices could pave the way for the design of more useful and usable tooling, more ergonomic languages, and more effective on-ramps into programming communities. The goal of this work is to address this knowledge gap: to better understand the high-level authoring patterns that statically-typed functional programmers employ. We conducted a grounded theory analysis of 30 programming sessions of practicing statically-typed functional programmers, 15 of which also included a semi-structured interview. The theory we developed gives insight into how the specific affordances of statically-typed functional programming affect domain modeling, type construction, focusing techniques, exploratory and reasoning strategies, and expressions of intent. We conducted a set of quantitative lab experiments to validate our findings, including that statically-typed functional programmers often iterate between editing types and expressions, that they often run their compiler on code even when they know it will not successfully compile, and that they make textual program edits that reliably signal future edits that they intend to make. Lastly, we outline the implications of our findings for language and tool design. The success of this approach in revealing program authorship patterns suggests that the same methodology could be used to study other understudied programmer populations.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485532",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Justin",
+        "last_name": "Lubin",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Sarah",
+        "last_name": "Chasins",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LubinC21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485520",
+    "title": "Scalability and precision by combining expressive type systems and deductive verification",
+    "abstract": "Type systems and modern type checkers can be used very successfully to obtain formal correctness guarantees with little specification overhead. However, type systems in practical scenarios have to trade precision for decidability and scalability. Tools for deductive verification, on the other hand, can prove general properties in more cases than a typical type checker can, but they do not scale well. We present a method to complement the scalability of expressive type systems with the precision of deductive program verification approaches. This is achieved by translating the type uses whose correctness the type checker cannot prove into assertions in a specification language, which can be dealt with by a deductive verification tool. Type uses whose correctness the type checker can prove are instead turned into assumptions to aid the verification tool in finding a proof.Our novel approach is introduced both conceptually for a simple imperative language, and practically by a concrete implementation for the Java programming language. The usefulness and power of our approach has been evaluated by discharging known false positives from a real-world program and by a small case study.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485520",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Florian",
+        "last_name": "Lanzinger",
+        "institution": ""
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Weigl",
+        "institution": ""
+      },
+      {
+        "first_name": "Mattias",
+        "last_name": "Ulbrich",
+        "institution": ""
+      },
+      {
+        "first_name": "Werner",
+        "last_name": "Dietl",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LanzingerWUD21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485495",
+    "title": "Program analysis via efficient symbolic abstraction",
+    "abstract": "This paper concerns the scalability challenges of symbolic abstraction: given a formula ϕ in a logic L and an abstract domain A , find a most precise element in the abstract domain that over-approximates the meaning of ϕ. Symbolic abstraction is an important point in the space of abstract interpretation, as it allows for automatically synthesizing the best abstract transformers. However, current techniques for symbolic abstraction can have difficulty delivering on its practical strengths, due to performance issues. In this work, we introduce two algorithms for the symbolic abstraction of quantifier-free bit-vector formulas, which apply to the bit-vector interval domain and a certain kind of polyhedral domain, respectively. We implement and evaluate the proposed techniques on two machine code analysis clients, namely static memory corruption analysis and constrained random fuzzing. Using a suite of 57,933 queries from the clients, we compare our approach against a diverse group of state-of-the-art algorithms. The experiments show that our algorithms achieve a substantial speedup over existing techniques and illustrate significant precision advantages for the clients. Our work presents strong evidence that symbolic abstraction of numeric domains can be efficient and practical for large and realistic programs.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485495",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Peisen",
+        "last_name": "Yao",
+        "institution": "Hong Kong University of Science and Technology"
+      },
+      {
+        "first_name": "Qingkai",
+        "last_name": "Shi",
+        "institution": ""
+      },
+      {
+        "first_name": "Heqing",
+        "last_name": "Huang",
+        "institution": "Hong Kong University of Science and Technology"
+      },
+      {
+        "first_name": "Charles",
+        "last_name": "Zhang",
+        "institution": "Hong Kong University of Science and Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/YaoSHZ21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485515",
+    "title": "Dynaplex: analyzing program complexity using dynamically inferred recurrence relations",
+    "abstract": "Being able to detect program runtime complexity is useful in many tasks (e.g., checking expected performance and identifying potential security vulnerabilities). In this work, we introduce a new dynamic approach for inferring the asymptotic complexity bounds of recursive programs. From program execution traces, we learn recurrence relations and solve them using pattern matching to obtain closed-form solutions representing the complexity bounds of the program. This approach allows us to efficiently infer simple recurrence relations that represent nontrivial, potentially nonlinear polynomial and non-polynomial, complexity bounds. We present Dynaplex, a tool that implements these ideas to automatically generate recurrence relations from execution traces. Our preliminary results on popular and challenging recursive programs show that Dynaplex can learn precise relations capturing worst-case complexity bounds (e.g., O ( n log n ) for mergesort, O (2 n ) for Tower of Hanoi and O ( n 1.58 ) for Karatsuba’s multiplication algorithm).",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485515",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Didier",
+        "last_name": "Ishimwe",
+        "institution": "University of Nebraska–Lincoln"
+      },
+      {
+        "first_name": "KimHao",
+        "last_name": "Nguyen",
+        "institution": "University of Nebraska–Lincoln"
+      },
+      {
+        "first_name": "ThanhVu",
+        "last_name": "Nguyen",
+        "institution": "George Mason University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/IshimweNN21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485491",
+    "title": "Compiling with continuations, correctly",
+    "abstract": "In this paper we present a novel simulation relation for proving correctness of program transformations that combines syntactic simulations and logical relations. In particular, we establish a new kind of simulation diagram that uses a small-step or big-step semantics in the source language and an untyped, step-indexed logical relation in the target language. Our technique provides a practical solution for proving semantics preservation for transformations that do not preserve reductions in the source language. This is common when transformations generate new binder names, and hence α-conversion must be explicitly accounted for, or when transformations introduce administrative redexes. Our technique does not require reductions in the source language to correspond directly to reductions in the target language. Instead, we enforce a weaker notion of semantic preorder, which suffices to show that semantics are preserved for both whole-program and separate compilation. Because our logical relation is transitive, we can transition between intermediate program states in a small-step fashion and hence the shape of the proof resembles that of a simple small-step simulation. We use this technique to revisit the semantic correctness of a continuation-passing style (CPS) transformation and we demonstrate how it allows us to overcome well-known complications of this proof related to α-conversion and administrative reductions. In addition, by using a logical relation that is indexed by invariants that relate the resource consumption of two programs, we are able show that the transformation preserves diverging behaviors and that our CPS transformation asymptotically preserves the running time of the source program. Our results are formalized in the Coq proof assistant. Our continuation-passing style transformation is part of the CertiCoq compiler for Gallina, the specification language of Coq.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485491",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Zoe",
+        "last_name": "Paraskevopoulou",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Anvay",
+        "last_name": "Grover",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Paraskevopoulou21a",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485486",
+    "title": "Efficient automatic scheduling of imaging and vision pipelines for the GPU",
+    "abstract": "We present a new algorithm to quickly generate high-performance GPU implementations of complex imaging and vision pipelines, directly from high-level Halide algorithm code. It is fully automatic, requiring no schedule templates or hand-optimized kernels. We address the scalability challenge of extending search-based automatic scheduling to map large real-world programs to the deep hierarchies of memory and parallelism on GPU architectures in reasonable compile time. We achieve this using (1) a two-phase search algorithm that first ‘freezes’ decisions for the lowest cost sections of a program, allowing relatively more time to be spent on the important stages, (2) a hierarchical sampling strategy that groups schedules based on their structural similarity, then samples representatives to be evaluated, allowing us to explore a large space with few samples, and (3) memoization of repeated partial schedules, amortizing their cost over all their occurrences. We guide the process with an efficient cost model combining machine learning, program analysis, and GPU architecture knowledge. We evaluate our method’s performance on a diverse suite of real-world imaging and vision pipelines. Our scalability optimizations lead to average compile time speedups of 49x (up to 530x). We find schedules that are on average 1.7x faster than existing automatic solutions (up to 5x), and competitive with what the best human experts were able to achieve in an active effort to beat our automatic results.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485486",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Luke",
+        "last_name": "Anderson",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Adams",
+        "institution": "Adobe Systems (United States)"
+      },
+      {
+        "first_name": "Karima",
+        "last_name": "Ma",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Tzu‐Mao",
+        "last_name": "Li",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Jin",
+        "last_name": "Tian",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Ragan‐Kelley",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AndersonAMLJR21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485478",
+    "title": "Promises are made to be broken: migrating R to strict semantics",
+    "abstract": "Function calls in the R language do not evaluate their arguments, these are passed to the callee as suspended computations and evaluated if needed. After 25 years of experience with the language, there are very few cases where programmers leverage delayed evaluation intentionally and laziness comes at a price in performance and complexity. This paper explores how to evolve the semantics of a lazy language towards strictness-by-default and laziness-on-demand. To provide a migration path, it is necessary to provide tooling for developers to migrate libraries without introducing errors. This paper reports on a dynamic analysis that infers strictness signatures for functions to capture both intentional and accidental laziness. Over 99% of the inferred signatures were correct when tested against clients of the libraries.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485478",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Aviral",
+        "last_name": "Goel",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Ječmen",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Sebastián",
+        "last_name": "Krynski",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Olivier",
+        "last_name": "Flückiger",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GoelJKFV21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485511",
+    "title": "Gauss: program synthesis by reasoning over graphs",
+    "abstract": "While input-output examples are a natural form of specification for program synthesis engines, they can be imprecise for domains such as table transformations. In this paper, we investigate how extracting readily-available information about the user intent behind these input-output examples helps speed up synthesis and reduce overfitting. We present Gauss, a synthesis algorithm for table transformations that accepts partial input-output examples, along with user intent graphs. Gauss includes a novel conflict-resolution reasoning algorithm over graphs that enables it to learn from mistakes made during the search and use that knowledge to explore the space of programs even faster. It also ensures the final program is consistent with the user intent specification, reducing overfitting. We implement Gauss for the domain of table transformations (supporting Pandas and R), and compare it to three state-of-the-art synthesizers accepting only input-output examples. We find that it is able to reduce the search space by 56×, 73× and 664× on average, resulting in 7×, 26× and 7× speedups in synthesis times on average, respectively.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485511",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Rohan",
+        "last_name": "Bavishi",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Caroline",
+        "last_name": "Lemieux",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Koushik",
+        "last_name": "Sen",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Ion",
+        "last_name": "Stoica",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BavishiLSS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485534",
+    "title": "QuickSilver: modeling and parameterized verification for distributed agreement-based systems",
+    "abstract": "The last decade has sparked several valiant efforts in deductive verification of distributed agreement protocols such as consensus and leader election. Oddly, there have been far fewer verification efforts that go beyond the core protocols and target applications that are built on top of agreement protocols. This is unfortunate, as agreement-based distributed services such as data stores, locks, and ledgers are ubiquitous and potentially permit modular, scalable verification approaches that mimic their modular design. We address this need for verification of distributed agreement-based systems through our novel modeling and verification framework, QuickSilver, that is not only modular, but also fully automated. The key enabling feature of QuickSilver is our encoding of abstractions of verified agreement protocols that facilitates modular, decidable, and scalable automated verification. We demonstrate the potential of QuickSilver by modeling and efficiently verifying a series of tricky case studies, adapted from real-world applications, such as a data store, a lock service, a surveillance system, a pathfinding algorithm for mobile robots, and more.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485534",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Nouraldin",
+        "last_name": "Jaber",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "Wagner",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Swen",
+        "last_name": "Jacobs",
+        "institution": "Helmholtz Center for Information Security"
+      },
+      {
+        "first_name": "Milind",
+        "last_name": "Kulkarni",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Roopsha",
+        "last_name": "Samanta",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/JaberWJKS21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485506",
+    "title": "SpecSafe: detecting cache side channels in a speculative world",
+    "abstract": "The high-profile Spectre attack and its variants have revealed that speculative execution may leave secret-dependent footprints in the cache, allowing an attacker to learn confidential data. However, existing static side-channel detectors either ignore speculative execution, leading to false negatives, or lack a precise cache model, leading to false positives. In this paper, somewhat surprisingly, we show that it is challenging to develop a speculation-aware static analysis with precise cache models: a combination of existing works does not necessarily catch all cache side channels. Motivated by this observation, we present a new semantic definition of security against cache-based side-channel attacks, called Speculative-Aware noninterference (SANI), which is applicable to a variety of attacks and cache models. We also develop SpecSafe to detect the violations of SANI. Unlike other speculation-aware symbolic executors, SpecSafe employs a novel program transformation so that SANI can be soundly checked by speculation-unaware side-channel detectors. SpecSafe is shown to be both scalable and accurate on a set of moderately sized benchmarks, including commonly used cryptography libraries.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485506",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Brotzman",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Danfeng",
+        "last_name": "Zhang",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Mahmut",
+        "last_name": "Kandemir",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Gang",
+        "last_name": "Tan",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BrotzmanZKT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485498",
+    "title": "Translating C to safer Rust",
+    "abstract": "Rust is a relatively new programming language that targets efficient and safe systems-level applications. It includes a sophisticated type system that allows for provable memory- and thread-safety, and is explicitly designed to take the place of unsafe languages such as C and C++ in the coding ecosystem. There is a large existing C and C++ codebase (many of which have been affected by bugs and security vulnerabilities due to unsafety) that would benefit from being rewritten in Rust to remove an entire class of potential bugs. However, porting these applications to Rust manually is a daunting task. In this paper we investigate the problem of automatically translating C programs into safer Rust programs--that is, Rust programs that improve on the safety guarantees of the original C programs. We conduct an in-depth study into the underlying causes of unsafety in translated programs and the relative impact of fixing each cause. We also describe a novel technique for automatically removing a particular cause of unsafety and evaluate its effectiveness and impact. This paper presents the first empirical study of unsafety in translated Rust programs (as opposed to programs originally written in Rust) and also the first technique for automatically removing causes of unsafety in translated Rust programs.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485498",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mehmet",
+        "last_name": "Emre",
+        "institution": "University of California, Santa Barbara"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Schroeder",
+        "institution": "University of California, Santa Barbara"
+      },
+      {
+        "first_name": "Kyle",
+        "last_name": "Dewey",
+        "institution": "California State University, Northridge"
+      },
+      {
+        "first_name": "Ben",
+        "last_name": "Hardekopf",
+        "institution": "University of California, Santa Barbara"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/EmreSDH21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485487",
+    "title": "Relational nullable types with Boolean unification",
+    "abstract": "We present a simple, practical, and expressive relational nullable type system. A relational nullable type system captures whether an expression may evaluate to null based on its type, but also based on the type of other related expressions. The type system extends the Hindley-Milner type system with Boolean constraints, supports parametric polymorphism, and preserves principal types modulo Boolean equivalence. We show how to support full Hindley-Milner style type inference with an extension of Algorithm W. We conduct a preliminary study of open source projects showing that there is a need for relational nullable type systems across a wide range of programming languages. The most important findings from the study are: (i) programmers use programming patterns where the nullability of one expression depends on the nullability of other related expressions, (ii) such invariants are commonly enforced with run-time exceptions, and (iii) reasoning about these programming patterns requires not only knowledge of when an expression may evaluate to null, but also when it may evaluate to a non-null value. We incorporate these observations in the design of the proposed relational nullable type system.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485487",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Magnus",
+        "last_name": "Madsen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Jaco van de",
+        "last_name": "Pol",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MadsenP21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485485",
+    "title": "Label dependent lambda calculus and gradual typing",
+    "abstract": "Dependently-typed programming languages are gaining importance, because they can guarantee a wide range of properties at compile time. Their use in practice is often hampered because programmers have to provide very precise types. Gradual typing is a means to vary the level of typing precision between program fragments and to transition smoothly towards more precisely typed programs. The combination of gradual typing and dependent types seems promising to promote the widespread use of dependent types. We investigate a gradual version of a minimalist value-dependent lambda calculus. Compile-time calculations and thus dependencies are restricted to labels, drawn from a generic enumeration type. The calculus supports the usual Pi and Sigma types as well as singleton types and subtyping. It is sufficiently powerful to provide flexible encodings of variant and record types with first-class labels. We provide type checking algorithms for the underlying label-dependent lambda calculus and its gradual extension. The gradual type checker drives the translation into a cast calculus, which extends the original language. The cast calculus comes with several innovations: refined typing for casts in the presence of singletons, type reduction in casts, and fully dependent Sigma types. Besides standard metatheoretical results, we establish the gradual guarantee for the gradual language.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485485",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Weili",
+        "last_name": "Fu",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Fabian",
+        "last_name": "Krause",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Freiburg"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/FuKT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485531",
+    "title": "Not so fast: understanding and mitigating negative impacts of compiler optimizations on code reuse gadget sets",
+    "abstract": "Despite extensive testing and correctness certification of their functional semantics, a number of compiler optimizations have been shown to violate security guarantees implemented in source code. While prior work has shed light on how such optimizations may introduce semantic security weaknesses into programs, there remains a significant knowledge gap concerning the impacts of compiler optimizations on non-semantic properties with security implications. In particular, little is currently known about how code generation and optimization decisions made by the compiler affect the availability and utility of reusable code segments called gadgets required for implementing code reuse attack methods such as return-oriented programming. In this paper, we bridge this gap through a study of the impacts of compiler optimization on code reuse gadget sets. We analyze and compare 1,187 variants of 20 different benchmark programs built with two production compilers (GCC and Clang) to determine how their optimization behaviors affect the code reuse gadget sets present in program variants with respect to both quantitative and qualitative metrics. Our study exposes an important and unexpected problem; compiler optimizations introduce new gadgets at a high rate and produce code containing gadget sets that are generally more useful to an attacker than those in unoptimized code. Using differential binary analysis, we identify several undesirable behaviors at the root of this phenomenon. In turn, we propose and evaluate several strategies to mitigate these behaviors. In particular, we show that post-production binary recompilation can effectively mitigate these behaviors with negligible performance impacts, resulting in optimized code with significantly smaller and less useful gadget sets.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485531",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Michael D.",
+        "last_name": "Brown",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Pruett",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Bigelow",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Girish",
+        "last_name": "Mururu",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Santosh",
+        "last_name": "Pande",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BrownPBMP21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485539",
+    "title": "FPL: fast Presburger arithmetic through transprecision",
+    "abstract": "Presburger arithmetic provides the mathematical core for the polyhedral compilation techniques that drive analytical cache models, loop optimization for ML and HPC, formal verification, and even hardware design. Polyhedral compilation is widely regarded as being slow due to the potentially high computational cost of the underlying Presburger libraries. Researchers typically use these libraries as powerful black-box tools, but the perceived internal complexity of these libraries, caused by the use of C as the implementation language and a focus on end-user-facing documentation, holds back broader performance-optimization efforts. With FPL, we introduce a new library for Presburger arithmetic built from the ground up in modern C++. We carefully document its internal algorithmic foundations, use lightweight C++ data structures to minimize memory management costs, and deploy transprecision computing across the entire library to effectively exploit machine integers and vector instructions. On a newly-developed comprehensive benchmark suite for Presburger arithmetic, we show a 5.4x speedup in total runtime over the state-of-the-art library isl in its default configuration and 3.6x over a variant of isl optimized with element-wise transprecision computing. We expect that the availability of a well-documented and fast Presburger library will accelerate the adoption of polyhedral compilation techniques in production compilers.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485539",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Arjun",
+        "last_name": "Pitchanathan",
+        "institution": "Indian Institute of Technology Hyderabad"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Ulmann",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Michel",
+        "last_name": "Weber",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Torsten",
+        "last_name": "Hoefler",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Grosser",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PitchanathanUWH21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485490",
+    "title": "Verifying concurrent multicopy search structures",
+    "abstract": "Multicopy search structures such as log-structured merge (LSM) trees are optimized for high insert/update/delete (collectively known as upsert) performance. In such data structures, an upsert on key k , which adds ( k , v ) where v can be a value or a tombstone, is added to the root node even if k is already present in other nodes. Thus there may be multiple copies of k in the search structure. A search on k aims to return the value associated with the most recent upsert. We present a general framework for verifying linearizability of concurrent multicopy search structures that abstracts from the underlying representation of the data structure in memory, enabling proof-reuse across diverse implementations. Based on our framework, we propose template algorithms for (a) LSM structures forming arbitrary directed acyclic graphs and (b) differential file structures, and formally verify these templates in the concurrent separation logic Iris. We also instantiate the LSM template to obtain the first verified concurrent in-memory LSM tree implementation.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485490",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Nisarg",
+        "last_name": "Patel",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Siddharth",
+        "last_name": "Krishna",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Dennis",
+        "last_name": "Shasha",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Wies",
+        "institution": "New York University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PatelKSW21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485480",
+    "title": "Safer at any speed: automatic context-aware safety enhancement for Rust",
+    "abstract": "Type-safe languages improve application safety by eliminating whole classes of vulnerabilities–such as buffer overflows–by construction. However, this safety sometimes comes with a performance cost. As a result, many modern type-safe languages provide escape hatches that allow developers to manually bypass them. The relative value of performance to safety and the degree of performance obtained depends upon the application context, including user goals and the hardware upon which the application is to be executed. Since libraries may be used in many different contexts, library developers cannot make safety-performance trade-off decisions appropriate for all cases. Application developers can tune libraries themselves to increase safety or performance, but this requires extra effort and makes libraries less reusable. To address this problem, we present NADER, a Rust development tool that makes applications safer by automatically transforming unsafe code into equivalent safe code according to developer preferences and application context. In end-to-end system evaluations in a given context, NADER automatically reintroduces numerous library bounds checks, in many cases making application code that uses popular Rust libraries safer with no corresponding loss in performance.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485480",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Natalie",
+        "last_name": "Popescu",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Ziyang",
+        "last_name": "Xu",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Sotiris",
+        "last_name": "Apostolakis",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "David I.",
+        "last_name": "August",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Amit",
+        "last_name": "Levy",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PopescuXAAL21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485525",
+    "title": "LXM: better splittable pseudorandom number generators (and almost as fast)",
+    "abstract": "In 2014, Steele, Lea, and Flood presented SplitMix, an object-oriented pseudorandom number generator (prng) that is quite fast (9 64-bit arithmetic/logical operations per 64 bits generated) and also splittable . A conventional prng object provides a generate method that returns one pseudorandom value and updates the state of the prng; a splittable prng object also has a second operation, split , that replaces the original prng object with two (seemingly) independent prng objects, by creating and returning a new such object and updating the state of the original object. Splittable prng objects make it easy to organize the use of pseudorandom numbers in multithreaded programs structured using fork-join parallelism. This overall strategy still appears to be sound, but the specific arithmetic calculation used for generate in the SplitMix algorithm has some detectable weaknesses, and the period of any one generator is limited to 2 64 . Here we present the LXM family of prng algorithms. The idea is an old one: combine the outputs of two independent prng algorithms, then (optionally) feed the result to a mixing function. An LXM algorithm uses a linear congruential subgenerator and an F 2 -linear subgenerator; the examples studied in this paper use a linear congruential generator (LCG) of period 2 16 , 2 32 , 2 64 , or 2 128 with one of the multipliers recommended by L’Ecuyer or by Steele and Vigna, and an F 2 -linear xor-based generator (XBG) of the xoshiro family or xoroshiro family as described by Blackman and Vigna. For mixing functions we study the MurmurHash3 finalizer function; variants by David Stafford, Doug Lea, and degski; and the null (identity) mixing function. Like SplitMix, LXM provides both a generate operation and a split operation. Also like SplitMix, LXM requires no locking or other synchronization (other than the usual memory fence after instance initialization), and is suitable for use with simd instruction sets because it has no branches or loops. We analyze the period and equidistribution properties of LXM generators, and present the results of thorough testing of specific members of this family, using the TestU01 and PractRand test suites, not only on single instances of the algorithm but also for collections of instances, used in parallel, ranging in size from 2 to 2 24 . Single instances of LXM that include a strong mixing function appear to have no major weaknesses, and LXM is significantly more robust than SplitMix against accidental correlation in a multithreaded setting. We believe that LXM, like SplitMix, is suitable for “everyday” scientific and machine-learning applications (but not cryptographic applications), especially when concurrent threads or distributed processes are involved.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485525",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Guy L.",
+        "last_name": "Steele",
+        "institution": "Oracle (United States)"
+      },
+      {
+        "first_name": "Sebastiano",
+        "last_name": "Vigna",
+        "institution": "University of Milan"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SteeleV21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485494",
+    "title": "Formal verification of high-level synthesis",
+    "abstract": "High-level synthesis (HLS), which refers to the automatic compilation of software into hardware, is rapidly gaining popularity. In a world increasingly reliant on application-specific hardware accelerators, HLS promises hardware designs of comparable performance and energy efficiency to those coded by hand in a hardware description language such as Verilog, while maintaining the convenience and the rich ecosystem of software development. However, current HLS tools cannot always guarantee that the hardware designs they produce are equivalent to the software they were given, thus undermining any reasoning conducted at the software level. Furthermore, there is mounting evidence that existing HLS tools are quite unreliable, sometimes generating wrong hardware or crashing when given valid inputs. To address this problem, we present the first HLS tool that is mechanically verified to preserve the behaviour of its input software. Our tool, called Vericert, extends the CompCert verified C compiler with a new hardware-oriented intermediate language and a Verilog back end, and has been proven correct in Coq. Vericert supports most C constructs, including all integer operations, function calls, local arrays, structs, unions, and general control-flow statements. An evaluation on the PolyBench/C benchmark suite indicates that Vericert generates hardware that is around an order of magnitude slower (only around 2× slower in the absence of division) and about the same size as hardware generated by an existing, optimising (but unverified) HLS tool.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485494",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yann",
+        "last_name": "Herklotz",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "James D.",
+        "last_name": "Pollard",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nadesh",
+        "last_name": "Ramanathan",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Wickerson",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HerklotzPRW21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485482",
+    "title": "Synbit: synthesizing bidirectional programs using unidirectional sketches",
+    "abstract": "We propose a technique for synthesizing bidirectional programs from the corresponding unidirectional code plus a few input/output examples. The core ideas are: (1) constructing a sketch using the given unidirectional program as a specification, and (2) filling the sketch in a modular fashion by exploiting the properties of bidirectional programs. These ideas are enabled by our choice of programming language, HOBiT, which is specifically designed to maintain the unidirectional program structure in bidirectional programming, and keep the parts that control bidirectional behavior modular. To evaluate our approach, we implemented it in a tool called Synbit and used it to generate bidirectional programs for intricate microbenchmarks, as well as for a few larger, more realistic problems. We also compared Synbit to a state-of-the-art unidirectional synthesis tool on the task of synthesizing backward computations.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485482",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Masaomi",
+        "last_name": "Yamaguchi",
+        "institution": "Tohoku University"
+      },
+      {
+        "first_name": "Kazutaka",
+        "last_name": "Matsuda",
+        "institution": "Tohoku University"
+      },
+      {
+        "first_name": "Cristina",
+        "last_name": "David",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Meng",
+        "last_name": "Wang",
+        "institution": "University of Bristol"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/YamaguchiMDW21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485492",
+    "title": "Statically bounded-memory delayed sampling for probabilistic streams",
+    "abstract": "Probabilistic programming languages aid developers performing Bayesian inference. These languages provide programming constructs and tools for probabilistic modeling and automated inference. Prior work introduced a probabilistic programming language, ProbZelus, to extend probabilistic programming functionality to unbounded streams of data. This work demonstrated that the delayed sampling inference algorithm could be extended to work in a streaming context. ProbZelus showed that while delayed sampling could be effectively deployed on some programs, depending on the probabilistic model under consideration, delayed sampling is not guaranteed to use a bounded amount of memory over the course of the execution of the program. In this paper, we the present conditions on a probabilistic program’s execution under which delayed sampling will execute in bounded memory. The two conditions are dataflow properties of the core operations of delayed sampling: the m -consumed property and the unseparated paths property . A program executes in bounded memory under delayed sampling if, and only if, it satisfies the m -consumed and unseparated paths properties. We propose a static analysis that abstracts over these properties to soundly ensure that any program that passes the analysis satisfies these properties, and thus executes in bounded memory under delayed sampling.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485492",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Eric",
+        "last_name": "Atkinson",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Guillaume",
+        "last_name": "Baudart",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Louis",
+        "last_name": "Mandel",
+        "institution": ""
+      },
+      {
+        "first_name": "Charles",
+        "last_name": "Yuan",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Carbin",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AtkinsonBMYC21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485488",
+    "title": "Solver-based gradual type migration",
+    "abstract": "Gradually typed languages allow programmers to mix statically and dynamically typed code, enabling them to incrementally reap the benefits of static typing as they add type annotations to their code. However, this type migration process is typically a manual effort with limited tool support. This paper examines the problem of automated type migration: given a dynamic program, infer additional or improved type annotations. Existing type migration algorithms prioritize different goals, such as maximizing type precision, maintaining compatibility with unmigrated code, and preserving the semantics of the original program. We argue that the type migration problem involves fundamental compromises: optimizing for a single goal often comes at the expense of others. Ideally, a type migration tool would flexibly accommodate a range of user priorities. We present TypeWhich, a new approach to automated type migration for the gradually-typed lambda calculus with some extensions. Unlike prior work, which relies on custom solvers, TypeWhich produces constraints for an off-the-shelf MaxSMT solver. This allows us to easily express objectives, such as minimizing the number of necessary syntactic coercions, and constraining the type of the migration to be compatible with unmigrated code. We present the first comprehensive evaluation of GTLC type migration algorithms, and compare TypeWhich to four other tools from the literature. Our evaluation uses prior benchmarks, and a new set of \"challenge problems.\" Moreover, we design a new evaluation methodology that highlights the subtleties of gradual type migration. In addition, we apply TypeWhich to a suite of benchmarks for Grift, a programming language based on the GTLC. TypeWhich is able to reconstruct all human-written annotations on all but one program.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485488",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Luna",
+        "last_name": "Phipps-Costin",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Carolyn Jane",
+        "last_name": "Anderson",
+        "institution": "Wellesley College"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Greenberg",
+        "institution": "Stevens Institute of Technology"
+      },
+      {
+        "first_name": "Arjun",
+        "last_name": "Guha",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Phipps-CostinAG21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485540",
+    "title": "Symbolic value-flow static analysis: deep, precise, complete modeling of Ethereum smart contracts",
+    "abstract": "We present a static analysis approach that combines concrete values and symbolic expressions. This symbolic value-flow (“symvalic”) analysis models program behavior with high precision, e.g., full path sensitivity. To achieve deep modeling of program semantics, the analysis relies on a symbiotic relationship between a traditional static analysis fixpoint computation and a symbolic solver: the solver does not merely receive a complex “path condition” to solve, but is instead invoked repeatedly (often tens or hundreds of thousands of times), in close cooperation with the flow computation of the analysis. The result of the symvalic analysis architecture is a static modeling of program behavior that is much more complete than symbolic execution, much more precise than conventional static analysis, and domain-agnostic: no special-purpose definition of anti-patterns is necessary in order to compute violations of safety conditions with high precision. We apply the analysis to the domain of Ethereum smart contracts. This domain represents a fundamental challenge for program analysis approaches: despite numerous publications, research work has not been effective at uncovering vulnerabilities of high real-world value. In systematic comparison of symvalic analysis with past tools, we find significantly increased completeness (shown as 83-96% statement coverage and more true error reports) combined with much higher precision, as measured by rate of true positive reports. In terms of real-world impact, since the beginning of 2021, the analysis has resulted in the discovery and disclosure of several critical vulnerabilities, over funds in the many millions of dollars. Six separate bug bounties totaling over $350K have been awarded for these disclosures.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485540",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Neville",
+        "last_name": "Grech",
+        "institution": "University of Malta"
+      },
+      {
+        "first_name": "Sifis",
+        "last_name": "Lagouvardos",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Κonstantinos",
+        "last_name": "Τriantafyllou",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Ilias",
+        "last_name": "Tsatiris",
+        "institution": "National and Kapodistrian University of Athens"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SmaragdakisGLTT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485546",
+    "title": "MonkeyDB: effectively testing correctness under weak isolation levels",
+    "abstract": "Modern applications, such as social networking systems and e-commerce platforms are centered around using large-scale storage systems for storing and retrieving data. In the presence of concurrent accesses, these storage systems trade off isolation for performance. The weaker the isolation level, the more behaviors a storage system is allowed to exhibit and it is up to the developer to ensure that their application can tolerate those behaviors. However, these weak behaviors only occur rarely in practice and outside the control of the application, making it difficult for developers to test the robustness of their code against weak isolation levels. This paper presents MonkeyDB, a mock storage system for testing storage-backed applications. MonkeyDB supports a key-value interface as well as SQL queries under multiple isolation levels. It uses a logical specification of the isolation level to compute, on a read operation, the set of all possible return values. MonkeyDB then returns a value randomly from this set. We show that MonkeyDB provides good coverage of weak behaviors, which is complete in the limit. We test a variety of applications for assertions that fail only under weak isolation. MonkeyDB is able to break each of those assertions in a small number of attempts.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485546",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ranadeep",
+        "last_name": "Biswas",
+        "institution": "Université Paris Cité"
+      },
+      {
+        "first_name": "Diptanshu",
+        "last_name": "Kakwani",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Jyothi",
+        "last_name": "Vedurada",
+        "institution": "Indian Institute of Technology Hyderabad"
+      },
+      {
+        "first_name": "Constantin",
+        "last_name": "Enea",
+        "institution": "Institut de Recherche en Informatique Fondamentale"
+      },
+      {
+        "first_name": "Akash",
+        "last_name": "Lal",
+        "institution": "Microsoft Research (India)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BiswasKVEL21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485503",
+    "title": "Gradually structured data",
+    "abstract": "Dynamically-typed languages offer easy interaction with ad hoc data such as JSON and S-expressions; statically-typed languages offer powerful tools for working with structured data, notably algebraic datatypes , which are a core feature of typed languages both functional and otherwise. Gradual typing aims to reconcile dynamic and static typing smoothly. The gradual typing literature has extensively focused on the computational aspect of types, such as type safety, effects, noninterference, or parametricity, but the application of graduality to data structuring mechanisms has been much less explored. While row polymorphism and set-theoretic types have been studied in the context of gradual typing, algebraic datatypes in particular have not, which is surprising considering their wide use in practice. We develop, formalize, and prototype a novel approach to gradually structured data with algebraic datatypes. Gradually structured data bridges the gap between traditional algebraic datatypes and flexible data management mechanisms such as tagged data in dynamic languages, or polymorphic variants in OCaml. We illustrate the key ideas of gradual algebraic datatypes through the evolution of a small server application from dynamic to progressively more static checking, formalize a core functional language with gradually structured data, and establish its metatheory, including the gradual guarantees.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485503",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Stefan",
+        "last_name": "Malewski",
+        "institution": "University of Chile"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Greenberg",
+        "institution": "Stevens Institute of Technology"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "University of Chile"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MalewskiGT21",
+    "venue": "oopsla",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3485512",
+    "title": "A type system for extracting functional specifications from memory-safe imperative programs",
+    "abstract": "Verifying imperative programs is hard. A key difficulty is that the specification of what an imperative program does is often intertwined with details about pointers and imperative state. Although there are a number of powerful separation logics that allow the details of imperative state to be captured and managed, these details are complicated and reasoning about them requires significant time and expertise. In this paper, we take a different approach: a memory-safe type system that, as part of type-checking, extracts functional specifications from imperative programs. This disentangles imperative state, which is handled by the type system, from functional specifications, which can be verified without reference to pointers. A key difficulty is that sometimes memory safety depends crucially on the functional specification of a program; e.g., an array index is only memory-safe if the index is in bounds. To handle this case, our specification extraction inserts dynamic checks into the specification. Verification then requires the additional proof that none of these checks fail. However, these checks are in a purely functional language, and so this proof also requires no reasoning about pointers.",
+    "date": "2021-10-15",
+    "link": "https://doi.org/10.1145/3485512",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "He",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Eddy",
+        "last_name": "Westbrook",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Brent",
+        "last_name": "Carmer",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Phifer",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Valentin",
+        "last_name": "Robert",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Karl",
+        "last_name": "Smeltzer",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Andrei",
+        "last_name": "Ștefănescu",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Aaron",
+        "last_name": "Tomb",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Wick",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Yacavone",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HeWCPRSSTWYZ21",
+    "venue": "oopsla",
+    "year": 2021
+  }
+]

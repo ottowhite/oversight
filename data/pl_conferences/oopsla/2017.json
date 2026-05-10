@@ -1,0 +1,2100 @@
+[
+  {
+    "paper_id": "10.1145/3133869",
+    "title": "SAVI objects: sharing and virtuality incorporated",
+    "abstract": "Direct sharing and storing of memory objects allows high-performance and low-overhead collaboration between parallel processes or application workflows with loosely coupled programs. However, sharing of objects is hindered by the inability to use subtype polymorphism which is common in object-oriented programming languages. That is because implementations of subtype polymorphism in modern compilers rely on using virtual tables stored at process-specific locations, which makes objects unusable in processes other than the creating process. In this paper, we present SAVI Objects, objects with Sharing and Virtuality Incorporated. SAVI Objects support subtype polymorphism but can still be shared across processes and stored in persistent data structures. We propose two different techniques to implement SAVI Objects and evaluate the tradeoffs between them. The first technique is virtual table duplication which adheres to the virtual-table-based implementation of subtype polymorphism, but duplicates virtual tables for shared objects to fixed memory addresses associated with each shared memory region. The second technique is hashing-based dynamic dispatch which re-implements subtype polymorphism using hashing-based look-ups to a global virtual table. Our results show that SAVI Objects enable direct sharing and storing of memory objects that use subtype polymorphism by adding modest overhead costs to object construction and dynamic dispatch time. SAVI Objects thus enable faster inter-process communication, improving the overall performance of production applications that share polymorphic objects.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133869",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Izzat El",
+        "last_name": "Hajj",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Thomas B.",
+        "last_name": "Jablin",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Dejan",
+        "last_name": "Milojičić",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Wen‐mei",
+        "last_name": "Hwu",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HajjJMH17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133873",
+    "title": "A volatile-by-default JVM for server applications",
+    "abstract": "A *memory consistency model* (or simply *memory model*) defines the possible values that a shared-memory read may return in a multithreaded programming language. Choosing a memory model involves an inherent performance-programmability tradeoff. The Java language has adopted a *relaxed* (or *weak*) memory model that is designed to admit most traditional compiler optimizations and obviate the need for hardware fences on most shared-memory accesses. The downside, however, is that programmers are exposed to a complex and unintuitive semantics and must carefully declare certain variables as `volatile` in order to enforce program orderings that are necessary for proper behavior. This paper proposes a simpler and stronger memory model for Java through a conceptually small change: *every* variable has `volatile` semantics by default, but the language allows a programmer to tag certain variables, methods, or classes as `relaxed` and provides the current Java semantics for these portions of code. This *volatile-by-default* semantics provides *sequential consistency* (SC) for all programs by default. At the same time, expert programmers retain the freedom to build performance-critical libraries that violate the SC semantics. At the outset, it is unclear if the `volatile`-by-default semantics is practical for Java, given the cost of memory fences on today's hardware platforms. The core contribution of this paper is to demonstrate, through comprehensive empirical evaluation, that the `volatile`-by-default semantics is arguably acceptable for a predominant use case for Java today -- server-side applications running on Intel x86 architectures. We present VBD-HotSpot, a modification to Oracle's widely used HotSpot JVM that implements the `volatile`-by-default semantics for x86. To our knowledge VBD-HotSpot is the first implementation of SC for Java in the context of a modern JVM. VBD-HotSpot incurs an average overhead versus the baseline HotSpot JVM of 28% for the Da Capo benchmarks, which is significant though perhaps less than commonly assumed. Further, VBD-HotSpot incurs average overheads of 12% and 19% respectively on standard benchmark suites for big-data analytics and machine learning in the widely used Spark framework.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133873",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Lun",
+        "last_name": "Liu",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Todd",
+        "last_name": "Millstein",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Madanlal",
+        "last_name": "Musuvathi",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LiuMM17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133870",
+    "title": "A simple soundness proof for dependent object types",
+    "abstract": "Dependent Object Types (DOT) is intended to be a core calculus for modelling Scala. Its distinguishing feature is abstract type members, fields in objects that hold types rather than values. Proving soundness of DOT has been surprisingly challenging, and existing proofs are complicated, and reason about multiple concepts at the same time (e.g. types, values, evaluation). To serve as a core calculus for Scala, DOT should be easy to experiment with and extend, and therefore its soundness proof needs to be easy to modify. This paper presents a simple and modular proof strategy for reasoning in DOT. The strategy separates reasoning about types from other concerns. It is centred around a theorem that connects the full DOT type system to a restricted variant in which the challenges and paradoxes caused by abstract type members are eliminated. Almost all reasoning in the proof is done in the intuitive world of this restricted type system. Once we have the necessary results about types, we observe that the other aspects of DOT are mostly standard and can be incorporated into a soundness proof using familiar techniques known from other calculi.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133870",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Marianna",
+        "last_name": "Rapoport",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Ifaz",
+        "last_name": "Kabir",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "He",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RapoportKHL17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133877",
+    "title": "Model checking copy phases of concurrent copying garbage collection with various memory models",
+    "abstract": "Modern concurrent copying garbage collection (GC), in particular, real-time GC, uses fine-grained synchronizations with a mutator, which is the application program that mutates memory, when it moves objects in its copy phase. It resolves a data race using a concurrent copying protocol, which is implemented as interactions between the collector threads and the read and write barriers that the mutator threads execute. The behavioral effects of the concurrent copying protocol rely on the memory model of the CPUs and the programming languages in which the GC is implemented. It is difficult, however, to formally investigate the behavioral properties of concurrent copying protocols against various memory models. To address this problem, we studied the feasibility of the bounded model checking of concurrent copying protocols with memory models. We investigated a correctness-related behavioral property of copying protocols of various concurrent copying GC algorithms, including real-time GC Stopless, Clover, Chicken, Staccato, and Schism against six memory models, total store ordering (TSO), partial store ordering (PSO), relaxed memory ordering (RMO), and their variants, in addition to sequential consistency (SC) using bounded model checking. For each combination of a protocol and memory model, we conducted model checking with a model of a mutator. In this wide range of case studies, we found faults in two GC algorithms, one of which is relevant to the memory model. We fixed these faults with the great help of counterexamples. We also modified some protocols so that they work under some memory models weaker than those for which the original protocols were designed, and checked them using model checking. We believe that bounded model checking is a feasible approach to investigate behavioral properties of concurrent copying protocols under weak memory models.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133877",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Tomoharu",
+        "last_name": "Ugawa",
+        "institution": "Kochi University of Technology"
+      },
+      {
+        "first_name": "Tatsuya",
+        "last_name": "Abe",
+        "institution": "Chiba Institute of Technology"
+      },
+      {
+        "first_name": "Toshiyuki",
+        "last_name": "Maeda",
+        "institution": "Chiba Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/UgawaAM17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133879",
+    "title": "The VM already knew that: leveraging compile-time knowledge to optimize gradual typing",
+    "abstract": "Programmers in dynamic languages wishing to constrain and understand the behavior of their programs may turn to gradually-typed languages, which allow types to be specified optionally and check values at the boundary between dynamic and static code. Unfortunately, the performance cost of these run-time checks can be severe, slowing down execution by at least 10x when checks are present. Modern virtual machines (VMs) for dynamic languages use speculative techniques to improve performance: If a particular value was seen once, it is likely that similar values will be seen in the future. They combine optimization-relevant properties of values into cacheable “shapes”, then use a single shape check to subsume checks for each property. Values with the same memory layout or the same field types have the same shape. This greatly reduces the amount of type checking that needs to be performed at run-time to execute dynamic code. While very valuable to the VM’s optimization, these checks do little to benefit the programmer aside from improving performance. We present in this paper a design for intrinsic object contracts, which makes the obligations of gradually-typed languages’ type checks an intrinsic part of object shapes, and thus can subsume run-time type checks into existing shape checks, eliminating redundant checks entirely. With an implementation on a VM for JavaScript used as a target for SafeTypeScript’s soundness guarantees, we demonstrate slowdown averaging 7% in fully-typed code relative to unchecked code, and no more than 45% in pessimal configurations.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133879",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Gregor",
+        "last_name": "Richards",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Ellen",
+        "last_name": "Arteca",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Alexi",
+        "last_name": "Turcotte",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RichardsAT17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133875",
+    "title": "Skip blocks: reusing execution history to accelerate web scripts",
+    "abstract": "With more and more web scripting languages on offer, programmers have access to increasing language support for web scraping tasks. However, in our experiences collaborating with data scientists, we learned that two issues still plague long-running scraping scripts: i) When a network or website goes down mid-scrape, recovery sometimes requires restarting from the beginning, which users find frustratingly slow. ii) Websites do not offer atomic snapshots of their databases; they update their content so frequently that output data is cluttered with slight variations of the same information — e.g. , a tweet from profile 1 that is retweeted on profile 2 and scraped from both profiles, once with 52 responses then later with 53 responses. We introduce the skip block , a language construct that addresses both of these disparate problems. Programmers write lightweight annotations to indicate when the current object can be considered equivalent to a previously scraped object and direct the program to skip over the scraping actions in the block. The construct is hierarchical, so programs can skip over long or short script segments, allowing adaptive reuse of prior work. After network and server failures, skip blocks accelerate failure recovery by 7.9x on average. Even scripts that do not encounter failures benefit; because sites display redundant objects, skipping over them accelerates scraping by up to 2.1x. For longitudinal scraping tasks that aim to fetch only new objects, the second run exhibits an average speedup of 5.2x. Our small user study reveals that programmers can quickly produce skip block annotations.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133875",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sarah",
+        "last_name": "Chasins",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ChasinsB17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133878",
+    "title": "Sound gradual typing: only mostly dead",
+    "abstract": "While gradual typing has proven itself attractive to programmers, many systems have avoided sound gradual typing due to the run time overhead of enforcement. In the context of sound gradual typing, both anecdotal and systematic evidence has suggested that run time costs are quite high, and often unacceptable, casting doubt on the viability of soundness as an approach. We show that these overheads are not fundamental, and that with appropriate improvements, just-in-time compilers can greatly reduce the overhead of sound gradual typing . Our study takes benchmarks published in a recent paper on gradual typing performance in Typed Racket (Takikawa et al., POPL 2016) and evaluates them using a experimental tracing JIT compiler for Racket, called Pycket. On typical benchmarks, Pycket is able to eliminate more than 90% of the gradual typing overhead. While our current results are not the final word in optimizing gradual typing, we show that the situation is not dire, and where more work is needed. Pycket's performance comes from several sources, which we detail and measure individually. First, we apply a sophisticated tracing JIT compiler and optimizer, automatically generated in Pycket using the RPython framework originally created for PyPy. Second, we focus our optimization efforts on the challenges posed by run time checks, implemented in Racket by chaperones and impersonators . We introduce representation improvements, including a novel use of hidden classes to optimize these data structures.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133878",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Spenser",
+        "last_name": "Bauman",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Carl Friedrich",
+        "last_name": "Bolz-Tereick",
+        "institution": "King's College London"
+      },
+      {
+        "first_name": "Jeremy G.",
+        "last_name": "Siek",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Tobin-Hochstadt",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BaumanBST17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133881",
+    "title": "Effective interactive resolution of static analysis alarms",
+    "abstract": "We propose an interactive approach to resolve static analysis alarms. Our approach synergistically combines a sound but imprecise analysis with precise but unsound heuristics, through user interaction. In each iteration, it solves an optimization problem to find a set of questions for the user such that the expected payoff is maximized. We have implemented our approach in a tool, Ursa, that enables interactive alarm resolution for any analysis specified in the declarative logic programming language Datalog. We demonstrate the effectiveness of Ursa on a state-of-the-art static datarace analysis using a suite of 8 Java programs comprising 41-194 KLOC each. Ursa is able to eliminate 74% of the false alarms per benchmark with an average payoff of 12× per question. Moreover, Ursa prioritizes user effort effectively by posing questions that yield high payoffs earlier.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133881",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Xin",
+        "last_name": "Zhang",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Radu",
+        "last_name": "Grigore",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Xujie",
+        "last_name": "Si",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Mayur",
+        "last_name": "Naik",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhangGSN17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3138818",
+    "title": "Learning to blame: localizing novice type errors with data-driven diagnosis",
+    "abstract": "Localizing type errors is challenging in languages with global type inference, as the type checker must make assumptions about what the programmer intended to do. We introduce Nate, a data-driven approach to error localization based on supervised learning. Nate analyzes a large corpus of training data -- pairs of ill-typed programs and their \"fixed\" versions -- to automatically learn a model of where the error is most likely to be found. Given a new ill-typed program, Nate executes the model to generate a list of potential blame assignments ranked by likelihood. We evaluate Nate by comparing its precision to the state of the art on a set of over 5,000 ill-typed OCaml programs drawn from two instances of an introductory programming course. We show that when the top-ranked blame assignment is considered, Nate's data-driven model is able to correctly predict the exact sub-expression that should be changed 72% of the time, 28 points higher than OCaml and 16 points higher than the state-of-the-art SHErrLoc tool. Furthermore, Nate's accuracy surpasses 85% when we consider the top two locations and reaches 91% if we consider the top three.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3138818",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Eric L.",
+        "last_name": "Seidel",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Huma",
+        "last_name": "Sibghat",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Kamalika",
+        "last_name": "Chaudhuri",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Westley",
+        "last_name": "Weimer",
+        "institution": "University of Virginia"
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SeidelSCWJ17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133883",
+    "title": "Evaluating and improving semistructured merge",
+    "abstract": "While unstructured merge tools rely only on textual analysis to detect and resolve conflicts, semistructured merge tools go further by partially exploiting the syntactic structure and semantics of the involved artifacts. Previous studies compare these merge approaches with respect to the number of reported conflicts, showing, for most projects and merge situations, reduction in favor of semistructured merge. However, these studies do not investigate whether this reduction actually leads to integration effort reduction (productivity) without negative impact on the correctness of the merging process (quality). To analyze that, and better understand how merge tools could be improved, in this paper we reproduce more than 30,000 merges from 50 open source projects, identifying conflicts incorrectly reported by one approach but not by the other (false positives), and conflicts correctly reported by one approach but missed by the other (false negatives). Our results and complementary analysis indicate that, in the studied sample, the number of false positives is significantly reduced when using semistructured merge. We also find evidence that its false positives are easier to analyze and resolve than those reported by unstructured merge. However, we find no evidence that semistructured merge leads to fewer false negatives, and we argue that they are harder to detect and resolve than unstructured merge false negatives. Driven by these findings, we implement an improved semistructured merge tool that further combines both approaches to reduce the false positives and false negatives of semistructured merge. We find evidence that the improved tool, when compared to unstructured merge in our sample, reduces the number of reported conflicts by half, has no additional false positives, has at least 8% fewer false negatives, and is not prohibitively slower.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133883",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Guilherme",
+        "last_name": "Cavalcanti",
+        "institution": "Universidade Federal de Pernambuco"
+      },
+      {
+        "first_name": "Paulo",
+        "last_name": "Borba",
+        "institution": "Universidade Federal de Pernambuco"
+      },
+      {
+        "first_name": "Paola",
+        "last_name": "Accioly",
+        "institution": "Universidade Federal de Pernambuco"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CavalcantiBA17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133880",
+    "title": "Sound gradual typing is nominally alive and well",
+    "abstract": "Recent research has identified significant performance hurdles that sound gradual typing needs to overcome. These performance hurdles stem from the fact that the run-time checks gradual type systems insert into code can cause significant overhead. We propose that designing a type system for a gradually typed language hand in hand with its implementation from scratch is a possible way around these and several other hurdles on the way to efficient sound gradual typing. Such a design process also highlights the type-system restrictions required for efficient composition with gradual typing. We formalize the core of a nominal object-oriented language that fulfills a variety of desirable properties for gradually typed languages, and present evidence that an implementation of this language suffers minimal overhead even in adversarial benchmarks identified in earlier work.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133880",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Fabian",
+        "last_name": "Muehlboeck",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Ross",
+        "last_name": "Tate",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MuehlboeckT17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133874",
+    "title": "Static placement of computation on heterogeneous devices",
+    "abstract": "Heterogeneous architectures characterize today hardware ranging from super-computers to smartphones. However, in spite of this importance, programming such systems is still challenging. In particular, it is challenging to map computations to the different processors of a heterogeneous device. In this paper, we provide a static analysis that mitigates this problem. Our contributions are two-fold: first, we provide a semi-context-sensitive algorithm, which analyzes the program's call graph to determine the best processor for each calling context. This algorithm is parameterized by a cost model, which takes into consideration processor's characteristics and data transfer time. Second, we show how to use simulated annealing to calibrate this cost model for a given heterogeneous architecture. We have used our ideas to build Etino, a tool that annotates C programs with OpenACC or OpenMP 4.0 directives. Etino generates code for a CPU-GPU architecture without user intervention. Experiments on classic benchmarks reveal speedups of up to 75x. Moreover, our calibration process lets avoid slowdowns of up to 720x which trivial parallelization approaches would yield.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133874",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Gabriel",
+        "last_name": "Poesia",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Breno Campos Ferreira",
+        "last_name": "Guimarães",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Fabrício",
+        "last_name": "Ferracioli",
+        "institution": ""
+      },
+      {
+        "first_name": "Fernando Magno Quintão",
+        "last_name": "Pereira",
+        "institution": "Universidade Federal de Minas Gerais"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PoesiaGFP17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133871",
+    "title": "Unifying typing and subtyping",
+    "abstract": "In recent years dependent types have become a hot topic in programming language research. A key reason why dependent types are interesting is that they allow unifying types and terms, which enables both additional expressiveness and economy of concepts . Unfortunately there has been much less work on dependently typed calculi for object-oriented programming. This is partly because it is widely acknowledged that the combination between dependent types and subtyping is particularly challenging. This paper presents λ I ≤ , which is a dependently typed generalization of System F ≤ . The resulting calculus follows the style of Pure Type Systems, and contains a single unified syntactic sort that accounts for expressions, types and kinds. To address the challenges posed by the combination of dependent types and subtyping, λ I ≤ employs a novel technique that unifies typing and subtyping . In λ I ≤ there is only a judgement that is akin to a typed version of subtyping. Both the typing relation, as well as type well-formedness are just special cases of the subtyping relation. The resulting calculus has a rich metatheory and enjoys of several standard and desirable properties, such as subject reduction , transitivity of subtyping , narrowing as well as standard substitution lemmas . All the metatheory of λ I ≤ is mechanically proved in the Coq theorem prover. Furthermore, (and as far as we are aware) λ I ≤ is the first dependently typed calculus that completely subsumes System F ≤ , while preserving various desirable properties.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133871",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yanpeng",
+        "last_name": "Yang",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/YangO17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133876",
+    "title": "Virtual machine warmup blows hot and cold",
+    "abstract": "Virtual Machines (VMs) with Just-In-Time (JIT) compilers are traditionally thought to execute programs in two phases: the initial warmup phase determines which parts of a program would most benefit from dynamic compilation, before JIT compiling those parts into machine code; subsequently the program is said to be at a steady state of peak performance. Measurement methodologies almost always discard data collected during the warmup phase such that reported measurements focus entirely on peak performance. We introduce a fully automated statistical approach, based on changepoint analysis, which allows us to determine if a program has reached a steady state and, if so, whether that represents peak performance or not. Using this, we show that even when run in the most controlled of circumstances, small, deterministic, widely studied microbenchmarks often fail to reach a steady state of peak performance on a variety of common VMs. Repeating our experiment on 3 different machines, we found that at most 43.5% of &lt;VM, Benchmark&gt; pairs consistently reach a steady state of peak performance.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133876",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Edd",
+        "last_name": "Barrett",
+        "institution": "King's College London"
+      },
+      {
+        "first_name": "Carl Friedrich",
+        "last_name": "Bolz-Tereick",
+        "institution": "King's College London"
+      },
+      {
+        "first_name": "Rebecca",
+        "last_name": "Killick",
+        "institution": "Lancaster University"
+      },
+      {
+        "first_name": "Sarah",
+        "last_name": "Mount",
+        "institution": "King's College London"
+      },
+      {
+        "first_name": "Laurence",
+        "last_name": "Tratt",
+        "institution": "King's College London"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BarrettBKMT17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133872",
+    "title": "Fast and precise type checking for JavaScript",
+    "abstract": "In this paper we present the design and implementation of Flow, a fast and precise type checker for JavaScript that is used by thousands of developers on millions of lines of code at Facebook every day. Flow uses sophisticated type inference to understand common JavaScript idioms precisely. This helps it find non-trivial bugs in code and provide code intelligence to editors without requiring significant rewriting or annotations from the developer. We formalize an important fragment of Flow's analysis and prove its soundness. Furthermore, Flow uses aggressive parallelization and incrementalization to deliver near-instantaneous response times. This helps it avoid introducing any latency in the usual edit-refresh cycle of rapid JavaScript development. We describe the algorithms and systems infrastructure that we built to scale Flow's analysis.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133872",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Avik",
+        "last_name": "Chaudhuri",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Panagiotis",
+        "last_name": "Vekris",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Goldman",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Marshall",
+        "last_name": "Roch",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Gabriel",
+        "last_name": "Levi",
+        "institution": "Meta (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ChaudhuriVGRL17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133882",
+    "title": "Abridging source code",
+    "abstract": "In this paper, we consider the problem of source code abridgment, where the goal is to remove statements from a source code in order to display the source code in a small space, while at the same time leaving the ``important'' parts of the source code intact, so that an engineer can read the code and quickly understand purpose of the code. To this end, we develop an algorithm that looks at a number of examples, human-created source code abridgments, and learns how to remove lines from the code in order to mimic the human abridger. The learning algorithm takes into account syntactic features of the code, as well as semantic features such as control flow and data dependencies. Through a comprehensive user study, we show that the abridgments that our system produces can decrease the time that a user must look at code in order to understand its functionality, as well as increase the accuracy of the assessment, while displaying the code in a greatly reduced area.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133882",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Binhang",
+        "last_name": "Yuan",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Vijayaraghavan",
+        "last_name": "Murali",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "Jermaine",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/YuanMJ17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133885",
+    "title": "Model-assisted machine-code synthesis",
+    "abstract": "Binary rewriters are tools that are used to modify the functionality of binaries lacking source code. Binary rewriters can be used to rewrite binaries for a variety of purposes including optimization, hardening, and extraction of executable components. To rewrite a binary based on semantic criteria, an essential primitive to have is a machine-code synthesizer---a tool that synthesizes an instruction sequence from a specification of the desired behavior, often given as a formula in quantifier-free bit-vector logic (QFBV). However, state-of-the-art machine-code synthesizers such as McSynth++ employ naive search strategies for synthesis: McSynth++ merely enumerates candidates of increasing length without performing any form of prioritization. This inefficient search strategy is compounded by the huge number of unique instruction schemas in instruction sets (e.g., around 43,000 in Intel's IA-32) and the exponential cost inherent in enumeration. The effect is slow synthesis: even for relatively small specifications, McSynth++ might take several minutes or a few hours to find an implementation. In this paper, we describe how we use machine learning to make the search in McSynth++ smarter and potentially faster. We converted the linear search in McSynth++ into a best-first search over the space of instruction sequences. The cost heuristic for the best-first search comes from two models---used together---built from a corpus of 〈QFBV-formula, instruction-sequence〉 pairs: (i) a language model that favors useful instruction sequences, and (ii) a regression model that correlates features of instruction sequences with features of QFBV formulas, and favors instruction sequences that are more likely to implement the input formula. Our experiments for IA-32 showed that our model-assisted synthesizer enables synthesis of code for 6 out of 50 formulas on which McSynth++ times out, speeding up the synthesis time by at least 549X, and for the remaining formulas, speeds up synthesis by 4.55X.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133885",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Venkatesh",
+        "last_name": "Srinivasan",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Ara",
+        "last_name": "Vartanian",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": "GrammaTech (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SrinivasanVR17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133886",
+    "title": "Synthesis of data completion scripts using finite tree automata",
+    "abstract": "In application domains that store data in a tabular format, a common task is to fill the values of some cells using values stored in other cells. For instance, such data completion tasks arise in the context of missing value imputation in data science and derived data computation in spreadsheets and relational databases. Unfortunately, end-users and data scientists typically struggle with many data completion tasks that require non-trivial programming expertise. This paper presents a synthesis technique for automating data completion tasks using programming-by-example (PBE) and a very lightweight sketching approach. Given a formula sketch (e.g., AVG(? 1 , ? 2 )) and a few input-output examples for each hole, our technique synthesizes a program to automate the desired data completion task. Towards this goal, we propose a domain-specific language (DSL) that combines spatial and relational reasoning over tabular data and a novel synthesis algorithm that can generate DSL programs that are consistent with the input-output examples. The key technical novelty of our approach is a new version space learning algorithm that is based on finite tree automata (FTA). The use of FTAs in the learning algorithm leads to a more compact representation that allows more sharing between programs that are consistent with the examples. We have implemented the proposed approach in a tool called DACE and evaluate it on 84 benchmarks taken from online help forums. We also illustrate the advantages of our approach by comparing our technique against two existing synthesizers, namely Prose and Sketch.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133886",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Xinyu",
+        "last_name": "Wang",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Rishabh",
+        "last_name": "Singh",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WangDS17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133888",
+    "title": "Synthesizing configuration file specifications with association rule learning",
+    "abstract": "System failures resulting from configuration errors are one of the major reasons for the compromised reliability of today's software systems. Although many techniques have been proposed for configuration error detection, these approaches can generally only be applied after an error has occurred. Proactively verifying configuration files is a challenging problem, because 1) software configurations are typically written in poorly structured and untyped “languages”, and 2) specifying rules for configuration verification is challenging in practice. This paper presents ConfigV, a verification framework for general software configurations. Our framework works as follows: in the pre-processing stage, we first automatically derive a specification. Once we have a specification, we check if a given configuration file adheres to that specification. The process of learning a specification works through three steps. First, ConfigV parses a training set of configuration files (not necessarily all correct) into a well-structured and probabilistically-typed intermediate representation. Second, based on the association rule learning algorithm, ConfigV learns rules from these intermediate representations. These rules establish relationships between the keywords appearing in the files. Finally, ConfigV employs rule graph analysis to refine the resulting rules. ConfigV is capable of detecting various configuration errors, including ordering errors, integer correlation errors, type errors, and missing entry errors. We evaluated ConfigV by verifying public configuration files on GitHub, and we show that ConfigV can detect known configuration errors in these files.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133888",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mark",
+        "last_name": "Santolucito",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Ennan",
+        "last_name": "Zhai",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Rahul M.",
+        "last_name": "Dhodapkar",
+        "institution": ""
+      },
+      {
+        "first_name": "Aaron",
+        "last_name": "Shim",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Ružica",
+        "last_name": "Piskač",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SantolucitoZDSP17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133892",
+    "title": "Heaps don't lie: countering unsoundness with heap snapshots",
+    "abstract": "Static analyses aspire to explore all possible executions in order to achieve soundness. Yet, in practice, they fail to capture common dynamic behavior. Enhancing static analyses with dynamic information is a common pattern, with tools such as Tamiflex. Past approaches, however, miss significant portions of dynamic behavior, due to native code, unsupported features (e.g., invokedynamic or lambdas in Java), and more. We present techniques that substantially counteract the unsoundness of a static analysis, with virtually no intrusion to the analysis logic. Our approach is reified in the HeapDL toolchain and consists in taking whole-heap snapshots during program execution, that are further enriched to capture significant aspects of dynamic behavior, regardless of the causes of such behavior. The snapshots are then used as extra inputs to the static analysis. The approach exhibits both portability and significantly increased coverage. Heap information under one set of dynamic inputs allows a static analysis to cover many more behaviors under other inputs. A HeapDL-enhanced static analysis of the DaCapo benchmarks computes 99.5% (median) of the call-graph edges of unseen dynamic executions (vs. 76.9% for the Tamiflex tool).",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133892",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Neville",
+        "last_name": "Grech",
+        "institution": "University of Malta"
+      },
+      {
+        "first_name": "George",
+        "last_name": "Fourtounis",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Adrian",
+        "last_name": "Francalanza",
+        "institution": "University of Malta"
+      },
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "National and Kapodistrian University of Athens"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GrechFFS17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133894",
+    "title": "Familia: unifying interfaces, type classes, and family polymorphism",
+    "abstract": "Parametric polymorphism and inheritance are both important, extensively explored language mechanisms for providing code reuse and extensibility. But harmoniously integrating these apparently distinct mechanisms—and powerful recent forms of them, including type classes and family polymorphism—in a single language remains an elusive goal. In this paper, we show that a deep unification can be achieved by generalizing the semantics of interfaces and classes. The payoff is a significant increase in expressive power with little increase in programmer-visible complexity. Salient features of the new programming language include retroactive constraint modeling, underpinning both object-oriented programming and generic programming, and module-level inheritance with further-binding, allowing family polymorphism to be deployed at large scale. The resulting mechanism is syntactically light, and the more advanced features are transparent to the novice programmer. We describe the design of a programming language that incorporates this mechanism; using a core calculus, we show that the type system is sound. We demonstrate that this language is highly expressive by illustrating how to use it to implement highly extensible software and by showing that it can not only concisely model state-of-the-art features for code reuse, but also go beyond them.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133894",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yizhou",
+        "last_name": "Zhang",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Andrew C.",
+        "last_name": "Myers",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhangM17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133891",
+    "title": "Efficient logging in non-volatile memory by exploiting coherency protocols",
+    "abstract": "Non-volatile memory technologies such as PCM, ReRAM and STT-RAM allow data to be saved to persistent storage significantly faster than hard drives or SSDs. Many of the use cases for non-volatile memory requires persistent logging since it enables a set of operations to execute in an atomic manner. However, a logging protocol must handle reordering, which causes a write to reach the non-volatile memory before a previous write operation. In this paper, we show that reordering results from two parts of the system: the out-of-order execution in the CPU and the cache coherence protocol. By carefully considering the properties of these reorderings, we present a logging protocol that requires only one round trip to non-volatile memory while avoiding expensive computations, thus increasing performance. We also show how the logging protocol can be extended to building a durable set (hash map) that also requires a single round trip to non-volatile memory for inserting, updating, or deleting operations.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133891",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Nachshon",
+        "last_name": "Cohen",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Michal",
+        "last_name": "Friedman",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "James R.",
+        "last_name": "Larus",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CohenFL17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133893",
+    "title": "Instrumentation bias for dynamic data race detection",
+    "abstract": "This paper presents Fast Instrumentation Bias (FIB), a sound and complete dynamic data race detection algorithm that improves performance by reducing or eliminating the costs of analysis atomicity. In addition to checking for errors in target programs, dynamic data race detectors must introduce synchronization to guard against metadata races that may corrupt analysis state and compromise soundness or completeness. Pessimistic analysis synchronization can account for nontrivial performance overhead in a data race detector. The core contribution of FIB is a novel cooperative ownership-based synchronization protocol whose states and transitions are derived purely from preexisting analysis metadata and logic in a standard data race detection algorithm. By exploiting work already done by the analysis, FIB ensures atomicity of dynamic analysis actions with zero additional time or space cost in the common case. Analysis of temporally thread-local or read-shared accesses completes safely with no synchronization. Uncommon write-sharing transitions require synchronous cross-thread coordination to ensure common cases may proceed synchronization-free. We implemented FIB in the Jikes RVM Java virtual machine. Experimental evaluation shows that FIB eliminates nearly all instrumentation atomicity costs on programs where data often experience windows of thread-local access. Adaptive extensions to the ownership policy effectively eliminate high coordination costs of the core ownership protocol on programs with high rates of serialized sharing. FIB outperforms a naive pessimistic synchronization scheme by 50% on average. Compared to a tuned optimistic metadata synchronization scheme based on conventional fine-grained atomic compare-and-swap operations, FIB is competitive overall, and up to 17% faster on some programs. Overall, FIB effectively exploits latent analysis and program invariants to bring strong integrity guarantees to an otherwise unsynchronized data race detection algorithm at minimal cost.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133893",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Benjamin P.",
+        "last_name": "Wood",
+        "institution": "Wellesley College"
+      },
+      {
+        "first_name": "Man",
+        "last_name": "Cao",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Bond",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WoodCBG17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133887",
+    "title": "SQLizer: query synthesis from natural language",
+    "abstract": "This paper presents a new technique for automatically synthesizing SQL queries from natural language (NL). At the core of our technique is a new NL-based program synthesis methodology that combines semantic parsing techniques from the NLP community with type-directed program synthesis and automated program repair. Starting with a program sketch obtained using standard parsing techniques, our approach involves an iterative refinement loop that alternates between probabilistic type inhabitation and automated sketch repair. We use the proposed idea to build an end-to-end system called SQLIZER that can synthesize SQL queries from natural language. Our method is fully automated, works for any database without requiring additional customization, and does not require users to know the underlying database schema. We evaluate our approach on over 450 natural language queries concerning three different databases, namely MAS, IMDB, and YELP. Our experiments show that the desired query is ranked within the top 5 candidates in close to 90% of the cases and that SQLIZER outperforms NALIR, a state-of-the-art tool that won a best paper award at VLDB'14.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133887",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Navid",
+        "last_name": "Yaghmazadeh",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Yuepeng",
+        "last_name": "Wang",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Dillig",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Yaghmazadeh0DD17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133896",
+    "title": "Orca: GC and type system co-design for actor languages",
+    "abstract": "ORCA is a concurrent and parallel garbage collector for actor programs, which does not require any STW steps, or synchronization mechanisms, and that has been designed to support zero-copy message passing and sharing of mutable data. ORCA is part of a runtime for actor-based languages, which was co-designed with the Pony programming language, and in particular, with its data race free type system. By co-designing an actor language with its runtime, it was possible to exploit certain language properties in order to optimize performance of garbage collection. Namely, ORCA relies on the guarantees of absence of race conditions in order to avoid read/write barriers, and it leverages the actor message passing, for synchronization among actors. In this paper we briefly describe Pony and its type system. We use pseudo-code in order to introduce how ORCA allocates and deallocates objects, how it shares mutable data without requiring barriers upon data mutation, and how can immutability be used to further optimize garbage collection. Moreover, we discuss the advantages of co-designing an actor language with its runtime, and we demonstrate that ORCA can be implemented in a performant and scalable way through a set of micro-benchmarks, including a comparison with other well-known collectors.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133896",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sylvan",
+        "last_name": "Clebsch",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Juliana",
+        "last_name": "Franco",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Sophia",
+        "last_name": "Drossopoulou",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Albert Mingkun",
+        "last_name": "Yang",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Wrigstad",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ClebschFDYWV17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133895",
+    "title": "Static stages for heterogeneous programming",
+    "abstract": "Heterogeneous hardware is central to modern advances in performance and efficiency. Mainstream programming models for heterogeneous architectures, however, sacrifice safety and expressiveness in favor of low-level control over performance details. The interfaces between hardware units consist of verbose, unsafe APIs; hardware-specific languages make it difficult to move code between units; and brittle preprocessor macros complicate the task of specializing general code for efficient accelerated execution. We propose a unified low-level programming model for heterogeneous systems that offers control over performance, safe communication constructs, cross-device code portability, and hygienic metaprogramming for specialization. The language extends constructs from multi-stage programming to separate code for different hardware units, to communicate between them, and to express compile-time code optimization. We introduce static staging, a different take on multi-stage programming that lets the compiler generate all code and communication constructs ahead of time. To demonstrate our approach, we use static staging to implement BraidGL, a real-time graphics programming language for CPU-GPU systems. Current real-time graphics software in OpenGL uses stringly-typed APIs for communication and unsafe preprocessing to generate specialized GPU code variants. In BraidGL, programmers instead write hybrid CPU-GPU software in a unified language. The compiler statically generates target-specific code and guarantees safe communication between the CPU and the graphics pipeline stages. Example scenes demonstrate the language's productivity advantages: BraidGL eliminates the safety and expressiveness pitfalls of OpenGL and makes common specialization techniques easy to apply. The case study demonstrates how static staging can express core placement and specialization in general heterogeneous programming.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133895",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Adrian",
+        "last_name": "Sampson",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Todd",
+        "last_name": "Mytkowicz",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SampsonMM17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133890",
+    "title": "Practical initialization race detection for JavaScript web applications",
+    "abstract": "Event races are a common source of subtle errors in JavaScript web applications. Several automated tools for detecting event races have been developed, but experiments show that their accuracy is generally quite low. We present a new approach that focuses on three categories of event race errors that often appear during the initialization phase of web applications: form-input-overwritten errors, late-event-handler-registration errors, and access-before-definition errors. The approach is based on a dynamic analysis that uses a combination of adverse and approximate execution. Among the strengths of the approach are that it does not require browser modifications, expensive model checking, or static analysis. In an evaluation on 100 widely used websites, our tool InitRacer reports 1085 initialization races, while providing informative explanations of their causes and effects. A manual study of 218 of these reports shows that 111 of them lead to uncaught exceptions and at least 47 indicate errors that affect the functionality of the websites.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133890",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Christoffer Quist",
+        "last_name": "Adamsen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Anders",
+        "last_name": "Møller",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AdamsenMT17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133889",
+    "title": "Natural synthesis of provably-correct data-structure manipulations",
+    "abstract": "This paper presents natural synthesis, which generalizes the proof-theoretic synthesis technique to support very expressive logic theories. This approach leverages the natural proof methodology and reduces an intractable, unbounded-size synthesis problem to a tractable, bounded-size synthesis problem, which is amenable to be handled by modern inductive synthesis engines. The synthesized program admits a natural proof and is a provably-correct solution to the original synthesis problem. We explore the natural synthesis approach in the domain of imperative data-structure manipulations and present a novel syntax-guided synthesizer based on natural synthesis. The input to our system is a program template together with a rich functional specification that the synthesized program must meet. Our system automatically produces a program implementation along with necessary proof artifacts, namely loop invariants and ranking functions, and guarantees the total correctness with a natural proof. Experiments show that our natural synthesizer can efficiently produce provably-correct implementations for sorted lists and binary search trees. To our knowledge, this is the first system that can automatically synthesize these programs, their functional correctness and their termination in tandem from bare-bones control flow skeletons.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133889",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Xiaokang",
+        "last_name": "Qiu",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Armando",
+        "last_name": "Solar-Lezama",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/QiuS17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133897",
+    "title": "Monadic composition for deterministic, parallel batch processing",
+    "abstract": "Achieving determinism on real software systems remains difficult. Even a batch-processing job, whose task is to map input bits to output bits, risks nondeterminism from thread scheduling, system calls, CPU instructions, and leakage of environmental information such as date or CPU model. In this work, we present a system for achieving low-overhead deterministic execution of batch-processing programs that read and write the file system—turning them into pure functions on files. We allow multi-process executions where a permissions system prevents races on the file system. Process separation enables different processes to enforce permissions and enforce determinism using distinct mechanisms. Our prototype, DetFlow, allows a statically-typed coordinator process to use shared-memory parallelism, as well as invoking process-trees of sandboxed legacy binaries. DetFlow currently implements the coordinator as a Haskell program with a restricted I/O type for its main function: a new monad we call DetIO. Legacy binaries launched by the coordinator run concurrently, but internally each process schedules threads sequentially, allowing dynamic determinism-enforcement with predictably low overhead. We evaluate DetFlow by applying it to bioinformatics data pipelines and software build systems. DetFlow enables determinizing these data-processing workflows by porting a small amount of code to become a statically-typed coordinator. This hybrid approach of static and dynamic determinism enforcement permits freedom where possible but restrictions where necessary.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133897",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ryan G.",
+        "last_name": "Scott",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Omar S. Navarro",
+        "last_name": "Leija",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Devietti",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Newton",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ScottLDN17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133898",
+    "title": "GLORE: generalized loop redundancy elimination upon LER-notation",
+    "abstract": "This paper presents GLORE, a novel approach to enabling the detection and removal of large-scoped redundant computations in nested loops. GLORE works on LER-notation, a new representation of computations in both regular and irregular loops. Together with a set of novel algorithms, it makes GLORE able to systematically consider computation reordering at both the expression level and the loop level in a unified manner. GLORE shows an applicability much broader than prior methods have, and frequently lowers the computational complexities of some nested loops that are elusive to prior optimization techniques, producing significantly larger speedups.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133898",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yufei",
+        "last_name": "Ding",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Xipeng",
+        "last_name": "Shen",
+        "institution": "North Carolina State University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/DingS17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133899",
+    "title": "Verifying spatial properties of array computations",
+    "abstract": "Arrays computations are at the core of numerical modelling and computational science applications. However, low-level manipulation of array indices is a source of program error. Many practitioners are aware of the need to ensure program correctness, yet very few of the techniques from the programming research community are applied by scientists. We aim to change that by providing targetted lightweight verification techniques for scientific code. We focus on the all too common mistake of array offset errors as a generalisation of off-by-one errors. Firstly, we report on a code analysis study on eleven real-world computational science code base, identifying common idioms of array usage and their spatial properties. This provides much needed data on array programming idioms common in scientific code. From this data, we designed a lightweight declarative specification language capturing the majority of array access patterns via a small set of combinators. We detail a semantic model, and the design and implementation of a verification tool for our specification language, which both checks and infers specifications. We evaluate our tool on our corpus of scientific code. Using the inference mode, we found roughly 87,000 targets for specification across roughly 1.1 million lines of code, showing that the vast majority of array computations read from arrays in a pattern with a simple, regular, static shape. We also studied the commit logs of one of our corpus packages, finding past bug fixes for which our specification system distinguishes the change and thus could have been applied to detect such bugs.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133899",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Dominic",
+        "last_name": "Orchard",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Mistral",
+        "last_name": "Contrastin",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Danish",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Rice",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/OrchardCDR17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133901",
+    "title": "The tensor algebra compiler",
+    "abstract": "Tensor algebra is a powerful tool with applications in machine learning, data analytics, engineering and the physical sciences. Tensors are often sparse and compound operations must frequently be computed in a single kernel for performance and to save memory. Programmers are left to write kernels for every operation of interest, with different mixes of dense and sparse tensors in different formats. The combinations are infinite, which makes it impossible to manually implement and optimize them all. This paper introduces the first compiler technique to automatically generate kernels for any compound tensor algebra operation on dense and sparse tensors. The technique is implemented in a C++ library called taco. Its performance is competitive with best-in-class hand-optimized kernels in popular libraries, while supporting far more tensor operations.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133901",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Fredrik",
+        "last_name": "Kjølstad",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Shoaib",
+        "last_name": "Kamil",
+        "institution": "Adobe Systems (United States)"
+      },
+      {
+        "first_name": "Stephen Y.",
+        "last_name": "Chou",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Lugato",
+        "institution": "Commissariat à l'Énergie Atomique et aux Énergies Alternatives"
+      },
+      {
+        "first_name": "Saman",
+        "last_name": "Amarasinghe",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KjolstadKCLA17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133902",
+    "title": "Seam: provably safe local edits on graphs",
+    "abstract": "Algorithms that create and mutate graph data structures are challenging to implement correctly. However, verifying even basic properties of low-level implementations, such as referential integrity and memory safety, remains non-trivial. Furthermore, any extension to such a data structure multiplies the complexity of its implementation, while compounding the challenges in reasoning about correctness. We take a language design approach to this problem. We propose Seam, a language for expressing local edits to graph-like data structures, based on a relational data model, and such that data integrity can be verified automatically. We present a verification method that leverages an SMT solver, and prove it sound and precise (complete modulo termination of the SMT solver). We evaluate the verification capabilities of Seam empirically, and demonstrate its applicability to a variety of examples, most notably a new class of verification tasks derived from geometric remeshing operations used in scientific simulation and computer graphics. We describe our prototype implementation of a Seam compiler that generates low-level code, which can then be integrated into larger applications. We evaluate our compiler on a sample application, and demonstrate competitive execution time, compared to hand-written implementations.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133902",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Manolis",
+        "last_name": "Papadakis",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Gilbert",
+        "last_name": "Bernstein",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Rahul",
+        "last_name": "Sharma",
+        "institution": "Microsoft Research (India)"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Pat",
+        "last_name": "Hanrahan",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PapadakisB0AH17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133900",
+    "title": "TreeFuser: a framework for analyzing and fusing general recursive tree traversals",
+    "abstract": "Series of traversals of tree structures arise in numerous contexts: abstract syntax tree traversals in compiler passes, rendering traversals of the DOM in web browsers, kd-tree traversals in computational simulation codes. In each of these settings, a tree is traversed multiple times to compute various values and modify various portions of the tree. While it is relatively easy to write these traversals as separate small updates to the tree, for efficiency reasons, traversals are often manually fused to reduce the number of times that each portion of the tree is traversed: by performing multiple operations on the tree simultaneously, each node of the tree can be visited fewer times, increasing opportunities for optimization and decreasing cache pressure and other overheads. This fusion process is often done manually, requiring careful understanding of how each of traversals of the tree interact. This paper presents an automatic approach to traversal fusion: tree traversals can be written independently, and then our framework analyzes the dependences between the traversals to determine how they can be fused to reduce the number of visits to each node in the tree. A critical aspect of our framework is that it exploits two opportunities to increase the amount of fusion: i) it automatically integrates code motion, and ii) it supports partial fusion, where portions of one traversal can be fused with another, allowing for a reduction in node visits without requiring that two traversals be fully fused. We implement our framework in Clang, and show across several case studies that we can successfully fuse complex tree traversals, reducing the overall number of traversals and substantially improving locality and performance.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133900",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Laith",
+        "last_name": "Sakka",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Kirshanthan",
+        "last_name": "Sundararajah",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Milind",
+        "last_name": "Kulkarni",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SakkaS017",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133904",
+    "title": "FairSquare: probabilistic verification of program fairness",
+    "abstract": "With the range and sensitivity of algorithmic decisions expanding at a break-neck speed, it is imperative that we aggressively investigate fairness and bias in decision-making programs. First, we show that a number of recently proposed formal definitions of fairness can be encoded as probabilistic program properties. Second, with the goal of enabling rigorous reasoning about fairness, we design a novel technique for verifying probabilistic properties that admits a wide class of decision-making programs. Third, we present FairSquare, the first verification tool for automatically certifying that a program meets a given fairness property. We evaluate FairSquare on a range of decision-making programs. Our evaluation demonstrates FairSquare’s ability to verify fairness for a range of different programs, which we show are out-of-reach for state-of-the-art program analysis techniques.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133904",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Aws",
+        "last_name": "Albarghouthi",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Loris",
+        "last_name": "D’Antoni",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Samuel",
+        "last_name": "Drews",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Aditya V.",
+        "last_name": "Nori",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AlbarghouthiDDN17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133905",
+    "title": "Reasoning on divergent computations with coaxioms",
+    "abstract": "Coaxioms have been recently introduced to enhance the expressive power of inference systems, by supporting interpretations which are neither purely inductive, nor coinductive. This paper proposes a novel approach based on coaxioms to capture divergence in semantic definitions by allowing inductive and coinductive semantic rules to be merged together for defining a unique semantic judgment. In particular, coinduction is used to derive a special result which models divergence. In this way, divergent, terminating, and stuck computations can be properly distinguished even in semantic definitions where this is typically difficult, as in big-step style. We show how the proposed approach can be applied to several languages; in particular, we first illustrate it on the paradigmatic example of the λ-calculus, then show how it can be adopted for defining the big-step semantics of a simple imperative Java-like language. We provide proof techniques to show classical results, including equivalence with small-step semantics, and type soundness for typed versions of both languages.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133905",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Davide",
+        "last_name": "Ancona",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Francesco",
+        "last_name": "Dagnino",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Zucca",
+        "institution": "University of Genoa"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AnconaDZ17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133906",
+    "title": "Restricting grammars with tree automata",
+    "abstract": "Precedence and associativity declarations in systems like yacc resolve ambiguities in context-free grammars (CFGs) by specifying restrictions on allowed parses. However, they are special purpose and do not handle the grammatical restrictions that language designers need in order to resolve ambiguities like dangling else, the interactions between binary operators and functional if expressions in ML, and the interactions between object allocation and function calls in JavaScript. Often, language designers resort to restructuring their grammars in order to encode these restrictions, but this obfuscates the designer's intent and can make grammars more difficult to read, write, and maintain. In this paper, we show how tree automata can modularly and concisely encode such restrictions. We do this by reinterpreting CFGs as tree automata and then intersecting them with tree automata encoding the desired restrictions. The results are then reinterpreted back into CFGs that encode the specified restrictions. This process can be used as a preprocessing step before other CFG manipulations and is well behaved. It performs well in practice and never introduces ambiguities or LR( k ) conflicts.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133906",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Michael D.",
+        "last_name": "Adams",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Might",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/0001M17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133907",
+    "title": "Exploiting implicit beliefs to resolve sparse usage problem in usage-based specification mining",
+    "abstract": "Frameworks and libraries provide application programming interfaces (APIs) that serve as building blocks in modern software development. As APIs present the opportunity of increased productivity, it also calls for correct use to avoid buggy code. The usage-based specification mining technique has shown great promise in solving this problem through a data-driven approach. These techniques leverage the use of the API in large corpora to understand the recurring usages of the APIs and infer behavioral specifications (preconditions and postconditions) from such usages. A challenge for such technique is thus inference in the presence of insufficient usages, in terms of both frequency and richness. We refer to this as a \"sparse usage problem.\" This paper presents the first technique to solve the sparse usage problem in usage-based precondition mining. Our key insight is to leverage implicit beliefs to overcome sparse usage. An implicit belief (IB) is the knowledge implicitly derived from the fact about the code. An IB about a program is known implicitly to a programmer via the language's constructs and semantics, and thus not explicitly written or specified in the code. The technical underpinnings of our new precondition mining approach include a technique to analyze the data and control flow in the program leading to API calls to infer preconditions that are implicitly present in the code corpus, a catalog of 35 code elements in total that can be used to derive implicit beliefs from a program, and empirical evaluation of all of these ideas. We have analyzed over 350 millions lines of code and 7 libraries that suffer from the sparse usage problem. Our approach realizes 6 implicit beliefs and we have observed that adding single-level context sensitivity can further improve the result of usage based precondition mining. The result shows that we achieve overall 60% in precision and 69% in recall and the accuracy is relatively improved by 32% in precision and 78% in recall compared to base usage-based mining approach for these libraries.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133907",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Samantha Syeda",
+        "last_name": "Khairunnesa",
+        "institution": "Iowa State University"
+      },
+      {
+        "first_name": "Hoan Anh",
+        "last_name": "Nguyen",
+        "institution": "Iowa State University"
+      },
+      {
+        "first_name": "Tien N.",
+        "last_name": "Nguyen",
+        "institution": ""
+      },
+      {
+        "first_name": "Hridesh",
+        "last_name": "Rajan",
+        "institution": "Iowa State University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SamanthaNNR17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133908",
+    "title": "D&#233;j&#224;Vu: a map of code duplicates on GitHub",
+    "abstract": "Previous studies have shown that there is a non-trivial amount of duplication in source code. This paper analyzes a corpus of 4.5 million non-fork projects hosted on GitHub representing over 428 million files written in Java, C++, Python, and JavaScript. We found that this corpus has a mere 85 million unique files. In other words, 70% of the code on GitHub consists of clones of previously created files. There is considerable variation between language ecosystems. JavaScript has the highest rate of file duplication, only 6% of the files are distinct. Java, on the other hand, has the least duplication, 60% of files are distinct. Lastly, a project-level analysis shows that between 9% and 31% of the projects contain at least 80% of files that can be found elsewhere. These rates of duplication have implications for systems built on open source software as well as for researchers interested in analyzing large code bases. As a concrete artifact of this study, we have created DéjàVu, a publicly available map of code duplicates in GitHub repositories.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133908",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Cristina Videira",
+        "last_name": "Lopes",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Petr",
+        "last_name": "Maj",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Pedro",
+        "last_name": "Martins",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Vaibhav",
+        "last_name": "Saini",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Di",
+        "last_name": "Yang",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Žitný",
+        "last_name": "Jakub",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Hitesh",
+        "last_name": "Sajnani",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LopesMMSYZSV17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133909",
+    "title": "Understanding the use of lambda expressions in Java",
+    "abstract": "Java 8 retrofitted lambda expressions, a core feature of functional programming, into a mainstream object-oriented language with an imperative paradigm. However, we do not know how Java developers have adapted to the functional style of thinking, and more importantly, what are the reasons motivating Java developers to adopt functional programming. Without such knowledge, researchers miss opportunities to improve the state of the art, tool builders use unrealistic assumptions, language designers fail to improve upon their designs, and developers are unable to explore efficient and effective use of lambdas. We present the first large-scale, quantitative and qualitative empirical study to shed light on how imperative programmers use lambda expressions as a gateway into functional thinking. Particularly, we statically scrutinize the source code of 241 open-source projects with 19,770 contributors, to study the characteristics of 100,540 lambda expressions. Moreover, we investigate the historical trends and adoption rates of lambdas in the studied projects. To get a complementary perspective, we seek the underlying reasons on why developers introduce lambda expressions, by surveying 97 developers who are introducing lambdas in their projects, using the firehouse interview method. Among others, our findings revealed an increasing trend in the adoption of lambdas in Java: in 2016, the ratio of lambdas introduced per added line of code increased by 54% compared to 2015. Lambdas were used for various reasons, including but not limited to (i) making existing code more succinct and readable, (ii) avoiding code duplication, and (iii) simulating lazy evaluation of functions. Interestingly, we found out that developers are using Java's built-in functional interfaces inefficiently, i.e., they prefer to use general functional interfaces over the specialized ones, overlooking the performance overheads that might be imposed. Furthermore, developers are not adopting techniques from functional programming, e.g., currying. Finally, we present the implications of our findings for researchers, tool builders, language designers, and developers.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133909",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Davood",
+        "last_name": "Mazinanian",
+        "institution": "Concordia University"
+      },
+      {
+        "first_name": "Ameya",
+        "last_name": "Ketkar",
+        "institution": "Oregon State University"
+      },
+      {
+        "first_name": "Nikolaos",
+        "last_name": "Tsantalis",
+        "institution": "Concordia University"
+      },
+      {
+        "first_name": "Danny",
+        "last_name": "Dig",
+        "institution": "Oregon State University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MazinanianKTD17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133911",
+    "title": "A verified messaging system",
+    "abstract": "We present a concurrent-read exclusive-write buffer system with strong correctness and security properties. Our motivating application for this system is the distribution of sensor values in a multicomponent vehicle-control system, where some components are unverified and possibly malicious, and other components are vehicle-control-critical and must be verified. Valid participants are guaranteed correct communication (i.e., the writer is always able to write to an unused buffer, and readers always read the most recently published value), while invalid readers or writers cannot compromise the correctness or liveness of valid participants. There is only one writer, all operations are wait-free, and there is no extra process or thread mediating communication. We prove the correctness of the system with valid participants by formally verifying a C implementation of the system in Coq, using the Verified Software Toolchain extended with an atomic exchange operation. The result is the first C-level mechanized verification of a nonblocking communication protocol.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133911",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "William",
+        "last_name": "Mansky",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Aleksey",
+        "last_name": "Nogin",
+        "institution": "HRL Laboratories (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ManskyAN17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133912",
+    "title": "Who guards the guards? formal validation of the Arm v8-m architecture specification",
+    "abstract": "Software and hardware are increasingly being formally verified against specifications, but how can we verify the specifications themselves? This paper explores what it means to formally verify a specification. We solve three challenges: (1) How to create a secondary, higher-level specification that can be effectively reviewed by processor designers who are not experts in formal verification; (2) How to avoid common-mode failures between the specifications; and (3) How to automatically verify the two specifications against each other. One of the most important specifications for software verification is the processor specification since it defines the behaviour of machine code and of hardware protection features used by operating systems. We demonstrate our approach on ARM's v8-M Processor Specification, which is intended to improve the security of Internet of Things devices. Thus, we focus on establishing the security guarantees the architecture is intended to provide. Despite the fact that the ARM v8-M specification had previously been extensively tested, we found twelve bugs (including two security bugs) that have all been fixed by ARM.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133912",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Alastair",
+        "last_name": "Reid",
+        "institution": "ARM (United Kingdom)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Reid17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133910",
+    "title": "A model for reasoning about JavaScript promises",
+    "abstract": "In JavaScript programs, asynchrony arises in situations such as web-based user-interfaces, communicating with servers through HTTP requests, and non-blocking I/O. Event-based programming is the most popular approach for managing asynchrony, but suffers from problems such as lost events and event races, and results in code that is hard to understand and debug. Recently, ECMAScript 6 has added support for promises, an alternative mechanism for managing asynchrony that enables programmers to chain asynchronous computations while supporting proper error handling. However, promises are complex and error-prone in their own right, so programmers would benefit from techniques that can reason about the correctness of promise-based code. Since the ECMAScript 6 specification is informal and intended for implementers of JavaScript engines, it does not provide a suitable basis for formal reasoning. This paper presents λ p , a core calculus that captures the essence of ECMAScript 6 promises. Based on λ p , we introduce the promise graph, a program representation that can assist programmers with debugging of promise-based code. We then report on a case study in which we investigate how the promise graph can be helpful for debugging errors related to promises in code fragments posted to the StackOverflow website.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133910",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Magnus",
+        "last_name": "Madsen",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MadsenLT17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133913",
+    "title": "Robust and compositional verification of object capability patterns",
+    "abstract": "In scenarios such as web programming, where code is linked together from multiple sources, object capability patterns (OCPs) provide an essential safeguard, enabling programmers to protect the private state of their objects from corruption by unknown and untrusted code. However, the benefits of OCPs in terms of program verification have never been properly formalized. In this paper, building on the recently developed Iris framework for concurrent separation logic, we develop OCPL, the first program logic for compositionally specifying and verifying OCPs in a language with closures, mutable state, and concurrency. The key idea of OCPL is to account for the interface between verified and untrusted code by adopting a well-known idea from the literature on security protocol verification, namely robust safety . Programs that export only properly wrapped values to their environment can be proven robustly safe, meaning that their untrusted environment cannot violate their internal invariants. We use OCPL to give the first general, compositional, and machine-checked specs for several commonly-used OCPs—including the dynamic sealing , membrane , and caretaker patterns—which we then use to verify robust safety for representative client code. All our results are fully mechanized in the Coq proof assistant.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133913",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Swasey",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "Garg",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Derek",
+        "last_name": "Dreyer",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Swasey0D17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133914",
+    "title": "Type test scripts for TypeScript testing",
+    "abstract": "TypeScript applications often use untyped JavaScript libraries. To support static type checking of such applications, the typed APIs of the libraries are expressed as separate declaration files. This raises the challenge of checking that the declaration files are correct with respect to the library implementations. Previous work has shown that mismatches are frequent and cause TypeScript's type checker to misguide the programmers by rejecting correct applications and accepting incorrect ones. This paper shows how feedback-directed random testing, which is an automated testing technique that has mostly been used for testing Java libraries, can be adapted to effectively detect such type mismatches. Given a JavaScript library with a TypeScript declaration file, our tool TSTEST generates a \"type test script\", which is an application that interacts with the library and tests that it behaves according to the type declarations. Compared to alternative solutions that involve static analysis, this approach finds significantly more mismatches in a large collection of real-world JavaScript libraries with TypeScript declaration files, and with fewer false positives. It also has the advantage that reported mismatches are easily reproducible with concrete executions, which aids diagnosis and debugging.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133914",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Erik Krogh",
+        "last_name": "Kristensen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Anders",
+        "last_name": "Møller",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KristensenM17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133915",
+    "title": "A solver-aided language for test input generation",
+    "abstract": "Developing a small but useful set of inputs for tests is challenging. We show that a domain-specific language backed by a constraint solver can help the programmer with this process. The solver can generate a set of test inputs and guarantee that each input is different from other inputs in a way that is useful for testing. This paper presents Iorek: a tool that empowers the programmer with the ability to express to any SMT solver what it means for inputs to be different. The core of Iorek is a rich language for constraining the set of inputs, which includes a novel bounded enumeration mechanism that makes it easy to define and encode a flexible notion of difference over a recursive structure. We demonstrate the flexibility of this mechanism for generating strings. We use Iorek to test real services and find that it is effective at finding bugs. We also build Iorek into a random testing tool and show that it increases coverage.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133915",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Talia",
+        "last_name": "Ringer",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Grossman",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Schwartz‐Narbonne",
+        "institution": "Amazon (United States)"
+      },
+      {
+        "first_name": "Serdar",
+        "last_name": "Taşiran",
+        "institution": "Amazon (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RingerGST17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133916",
+    "title": "Transforming programs and tests in tandem for fault localization",
+    "abstract": "Localizing failure-inducing code is essential for software debugging. Manual fault localization can be quite tedious, error-prone, and time-consuming. Therefore, a huge body of research e orts have been dedicated to automated fault localization. Spectrum-based fault localization, the most intensively studied fault localization approach based on test execution information, may have limited effectiveness, since a code element executed by a failed tests may not necessarily have impact on the test outcome and cause the test failure. To bridge the gap, mutation-based fault localization has been proposed to transform the programs under test to check the impact of each code element for better fault localization. However, there are limited studies on the effectiveness of mutation-based fault localization on sufficient number of real bugs. In this paper, we perform an extensive study to compare mutation-based fault localization techniques with various state-of-the-art spectrum-based fault localization techniques on 357 real bugs from the Defects4J benchmark suite. The study results firstly demonstrate the effectiveness of mutation-based fault localization, as well as revealing a number of guidelines for further improving mutation-based fault localization. Based on the learnt guidelines, we further transform test outputs/messages and test code to obtain various mutation information. Then, we propose TraPT, an automated Learning-to-Rank technique to fully explore the obtained mutation information for effective fault localization. The experimental results show that TraPT localizes 65.12% and 94.52% more bugs within Top-1 than state-of-the-art mutation and spectrum based techniques when using the default setting of LIBSVM.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133916",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Xia",
+        "last_name": "Li",
+        "institution": ""
+      },
+      {
+        "first_name": "Lingming",
+        "last_name": "Zhang",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LiZ17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133917",
+    "title": "Automated testing of graphics shader compilers",
+    "abstract": "We present an automated technique for finding defects in compilers for graphics shading languages. key challenge in compiler testing is the lack of an oracle that classifies an output as correct or incorrect; this is particularly pertinent in graphics shader compilers where the output is a rendered image that is typically under-specified. Our method builds on recent successful techniques for compiler validation based on metamorphic testing, and leverages existing high-value graphics shaders to create sets of transformed shaders that should be semantically equivalent. Rendering mismatches are then indicative of shader compilation bugs. Deviant shaders are automatically minimized to identify, in each case, a minimal change to an original high-value shader that induces a shader compiler bug. We have implemented the approach as a tool, GLFuzz, targeting the OpenGL shading language, GLSL. Our experiments over a set of 17 GPU and driver configurations, spanning the main 7 GPU designers, have led to us finding and reporting more than 60 distinct bugs, covering all tested configurations. As well as defective rendering, these issues identify security-critical vulnerabilities that affect WebGL, including a significant remote information leak security bug where a malicious web page can capture the contents of other browser tabs, and a bug whereby visiting a malicious web page can lead to a ``blue screen of death'' under Windows 10. Our findings show that shader compiler defects are prevalent, and that metamorphic testing provides an effective means for detecting them automatically.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133917",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Alastair F.",
+        "last_name": "Donaldson",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Hugues",
+        "last_name": "Evrard",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Andrei",
+        "last_name": "Lascu",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Thomson",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/DonaldsonELT17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133903",
+    "title": "TiML: a functional language for practical complexity analysis with invariants",
+    "abstract": "We present TiML (Timed ML), an ML-like functional language with time-complexity annotations in types. It uses indexed types to express sizes of data structures and upper bounds on running time of functions; and refinement kinds to constrain these indices, expressing data-structure invariants and pre/post-conditions. Indexed types are flexible enough that TiML avoids a built-in notion of ≴size,≵ and the programmer can choose to index user-defined datatypes in any way that helps her analysis. TiML's distinguishing characteristic is supporting highly automated time-bound verification applicable to data structures with nontrivial invariants. The programmer provides type annotations, and the typechecker generates verification conditions that are discharged by an SMT solver. Type and index inference are supported to lower annotation burden, and, furthermore, big-O complexity can be inferred from recurrences generated during typechecking by a recurrence solver based on heuristic pattern matching (e.g. using the Master Theorem to handle divide-and-conquer-like recurrences). We have evaluated TiML's usability by implementing a broad suite of case-study modules, demonstrating that TiML, though lacking full automation and theoretical completeness, is versatile enough to verify worst-case and/or amortized complexities for algorithms and data structures like classic list operations, merge sort, Dijkstra's shortest-path algorithm, red-black trees, Braun trees, functional queues, and dynamic tables with bounds like m n log n . The learning curve and annotation burden are reasonable, as we argue with empirical results on our case studies. We formalized TiML's type-soundness proof in Coq.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133903",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Peng",
+        "last_name": "Wang",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Di",
+        "last_name": "Wang",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Chlipala",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WangWC17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133918",
+    "title": "Bounded exhaustive test-input generation on GPUs",
+    "abstract": "Bounded exhaustive testing is an effective methodology for detecting bugs in a wide range of applications. A well-known approach for bounded exhaustive testing is Korat. It generates all test inputs, up to a given small size, based on a formal specification that is written as an executable predicate and characterizes properties of desired inputs. Korat uses the predicate's executions on candidate inputs to implement a backtracking search based on pruning to systematically explore the space of all possible inputs and generate only those that satisfy the specification. This paper presents a novel approach for speeding up test generation for bounded exhaustive testing using Korat. The novelty of our approach is two-fold. One, we introduce a new technique for writing the specification predicate based on an abstract representation of candidate inputs, so that the predicate executes directly on these abstract structures and each execution has a lower cost. Two, we use the abstract representation as the basis to define the first technique for utilizing GPUs for systematic test generation using executable predicates. Moreover, we present a suite of optimizations that enable effective utilization of the computational resources offered by modern GPUs. We use our prototype tool KoratG to experimentally evaluate our approach using a suite of 7 data structures that were used in prior studies on bounded exhaustive testing. Our results show that our abstract representation can speed up test generation by 5.68 times on a standard CPU, while execution on a GPU speeds up the execution, on average, by 17.46 times.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133918",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ahmet",
+        "last_name": "Çelik",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Sreepathi",
+        "last_name": "Pai",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Sarfraz",
+        "last_name": "Khurshid",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Milos",
+        "last_name": "Gligoric",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CelikPKG17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3141879",
+    "title": "Project snowflake: non-blocking safe manual memory management in .NET",
+    "abstract": "Garbage collection greatly improves programmer productivity and ensures memory safety. Manual memory management on the other hand often delivers better performance but is typically unsafe and can lead to system crashes or security vulnerabilities. We propose integrating safe manual memory management with garbage collection in the .NET runtime to get the best of both worlds. In our design, programmers can choose between allocating objects in the garbage collected heap or the manual heap. All existing applications run unmodified, and without any performance degradation, using the garbage collected heap. Our programming model for manual memory management is flexible: although objects in the manual heap can have a single owning pointer, we allow deallocation at any program point and concurrent sharing of these objects amongst all the threads in the program. Experimental results from our .NET CoreCLR implementation on real-world applications show substantial performance gains especially in multithreaded scenarios: up to 3x savings in peak working sets and 2x improvements in runtime.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3141879",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Parkinson",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Dimitrios",
+        "last_name": "Vytiniotis",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Kapil",
+        "last_name": "Vaswani",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Costa",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Pantazis",
+        "last_name": "Deligiannis",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Dylan",
+        "last_name": "McDermott",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Aaron",
+        "last_name": "Blankstein",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Balkind",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ParkinsonVVCDMB17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133920",
+    "title": "Alpaca: intermittent execution without checkpoints",
+    "abstract": "The emergence of energy harvesting devices creates the potential for batteryless sensing and computing devices. Such devices operate only intermittently, as energy is available, presenting a number of challenges for software developers. Programmers face a complex design space requiring reasoning about energy, memory consistency, and forward progress. This paper introduces Alpaca, a low-overhead programming model for intermittent computing on energy-harvesting devices. Alpaca programs are composed of a sequence of user-defined tasks. The Alpaca runtime preserves execution progress at the granularity of a task. The key insight in Alpaca is the privatization of data shared between tasks. Shared values written in a task are detected using idempotence analysis and copied into a buffer private to the task. At the end of the task, modified values from the private buffer are atomically committed to main memory, ensuring that data remain consistent despite power failures. Alpaca provides a familiar programming interface, a highly efficient runtime model, and places fewer restrictions on a target device's hardware architecture. We implemented a prototype of Alpaca as an extension to C with an LLVM compiler pass. We evaluated Alpaca, and directly compared to two systems from prior work. Alpaca eliminates checkpoints, which improves performance up to 15x, and avoids static multi-versioning, which improves memory consumption by up to 5.5x.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133920",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Kiwan",
+        "last_name": "Maeng",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Alexei",
+        "last_name": "Colin",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Brandon",
+        "last_name": "Lucia",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MaengCL17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133923",
+    "title": "IDE<sup><i>al</i></sup>: efficient and precise alias-aware dataflow analysis",
+    "abstract": "Program analyses frequently track objects throughout a program, which requires reasoning about aliases. Most dataflow analysis frameworks, however, delegate the task of handling aliases to the analysis clients, which causes a number of problems. For instance, custom-made extensions for alias analysis are complex and cannot easily be reused. On the other hand, due to the complex interfaces involved, off-the-shelf alias analyses are hard to integrate precisely into clients. Lastly, for precision many clients require strong updates, and alias abstractions supporting strong updates are often relatively inefficient. In this paper, we present IDEal, an alias-aware extension to the framework for Interprocedural Distributive Environment (IDE) problems. IDEal relieves static-analysis authors completely of the burden of handling aliases by automatically resolving alias queries on-demand, both efficiently and precisely. IDEal supports a highly precise analysis using strong updates by resorting to an on-demand, flow-sensitive, and context-sensitive all-alias analysis. Yet, it achieves previously unseen efficiency by propagating aliases individually, creating highly reusable per-pointer summaries. We empirically evaluate IDEal by comparing TSf, a state-of-the-art typestate analysis, to TSal, an IDEal-based typestate analysis. Our experiments show that the individual propagation of aliases within IDEal enables TSal to propagate 10.4x fewer dataflow facts and analyze 10.3x fewer methods when compared to TSf. On the DaCapo benchmark suite, TSal is able to efficiently compute precise results.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133923",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Johannes",
+        "last_name": "Späth",
+        "institution": "Fraunhofer Institute for Mechatronic Systems Design"
+      },
+      {
+        "first_name": "Karim",
+        "last_name": "Ali",
+        "institution": "University of Alberta"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Bodden",
+        "institution": "Paderborn University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SpathAB17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3138224",
+    "title": "Reliable and automatic composition of language extensions to C: the ableC extensible language framework",
+    "abstract": "This paper describes an extensible language framework, ableC, that allows programmers to import new, domain-specific, independently-developed language features into their programming language, in this case C. Most importantly, this framework ensures that the language extensions will automatically compose to form a working translator that does not terminate abnormally. This is possible due to two modular analyses that extension developers can apply to their language extension to check its composability. Specifically, these ensure that the composed concrete syntax specification is non-ambiguous and the composed attribute grammar specifying the semantics is well-defined. This assurance and the expressiveness of the supported extensions is a distinguishing characteristic of the approach. The paper describes a number of techniques for specifying a host language, in this case C at the C11 standard, to make it more amenable to language extension. These include techniques that make additional extensions pass these modular analyses, refactorings of the host language to support a wider range of extensions, and the addition of semantic extension points to support, for example, operator overloading and non-local code transformations.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3138224",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ted",
+        "last_name": "Kaminski",
+        "institution": "University of Minnesota"
+      },
+      {
+        "first_name": "Lucas",
+        "last_name": "Kramer",
+        "institution": "University of Minnesota"
+      },
+      {
+        "first_name": "Travis",
+        "last_name": "Carlson",
+        "institution": "University of Minnesota"
+      },
+      {
+        "first_name": "Eric Van",
+        "last_name": "Wyk",
+        "institution": "University of Minnesota"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KaminskiKCW17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133921",
+    "title": "An auditing language for preventing correlated failures in the cloud",
+    "abstract": "Today's cloud services extensively rely on replication techniques to ensure availability and reliability. In complex datacenter network architectures, however, seemingly independent replica servers may inadvertently share deep dependencies (e.g., aggregation switches). Such unexpected common dependencies may potentially result in correlated failures across the entire replication deployments, invalidating the efforts. Although existing cloud management and diagnosis tools have been able to offer post-failure forensics, they, nevertheless, typically lead to quite prolonged failure recovery time in the cloud-scale systems. In this paper, we propose a novel language framework, named RepAudit, that manages to prevent correlated failure risks before service outages occur, by allowing cloud administrators to proactively audit the replication deployments of interest. In particular, RepAudit consists of three new components: 1) a declarative domain-specific language, RAL, for cloud administrators to write auditing programs expressing diverse auditing tasks; 2) a high-performance RAL auditing engine that generates the auditing results by accurately and efficiently analyzing the underlying structures of the target replication deployments; and 3) an RAL-code generator that can automatically produce complex RAL programs based on easily written specifications. Our evaluation result shows that RepAudit uses 80x less lines of code than state-of-the-art efforts in expressing the auditing task of determining the top-20 critical correlated-failure root causes. To the best of our knowledge, RepAudit is the first effort capable of simultaneously offering expressive, accurate and efficient correlated failure auditing to the cloud-scale replication systems.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133921",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Ennan",
+        "last_name": "Zhai",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Ružica",
+        "last_name": "Piskač",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Ronghui",
+        "last_name": "Gu",
+        "institution": "Columbia University"
+      },
+      {
+        "first_name": "Xun",
+        "last_name": "Lao",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Wang",
+        "last_name": "Xi",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ZhaiPGLW17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133925",
+    "title": "Automatically generating features for learning program analysis heuristics for C-like languages",
+    "abstract": "We present a technique for automatically generating features for data-driven program analyses. Recently data-driven approaches for building a program analysis have been developed, which mine existing codebases and automatically learn heuristics for finding a cost-effective abstraction for a given analysis task. Such approaches reduce the burden of the analysis designers, but they do not remove it completely; they still leave the nontrivial task of designing so called features to the hands of the designers. Our technique aims at automating this feature design process. The idea is to use programs as features after reducing and abstracting them. Our technique goes through selected program-query pairs in codebases, and it reduces and abstracts the program in each pair to a few lines of code, while ensuring that the analysis behaves similarly for the original and the new programs with respect to the query. Each reduced program serves as a boolean feature for program-query pairs. This feature evaluates to true for a given program-query pair when (as a program) it is included in the program part of the pair. We have implemented our approach for three real-world static analyses. The experimental results show that these analyses with automatically-generated features are cost-effective and consistently perform well on a wide range of programs.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133925",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Kwonsoo",
+        "last_name": "Chae",
+        "institution": "Korea University"
+      },
+      {
+        "first_name": "Hakjoo",
+        "last_name": "Oh",
+        "institution": "Korea University"
+      },
+      {
+        "first_name": "Kihong",
+        "last_name": "Heo",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Hongseok",
+        "last_name": "Yang",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ChaeOHY17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133924",
+    "title": "Data-driven context-sensitivity for points-to analysis",
+    "abstract": "We present a new data-driven approach to achieve highly cost-effective context-sensitive points-to analysis for Java. While context-sensitivity has greater impact on the analysis precision and performance than any other precision-improving techniques, it is difficult to accurately identify the methods that would benefit the most from context-sensitivity and decide how much context-sensitivity should be used for them. Manually designing such rules is a nontrivial and laborious task that often delivers suboptimal results in practice. To overcome these challenges, we propose an automated and data-driven approach that learns to effectively apply context-sensitivity from codebases. In our approach, points-to analysis is equipped with a parameterized and heuristic rules, in disjunctive form of properties on program elements, that decide when and how much to apply context-sensitivity. We present a greedy algorithm that efficiently learns the parameter of the heuristic rules. We implemented our approach in the Doop framework and evaluated using three types of context-sensitive analyses: conventional object-sensitivity, selective hybrid object-sensitivity, and type-sensitivity. In all cases, experimental results show that our approach significantly outperforms existing techniques.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133924",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sehun",
+        "last_name": "Jeong",
+        "institution": "Korea University"
+      },
+      {
+        "first_name": "Minseok",
+        "last_name": "Jeon",
+        "institution": "Korea University"
+      },
+      {
+        "first_name": "Sungdeok",
+        "last_name": "Cha",
+        "institution": "Korea University"
+      },
+      {
+        "first_name": "Hakjoo",
+        "last_name": "Oh",
+        "institution": "Korea University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/JeongJCO17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133926",
+    "title": "P/Taint: unified points-to and taint analysis",
+    "abstract": "Static information-flow analysis (especially taint-analysis) is a key technique in software security, computing where sensitive or untrusted data can propagate in a program. Points-to analysis is a fundamental static program analysis, computing what abstract objects a program expression may point to. In this work, we propose a deep unification of information-flow and points-to analysis. We observe that information-flow analysis is not a mere high-level client of points-to information, but it is indeed identical to points-to analysis on artificial abstract objects that represent different information sources. The very same algorithm can compute, simultaneously, two interlinked but separate results (points-to and information-flow values) with changes only to its initial conditions. The benefits of such a unification are manifold. We can use existing points-to analysis implementations, with virtually no modification (only minor additions of extra logic for sanitization) to compute information flow concepts, such as value tainting. The algorithmic enhancements of points-to analysis (e.g., different flavors of context sensitivity) can be applied transparently to information-flow analysis. Heavy engineering work on points-to analysis (e.g., handling of the reflection API for Java) applies to information-flow analysis without extra effort. We demonstrate the benefits in a realistic implementation that leverages the Doop points-to analysis framework (including its context-sensitivity and reflection analysis features) to provide an information-flow analysis with excellent precision (over 91%) and recall (over 99%) for standard Java information-flow benchmarks. The analysis comfortably scales to large, real-world Android applications, analyzing the Facebook Messenger app with more than 55 K classes in under 7 hours.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133926",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Neville",
+        "last_name": "Grech",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "National and Kapodistrian University of Athens"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GrechS17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133928",
+    "title": "Detecting argument selection defects",
+    "abstract": "Identifier names are often used by developers to convey additional information about the meaning of a program over and above the semantics of the programming language itself. We present an algorithm that uses this information to detect argument selection defects, in which the programmer has chosen the wrong argument to a method call in Java programs. We evaluate our algorithm at Google on 200 million lines of internal code and 10 million lines of predominantly open-source external code and find defects even in large, mature projects such as OpenJDK, ASM, and the MySQL JDBC. The precision and recall of the algorithm vary depending on a sensitivity threshold. Higher thresholds increase precision, giving a true positive rate of 85%, reporting 459 true positives and 78 false positives. Lower thresholds increase recall but lower the true positive rate, reporting 2,060 true positives and 1,207 false positives. We show that this is an order of magnitude improvement on previous approaches. By analyzing the defects found, we are able to quantify best practice advice for API design and show that the probability of an argument selection defect increases markedly when methods have more than five arguments.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133928",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Andrew",
+        "last_name": "Rice",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Edward",
+        "last_name": "Aftandilian",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Ciera",
+        "last_name": "Jaspan",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Emily",
+        "last_name": "Johnston",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Pradel",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "Yulissa",
+        "last_name": "Arroyo-Paredes",
+        "institution": "Columbia University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RiceAJJPA17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3143359",
+    "title": "Deadlock avoidance in parallel programs with futures: why parallel tasks should not wait for strangers",
+    "abstract": "Futures are an elegant approach to expressing parallelism in functional programs. However, combining futures with imperative programming (as in C++ or in Java) can lead to pernicious bugs in the form of data races and deadlocks, as a consequence of uncontrolled data flow through mutable shared memory. In this paper we introduce the Known Joins (KJ) property for parallel programs with futures, and relate it to the Deadlock Freedom (DF) and the Data-Race Freedom (DRF) properties. Our paper offers two key theoretical results: 1) DRF implies KJ, and 2) KJ implies DF. These results show that data-race freedom is sufficient to guarantee deadlock freedom in programs with futures that only manipulate unsynchronized shared variables. To the best of our knowledge, these are the first theoretical results to establish sufficient conditions for deadlock freedom in imperative parallel programs with futures, and to characterize the subset of data races that can trigger deadlocks (those that violate the KJ property). From result 2), we developed a tool that avoids deadlocks in linear time and space when KJ holds, i.e., when there are no data races among references to futures. When KJ fails, the tool reports the data race and optionally falls back to a standard deadlock avoidance algorithm by cycle detection. Our tool verified a dataset of ∼2,300 student’s homework solutions and found one deadlocked program. The performance results obtained from our tool are very encouraging: a maximum slowdown of 1.06× on a 16-core machine, always outperforming deadlock avoidance via cycle-detection. Proofs of the two main results were formalized using the Coq proof assistant.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3143359",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Tiago",
+        "last_name": "Cogumbreiro",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Rishi",
+        "last_name": "Surendran",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Francisco",
+        "last_name": "Martins",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Vasco T.",
+        "last_name": "Vasconcelos",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Max",
+        "last_name": "Grossman",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CogumbreiroSMSV17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133929",
+    "title": "How type errors were fixed and what students did?",
+    "abstract": "Providing better supports for debugging type errors has been an active research area in the last three decades. Numerous approaches from different perspectives have been developed. Most approaches work well under certain conditions only, for example, when type errors are caused by single leaves and when type annotations are correct. However, the research community is still unaware of which conditions hold in practice and what the real debugging situations look like. We address this problem with a study of 3 program data sets, which were written in different years, using different compilers, and were of diverse sizes. They include more than 55,000 programs, among which more than 2,700 are ill typed. We investigated all the ill-typed programs, and our results indicate that current error debugging support is far from sufficient in practice since only about 35% of all type errors were caused by single leaves. In addition, type annotations cannot always be trusted in error debuggers since about 30% of the time type errors were caused by wrong type annotations. Our study also provides many insights about the debugging behaviors of students in functional programming, which could be exploited for developing more effective error debuggers.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133929",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Baijun",
+        "last_name": "Wu",
+        "institution": "University of Louisiana at Lafayette"
+      },
+      {
+        "first_name": "Sheng",
+        "last_name": "Chen",
+        "institution": "University of Louisiana at Lafayette"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WuC17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133930",
+    "title": "Learning user friendly type-error messages",
+    "abstract": "Type inference is convenient by allowing programmers to elide type annotations, but this comes at the cost of often generating very confusing and opaque type error messages that are of little help to fix type errors. Though there have been many successful attempts at making type error messages better in the past thirty years, many classes of errors are still difficult to fix. In particular, current approaches still generate imprecise and uninformative error messages for type errors arising from errors in grouping constructs like parentheses and brackets. Worse, a recent study shows that these errors usually take more than 10 steps to fix and occur quite frequently (around 45% to 60% of all type errors) in programs written by students learning functional programming. We call this class of errors, nonstructural errors . We solve this problem by developing Learnskell, a type error debugger that uses machine learning to help diagnose and deliver high quality error messages, for programs that contain nonstructural errors. While previous approaches usually report type errors on typing constraints or on the type level, Learnskell generates suggestions on the expression level. We have performed an evaluation on more than 1,500 type errors, and the result shows that Learnskell is quite precise. It can correctly capture 86% of all nonstructural errors and locate the error cause with a precision of 63%/87% with the first 1/3 messages, respectively. This is several times more than the precision of state-of-the-art compilers and debuggers. We have also studied the performance of Learnskell and found out that it scales to large programs.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133930",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Baijun",
+        "last_name": "Wu",
+        "institution": "University of Louisiana at Lafayette"
+      },
+      {
+        "first_name": "John Peter",
+        "last_name": "Campora",
+        "institution": "University of Louisiana at Lafayette"
+      },
+      {
+        "first_name": "Sheng",
+        "last_name": "Chen",
+        "institution": "University of Louisiana at Lafayette"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WuCC17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133931",
+    "title": "Geo-distribution of actor-based services",
+    "abstract": "Many service applications use actors as a programming model for the middle tier, to simplify synchronization, fault-tolerance, and scalability. However, efficient operation of such actors in multiple, geographically distant datacenters is challenging, due to the very high communication latency. Caching and replication are essential to hide latency and exploit locality; but it is not a priori clear how to combine these techniques with the actor programming model. We present Geo, an open-source geo-distributed actor system that improves performance by caching actor states in one or more datacenters, yet guarantees the existence of a single latest version by virtue of a distributed cache coherence protocol. Geo's programming model supports both volatile and persistent actors, and supports updates with a choice of linearizable and eventual consistency. Our evaluation on several workloads shows substantial performance benefits, and confirms the advantage of supporting both replicated and single-instance coherence protocols as configuration choices. For example, replication can provide fast, always-available reads and updates globally, while batching of linearizable storage accesses at a single location can boost the throughput of an order processing workload by 7x.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133931",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Philip A.",
+        "last_name": "Bernstein",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Burckhardt",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Sergey",
+        "last_name": "Bykov",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Natacha",
+        "last_name": "Crooks",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Jose M.",
+        "last_name": "Faleiro",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Gabriel",
+        "last_name": "Kliot",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Alok",
+        "last_name": "Kumbhare",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Muntasir Raihan",
+        "last_name": "Rahman",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Shah",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Adriana",
+        "last_name": "Szekeres",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Jørgen",
+        "last_name": "Thelin",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BernsteinBBCFKK17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133933",
+    "title": "Verifying strong eventual consistency in distributed systems",
+    "abstract": "Data replication is used in distributed systems to maintain up-to-date copies of shared data across multiple computers in a network. However, despite decades of research, algorithms for achieving consistency in replicated systems are still poorly understood. Indeed, many published algorithms have later been shown to be incorrect, even some that were accompanied by supposed mechanised proofs of correctness. In this work, we focus on the correctness of Conflict-free Replicated Data Types (CRDTs), a class of algorithm that provides strong eventual consistency guarantees for replicated data. We develop a modular and reusable framework in the Isabelle/HOL interactive proof assistant for verifying the correctness of CRDT algorithms. We avoid correctness issues that have dogged previous mechanised proofs in this area by including a network model in our formalisation, and proving that our theorems hold in all possible network behaviours. Our axiomatic network model is a standard abstraction that accurately reflects the behaviour of real-world computer networks. Moreover, we identify an abstract convergence theorem, a property of order relations, which provides a formal definition of strong eventual consistency. We then obtain the first machine-checked correctness theorems for three concrete CRDTs: the Replicated Growable Array, the Observed-Remove Set, and an Increment-Decrement Counter. We find that our framework is highly reusable, developing proofs of correctness for the latter two CRDTs in a few hours and with relatively little CRDT-specific code.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133933",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Victor B. F.",
+        "last_name": "Gomes",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Kleppmann",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Dominic P.",
+        "last_name": "Mulligan",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Alastair R.",
+        "last_name": "Beresford",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GomesKMB17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3133934",
+    "title": "Verifying distributed programs via canonical sequentialization",
+    "abstract": "We introduce canonical sequentialization, a new approach to verifying unbounded, asynchronous, message-passing programs at compile-time. Our approach builds upon the following observation: due the combinatorial explosion in complexity, programmers do not reason about their systems by case-splitting over all the possible execution orders. Instead, correct programs tend to be well-structured so that the programmer can reason about a small number of representative executions, which we call the program’s canonical sequentialization. We have implemented our approach in a tool called Brisk that synthesizes canonical sequentializations for programs written in Haskell, and evaluated it on a wide variety of distributed systems including benchmarks from the literature and implementations of MapReduce, two-phase commit, and a version of the Disco distributed file-system. We show that unlike model checking, which gets prohibitively slow with just 10 processes Brisk verifies the unbounded versions of the benchmarks in tens of milliseconds, yielding the first concurrency verification tool that is fast enough to be integrated into a design-implement-check cycle.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3133934",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Alexander",
+        "last_name": "Bakst",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Klaus von",
+        "last_name": "Gleissenthall",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Rami Gökhan",
+        "last_name": "Kıcı",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BakstGKJ17",
+    "venue": "oopsla",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3140568",
+    "title": "Paxos made EPR: decidable reasoning about distributed protocols",
+    "abstract": "Distributed protocols such as Paxos play an important role in many computer systems. Therefore, a bug in a distributed protocol may have tremendous effects. Accordingly, a lot of effort has been invested in verifying such protocols. However, checking invariants of such protocols is undecidable and hard in practice, as it requires reasoning about an unbounded number of nodes and messages. Moreover, protocol actions and invariants involve both quantifier alternations and higher-order concepts such as set cardinalities and arithmetic. This paper makes a step towards automatic verification of such protocols. We aim at a technique that can verify correct protocols and identify bugs in incorrect protocols. To this end, we develop a methodology for deductive verification based on effectively propositional logic (EPR)—a decidable fragment of first-order logic (also known as the Bernays-Schönfinkel-Ramsey class). In addition to decidability, EPR also enjoys the finite model property, allowing to display violations as finite structures which are intuitive for users. Our methodology involves modeling protocols using general (uninterpreted) first-order logic, and then systematically transforming the model to obtain a model and an inductive invariant that are decidable to check. The steps of the transformations are also mechanically checked, ensuring the soundness of the method. We have used our methodology to verify the safety of Paxos, and several of its variants, including Multi-Paxos, Vertical Paxos, Fast Paxos, Flexible Paxos and Stoppable Paxos. To the best of our knowledge, this work is the first to verify these protocols using a decidable logic, and the first formal verification of Vertical Paxos, Fast Paxos and Stoppable Paxos.",
+    "date": "2017-10-12",
+    "link": "https://doi.org/10.1145/3140568",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Oded",
+        "last_name": "Padon",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Giuliano",
+        "last_name": "Losa",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Mooly",
+        "last_name": "Sagiv",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Sharon",
+        "last_name": "Shoham",
+        "institution": "Tel Aviv University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PadonLSS17",
+    "venue": "oopsla",
+    "year": 2017
+  }
+]
