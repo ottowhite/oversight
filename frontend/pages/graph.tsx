@@ -118,28 +118,52 @@ const FALLBACK_DISTRIBUTION: SimilarityDistribution = {
   p99_9: 0.79,
 };
 
+// Module-scoped in-flight registry. React StrictMode + the bootstrap
+// effect's deps array can fire expandNode twice in the same tick for
+// the same paper-id; without dedup we'd hit /neighbors twice. Module
+// scope (rather than per-component useRef) survives StrictMode's
+// double-mount so a remount doesn't restart inflight requests either.
+//
+// The key is ${paperId}:${mutual} so a topk request and a mutual-kNN
+// request for the same paper don't share a slot.
+const inflightNeighbors = new Map<string, Promise<NeighborsResponse>>();
+
 async function fetchNeighbors(
   paperId: string,
   opts: { k: number; mutual: boolean },
 ): Promise<NeighborsResponse> {
+  const key = `${paperId}:${opts.mutual ? "1" : "0"}:k=${opts.k}`;
+  const existing = inflightNeighbors.get(key);
+  if (existing) return existing;
+
   const params = new URLSearchParams({
     k: String(opts.k),
     mutual: opts.mutual ? "true" : "false",
   });
-  const resp = await fetch(
-    `/api/papers/${encodeURIComponent(paperId)}/neighbors?${params}`,
-  );
-  if (!resp.ok) {
-    let detail = "";
+  const promise = (async () => {
     try {
-      const body = await resp.json();
-      if (body && typeof body.error === "string") detail = `: ${body.error}`;
-    } catch {
-      /* response was not JSON */
+      const resp = await fetch(
+        `/api/papers/${encodeURIComponent(paperId)}/neighbors?${params}`,
+      );
+      if (!resp.ok) {
+        let detail = "";
+        try {
+          const body = await resp.json();
+          if (body && typeof body.error === "string") detail = `: ${body.error}`;
+        } catch {
+          /* response was not JSON */
+        }
+        throw new Error(`neighbors fetch failed (${resp.status})${detail}`);
+      }
+      return (await resp.json()) as NeighborsResponse;
+    } finally {
+      // Clear the slot after settle so a future call can refetch (e.g.
+      // a different `k` value) and a failed call doesn't stick around.
+      inflightNeighbors.delete(key);
     }
-    throw new Error(`neighbors fetch failed (${resp.status})${detail}`);
-  }
-  return (await resp.json()) as NeighborsResponse;
+  })();
+  inflightNeighbors.set(key, promise);
+  return promise;
 }
 
 // Module-level cache for the distribution fetch. Memoizing here (rather
