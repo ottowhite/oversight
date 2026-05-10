@@ -317,6 +317,29 @@ def _pace_dblp() -> None:
         time.sleep(sleep_for)
 
 
+# DBLP runs three publicly-listed mirrors. If the primary throttles or
+# blocks our IP, we transparently retry against the mirrors before
+# giving up. They serve the same content. Order matters: dblp.org
+# first, then the long-running aliases.
+_DBLP_MIRRORS = (
+    "https://dblp.org",
+    "https://dblp.uni-trier.de",
+    "https://dblp.dagstuhl.de",
+)
+
+
+def _dblp_alt_urls(url: str) -> list[str]:
+    """If ``url`` is a DBLP URL, return ``[url, mirror1, mirror2, ...]``;
+    otherwise return ``[url]``. Used to roll over to a sibling host when
+    the primary rate-limits the IP.
+    """
+    for primary in _DBLP_MIRRORS:
+        if url.startswith(primary + "/"):
+            tail = url[len(primary) :]
+            return [primary + tail] + [m + tail for m in _DBLP_MIRRORS if m != primary]
+    return [url]
+
+
 def _request_with_retries(
     session: requests.Session,
     url: str,
@@ -325,19 +348,27 @@ def _request_with_retries(
     timeout: int = 30,
     max_attempts: int = 6,
 ) -> requests.Response:
-    """GET with exponential backoff on transient errors (429/5xx/connection)."""
+    """GET with exponential backoff on transient errors (429/5xx/connection).
+
+    For DBLP URLs the request rolls across mirrors before each retry,
+    so a primary-host outage doesn't block progress.
+    """
+    candidate_urls = _dblp_alt_urls(url)
     attempt = 0
     backoff = 3.0
     while True:
         attempt += 1
+        # Round-robin across mirrors so successive retries don't keep
+        # hammering the throttling primary.
+        target = candidate_urls[(attempt - 1) % len(candidate_urls)]
         try:
-            resp = session.get(url, params=params, timeout=timeout)
+            resp = session.get(target, params=params, timeout=timeout)
         except requests.RequestException as exc:
             if attempt >= max_attempts:
                 raise
             logger.warning(
                 "Request to %s failed (%s); retry %d/%d in %.1fs",
-                url,
+                target,
                 exc,
                 attempt,
                 max_attempts,
@@ -351,7 +382,7 @@ def _request_with_retries(
             wait = float(retry_after) if retry_after else backoff
             logger.warning(
                 "Request to %s returned %s; retry %d/%d in %.1fs",
-                url,
+                target,
                 resp.status_code,
                 attempt,
                 max_attempts,
