@@ -1,0 +1,389 @@
+[
+  {
+    "paper_id": "10.1145/3446804.3446843",
+    "title": "Lightning BOLT: powerful, fast, and scalable binary optimization",
+    "abstract": "Profile-guided binary optimization has proved to be an important technology to achieve peak performance, particularly for large-scale binaries that are typical for data-center applications. By applying the profile data at the same representation where sampling-based profiling is collected, binary optimizers can provide double-digit speedups over binaries compiled with profile-guided optimizations using similarly collected profile data. The main blocker for adoption of binary optimizers in practice is the overhead that they add to the already long and demanding build pipelines used for producing highly optimized binaries, which already include aggressive compiler optimizations guided by profile data and also link-time optimizations. This paper addresses the overheads of binary optimizers in the context of BOLT, a modern and powerful open-source binary optimizer. More specifically, this paper describes Lightning BOLT, which is an improved version of the BOLT binary optimizer that drastically reduces BOLT’s processing time and memory requirements, while preserving BOLT’s effectiveness in improving the final binary’s performance. Using a set of real-world data-center and open-source applications, we show that Lightning BOLT speeds up BOLT’s processing by an average of 4.71× and reduces BOLT’s memory consumption by 70.5% on average. Furthermore, Lightning BOLT also provides an adjustable mechanism to further reduce BOLT’s overheads at the cost of some lost performance for the final binary.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446843",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Maksim",
+        "last_name": "Panchenko",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Rafael",
+        "last_name": "Auler",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Laith",
+        "last_name": "Sakka",
+        "institution": "Meta (United States)"
+      },
+      {
+        "first_name": "Guilherme",
+        "last_name": "Ottoni",
+        "institution": "Meta (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/PanchenkoASO21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446845",
+    "title": "PGZ: automatic zero-value code specialization",
+    "abstract": "In prior work we proposed Zeroploit, a transform that duplicates code, specializes one path assuming certain key program operands, called versioning variables, are zero, and leaves the other path unspecialized. Dynamically, depending on the versioning variable’s value, either the specialized fast path or the default slow path will execute. We evaluated Zeroploit with hand-optimized codes in that work.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446845",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Mark W.",
+        "last_name": "Stephenson",
+        "institution": "Nvidia (United States)"
+      },
+      {
+        "first_name": "Ram",
+        "last_name": "Rangan",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/cc/StephensonR21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446844",
+    "title": "Integrating a functional pattern-based IR into MLIR",
+    "abstract": "The continued specialization in hardware and software due to the end of Moore's law forces us to question fundamental design choices in compilers, and in particular for domain specific languages. The days where a single universal compiler intermediate representation (IR) was sufficient to perform all important optimizations are over. We need novel IRs and ways for them to interact with one another while leveraging established compiler infrastructures.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446844",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Martin Paul",
+        "last_name": "Lücke",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Michel",
+        "last_name": "Steuwer",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "A. Gordon",
+        "last_name": "Smith",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/LuckeSS21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446855",
+    "title": "Compiling data-parallel Datalog",
+    "abstract": "Datalog allows intuitive declarative specification of logical inference tasks while enjoying efficient implementation via state-of-the-art engines such as LogicBlox and Soufflé. These engines enable high-performance implementation of complex logical tasks including graph mining, program analysis, and business analytics. However, all efficient modern Datalog solvers make use of shared memory, and present inherent challenges scalability. In this paper, we leverage recent insights in parallel relational algebra and present a methodology for constructing data-parallel deductive databases. Our approach leverages recent developments in parallelizing relational algebra to create an efficient data-parallel semantics for Datalog. Based on our methodology, we have implemented the first MPI-based data-parallel Datalog solver. Our experiments demonstrate comparable performance and improved single-node scalability versus Soufflé, a state-of-art solver.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446855",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Gilray",
+        "institution": "University of Alabama at Birmingham"
+      },
+      {
+        "first_name": "Sidharth",
+        "last_name": "Kumar",
+        "institution": "University of Alabama at Birmingham"
+      },
+      {
+        "first_name": "Kristopher",
+        "last_name": "Micinski",
+        "institution": "Syracuse University"
+      }
+    ],
+    "dblp_key": "conf/cc/GilrayKM21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446848",
+    "title": "NSan: a floating-point numerical sanitizer",
+    "abstract": "Sanitizers are a relatively recent trend in software engineering. They aim at automatically finding bugs in programs, and they are now commonly available to programmers as part of compiler toolchains. For example, the LLVM project includes out-of-the-box sanitizers to detect thread safety (tsan), memory (asan,msan,lsan), or undefined behaviour (ubsan) bugs.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446848",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Clément",
+        "last_name": "Courbet",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/cc/Courbet21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446842",
+    "title": "PolyBench/Python: benchmarking Python environments with polyhedral optimizations",
+    "abstract": "Python has become one of the most used and taught languages nowadays. Its expressiveness, cross-compatibility and ease of use have made it popular in areas as diverse as finance, bioinformatics or machine learning. However, Python programs are often significantly slower to execute than an equivalent native C implementation, especially for computation-intensive numerical kernels.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446842",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Miguel Á.",
+        "last_name": "Abella-González",
+        "institution": "Universidade da Coruña"
+      },
+      {
+        "first_name": "Pedro",
+        "last_name": "Carollo-Fernández",
+        "institution": "Universidade da Coruña"
+      },
+      {
+        "first_name": "Louis-Noël",
+        "last_name": "Pouchet",
+        "institution": "Colorado State University"
+      },
+      {
+        "first_name": "Fabrice",
+        "last_name": "Rastello",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Gabriel",
+        "last_name": "Rodríguez",
+        "institution": "Universidade da Coruña"
+      }
+    ],
+    "dblp_key": "conf/cc/Abella-Gonzalez21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446851",
+    "title": "Helper function inlining in dynamic binary translation",
+    "abstract": "Dynamic binary translation (DBT) is the cornerstone of many important applications. Yet, it takes a tremendous effort to develop and maintain a real-world DBT system. To mitigate the engineering effort, helper functions are frequently employed during the development of a DBT system. Though helper functions greatly facilitate the DBT development, their adoption incurs substantial performance overhead due to the helper function calls. To solve this problem, this paper presents a novel approach to inline helper functions in DBT systems. The proposed inlining approach addresses several unique technical challenges. As a result, the performance overhead introduced by helper function calls can be reduced, and meanwhile, the benefits of helper functions for DBT development are not lost. We have implemented a prototype based on the proposed inlining approach using a popular DBT system, QEMU. Experimental results on the benchmark programs from the SPEC CPU 2017 benchmark suite show that an average of 1.2x performance speedup can be achieved. Moreover, the translation overhead introduced by inlining helper functions is negligible.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446851",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Wenwen",
+        "last_name": "Wang",
+        "institution": "University of Georgia"
+      }
+    ],
+    "dblp_key": "conf/cc/Wang21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446846",
+    "title": "Resolvable ambiguity: principled resolution of syntactically ambiguous programs",
+    "abstract": "When building a new programming language, it can be useful to compose parts of existing languages to avoid repeating implementation work. However, this is problematic already at the syntax level, as composing the grammars of language fragments can easily lead to an ambiguous grammar. State-of-the-art parser tools cannot handle ambiguity truly well: either the grammar cannot be handled at all, or the tools give little help to an end-user who writes an ambiguous program. This composability problem is twofold: (i) how can we detect if the composed grammar is ambiguous, and (ii) if it is ambiguous, how can we help a user resolve an ambiguous program? In this paper, we depart from the traditional view of unambiguous grammar design and enable a language designer to work with an ambiguous grammar, while giving users the tools needed to handle these ambiguities. We introduce the concept of resolvable ambiguity wherein a user can resolve an ambiguous program by editing it, as well as an approach to computing the resolutions of an ambiguous program. Furthermore, we present a method based on property-based testing to identify if a composed grammar is unambiguous, resolvably ambiguous, or unresolvably ambiguous. The method is implemented in Haskell and evaluated on a large set of language fragments selected from different languages. The evaluation shows that (i) the approach can handle significantly more cases of language compositions compared to approaches which ban ambiguity altogether, and (ii) that the approach is fast enough to be used in practice.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446846",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Viktor",
+        "last_name": "Palmkvist",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Elias",
+        "last_name": "Castegren",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Philipp",
+        "last_name": "Haller",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Broman",
+        "institution": "KTH Royal Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/PalmkvistCHB21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446854",
+    "title": "Communication-safe web programming in TypeScript with routed multiparty session types",
+    "abstract": "Modern web programming involves coordinating interactions between browser clients and a server. Typically, the interactions in web-based distributed systems are informally described, making it hard to ensure correctness, especially communication safety, i.e. all endpoints progress without type errors or deadlocks, conforming to a specified protocol.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446854",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Anson",
+        "last_name": "Miu",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Francisco",
+        "last_name": "Ferreira",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Fangyi",
+        "last_name": "Zhou",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/cc/Miu0Y021",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446852",
+    "title": "Deep NLP-based co-evolvement for synthesizing code analysis from natural language",
+    "abstract": "This paper presents Deepsy, a Natural Language-based synthesizer to assist source code analysis. It takes English descriptions of to-be-found code patterns as its inputs, and automatically produces ASTMatcher expressions that are directly usable by LLVM/Clang to materialize intended code analysis. The code analysis domain features profuse complexities in data types and operations, which make it elusive for prior rule-based synthesizers to tackle. On the other hand, machine learning-based solutions are neither applicable due to the scarcity of well labeled examples. This paper presents how Deepsy addresses the challenges by leveraging deep Natural Language Processing (NLP) and creating a new technique named dependency tree-based co-evolvement.Deepsy features an effective design that seamlessly integrates Natural Language dependency analysis into code analysis and meanwhile synergizes it with type-based narrowing and domain-specific guidance. Deepsy achieves over 70.0% expression-level accuracy and 85.1% individual API-level accuracy, significantly outperforming previous solutions.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446852",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Zifan",
+        "last_name": "Nan",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Hui",
+        "last_name": "Guan",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Xipeng",
+        "last_name": "Shen",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Chunhua",
+        "last_name": "Liao",
+        "institution": "Lawrence Livermore National Laboratory"
+      }
+    ],
+    "dblp_key": "conf/cc/NanGSL21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446849",
+    "title": "Exploring the space of optimization sequences for code-size reduction: insights and tools",
+    "abstract": "The optimization space of a compiler is the set of every possible sequence of optimizations that said compiler can use. The exploration of the optimization space of any mainstream compiler has been, for decades, hampered by the lack of benchmarks. However, recent efforts from different research groups have made available a large quantity of compilable code that can be, today, used to overcome this problem. In this paper, we use 15,000 programs from a public collection to explore the optimization space of LLVM, focusing on code-size reduction. This exploration reveals that the probability of beating the default optimization levels of LLVM with random sequences ranges from 10% (considering opt -Oz) to 19% (considering clang -Os). Yet, the distribution of probabilities is uneven across programs: the default levels work well for most programs, and poorly for a few. Based on these observations, we introduce the notion of an Optimization Cache, a table of programs to optimization sequences that can be used to support predictive compilation. We then use an optimization cache to build what we call a Default Covering Set: a small ensemble of optimization sequences that, once combined, tend to be good for any program. Optimization caches and default covering sets are used independently. The former, when applied onto MiBench, yield programs that are 11.9% smaller than programs produced by opt -Os, on average. The latter produce programs 12.5% smaller.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446849",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Anderson Faustino da",
+        "last_name": "Silva",
+        "institution": "Universidade Estadual de Maringá"
+      },
+      {
+        "first_name": "Bernardo N. B. de",
+        "last_name": "Lima",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Fernando Magno Quintão",
+        "last_name": "Pereira",
+        "institution": "Universidade Federal de Minas Gerais"
+      }
+    ],
+    "dblp_key": "conf/cc/SilvaLP21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446850",
+    "title": "A modern compiler for the French tax code",
+    "abstract": "In France, income tax is computed from taxpayers' individual returns, using an algorithm that is authored, designed and maintained by the French Public Finances Directorate (DGFiP). This algorithm relies on a legacy custom language and compiler originally designed in 1990, which unlike French wine, did not age well with time. Owing to the shortcomings of the input language and the technical limitations of the compiler, the algorithm is proving harder and harder to maintain, relying on ad-hoc behaviors and workarounds to implement the most recent changes in tax law. Competence loss and aging code also mean that the system does not benefit from any modern compiler techniques that would increase confidence in the implementation.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446850",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Denis",
+        "last_name": "Merigoux",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Raphaël",
+        "last_name": "Monat",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Protzenko",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/MerigouxMP21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446847",
+    "title": "Data-aware process networks",
+    "abstract": "With the emergence of reconfigurable FPGA circuits as a credible alternative to GPUs for HPC acceleration, new compilation paradigms are required to map high-level algorithmic descriptions to a circuit configuration (High-Level Synthesis, HLS). In particular, novel parallelization algorithms and intermediate representations are required. In this paper, we present the data-aware process networks (DPN), a dataflow intermediate representation suitable for HLS in the context of high-performance computing. DPN combines the benefits of a low-level dataflow representation -- close to the final circuit -- and affine iteration space tiling to explore the parallelization trade-offs (local memory size, communication volume, parallelization degree). We outline our compilation algorithms to map a C program to a DPN (front-end), then to map a DPN to an FPGA configuration (back-end). Finally, we present synthesis results on compute-intensive kernels from the Polybench suite.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446847",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Christophe",
+        "last_name": "Alias",
+        "institution": "Université Claude Bernard Lyon 1"
+      },
+      {
+        "first_name": "Alexandru",
+        "last_name": "Plesco",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/cc/AliasP21",
+    "venue": "cc",
+    "year": 2021
+  },
+  {
+    "paper_id": "10.1145/3446804.3446853",
+    "title": "Compact native code generation for dynamic languages on micro-core architectures",
+    "abstract": "Micro-core architectures combine many simple, low memory, low power-consuming CPU cores onto a single chip. Potentially providing significant performance and low power consumption, this technology is not only of great interest in embedded, edge, and IoT uses, but also potentially as accelerators for data-center workloads. Due to the restricted nature of such CPUs, these architectures have traditionally been challenging to program, not least due to the very constrained amounts of memory (often around 32KB) and idiosyncrasies of the technology. However, more recently, dynamic languages such as Python have been ported to a number of micro-cores, but these are often delivered as interpreters which have an associated performance limitation.",
+    "date": "2021-02-14",
+    "link": "https://doi.org/10.1145/3446804.3446853",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Maurice",
+        "last_name": "Jamieson",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Nick",
+        "last_name": "Brown",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/Jamieson021",
+    "venue": "cc",
+    "year": 2021
+  }
+]

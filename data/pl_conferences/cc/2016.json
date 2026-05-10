@@ -1,0 +1,844 @@
+[
+  {
+    "paper_id": "10.1145/2892208.2892224",
+    "title": "Reachability and error diagnosis in LR(1) parsers",
+    "abstract": "International audience",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892224",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/cc/Pottier16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892227",
+    "title": "Reducing memory buffering overhead in software thread-level speculation",
+    "abstract": "Software-based, automatic parallelization through Thread-Level Speculation (TLS) has significant practical potential, but also high overhead costs. Traditional \"lazy\" buffering mechanisms enable strong isolation of speculative threads, but imply large memory overheads, while more recent \"eager\" mechanisms improve scalability, but are more sensitive to data dependencies and have higher rollback costs. We here describe an integrated system that incorporates the best of both designs, automatically selecting the best buffering mechanism. Our approach builds on well-optimized designs for both techniques, and we describe specific optimizations that improve both lazy and eager buffer management as well. We implement our design within MUTLS, a software-TLS system based on the LLVM compiler framework. Results show that we can get 75% geometric mean performance of OpenMP versions on 9 memory intensive benchmarks. Application of these optimizations is thus a useful part of the optimization stack needed for effective and practical software TLS.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892227",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Zhen",
+        "last_name": "Cao",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Clark",
+        "last_name": "Verbrugge",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/cc/CaoV16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892211",
+    "title": "Verified construction of static single assignment form",
+    "abstract": "Modern compilers use intermediate representations in static single assignment (SSA) form, which simplifies many optimizations. However, the high implementation complexity of efficient SSA construction algorithms poses a challenge to verified compilers. In this paper, we consider a variant of the recent SSA construction algorithm by Braun et al. that combines simplicity and efficiency, and is therefore a promising candidate to tackle this challenge. We prove the correctness of the algorithm using the theorem prover Isabelle/HOL. Furthermore, we prove that the algorithm constructs pruned SSA form and, in case of a reducible control flow graph, minimal SSA form. To the best of our knowledge, these are the first formal proofs regarding the quality of an SSA construction algorithm. Finally, we replace the SSA construction of the CompCertSSA project with code extracted by Isabelle's code generator to demonstrate the applicability to real world programs.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892211",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Buchwald",
+        "institution": ""
+      },
+      {
+        "first_name": "Denis",
+        "last_name": "Lohner",
+        "institution": ""
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Ullrich",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/cc/BuchwaldLU16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892228",
+    "title": "On fusing recursive traversals of K-d trees",
+    "abstract": "Loop fusion is a key program transformation for data locality optimization that is implemented in production compilers. But optimizing compilers for imperative languages currently cannot ex- ploit fusion opportunities across a set of recursive tree traversal computations with producer-consumer relationships. In this paper, we develop a compile-time approach to dependence characterization and program transformation to enable fusion across recursively specified traversals over k-d trees. We present the FuseT source-to- source code transformation framework to automatically generate fused composite recursive operators from an input program containing a sequence of primitive recursive operators. We use our framework to implement fused operators for MADNESS, Multi-resolution Adaptive Numerical Environment for Scientific Simulation. We show that locality optimization through fusion can offer significant performance improvement.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892228",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Samyam",
+        "last_name": "Rajbhandari",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Jinsung",
+        "last_name": "Kim",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Sriram",
+        "last_name": "Krishnamoorthy",
+        "institution": "Pacific Northwest National Laboratory"
+      },
+      {
+        "first_name": "Pouchet",
+        "last_name": "Louis-Noel",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Fabrice",
+        "last_name": "Rastello",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Robert J.",
+        "last_name": "Harrison",
+        "institution": "Stony Brook University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Sadayappan",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/cc/RajbhandariKKPR16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892230",
+    "title": "Sparse representation of implicit flows with applications to side-channel detection",
+    "abstract": "Information flow analyses traditionally use the Program Dependence Graph (PDG) as a supporting data-structure. This graph relies on Ferrante et al.'s notion of control dependences to represent implicit flows of information. A limitation of this approach is that it may create O(|I| x |E|) implicit flow edges in the PDG, where I are the instructions in a program, and E are the edges in its control flow graph. This paper shows that it is possible to compute information flow analyses using a different notion of implicit dependence, which yields a number of edges linear on the number of definitions plus uses of variables. Our algorithm computes these dependences in a single traversal of the program's dominance tree. This efficiency is possible due to a key property of programs in Static Single Assignment form: the definition of a variable dominates all its uses. Our algorithm correctly implements Hunt and Sands system of security types. Contrary to their original formulation, which required O(IxI) space and time for structured programs, we require only O(I). We have used our ideas to build FlowTracker, a tool that uncovers side-channel vulnerabilities in cryptographic algorithms. FlowTracker handles programs with over one-million assembly instructions in less than 200 seconds, and creates 24% less implicit flow edges than Ferrante et al.'s technique. FlowTracker has detected an issue in a constant-time implementation of Elliptic Curve Cryptography; it has found several time-variant constructions in OpenSSL, one issue in TrueCrypt and it has validated the isochronous behavior of the NaCl library.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892230",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "B. Dias",
+        "last_name": "Rodrigues",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Fernando Magno Quintão",
+        "last_name": "Pereira",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Diego F.",
+        "last_name": "Aranha",
+        "institution": "Universidade Estadual de Campinas (UNICAMP)"
+      }
+    ],
+    "dblp_key": "conf/cc/RodriguesPA16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892229",
+    "title": "Relaxed dependence tracking for parallel runtime support",
+    "abstract": "It is notoriously difficult to achieve both correctness and scalability for many shared-memory parallel programs. To improve correctness and scalability, researchers have developed various kinds of parallel runtime support such as multithreaded record & replay and software transactional memory. Existing forms of runtime support slow programs significantly in order to track an execution's cross-thread dependences accurately. This paper investigates the potential for runtime support to hide latency introduced by dependence tracking, by tracking dependences in a relaxed way---meaning that not all dependences are tracked accurately. The key challenge in relaxing dependence tracking is preserving both the program's semantics and the runtime support's guarantees. We present an approach called relaxed dependence tracking (RT) and demonstrate its potential by building two types of RT-based runtime support. Our evaluation shows that RT hides much of the latency incurred by dependence tracking, although RT-based runtime support incurs costs and complexity in order to handle relaxed dependence information. By demonstrating how to relax dependence tracking to hide latency while preserving correctness, this work shows the potential for addressing a key cost of dependence tracking, thus advancing knowledge in the design of parallel runtime support.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892229",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Minjia",
+        "last_name": "Zhang",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Swarnendu",
+        "last_name": "Biswas",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Bond",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/cc/ZhangBB16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892215",
+    "title": "Automatic fault location for data structures",
+    "abstract": "Specification-based data structure verification is a powerful debugging technique. In this work we combine specification-based data structure verification with automatic detection of faulty program statements that corrupt data structures. The user specifies the consistency constraints for dynamic data structures as relationships among the nodes of a memory graph. Our system detects constraint violations to identify corrupted data structures during program execution and then automatically locates faulty code responsible for data structure corruption. Our approach offers two main advantages: (1) a highly precise automatic fault location method, and (2) a simple specification language. We employ incremental constraint checking for time efficient constraint matching and fault location. On average, while Tarantula statistical debugging technique narrows the fault to 10 statements, our technique narrows it to ≈ 4 statements..",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892215",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Vineet Kumar",
+        "last_name": "Singh",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Rajiv",
+        "last_name": "Gupta",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Iulian",
+        "last_name": "Neamtiu",
+        "institution": "New Jersey Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/SinghGN16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892223",
+    "title": "Kindergarten cop: dynamic nursery resizing for GHC",
+    "abstract": "Generational garbage collectors are among the most popular garbage collectors used in programming language runtime systems. Their performance is known to depend heavily on choosing the appropriate size of the area where new objects are allocated (the nursery). In imperative languages, it is usual to make the nursery as large as possible, within the limits imposed by the heap size. Functional languages, however, have quite different memory be- haviour. In this paper, we study the effect that the nursery size has on the performance of lazy functional programs, through the interplay between cache locality and the frequency of collections. We demonstrate that, in contrast with imperative programs, having large nurseries is not always the best solution. Based on these re- sults, we propose two novel algorithms for dynamic nursery resiz- ing that aim to achieve a compromise between good cache locality and the frequency of garbage collections. We present an implemen- tation of these algorithms in the state-of-the-art GHC compiler for the functional language Haskell, and evaluate them using an exten- sive benchmark suite. In the best case, we demonstrate a reduction in total execution times of up to 88.5%, or an 8.7 overall speedup, compared to using the production GHC garbage collector. On aver- age, our technique gives an improvement of 9.3% in overall perfor- mance across a standard suite of 63 benchmarks for the production GHC compiler.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892223",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Henrique",
+        "last_name": "Ferreiro",
+        "institution": "Universidade da Coruña"
+      },
+      {
+        "first_name": "Laura M.",
+        "last_name": "Castro",
+        "institution": "Universidade da Coruña"
+      },
+      {
+        "first_name": "Vladimir",
+        "last_name": "Janjic",
+        "institution": "University of St Andrews"
+      },
+      {
+        "first_name": "Kevin",
+        "last_name": "Hammond",
+        "institution": "University of St Andrews"
+      }
+    ],
+    "dblp_key": "conf/cc/FerreiroCJH16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892222",
+    "title": "Mechanizing conventional SSA for a verified destruction with coalescing",
+    "abstract": "Modern optimizing compilers rely on the Static Single Assignment (SSA) form to make optimizations fast and simpler to implement. From a semantic perspective, the SSA form is nowadays fairly well understood, as witnessed by recent advances in the field of formally verified compilers. The destruction of the SSA form, however, remains a difficult problem, even in a non-verified environment. In fact, the out-of-SSA transformation has been revisited, for correctness and performance issues, up until recently. Unsurprisingly, state-of-the-art compiler formalizations thus either completely ignore, only partially handle, or implement naively the SSA destruction. This paper reports on the implementation of such a destruction within a verified compiler. We formally define and prove the properties of the generation of Conventional SSA (CSSA) which make its destruction simple to implement and prove. Second, we implement and prove correct a coalescing destruction of CSSA, a la Boissinot et al., where variables can be coalesced according to a refined notion of interference. This formalization work extends the CompCertSSA compiler, whose correctness proof is mechanized in the Coq proof assistant. Our CSSA-based, coalescing destruction removes, on average, more than 99% of introduced copies, and leads to encouraging results concerning spilling during post-SSA register allocation.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892222",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Delphine",
+        "last_name": "Demange",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "Yon Fernández de",
+        "last_name": "Retana",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      }
+    ],
+    "dblp_key": "conf/cc/DemangeR16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892220",
+    "title": "Safe and flexible adaptation via alternate data structure representations",
+    "abstract": "The choice of data structures is crucial for achieving high performance. For applications that are long-running and/or operate on large data sets, the best choice for main data structures can change multiple times over the course of a single execution. For example, in a graph-processing application where the graph evolves over time, the best data structure for representing the graph may change as the program executes. Similarly, in a database or a key-value store application, with changes in relative frequencies of different types of queries over time, the most efficient data structure changes as well. We introduce an approach that allows applications to adapt to current conditions (input characteristics, operations on data, state) by switching their data structures on-the-fly with little overhead and without the developer worrying about safety or specifying adaptation points (this is handled by our compiler infrastructure). We use our approach on different classes of problems that are compute- and memory-intensive: graph algorithms, database indexing, and two real-world applications, the Memcached object cache and the Space Tyrant online game server. Our results show that off-the-shelf applications can be transformed into adaptive applications with modest programmer effort; that the adaptive versions outperform the original, fixed-representation versions; and that adaptation can be performed on-the-fly safely and with very little runtime overhead.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892220",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Amlan",
+        "last_name": "Kusum",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Iulian",
+        "last_name": "Neamtiu",
+        "institution": "New Jersey Institute of Technology"
+      },
+      {
+        "first_name": "Rajiv",
+        "last_name": "Gupta",
+        "institution": "University of California, Riverside"
+      }
+    ],
+    "dblp_key": "conf/cc/KusumNG16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892219",
+    "title": "Register allocation and promotion through combined instruction scheduling and loop unrolling",
+    "abstract": "Register allocation is a much studied problem. A particularly important context for optimizing register allocation is within loops, since a significant fraction of the execution time of programs is often inside loop code. A variety of algorithms have been proposed in the past for register allocation, but the complexity of the problem has resulted in a decoupling of several important aspects, including loop unrolling, register promotion, and instruction reordering. In this paper, we develop an approach to register allocation and promotion in a unified optimization framework that simultaneously considers the impact of loop unrolling and instruction scheduling. This is done via a novel instruction tiling approach where instructions within a loop are represented along one dimension and innermost loop iterations along the other dimension. By exploiting the regularity along the loop dimension, and imposing essential dependence based constraints on intra-tile execution order, the problem of optimizing register pressure is cast in a constraint programming formalism. Experimental results are provided from thousands of innermost loops extracted from the SPEC benchmarks, demonstrating improvements over the current state-of-the-art.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892219",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Łukasz",
+        "last_name": "Domagała",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Duco van",
+        "last_name": "Amstel",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Fabrice",
+        "last_name": "Rastello",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Sadayappan",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/cc/DomagalaARS16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892214",
+    "title": "Performance implications of transient loop-carried data dependences in automatically parallelized loops",
+    "abstract": "Recent approaches to automatic parallelization have taken advantage of the low-latency on-chip interconnect provided in modern multicore processors, demonstrating significant speedups, even for complex workloads. Although these techniques can already extract significant thread-level parallelism from application loops, we are interested in quantifying and exploiting any additional performance that remains on the table. This paper confirms the existence of significant extra thread-level parallelism within loops parallelized by the HELIX compiler. However, improving static data dependence analysis is unable to reach the additional performance offered because the existing loop-carried dependences are true only on a small subset of loop iterations. We therefore develop three approaches to take advantage of the transient nature of these data dependences through speculation, via transactional memory support. Results show that coupling the state-of-the-art data dependence analysis with fine-grained speculation achieves most of the speedups and may help close the gap towards the limit of HELIX-style thread-level parallelism.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892214",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Niall",
+        "last_name": "Murphy",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Timothy M.",
+        "last_name": "Jones",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Mullins",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Simone",
+        "last_name": "Campanoni",
+        "institution": "Northwestern University"
+      }
+    ],
+    "dblp_key": "conf/cc/MurphyJMC16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892221",
+    "title": "Thread-level speculation with kernel support",
+    "abstract": "Runtime systems for speculative parallelization can be substantially sped up by implementing them with kernel support. We describe a novel implementation of a thread-level speculation (TLS) system using virtual memory to isolate speculative state, implemented in a Linux kernel module. This design choice not only maximizes performance, but also allows to guarantee soundness in the presence of system calls, such as I/O. Its ability to maintain speedups even on programs with frequent mis-speculation, significantly extends its usability, for instance in speculative parallelization. We demonstrate the advantage of kernel-based TLS on a number of programs from the Cilk suite, where this approach is superior to the state of the art in each single case (7.28x on average). All systems described in this paper are made available as open source.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892221",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Clemens",
+        "last_name": "Hammacher",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Kevin",
+        "last_name": "Streit",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Zeller",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Hack",
+        "institution": "Saarland University"
+      }
+    ],
+    "dblp_key": "conf/cc/HammacherSZH16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892212",
+    "title": "Heap bounds protection with low fat pointers",
+    "abstract": "Heap buffer overflow (underflow) errors are a common source of security vulnerabilities. One prevention mechanism is to add object bounds meta information and to instrument the program with explicit bounds checks for all memory access. The so-called \"fat pointers\" approach is one method for maintaining and propagating the meta information where native machine pointers are replaced with \"fat\" objects that explicitly store object bounds. Another approach is \"low fat pointers\", which encodes meta information within a native pointer itself, eliminating space overheads and also code compatibility issues. This paper presents a new low-fat pointer encoding that is fully compatible with existing libraries (e.g. pre-compiled libraries unaware of the encoding) and standard hardware (e.g. x86_64). We show that our approach has very low memory overhead, and competitive with existing state-of-the-art bounds instrumentation solutions.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892212",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Gregory J.",
+        "last_name": "Duck",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Roland H. C.",
+        "last_name": "Yap",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "conf/cc/DuckY16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892225",
+    "title": "Restrictification of function arguments",
+    "abstract": "Pointer aliasing still hinders compiler optimizations, in spite of years of research on pointer disambiguation. Because the automatic disambiguation of pointers is a difficult endeavor, several programming languages offer programmers mechanisms to distinguish memory references, such as the “restrict” keyword in C. However, the use of such mechanisms is prone to human mistakes. In this paper we present a suite of automatic techniques that mitigate this problem. We have designed, implemented and tested three different ways to disambiguate pointers passed as arguments of functions. Our techniques combine static analyses to infer symbolic bounds of memory regions and code versioning. We generate a clone for each function whose arguments we can disambiguate and optimize it assuming the absence of aliasing among formal parameters. At runtime, we use the results of the symbolic interval tests to decide which version of a function we should call: the original one or the “restricted” clone, whenever we can prove that no aliasing can occur at runtime. An implementation of our restrictification methods in LLVM shows that we can vectorize up to 63% more operations than what could be accomplished using the -O3 optimization level of said compiler. When applying the optimization on OpenCV benchmarks, we have observed speedups as great as 40%.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892225",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Victor Hugo Sperle",
+        "last_name": "Campos",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Péricles",
+        "last_name": "Alves",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Henrique Nazaré",
+        "last_name": "Santos",
+        "institution": "Universidade Federal de Minas Gerais"
+      },
+      {
+        "first_name": "Fernando Magno Quintão",
+        "last_name": "Pereira",
+        "institution": "Universidade Federal de Minas Gerais"
+      }
+    ],
+    "dblp_key": "conf/cc/CamposASP16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892209",
+    "title": "Multiversioned decoupled access-execute: the key to energy-efficient compilation of general-purpose programs",
+    "abstract": "Computer architecture design faces an era of great challenges in an attempt to simultaneously improve performance and energy efficiency. Previous hardware techniques for energy management become severely limited, and thus, compilers play an essential role in matching the software to the more restricted hardware capabilities. One promising approach is software decoupled access-execute (DAE), in which the compiler transforms the code into coarse-grain phases that are well-matched to the Dynamic Voltage and Frequency Scaling (DVFS) capabilities of the hardware. While this method is proved efficient for statically analyzable codes, general-purpose applications pose significant challenges due to pointer aliasing, complex control flow and unknown runtime events. We propose a universal compile-time method to decouple general-purpose applications, using simple but efficient heuristics. Our solutions overcome the challenges of complex code and show that automatic decoupled execution significantly reduces the energy expenditure of irregular or memory-bound applications and even yields slight performance boosts. Overall, our technique achieves over 20% on average energy-delay-product (EDP) improvements (energy over 15% and performance over 5%) across 14 benchmarks from SPEC CPU 2006 and Parboil benchmark suites, with peak EDP improvements surpassing 70%.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892209",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Konstantinos",
+        "last_name": "Koukos",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Per",
+        "last_name": "Ekemark",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Georgios",
+        "last_name": "Zacharopoulos",
+        "institution": "Università della Svizzera italiana"
+      },
+      {
+        "first_name": "Vasileios",
+        "last_name": "Spiliopoulos",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Stefanos",
+        "last_name": "Kaxiras",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Alexandra",
+        "last_name": "Jimborean",
+        "institution": "Uppsala University"
+      }
+    ],
+    "dblp_key": "conf/cc/KoukosEZSKJ16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892232",
+    "title": "Static deadlock detection for concurrent go by global session graph synthesis",
+    "abstract": "Go is a programming language developed at Google, with channel-based concurrent features based on CSP. Go can detect global communication deadlocks at runtime when all threads of execution are blocked, but deadlocks in other paths of execution could be undetected. We present a new static analyser for concurrent Go code to find potential communication errors such as communication mismatch and deadlocks at compile time. Our tool extracts the communication operations as session types, which are then converted into Communicating Finite State Machines (CFSMs). Finally, we apply a recent theoretical result on choreography synthesis to generate a global graph representing the overall communication pattern of a concurrent program. If the synthesis is successful, then the program is free from communication errors. We have implemented the technique in a tool, and applied it to analyse common Go concurrency patterns and an open source application with over 700 lines of code.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892232",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Nicholas",
+        "last_name": "Ng",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/cc/NgY16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892218",
+    "title": "Static detection of energy defect patterns in Android applications",
+    "abstract": "For static analysis researchers, Android software presents a wide variety of interesting challenges. The target of our work is static detection of energy-drain defects in Android applications. The management of energy-intensive resources (e.g., GPS) creates various opportunities for software defects. Our goal is to detect statically “missing deactivation” energy-drain defects in the user interface of the application. First, we define precisely two patterns of run-time energy-drain behaviors, based on modeling of Android GUI control-flow paths and energy-related listener leaks along such paths. Next, we define a static detection algorithm targeting these patterns. The analysis considers valid interprocedural control-flow paths in a callback method and its transitive callees, in order to detect operations that add or remove listeners. Sequences of callbacks are then analyzed for possible listener leaks. Our evaluation considers the detection of GUI-related energy-drain defects reported in prior work, as well as new defects not discovered by prior approaches. In summary, the detection is very effective and precise, suggesting that the proposed analysis is suitable for practical use in static checking tools for Android.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892218",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Haowei",
+        "last_name": "Wu",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Shengqian",
+        "last_name": "Yang",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Atanas",
+        "last_name": "Rountev",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/cc/WuYR16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892237",
+    "title": "Register allocation and instruction scheduling in Unison",
+    "abstract": "This paper describes Unison, a simple, flexible, and potentially optimal software tool that performs register allocation and instruction scheduling in integration using combinatorial optimization. The tool can be used as an alternative or as a complement to traditional approaches, which are fast but complex and suboptimal. Unison is most suitable whenever high-quality code is required and longer compilation times can be tolerated (such as in embedded systems or library releases), or the targeted processors are so irregular that traditional compilers fail to generate satisfactory code.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892237",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Roberto Castañeda",
+        "last_name": "Lozano",
+        "institution": "Swedish Institute"
+      },
+      {
+        "first_name": "Mats",
+        "last_name": "Carlsson",
+        "institution": "Swedish Institute"
+      },
+      {
+        "first_name": "Gabriel Hjort",
+        "last_name": "Blindell",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Schulte",
+        "institution": "KTH Royal Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/LozanoCBS16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892236",
+    "title": "SYCO: a systematic testing tool for concurrent objects",
+    "abstract": "We present the concepts, usage and prototypical implementation of SYCO: a SYstematic testing tool for Concurrent Objects. The system receives as input a program, a selection of method to be tested, and a set of initial values for its parameters. SYCO offers a visual web interface to carry out the testing process and visualize the results of the different executions as well as the sequences of tasks scheduled as a sequence diagram. Its kernel includes state-of-the-art partial-order reduction techniques to avoid redundant computations during testing. Besides, SYCO incorporates an option to effectively catch deadlock errors. In particular, it uses advanced techniques which guide the execution towards potential deadlock paths and discard paths that are guaranteed to be deadlock free.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892236",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Elvira",
+        "last_name": "Albert",
+        "institution": "Universidad Complutense de Madrid"
+      },
+      {
+        "first_name": "Miguel",
+        "last_name": "Gómez‐Zamalloa",
+        "institution": "Universidad Complutense de Madrid"
+      },
+      {
+        "first_name": "Miguel",
+        "last_name": "Isabel",
+        "institution": "Universidad Complutense de Madrid"
+      }
+    ],
+    "dblp_key": "conf/cc/AlbertGI16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892216",
+    "title": "Mapping deviation: a technique to adapt or to guard loop transformation intuitions for legality",
+    "abstract": "Parallel architectures are now omnipresent in mainstream electronic devices and exploiting them efficiently is a challenge for all developers. Hence, they need the support of languages, libraries and tools to assist them in the optimization or parallelization task. Compilers can provide a major help by automating this work. However they are very fragile black-boxes. A compiler may take a bad optimization decision because of imprecise heuristics or may turn off an optimization because of imprecise analyses, without providing much control or feedback to the end user. To address this issue, we introduce mapping deviation, a new compiler technique that aims at providing a useful feedback on the semantics of a given program restructuring. Starting from a transformation intuition a user or a compiler wants to apply, our algorithm studies its correctness and can suggest changes or conditions to make it possible rather than being limited to the classical go/no-go answer. This algorithm builds on state-of-the-art polyhedral representation of programs and provides a high flexibility. We present two example applications of this technique: improving semi-automatic optimization tools for programmers and automatically designing runtime tests to check the correctness of a transformation for compilers.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892216",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Cédric",
+        "last_name": "Bastoul",
+        "institution": "Université de Strasbourg"
+      }
+    ],
+    "dblp_key": "conf/cc/Bastoul16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892226",
+    "title": "On fast large-scale program analysis in Datalog",
+    "abstract": "Designing and crafting a static program analysis is challenging due to the complexity of the task at hand. Among the challenges are modelling the semantics of the input language, finding suitable abstractions for the analysis, and handwriting efficient code for the analysis in a traditional imperative language such as C++. Hence, the development of static program analysis tools is costly in terms of development time and resources for real world languages. To overcome, or at least alleviate the costs of developing a static program analysis, Datalog has been proposed as a domain specific language (DSL).With Datalog, a designer expresses a static program analysis in the form of a logical specification. While a domain specific language approach aids in the ease of development of program analyses, it is commonly accepted that such an approach has worse runtime performance than handcrafted static analysis tools. In this work, we introduce a new program synthesis methodology for Datalog specifications to produce highly efficient monolithic C++ analyzers. The synthesis technique requires the re-interpretation of the semi-naïve evaluation as a scaffolding for translation using partial evaluation. To achieve high-performance, we employ staged compilation techniques and specialize the underlying relational data structures for a given Datalog specification. Experimentation on benchmarks for large-scale program analysis validates the superior performance of our approach over available Datalog tools and demonstrates our competitiveness with state-of-the-art handcrafted tools.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892226",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Bernhard",
+        "last_name": "Scholz",
+        "institution": ""
+      },
+      {
+        "first_name": "Herbert",
+        "last_name": "Jordan",
+        "institution": ""
+      },
+      {
+        "first_name": "Pavle",
+        "last_name": "Subotić",
+        "institution": "University College London"
+      },
+      {
+        "first_name": "Till",
+        "last_name": "Westmann",
+        "institution": "Oracle (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/ScholzJSW16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892217",
+    "title": "Input space splitting for OpenCL",
+    "abstract": "The performance of OpenCL programs suffers from memory and control flow divergence. Therefore, OpenCL compilers employ static analyses to identify non-divergent control flow and memory accesses in order to produce faster code. However, divergence is often input-dependent, hence can be observed for some, but not all inputs. In these cases, vectorizing compilers have to generate slow code because divergence can occur at run time. In this paper, we use a polyhedral abstraction to partition the input space of an OpenCL kernel. For each partition, divergence analysis produces more precise results i.e., it can classify more code parts as non-divergent. Consequently, specializing the kernel for the input space partitions allows for generating better SIMD code because of less divergence. We implemented our technique in an OpenCL driver for the AVX instruction set and evaluate it on a range of OpenCL benchmarks. We observe speed ups of up to 9x for irregular kernels over a state-of-the-art vectorizing OpenCL driver.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892217",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Moll",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Johannes",
+        "last_name": "Doerfert",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Hack",
+        "institution": "Saarland University"
+      }
+    ],
+    "dblp_key": "conf/cc/MollDH16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2897144",
+    "title": "Improved MHP Analysis",
+    "abstract": "May-Happen-in-Parallel (MHP) analysis is becoming the backbone of many of the parallel analyses and optimizations. In this paper, we present new approaches to do MHP analysis for X10-like languages that support async-finish-atomic parallelism. We present a fast incremental MHP algorithm to derive all the statements that may run in parallel with a given statement. We also extend the MHP algorithm of Agarwal et al. (answers if two given X10 statements may run in parallel, and under what condition) to improve the computational complexity, without compromising on the precision.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2897144",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Aravind",
+        "last_name": "Sankar",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "Soham",
+        "last_name": "Chakraborty",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "V. Krishna",
+        "last_name": "Nandivada",
+        "institution": "Indian Institute of Technology Madras"
+      }
+    ],
+    "dblp_key": "conf/cc/SankarCN16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892210",
+    "title": "Automatic data layout generation and kernel mapping for CPU+GPU architectures",
+    "abstract": "The ubiquity of hybrid CPU+GPU architectures has led to renewed interest in automatic data layout generation owing to the fact that data layouts have a large impact on performance, and that different data layouts yield the best performance on CPUs vs. GPUs. Unfortunately, current programming models still fail to provide an effective solution to the problem of automatic data layout generation for CPU+GPU processors. Specifically, the interaction among wholeprogram data layout optimizations, data movement optimizations, and mapping of kernels across heterogeneous cores pose a major challenge to current programming systems. In this paper, we introduce a novel two-level hierarchical formulation of the data layout and kernel mapping problem for modern heterogeneous architectures. The bottom level formulation deals with the data layout problem for a parallel code region on a given processor, which is NPHard, and we provide a greedy algorithm that uses an affinity graph to obtain approximate solutions. The top level formulation targets data layouts and kernel mapping for the entire program for which we provide a polynomial-time solution using a graph-based shortest path algorithm that uses the data layouts for the code regions (sections) for a given processor computed in the bottom level formulation. We implement this data layout transformation in the new Heterogeneous Habanero-C (H2C) parallel programming framework and propose performance models to characterize the data layout impact on both the CPU and GPU. Our data layout framework shows significant performance improvements of up to 2.9x (geometric mean 1.5x) on a multicore CPU+GPU compared to the manually specified layouts for a set of parallel programs running on a heterogeneous platform consisting of an Intel Xeon CPU and an NVIDIA GPU. Further, our framework also shows performance improvements of up to 2.7x (geometric mean 1.6x) on just the multicore CPU, demonstrating the applicability of our approach to both heterogeneous and homogeneous hardware platforms.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892210",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Deepak",
+        "last_name": "Majeti",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Kuldeep S.",
+        "last_name": "Meel",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Rajkishore",
+        "last_name": "Barik",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/cc/MajetiMBS16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892235",
+    "title": "SVF: interprocedural static value-flow analysis in LLVM",
+    "abstract": "© 2016 ACM. This paper presents SVF, a tool that enables scalable and precise interprocedural Static Value-Flow analysis for C programs by leveraging recent advances in sparse analysis. SVF, which is fully implemented in LLVM, allows value-flow construction and pointer analysis to be performed in an iterative manner, thereby providing increasingly improved precision for both. SVF accepts pointsto information generated by any pointer analysis (e.g., Andersen's analysis) and constructs an interprocedural memory SSA form, in which the def-use chains of both top-level and address-taken variables are captured. Such value-flows can be subsequently exploited to support various forms of program analysis or enable more precise pointer analysis (e.g., flow-sensitive analysis) to be performed sparsely. By dividing a pointer analysis into three loosely coupled components: Graph, Rules and Solver, SVF provides an extensible interface for users to write their own solutions easily. SVF is publicly available at http://unsw-corg.github.io/SVF.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892235",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Yulei",
+        "last_name": "Sui",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Jingling",
+        "last_name": "Xue",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/cc/SuiX16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892234",
+    "title": "Iguana: a practical data-dependent parsing framework",
+    "abstract": "Data-dependent grammars extend context-free grammars with arbitrary computation, variable binding, and constraints. These features provide the user with the freedom and power to express syntactic constructs outside the realm of context-free grammars, e.g., indentation rules in Haskell and type definitions in C. Data-dependent grammars have been recently presented by Jim et al. as a grammar formalism that enables construction of parsers from a rich format specification. Although some features of data-dependent grammars are available in current parsing tools, e.g., semantic predicates in ANTLR, data-dependent grammars have not yet fully found their way into practice. In this paper we present Iguana, a data-dependent parsing framework, implemented on top of the GLL parsing algorithm. In addition to basic features of data-dependent grammars, Iguana also provides high-level syntactic constructs, e.g., for operator precedence and indentation rules, which are implemented as desugaring to data-dependent grammars. These high-level constructs enable a concise and declarative way to define the syntax of programming languages. Moreover, Iguana's extensible data-dependent grammar API allows the user to easily add new high-level constructs or modify existing ones. We have used Iguana to parse various real programming languages, such as OCaml, Haskell, Java, and C#. In this paper we describe the architecture and features of Iguana, and report on its current implementation status.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892234",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Ali",
+        "last_name": "Afroozeh",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Anastasia",
+        "last_name": "Izmaylova",
+        "institution": "Centrum Wiskunde & Informatica"
+      }
+    ],
+    "dblp_key": "conf/cc/AfroozehI16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892233",
+    "title": "GreenThumb: superoptimizer construction framework",
+    "abstract": "Developing an optimizing compiler backend remains a laborious process, especially for nontraditional ISAs that have been appearing recently. Superoptimization sidesteps the need for many code transformations by searching for the most optimal instruction sequence semantically equivalent to the original code fragment. Even though superoptimization discovers the best machine-specific code optimizations, it has yet to become widely-used. We propose GreenThumb, an extensible framework that reduces the cost of constructing superoptimizers and provides a fast search algorithm that can be reused for any ISA, exploiting the unique strengths of enumerative, stochastic, and symbolic (SAT-solver-based) search algorithms. To extend GreenThumb to a new ISA, it is only necessary to implement an emulator for the ISA and provide some ISA-specific search utility functions. This paper demonstrates retargetability of GreenThumb by showing how to construct a superoptimizer for a small subset of LLVM IR.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892233",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Phitchaya Mangpo",
+        "last_name": "Phothilimthana",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Aditya",
+        "last_name": "Thakur",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Dinakar",
+        "last_name": "Dhurjati",
+        "institution": "Qualcomm (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/PhothilimthanaT16",
+    "venue": "cc",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2892208.2892213",
+    "title": "Extended lattice-based memory allocation",
+    "abstract": "This work extends lattice-based memory allocation, an earlier work on memory reuse through array contraction. Such an optimization is used for optimizing high-level programming languages where storage mapping may be abstracted away from programmers and to complement code transformations that introduce intermediate buffers. The main motivation for this extension is to improve the handling of more general forms of specifications we see today, e.g., with loop tiling, pipelining, and other forms of parallelism available in explicitly-parallel languages. Specifically, we handle the case when conflicting constraints (those that describe the array indices that cannot share the same location) are specified as a (non-convex) union of polyhedra. The choice of directions (or basis) of array reuse becomes important when dealing with non-convex specifications. We extend the two dual approaches in the original work to handle unions of polyhedra, and to select a suitable basis. Our final approach relies on a combination of the two, also revealing their links with, on one hand, the construction of multi-dimensional schedules for parallelism and tiling (but with a fundamental difference that we identify) and, on the other hand, the construction of universal reuse vectors (UOV), which was only used so far in a specific context, for schedule-independent mapping.",
+    "date": "2016-03-14",
+    "link": "https://doi.org/10.1145/2892208.2892213",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Alain",
+        "last_name": "Darte",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Alexandre",
+        "last_name": "Isoard",
+        "institution": "École Normale Supérieure de Lyon"
+      },
+      {
+        "first_name": "Tomofumi",
+        "last_name": "Yuki",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/cc/DarteIY16",
+    "venue": "cc",
+    "year": 2016
+  }
+]
