@@ -50,13 +50,19 @@ class EmbeddingModel:
             "Only gemini embeddings are supported for now"
         )
 
-        max_texts_tokens = (
-            max([len(text.split()) for text in texts]) / self.words_per_token
-        )
-        # Use 75% of the max tokens to account for unknown words to tokens mapping
-        assert max_texts_tokens <= self.max_tokens, (
-            "At least one of the texts is too long to embed"
-        )
+        # Truncate any text that would exceed the model's token budget.
+        # Some scraped abstracts (notably PACMPL 'SCICO Journal-first' papers
+        # whose abstract is the full paper-extension's body) blow past 1536
+        # tokens. Rather than abort the whole batch, clip the long ones and
+        # keep going — semantic retrieval on a head excerpt is still useful.
+        max_words = int(self.max_tokens * self.words_per_token)
+        truncated_texts: list[str] = []
+        for text in texts:
+            words = text.split()
+            if len(words) > max_words:
+                text = " ".join(words[:max_words])
+            truncated_texts.append(text)
+        texts = truncated_texts
 
         # loop through the texts in batches of max_texts_per_request
         for texts_chunk in chunked_iterable(texts, self.batch_size):
@@ -70,7 +76,6 @@ class EmbeddingModel:
                     new_embeddings = self.model.embed_documents(texts_chunk)
                     break
                 except Exception as e:
-                    print(max_texts_tokens)
                     print(f"Error embedding {len(texts_chunk)} texts: {e}")
                     for i, text in enumerate(texts_chunk):
                         print(f"text {i}: {text}")
