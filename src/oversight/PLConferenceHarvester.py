@@ -789,9 +789,18 @@ class PLConferenceHarvester:
 
         url = f"https://api.openalex.org/works/https://doi.org/{doi}"
         params = {"mailto": _OPENALEX_MAILTO}
+        # Tight retry budget: when OpenAlex's daily quota is exhausted it
+        # 429s for hours. Burning the full backoff window per paper
+        # multiplies a 30-min residual quota outage into days of stalled
+        # harvesting. Try twice; on persistent 429 fall through to
+        # Semantic Scholar.
         try:
             resp = _request_with_retries(
-                self._thread_session(), url, params=params, timeout=30
+                self._thread_session(),
+                url,
+                params=params,
+                timeout=30,
+                max_attempts=2,
             )
         except requests.RequestException as exc:
             logger.warning("OpenAlex request failed for %s: %s", doi, exc)
