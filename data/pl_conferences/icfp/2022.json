@@ -1,0 +1,997 @@
+[
+  {
+    "paper_id": "10.1145/3547650",
+    "title": "Multi types and reasonable space",
+    "abstract": "Accattoli, Dal Lago, and Vanoni have recently proved that the space used by the Space KAM, a variant of the Krivine abstract machine, is a reasonable space cost model for the λ-calculus accounting for logarithmic space, solving a longstanding open problem. In this paper, we provide a new system of multi types (a variant of intersection types) and extract from multi type derivations the space used by the Space KAM, capturing into a type system the space complexity of the abstract machine. Additionally, we show how to capture also the time of the Space KAM, which is a reasonable time cost model, via minor changes to the type system.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547650",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Beniamino",
+        "last_name": "Accattoli",
+        "institution": "École Polytechnique"
+      },
+      {
+        "first_name": "Ugo Dal",
+        "last_name": "Lago",
+        "institution": "University of Bologna"
+      },
+      {
+        "first_name": "Gabriele",
+        "last_name": "Vanoni",
+        "institution": "University of Bologna"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AccattoliLV22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547628",
+    "title": "Verified symbolic execution with Kripke specification monads (and no meta-programming)",
+    "abstract": "Verifying soundness of symbolic execution-based program verifiers is a significant challenge. This is especially true if the resulting tool needs to be usable outside of the proof assistant, in which case we cannot rely on shallowly embedded assertion logics and meta-programming. The tool needs to manipulate deeply embedded assertions, and it is crucial for efficiency to eagerly prune unreachable paths and simplify intermediate assertions in a way that can be justified towards the soundness proof. Only a few such tools exist in the literature, and their soundness proofs are intricate and hard to generalize or reuse. We contribute a novel, systematic approach for the construction and soundness proof of such a symbolic execution-based verifier. We first implement a shallow verification condition generator as an object language interpreter in a specification monad, using an abstract interface featuring angelic and demonic nondeterminism. Next, we build a symbolic executor by implementing a similar interpreter, in a symbolic specification monad. This symbolic monad lives in a universe that is Kripke-indexed by variables in scope and a path condition. Finally, we reduce the soundness of the symbolic execution to the soundness of the shallow execution by relating both executors using a Kripke logical relation. We report on the practical application of these techniques in Katamaran, a tool for verifying security guarantees offered by instruction set architectures (ISAs). The tool is fully verified by combining our symbolic execution machinery with a soundness proof of the shallow verification conditions against an axiomatized separation logic, and an Iris-based implementation of the axioms, proven sound against the operational semantics. Based on our experience with Katamaran, we can report good results on practicality and efficiency of the tool, demonstrating practical viability of our symbolic execution approach.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547628",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Steven",
+        "last_name": "Keuchel",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Sander",
+        "last_name": "Huyghebaert",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Georgy",
+        "last_name": "Lukyanov",
+        "institution": "Newcastle University"
+      },
+      {
+        "first_name": "Dominique",
+        "last_name": "Devriese",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KeuchelHLD22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547629",
+    "title": "Datatype-generic programming meets elaborator reflection",
+    "abstract": "Datatype-generic programming is natural and useful in dependently typed languages such as Agda. However, datatype-generic libraries in Agda are not reused as much as they should be, because traditionally they work only on datatypes decoded from a library’s own version of datatype descriptions; this means that different generic libraries cannot be used together, and they do not work on native datatypes, which are preferred by the practical Agda programmer for better language support and access to other libraries. Based on elaborator reflection, we present a framework in Agda featuring a set of general metaprograms for instantiating datatype-generic programs as, and for, a useful range of native datatypes and functions —including universe-polymorphic ones— in programmer-friendly and customisable forms. We expect that datatype-generic libraries built with our framework will be more attractive to the practical Agda programmer. As the elaborator reflection features used by our framework become more widespread, our design can be ported to other languages too.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547629",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Hsiang−Shang",
+        "last_name": "Ko",
+        "institution": "Academia Sinica"
+      },
+      {
+        "first_name": "Liang-Ting",
+        "last_name": "Chen",
+        "institution": "Academia Sinica"
+      },
+      {
+        "first_name": "Tzu-Chi",
+        "last_name": "Lin",
+        "institution": "Academia Sinica"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KoCL22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547624",
+    "title": "Monadic compiler calculation (functional pearl)",
+    "abstract": "Bahr and Hutton recently developed a new approach to calculating correct compilers directly from specifications of their correctness. However, the methodology only considers converging behaviour of the source language, which means that the compiler could potentially produce arbitrary, erroneous code for source programs that diverge. In this article, we show how the methodology can naturally be extended to support the calculation of compilers that address both convergent and divergent behaviour simultaneously , without the need for separate reasoning for each aspect. Our approach is based on the use of the partiality monad to make divergence explicit, together with the use of strong bisimilarity to support equational-style calculations, but also generalises to other forms of effect by changing the underlying monad.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547624",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Bahr",
+        "institution": "IT University of Copenhagen"
+      },
+      {
+        "first_name": "Graham",
+        "last_name": "Hutton",
+        "institution": "University of Nottingham"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BahrH22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547654",
+    "title": "Flexible presentations of graded monads",
+    "abstract": "A large class of monads used to model computational effects have natural presentations by operations and equations, for example, the list monad can be presented by a constant and a binary operation subject to unitality and associativity. Graded monads are a generalization of monads that enable us to track quantitative information about the effects being modelled. Correspondingly, a large class of graded monads can be presented using an existing notion of graded presentation. However, the existing notion has some deficiencies, in particular many effects do not have natural graded presentations. We introduce a notion of flexibly graded presentation that does not suffer from these issues, and develop the associated theory. We show that every flexibly graded presentation induces a graded monad equipped with interpretations of the operations of the presentation, and that all graded monads satisfying a particular condition on colimits have a flexibly graded presentation. As part of this, we show that the usual algebra-preserving correspondence between presentations and a class of monads transfers to an algebra-preserving correspondence between flexibly graded presentations and a class of flexibly graded monads.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547654",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Shin-ya",
+        "last_name": "Katsumata",
+        "institution": "National Institute of Informatics"
+      },
+      {
+        "first_name": "Dylan",
+        "last_name": "McDermott",
+        "institution": "Reykjavík University"
+      },
+      {
+        "first_name": "Tarmo",
+        "last_name": "Uustalu",
+        "institution": "Tallinn University of Technology"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Wu",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KatsumataMUW22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547638",
+    "title": "Multiparty GV: functional multiparty session types with certified deadlock freedom",
+    "abstract": "Session types have recently been integrated with functional languages, bringing message-passing concurrency to functional programming. Channel endpoints then become first-class and can be stored in data structures, captured in closures, and sent along channels. Representatives of the GV (Wadler's \"Good Variation\") session type family are of particular appeal because they not only assert session fidelity but also deadlock freedom, inspired by a Curry-Howard correspondence to linear logic. A restriction of current versions of GV, however, is the focus on binary sessions, limiting concurrent interactions within a session to two participants. This paper introduces Multiparty GV (MPGV), a functional language with multiparty session types, allowing concurrent interactions among several participants. MPGV upholds the strong guarantees of its ancestor GV, including deadlock freedom, despite session interleaving and delegation. MPGV has a novel redirecting construct for modular programming with first-class endpoints, thanks to which we give a type-preserving translation from binary session types to MPGV to show that MPGV is strictly more general than binary GV. All results in this paper have been mechanized using the Coq proof assistant.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547638",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jules",
+        "last_name": "Jacobs",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Balzer",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robbert",
+        "last_name": "Krebbers",
+        "institution": "Radboud University Nijmegen"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/JacobsBK22a",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547652",
+    "title": "The theory of call-by-value solvability",
+    "abstract": "The semantics of the untyped (call-by-name) lambda-calculus is a well developed field built around the concept of solvable terms, which are elegantly characterized in many different ways. In particular, unsolvable terms provide a consistent notion of meaningless term. The semantics of the untyped call-by-value lambda-calculus (CbV) is instead still in its infancy, because of some inherent difficulties but also because CbV solvable terms are less studied and understood than in call-by-name. On the one hand, we show that a carefully crafted presentation of CbV allows us to recover many of the properties that solvability has in call-by-name, in particular qualitative and quantitative characterizations via multi types. On the other hand, we stress that, in CbV, solvability plays a different role: identifying unsolvable terms as meaningless induces an inconsistent theory.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547652",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Beniamino",
+        "last_name": "Accattoli",
+        "institution": "École Polytechnique"
+      },
+      {
+        "first_name": "Giulio",
+        "last_name": "Guerrieri",
+        "institution": "Huawei Technologies (United Kingdom)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AccattoliG22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547651",
+    "title": "On Feller continuity and full abstraction",
+    "abstract": "We study the nature of applicative bisimilarity in λ-calculi endowed with operators for sampling from contin- uous distributions. On the one hand, we show that bisimilarity, logical equivalence, and testing equivalence all coincide with contextual equivalence when real numbers can be manipulated through continuous functions only. The key ingredient towards this result is a notion of Feller-continuity for labelled Markov processes, which we believe of independent interest, giving rise a broad class of LMPs for which coinductive and logically inspired equivalences coincide. On the other hand, we show that if no constraint is put on the way real numbers are manipulated, characterizing contextual equivalence turns out to be hard, and most of the aforementioned notions of equivalence are even unsound.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547651",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Gilles",
+        "last_name": "Barthe",
+        "institution": "Max Planck Institute for Security and Privacy"
+      },
+      {
+        "first_name": "Raphaëlle",
+        "last_name": "Crubillé",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Ugo Dal",
+        "last_name": "Lago",
+        "institution": "University of Bologna"
+      },
+      {
+        "first_name": "Francesco",
+        "last_name": "Gavazzo",
+        "institution": "University of Pisa"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BartheCLG22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547644",
+    "title": "Practical generic programming over a universe of native datatypes",
+    "abstract": "Datatype-generic programming makes it possible to define a construction once and apply it to a large class of datatypes. It is often used to avoid code duplication in languages that encourage the definition of custom datatypes, in particular state-of-the-art dependently typed languages where one can have many variants of the same datatype with different type-level invariants. In addition to giving access to familiar programming constructions for free, datatype-generic programming in the dependently typed setting also allows for the construction of generic proofs. However, the current interfaces available for this purpose are needlessly hard to use or are limited in the range of datatypes they handle. In this paper, we describe the design of a library for safe and user-friendly datatype-generic programming in the Agda language. Generic constructions in our library are regular Agda functions over a broad universe of datatypes, yet they can be specialized to native Agda datatypes with a simple one-liner. Furthermore, we provide building blocks so that library designers can too define their own datatype-generic constructions.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547644",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Lucas",
+        "last_name": "Escot",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Jesper",
+        "last_name": "Cockx",
+        "institution": "Delft University of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/EscotC22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547647",
+    "title": "Aeneas: Rust verification by functional translation",
+    "abstract": "We present Aeneas, a new verification toolchain for Rust programs based on a lightweight functional translation. We leverage Rust’s rich region-based type system to eliminate memory reasoning for a large class of Rust programs, as long as they do not rely on interior mutability or unsafe code. Doing so, we relieve the proof engineer of the burden of memory-based reasoning, allowing them to instead focus on functional properties of their code. The first contribution of Aeneas is a new approach to borrows and controlled aliasing. We propose a pure, functional semantics for LLBC, a Low-Level Borrow Calculus that captures a large subset of Rust programs. Our semantics is value-based, meaning there is no notion of memory, addresses or pointer arithmetic. Our semantics is also ownership-centric, meaning that we enforce soundness of borrows via a semantic criterion based on loans rather than through a syntactic type-based lifetime discipline. We claim that our semantics captures the essence of the borrow mechanism rather than its current implementation in the Rust compiler. The second contribution of Aeneas is a translation from LLBC to a pure lambda-calculus. This allows the user to reason about the original Rust program through the theorem prover of their choice, and fulfills our promise of enabling lightweight verification of Rust programs. To deal with the well-known technical difficulty of terminating a borrow, we rely on a novel approach, in which we approximate the borrow graph in the presence of function calls. This in turn allows us to perform the translation using a new technical device called backward functions. We implement our toolchain in a mixture of Rust and OCaml; our chief case study is a low-level, resizing hash table, for which we prove functional correctness, the first such result in Rust. Our evaluation shows significant gains of verification productivity for the programmer. This paper therefore establishes a new point in the design space of Rust verification toolchains, one that aims to verify Rust programs simply, and at scale. Rust goes to great lengths to enforce static control of aliasing; the proof engineer should not waste any time on memory reasoning when so much already comes “for free”!",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547647",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Son",
+        "last_name": "Ho",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Protzenko",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HoP22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547653",
+    "title": "Random testing of a higher-order blockchain language (experience report)",
+    "abstract": "We describe our experience of using property-based testing---an approach for automatically generating random inputs to check executable program specifications---in a development of a higher-order smart contract language that powers a state-of-the-art blockchain with thousands of active daily users. We outline the process of integrating QuickChick---a framework for property-based testing built on top of the Coq proof assistant---into a real-world language implementation in OCaml. We discuss the challenges we have encountered when generating well-typed programs for a realistic higher-order smart contract language, which mixes purely functional and imperative computations and features runtime resource accounting. We describe the set of the language implementation properties that we tested, as well as the semantic harness required to enable their validation. The properties range from the standard type safety to the soundness of a control- and type-flow analysis used by the optimizing compiler. Finally, we present the list of bugs discovered and rediscovered with the help of QuickChick and discuss their severity and possible ramifications.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547653",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Tram",
+        "last_name": "Hoang",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Anton",
+        "last_name": "Trunov",
+        "institution": ""
+      },
+      {
+        "first_name": "Leonidas",
+        "last_name": "Lampropoulos",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Ilya",
+        "last_name": "Sergey",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HoangTLS22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3549822",
+    "title": "A simple and efficient implementation of strong call by need by an abstract machine",
+    "abstract": "We present an abstract machine for a strong call-by-need strategy in the lambda calculus. The machine has been derived automatically from a higher-order evaluator that uses the technique of memothunks to implement laziness. The derivation has been done with the use of an off-the-shelf transformation tool implementing the \"functional correspondence\" between higher-order interpreters and abstract machines, and it yields a simple and concise description of the machine. We prove that the resulting machine conservatively extends the lazy version of Krivine machine for the weak call-by-need strategy, and that it simulates the normal-order strategy in bilinear number of steps.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3549822",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Małgorzata",
+        "last_name": "Biernacka",
+        "institution": "University of Wrocław"
+      },
+      {
+        "first_name": "Witold",
+        "last_name": "Charatonik",
+        "institution": "University of Wrocław"
+      },
+      {
+        "first_name": "Tomasz",
+        "last_name": "Drab",
+        "institution": "University of Wrocław"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BiernackaCD22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547627",
+    "title": "Propositional equality for gradual dependently typed programming",
+    "abstract": "Gradual dependent types can help with the incremental adoption of dependently typed code by providing a principled semantics for imprecise types and proofs, where some parts have been omitted. Current theories of gradual dependent types, though, lack a central feature of type theory: propositional equality. Lennon-Bertrand et al. show that, when the reflexive proof refl is the only closed value of an equality type, a gradual extension of the Calculus of Inductive Constructions (CIC) with propositional equality violates static observational equivalences. Extensionally-equal functions should be indistinguishable at run time, but they can be distinguished using a combination of equality and type imprecision. This work presents a gradual dependently typed language that supports propositional equality. We avoid the above issues by devising an equality type of which refl is not the only closed inhabitant. Instead, each equality proof is accompanied by a term that is at least as precise as the equated terms, acting as a witness of their plausible equality. These witnesses track partial type information as a program runs, raising errors when that information shows that two equated terms are undeniably inconsistent. Composition of type information is internalized as a construct of the language, and is deferred for function bodies whose evaluation is blocked by variables. We thus ensure that extensionally-equal functions compose without error, thereby preventing contexts from distinguishing them. We describe the challenges of designing consistency and precision relations for this system, along with solutions to these challenges. Finally, we prove important metatheory: type safety, conservative embedding of CIC, weak canonicity, and the gradual guarantees of Siek et al., which ensure that reducing a program’s precision introduces no new static or dynamic errors.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547627",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Joseph",
+        "last_name": "Eremondi",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Ronald",
+        "last_name": "Garcia",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "University of Chile"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/EremondiGT22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547642",
+    "title": "Constraint-based type inference for FreezeML",
+    "abstract": "FreezeML is a new approach to first-class polymorphic type inference that employs term annotations to control when and how polymorphic types are instantiated and generalised. It conservatively extends Hindley-Milner type inference and was first presented as an extension to Algorithm W. More modern type inference techniques such as HM(X) and OutsideIn(X) employ constraints to support features such as type classes, type families, rows, and other extensions. We take the first step towards modernising FreezeML by presenting a constraint-based type inference algorithm. We introduce a new constraint language, inspired by the Pottier/Rémy presentation of HM(X), in order to allow FreezeML type inference problems to be expressed as constraints. We present a deterministic stack machine for solving FreezeML constraints and prove its termination and correctness.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547642",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Frank",
+        "last_name": "Emrich",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Stolarek",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Cheney",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Lindley",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/EmrichSCL22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547648",
+    "title": "Automatically deriving control-flow graph generators from operational semantics",
+    "abstract": "We develop the first theory of control-flow graphs from first principles, and use it to create an algorithm for automatically synthesizing many variants of control-flow graph generators from a language’s operational semantics. Our approach first introduces a new algorithm for converting a large class of small-step operational semantics to an abstract machine. It next uses a technique called ”abstract rewriting” to automatically abstract the semantics of a language, which is used both to directly generate a CFG from a program (”interpreted mode”) and to generate standalone code, similar to a human-written CFG generator, for any program in a language. We show how the choice of two abstraction and projection parameters allow our approach to synthesize several families of CFG-generators useful for different kinds of tools. We prove the correspondence between the generated graphs and the original semantics. We provide and prove an algorithm for automatically proving the termination of interpreted-mode generators. In addition to our theoretical results, we have implemented this algorithm in a tool called Mandate, and show that it produces human-readable code on two medium-size languages with 60−80 rules, featuring nearly all intraprocedural control constructs common in modern languages. We then show these CFG-generators were sufficient to build two static analyses atop them. Our work is a promising step towards the grand vision of being able to synthesize all desired tools from the semantics of a programming language.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547648",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "James",
+        "last_name": "Koppel",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Jackson",
+        "last_name": "Kearl",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Armando",
+        "last_name": "Solar-Lezama",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KoppelKS22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547622",
+    "title": "Searching entangled program spaces",
+    "abstract": "Many problem domains, including program synthesis and rewrite-based optimization, require searching astronomically large spaces of programs. Existing approaches often rely on building specialized data structures—version-space algebras, finite tree automata, or e-graphs—to compactly represent such spaces. At their core, all these data structures exploit independence of subterms; as a result, they cannot efficiently represent more complex program spaces, where the choices of subterms are entangled. We introduce equality-constrained tree automata (ECTAs), a new data structure, designed to compactly represent large spaces of programs with entangled subterms. We present efficient algorithms for extracting programs from ECTAs, implemented in a performant Haskell library, ecta. Using the ecta library, we construct Hectare, a type-driven program synthesizer for Haskell. Hectare significantly outperforms a state-of-the-art synthesizer Hoogle+—providing an average speedup of 8×—despite its implementation being an order of magnitude smaller.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547622",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "James",
+        "last_name": "Koppel",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Zheng",
+        "last_name": "Guo",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Edsko de",
+        "last_name": "Vries",
+        "institution": ""
+      },
+      {
+        "first_name": "Armando",
+        "last_name": "Solar-Lezama",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Nadia",
+        "last_name": "Polikarpova",
+        "institution": "University of California San Diego"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KoppelGVSP22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547641",
+    "title": "Staged compilation with two-level type theory",
+    "abstract": "The aim of staged compilation is to enable metaprogramming in a way such that we have guarantees about the well-formedness of code output, and we can also mix together object-level and meta-level code in a concise and convenient manner. In this work, we observe that two-level type theory (2LTT), a system originally devised for the purpose of developing synthetic homotopy theory, also serves as a system for staged compilation with dependent types. 2LTT has numerous good properties for this use case: it has a concise specification, well-behaved model theory, and it supports a wide range of language features both at the object and the meta level. First, we give an overview of 2LTT's features and applications in staging. Then, we present a staging algorithm and prove its correctness. Our algorithm is \"staging-by-evaluation\", analogously to the technique of normalization-by-evaluation, in that staging is given by the evaluation of 2LTT syntax in a semantic domain. The staging algorithm together with its correctness constitutes a proof of strong conservativity of 2LLT over the object theory. To our knowledge, this is the first description of staged compilation which supports full dependent types and unrestricted staging for types.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547641",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "András",
+        "last_name": "Kovács",
+        "institution": "Eötvös Loránd University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Kovacs22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547633",
+    "title": "Structural versus pipeline composition of higher-order functions (experience report)",
+    "abstract": "In teaching students to program with compositions of higher-order functions, we have encountered a sharp distinction in the difficulty of problems as perceived by students. This distinction especially matters as growing numbers of programmers learn about functional programming for data processing. We have made initial progress on identifying this distinction, which appears counter-intuitive to some. We describe the phenomenon, provide some preliminary evidence of the difference in difficulty, and suggest consequences for functional programming pedagogy.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547633",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Elijah",
+        "last_name": "Rivera",
+        "institution": "John Brown University"
+      },
+      {
+        "first_name": "Shriram",
+        "last_name": "Krishnamurthi",
+        "institution": "John Brown University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RiveraK22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547632",
+    "title": "Program adverbs and Tlön embeddings",
+    "abstract": "Free monads (and their variants) have become a popular general-purpose tool for representing the semantics of effectful programs in proof assistants. These data structures support the compositional definition of semantics parameterized by uninterpreted events, while admitting a rich equational theory of equivalence. But monads are not the only way to structure effectful computation, why should we limit ourselves? In this paper, inspired by applicative functors, selective functors, and other structures, we define a collection of data structures and theories, which we call program adverbs, that capture a variety of computational patterns. Program adverbs are themselves composable, allowing them to be used to specify the semantics of languages with multiple computation patterns. We use program adverbs as the basis for a new class of semantic embeddings called Tlön embeddings. Compared with embeddings based on free monads, Tlön embeddings allow more flexibility in computational modeling of effects, while retaining more information about the program's syntactic structure.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547632",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Yao",
+        "last_name": "Li",
+        "institution": "Portland State University"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LiW22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547639",
+    "title": "Fusing industry and academia at GitHub (experience report)",
+    "abstract": "GitHub hosts hundreds of millions of code repositories written in hundreds of different programming languages. In addition to its hosting services, GitHub provides data and insights into code, such as vulnerability analysis and code navigation, with which users can improve and understand their software development process. GitHub has built Semantic, a program analysis tool capable of parsing and extracting detailed information from source code. The development of Semantic has relied extensively on the functional programming literature; this paper describes how connections to academic research inspired and informed the development of an industrial-scale program analysis toolkit.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547639",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Thomson",
+        "institution": ""
+      },
+      {
+        "first_name": "Rob",
+        "last_name": "Rix",
+        "institution": ""
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Wu",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ThomsonRWS22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547655",
+    "title": "A reasonably gradual type theory",
+    "abstract": "Gradualizing the Calculus of Inductive Constructions (CIC) involves dealing with subtle tensions between normalization, graduality, and conservativity with respect to CIC. Recently, GCIC has been proposed as a parametrized gradual type theory that admits three variants, each sacrificing one of these properties. For devising a gradual proof assistant based on CIC, normalization and conservativity with respect to CIC are key, but the tension with graduality needs to be addressed. Additionally, several challenges remain: (1) The presence of two wildcard terms at any type---the error and unknown terms---enables trivial proofs of any theorem, jeopardizing the use of a gradual type theory in a proof assistant; (2) Supporting general indexed inductive families, most prominently equality, is an open problem; (3) Theoretical accounts of gradual typing and graduality so far do not support handling type mismatches detected during reduction; (4) Precision and graduality are external notions not amenable to reasoning within a gradual type theory. All these issues manifest primally in CastCIC, the cast calculus used to define GCIC. In this work, we present an extension of CastCIC called GRIP. GRIP is a reasonably gradual type theory that addresses the issues above, featuring internal precision and general exception handling. By adopting a novel interpretation of the unknown term that carefully accounts for universe levels, GRIP satisfies graduality for a large and well-defined class of terms, in addition to being normalizing and a conservative extension of CIC. Internal precision supports reasoning about graduality within GRIP itself, for instance to characterize gradual exception-handling terms, and supports gradual subset types. We develop the metatheory of GRIP using a model formalized in Coq, and provide a prototype implementation of GRIP in Agda.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547655",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kenji",
+        "last_name": "Maillard",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Meven",
+        "last_name": "Lennon-Bertrand",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Tabareau",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "University of Chile"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MaillardLTT22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547621",
+    "title": "Beyond Relooper: recursive translation of unstructured control flow to structured control flow (functional pearl)",
+    "abstract": "In many compilers, control flow is represented using an arbitrary directed graph. But in some interesting target languages, including JavaScript and WebAssembly, intraprocedural control flow can be expressed only in structured ways, using loops, conditionals, and multilevel breaks or exits. As was shown by Peterson, Kasami, and Tokura in 1973, such structured control flow can be obtained by translating arbitrary control flow. The translation uses two standard analyses, but as published, it takes three passes—which may explain why it was overlooked by Emscripten, a popular compiler from C to JavaScript. By tweaking the analyses and by applying fundamental ideas from functional programming (recursive functions and immutable abstract-syntax trees), the translation, along with a couple of code improvements, can be implemented in a single pass. This new implementation is slated to be added to the Glasgow Haskell Compiler. Its single-pass translation, its immutable representation, and its use of dominator trees make it much easier to reason about than the original translation.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547621",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Tufts University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Ramsey22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3549821",
+    "title": "Generating circuits with generators",
+    "abstract": "The most widely used languages and methods used for designing digital hardware fall into two rough categories. One of them, register transfer level (RTL), requires specifying each and every component in the designed circuit. This gives the designer full control, but burdens the designer with many trivial details. The other, the high-level synthesis (HLS) method, allows the designer to abstract the details of hardware away and focus on the problem being solved. This method however cannot be used for a class of hardware design problems because the circuit's clock is also abstracted away. We present YieldFSM, a hardware description language that uses the generator abstraction to represent clock-level timing in a digital circuit. It represents a middle ground between the RTL and HLS approaches: the abstraction level is higher than in RTL, but thanks to explicit information about clock-level timing, it can be used in applications where RTL is traditionally used. We also present the YieldFSM compiler, which uses methods developed by the functional programming community -- including continuation-passsing style translation and defunctionalization -- to translate YieldFSM programs to Mealy machines. It is implemented using Template Haskell and the Clash functional hardware description language. We show that this approach leads to short and conceptually simple hardware descriptions.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3549821",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Marek",
+        "last_name": "Materzok",
+        "institution": "University of Wrocław"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Materzok22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547645",
+    "title": "Analyzing binding extent in 3CPS",
+    "abstract": "To date, the most effective approach to compiling strict, higher-order functional languages (such as OCaml, Scheme, and SML) has been to use whole-program techniques to convert the program to a first-order monomorphic representation that can be optimized using traditional compilation techniques. This approach, popularized by MLton, has limitations, however. We are interested in exploring a different approach to compiling such languages, one that preserves the higher-order and polymorphic character of the program throughout optimization. To enable such an approach, we must have effective analyses that both provide precise information about higher-order programs and that scale to larger units of compilation. This paper describes one such analysis for determining the extent of variable bindings. We classify the extent of variables as either register (only one binding instance can be live at any time), stack (the lifetimes of binding instances obey a LIFO order), or heap (binding lifetimes are arbitrary). These extents naturally connect variables to the machine resources required to represent them. We believe that precise information about binding extents will enable efficient management of environments, which is a key problem in the efficient compilation of higher-order programs. At the core of the paper is the 3CPS intermediate representation, which is a factored CPS-based intermediate representation (IR) that statically marks variables to indicate their binding extent. We formally specify the management of this binding structure by means of a small-step operational semantics and define a static analysis that determines the extents of the variables in a program. We evaluate our analysis using a standard suite of SML benchmark programs. Our implementation gets surprisingly high yield and exhibits scalable performance. While this paper uses a CPS-based IR, the algorithm and results are easily transferable to other λ-calculus IRs, such as ANF.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547645",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Benjamin",
+        "last_name": "Quiring",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Reppy",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/QuiringRS22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547635",
+    "title": "Modular probabilistic models via algebraic effects",
+    "abstract": "Probabilistic programming languages (PPLs) allow programmers to construct statistical models and then simulate data or perform inference over them. Many PPLs restrict models to a particular instance of simulation or inference, limiting their reusability. In other PPLs, models are not readily composable. Using Haskell as the host language, we present an embedded domain specific language based on algebraic effects, where probabilistic models are modular, first-class, and reusable for both simulation and inference. We also demonstrate how simulation and inference can be expressed naturally as composable program transformations using algebraic effect handlers.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547635",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Minh Son",
+        "last_name": "Nguyen",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Roly",
+        "last_name": "Perera",
+        "institution": "The Alan Turing Institute"
+      },
+      {
+        "first_name": "Meng",
+        "last_name": "Wang",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Wu",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/NguyenPWW22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547636",
+    "title": "A completely unique account of enumeration",
+    "abstract": "How can we enumerate the inhabitants of an algebraic datatype? This paper explores a datatype generic solution that works for all regular types and indexed families . The enumerators presented here are provably both complete and unique —they will eventually produce every value exactly once—and fair —they avoid bias when composing enumerators. Finally, these enumerators memoise previously enumerated values whenever possible, thereby avoiding repeatedly recomputing recursive results.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547636",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Cas van der",
+        "last_name": "Rest",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Wouter",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RestS22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547634",
+    "title": "Reference counting with frame limited reuse",
+    "abstract": "The recently introduced _Perceus_ algorithm can automatically insert reference count instructions such that the resulting (cycle-free) program is _garbage free_: objects are freed at the very moment they can no longer be referenced. An important extension is reuse analysis. This optimization pairs objects of known size with fresh allocations of the same size and tries to reuse the object in-place at runtime if it happens to be unique. Unfortunately, current implementations of reuse analysis are fragile with respect to small program transformations, or can cause an arbitrary increase in the peak heap usage. We present a novel _drop-guided_ reuse algorithm that is simpler and more robust than previous approaches. Moreover, we generalize the linear resource calculus to precisely characterize garbage-free and frame-limited evaluations. On each function call, a frame-limited evaluation may hold on to memory longer if the size is bounded by a constant factor. Using this framework we show that our drop-guided reuse _is_ frame-limited and find that an implementation of our new reuse approach in Koka can provide significant speedups.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547634",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Anton",
+        "last_name": "Lorenzen",
+        "institution": "University of Bonn"
+      },
+      {
+        "first_name": "Daan",
+        "last_name": "Leijen",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LorenzenL22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547637",
+    "title": "Introduction and elimination, left and right",
+    "abstract": "Functional programming language design has been shaped by the framework of natural deduction, in which language constructs are divided into introduction and elimination rules for producers of values. In sequent calculus-based languages, left introduction rules replace (right) elimination rules and provide a dedicated sublanguage for consumers of values. In this paper, we present and analyze a wider design space of programming languages which encompasses four kinds of rules: Introduction and elimination, both left and right. We analyze the influence of rule choice on program structure and argue that having all kinds of rules enriches a programmer’s modularity arsenal. In particular, we identify four ways of adhering to the principle that ”the structure of the program follows the structure of the data“ and show that they correspond to the four possible choices of rules. We also propose the principle of bi-expressibility to guide and validate the design of rules for a connective. Finally, we deepen the well-known dualities between different connectives by means of the proof/refutation duality.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547637",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Klaus",
+        "last_name": "Ostermann",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "David A.",
+        "last_name": "Binder",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Ingo",
+        "last_name": "Skupin",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Tim",
+        "last_name": "Süberkrüb",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Downen",
+        "institution": "University of Massachusetts Lowell"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/OstermannBSSD22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547631",
+    "title": "Later credits: resourceful reasoning for the later modality",
+    "abstract": "In the past two decades, step-indexed logical relations and separation logics have both come to play a major role in semantics and verification research. More recently, they have been married together in the form of step-indexed separation logics like VST, iCAP, and Iris, which provide powerful tools for (among other things) building semantic models of richly typed languages like Rust. In these logics, propositions are given semantics using a step-indexed model, and step-indexed reasoning is reflected into the logic through the so-called “later” modality. On the one hand, this modality provides an elegant, high-level account of step-indexed reasoning; on the other hand, when used in sufficiently sophisticated ways, it can become a nuisance, turning perfectly natural proof strategies into dead ends. In this work, we introduce later credits , a new technique for escaping later-modality quagmires. By leveraging the second ancestor of these logics—separation logic—later credits turn “the right to eliminate a later” into an ownable resource, which is subject to all the traditional modular reasoning principles of separation logic. We develop the theory of later credits in the context of Iris, and present several challenging examples of proofs and proof patterns which were previously not possible in Iris but are now possible due to later credits.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547631",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Spies",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Lennard",
+        "last_name": "Gäher",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Tassarotti",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Ralf",
+        "last_name": "Jung",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Robbert",
+        "last_name": "Krebbers",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Derek",
+        "last_name": "Dreyer",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SpiesGTJKBD22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547626",
+    "title": "Linearly qualified types: generic inference for capabilities and uniqueness",
+    "abstract": "A linear parameter must be consumed exactly once in the body of its function. When declaring resources such as file handles and manually managed memory as linear arguments, a linear type system can verify that these resources are used safely. However, writing code with explicit linear arguments requires bureaucracy. This paper presents linear constraints, a front-end feature for linear typing that decreases the bureaucracy of working with linear types. Linear constraints are implicit linear arguments that are filled in automatically by the compiler. We present linear constraints as a qualified type system,together with an inference algorithm which extends GHC's existing constraint solver algorithm. Soundness of linear constraints is ensured by the fact that they desugar into Linear Haskell.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547626",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Arnaud",
+        "last_name": "Spiwack",
+        "institution": ""
+      },
+      {
+        "first_name": "Csongor",
+        "last_name": "Kiss",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Jean-Philippe",
+        "last_name": "Bernardy",
+        "institution": "University of Gothenburg"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Wu",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SpiwackKBWE22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547649",
+    "title": "Normalization for fitch-style modal calculi",
+    "abstract": "Fitch-style modal lambda calculi enable programming with necessity modalities in a typed lambda calculus by extending the typing context with a delimiting operator that is denoted by a lock. The addition of locks simplifies the formulation of typing rules for calculi that incorporate different modal axioms, but each variant demands different, tedious and seemingly ad hoc syntactic lemmas to prove normalization. In this work, we take a semantic approach to normalization, called normalization by evaluation (NbE), by leveraging the possible-world semantics of Fitch-style calculi to yield a more modular approach to normalization. We show that NbE models can be constructed for calculi that incorporate the K, T and 4 axioms of modal logic, as suitable instantiations of the possible-world semantics. In addition to existing results that handle 𝛽-equivalence, our normalization result also considers 𝜂-equivalence for these calculi. Our key results have been mechanized in the proof assistant Agda. Finally, we showcase several consequences of normalization for proving meta-theoretic properties of Fitch-style calculi as well as programming-language applications based on different interpretations of the necessity modality.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547649",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nachiappan",
+        "last_name": "Valliappan",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Fabian",
+        "last_name": "Ruch",
+        "institution": "N&N Pharmaceuticals (United States)"
+      },
+      {
+        "first_name": "Carlos Tomé",
+        "last_name": "Cortiñas",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ValliappanRC22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547640",
+    "title": "&apos;do&apos; unchained: embracing local imperativity in a purely functional language (functional pearl)",
+    "abstract": "Purely functional programming languages pride themselves with reifying effects that are implicit in imperative languages into reusable and composable abstractions such as monads. This reification allows for more exact control over effects as well as the introduction of new or derived effects. However, despite libraries of more and more powerful abstractions over effectful operations being developed, syntactically the common 'do' notation still lags behind equivalent imperative code it is supposed to mimic regarding verbosity and code duplication. In this paper, we explore extending 'do' notation with other imperative language features that can be added to simplify monadic code: local mutation, early return, and iteration. We present formal translation rules that compile these features back down to purely functional code, show that the generated code can still be reasoned over using an implementation of the translation in the Lean 4 theorem prover, and formally prove the correctness of the translation rules relative to a simple static and dynamic semantics in Lean.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547640",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Ullrich",
+        "institution": ""
+      },
+      {
+        "first_name": "Leonardo de",
+        "last_name": "Moura",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/UllrichM22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547643",
+    "title": "Safe couplings: coupled refinement types",
+    "abstract": "We enhance refinement types with mechanisms to reason about relational properties of probabilistic computations. Our mechanisms, which are inspired from probabilistic couplings, are applicable to a rich set of probabilistic properties, including expected sensitivity, which ensures that the distance between outputs of two probabilistic computations can be controlled from the distance between their inputs. We implement our mechanisms in the type system of Liquid Haskell and we use them to formally verify Haskell implementations of two classic machine learning algorithms: Temporal Difference (TD) reinforcement learning and stochastic gradient descent (SGD). We formalize a fragment of our system for discrete distributions and we prove soundness with respect to a set-theoretical semantics.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547643",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Elizaveta",
+        "last_name": "Vasilenko",
+        "institution": "National Research University Higher School of Economics"
+      },
+      {
+        "first_name": "Niki",
+        "last_name": "Vazou",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Gilles",
+        "last_name": "Barthe",
+        "institution": "IMDEA Software Institute"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/VasilenkoVB22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547646",
+    "title": "Entanglement detection with near-zero cost",
+    "abstract": "Recent research on parallel functional programming has culminated in a provably efficient (in work and space) parallel memory manager, which has been incorporated into the MPL (MaPLe) compiler for Parallel ML and shown to deliver practical efficiency and scalability. The memory manager exploits a property of parallel programs called disentanglement, which restricts computations from accessing concurrently allocated objects. Disentanglement is closely related to race-freedom, but subtly differs from it. Unlike race-freedom, however, no known techniques exists for ensuring disentanglement, leaving the task entirely to the programmer. This is a challenging task, because it requires reasoning about low-level memory operations (e.g., allocations and accesses), which is especially difficult in functional languages. In this paper, we present techniques for detecting entanglement dynamically, while the program is running. We first present a dynamic semantics for a functional language with references that checks for entanglement by consulting parallel and sequential dependency relations in the program. Notably, the semantics requires checks for mutable objects only. We prove the soundness of the dynamic semantics and present several techniques for realizing it efficiently, in particular by pruning away a large number of entanglement checks. We also provide bounds on the work and space of our techniques. We show that the entanglement detection techniques are practical by implementing them in the MPL compiler for Parallel ML. Considering a variety of benchmarks, we present an evaluation and measure time and space overheads of less than 5% on average with up to 72 cores. These results show that entanglement detection has negligible cost and can therefore remain deployed with little or no impact on efficiency, scalability, and space.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547646",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sam",
+        "last_name": "Westrick",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Jatin",
+        "last_name": "Arora",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WestrickAA22",
+    "venue": "icfp",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3547630",
+    "title": "Formal reasoning about layered monadic interpreters",
+    "abstract": "Monadic computations built by interpreting, or handling , operations of a free monad are a compelling formalism for modeling language semantics and defining the behaviors of effectful systems. The resulting layered semantics offer the promise of modular reasoning principles based on the equational theory of the underlying monads. However, there are a number of obstacles to using such layered interpreters in practice. With more layers comes more boilerplate and glue code needed to define the monads and interpreters involved. That overhead is compounded by the need to define and justify the relational reasoning principles that characterize the equivalences at each layer. This paper addresses these problems by significantly extending the capabilities of the Coq interaction trees (ITrees) library, which supports layered monadic interpreters. We characterize a rich class of interpretable monads ---obtained by applying monad transformers to ITrees---and show how to generically lift interpreters through them. We also introduce a corresponding framework for relational reasoning about \"equivalence of monads up to a relation R\". This collection of typeclasses, instances, new reasoning principles, and tactics greatly generalizes the existing theory of the ITree library, eliminating large amounts of unwieldy boilerplate code and dramatically simplifying proofs.",
+    "date": "2022-08-29",
+    "link": "https://doi.org/10.1145/3547630",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Irene",
+        "last_name": "Yoon",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Yannick",
+        "last_name": "Zakowski",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/YoonZZ22",
+    "venue": "icfp",
+    "year": 2022
+  }
+]

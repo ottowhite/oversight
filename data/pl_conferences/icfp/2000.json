@@ -1,0 +1,628 @@
+[
+  {
+    "paper_id": "10.1145/351240.351266",
+    "title": "QuickCheck: a lightweight tool for random testing of Haskell programs",
+    "abstract": "Quick Check is a tool which aids the Haskell programmer in formulating and testing properties of programs. Properties are described as Haskell functions, and can be automatically tested on random input, but it is also possible to define custom test data generators. We present a number of case studies, in which the tool was successfully used, and also point out some pitfalls to avoid. Random testing is especially suitable for functional programs because properties can be stated at a fine grain. When a function is built from separately tested components, then random testing suffices to obtain good coverage of the definition under test.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351266",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Koen",
+        "last_name": "Claessen",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Hughes",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/ClaessenH00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351261",
+    "title": "Recursive subtyping revealed: functional pearl",
+    "abstract": "Algorithms for checking subtyping between recursive types lie at the core of many programming language implementations. But the fundamental theory of these algorithms and how they relate to simpler declarative specifications is not widely understood, due in part to the difficulty of the available introductions to the area. This tutorial paper offers an \"end-to-end\" introduction to recursive types and subtyping algorithms, from basic theory to efficient implementation, set in the unifying mathematical framework of coinduction.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351261",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Vladimir",
+        "last_name": "Gapeyev",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Michael Y.",
+        "last_name": "Levin",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/icfp/GapeyevLP00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351267",
+    "title": "Composing contracts: an adventure in financial engineering, functional pearl",
+    "abstract": "Financial and insurance contracts do not sound like promising territory for functional programming and formal semantics, but in fact we have discovered that insights from programming languages bear directly on the complex subject of describing and valuing a large class of contracts.We introduce a combinator library that allows us to describe such contracts precisely, and a compositional denotational semantics that says what such contracts are worth. We sketch an implementation of our combinator library in Haskell. Interestingly, lazy evaluation plays a crucial role.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351267",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Jean‐Marc",
+        "last_name": "Eber",
+        "institution": ""
+      },
+      {
+        "first_name": "Julian",
+        "last_name": "Seward",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/icfp/JonesES00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351265",
+    "title": "Non-stop Haskell",
+    "abstract": "We describe an efficient technique for incorporating Baker's incremental garbage collection algorithm into the Spineless Tagless G-machine on stock hardware. This algorithm eliminates the stop/go execution associated with bulk copying collection algorithms, allowing the system to place an upper bound on the pauses due to garbage collection. The technique exploits the fact that objects are always accessed by jumping to code rather than being explicitly dereferenced. It works by modifying the entry code-pointer when an object is in the transient state of being evacuated but not scavenged. An attempt to enter it from the mutator causes the object to \"self-scavenge\" transparently before resetting its entry code pointer. We describe an implementation of the scheme in v4.01 of the Glasgow Haskell Compiler and report performance results obtained by executing a range of applications. These experiments show that the read barrier can be implemented in dynamic dispatching systems such as the STG-machine with very short mutator pause times and with negligible overhead on execution time.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351265",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "A. M.",
+        "last_name": "Cheadle",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "A. J.",
+        "last_name": "Field",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "R. L.",
+        "last_name": "While",
+        "institution": "University of Western Australia"
+      }
+    ],
+    "dblp_key": "conf/icfp/CheadleFMJW00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351256",
+    "title": "An operational semantics for parallel lazy evaluation",
+    "abstract": "We present an operational semantics for parallel lazy evaluation that accurately models the parallel behaviour of the non-strict parallel functional language GpH. Parallelism is modelled synchronously, that is, single reductions are carried out separately then combined before proceeding to the next set of reductions. Consequently the semantics has two levels, with transition rules for individual threads at one level and combining rules at the other. Each parallel thread is modelled by a binding labelled with an indication of its activity status. To the best of our knowledge this is the first semantics that models such thread states. A set of labelled bindings corresponds to a heap and is used to model sharing.The semantics is set at a higher level of abstraction than an abstract machine and is therefore more manageable for proofs about programs rather than implementations. At the same time, it is sufficiently low level to allow us to reason about programs in terms of parallelism (i.e. the number of processors used) as well as work and run-time with different numbers of processors.The framework used by the semantics is sufficiently flexible and general that it can easily be adapted to express other evaluation models such as sequential call-by-need, speculative evaluation, non-deterministic choice and others.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351256",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Clem",
+        "last_name": "Baker-Finch",
+        "institution": "University of Canberra"
+      },
+      {
+        "first_name": "David J.",
+        "last_name": "King",
+        "institution": "Motorola (United Kingdom)"
+      },
+      {
+        "first_name": "Phil",
+        "last_name": "Trinder",
+        "institution": "Heriot-Watt University Malaysia"
+      }
+    ],
+    "dblp_key": "conf/icfp/Baker-FinchKT00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351242",
+    "title": "Regular expression types for XML",
+    "abstract": "We propose regular expression types as a foundation for XML processing languages. Regular expression types are a natural generalization of Document Type Definitions (DTDs), describing structures in XML documents using regular expression operators (i.e., *, ?, |, etc.) and supporting a simple but powerful notion of subtyping.The decision problem for the subtype relation is EXPTIME-hard, but it can be checked quite efficiently in many cases of practical interest. The subtyping algorithm developed here is a variant of Aiken and Murphy's set-inclusion constraint solver, to which are added several optimizations and two new properties: (1) our algorithm is provably complete, and (2) it allows a useful \"subtagging\" relation between nodes with different labels in XML trees.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351242",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Haruo",
+        "last_name": "Hosoya",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Jérôme",
+        "last_name": "Vouillon",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/icfp/HosoyaVP00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351262",
+    "title": "The duality of computation",
+    "abstract": "We present the &mu; -calculus, a syntax for &lambda;-calculus + control operators exhibiting symmetries such as program/context and call-by-name/call-by-value. This calculus is derived from implicational Gentzen's sequent calculus LK, a key classical logical system in proof theory. Under the Curry-Howard correspondence between proofs and programs, we can see LK, or more precisely a formulation called LK&mu; , as a syntax-directed system of simple types for &mu; -calculus. For &mu; -calculus, choosing a call-by-name or call-by-value discipline for reduction amounts to choosing one of the two possible symmetric orientations of a critical pair. Our analysis leads us to revisit the question of what is a natural syntax for call-by-value functional computation. We define a translation of &lambda;&mu;-calculus into &mu; -calculus and two dual translations back to &lambda;-calculus, and we recover known CPS translations by composing these translations.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351262",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Pierre-Louis",
+        "last_name": "Curien",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Hugo",
+        "last_name": "Herbelin",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/CurienH00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351258",
+    "title": "Deriving backtracking monad transformers",
+    "abstract": "In a paper about pretty printing J. Hughes introduced two fundamental techniques for deriving programs from their specification, where a specification consists of a signature and properties that the operations of the signature are required to satisfy. Briefly, the first technique, the term implementation, represents the operations by terms and works by defining a mapping from operations to observations --- this mapping can be seen as defining a simple interpreter. The second, the context-passing implementation, represents operations as functions from their calling context to observations. We apply both techniques to derive a backtracking monad transformer that adds backtracking to an arbitrary monad. In addition to the usual backtracking operations --- failure and nondeterministic choice --- the prolog cut and an operation for delimiting the effect of a cut are supported.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351258",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ralf",
+        "last_name": "Hinze",
+        "institution": "University of Bonn"
+      }
+    ],
+    "dblp_key": "conf/icfp/Hinze00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351252",
+    "title": "Advanced module systems: a guide for the perplexed (abstract of invited talk)",
+    "abstract": "The past three decades have seen a plethora of language features for large-scale software composition. Some of these are fairly simple, others quite sophisticated. Each embodies an implicit claim that its particular combination of features is both necessary and sufficient for some problem domain. But there have been few attempts to compare module systems, or to explain the practical and theoretical issues that motivate the choices they embody. This can make it difficult to evaluate which features are really needed for a given setting, and which may be overkill.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351252",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/icfp/HarperP00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351255",
+    "title": "Cheap eagerness: speculative evaluation in a lazy functional language",
+    "abstract": "Cheap eagerness is an optimization where cheap and safe expressions are evaluated before it is known that their values are needed. Many compilers for lazy functional languages implement this optimization, but they are limited by a lack of information about the global flow of control and about which variables are already evaluated. Without this information, even a variable reference is a potentially unsafe expression!In this paper we show that significant speedups are achievable by cheap eagerness. Our cheapness analysis uses the results of a program-wide data and control flow analysis to find out which variables may be unevaluated and which variables may be bound to functions which are dangerous to call.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351255",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Karl‐Filip",
+        "last_name": "Faxén",
+        "institution": "KTH Royal Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/Faxen00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351259",
+    "title": "Intersection types and computational effects",
+    "abstract": "We show that standard formulations of intersection type systems are unsound in the presence of computational effects, and propose a solution similar to the value restriction for polymorphism adopted in the revised definition of Standard ML. It differs in that it is not tied to let-expressions and requires an additional weakening of the usual subtyping rules. We also present a bi-directional type-checking algorithm for the resulting language that does not require an excessive amount of type annotations and illustrate it through some examples. We further show that the type assignment system can be extended to incorporate parametric polymorphism. Taken together, we see our system and associated type-checking algorithm as a significant step towards the introduction of intersection types into realistic programming languages. The added expressive power would allow many more properties of programs to be stated by the programmer and statically verified by a compiler.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351259",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Rowan",
+        "last_name": "Davies",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Pfenning",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/DaviesP00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351253",
+    "title": "Breadth-first numbering: lessons from a small exercise in algorithm design",
+    "abstract": "Every programmer has blind spots. Breadth-first numbering is an interesting toy problem that exposes a blind spot common to many---perhaps most---functional programmers.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351253",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Okasaki",
+        "institution": "Columbia University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Okasaki00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351257",
+    "title": "Recursive monadic bindings",
+    "abstract": "Monads have become a popular tool for dealing with computational effects in Haskell for two significant reasons: equational reasoning is retained even in the presence of effects; and program modularity is enhanced by hiding \"plumbing\" issues inside the monadic infrastructure. Unfortunately, not all the facilities provided by the underlying language are readily available for monadic computations. In particular, while recursive monadic computations can be defined directly using Haskell's built-in recursion capabilities, there is no natural way to express recursion over the values of monadic actions. Using examples, we illustrate why this is a problem, and we propose an extension to Haskell's donotation to remedy the situation. It turns out that the structure of monadic value-recursion depends on the structure of the underlying monad. We propose an axiomatization of the recursion operation and provide a catalogue of definitions that satisfy our criteria.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351257",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Levent",
+        "last_name": "Erkök",
+        "institution": "Oregon Museum of Science and Industry"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": "Oregon Museum of Science and Industry"
+      }
+    ],
+    "dblp_key": "conf/icfp/ErkokL00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351260",
+    "title": "Syntactic accidents in program analysis: on the impact of the CPS transformation",
+    "abstract": "We show that a non-duplicating CPS transformation has no effect on control-flow analysis and that it has a positive effect on binding-time analysis: a monovariant control-flow analysis yields equivalent results on a direct-style program and on its CPS counterpart, and a monovariant binding-time analysis yields more precise results on a CPS program than on its direct-style counterpart. Our proof technique amounts to constructing the continuation-passing style (CPS) counterpart of flow information and of binding times.Our results confirm a folklore theorem about binding-time analysis, namely that CPS has a positive effect on binding times. What may be more surprising is that this benefit holds even if contexts or continuations are not duplicated.The present study is symptomatic of an unsettling property of program analyses: their quality is unpredictably vulnerable to syntactic accidents in source programs, i.e., to the way these programs are written. More reliable program analyses require a better understanding of the effect of syntactic change.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351260",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Damian",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Olivier",
+        "last_name": "Danvy",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/icfp/DamianD00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351247",
+    "title": "Typed compilation of inclusive subtyping",
+    "abstract": "I present a type-preserving translation that eliminates subtyping and bounded quantification without introducing any run-time costs. This translation is based on Mitchell and Pierce's encoding of bounded quantification using intersection types. I show that, previous negative observations notwithstanding, the encoding is adequate given a sufficiently rich target type theory. The necessary target type theory is made easily typecheckable by including a collection of explicit coercion combinators, which are already desired for eliminating subtyping. However, no form of coercion abstraction is necessary (even to support bounded quantification), leading to a simple target language.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351247",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Crary00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351249",
+    "title": "More types for nested data parallel programming",
+    "abstract": "This paper generalises the flattening transformation - a technique for the efficient implementation of nested data parallelism - and reconciles it with main stream functional programming. Nested data parallelism is significantly more expressive and convenient to use than the flat data parallelism typically used in conventional parallel languages like High Performance Fortran and C*. The flattening transformation of Blelloch and Sabot is a key technique for the efficient implementation of nested parallelism via flat parallelism, but originally it was severely restricted, as it did not permit general sum types, recursive types, higher-order functions, and separate compilation. Subsequent work, including some of our own, generalised the transformation and allowed higher-order functions and recursive types. In this paper, we take the final step of generalising flattening to cover the full range of types available in modern languages like Haskell and ML; furthermore, we enable the use of separate compilation. In addition, we present a completely new formulation of the transformation, which is based on the standard lambda calculus notation, and replace a previously ad-hoc transformation step by a systematic generic programming technique. First experiments demonstrate the efficiency of our approach.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351249",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Gabriele",
+        "last_name": "Keller",
+        "institution": "University of Technology Sydney"
+      }
+    ],
+    "dblp_key": "conf/icfp/ChakravartyK00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351245",
+    "title": "Information flow inference for free",
+    "abstract": "This paper shows how to systematically extend an arbitrary type system with dependency information, and how soundness and non-interference proofs for the new system may rely upon, rather than duplicate, the soundness proof of the original system. This allows enriching virtually any of the type systems known today with information flow analysis, while requiring only a minimal proof effort. Our approach is based on an untyped operational semantics for a labelled calculus akin to core ML. Thus, it is simple, and should be applicable to other computing paradigms, such as object or process calculi. The paper also discusses access control, and shows it may be viewed as entirely independent of information flow control. Letting the two mechanisms coexist, without interacting, yields a simple and expressive type system, which allows, in particular, (selective) declassification.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351245",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Sylvain",
+        "last_name": "Conchon",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/PottierC00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351243",
+    "title": "The influence of browsers on evaluators or, continuations to program web servers",
+    "abstract": "While developing the software of a browser-operated educational CD-ROM, we had to face a number of problems. This paper presents these problems and the solutions we found. Amusingly, most of our solutions rely on continuations. Are browsers and multimedia the future of continuations?Through their \"Back\" button or \"Clone window\" menu item, browsers have powerful abilities that force servers to take care of multiply and simultaneously answered questions. A comprehensive tool to apprehend these problems as well as to solve them is to view these abilities as operators acting on the continuations of the computation performed by servers.Thematical trails are provided to walk through the CD-ROM but do not prevent students to wander elsewhere. A trail may contain choices or quizzes so the rest of the trail should adapt to the walked part. We consider the trail as a computation and the position of the student as a continuation within that computation.Moreover this paper advocates a computation-centric view of servers (in opposition to the usual page-centric view) where interactions with users suspend the computation into continuations that may be later resumed. This approach is superior because the continuation reifies, automatically and without errors, the whole state of the computation.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351243",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Queinnec",
+        "institution": "Sorbonne Université"
+      }
+    ],
+    "dblp_key": "conf/icfp/Queinnec00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351254",
+    "title": "Make it practical: a generic linear-time algorithm for solving maximum-weightsum problems",
+    "abstract": "In this paper we propose a new method for deriving a practical linear-time algorithm from the specification of a maximum-weightsum problem: From the elements of a data structure x, find a subset which satisfies a certain property p and whose weightsum is maximum. Previously proposed methods for automatically generating linear-time algorithms are theoretically appealing, but the algorithms generated are hardly useful in practice due to a huge constant factor for space and time. The key points of our approach are to express the property p by a recursive boolean function over the structure x rather than a usual logical predicate and to apply program transformation techniques to reduce the constant factor. We present an optimization theorem, give a calculational strategy for applying the theorem, and demonstrate the effectiveness of our approach through several nontrivial examples which would be difficult to deal with when using the methods previously available.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351254",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Isao",
+        "last_name": "Sasano",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Zhenjiang",
+        "last_name": "Hu",
+        "institution": "Tokyo University of Information Sciences"
+      },
+      {
+        "first_name": "Masato",
+        "last_name": "Takeichi",
+        "institution": "Tokyo University of Information Sciences"
+      },
+      {
+        "first_name": "Mizuhito",
+        "last_name": "Ogawa",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/SasanoHTO00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351251",
+    "title": "Functional programming in C++",
+    "abstract": "This paper describes FC++: a rich library supporting functional programming in C++. Prior approaches to encoding higher order functions in C++ have suffered with respect to polymorphic functions from either lack of expressiveness or high complexity. In contrast, FC++ offers full and concise support for higher-order polymorphic functions through a novel use of C++ type inference.Another new element in FC++ is that it implements a subtype polymorphism policy for functions, in addition to the more common parametric polymorphism facilities. Subtype polymorphism is common in object oriented languages and ensures that functions in FC++ fit well within the C++ object model.Apart from these conceptual differences, FC++ is also an improvement in technical terms over previous efforts in the literature. Our function objects are reference-counted and can be aliased without needing to be copied, resulting in an efficient implementation. The reference-counting mechanism is also exported to the user as a general-purpose replacement of native C++ pointers. Finally, we supply a number of useful functional operators (a large part of the Haskell Standard Prelude) to facilitate programming with FC++. The end result is a library that is usable and efficient, while requiring no extensions to the base C++ language.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351251",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Brian",
+        "last_name": "McNamara",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/McNamaraS00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351264",
+    "title": "Understanding memory allocation of scheme programs",
+    "abstract": "Memory is the performance bottleneck of modern architectures. Keeping memory consumption as low as possible enables fast and unobtrusive applications. But it is not easy to estimate the memory use of programs implemented in functional languages, due to both the complex translations of some high level constructs, and the use of automatic memory managers.To help understand memory allocation behavior of Scheme programs, we have designed two complementary tools. The first one reports on frequency of allocation, heap configurations and on memory reclamation. The second tracks down memory leaks1. We have applied these tools to our Scheme compiler, the largest Scheme program we have been developing. This has allowed us to drastically reduce the amount of memory consumed during its bootstrap process, without requiring much development time.Development tools will be neglected unless they are both conveniently accessible and easy to use. In order to avoid this pitfall, we have carefully designed the user interface of these two tools. Their integration into a real programming environment for Scheme is detailed in the paper.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351264",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Serrano",
+        "institution": "Université Côte d'Azur"
+      },
+      {
+        "first_name": "Hans‐J.",
+        "last_name": "Boehm",
+        "institution": "Hewlett-Packard (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/SerranoB00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351250",
+    "title": "FranTk - a declarative GUI language for Haskell",
+    "abstract": "FranTk is a new high level library for programming Graphical User Interfaces (GUIs) in Haskell. It is based on Fran (Functional Reactive Animation), and uses the notions of Behaviors and Events to structure code. Behaviors are time-varying, reactive values. They can be used to represent the state of an application. Events are streams of values that occur at discrete points in time. They can be used, for instance, to represent user input. FranTk allows user interfaces to be structured in a more declarative manner than has been possible with previous functional GUI libraries. We demonstrate, through a series of examples, how this is achieved, and why it is important. These examples are elements of a prototype, Air Traffic Control simulator. FranTk uses a binding to the popular Tcl/Tk toolkit to provide a powerful set of platform independent set of widgets. It has been released as a Haskell library that runs under Hugs and GHC.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351250",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Meurig",
+        "last_name": "Sage",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/icfp/Sage00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351244",
+    "title": "Static enforcement of security with types",
+    "abstract": "A number of security systems for programming languages have recently appeared, including systems for enforcing some form of access control. The Java JDK 1.2 security architecture is one such system that is widely studied and used. While the architecture has many appealing features, access control checks are all implemented via dynamic method calls. This is a highly non-declarative form of specification which is hard to read, and which leads to additional run-time overhead. In this paper, we present a novel security type system that enforces the same security guarantees as Java Stack Inspection, but via a static type system with no additional run-time checks. The system allows security properties of programs to be clearly expressed within the types themselves. We also define and prove correct an inference algorithm for security types, meaning that the system has the potential to be layered on top of the existing Java architecture, without requiring new syntax.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351244",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Skalka",
+        "institution": "Johns Hopkins University"
+      },
+      {
+        "first_name": "Scott F.",
+        "last_name": "Smith",
+        "institution": "Johns Hopkins University"
+      }
+    ],
+    "dblp_key": "conf/icfp/SkalkaS00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351241",
+    "title": "The functional guts of the Kleisli query system",
+    "abstract": "Kleisli is a modern data integration system that has made a significant impact on bioinformatics data integration. The primary query language provided by Kleisli is called CPL, which is a functional query language whose surface syntax is based on the comprehension syntax. Kleisli is itself implemented using the functional language SML. This paper describes the influence of functional programming research that benefits the Kleisli system, especially the less obvious ones at the implementation level.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351241",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Limsoon",
+        "last_name": "Wong",
+        "institution": "Advanced Digital Sciences Center"
+      }
+    ],
+    "dblp_key": "conf/icfp/Wong00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351246",
+    "title": "Type-safe cast: functional pearl",
+    "abstract": "In a language with non-parametric or ad-hoc polymorphism, it is possible to determine the identity of a type variable at run-time. With this facility, we can write a function to convert a term from one abstract type to another, if the two hidden types are identical. However, the naive implementation of this function requires that the term be destructed and rebuilt. In this paper, we show how to eliminate this overhead using higher-order type abstraction. We demonstrate this solution in two frameworks for ad-hoc polymorphism: intensional type analysis and type classes.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351246",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Weirich00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351263",
+    "title": "Combining functional programming and hardware verification (abstract of invited talk)",
+    "abstract": "No abstract available.",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351263",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Carl",
+        "last_name": "Seger",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Seger00",
+    "venue": "icfp",
+    "year": 2000
+  },
+  {
+    "paper_id": "10.1145/351240.351248",
+    "title": "Fully reflexive intensional type analysis",
+    "abstract": "Compilers for polymorphic languages can use runtime type inspection to support advanced implementation techniques such as tagless garbage collection, polymorphic marshalling, and flattened data structures. Intensional type analysis is a type-theoretic framework for expressing and certifying such type-analyzing computations. Unfortunately, existing approaches to intensional analysis do not work well on types with universal, existential, or fixpoint quantifiers. This makes it impossible to code applications such as garbage collection, persistence, or marshalling which must be able to examine the type of any runtime value. We present a typed intermediate language that supports fully reflexive intensional type analysis. By fully reflexive, we mean that type-analyzing operations are applicable to the type of any runtime value in the language. In particular, we provide both type-level and term-level constructs for analyzing quantified types. Our system supports structural induction on quant...",
+    "date": "2000-09-01",
+    "link": "https://doi.org/10.1145/351240.351248",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Valery",
+        "last_name": "Trifonov",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Bratin",
+        "last_name": "Saha",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/TrifonovSS00",
+    "venue": "icfp",
+    "year": 2000
+  }
+]

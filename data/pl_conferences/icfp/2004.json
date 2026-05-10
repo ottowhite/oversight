@@ -1,0 +1,508 @@
+[
+  {
+    "paper_id": "10.1145/1016850.1016858",
+    "title": "Searching for deadlocks while debugging concurrent haskell programs",
+    "abstract": "This paper presents an approach to searching for deadlocks in Concurrent Haskell programs. The search is based on a redefinition of the IO monad which allows the reversal of Concurrent Haskells concurrency primitives. Hence, it is possible to implement this search by a backtracking algorithm checking all possible schedules of the system. It is integrated in the Concurrent Haskell Debugger (CHD), and automatically searches for deadlocks in the background while debugging. The tool is easy to use and the small modifications of the source program are done by a preprocessor. In the tool we use iterative deepening as search strategy which quickly detects deadlocks close to the actual system configuration and utilizes idle time during debugging at the best.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016858",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jan",
+        "last_name": "Christiansen",
+        "institution": "Kiel University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Huch",
+        "institution": "Kiel University"
+      }
+    ],
+    "dblp_key": "conf/icfp/ChristiansenH04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016874",
+    "title": "From process logic to program logic",
+    "abstract": "We present a process logic for the p -calculus with the linear/affine type discipline [6, 7, 31, 32, 33, 59, 60]. Built on the preceding studies on logics for programs and processes, simple systems of assertions are developed, capturing the classes of behaviours ranging from purely functional interactions to those with destructive update, local state and genericity. A central feature of the logic is representation of the behaviour of an environment as the dual of that of a process in an assertion, which is crucial for obtaining compositional proof systems. From the process logic we can derive compositional program logics for various higher-order programming languages, whose soundness is proved via their embeddings into the process logic. In this paper, the key technical framework of the process logic and its applications is presented focussing on pure functional behaviour and a prototypical call-by-value functional language, leaving the full technical development to [27, 26].",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016874",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kohei",
+        "last_name": "Honda",
+        "institution": "Queen Mary University of London"
+      }
+    ],
+    "dblp_key": "conf/icfp/Honda04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016883",
+    "title": "Scrap more boilerplate: reflection, zips, and generalised casts",
+    "abstract": "Writing boilerplate code is a royal pain. Generic programming promises to alleviate this pain by allowing the programmer to write a generic \"recipe\" for boilerplate code, and use that recipe in many places. In earlier work we introduced the \"Scrap your boilerplate\" approach to generic programming, which exploits Haskell's existing type-class mechanism to support generic transformations and queries.This paper completes the picture. We add a few extra \"introspective\" or \"reflective\" facilities, that together support a rich variety of serialisation and de-serialisation. We also show how to perform generic \"zips\", which at first appear to be somewhat tricky in our framework. Lastly, we generalise the ability to over-ride a generic function with a type-specific one.All of this can be supported in Haskell with independently-useful extensions: higher-rank types and type-safe cast. The GHC implementation of Haskell readily derives the required type classes for user-defined data types.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016883",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ralf",
+        "last_name": "Lämmel",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/icfp/LammelJ04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016872",
+    "title": "Numbering matters: first-order canonical forms for second-order recursive types",
+    "abstract": "We study a type system equipped with universal types and equire-cursive types, which we refer to as F͘. We show that type equality may be decided in time O(nlog n), an improvement over the previous known bound of O(n2 ). In fact, we show that two more general problems, namely entailment of type equations and type unification, may be decided in time O(nlog n), a new result. To achieve this bound, we associate, with every F͘ type, a first-order canonical form, which may be computed in time O(nlogn). By exploiting this notion, we reduce all three problems to equality and unification of first-order recursive terms, for which efficient algorithms are known.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016872",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nadji",
+        "last_name": "Gauthier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/GauthierP04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016876",
+    "title": "A sound (and complete) model of contracts",
+    "abstract": "Even in statically typed languages it is useful to have certain invariants checked dynamically. Findler and Felleisen gave an algorithm for dynamically checking expressive higher-order types called contracts. If we postulate soundness (in the sense that whenever a term is accused of violating its contract it really does fail to satisfy it), then their algorithm implies a semantics for contracts. Unfortunately, the implicit nature of the resulting model makes it rather unwieldy.In this paper we demonstrate that a direct approach yields essentially the same semantics without having to refer to contract-checking in its definition. The so-defined model largely coincides with intuition, but it does expose some peculiarities in its interpretation of predicate contracts where a notion of safety (which we define in the paper) \"leaks\" into the semantics of Findler and Felleisen's original unrestricted predicate contracts.This counter-intuitive aspect of the semantics can be avoided by changing the language, replacing unrestricted predicate contracts with a restricted version. The corresponding loss in expressive power can be recovered by also providing a way of explicitly expressing safety as a contract-either in ad-hoc fashion or, e.g., by including general recursive contracts.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016876",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "M.",
+        "last_name": "Blume",
+        "institution": "Toyota Technological Institute at Chicago"
+      },
+      {
+        "first_name": "David",
+        "last_name": "McAllester",
+        "institution": "Toyota Technological Institute at Chicago"
+      }
+    ],
+    "dblp_key": "conf/icfp/BlumeM04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016853",
+    "title": "Don&apos;t make the wrong mistakes: programming as debugging",
+    "abstract": "Sometimes it's worth doing things badly in order to do them fast. When is this the right plan? Are some kinds of mistakes worse than others? Could the right infrastructure make trial and error programming more effective? How will it play out in the future?",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016853",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Graham",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/Graham04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016869",
+    "title": "Types for path correctness of XML queries",
+    "abstract": "If a subexpression in a query will never contribute data to the query answer, this should be regarded as an error. This principle has been recently accepted into mainstream XML query languages, but was still waiting for a complete treatment. We provide here a precise definition for this class of errors, and define a type system that is sound and complete, in its search for such errors, for a core language, under mild restrictions on the use of recursion in type definitions. In the process, we describe a dichotomy among existential and universal type systems, which is useful to understand some unusual features of our type system.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016869",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dario",
+        "last_name": "Colazzo",
+        "institution": "University of Pisa"
+      },
+      {
+        "first_name": "Giorgio",
+        "last_name": "Ghelli",
+        "institution": "University of Pisa"
+      },
+      {
+        "first_name": "Paolo",
+        "last_name": "Manghi",
+        "institution": "University of Pisa"
+      },
+      {
+        "first_name": "Carlo",
+        "last_name": "Sartiani",
+        "institution": "University of Pisa"
+      }
+    ],
+    "dblp_key": "conf/icfp/ColazzoGMS04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016852",
+    "title": "Galois: high assurance software",
+    "abstract": "As a company, Galois began its life with the mission simply of supplying functional programming services, building tools and products for clients, leveraging the productivity of functional languages and the abilities of our engineers. This went well, except that our business lacked focus. Every new job had to be found and sold from scratch. We realized that we had to focus on a specific market if we wanted to achieve stability and growth. We chose High Assurance Software as it was a natural fit both for our technology and our expertise, further narrowing our attention to information assurance (IA).",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016852",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": "Galois (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Launchbury04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016863",
+    "title": "Regular expression patterns",
+    "abstract": "We extend Haskell with regular expression patterns. Regular expression patterns provide means for matching and extracting data which goes well beyond ordinary pattern matching as found in Haskell. It has proven useful for string manipulation and for processing structured data such as XML. Regular expression patterns can be used with arbitrary lists, and work seamlessly together with ordinary pattern matching in Haskell. Our extension is lightweight, it is little more than syntactic sugar. We present a semantics and a type system, and show how to implement it as a preprocessor to Haskell.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016863",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Niklas",
+        "last_name": "Broberg",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Farre",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Josef",
+        "last_name": "Svenningsson",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/BrobergFS04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016882",
+    "title": "Generics for the masses",
+    "abstract": "A generic function is a function that can be instantiated on many data types to obtain data type specific functionality. Examples of generic functions are the functions that can be derived in Haskell, such as show, read, and '=='. The recent years have seen a number of proposals that support the definition of generic functions. Some of the proposals define new languages, some define extensions to existing languages. As a common characteristic none of the proposals can be made to work within Haskell 98: they all require something extra, either a more sophisticated type system or an additional language construct. The purpose of this pearl is to show that one can, in fact, program generically within Haskell 98 obviating to some extent the need for fancy type systems or separate tools. Haskell's type classes are at the heart of this approach: they ensure that generic functions can be defined succinctly and, in particular, that they can be used painlessly.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016882",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ralf",
+        "last_name": "Hinze",
+        "institution": "University of Bonn"
+      }
+    ],
+    "dblp_key": "conf/icfp/Hinze04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016879",
+    "title": "Functional morphology",
+    "abstract": "This paper presents a methodology for implementing natural language morphology in the functional language Haskell. The main idea behind is simple: instead of working with untyped regular expressions, which is the state of the art of morphology in computational linguistics, we use finite functions over hereditarily finite algebraic datatypes. The definitions of these datatypes and functions are the language-dependent part of the morphology. The language-independent part consists of an untyped dictionary format which is used for synthesis of word forms, and a decorated trie, which is used for analysis.Functional Morphology builds on ideas introduced by Huet in his computational linguistics toolkit Zen, which he has used to implement the morphology of Sanskrit. The goal has been to make it easy for linguists, who are not trained as functional programmers, to apply the ideas to new languages. As a proof of the productivity of the method, morphologies for Swedish, Italian, Russian, Spanish, and Latin have already been implemented using the library. The Latin morphology is used as a running example in this article.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016879",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Markus",
+        "last_name": "Forsberg",
+        "institution": "University of Gothenburg"
+      },
+      {
+        "first_name": "Aarne",
+        "last_name": "Ranta",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/ForsbergR04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016867",
+    "title": "Monadic regions",
+    "abstract": "Region-based type systems provide programmer control over memory management without sacrificing type-safety. However, the type systems for region-based languages, such as the ML-Kit or Cyclone, are relatively complicated, so proving their soundness is non-trivial. This paper shows that the complication is in principle unnecessary. In particular, we show that plain old parametric polymorphism, as found in Haskell, is all that is needed. We substantiate this claim by giving a type- and meaning-preserving translation from a region-based language based on core Cyclone to a monadic variant of System F with region primitives whose types and operations are inspired by (and generalize) the ST monad.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016867",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Fluet",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/icfp/FluetM04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016860",
+    "title": "A type-theoretic foundation of continuations and prompts",
+    "abstract": "There is a correspondence between classical logic and programming language calculi with first-class continuations. With the addition of control delimiters (prompts), the continuations become composable and the calculi are believed to become more expressive. We formalise that the addition of prompts corresponds to the addition of a single dynamically-scoped variable modelling the special top-level continuation. From a type perspective, the dynamically-scoped variable requires effect annotations. From a logic perspective, the effect annotations can be understood in a standard logic extended with the dual of implication, namely subtraction.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016860",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zena M.",
+        "last_name": "Ariola",
+        "institution": ""
+      },
+      {
+        "first_name": "Hugo",
+        "last_name": "Herbelin",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/icfp/AriolaHS04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016871",
+    "title": "Types, potency, and idempotency: why nonlinearity and amnesia make a type system work",
+    "abstract": "Useful type inference must be faster than normalization. Otherwise, you could check safety conditions by running the program. We analyze the relationship between bounds on normalization and type inference. We show how the success of type inference is fundamentally related to the amnesia of the type system: the nonlinearity by which all instances of a variable are constrained to have the same type.Recent work on intersection types has advocated their usefulness for static analysis and modular compilation. We analyze System-I (and some instances of its descendant, System E), an intersection type system with a type inference algorithm. Because System-I lacks idempotency, each occurrence of a variable requires a distinct type. Consequently, type inference is equivalent to normalization in every single case, and time bounds on type inference and normalization are identical. Similar relationships hold for other intersection type systems without idempotency.The analysis is founded on an investigation of the relationship between linear logic and intersection types. We show a lockstep correspondence between normalization and type inference. The latter shows the promise of intersection types to facilitate static analyses of varied granularity, but also belies an immense challenge: to add amnesia to such analysis without losing all of its benefits.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016871",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Peter Møller",
+        "last_name": "Neergaard",
+        "institution": "Brandeis University"
+      },
+      {
+        "first_name": "Harry G.",
+        "last_name": "Mairson",
+        "institution": "Brandeis University"
+      }
+    ],
+    "dblp_key": "conf/icfp/NeergaardM04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016851",
+    "title": "The C - compiler infrastructure",
+    "abstract": "No abstract available.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016851",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/icfp/RamseyJ04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016864",
+    "title": "Multi-return function call",
+    "abstract": "It is possible to extend the basic notion of \"function call\" to allow functions to have multiple return points. This turns out to be a surprisingly useful mechanism. This paper conducts a fairly wide-ranging tour of such a feature: a formal semantics for a minimal λ -calculus capturing the mechanism; a motivating example; a static type system; useful transformations; implementation concerns and experience with an implementation; and comparison to related mechanisms, such as exceptions, sum-types and explicit continuations. We conclude that multiple-return function call is not only a useful and expressive mechanism, both at the source-code and intermediate-representation level, but is also quite inexpensive to implement.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016864",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Fisher",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/ShiversF04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016854",
+    "title": "20 years of industrial functional programming",
+    "abstract": "It is now 20 years since the Ericsson Computer Science Laboratory (CSLab) was formed, and 20 years since CSLab started performing the programming language experiments that eventually led to the development of the Erlang programming language. For 15 years, Ericsson has conducted experiments with Erlang in an industrial setting, and for 12 years, actual commercial products have been developed.This talk summarizes some of the lessons learned from this work. It is well known that it is difficult to introduce a new programming technology. Even so, engineers often fail to realize that the reasons for resisting change are more often social/political than technical, even though the objections may seem technical in nature. This talk will highlight a few of the common objections to Erlang, and measure them against practical experience. In addition, it will suggest some topics for research that could result in significant cost savings in the near future, as well as inspire closer cooperation between industry and academia.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016854",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ulf",
+        "last_name": "Wiger",
+        "institution": "Ericsson (Sweden)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Wiger04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016878",
+    "title": "A nanopass infrastructure for compiler education",
+    "abstract": "Compilers structured as a small number of monolithic passes are difficult to understand and difficult to maintain. Adding new optimizations often requires major restructuring of existing passes that cannot be understood in isolation. The steep learning curve is daunting, and even experienced developers find it hard to modify existing passes without introducing subtle and tenacious bugs. These problems are especially frustrating when the developer is a student in a compiler class.An attractive alternative is to structure a compiler as a collection of many small passes, each of which performs a single task. This \"micropass\" structure aligns the actual implementation of a compiler with its logical organization, simplifying development, testing, and debugging. Unfortunately, writing many small passes duplicates code for traversing and rewriting abstract syntax trees and can obscure the meaningful transformations performed by individual passes.To address these problems, we have developed a methodology and associated tools that simplify the task of building compilers composed of many fine-grained passes. We describe these compilers as \"nanopass\" compilers to indicate both the intended granularity of the passes and the amount of source code required to implement each pass. This paper describes the methodology and tools comprising the nanopass framework.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016878",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dipanwita",
+        "last_name": "Sarkar",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Oscar",
+        "last_name": "Waddell",
+        "institution": ""
+      },
+      {
+        "first_name": "R. Kent",
+        "last_name": "Dybvig",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "conf/icfp/SarkarWD04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016868",
+    "title": "Translating dependency into parametricity",
+    "abstract": "Abadi et al. introduced the dependency core calculus (DCC) as a unifying framework to study many important program analyses such as binding time, information flow, slicing, and function call tracking. DCC uses a lattice of monads and a nonstandard typing rule for their associated bind operations to describe the dependency of computations in a program. Abadi et al. proved a noninterference theorem that establishes the correctness of DCC's type system and thus the correctness of the type systems for the analyses above.In this paper, we study the relationship between DCC and the Girard-Reynolds polymorphic lambda calculus (System F). We encode the recursion-free fragment of DCC into F via a type-directed translation. Our main theoretical result is that, following from the correctness of the translation, the parametricity theorem for F implies the noninterference theorem for DCC. In addition, the translation provides insights into DCC's type system and suggests implementation strategies of dependency calculi in polymorphic languages.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016868",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Stephen",
+        "last_name": "Tse",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/icfp/TseZ04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016861",
+    "title": "Relating models of backtracking",
+    "abstract": "Past attempts to relate two well-known models of backtracking computation have met with only limited success. We relate these two models using logical relations. We accommodate higher-order values and infinite computations. We also provide an operational semantics, and we prove it adequate for both models.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016861",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Dale",
+        "last_name": "Vaillancourt",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/icfp/WandV04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016875",
+    "title": "Verification of safety properties for concurrent assembly code",
+    "abstract": "Concurrency, as a useful feature of many modern programming languages and systems, is generally hard to reason about. Although existing work has explored the verification of concurrent programs using high-level languages and calculi, the verification of concurrent assembly code remains an open problem, largely due to the lack of abstraction at a low-level. Nevertheless, it is sometimes necessary to reason about assembly code or machine executables so as to achieve higher assurance.In this paper, we propose a logic-based \"type\" system for the static verification of concurrent assembly programs, applying the \"invariance proof\" technique for verifying general safety properties and the \"assume-guarantee\" paradigm for decomposition. In particular, we introduce a notion of \"local guarantee\" for the thread-modular verification in a non-preemptive setting.Our system is fully mechanized. Its soundness has been verified using the Coq proof assistant. A safety proof of a program is semi-automatically constructed with help of Coq, allowing the verification of even undecidable safety properties. We demonstrate the usage of our system using three examples, addressing mutual exclusion, deadlock freedom, and partial correctness respectively.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016875",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dachuan",
+        "last_name": "Yu",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/YuS04",
+    "venue": "icfp",
+    "year": 2004
+  },
+  {
+    "paper_id": "10.1145/1016850.1016856",
+    "title": "Making a fast curry: push/enter vs. eval/apply for higher-order languages",
+    "abstract": "Higher-order languages that encourage currying are implemented using one of two basic evaluation models: push/enter or eval/apply. Implementors use their intuition and qualitative judgements to choose one model or the other.Our goal in this paper is to provide, for the first time, a more substantial basis for this choice, based on our qualitative and quantitative experience of implementing both models in a state-of-the-art compiler for Haskell.Our conclusion is simple, and contradicts our initial intuition: compiled implementations should use eval/apply.",
+    "date": "2004-09-19",
+    "link": "https://doi.org/10.1145/1016850.1016856",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/icfp/MarlowJ04",
+    "venue": "icfp",
+    "year": 2004
+  }
+]
