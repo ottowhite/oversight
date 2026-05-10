@@ -114,18 +114,38 @@ async function fetchNeighbors(
   return (await resp.json()) as NeighborsResponse;
 }
 
+// Module-level cache for the distribution fetch. Memoizing here (rather
+// than per-component) means React StrictMode double-mounting and Fast
+// Refresh remounts don't re-fire the request. The browser unconditionally
+// logs failed fetches as "Failed to load resource" — there's no JS API
+// to silence that — so the next-best thing is to only ever issue one
+// request per session.
+let distributionCache: Promise<SimilarityDistribution> | null = null;
+
 async function fetchDistribution(): Promise<SimilarityDistribution> {
-  // TODO Phase 1B: remove the try/catch fallback once the
-  // /api/embeddings/similarity_distribution endpoint exists.
-  try {
-    const resp = await fetch(`/api/embeddings/similarity_distribution`);
-    if (resp.ok) {
-      return (await resp.json()) as SimilarityDistribution;
+  if (distributionCache) return distributionCache;
+  // TODO Phase 1B: drop the try/fallback once
+  // /api/embeddings/similarity_distribution exists.
+  distributionCache = (async () => {
+    try {
+      const resp = await fetch(`/api/embeddings/similarity_distribution`);
+      if (resp.ok) return (await resp.json()) as SimilarityDistribution;
+      // Expected today: Phase 1B endpoint not implemented yet. Don't
+      // promote to console.error — the threshold slider degrades
+      // gracefully via FALLBACK_DISTRIBUTION.
+      console.debug(
+        `[graph] /api/embeddings/similarity_distribution returned ` +
+          `${resp.status}; using FALLBACK_DISTRIBUTION until Phase 1B lands`,
+      );
+    } catch (err) {
+      console.debug(
+        `[graph] /api/embeddings/similarity_distribution unreachable ` +
+          `(${err}); using FALLBACK_DISTRIBUTION`,
+      );
     }
-  } catch {
-    /* fall through to the static fallback */
-  }
-  return FALLBACK_DISTRIBUTION;
+    return FALLBACK_DISTRIBUTION;
+  })();
+  return distributionCache;
 }
 
 // ---------------------------------------------------------------------------
