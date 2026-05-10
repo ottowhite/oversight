@@ -1,0 +1,731 @@
+[
+  {
+    "paper_id": "10.1145/231379.231389",
+    "title": "Static Detection of Dynamic Memory Errors",
+    "abstract": "Many important classes of bugs result from invalid assumptions about the results of functions and the values of parameters and global variables. Using traditional methods, these bugs cannot be detected efficiently at compile-time, since detailed cross-procedural analyses would be required to determine the relevant assumptions. In this work, we introduce annotations to make certain assumptions explicit at interface points. An efficient static checking tool that exploits these annotations can detect a broad class of errors including misuses of null pointers, uses of dead storage, memory leaks, and dangerous aliasing. This technique has been used successfully to fix memory management problems in a large program.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231389",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Evans",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Evans96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231435",
+    "title": "Generalized Dominance and Control Dependence",
+    "abstract": "We generalize the notion of dominance by defining a generalized dominance relation with respect to a set of paths in the control flow graph G = (V, E). This new definition leads to a generalized notion of control dependence, which includes standard control dependence and weak control dependence as special cases.If the set of paths underlying a generalized dominance relation satisfies some natural closure conditions, that dominance relation is tree-structured. Given this tree, the corresponding control dependence relation can be computed optimally by reduction to the Roman Chariots Problem, which we have developed previously for computing standard control dependence. More precisely, given linear preprocessing time and space, we can answer the (generalized version of the) so called cd, conds, and cdequiv queries in time proportional to the output of the query.To illustrate the utility of the framework, we show how weak control dependence can be computed optimally in O(|E|) preprocessing space and time. This improves the O(|V|3) time required by the best previous algorithm for this problem.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231435",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Gianfranco",
+        "last_name": "Bilardi",
+        "institution": "University of Illinois Chicago"
+      },
+      {
+        "first_name": "Keshav",
+        "last_name": "Pingali",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BilardiP96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231399",
+    "title": "Practical Program Analysis Using General Purpose Logic Programming Systems - A Case Study",
+    "abstract": "Many analysis problems can be cast in the form of evaluating minimal models of a logic program. Although such formulations are appealing due to their simplicity and declarativeness, they have not been widely used in practice because, either existing logic programming systems do not guarantee completeness, or those that do have been viewed as too inefficient for integration into a compiler. The objective of this paper is to re-examine this issue in the context of recent advances in implementation technologies of logic programming systems.We find that such declarative formulations can indeed be used in practical systems, when combined with the appropriate tool for evaluation. We use existing formulations of analysis problems --- groundness analysis of logic programs, and strictness analysis of functional programs --- in this case study, and the XSB system, a table-based logic programming system, as the evaluation tool of choice. We give experimental evidence that the resultant groundness and strictness analysis systems are practical in terms of both time and space. In terms of implementation effort, the analyzers took less than 2 man-weeks (in total), to develop, optimize and evaluate. The analyzer itself consists of about 100 lines of tabled Prolog code and the entire system, including the components to read and preprocess input programs and to collect the analysis results, consists of about 500 lines of code.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231399",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Steven",
+        "last_name": "Dawson",
+        "institution": "SRI International"
+      },
+      {
+        "first_name": "C. R.",
+        "last_name": "Ramakrishnan",
+        "institution": "Stony Brook University"
+      },
+      {
+        "first_name": "David S.",
+        "last_name": "Warren",
+        "institution": "Stony Brook University"
+      }
+    ],
+    "dblp_key": "conf/pldi/DawsonRW96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231388",
+    "title": "Source-Level Debugging of Scalar Optimized Code",
+    "abstract": "Although compiler optimizations play a crucial role in the performance of modern computer systems, debugger technology has lagged behind in its support of optimization. Yet debugging the unoptimized translation is often impossible or futile, so handling of code optimizations in the debugger is necessary. But compiler optimizations make it difficult to provide source-level debugger functionality: Global optimizations can cause the runtime value of a variable to be inconsistent with the source-level value expected at a breakpoint; such variables are called endangered variables. A debugger must detect and warn the user of endangered variables otherwise the user may draw incorrect conclusions about the program. This paper presents a new algorithm for detecting variables that are endangered due to global scalar optimization. Our approach provides more precise classifications of variables and is still simpler than past approaches. We have implemented and evaluated our techniques in the context of the cmcc optimizing C compiler. We describe the compiler extensions necessary to perform the required bookkeeping of compiler optimization. We present measurements of the effect of optimizations on a debugger's ability to present the expected values of variables to the user.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231388",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ali-Reza",
+        "last_name": "Adl-Tabatabai",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Thomas R.",
+        "last_name": "Gross",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Adl-TabatabaiG96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231391",
+    "title": "Global Communication Analysis and Optimization",
+    "abstract": "Reducing communication cost is crucial to achieving good performance on scalable parallel machines. This paper presents a new compiler algorithm for global analysis and optimization of communication in data-parallel programs. Our algorithm is distinct from existing approaches in that rather than handling loop-nests and array references one by one, it considers all communication in a procedure and their interactions under different placements before making a final decision on the placement of any communication. It exploits the flexibility resulting from this advanced analysis to eliminate redundancy, reduce the number of messages, and reduce contention for cache and communication buffers, all in a unified framework. In contrast, single loop-nest analysis often retains redundant communication, and more aggressive dataflow analysis on array sections can generate too many messages or cache and buffer contention. The algorithm has been implemented in the IBM pHPF compiler for High Performance Fortran. During compilation, the number of messages per processor goes down by as much as a factor of nine for some HPF programs. We present performance results for the IBM SP2 and a network of Sparc workstations (NOW) connected by a Myrinet switch. In many cases, the communication cost is reduced by a factor of two.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231391",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Soumen",
+        "last_name": "Chakrabarti",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Manish",
+        "last_name": "Gupta",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Jong-Deok",
+        "last_name": "Choi",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChakrabartiGC96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231419",
+    "title": "Realistic Compilation by Partial Evaluation",
+    "abstract": "Two key steps in the compilation of strict functional languages are the conversion of higher-order functions to data structures (closures) and the transformation to tail-recursive style. We show how to perform both steps at once by applying first-order offline partial evaluation to a suitable interpreter. The resulting code is easy to transliterate to low-level C or native code. We have implemented the compilation to C; it yields a performance comparable to that of other modern Scheme-to-C compilers. In addition, we have integrated various optimizations such as constant propagation, higher-order removal, and arity raising simply by modifying the underlying interpreter. Purely first-order methods suffice to achieve the transformations. Our approach is an instance of semantics-directed compiler generation.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231419",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Sperber",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "conf/pldi/SperberT96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231397",
+    "title": "Printing Floating-Point Numbers Quickly and Accurately",
+    "abstract": "This paper presents a fast and accurate algorithm for printing floating-point numbers in both free- and fixed-format modes. In free-format mode, the algorithm generates the shortest, correctly rounded output string that converts to the same number when read back in, accommodating whatever rounding mode the reader uses. In fixed-format mode, the algorithm generates a correctly rounded output string using special # marks to denote insignificant trailing digits. For both modes, the algorithm employs a fast estimator to scale floating-point numbers efficiently.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231397",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Robert G.",
+        "last_name": "Burger",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "R. Kent",
+        "last_name": "Dybvig",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/pldi/BurgerD96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231390",
+    "title": "Commutativity Analysis: A New Analysis Framework for Parallelizing Compilers",
+    "abstract": "This paper presents a new analysis technique, commutativity analysis, for automatically parallelizing computations that manipulate dynamic, pointer-based data structures. Commutativity analysis views the computation as composed of operations on objects. It then analyzes the program at this granularity to discover when operations commute (i.e. generate the same final result regardless of the order in which they execute). If all of the operations required to perform a given computation commute, the compiler can automatically generate parallel code.We have implemented a prototype compilation system that uses commutativity analysis as its primary analysis framework. We have used this system to automatically parallelize two complete scientific computations: the Barnes-Hut N-body solver and the Water code. This paper presents performance results for the generated parallel code running on the Stanford DASH machine. These results provide encouraging evidence that commutativity analysis can serve as the basis for a successful parallelizing compiler.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231390",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "University of California, Santa Barbara"
+      },
+      {
+        "first_name": "Pedro C.",
+        "last_name": "Diniz",
+        "institution": "University of California, Santa Barbara"
+      }
+    ],
+    "dblp_key": "conf/pldi/RinardD96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231428",
+    "title": "Data Specialization",
+    "abstract": "Given a repeated computation, part of whose input context remains invariant across all repetitions, program staging improves performance by separating the computation into two phases. An early phase executes only once, performing computations depending only on invariant inputs, while a late phase repeatedly performs the remainder of the work given the varying inputs and the results of the early computations.Common staging techniques based on dynamic compilation statically construct an early phase that dynamically generates object code customized for a particular input context. In effect, the results of the invariant computations are encoded as the compiled code for the late phase.This paper describes an alternative approach in which the results of early computations are encoded as a data structure, allowing both the early and late phases to be generated statically. By avoiding dynamic code manipulation, we give up some optimization opportunities in exchange for significantly lower dynamic space/time overhead and reduced implementation complexity.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231428",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Todd B.",
+        "last_name": "Knoblock",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Erik",
+        "last_name": "Ruf",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/KnoblockR96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231385",
+    "title": "Software Pipelining Showdown: Optimal vs. Heuristic Methods in a Production Compiler",
+    "abstract": "This paper is a scientific comparison of two code generation techniques with identical goals --- generation of the best possible software pipelined code for computers with instruction level parallelism. Both are variants of modulo scheduling, a framework for generation of software pipelines pioneered by Rau and Glaser [RaG181], but are otherwise quite dissimilar.One technique was developed at Silicon Graphics and is used in the MIPSpro compiler. This is the production compiler for SGI's systems which are based on the MIPS R8000 processor [Hsu94]. It is essentially a branch--and--bound enumeration of possible schedules with extensive pruning. This method is heuristic because of the way it prunes and also because of the interaction between register allocation and scheduling.The second technique aims to produce optimal results by formulating the scheduling and register allocation problem as an integrated integer linear programming (ILP1) problem. This idea has received much recent exposure in the literature [AlGoGa95, Feautrier94, GoAlGa94a, GoAlGa94b, Eichenberger95], but to our knowledge all previous implementations have been too preliminary for detailed measurement and evaluation. In particular, we believe this to be the first published measurement of runtime performance for ILP based generation of software pipelines.A particularly valuable result of this study was evaluation of the heuristic pipelining technology in the SGI compiler. One of the motivations behind the McGill research was the hope that optimal software pipelining, while not in itself practical for use in production compilers, would be useful for their evaluation and validation. Our comparison has indeed provided a quantitative validation of the SGI compiler's pipeliner, leading us to increased confidence in both techniques.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231385",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "John C.",
+        "last_name": "Ruttenberg",
+        "institution": "Silicon Labs (United States)"
+      },
+      {
+        "first_name": "Guang R.",
+        "last_name": "Gao",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Arthur",
+        "last_name": "Stoutchinin",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Woody",
+        "last_name": "Lichtenstein",
+        "institution": "Silicon Labs (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/RuttenbergGLS96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231412",
+    "title": "Simple Objects for Standard ML",
+    "abstract": "We propose a new approach to adding objects to Standard ML (SML) based on explicit declarations of object types, object constructors, and subtyping relationships, with a generalization of the SML case statement to a \"typecase\" on object types. The language, called Object ML (OML), has a type system that conservatively extends the SML type system, preserves sound static typing, and permits type inference. The type system sacrifices some of the expressiveness found in recently proposed schemes, but has the virtue of simplicity. We give examples of how features found in other object-oriented languages can be emulated in OML, discuss the formal properties of OML, and describe some implementation issues.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231412",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Reppy",
+        "institution": "AT&T (United States)"
+      },
+      {
+        "first_name": "Jon G.",
+        "last_name": "Riecke",
+        "institution": "Bell (Canada)"
+      }
+    ],
+    "dblp_key": "conf/pldi/ReppyR96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231409",
+    "title": "Fast, Effective Dynamic Compilation",
+    "abstract": "Dynamic compilation enables optimization based on the values of invariant data computed at run-time. Using the values of these run-time constants, a dynamic compiler can eliminate their memory loads, perform constant propagation and folding, remove branches they determine, and fully unroll loops they bound. However, the performance benefits of the more efficient, dynamically-compiled code are offset by the run-time cost of the dynamic compile. Our approach to dynamic compilation strives for both fast dynamic compilation and high-quality dynamically-compiled code: the programmer annotates regions of the programs that should be compiled dynamically; a static, optimizing compiler automatically produces pre-optimized machine-code templates, using a pair of dataflow analyses that identify which variables will be constant at run-time; and a simple, dynamic compiler copies the templates, patching in the computed values of the run-time constants, to produce optimized, executable code. Our work targets general- purpose, imperative programming languages, initially C. Initial experiments applying dynamic compilation to C programs have produced speedups ranging from 1.2 to 1.8.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231409",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Joel",
+        "last_name": "Auslander",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Matthai",
+        "last_name": "Philipose",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Susan J.",
+        "last_name": "Eggers",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Brian N.",
+        "last_name": "Bershad",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/AuslanderPCEB96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231432",
+    "title": "Replay For Concurrent Non-Deterministic Shared Memory Applications",
+    "abstract": "Replay of shared-memory program execution is desirable in many domains including cyclic debugging, fault tolerance and performance monitoring. Past approaches to repeatable execution have focused on the problem of re-executing the shared-memory access patterns in parallel programs. With the proliferation of operating system supported threads and shared memory for uniprocessor programs, there is a clear need for efficient replay of concurrent applications. The solutions for parallel systems can be performance prohibitive when applied to the uniprocessor case. We present an algorithm, called the repeatable scheduling algorithm, combining scheduling and instruction counts to provide an invariant for efficient, language independent replay of concurrent shared-memory applications. The approach is shown to have trace overheads that are independent of the amount of sharing that takes place. An implementation for cyclic debugging on Mach 3.0 is evaluated and benchmarks show typical performance overheads of around 10%. The algorithm implemented is compared with optimal event-based tracing and shown to do better with respect to the number of events monitored or number of events logged, in most cases by several orders of magnitude.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231432",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mark",
+        "last_name": "Russinovich",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Bryce",
+        "last_name": "Cogswell",
+        "institution": "University of Oregon"
+      }
+    ],
+    "dblp_key": "conf/pldi/RussinovichC96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231430",
+    "title": "Teapot: Language Support for Writing Memory Coherence Protocols",
+    "abstract": "Recent shared-memory parallel computer systems offer the exciting possibility of customizing memory coherence protocols to fit an application's semantics and sharing patterns. Custom protocols have been used to achieve message-passing performance---while retaining the convenient programming model of a global address space---and to implement high-level language constructs. Unfortunately, coherence protocols written in a conventional language such as C are difficult to write, debug, understand, or modify. This paper describes Teapot, a small, domain-specific language for writing coherence protocols. Teapot uses continuations to help reduce the complexity of writing protocols. Simple static analysis in the Teapot compiler eliminates much of the overhead of continuations and results in protocols that run nearly as fast as hand-written C code. A Teapot specification can be compiled both to an executable coherence protocol and to input for a model checking system, which permits the specification to be verified. We report our experiences coding and verifying several protocols written in Teapot, along with measurements of the overhead incurred by writing a protocol in a higher-level language.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231430",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Satish",
+        "last_name": "Chandra",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Brad",
+        "last_name": "Richards",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "James R.",
+        "last_name": "Larus",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChandraRL96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231386",
+    "title": "A Reduced Multipipeline Machine Description that Preserves Scheduling Constraints",
+    "abstract": "High performance compilers increasingly rely on accurate modeling of the machine resources to efficiently exploit the instruction level parallelism of an application. In this paper, we propose a reduced machine description that results in faster detection of resource contentions while preserving the scheduling constraints present in the original machine description. The proposed approach reduces a machine description in an automated, error-free, and efficient fashion, Moreover, it fully supports schedulers that backtrack and process operations in arbitrary order. Reduced descriptions for the DEC Alpha 21064, MIPS R3000/R3010, and Cydra 5 result in 4 to 7 times faster detection of resource contentions and require 22 to 90% of the memory storage used by the original machine descriptions. Precise measurement for the Cydra 5 indicates that reducing the machine description results in a 2.9 times faster contention query module.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231386",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Alexandre E.",
+        "last_name": "Eichenberger",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Edward S.",
+        "last_name": "Davidson",
+        "institution": "University of Michigan–Ann Arbor"
+      }
+    ],
+    "dblp_key": "conf/pldi/EichenbergerD96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231395",
+    "title": "Representing Control in the Presence of One-Shot Continuations",
+    "abstract": "Traditional first-class continuation mechanisms allow a captured continuation to be invoked multiple times. Many continuations, however, are invoked only once. This paper introduces one-shot continuations, shows how they interact with traditional multi-shot continuations, and describes a stack-based implementation of control that handles both one-shot and multi-shot continuations. The implementation eliminates the copying overhead for one-shot continuations that is inherent in multi-shot continuations. 1 Introduction Scheme [5] and some implementations of ML [17] provide continuations as first-class data objects. Continuations can be used to implement, at the source level, a number of interesting control features, such as loops, nonlocal exits, nonblind backtracking [22], nondeterministic computations [10, 14], and coroutines [7]. Source-level implementations of thread systems [9, 15, 21], especially in the area of graphical user interfaces (GUIs) [12, 13, 20, 23], are an important ...",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231395",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Carl",
+        "last_name": "Bruggeman",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Oscar",
+        "last_name": "Waddell",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "R. Kent",
+        "last_name": "Dybvig",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/pldi/BruggemanWD96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231402",
+    "title": "Efficient and Language-Independent Mobile Programs",
+    "abstract": "This paper evaluates the design and implementation of Omniware: a safe, efficient, and language-independent system for executing mobile program modules. Previous approaches to implementing mobile code rely on either language semantics or abstract machine interpretation to enforce safety. In the former case, the mobile code system sacrifices universality to gain safety by dictating a particular source language or type system. In the latter case, the mobile code system sacrifices performance to gain safety through abstract machine interpretation.Omniware uses software fault isolation, a technology developed to provide safe extension code for databases and operating systems, to achieve a unique combination of language-independence and excellent performance. Software fault isolation uses only the semantics of the underlying processor to determine whether a mobile code module can corrupt its execution environment. This separation of programming language implementation from program module safety enables our mobile code system to use a radically simplified virtual machine as its basis for portability. We measured the performance of Omniware using a suite of four SPEC92 programs on the Pentium, PowerPC, Mips, and Sparc processor architectures. Including the overhead for enforcing safety on all four processors, OmniVM executed the benchmark programs within 21% as fast as the optimized, unsafe code produced by the vendor-supplied compiler.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231402",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ali-Reza",
+        "last_name": "Adl-Tabatabai",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Geoff",
+        "last_name": "Langdale",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Steven",
+        "last_name": "Lucco",
+        "institution": ""
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Wahbe",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Adl-TabatabaiLLW96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231417",
+    "title": "Flow-directed Inlining",
+    "abstract": "A flow-directed inlining strategy uses information derived from control-flow analysis to specialize and inline procedures for functional and object-oriented languages. Since it uses control-flow analysis to identify candidate call sites, flow-directed inlining can inline procedures whose relationships to their call sites are not apparent. For instance, procedures defined in other modules, passed as arguments, returned as values, or extracted from data structures can all be inlined. Flow-directed inlining specializes procedures for particular call sites, and can selectively inline a particular procedure at some call sites but not at others. Finally, flow-directed inlining encourages modular implementations: control-flow analysis, inlining, and post-inlining optimizations are all orthogonal components. Results from a prototype implementation indicate that this strategy effectively reduces procedure call overhead and leads to significant reduction in execution time.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231417",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Andrew K.",
+        "last_name": "Wright",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/JagannathanW96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231433",
+    "title": "Data Flow Frequency Analysis",
+    "abstract": "Conventional dataflow analysis computes information about what facts may or will not hold during the execution of a program. Sometimes it is useful, for program optimization, to know how often or with what probability a fact holds true during program execution. In this paper, we provide a precise formulation of this problem for a large class of dataflow problems --- the class of finite bi-distributive subset problems. We show how it can be reduced to a generalization of the standard dataflow analysis problem, one that requires a sum-over-all-paths quantity instead of the usual meet-overall -paths quantity. We show that Kildall&amp;apos;s result expressing the meet-over-all-paths value as a maximal-fixed-point carries over to the generalized setting. We then outline ways to adapt the standard dataflow analysis algorithms to solve this generalized problem, both in the intraprocedural and the interprocedural case. 1 Introduction Conventional dataflow analysis computes information about what facts...",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231433",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "G.",
+        "last_name": "Ramalingam",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Ramalingam96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231387",
+    "title": "Static Debugging: Browsing the Web of Program Invariants",
+    "abstract": "MrSpidey is a user-friendly, interactive static debugger for Scheme. A static debugger supplements the standard debugger by analyzing the program and pinpointing those program operations that may cause run-time errors such as dereferencing the null pointer or applying non-functions. The program analysis of MrSpidey computes value set descriptions for each term in the program and constructs a value flow graph connecting the set descriptions. Using the set descriptions, MrSpidey can identify and highlight potentially erroneous program operations, whose cause the programmer can then explore by selectively exposing portions of the value flow graph.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231387",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Flatt",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Shriram",
+        "last_name": "Krishnamurthi",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/FlanaganFKWF96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231411",
+    "title": "VCODE: a Retargetable, Extensible, Very Fast Dynamic Code Generation System",
+    "abstract": "Dynamic code generation is the creation of executable code at runtime. Such \"on-the-fly\" code generation is a powerful technique, enabling applications to use runtime information to improve performance by up to an order of magnitude [4, 8,20, 22, 23].Unfortunately, previous general-purpose dynamic code generation systems have been either inefficient or non-portable. We present VCODE, a retargetable, extensible, very fast dynamic code generation system. An important feature of VCODE is that it generates machine code \"in-place\" without the use of intermediate data structures. Eliminating the need to construct and consume an intermediate representation at runtime makes VCODE both efficient and extensible. VCODE dynamically generates code at an approximate cost of six to ten instructions per generated instruction, making it over an order of magnitude faster than the most efficient general-purpose code generation system in the literature [10].Dynamic code generation is relatively well known within the compiler community. However, due in large part to the lack of a publicly available dynamic code generation system, it has remained a curiosity rather than a widely used technique. A practical contribution of this work is the free, unrestricted distribution of the VCODE system, which currently runs on the MIPS, SPARC, and Alpha architectures.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231411",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dawson",
+        "last_name": "Engler",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/Engler96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231431",
+    "title": "Target-Sensitive Construction of Diagnostic Programs for Procedure Calling Sequence Generators",
+    "abstract": "Building compilers that generate correct code is difficult. In this paper we present a compiler testing technique that closes the gap between actual compiler implementations and correct compilers. Using formal specifications of procedure calling conventions, we have built a target-sensitive test suite generator that builds test cases for a specific aspect of compiler code generators the procedure calling sequence generator. By exercising compilers with these target-specific test suites, our automated testing tool has exposed bugs in every compiler tested. These compilers include ones that have been in heavy use for many years. The detected bugs cause more than 14,000 test cases to fail.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231431",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mark W.",
+        "last_name": "Bailey",
+        "institution": "University of Virginia"
+      },
+      {
+        "first_name": "Jack W.",
+        "last_name": "Davidson",
+        "institution": "University of Virginia"
+      }
+    ],
+    "dblp_key": "conf/pldi/BaileyD96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231394",
+    "title": "Simple Garbage-Collector-Safety",
+    "abstract": "A conservative garbage collector can typically be used with conventionally compiled programs written in C or C++. But two safety issues must be considered. First, the source code must not hide pointers from the garbage collector. This primarily requires stricter adherence to existing restrictions in the language definition. Second, we must ensure that the compiler will not perform transformations that invalidate this requirement.We argue that the same technique can be used to address both issues. We present an algorithm for annotating source or intermediate code to either check the validity of pointer arithmetic in the source, or to guarantee that under minimal, clearly defined assumptions about the compiler, the optimizer cannot \"disguise\" pointers. We discuss an implementation based on a preprocessor for the GNU C compiler (gcc), and give some measurements of program slow down.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231394",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Hans‐J.",
+        "last_name": "Boehm",
+        "institution": "Palo Alto Research Center"
+      }
+    ],
+    "dblp_key": "conf/pldi/Boehm96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231429",
+    "title": "Relocating Machine Instructions by Currying",
+    "abstract": "Relocation adjusts machine instructions to account for changes in the locations of the instructions themselves or of external symbols to which they refer. Standard linkers implement a finite set of relocation transformations, suitable for a single architecture. These transformations are enumerated, named, and engraved in a machine-dependent object-file format, and linkers must recognize them by name. These names and their associated transformations are an unnecessary source of machine-dependence. The New Jersey Machine-Code Toolkit is an application generator. It helps programmers create applications that manipulate machine code, including linkers. Guided by a short instruction-set specification, the toolkit generates the bit-manipulating code. Instructions are described by constructors, which denote functions mapping lists of operands to instructions&amp;apos; binary representations. Any operand can be designated as &amp;quot;relocatable,&amp;quot; meaning that the operand&amp;apos;s value need not be known at the time ...",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231429",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/pldi/Ramsey96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231414",
+    "title": "TIL: A Type-Directed Optimizing Compiler for ML",
+    "abstract": "article Free Access Share on TIL: a type-directed optimizing compiler for ML Authors: D. Tarditi School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PAView Profile , G. Morrisett School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PAView Profile , P. Cheng School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PAView Profile , C. Stone School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PAView Profile , R. Harper School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PAView Profile , P. Lee School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA School of Computer Science, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PAView Profile Authors Info & Claims ACM SIGPLAN NoticesVolume 31Issue 5May 1996 pp 181–192https://doi.org/10.1145/249069.231414Online:01 May 1996Publication History 212citation719DownloadsMetricsTotal Citations212Total Downloads719Last 12 Months39Last 6 weeks2 Get Citation AlertsNew Citation Alert added!This alert has been successfully added and will be sent to:You will be notified whenever a record that you have chosen has been cited.To manage your alert preferences, click on the button below.Manage my AlertsNew Citation Alert!Please log in to your account Save to BinderSave to BinderCreate a New BinderNameCancelCreateExport CitationPublisher SiteeReaderPDF",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231414",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Tarditi",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Pau-Chen",
+        "last_name": "Cheng",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "C. Addison",
+        "last_name": "Stone",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Lee",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/TarditiMCSHL96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231407",
+    "title": "Optimizing ML with Run-Time Code Generation",
+    "abstract": "We describe the design and implementation of a compiler that automatically translates ordinary programs written in a subset of ML into code that generates native code at run time. Run-time code generation can make use of values and invariants that cannot be exploited at compile time, yielding code that is often superior to statically optimal code. But the cost of optimizing and generating code at run time can be prohibitive. We demonstrate how compile-time specialization can reduce the cost of run-time code generation by an order of magnitude without greatly affecting code quality. Several benchmark programs are examined, which exhibit an average cost of only six cycles per instruction generated at run time.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231407",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Peter",
+        "last_name": "Lee",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Mark P.",
+        "last_name": "Leone",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/LeeL96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231392",
+    "title": "GUM: A Portable Parallel Implementation of Haskell",
+    "abstract": "GUM is a portable, parallel implementation of the Haskell functional language. Despite sustained research interest in parallel functional programming, GUM is one of the first such systems to be made publicly available.GUM is message-based, and portability is facilitated by using the PVM communications harness that is available on many multi-processors. As a result, GUM is available for both shared-memory (Sun SPARCserver multiprocessors) and distributed-memory (networks of workstations) architectures. The high message-latency of distributed machines is ameliorated by sending messages asynchronously, and by sending large packets of related data in each message.Initial performance figures demonstrate absolute speedups relative to the best sequential compiler technology. To improve the performance of a parallel Haskell program GUM provides tools for monitoring and visualising the behaviour of threads and of processors during execution.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231392",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Phil",
+        "last_name": "Trinder",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Kevin",
+        "last_name": "Hammond",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "J. S.",
+        "last_name": "Mattson",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Partridge",
+        "institution": "University of Tasmania"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Jones",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/pldi/TrinderHMPJ96",
+    "venue": "pldi",
+    "year": 1996
+  },
+  {
+    "paper_id": "10.1145/231379.231434",
+    "title": "A New Framework for Exhaustive and Incremental Data Flow Analysis Using DJ Graphs",
+    "abstract": "We present a new elimination-based framework for exhaustive and incremental data flow analysis using the DJ graph representation of a program. Unlike the previous approaches to elimination-based incremental data flow analysis, our approach can handle arbitrary non-structural and structural changes to program flowgraphs, including those causing irreducibility. We show how our approach is related to (iterated) dominance frontiers, and exploit this relationship to establish the complexity of our exhaustive analysis and to aid the design of our incremental analysis.",
+    "date": "1996-05-01",
+    "link": "https://doi.org/10.1145/231379.231434",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Vugranam C.",
+        "last_name": "Sreedhar",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Guang R.",
+        "last_name": "Gao",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Yong-Fong",
+        "last_name": "Lee",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/SreedharGL96",
+    "venue": "pldi",
+    "year": 1996
+  }
+]

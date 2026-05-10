@@ -1,0 +1,712 @@
+[
+  {
+    "paper_id": "10.1145/178243.178263",
+    "title": "Interprocedural May-Alias Analysis for Pointers: Beyond k-limiting",
+    "abstract": "Existing methods for alias analysis of recursive pointer data structures are based on two approximation techniques: k-limiting, and store-based (or equivalently location or region-based) approximations, which blur distinction between elements of recursive data structures. Although notable progress in inter-procedural alias analysis has been recently accomplished, very little progress in the precision of analysis of recursive pointer data structures has been seen since the inception of these approximation techniques by Jones and Muchnick a decade ago. As a result, optimizing, verifying and parallelizing programs with pointers has remained difficult.We present a new parametric framework for analyzing recursive pointer data structures which can express a new natural class of alias information not accessible to existing methods. The key idea is to represent alias information by pairs of symbolic access paths which are qualified by symbolic descriptions of the positions for which the alias pair holds.Based on this result, we present an algorithm for interprocedural may-alias analysis with pointers which on numerous examples that occur in practice is much more precise than recently published algorithms [CWZ90, He90, LR92, CBC93].",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178263",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Alain",
+        "last_name": "Deutsch",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/pldi/Deutsch94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178261",
+    "title": "Cache Performance of Garbage-Collected Programs",
+    "abstract": "As processor speeds continue to improve relative to main-memory access times, cache performance is becoming an increasingly important component of program performance. Prior work on the cache performance of garbage-collected programs either argues or assumes that conventional garbage-collection methods will yield poor performance, and has therefore concentrated on new collection algorithms designed specifically to improve cache-level reference locality.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178261",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mark B.",
+        "last_name": "Reinhold",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Reinhold94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178262",
+    "title": "A General Data Dependence Test for Dynamic, Pointer-Based Data Structures",
+    "abstract": "Optimizing compilers require accurate dependence testing to enable numerous, performance-enhancing transformations. However, data dependence testing is a difficult problem, particularly in the presence of pointers. Though existing approaches work well for pointers to named memory locations (i.e. other variables), they are overly conservative in the case of pointers to unnamed memory locations. The latter occurs in the context of dynamic, pointer-based data structures, used in a variety of applications ranging from system software to computational geometry to N-body and circuit simulations.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178262",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Joseph",
+        "last_name": "Hummel",
+        "institution": "University of California, Irvine"
+      },
+      {
+        "first_name": "Laurie",
+        "last_name": "Hendren",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Alexandru",
+        "last_name": "Nicolau",
+        "institution": "University of California, Irvine"
+      }
+    ],
+    "dblp_key": "conf/pldi/HummelHN94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178252",
+    "title": "Improving Semi-static Branch Prediction by Code Replication",
+    "abstract": "Speculative execution on superscalar processors demands substantially better branch prediction than what has been previously available. In this paper we present code replication techniques that improve the accuracy of semi-static branch prediction to a level comparable to dynamic branch prediction schemes. Our technique uses profiling to collect information about the correlation between different branches and about the correlation between the subsequent outcomes of a single branch. Using this information and code replication the outcome of branches is represented in the program state. Our experiments have shown that the misprediction rate can almost be halved while the code size is increased by one third.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178252",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Krall",
+        "institution": "University of Applied Sciences Technikum Wien"
+      }
+    ],
+    "dblp_key": "conf/pldi/Krall94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178258",
+    "title": "The Program Structure Tree: Computing Control Regions in Linear Time",
+    "abstract": "In this paper, we describe the program structure tree (PST), a hierarchical representation of program structure based on single entry single exit (SESE) regions of the control flow graph. We give a linear-time algorithm for finding SESE regions and for building the PST of arbitrary control flow graphs (including irreducible ones). Next, we establish a connection between SESE regions and control dependence equivalence classes, and show how to use the algorithm to find control regions in linear time. Finally, we discuss some applications of the PST. Many control flow algorithms, such as construction of Static Single Assignment form, can be speeded up by applying the algorithms in a divide-and-conquer style to each SESE region on its own. The PST is also used to speed up data flow analysis by exploiting “sparsity”. Experimental results from the Perfect Club and SPEC89 benchmarks confirm that the PST approach finds and exploits program structure.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178258",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Richard",
+        "last_name": "Johnson",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Pearson",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Keshav",
+        "last_name": "Pingali",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/pldi/JohnsonPP94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178479",
+    "title": "Type Analysis of Prolog Using Type Graphs",
+    "abstract": "Type analysis of Prolog is of primary importance for high-performance compilers, since type information may lead to better indexing and to sophisticated specializations of unification and built-in predicates to name a few. However, these optimizations often require a sophisticated type inference system capable of inferring disjunctive and recursive types and hence expensive in computation time.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178479",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Pascal Van",
+        "last_name": "Hentenryck",
+        "institution": "Brown University"
+      },
+      {
+        "first_name": "Agostino",
+        "last_name": "Cortesi",
+        "institution": "Ca' Foscari University of Venice"
+      },
+      {
+        "first_name": "Baudouin Le",
+        "last_name": "Charlier",
+        "institution": "University of Namur"
+      }
+    ],
+    "dblp_key": "conf/pldi/HentenryckCC94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178246",
+    "title": "Lazy Functional State Threads",
+    "abstract": "Some algorithms make critical internal use of updatable state, even though their external specification is purely functional. Based on earlier work on monads, we present a way of securely encapsulating stateful computations that manipulate multiple, named, mutable objects, in the context of a non-strict, purely-functional language.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178246",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Jones",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/pldi/LaunchburyJ94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178255",
+    "title": "Parallelizing Complex Scans and Reductions",
+    "abstract": "We present a method for automatically extracting parallel prefix programs from sequential loops, even in the presence of complicated conditional statements. Rather than searching for associative operators in the loop body directly, the method rests on the observation that functional composition itself is associative. Accordingly, we model the loop body as a multivalued function of multiple parameters, and look for a closed-form representation of arbitrary compositions of loop body instances. Careful analysis of conditionals allows this search to succeed in cases where existing automatic methods fail. The method has been implemented and used to generate code for the iWarp parallel computer.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178255",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Allan L.",
+        "last_name": "Fisher",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Anwar",
+        "last_name": "Ghuloum",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/FisherG94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178446",
+    "title": "Efficient Detection of All Pointer and Array Access Errors",
+    "abstract": "We present a pointer and array access checking technique that provides complete error coverage through a simple set of program transformations. Our technique, based on an extended safe pointer representation, has a number of novel aspects. Foremost, it is the first technique that detects all spatial and temporal access errors. Its use is not limited by the expressiveness of the language; that is, it can be applied successfully to compiled or interpreted languages with subscripted and mutable pointers, local references, and explicit and typeless dynamic storage management, e.g., C. Because it is a source level transformation, it is amenable to both compile- and run-time optimization. Finally, its performance, even without compile-time optimization, is quite good. We implemented a prototype translator for the C language and analyzed the checking overheads of six non-trivial, pointer intensive programs. Execution overheads range from 130% to 540%; with text and data size overheads typically below 100%.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178446",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Todd",
+        "last_name": "Austin",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Scott E.",
+        "last_name": "Breach",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Gurindar S.",
+        "last_name": "Sohi",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/AustinBS94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178478",
+    "title": "Optimizing Dynamically-Dispatched Calls with Run-Time Type Feedback",
+    "abstract": "Object-oriented programs are difficult to optimize because they execute many dynamically-dispatched calls. These calls cannot easily be eliminated because the compiler does not know which callee will be invoked at runtime. We have developed a simple technique that feeds back type information from the runtime system to the compiler.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178478",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Urs",
+        "last_name": "Hölzle",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Ungar",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/HolzleU94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178247",
+    "title": "VLIW Compilation Techniques in a Superscalar Environment",
+    "abstract": "We describe techniques for converting the intermediate code representation of a given program, as generated by a modern compiler, to another representation which produces the same run-time results, but can run faster on a superscalar machine. The algorithms, based on novel parallelization techniques for Very Long Instruction Word (VLIW) architectures, find and place together independently executable operations that may be far apart in the original code. i.e., they may be separated by many conditional branches or belong to different iterations of a loop. As a result, the functional units in the superscalar are presented with more work that can proceed in parallel, thus achieving higher performance than the approach of using hardware instruction dispatch techniques alone.While general scheduling techniques improve performance by removing idle pipeline cycles, to further improve performance on a superscalar with only a few functional units requires a reduction in the pathlength. We have designed a set of new algorithms for reducing pathlength and removing stalls due to branches, namely speculative load-store motion out of loops, unspeculation, limited combining, basic block expansion, and prolog tailoring. These algorithms were implemented in a prototype version of the IBM RS/6000 xlc compiler and have shown significant improvement in SPEC integer benchmarks on the IBM POWER machines.Also, we describe a new technique to obtain profiling information with low overhead, and some applications of profiling directed feedback, including scheduling heuristics, code reordering and branch reversal.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178247",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Kemal",
+        "last_name": "Ebci̇oğlu",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Randy D.",
+        "last_name": "Groves",
+        "institution": ""
+      },
+      {
+        "first_name": "Kichang",
+        "last_name": "Kim",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Gabriel M.",
+        "last_name": "Silberman",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Isaac",
+        "last_name": "Ziv",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/EbciogluGKSZ94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178259",
+    "title": "Memory Access Coalescing: A technique for Eliminating Redundant memory Accesses",
+    "abstract": "As microprocessor speeds increase, memory bandwidth is increasingly the performance bottleneck for microprocessors. This has occurred because innovation and technological improvements in processor design have outpaced advances in memory design. Most attempts at addressing this problem have involved hardware solutions. Unfortunately, these solutions do little to help the situation with respect to current microprocessors. In previous work, we developed, implemented, and evaluated an algorithm that exploited the ability of newer machines with wide-buses to load/store multiple floating-point operands in a single memory reference. This paper describes a general code improvement algorithm that transforms code to better exploit the available memory bandwidth on existing microprocessors as well as wide-bus machines. Where possible and advantageous, the algorithm coalesces narrow memory references into wide ones. An interesting characteristic of the algorithm is that some decisions about the applicability of the transformation are made at run time. This dynamic analysis significantly increases the probability of the transformation being applied. The code improvement transformation was implemented and added to the repertoire of code improvements of an existing retargetable optimizing back end. Using three current architectures as evaluation platforms, the effectiveness of the transformation was measured on a set of compute- and memory-intensive programs. Interestingly, the effectiveness of the transformation varied significantly with respect to the instruction-set architecture of the tested platform. For one of the tested architectures, improvements in execution speed ranging from 5 to 40 percent were observed. For another, the improvements in execution speed ranged from 5 to 20 percent, while for yet another, the transformation resulted in slower code for all programs.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178259",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jack W.",
+        "last_name": "Davidson",
+        "institution": "University of Virginia"
+      },
+      {
+        "first_name": "Sanjay",
+        "last_name": "Jinturkar",
+        "institution": "University of Virginia"
+      }
+    ],
+    "dblp_key": "conf/pldi/DavidsonJ94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178456",
+    "title": "On Slicing Programs with Jump Statements",
+    "abstract": "Program slices have potential uses in many software engineering applications. Traditional slicing algorithms, however, do not work correctly on programs that contain explicit jump statements. Two similar algorithms were proposed recently to alleviate this problem. Both require the flowgraph and the program dependence graph of the program to be modified. In this paper, we propose an alternative algorithm that leaves these graphs intact and uses a separate graph to store the additional required information. We also show that this algorithm permits an extremely efficient, conservative adaptation for use with programs that contain only “structured” jump statements.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178456",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Hiralal",
+        "last_name": "Agrawal",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Agrawal94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178245",
+    "title": "Separate Compilation for Standard ML",
+    "abstract": "Languages that support abstraction and modular structure, such as Standard ML, Modula, Ada, and (more or less) C++, may have deeply nested dependency hierarchies among source files. In ML the problem is particularly severe because ML's powerful parameterized module (functor) facility entails dependencies among implementation modules, not just among interfaces.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178245",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "MacQueen",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/AppelM94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178257",
+    "title": "Effective Partial Redundancy Elimination",
+    "abstract": "Partial redundancy elimination is a code optimization with a long history of literature and implementation. In practice, its effectiveness depends on issues of naming and code shape. This paper shows that a combination of global reassociation and global value numbering can increase the effectiveness of partial redundancy elimination. By imposing a discipline on the choice of names and the shape of expressions, we are able to expose more redundancies.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178257",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Preston",
+        "last_name": "Briggs",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Keith D.",
+        "last_name": "Cooper",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BriggsC94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178253",
+    "title": "GIVE-N-TAKE - A Balanced Code Placement Framework",
+    "abstract": "GIVE-N-TAKE is a code placement framework which uses a general producer-consumer concept. An advantage of GIVE-N-TAKE over existing partial redundancy elimination techniques is its concept of production regions, instead of single locations, which can be beneficial for general latency hiding. GIVE-N-TAKE guaranteed balanced production, that is, each production will be started and stopped once. The framework can also take advantage of production coming “for free,” as induced by side effects, without disturbing balance. GIVE-N-TAKE can place production either before or after consumption, and it also provides the option to hoist code out of potentially zero-trip loop (nest) constructs. GIVE-N-TAKE uses a fast elimination method based on Tarjan intervals, with a complexity linear in the program size in most cases.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178253",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Reinhard von",
+        "last_name": "Hanxleden",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Ken",
+        "last_name": "Kennedy",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/HanxledenK94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178249",
+    "title": "Division by Invariant Integers using Multiplication",
+    "abstract": "Integer division remains expensive on today's processors as the cost of integer multiplication declines. We present code sequences for division by arbitrary nonzero integer constants and run-time invariants using integer multiplication. The algorithms assume a two's complement architecture. Most also require that the upper half of an integer product be quickly accessible. We treat unsigned division, signed division where the quotient rounds towards zero, signed division where the quotient rounds towards -∞, and division where the result is known a priori to be exact. We give some implementation results using the C compiler GCC.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178249",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Torbjörn",
+        "last_name": "Granlund",
+        "institution": "Cygnus (United States)"
+      },
+      {
+        "first_name": "Peter L.",
+        "last_name": "Montgomery",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/GranlundM94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178264",
+    "title": "Context-Sensitive Interprocedural Points-to Analysis in the Presence of Function Pointers",
+    "abstract": "This paper reports on the design, implementation, and empirical results of a new method for dealing with the aliasing problem in C. The method is based on approximating the points-to relationships between accessible stack locations, and can be used to generate alias pairs, or used directly for other analyses and transformations. Our method provides context-sensitive interprocedural information based on analysis over invocation graphs that capture all calling contexts including recursive and mutually-recursive calling contexts. Furthermore, the method allows the smooth integration for handling general function pointers in C.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178264",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Maryam",
+        "last_name": "Emami",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Rakesh",
+        "last_name": "Ghiya",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Laurie",
+        "last_name": "Hendren",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/pldi/EmamiGH94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178488",
+    "title": "Backtracking without Trailing in CLP(RLin)",
+    "abstract": "Constraint logic programming (CLP) is a generalization of logic programming where unification is replaced by constraint solving as the basic operation of the language. The combination of constraint solving and nondeterminism (approximated by backtracking) makes these languages appealing for a variety of combinatorial search problems. Existing CLP languages support backtracking by generalizing traditional Prolog implementations: modifications to the constraint system are trailed and restored on backtracking. Although simple and efficient, trailing may be very demanding in memory space, since the constraint system may potentially be saved at each choice point. This paper proposes a fundamentally new implementation scheme for backtracking in CLP languages over linear (rational or real) arithmetic. The new scheme, called semantic backtracking, does not use trailing but rather exploits the semantics of the constraints to undo the effect of newly added constraints. Semantic backtracking reduces the space complexity by an order of magnitude compared to implementations based on trailing and makes space complexity essentially independent of the number of choice points. In addition, semantic backtracking introduces negligible space and time overhead on deterministic programs. The price for this improvement is an increase in backtracking time, although constraint-solving time may actually decrease. The scheme has been implemented as part of a complete CLP system CLP(RLin) and compared analytically and experimentally with an optimized trailing implementation. Experimental results indicate that semantic backtracking produces significant reduction in memory space, while keeping the time overhead reasonably small.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178488",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Pascal Van",
+        "last_name": "Hentenryck",
+        "institution": "Butler Hospital"
+      },
+      {
+        "first_name": "Viswanath",
+        "last_name": "Ramachandran",
+        "institution": "Butler Hospital"
+      }
+    ],
+    "dblp_key": "conf/pldi/HentenryckR94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178427",
+    "title": "register Allocation over the Program Dependence Graph",
+    "abstract": "This paper describes RAP, a Register Allocator that allocates registers over the Program Dependence Graph (PDG) representation of a program in a hierarchical manner. The PDG program representation has been used successfully for scalar optimizations, the detection and improvement of parallelism for vector machines, multiple processor machines, and machines that exhibit instruction level parallelism, as well as debugging, the integration of different versions of a program, and translation of imperative programs for data flow machines. By basing register allocation on the PDG, the register allocation phase may be more easily integrated and intertwined with other optimization analyses and transformations. In addition, the advantages of a hierarchical approach to global register allocation can be attained without constructing an additional structure used solely for register allocation. Our experimental results have shown that on average, code allocated registers via RAP executed 2.7% faster than code allocated registers via a standard global register allocator.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178427",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cindy",
+        "last_name": "Norris",
+        "institution": "University of Delaware"
+      },
+      {
+        "first_name": "Lori",
+        "last_name": "Pollock",
+        "institution": "University of Delaware"
+      }
+    ],
+    "dblp_key": "conf/pldi/NorrisP94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178477",
+    "title": "Optimal Tracing and Incremental Reexecution for Debugging Long-Running Programs",
+    "abstract": "Debugging requires execution replay. Locations of bugs are rarely known in advance, so an execution must be repeated over and over to track down bugs. A problem arises with repeated reexecution for long-running programs and programs that have complex interactions with their environment. Replaying long-running programs from the start incurs too much delay. Replaying programs that interact with their environment requires the difficult (and sometimes impossible) task of exactly reproducing this environment (such as the connections over a one-day period to an X server). We solve these problems by incremental checkpointing and replay. By periodically checkpointing parts of the execution''s state, it can be restarted from intermediate points, bounding the delay to replay any part of the execution and allowing parts of the execution to be skipped. We present adaptive tracing strategies that provide bounded-time incremental replay and that are nearly optimal. Our techniques track reads and writes to memory using space-efficient two-level bitvectors. Our implementation on a Sparc 10 traces less than 15 kilobytes/sec for CPU-intensive programs and for interactive programs the slowdown is low enough that tracing can be left on all the time.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178477",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Robert H. B.",
+        "last_name": "Netzer",
+        "institution": "Brown University"
+      },
+      {
+        "first_name": "Mark H.",
+        "last_name": "Weaver",
+        "institution": "Brown University"
+      }
+    ],
+    "dblp_key": "conf/pldi/NetzerW94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178256",
+    "title": "Partial Dead Code Elimination",
+    "abstract": "A new aggressive algorithm for the elimination of partially dead code is presented, i.e., of code which is only dead on some program paths. Besides being more powerful than the usual approaches to dead code elimination, this algorithm is optimal in the following sense: partially dead code remaining in the resulting program cannot be eliminated without changing the branching structure or the semantics of the program, or without impairing some program executions.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178256",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jens",
+        "last_name": "Knoop",
+        "institution": "University of Passau"
+      },
+      {
+        "first_name": "Oliver",
+        "last_name": "Rüthing",
+        "institution": ""
+      },
+      {
+        "first_name": "Bernhard",
+        "last_name": "Steffen",
+        "institution": "University of Passau"
+      }
+    ],
+    "dblp_key": "conf/pldi/KnoopRS94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178248",
+    "title": "Link-Time Optimization of Address Calculation on a 64-bit Architecture",
+    "abstract": "Compilers for new machines with 64-bit addresses must generate code that works when the memory used by the program is large. Procedures and global variables are accessed indirectly via global address tables, and calling conventions include code to establish the addressability of the appropriate tables. In the common case of a program that does not require a lot of memory, all of this can be simplified considerably, with a corresponding reduction in program size and execution time. We have used our link-time code modification system OM to perform program transformations related to global address use on the Alpha AXP. Though simple, many of these are whole-program optimizations that can be done only when we can see the entire program at once, so link-time is an ideal occasion to perform them. This paper describes the optimizations performed and shows their effects on program size and performance. Relatively modest transformations, possible without moving code, improve the p...",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178248",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Amitabh",
+        "last_name": "Srivastava",
+        "institution": ""
+      },
+      {
+        "first_name": "David W.",
+        "last_name": "Wall",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/SrivastavaW94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178420",
+    "title": "Zero-cost Range Splitting",
+    "abstract": "This paper presents a new optimization technique that uses empty delay slots to improve code scheduling. We are able to split live ranges for free, by inserting spill code into empty delay slots. Splitting a live range can reduce interferences with other live ranges and can sometimes free registers. Live ranges no longer interfering with the split live range can sometimes make use of the extra register.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178420",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Steven M.",
+        "last_name": "Kurlander",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Charles N.",
+        "last_name": "Fischer",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/KurlanderF94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178251",
+    "title": "Accurate Static Estimators for Program Optimization",
+    "abstract": "Determining the relative execution frequency of program regions is essential for many important optimization techniques, including register allocation, function inlining, and instruction scheduling. Estimates derived from profiling with sample inputs are generally regarded as the most accurate source of this information; static (compile-time) estimates are considered to be distinctly inferior. If static estimates were shown to be competitive, however, their convenience would outweigh minor gains from profiling, and they would provide a sound basis for optimization when profiling is impossible.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178251",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Tim A.",
+        "last_name": "Wagner",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Vance",
+        "last_name": "Maverick",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Susan L.",
+        "last_name": "Graham",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Michael A.",
+        "last_name": "Harrison",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/WagnerMGH94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178260",
+    "title": "ATOM - A System for Building Customized Program Analysis Tools",
+    "abstract": "ATOM (Analysis Tools with OM) is a single framework for building a wide range of customized program analysis tools. It provides the common infrastructure present in all code-instrumenting tools; this is the difficult and time-consuming part. The user simply defines the tool-specific details in instrumentation and analysis routines. Building a basic block counting tool like Pixie with ATOM requires only a page of code.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178260",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Amitabh",
+        "last_name": "Srivastava",
+        "institution": ""
+      },
+      {
+        "first_name": "Alan",
+        "last_name": "Eustace",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/SrivastavaE94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178254",
+    "title": "Counting Solutions to Presburger Formulas: How and Why",
+    "abstract": "We describe methods that are able to count the number of integer solutions to selected free variables of a Presburger formula, or sum a polynomial over all integer solutions of selected free variables of a Presburger formula. This answer is given symbolically, in terms of symbolic constants (the remaining free variables in the Presburger formula).For example, we can create a Presburger formula who's solutions correspond to the iterations of a loop. By counting these, we obtain an estimate of the execution time of the loop.In more complicated applications, we can create Presburger formulas who's solutions correspond to the distinct memory locations or cache lines touched by a loop, the flops executed by a loop, or the array elements that need to be communicated at a particular point in a distributed computation. By counting the number of solutions, we can evaluate the computation/memory balance of a computation, determine if a loop is load balanced and evaluate message traffic and allocate message buffers.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178254",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "William",
+        "last_name": "Pugh",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/Pugh94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178430",
+    "title": "Debugging of Globally Optimized Programs Using Data Flow Analysis",
+    "abstract": "Advanced processor and machine architectures need optimizing compilers to be efficiently programmed in high level languages. Therefore the need for source level debuggers that can handle optimized programs is rising. One difficulty in debugging optimized code arises from the problem to determine the values of source code variables. To ensure correct debugger behaviour with optimized programs, the debugger not only has to determine the variable's storage location or associated register. It must also verify that the variable is current, i.e. the value determined from that location is really the value that the variable would have in unoptimized code. We will deduce requirements on algorithms for currentness determination and present an algorithm meeting this requirements that is more general than previous work. We will also give first experiences with an implementation. To our knowledge this is the first implementation of a currentness determination algorithm for globally optimized code.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178430",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Roland",
+        "last_name": "Wismüller",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Wismuller94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178244",
+    "title": "Is Continuation-Passing Useful for Data Flow Analysis?",
+    "abstract": "The widespread use of the continuation-passing style (CPS) transformation in compilers, optimizers, abstract interpreters, and partial evaluators reflects a common belief that the transformation has a positive effect on the analysis of programs. Investigations by Nielson [13] and Burn/Filho [5,6] support, to some degree, this belief with theoretical results. However, they do not pinpoint the source of increased abstract information and do not explain the observation of many people that continuation-passing confuses some conventional data flow analyses.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178244",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/SabryF94",
+    "venue": "pldi",
+    "year": 1994
+  },
+  {
+    "paper_id": "10.1145/178243.178250",
+    "title": "Precise Compile-Time Performance Prediction for Superscalar-Based Computers",
+    "abstract": "Optimizing compilers (particularly parallel compilers) are constrained by their ability to predict performance consequences of the transformations they apply. Many factors, such as unknowns in control structures, dynamic behavior of programs, and complexity of the underlying hardware, make it very difficult for compilers to estimate the performance of the transformations accurately and efficiently. In this paper, we present a performance prediction framework that combines several innovative approaches to solve this problem. First, the framework employs a detailed, architecture-specific, but portable, cost model that can be used to estimate the cost of straight line code efficiently. Second, aggregated costs of loops and conditional statements are computed and represented symbolically. This avoids unnecessary, premature guesses and preserves the precision of the prediction. Third, symbolic comparison allows compilers to choose the best transformation dynamically and systematically. Some methodologies for applying the framework to optimizing parallel compilers to support automatic, performance-guided program restructuring are discussed.",
+    "date": "1994-06-01",
+    "link": "https://doi.org/10.1145/178243.178250",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ko‐Yang",
+        "last_name": "Wang",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Wang94",
+    "venue": "pldi",
+    "year": 1994
+  }
+]

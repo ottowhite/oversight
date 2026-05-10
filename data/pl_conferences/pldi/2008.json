@@ -1,0 +1,939 @@
+[
+  {
+    "paper_id": "10.1145/1375581.1375592",
+    "title": "Expressive and safe static reflection with MorphJ",
+    "abstract": "Recently, language extensions have been proposed for Java and C# to support pattern-based reflective declaration. These extensions introduce a disciplined form of meta-programming and aspect-oriented programming to mainstream languages: They allow members of a class (i.e., fields and methods) to be declared by statically iterating over and pattern-matching on members of other classes. Such techniques, however, have been unable to safely express simple, but common, idioms such as declaring getter and setter methods for fields.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375592",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Shan",
+        "last_name": "Huang",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Yannis",
+        "last_name": "Smaragdakis",
+        "institution": "University of Oregon"
+      }
+    ],
+    "dblp_key": "conf/pldi/HuangS08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375586",
+    "title": "Immix: a mark-region garbage collector with space efficiency, fast collection, and mutator performance",
+    "abstract": "Programmers are increasingly choosing managed languages for modern applications, which tend to allocate many short-to-medium lived small objects. The garbage collector therefore directly determines program performance by making a classic space-time tradeoff that seeks to provide space efficiency, fast reclamation, and mutator performance. The three canonical tracing garbage collectors: semi-space, mark-sweep, and mark-compact each sacrifice one objective. This paper describes a collector family, called mark-region, and introduces opportunistic defragmentation, which mixes copying and marking in a single pass. Combining both, we implement immix, a novel high performance garbage collector that achieves all three performance objectives. The key insight is to allocate and reclaim memory in contiguous regions, at a coarse block grain when possible and otherwise in groups of finer grain lines. We show that immix outperforms existing canonical algorithms, improving total application performance by 7 to 25% on average across 20 benchmarks. As the mature space in a generational collector, immix matches or beats a highly tuned generational collector, e.g. it improves jbb2000 by 5%. These innovations and the identification of a new family of collectors open new opportunities for garbage collector design.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375586",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Stephen M.",
+        "last_name": "Blackburn",
+        "institution": "Australian National University"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/pldi/BlackburnM08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375584",
+    "title": "Race directed random testing of concurrent programs",
+    "abstract": "Bugs in multi-threaded programs often arise due to data races. Numerous static and dynamic program analysis techniques have been proposed to detect data races. We propose a novel randomized dynamic analysis technique that utilizes potential data race information obtained from an existing analysis tool to separate real races from false races without any need for manual inspection. Specifically, we use potential data race information obtained from an existing dynamic analysis technique to control a random scheduler of threads so that real race conditions get created with very high probability and those races get resolved randomly at runtime. Our approach has several advantages over existing dynamic analysis tools. First, we can create a real race condition and resolve the race randomly to see if an error can occur due to the race. Second, we can replay a race revealing execution efficiently by simply using the same seed for random number generation--we do not need to record the execution. Third, our approach has very low overhead compared to other precise dynamic race detection techniques because we only track all synchronization operations and a single pair of memory access statements that are reported to be in a potential race by an existing analysis. We have implemented the technique in a prototype tool for Java and have experimented on a number of large multi-threaded Java programs. We report a number of previously known and unknown bugs and real races in these Java programs.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375584",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Koushik",
+        "last_name": "Sen",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/Sen08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375607",
+    "title": "Grammar-based whitebox fuzzing",
+    "abstract": "Whitebox fuzzing is a form of automatic dynamic test generation, based on symbolic execution and constraint solving, designed for security testing of large applications. Unfortunately, the current effectiveness of whitebox fuzzing is limited when testing applications with highly-structured inputs, such as compilers and interpreters. These applications process their inputs in stages, such as lexing, parsing and evaluation. Due to the enormous number of control paths in early processing stages, whitebox fuzzing rarely reaches parts of the application beyond those first stages.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375607",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Patrice",
+        "last_name": "Godefroid",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Kieżun",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Michael Y.",
+        "last_name": "Levin",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/GodefroidKL08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375590",
+    "title": "Automatic volume management for programmable microfluidics",
+    "abstract": "Microfluidics has enabled lab-on-a-chip technology to miniaturize and integrate biological and chemical analyses to a single chip comprising channels, valves, mixers, heaters, separators, and sensors. Recent papers have proposed programmable labs-on-a-chip as an alternative to traditional application-specific chips to reduce design effort, time, and cost. While these previous papers provide the basic support for programmability, this paper identifies and addresses a practical issue, namely, fluid volume management. Volume management addresses the problem that the use of a fluid depletes it and unless the given volume of a fluid is distributed carefully among all its uses, execution may run out of the fluid before all its uses are complete. Additionally, fluid volumes should not overflow (i.e., exceed hardware capacity) or underflow (i.e., fall below hardware resolution). We show that the problem can be formulated as a linear programming problem (LP). Because LP's complexity and slow execution times in practice may be a concern, we propose another approach, called DAGSolve, which over-constrains the problem to achieve linear complexity while maintaining good solution quality. We also propose two optimizations, called cascading and static replication, to handle cases involving extreme mix ratios and numerous fluid uses which may defeat both LP and DAGSolve. Using some real-world assays, we show that our techniques produce good solutions while being faster than LP.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375590",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ahmed M.",
+        "last_name": "Amin",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Mithuna",
+        "last_name": "Thottethodi",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "T. N.",
+        "last_name": "Vijaykumar",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Steven T.",
+        "last_name": "Wereley",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Stephen C.",
+        "last_name": "Jacobson",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/pldi/AminTVWJ08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375610",
+    "title": "Copy coalescing by graph recoloring",
+    "abstract": "Register allocation is always a trade-off between live-range splitting and coalescing. Live-range splitting generally leads to less spilling at the cost of inserting shuffle code. Coalescing removes shuffle code while potentially raising the register demand and causing spilling.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375610",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Hack",
+        "institution": "École Normale Supérieure de Lyon"
+      },
+      {
+        "first_name": "Gerhard",
+        "last_name": "Goos",
+        "institution": "Karlsruhe University of Education"
+      }
+    ],
+    "dblp_key": "conf/pldi/HackG08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375588",
+    "title": "Conditional correlation analysis for safe region-based memory management",
+    "abstract": "Region-based memory management is a popular scheme in systems software for better organization and performance. In the scheme, a developer constructs a hierarchy of regions of different lifetimes and allocates objects in regions. When the developer deletes a region, the runtime will recursively delete all its subregions and simultaneously reclaim objects in the regions. The developer must construct a consistent placement of objects in regions; otherwise, if a region that contains pointers to other regions is not always deleted before pointees, an inconsistency will surface and cause dangling pointers, which may lead to either crashes or leaks.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375588",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Xi",
+        "last_name": "Wang",
+        "institution": "Tsinghua University"
+      },
+      {
+        "first_name": "Zhilei",
+        "last_name": "Xu",
+        "institution": "Tsinghua University"
+      },
+      {
+        "first_name": "Xuezheng",
+        "last_name": "Liu",
+        "institution": "Microsoft Research Asia (China)"
+      },
+      {
+        "first_name": "Zhenyu",
+        "last_name": "Guo",
+        "institution": "Microsoft Research Asia (China)"
+      },
+      {
+        "first_name": "Xiaoge",
+        "last_name": "Wang",
+        "institution": "Tsinghua University"
+      },
+      {
+        "first_name": "Zheng",
+        "last_name": "Zhang",
+        "institution": "Microsoft Research Asia (China)"
+      }
+    ],
+    "dblp_key": "conf/pldi/WangXLGWZ08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375609",
+    "title": "Register allocation by puzzle solving",
+    "abstract": "We show that register allocation can be viewed as solving a collection of puzzles. We model the register file as a puzzle board and the program variables as puzzle pieces; pre-coloring and register aliasing fit in naturally. For architectures such as PowerPC, x86, and StrongARM, we can solve the puzzles in polynomial time, and we have augmented the puzzle solver with a simple heuristic for spilling. For SPEC CPU2000, the compilation time of our implementation is as fast as that of the extended version of linear scan used by LLVM, which is the JIT compiler in the openGL stack of Mac OS 10.5. Our implementation produces x86 code that is of similar quality to the code produced by the slower, state-of-the-art iterated register coalescing of George and Appel with the extensions proposed by Smith, Ramsey, and Holloway in 2004.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375609",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Fernando Magno Quintão",
+        "last_name": "Pereira",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Jens",
+        "last_name": "Palsberg",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/pldi/PereiraP08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375600",
+    "title": "SharC: checking data sharing strategies for multithreaded C",
+    "abstract": "Unintended or unmediated data sharing is a frequent cause of insidious bugs in multithreaded programs. We present a tool called SharC (short for Sharing Checker) that allows a user to write lightweight annotations to declare how they believe objects are being shared between threads in their program. SharC uses a combination of static and dynamic analyses to check that the program conforms to this specification.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375600",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Zachary",
+        "last_name": "Anderson",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Gay",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Rob",
+        "last_name": "Ennals",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Brewer",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/AndersonGEB08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375591",
+    "title": "Foundations of the C++ concurrency memory model",
+    "abstract": "Currently multi-threaded C or C++ programs combine a single-threaded programming language with a separate threads library. This is not entirely sound [7].",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375591",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Hans‐J.",
+        "last_name": "Boehm",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Sarita V.",
+        "last_name": "Adve",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/pldi/BoehmA08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375594",
+    "title": "Iterative optimization in the polyhedral model: part ii, multidimensional time",
+    "abstract": "High-level loop optimizations are necessary to achieve good performance over a wide variety of processors. Their performance impact can be significant because they involve in-depth program transformations that aim to sustain a balanced workload over the computational, storage, and communication resources of the target architecture. Therefore, it is mandatory that the compiler accurately models the target architecture as well as the effects of complex code restructuring.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375594",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Louis-Noël",
+        "last_name": "Pouchet",
+        "institution": "Inria Saclay - Île de France"
+      },
+      {
+        "first_name": "Cédric",
+        "last_name": "Bastoul",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Albert",
+        "last_name": "Cohen",
+        "institution": "Inria Saclay - Île de France"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Cavazos",
+        "institution": "University of Delaware"
+      }
+    ],
+    "dblp_key": "conf/pldi/PouchetBCC08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375620",
+    "title": "Dataflow analysis for concurrent programs using datarace detection",
+    "abstract": "Dataflow analyses for concurrent programs differ from their single-threaded counterparts in that they must account for shared memory locations being overwritten by concurrent threads. Existing dataflow analysis techniques for concurrent programs typically fall at either end of a spectrum: at one end, the analysis conservatively kills facts about all data that might possibly be shared by multiple threads; at the other end, a precise thread-interleaving analysis determines which data may be shared, and thus which dataflow facts must be invalidated. The former approach can suffer from imprecision, whereas the latter does not scale.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375620",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ravi",
+        "last_name": "Chugh",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Jan W.",
+        "last_name": "Voung",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Sorin",
+        "last_name": "Lerner",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChughVJL08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375595",
+    "title": "A practical automatic polyhedral parallelizer and locality optimizer",
+    "abstract": "We present the design and implementation of an automatic polyhedral source-to-source transformation framework that can optimize regular programs (sequences of possibly imperfectly nested loops) for parallelism and locality simultaneously. Through this work, we show the practicality of analytical model-driven automatic transformation in the polyhedral model -- far beyond what is possible by current production compilers. Unlike previous works, our approach is an end-to-end fully automatic one driven by an integer linear optimization framework that takes an explicit view of finding good ways of tiling for parallelism and locality using affine transformations. The framework has been implemented into a tool to automatically generate OpenMP parallel code from C program sections. Experimental results from the tool show very high speedups for local and parallel execution on multi-cores over state-of-the-art compiler frameworks from the research community as well as the best native production compilers. The system also enables the easy use of powerful empirical/iterative optimization for general arbitrarily nested loop sequences.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375595",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Uday",
+        "last_name": "Bondhugula",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Albert",
+        "last_name": "Hartono",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "J.",
+        "last_name": "Ramanujam",
+        "institution": "Louisiana State University"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Sadayappan",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BondhugulaHRS08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375615",
+    "title": "Sound, complete and scalable path-sensitive analysis",
+    "abstract": "We present a new, precise technique for fully path- and context-sensitive program analysis. Our technique exploits two observations: First, using quantified, recursive formulas, path- and context-sensitive conditions for many program properties can be expressed exactly. To compute a closed form solution to such recursive constraints, we differentiate between observable and unobservable variables, the latter of which are existentially quantified in our approach. Using the insight that unobservable variables can be eliminated outside a certain scope, our technique computes satisfiability-and validity-preserving closed-form solutions to the original recursive constraints. We prove the solution is as precise as the original system for answering may and must queries as well as being small in practice, allowing our technique to scale to the entire Linux kernel, a program with over 6 million lines of code. Copyright © 2008 ACM.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375615",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Dillig",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/DilligDA08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375614",
+    "title": "Explaining failures of program analyses",
+    "abstract": "With programs getting larger and often more complex with each new release, programmers need all the help they can get in understanding and transforming programs. Fortunately, modern development environments, such as Eclipse, incorporate tools for understanding, navigating, and transforming programs. These tools typically use program analyses to extract relevant properties of programs.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375614",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel von",
+        "last_name": "Dincklage",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Amer",
+        "last_name": "Diwan",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/pldi/DincklageD08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375625",
+    "title": "Fair stateless model checking",
+    "abstract": "Stateless model checking is a useful state-space exploration technique for systematically testing complex real-world software. Existing stateless model checkers are limited to the verification of safety properties on terminating programs. However, realistic concurrent programs are nonterminating, a property that significantly reduces the efficacy of stateless model checking in testing them. Moreover, existing stateless model checkers are unable to verify that a nonterminating program satisfies the important liveness property of livelock-freedom, a property that requires the program to make continuous progress for any input.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375625",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Madanlal",
+        "last_name": "Musuvathi",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Shaz",
+        "last_name": "Qadeer",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/MusuvathiQ08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375599",
+    "title": "Sketching concurrent data structures",
+    "abstract": "We describe PSketch, a program synthesizer that helps programmers implement concurrent data structures. The system is based on the concept of sketching, a form of synthesis that allows programmers to express their insight about an implementation as a partial program: a sketch. The synthesizer automatically completes the sketch to produce an implementation that matches a given correctness criteria.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375599",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Armando",
+        "last_name": "Solar-Lezama",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Christopher Grant",
+        "last_name": "Jones",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "Berkeley College"
+      }
+    ],
+    "dblp_key": "conf/pldi/Solar-LezamaJB08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375603",
+    "title": "Certifying low-level programs with hardware interrupts and preemptive threads",
+    "abstract": "Hardware interrupts are widely used in the world's critical software systems to support preemptive threads, device drivers, operating system kernels, and hypervisors. Handling interrupts properly is an essential component of low-level system programming. Unfortunately, interrupts are also extremely hard to reason about: they dramatically alter the program control flow and complicate the invariants in low-level concurrent code (e.g., implementation of synchronization primitives). Existing formal verification techniques---including Hoare logic, typed assembly language, concurrent separation logic, and the assume-guarantee method---have consistently ignored the issues of interrupts; this severely limits the applicability and power of today's program verification systems.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375603",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Xinyu",
+        "last_name": "Feng",
+        "institution": "Toyota Technological Institute at Chicago"
+      },
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Yuan",
+        "last_name": "Dong",
+        "institution": "Tsinghua University"
+      },
+      {
+        "first_name": "Yu",
+        "last_name": "Guo",
+        "institution": "University of Science and Technology of China"
+      }
+    ],
+    "dblp_key": "conf/pldi/FengSDG08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375596",
+    "title": "Orchestrating the execution of stream programs on multicore platforms",
+    "abstract": "While multicore hardware has become ubiquitous, explicitly parallel programming models and compiler techniques for exploiting parallelism on these systems have noticeably lagged behind. Stream programming is one model that has wide applicability in the multimedia, graphics, and signal processing domains. Streaming models execute as a set of independent actors that explicitly communicate data through channels. This paper presents a compiler technique for planning and orchestrating the execution of streaming applications on multicore platforms. An integrated unfolding and partitioning step based on integer linear programming is presented that unfolds data parallel actors as needed and maximally packs actors onto cores. Next, the actors are assigned to pipeline stages in such a way that all communication is maximally overlapped with computation on the cores. To facilitate experimentation, a generalized code generation template for mapping the software pipeline onto the Cell architecture is presented. For a range of streaming applications, a geometric mean speedup of 14.7x is achieved on a 16-core Cell platform compared to a single core.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375596",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Manjunath",
+        "last_name": "Kudlur",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Mahlke",
+        "institution": "University of Michigan–Ann Arbor"
+      }
+    ],
+    "dblp_key": "conf/pldi/KudlurM08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375613",
+    "title": "Bootstrapping: a technique for scalable flow and context-sensitive pointer alias analysis",
+    "abstract": "We propose a framework for improving both the scalability as well as the accuracy of pointer alias analysis, irrespective of its flow or context-sensitivities, by leveraging a three-pronged strategy that effectively combines divide and conquer, parallelization and function summarization. A key step in our approach is to first identify small subsets of pointers such that the problem of computing aliases of any pointer can be reduced to computing them in these small subsets instead of the entire program. In order to identify these subsets, we first apply a series of increasingly accurate but highly scalable (context and flow-insensitive) alias analyses in a cascaded fashion such that each analysis Ai works on the subsets generated by the previous one Ai-1. Restricting the application of Ai to subsets generated by Ai-1, instead of the entire program, improves it scalability, i.e., Ai is bootstrapped by Ai-1. Once these small subsets have been computed, in order to make our overall analysis accurate, we employ our new summarization-based flow and context-sensitive alias analysis. The small size of each subset offsets the higher computational complexity of the context-sensitive analysis. An important feature of our framework is that the analysis for each of the subsets can be carried out independently of others thereby allowing us to leverage parallelization further improving scalability.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375613",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Vineet",
+        "last_name": "Kahlon",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Kahlon08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375618",
+    "title": "Velodrome: a sound and complete dynamic atomicity checker for multithreaded programs",
+    "abstract": "Atomicity is a fundamental correctness property in multithreaded programs, both because atomic code blocks are amenable to sequential reasoning (which significantly simplifies correctness arguments), and because atomicity violations often reveal defects in a program's synchronization structure. Unfortunately, all atomicity analyses developed to date are incomplete in that they may yield false alarms on correctly synchronized programs, which limits their usefulness.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375618",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Stephen N.",
+        "last_name": "Freund",
+        "institution": "Williams College"
+      },
+      {
+        "first_name": "Jaeheon",
+        "last_name": "Yi",
+        "institution": "University of California, Santa Cruz"
+      }
+    ],
+    "dblp_key": "conf/pldi/FlanaganFY08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375623",
+    "title": "Discovering properties about arrays in simple programs",
+    "abstract": "Array bound checking and array dependency analysis (for parallelization) have been widely studied. However, there are much less results about analyzing properties of array contents. In this paper, we propose a way of using abstract interpretation for discovering properties about array contents in some restricted cases: one-dimensional arrays, traversed by simple \"for\" loops. The basic idea, borrowed from [GRS05], consists in partitioning arrays into symbolic intervals (e.g., [1,i -- 1], [i,i], [i + 1,n]), and in associating with each such interval I and each array A an abstract variable AI; the new idea is to consider relational abstract properties ψ(AI, BI, ...) about these abstract variables, and to interpret such a property pointwise on the interval I: ∀l ∈ I, ψ(A[l], B[l],...). The abstract semantics of our simple programs according to these abstract properties has been defined and implemented in a prototype tool. The method is able, for instance, to discover that the result of an insertion sort is a sorted array, or that, in an array traversal guarded by a \"sentinel\", the index stays within the bounds.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375623",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Nicolas",
+        "last_name": "Halbwachs",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Mathias",
+        "last_name": "Péron",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/pldi/HalbwachsP08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375619",
+    "title": "Inferring locks for atomic sections",
+    "abstract": "Atomic sections are a recent and popular idiom to support the development of concurrent programs. Updates performed within an atomic section should not be visible to other threads until the atomic section has been executed entirely. Traditionally, atomic sections are supported through the use of optimistic concurrency, either using a transactional memory hardware, or an equivalent software emulation (STM).",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375619",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sigmund",
+        "last_name": "Cherem",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Trishul",
+        "last_name": "Chilimbi",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/CheremCG08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375604",
+    "title": "Type-preserving compilation for large-scale optimizing object-oriented compilers",
+    "abstract": "Type-preserving compilers translate well-typed source code, such as Java or C#, into verifiable target code, such as typed assembly language or proof-carrying code. This paper presents the implementation of type-preserving compilation in a complex, large-scale optimizing compiler. Compared to prior work, this implementation supports extensive optimizations, and it verifies a large portion of the interface between the compiler and the runtime system. This paper demonstrates the practicality of type-preserving compilation in complex optimizing compilers: the generated typed assembly language is only 2.3% slower than the base compiler's generated untyped assembly language, and the type-preserving compiler is 82.8% slower than the base compiler.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375604",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Chen",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Hawblitzel",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Frances",
+        "last_name": "Perry",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Mike",
+        "last_name": "Emmi",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Jeremy",
+        "last_name": "Condit",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Derrick",
+        "last_name": "Coetzee",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Polyvios",
+        "last_name": "Pratikaki",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChenHPECCP08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375626",
+    "title": "Model checking transactional memories",
+    "abstract": "Model checking software transactional memories (STMs) is difficult because of the unbounded number, length, and delay of concurrent transactions and the unbounded size of the memory. We show that, under certain conditions, the verification problem can be reduced to a finite-state problem, and we illustrate the use of the method by proving the correctness of several STMs, including two-phase locking, DSTM, TL2, and optimistic concurrency control. The safety properties we consider include strict serializability and opacity; the liveness properties include obstruction freedom, livelock freedom, and wait freedom.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375626",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rachid",
+        "last_name": "Guerraoui",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Thomas A.",
+        "last_name": "Henzinger",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Jobstmann",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Vasu",
+        "last_name": "Singh",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/pldi/GuerraouiHJS08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375606",
+    "title": "Quantitative information flow as network flow capacity",
+    "abstract": "Abstract We present a new technique for determining how much informationabout a program&amp;apos;s secret inputs is revealed by its public outputs. In",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375606",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Stephen",
+        "last_name": "McCamant",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Ernst",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/McCamantE08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375616",
+    "title": "Program analysis as constraint solving",
+    "abstract": "A constraint-based approach to invariant generation in programs translates a program into constraints that are solved using off-the-shelf constraint solvers to yield desired program invariants.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375616",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Saurabh",
+        "last_name": "Srivastava",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Ramarathnam",
+        "last_name": "Venkatesan",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/GulwaniSV08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375587",
+    "title": "A study of concurrent real-time garbage collectors",
+    "abstract": "Concurrent garbage collection is highly attractive for real-time systems, because offloading the collection effort from the executing threads allows faster response, allowing for extremely short deadlines at the microseconds level. Concurrent collectors also offer much better scalability over incremental collectors. The main problem with concurrent real-time collectors is their complexity. The first concurrent real-time garbage collector that can support fine synchronization, STOPLESS, has recently been presented by Pizlo et al. In this paper, we propose two additional (and different) algorithms for concurrent real-time garbage collection: CLOVER and CHICKEN. Both collectors obtain reduced complexity over the first collector STOPLESS, but need to trade a benefit for it. We study the algorithmic strengths and weaknesses of CLOVER and CHICKEN and compare them to STOPLESS. Finally, we have implemented all three collectors on the Bartok compiler and runtime for C# and we present measurements to compare their efficiency and responsiveness.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375587",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Filip",
+        "last_name": "Pizlo",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Erez",
+        "last_name": "Petrank",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Bjarne",
+        "last_name": "Steensgaard",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/PizloPS08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375598",
+    "title": "Deriving linearizable fine-grained concurrent objects",
+    "abstract": "Practical and efficient algorithms for concurrent data structures are difficult to construct and modify. Algorithms in the literature are often optimized for a specific setting, making it hard to separate the algorithmic insights from implementation details. The goal of this work is to systematically construct algorithms for a concurrent data structure starting from its sequential implementation. Towards that goal, we follow a construction process that combines manual steps corresponding to high-level insights with automatic exploration of implementation details. To assist us in this process, we built a new tool called Paraglider. The tool quickly explores large spaces of algorithms and uses bounded model checking to check linearizability of algorithms.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375598",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Eran",
+        "last_name": "Yahav",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/VechevY08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375602",
+    "title": "Liquid types",
+    "abstract": "We present Logically Qualified Data Types, abbreviated to Liquid Types, a system that combines Hindley-Milner type inference with Predicate Abstraction to automatically infer dependent types precise enough to prove a variety of safety properties. Liquid types allow programmers to reap many of the benefits of dependent types, namely static verification of critical properties and the elimination of expensive run-time checks, without the heavy price of manual annotation. We have implemented liquid type inference in DSOLVE, which takes as input an OCAML program and a set of logical qualifiers and infers dependent types for the expressions in the OCAML program. To demonstrate the utility of our approach, we describe experiments using DSOLVE to statically verify the safety of array accesses on a set of OCAML benchmarks that were previously annotated with dependent types as part of the DML project. We show that when used in conjunction with a fixed set of array bounds checking qualifiers, DSOLVE reduces the amount of manual annotation required for proving safety from 31% of program text to under 1%.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375602",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Patrick M.",
+        "last_name": "Rondon",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Ming",
+        "last_name": "Kawaguci",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "conf/pldi/RondonKJ08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375583",
+    "title": "Checking race freedom via linear programming",
+    "abstract": "We present a new static analysis for race freedom and race detection. The analysis checks race freedom by reducing the problem to (rational) linear programming. Unlike conventional static analyses for race freedom or race detection, our analysis avoids explicit computation of locksets and lock linearity/must-aliasness. Our analysis can handle a variety of synchronization idioms that more conventional approaches often have difficulties with, such as thread joining, semaphores, and signals. We achieve efficiency by utilizing modern linear programming solvers that can quickly solve large linear programming instances. This paper reports on the formal properties of the analysis and the experience with applying an implementation to real world C programs.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375583",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Tachio",
+        "last_name": "Terauchi",
+        "institution": "Tohoku University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Terauchi08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375621",
+    "title": "XMem: type-safe, transparent, shared memory for cross-runtime communication and coordination",
+    "abstract": "Developers commonly build contemporary enterprise applications using type-safe, component-based platforms, such as J2EE, and architect them to comprise multiple tiers, such as a web container, application server, and database engine. Administrators increasingly execute each tier in its own managed runtime environment (MRE) to improve reliability and to manage system complexity through the fault containment and modularity offered by isolated MRE instances. Such isolation, however, necessitates expensive cross-tier communication based on protocols such as object serialization and remote procedure calls. Administrators commonly co-locate communicating MREs on a single host to reduce communication overhead and to better exploit increasing numbers of available processing cores. However, state-of-the-art MREs offer no support for more efficient communication between co-located MREs, while fast inter-process communication mechanisms, such as shared memory, are widely available as a standard operating system service on most modern platforms.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375621",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michał",
+        "last_name": "Węgiel",
+        "institution": "University of California, Santa Barbara"
+      },
+      {
+        "first_name": "Chandra",
+        "last_name": "Krintz",
+        "institution": "University of California, Santa Barbara"
+      }
+    ],
+    "dblp_key": "conf/pldi/WegielK08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375611",
+    "title": "Efficient program execution indexing",
+    "abstract": "Execution indexing uniquely identifies a point in an execution. Desirable execution indices reveal correlations between points in an execution and establish correspondence between points across multiple executions. Therefore, execution indexing is essential for a wide variety of dynamic program analyses, for example, it can be used to organize program profiles; it can precisely identify the point in a re-execution that corresponds to a given point in an original execution and thus facilitate debugging or dynamic instrumentation. In this paper, we formally define the concept of execution index and propose an indexing scheme based on execution structure and program state. We present a highly optimized online implementation of the technique. We also perform a client study, which targets producing a failure inducing schedule for a data race by verifying the two alternative happens-before orderings of a racing pair. Indexing is used to precisely locate corresponding points across multiple executions in the presence of non-determinism so that no heavyweight tracing/replay system is needed.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375611",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Bin",
+        "last_name": "Xin",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "William N.",
+        "last_name": "Sumner",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Xiangyu",
+        "last_name": "Zhang",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/pldi/XinSZ08",
+    "venue": "pldi",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1375581.1375624",
+    "title": "Full functional verification of linked data structures",
+    "abstract": "We present the first verification of full functional correctness for a range of linked data structure implementations, including mutable lists, trees, graphs, and hash tables. Specifically, we present the use of the Jahob verification system to verify formal specifications, written in classical higher-order logic, that completely capture the desired behavior of the Java data structure implementations (with the exception of properties involving execution time and/or memory consumption). Given that the desired correctness properties include intractable constructs such as quantifiers, transitive closure, and lambda abstraction, it is a challenge to successfully prove the generated verification conditions.",
+    "date": "2008-06-07",
+    "link": "https://doi.org/10.1145/1375581.1375624",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Karen",
+        "last_name": "Zee",
+        "institution": "IIT@MIT"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Kunčak",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "IIT@MIT"
+      }
+    ],
+    "dblp_key": "conf/pldi/ZeeKR08",
+    "venue": "pldi",
+    "year": 2008
+  }
+]

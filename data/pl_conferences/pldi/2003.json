@@ -1,0 +1,764 @@
+[
+  {
+    "paper_id": "10.1145/781131.781161",
+    "title": "Stride prefetching by dynamically inspecting objects",
+    "abstract": "Software prefetching is a promising technique to hide cache miss latencies, but it remains challenging to effectively prefetch pointer-based data structures because obtaining the memory address to be prefetched requires pointer dereferences. The recently proposed stride prefetching overcomes this problem, but it only exploits inter-iteration stride patterns and relies on an off-line profiling method.We propose a new algorithm for stride prefetching which is intended for use in a dynamic compiler. We exploit both inter- and intra-iteration stride patterns, which we discover using an ultra-lightweight profiling technique, called object inspection. This is a kind of partial interpretation that only a dynamic compiler can perform. During the compilation of a method, the dynamic compiler gathers the profile information by partially interpreting the method using the actual values of parameters and causing no side effects.We evaluated an implementation of our prefetching algorithm in a production-level Java just-in time compiler. The results show that the algorithm achieved up to an 18.9% and 25.1% speedup in industry-standard benchmarks on the Pentium 4 and the Athlon MP, respectively, while it increased the compilation time by less than 3.0%.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781161",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Tatsushi",
+        "last_name": "Inagaki",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Tamiya",
+        "last_name": "Onodera",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Hideaki",
+        "last_name": "Komatsu",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Toshio",
+        "last_name": "Nakatani",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/pldi/InagakiOKN03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781165",
+    "title": "Region-based hierarchical operation partitioning for multicluster processors",
+    "abstract": "Clustered architectures are a solution to the bottleneck of centralized register files in superscalar and VLIW processors. The main challenge associated with clustered architectures is compiler support to effectively partition operations across the available resources on each cluster. In this work, we present a novel technique for clustering operations based on graph partitioning methods. Our approach incorporates new methods of assigning weights to nodes and edges within the dataflow graph to guide the partitioner. Nodes are assigned weights to reflect their resource usage within a cluster, while a slack distribution method intelligently assigns weights to edges to reflect the cost of inserting moves across clusters. A multilevel graph partitioning algorithm, which globally divides a dataflow graph into multiple parts in a hierarchical manner, uses these weights to efficiently generate estimates for the quality of partitions. We found that our algorithm was able to achieve an average of 20% improvement in DSP kernels and 5% improvement in SPECint2000 for a four-cluster architecture.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781165",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Chu",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Kevin",
+        "last_name": "Fan",
+        "institution": "University of Michigan–Ann Arbor"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Mahlke",
+        "institution": "University of Michigan–Ann Arbor"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChuFM03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781160",
+    "title": "Static array storage optimization in MATLAB",
+    "abstract": "Static array storage optimization in MATLAB.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781160",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Pramod G.",
+        "last_name": "Joisha",
+        "institution": "Northwestern University"
+      },
+      {
+        "first_name": "Prithviraj",
+        "last_name": "Banerjee",
+        "institution": "Northwestern University"
+      }
+    ],
+    "dblp_key": "conf/pldi/JoishaB03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781134",
+    "title": "Linear analysis and optimization of stream programs",
+    "abstract": "As more complex DSP algorithms are realized in practice, there is an increasing need for high-level stream abstractions that can be compiled without sacrificing efficiency. Toward this end, we present a set of aggressive optimizations that target linear sections of a stream program. Our input language is StreamIt, which represents programs as a hierarchical graph of autonomous filters. A filter is linear if each of its outputs can be represented as an affine combination of its inputs. Linearity is common in DSP components; examples include FIR filters, expanders, compressors, FFTs and DCTs.We demonstrate that several algorithmic transformations, traditionally hand-tuned by DSP experts, can be completely automated by the compiler. First, we present a linear extraction analysis that automatically detects linear filters from the C-like code in their work function. Then, we give a procedure for combining adjacent linear filters into a single filter, as well as for translating a linear filter to operate in the frequency domain. We also present an optimization selection algorithm, which finds the sequence of combination and frequency transformations that will give the maximal benefit.We have completed a fully-automatic implementation of the above techniques as part of the StreamIt compiler, and we demonstrate a 450% performance improvement over our benchmark suite.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781134",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Andrew A.",
+        "last_name": "Lamb",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "William",
+        "last_name": "Thies",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Saman",
+        "last_name": "Amarasinghe",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/LambTA03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781162",
+    "title": "Optimizing indirect branch prediction accuracy in virtual machine interpreters",
+    "abstract": "Interpreters designed for efficiency execute a huge number of indirect branches and can spend more than half of the execution time in indirect branch mispredictions. Branch target buffers are the best widely available form of indirect branch prediction; however, their prediction accuracy for existing interpreters is only 2%--50%. In this paper we investigate two methods for improving the prediction accuracy of BTBs for interpreters: replicating virtual machine (VM) instructions and combining sequences of VM instructions into superinstructions. We investigate static (interpreter build-time) and dynamic (interpreter run-time) variants of these techniques and compare them and several combinations of these techniques. These techniques can eliminate nearly all of the dispatch branch mispredictions, and have other benefits, resulting in speedups by a factor of up to 3.17 over efficient threaded-code interpreters, and speedups by a factor of up to 1.3 over techniques relying on superinstructions alone.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781162",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "M. Anton",
+        "last_name": "Ertl",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Gregg",
+        "institution": "Trinity College Dublin"
+      }
+    ],
+    "dblp_key": "conf/pldi/ErtlG03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781155",
+    "title": "A provably sound TAL for back-end optimization",
+    "abstract": "Typed assembly languages provide a way to generate machine-checkable safety proofs for machine-language programs. But the soundness proofs of most existing typed assembly languages are hand-written and cannot be machine-checked, which is worrisome for such large calculi. We have designed and implemented a low-level typed assembly language (LTAL) with a semantic model and established its soundness from the model. Compared to existing typed assembly languages, LTAL is more scalable and more secure; it has no macro instructions that hinder low-level optimizations such as instruction scheduling; its type constructors are expressive enough to capture dataflow information, support the compiler's choice of data representations and permit typed position-independent code; and its type-checking algorithm is completely syntax-directed.We have built a prototype system, based on Standard ML of New Jersey, that compiles most of core ML to Sparc code. We explain how we were able to make the untyped back end in SML/NJ preserve types during instruction selection and register allocation, without restricting low-level optimizations and without knowledge of any type system pervading the instruction selector and register allocator.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781155",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Chen",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Dinghao",
+        "last_name": "Wu",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Hai",
+        "last_name": "Fang",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChenWAF03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781135",
+    "title": "Taming the IXP network processor",
+    "abstract": "We compile Nova, a new language designed for writing network processing applications, using a back end based on integer-linear programming (ILP) for register allocation, optimal bank assignment, and spills. The compiler's optimizer employs CPS as its intermediate representation; some of the invariants that this IR guarantees are essential for the formulation of a practical ILP model.Appel and George used a similar ILP-based technique for the IA32 to decide which variables reside in registers but deferred the actual assignment of colors to a later phase. We demonstrate how to carry over their idea to an architecture with many more banks, register aggregates, variables with multiple simultaneous register assignments, and, very importantly, one where bank- and register-assignment cannot be done in isolation from each other. Our approach performs well in practise---without causing an explosion in size or solve time of the generated integer linear programs.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781135",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Lal",
+        "last_name": "George",
+        "institution": "Network Technologies (United States)"
+      },
+      {
+        "first_name": "M.",
+        "last_name": "Blume",
+        "institution": "Toyota Technological Institute at Chicago"
+      }
+    ],
+    "dblp_key": "conf/pldi/GeorgeB03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781145",
+    "title": "Static conflict analysis for multi-threaded object-oriented programs",
+    "abstract": "A compiler for multi-threaded object-oriented programs needs information about the sharing of objects for a variety of reasons: to implement optimizations, to issue warnings, to add instrumentation to detect access violations that occur at runtime. An Object Use Graph (OUG) statically captures accesses from different threads to objects. An OUG extends the Heap Shape Graph (HSG), which is a compile-time abstraction for runtime objects (nodes) and their reference relations (edges). An OUG specifies for a specific node in the HSG a partial order of events relevant to the corresponding runtime object(s). Relevant events include read and write access, object escape, thread start and join.OUGs have been implemented in a Java compiler. Initial experience shows that OUGs are effective to identify object accesses that potentially conflict at runtime and isolate accesses that never cause a problem at runtime. The capabilities of OUGs are compared with an advanced program analysis that has been used for lock elimination. For the set of benchmarks investigated here, OUGs report only a fraction of shared objects as conflicting and reduce the number of compile-time reports in terms of allocation sites of conflicting objects by 28--92% (average 64%). For benchmarks of up to 30 KLOC, the time taken to construct OUGs is, with one exception, in the order of seconds.The information collected in the OUG has been used to instrument Java programs with checks for object races. OUGs provide precise information about object sharing and static protection, so runtime instrumentation that checks those cases that cannot be disambiguated at compile-time is sparse, and the total runtime overhead of checking for object races is only 3--86% (average 47%).",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781145",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Christoph von",
+        "last_name": "Praun",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Groß",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/pldi/PraunG03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781146",
+    "title": "Checking and inferring local non-aliasing",
+    "abstract": "In prior work [15] we studied a language construct <tt>restrict</tt> that allows programmers to specify that certain pointers are not aliased to other pointers used within a lexical scope. Among other applications, programming with these constructs helps program analysis tools locally recover strong updates, which can improve the tracking of state in flow-sensitive analyses. In this paper we continue the study of <tt>restrict</tt> and introduce the construct <tt>confine</tt>. We present a type and effect system for checking the correctness of these annotations, and we develop efficient constraint-based algorithms implementing these type checking systems. To make it easier to use <tt>restrict</tt> and <tt>confine</tt> in practice, we show how to automatically infer such annotations without programmer assistance. In experiments on locking in 589 Linux device drivers, <tt>confine</tt> inference can automatically recover strong updates to eliminate 95% of the type errors resulting from weak updates.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781146",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Kodumal",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Tachio",
+        "last_name": "Terauchi",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/AikenFKT03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781148",
+    "title": "Bug isolation via remote program sampling",
+    "abstract": "We propose a low-overhead sampling infrastructure for gathering information from the executions experienced by a program's user community. Several example applications illustrate ways to use sampled instrumentation to isolate bugs. Assertion-dense code can be transformed to share the cost of assertions among many users. Lacking assertions, broad guesses can be made about predicates that predict program errors and a process of elimination used to whittle these down to the true bug. Finally, even for non-deterministic bugs such as memory corruption, statistical modeling based on logistic regression allows us to identify program behaviors that are strongly correlated with failure and are therefore likely places to look for the error.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781148",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ben",
+        "last_name": "Liblit",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Alice X.",
+        "last_name": "Zheng",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Michael I.",
+        "last_name": "Jordan",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/LiblitAZJ03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781159",
+    "title": "Predicting whole-program locality through reuse distance analysis",
+    "abstract": "Profiling can accurately analyze program behavior for select data inputs. We show that profiling can also predict program locality for inputs other than profiled ones. Here locality is defined by the distance of data reuse. Studying whole-program data reuse may reveal global patterns not apparent in short-distance reuses or local control flow. However, the analysis must meet two requirements to be useful. The first is efficiency. It needs to analyze all accesses to all data elements in full-size benchmarks and to measure distance of any length and in any required precision. The second is predication. Based on a few training runs, it needs to classify patterns as regular and irregular and, for regular ones, it should predict their (changing) behavior for other inputs. In this paper, we show that these goals are attainable through three techniques: approximate analysis of reuse distance (originally called LRU stack distance), pattern recognition, and distance-based sampling. When tested on 15 integer and floating-point programs from SPEC and other benchmark suites, our techniques predict with on average 94% accuracy for data inputs up to hundreds times larger than the training inputs. Based on these results, the paper discusses possible uses of this analysis.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781159",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Chen",
+        "last_name": "Ding",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Yutao",
+        "last_name": "Zhong",
+        "institution": "University of Rochester"
+      }
+    ],
+    "dblp_key": "conf/pldi/DingZ03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781144",
+    "title": "Points-to analysis using BDDs",
+    "abstract": "This paper reports on a new approach to solving a subset-based points-to analysis for Java using Binary Decision Diagrams (BDDs). In the model checking community, BDDs have been shown very effective for representing large sets and solving very large verification problems. Our work shows that BDDs can also be very effective for developing a points-to analysis that is simple to implement and that scales well, in both space and time, to large programs.The paper first introduces BDDs and operations on BDDs using some simple points-to examples. Then, a complete subset-based points-to algorithm is presented, expressed completely using BDDs and BDD operations. This algorithm is then refined by finding appropriate variable orderings and by making the algorithm propagate sets incrementally, in order to arrive at a very efficient algorithm. Experimental results are given to justify the choice of variable ordering, to demonstrate the improvement due to incrementalization, and to compare the performance of the BDD-based solver to an efficient hand-coded graph-based solver. Finally, based on the results of the BDD-based solver, a variety of BDD-based queries are presented, including the points-to query.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781144",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Marc",
+        "last_name": "Berndl",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Feng",
+        "last_name": "Qian",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Laurie",
+        "last_name": "Hendren",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Navindra",
+        "last_name": "Umanee",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BerndlLQHU03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781169",
+    "title": "A type and effect system for atomicity",
+    "abstract": "Ensuring the correctness of multithreaded programs is difficult, due to the potential for unexpected and nondeterministic interactions between threads. Previous work addressed this problem by devising tools for detecting race conditions, a situation where two threads simultaneously access the same data variable, and at least one of the accesses is a write. However, verifying the absence of such simultaneous-access race conditions is neither necessary nor sufficient to ensure the absence of errors due to unexpected thread interactions.We propose that a stronger non-interference property is required, namely atomicity. Atomic methods can be assumed to execute serially, without interleaved steps of other threads. Thus, atomic methods are amenable to sequential reasoning techniques, which significantly simplifies both formal and informal reasoning about program correctness.This paper presents a type system for specifying and verifying the atomicity of methods in multithreaded Java programs. The atomic type system is a synthesis of Lipton's theory of reduction and type systems for race detection.We have implemented this atomic type system for Java and used it to check a variety of standard Java library classes. The type checker uncovered subtle atomicity violations in classes such as <tt>java.lang.String</tt> and <tt>java.lang.String-Buffer</tt> that cause crashes under certain thread interleavings.This paper proposes that a stronger non-interference property is required, namely atomicity, and presents a type system for verifying the atomicity of methods in multithreaded Java programs. Methods in a class can be annotated with the keyword <tt>atomic</tt>. Clients of a well-typed class can then assume that each atomic method is executed in one step, thus significantly simplifying both formal and informal reasoning about the client's correctness.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781169",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Shaz",
+        "last_name": "Qadeer",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/FlanaganQ03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781157",
+    "title": "CCured in the real world",
+    "abstract": "CCured is a program transformation system that adds memory safety guarantees to C programs by verifying statically that memory errors cannot occur and by inserting run-time checks where static verification is insufficient.This paper addresses major usability issues in a previous version of CCured, in which many type casts required the use of pointers whose representation was expensive and incompatible with precompiled libraries. We have extended the CCured type inference algorithm to recognize and verify statically a large number of type casts; this goal is achieved by using physical subtyping and pointers with run-time type information to allow parametric and subtype polymorphism. In addition, we present a new instrumentation scheme that splits CCured's metadata into a separate data structure whose shape mirrors that of the original user data. This scheme allows instrumented programs to invoke external functions directly on the program's data without the use of a wrapper function.With these extensions we were able to use CCured on real-world security-critical network daemons and to produce instrumented versions without memory-safety vulnerabilities.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781157",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jeremy",
+        "last_name": "Condit",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Harren",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "McPeak",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "George C.",
+        "last_name": "Necula",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Westley",
+        "last_name": "Weimer",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/ConditHMNW03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781168",
+    "title": "Ownership types for safe region-based memory management in real-time Java",
+    "abstract": "The Real Time Specification for Java (RTSJ) allows a program to create real-time threads with hard real-time constraints. Real-time threads use region-based memory management to avoid unbounded pauses caused by interference from the garbage collector. The RTSJ uses runtime checks to ensure that deleting a region does not create dangling references and that real-time threads do not access references to objects allocated in the garbage-collected heap. This paper presents a static type system that guarantees that these runtime checks will never fail for well-typed programs. Our type system therefore 1) provides an important safety guarantee for real-time programs and 2) makes it possible to eliminate the runtime checks and their associated overhead.Our system also makes several contributions over previous work on region types. For object-oriented programs, it combines the benefits of region types and ownership types in a unified type system framework. For multithreaded programs, it allows long-lived threads to share objects without using the heap and without memory leaks. For real-time programs, it ensures that real-time threads do not interfere with the garbage collector. Our experience indicates that our type system is sufficiently expressive and requires little programming overhead, and that eliminating the RTSJ runtime checks using a static type system can significantly decrease the execution time of real-time programs.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781168",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Chandrasekhar",
+        "last_name": "Boyapati",
+        "institution": ""
+      },
+      {
+        "first_name": "Alexandru",
+        "last_name": "Sălcianu",
+        "institution": ""
+      },
+      {
+        "first_name": "William S.",
+        "last_name": "Beebee",
+        "institution": ""
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/BoyapatiSBR03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781137",
+    "title": "The design, implementation, and evaluation of a compiler algorithm for CPU energy reduction",
+    "abstract": "This paper presents the design and implementation of a compiler algorithm that effectively optimizes programs for energy usage using dynamic voltage scaling (DVS). The algorithm identifies program regions where the CPU can be slowed down with negligible performance loss. It is implemented as a source-to-source level transformation using the SUIF2 compiler infrastructure. Physical measurements on a high-performance laptop show that total system (i.e., laptop) energy savings of up to 28% can be achieved with performance degradation of less than 5% for the SPECfp95 benchmarks. On average, the system energy and energy-delay product are reduced by 11% and 9%, respectively, with a performance slowdown of 2%. It was also discovered that the energy usage of the programs using our DVS algorithm is within 6% from the theoretical lower bound. To the best of our knowledge, this is one of the first work that evaluates DVS algorithms by physical measurements.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781137",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Chung‐Hsing",
+        "last_name": "Hsu",
+        "institution": ""
+      },
+      {
+        "first_name": "Ulrich",
+        "last_name": "Kremer",
+        "institution": "Rutgers, The State University of New Jersey"
+      }
+    ],
+    "dblp_key": "conf/pldi/HsuK03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781133",
+    "title": "The nesC language: A holistic approach to networked embedded systems",
+    "abstract": "We present nesC, a programming language for networked embedded systems that represent a new design space for application developers. An example of a networked embedded system is a sensor network, which consists of (potentially) thousands of tiny, low-power \"motes,\" each of which execute concurrent, reactive programs that must operate with severe memory and power constraints.nesC's contribution is to support the special needs of this domain by exposing a programming model that incorporates event-driven execution, a flexible concurrency model, and component-oriented application design. Restrictions on the programming model allow the nesC compiler to perform whole-program analyses, including data-race detection (which improves reliability) and aggressive function inlining (which reduces resource consumption).nesC has been used to implement TinyOS, a small operating system for sensor networks, as well as several significant sensor applications. nesC and TinyOS have been adopted by a large number of sensor network research groups, and our experience and evaluation of the language shows that it is effective at supporting the complex, concurrent programming style demanded by this new class of deeply networked systems.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781133",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Gay",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Philip",
+        "last_name": "Levis",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Robert von",
+        "last_name": "Behren",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Matt",
+        "last_name": "Welsh",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Brewer",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Culler",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/GayLBWBC03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781152",
+    "title": "Debugging temporal specifications with concept analysis",
+    "abstract": "Program verification tools (such as model checkers and static analyzers) can find many errors in programs. These tools need formal specifications of correct program behavior, but writing a correct specification is difficult, just as writing a correct program is difficult. Thus, just as we need methods for debugging programs, we need methods for debugging specifications.This paper describes a novel method for debugging formal, temporal specifications. Our method exploits the short program execution traces that program verification tools generate from specification violations and that specification miners extract from programs. Manually examining these traces is a straightforward way to debug a specification, but this method is tedious and error-prone because there may be hundreds or thousands of traces to inspect. Our method uses concept analysis to automatically group the traces into highly similar clusters. By examining clusters instead of individual traces, a person can debug a specification with less work.To test our method, we implemented a tool, Cable, for debugging specifications. We have used Cable to debug specifications produced by Strauss, our specification miner. We found that using Cable to debug these specifications requires, on average, less than one third as many user decisions as debugging by examining all traces requires. In one case, using Cable required only 28 decisions, while debugging by examining all traces required 224.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781152",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Glenn",
+        "last_name": "Ammons",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Mandelin",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "James R.",
+        "last_name": "Larus",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/AmmonsMBL03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781153",
+    "title": "A static analyzer for large safety-critical software",
+    "abstract": "We show that abstract interpretation-based static program analysis can be made efficient and precise enough to formally verify a class of properties for a family of large programs with few or no false alarms. This is achieved by refinement of a general purpose static analyzer and later adaptation to particular programs of the family by the end-user through parametrization. This is applied to the proof of soundness of data manipulation operations at the machine level for periodic synchronous safety critical embedded software.The main novelties are the design principle of static analyzers by refinement and adaptation through parametrization (Sect. 3 and 7), the symbolic manipulation of expressions to improve the precision of abstract transfer functions (Sect. 6.3), the octagon (Sect. 6.2.2), ellipsoid (Sect. 6.2.3), and decision tree (Sect. 6.2.4) abstract domains, all with sound handling of rounding errors in oating point computations, widening strategies (with thresholds: Sect. 7.1.2, delayed: Sect. 7.1.3) and the automatic determination of the parameters (parametrized packing: Sect. 7.2).",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781153",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Bruno",
+        "last_name": "Blanchet",
+        "institution": "École Normale Supérieure"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Cousot",
+        "institution": "École Normale Supérieure"
+      },
+      {
+        "first_name": "Radhia",
+        "last_name": "Cousot",
+        "institution": "Centre National pour la Recherche Scientifique et Technique (CNRST)"
+      },
+      {
+        "first_name": "Jérôme",
+        "last_name": "Ferêt",
+        "institution": "École Normale Supérieure"
+      },
+      {
+        "first_name": "Laurent",
+        "last_name": "Mauborgne",
+        "institution": "École Normale Supérieure"
+      },
+      {
+        "first_name": "Antoine",
+        "last_name": "Miné",
+        "institution": "École Normale Supérieure"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Monniaux",
+        "institution": "Centre National pour la Recherche Scientifique et Technique (CNRST)"
+      },
+      {
+        "first_name": "Xavier",
+        "last_name": "Rival",
+        "institution": "École Normale Supérieure"
+      }
+    ],
+    "dblp_key": "conf/pldi/BlanchetCCFMMMR03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781150",
+    "title": "A practical flow-sensitive and context-sensitive C and C++ memory leak detector",
+    "abstract": "This paper presents a static analysis tool that can automatically find memory leaks and deletions of dangling pointers in large C and C++ applications.We have developed a type system to formalize a practical ownership model of memory management. In this model, every object is pointed to by one and only one owning pointer, which holds the exclusive right and obligation to either delete the object or to transfer the right to another owning pointer. In addition, a pointer-typed class member field is required to either always or never own its pointee at public method boundaries. Programs satisfying this model do not leak memory or delete the same object more than once.We have also developed a flow-sensitive and context-sensitive algorithm to automatically infer the likely ownership interfaces of methods in a program. It identifies statements inconsistent with the model as sources of potential leaks or double deletes. The algorithm is sound with respect to a large subset of the C and C++ language in that it will report all possible errors. It is also practical and useful as it identifies those warnings likely to correspond to errors and helps the user understand the reported errors by showing them the assumed method interfaces.Our techniques are validated with an implementation of a tool we call Clouseau. We applied Clouseau to a suite of applications: two web servers, a chat client, secure shell tools, executable object manipulation tools, and a compiler. The tool found a total of 134 serious memory errors in these applications. The tool analyzes over 50K lines of C++ code in about 9 minutes on a 2 GHz Pentium 4 machine and over 70K lines of C code in just over a minute.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781150",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "D.",
+        "last_name": "Heine",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Monica S.",
+        "last_name": "Lam",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/HeineL03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781140",
+    "title": "A comparison of empirical and model-driven optimization",
+    "abstract": "Empirical program optimizers estimate the values of key optimization parameters by generating different program versions and running them on the actual hardware to determine which values give the best performance. In contrast, conventional compilers use models of programs and machines to choose these parameters. It is widely believed that model-driven optimization does not compete with empirical optimization, but few quantitative comparisons have been done to date. To make such a comparison, we replaced the empirical optimization engine in ATLAS (a system for generating a dense numerical linear algebra library called the BLAS) with a model-driven optimization engine that used detailed models to estimate values for optimization parameters, and then measured the relative performance of the two systems on three different hardware platforms. Our experiments show that model-driven optimization can be surprisingly effective, and can generate code whose performance is comparable to that of code generated by empirical optimizers for the BLAS.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781140",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Kamen",
+        "last_name": "Yotov",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Xiaoming",
+        "last_name": "Li",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Gang",
+        "last_name": "Ren",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Cibulskis",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Gerald",
+        "last_name": "DeJong",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "María Jesús",
+        "last_name": "Garzarán",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Padua",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Keshav",
+        "last_name": "Pingali",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Stodghill",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Peng",
+        "last_name": "Wu",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/YotovLRCDGPPSW03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781141",
+    "title": "Meta optimization: improving compiler heuristics with machine learning",
+    "abstract": "Compiler writers have crafted many heuristics over the years to approximately solve NP-hard problems efficiently. Finding a heuristic that performs well on a broad range of applications is a tedious and difficult process. This paper introduces Meta Optimization, a methodology for automatically fine-tuning compiler heuristics. Meta Optimization uses machine-learning techniques to automatically search the space of compiler heuristics. Our techniques reduce compiler design complexity by relieving compiler writers of the tedium of heuristic tuning. Our machine-learning system uses an evolutionary algorithm to automatically find effective compiler heuristics. We present promising experimental results. In one mode of operation Meta Optimization creates application-specific heuristics which often result in impressive speedups. For hyperblock formation, one optimization we present in this paper, we obtain an average speedup of 23% (up to 73%) for the applications in our suite. Furthermore, by evolving a compiler's heuristic over several benchmarks, we can create effective, general-purpose heuristics. The best general-purpose heuristic our system found for hyperblock formation improved performance by an average of 25% on our training set, and 9% on a completely unrelated test set. We demonstrate the efficacy of our techniques on three different optimizations in this paper: hyperblock formation, register allocation, and data prefetching.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781141",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mark W.",
+        "last_name": "Stephenson",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Saman",
+        "last_name": "Amarasinghe",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Martín",
+        "last_name": "Martín",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Una-May",
+        "last_name": "O’Reilly",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/StephensonAMO03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781156",
+    "title": "Automatically proving the correctness of compiler optimizations",
+    "abstract": "We describe a technique for automatically proving compiler optimizations sound, meaning that their transformations are always semantics-preserving. We first present a domain-specific language, called Cobalt, for implementing optimizations as guarded rewrite rules. Cobalt optimizations operate over a C-like intermediate representation including unstructured control flow, pointers to local variables and dynamically allocated memory, and recursive procedures. Then we describe a technique for automatically proving the soundness of Cobalt optimizations. Our technique requires an automatic theorem prover to discharge a small set of simple, optimization-specific proof obligations for each optimization. We have written a variety of forward and backward intraprocedural dataflow optimizations in Cobalt, including constant propagation and folding, branch folding, full and partial redundancy elimination, full and partial dead assignment elimination, and simple forms of points-to analysis. We implemented our soundness-checking strategy using the Simplify automatic theorem prover, and we have used this implementation to automatically prove our optimizations correct. Our checker found many subtle bugs during the course of developing our optimizations. We also implemented an execution engine for Cobalt optimizations as part of the Whirlwind compiler infrastructure.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781156",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sorin",
+        "last_name": "Lerner",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Todd",
+        "last_name": "Millstein",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/LernerMC03",
+    "venue": "pldi",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/781131.781166",
+    "title": "A region-based compilation technique for a Java just-in-time compiler",
+    "abstract": "Method inlining and data flow analysis are two major optimization components for effective program transformations, however they often suffer from the existence of rarely or never executed code contained in the target method. One major problem lies in the assumption that the compilation unit is partitioned at method boundaries. This paper describes the design and implementation of a region-based compilation technique in our dynamic compilation system, in which the compiled regions are selected as code portions without rarely executed code. The key part of this technique is the region selection, partial inlining, and region exit handling. For region selection, we employ both static heuristics and dynamic profiles to identify rare sections of code. The region selection process and method inlining decision are interwoven, so that method inlining exposes other targets for region selection, while the region selection in the inline target conserves the inlining budget, leading to more method inlining. Thus the inlining process can be performed for parts of a method, not for the entire body of the method. When the program attempts to exit from a region boundary, we trigger recompilation and then rely on on-stack replacement to continue the execution from the corresponding entry point in the recompiled code. We have implemented these techniques in our Java JIT compiler, and conducted a comprehensive evaluation. The experimental results show that the approach of region-based compilation achieves approximately 5% performance improvement on average, while reducing the compilation overhead by 20 to 30%, in comparison to the traditional function-based compilation techniques.",
+    "date": "2003-05-09",
+    "link": "https://doi.org/10.1145/781131.781166",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Toshio",
+        "last_name": "Suganuma",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Toshiaki",
+        "last_name": "Yasue",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Toshio",
+        "last_name": "Nakatani",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/pldi/SuganumaYN03",
+    "venue": "pldi",
+    "year": 2003
+  }
+]
