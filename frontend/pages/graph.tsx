@@ -263,6 +263,11 @@ const DEFAULT_K_MAX = 15;
 const SIDEBAR_OPEN_PX = 360;
 const SIDEBAR_COLLAPSED_PX = 32;
 const SIDEBAR_STORAGE_KEY = "oversight.graphSidebar.open";
+// Floating controls panel (mode tabs / slider / percentile strip). Lives
+// over the top-left of the canvas. Default closed so the canvas reads
+// cleanly on first visit; user opens it on tap. State persisted across
+// reloads.
+const CONTROLS_STORAGE_KEY = "oversight.graphControls.open";
 
 const MODE_LABEL: Record<Mode, string> = {
   topk: "top-k",
@@ -308,7 +313,7 @@ export default function GraphPage() {
   const [loadingNodeId, setLoadingNodeId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Single right-side bar (controls + hover preview). Collapsible so the
+  // Right-side bar — pure paper preview, full height. Collapsible so the
   // graph can reclaim the full canvas width. Default open. Persist across
   // reloads via localStorage.
   const [sidebarOpen, setSidebarOpenRaw] = useState<boolean>(true);
@@ -321,6 +326,21 @@ export default function GraphPage() {
     setSidebarOpenRaw(open);
     if (typeof window !== "undefined") {
       window.localStorage.setItem(SIDEBAR_STORAGE_KEY, open ? "1" : "0");
+    }
+  }, []);
+
+  // Floating controls panel (top-left of canvas). Default CLOSED so the
+  // canvas reads cleanly on first visit; user opens it on tap.
+  const [controlsOpen, setControlsOpenRaw] = useState<boolean>(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem(CONTROLS_STORAGE_KEY);
+    if (stored !== null) setControlsOpenRaw(stored === "1");
+  }, []);
+  const setControlsOpen = useCallback((open: boolean) => {
+    setControlsOpenRaw(open);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(CONTROLS_STORAGE_KEY, open ? "1" : "0");
     }
   }, []);
 
@@ -1157,6 +1177,25 @@ export default function GraphPage() {
               />
             )}
 
+            {/* Floating controls (top-left). Subtle icon button when
+                closed; expands to a small panel containing mode tabs,
+                slider, and percentile strip when opened. */}
+            <FloatingControls
+              open={controlsOpen}
+              onOpenChange={setControlsOpen}
+              mode={graph.mode}
+              onModeChange={setMode}
+              slider={slider}
+              distribution={distribution}
+              stats={{
+                renderedNodes: fgData.nodes.length,
+                totalNodes: graph.nodes.length,
+                edges: edges.length,
+                cachedExpansions: Object.keys(graph.cache).length,
+                loadingNodeId,
+              }}
+            />
+
             {/* Empty state when no ?papers= was provided */}
             {router.isReady && clickedIds.length === 0 && (
               <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
@@ -1189,17 +1228,6 @@ export default function GraphPage() {
               <RightSidebar
                 open={sidebarOpen}
                 onToggle={() => setSidebarOpen(!sidebarOpen)}
-                mode={graph.mode}
-                onModeChange={setMode}
-                slider={slider}
-                distribution={distribution}
-                stats={{
-                  renderedNodes: fgData.nodes.length,
-                  totalNodes: graph.nodes.length,
-                  edges: edges.length,
-                  cachedExpansions: Object.keys(graph.cache).length,
-                  loadingNodeId,
-                }}
                 panelPaper={panelPaper}
                 isClicked={!!panelPaper && clickedSet.has(panelPaper.paper_id)}
                 isPinned={!!panelPaper && panelPaper.paper_id === pinnedId}
@@ -1241,18 +1269,15 @@ type SidebarStats = {
   loadingNodeId: string | null;
 };
 
-// Single right-side bar that holds everything that isn't the graph:
-// controls at the top, hover preview below. Collapsible to a 32px strip
-// (just the toggle button) so the graph can reclaim the full canvas
-// width when the user wants to focus on the layout.
+// Right-side bar — pure paper preview, full height. Controls used to
+// share this bar above the preview but moved out into a floating
+// top-left panel in round 6 so the abstract gets the full vertical
+// space. Collapsible to a 32px strip (just the toggle button) so the
+// graph can reclaim the full canvas width when the user wants to focus
+// on the layout.
 function RightSidebar({
   open,
   onToggle,
-  mode,
-  onModeChange,
-  slider,
-  distribution,
-  stats,
   panelPaper,
   isClicked,
   isPinned,
@@ -1261,11 +1286,6 @@ function RightSidebar({
 }: {
   open: boolean;
   onToggle: () => void;
-  mode: Mode;
-  onModeChange: (m: Mode) => void;
-  slider: SliderConfig;
-  distribution: SimilarityDistribution | null;
-  stats: SidebarStats;
   panelPaper: Paper | null;
   isClicked: boolean;
   isPinned: boolean;
@@ -1274,8 +1294,9 @@ function RightSidebar({
 }) {
   return (
     <aside className="border-l border-base-300/60 bg-base-200/40 min-h-0 flex flex-col">
-      {/* Top edge: collapse/expand toggle. The button stays visible in
-          both states so the user can always reopen. */}
+      {/* Top edge: collapse/expand toggle + clear button (when a paper
+          is pinned). The toggle stays visible in both states so the
+          user can always reopen. */}
       <div className="flex items-center justify-between border-b border-base-300/60 px-2 py-2">
         <button
           onClick={onToggle}
@@ -1305,124 +1326,205 @@ function RightSidebar({
             )}
           </svg>
         </button>
+        {open && panelPaper && (
+          <button
+            onClick={onClearPanel}
+            title="Clear preview"
+            className="btn btn-ghost btn-xs btn-square text-base-content/40 hover:text-base-content"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="h-3.5 w-3.5"
+            >
+              <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+            </svg>
+          </button>
+        )}
       </div>
 
-      {/* Body — only rendered when open. Collapsed state shows just the
-          toggle column. */}
+      {/* Body — only rendered when open. Pure preview surface, no
+          section dividers. */}
       {open && (
-        <div className="flex flex-col min-h-0 flex-1">
-          {/* Controls section */}
-          <div className="p-4 flex flex-col gap-4 border-b border-base-300/60">
-            <div>
-              <div className="text-[11px] uppercase tracking-wider font-medium text-base-content/50 mb-2">
-                Mode
-              </div>
-              <div className="grid grid-cols-3 gap-1 rounded-lg bg-base-300 p-1">
-                {(["topk", "threshold", "mutual_knn"] as Mode[]).map((m) => (
-                  <button
-                    key={m}
-                    onClick={() => onModeChange(m)}
-                    className={`btn btn-xs ${
-                      mode === m ? "btn-primary" : "btn-ghost"
-                    }`}
-                  >
-                    {MODE_LABEL[m]}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">{slider.label}</span>
-                <span className="label-text-alt text-primary font-medium font-mono">
-                  {slider.valueLabel}
-                </span>
-              </label>
-              <input
-                type="range"
-                min={slider.min}
-                max={slider.max}
-                step={slider.step}
-                value={slider.value}
-                onChange={(e) =>
-                  slider.onChange(parseFloat(e.target.value))
-                }
-                className="range range-primary range-sm"
-              />
-              <div className="mt-1 text-xs text-base-content/50">
-                {slider.helper}
-              </div>
-            </div>
-
-            {mode === "threshold" && distribution && (
-              <DistributionStrip
-                distribution={distribution}
-                threshold={slider.value}
-                min={slider.min}
-                max={slider.max}
-              />
-            )}
-
-            <div className="text-xs text-base-content/50 leading-relaxed">
-              <div>
-                nodes: {stats.renderedNodes}
-                {stats.renderedNodes !== stats.totalNodes && (
-                  <span className="opacity-60">
-                    {" "}
-                    ({stats.totalNodes - stats.renderedNodes} hidden)
-                  </span>
-                )}
-              </div>
-              <div>edges: {stats.edges}</div>
-              <div>cached expansions: {stats.cachedExpansions}</div>
-              {stats.loadingNodeId && (
-                <div className="text-warning mt-1">
-                  fetching {stats.loadingNodeId}…
-                </div>
-              )}
-            </div>
-
-            <div className="text-[11px] text-base-content/40 leading-snug">
-              Click any node to expand its top-{NEIGHBOR_CEILING} neighbors.
-              Slider drags re-derive edges from cache without hitting the
-              network.
-            </div>
-          </div>
-
-          {/* Hover preview section — latched, scrollable */}
-          <div className="flex-1 min-h-0 overflow-y-auto p-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] uppercase tracking-wider font-medium text-base-content/50">
-                Hover preview
-              </span>
-              {panelPaper && (
-                <button
-                  onClick={onClearPanel}
-                  title="Clear hover preview"
-                  className="btn btn-ghost btn-xs btn-square text-base-content/40 hover:text-base-content"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="h-3.5 w-3.5"
-                  >
-                    <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
-                  </svg>
-                </button>
-              )}
-            </div>
-            <HoverPreview
-              paper={panelPaper}
-              isClicked={isClicked}
-              isPinned={isPinned}
-              similarity={similarity}
-            />
-          </div>
+        <div className="flex-1 min-h-0 overflow-y-auto p-4">
+          <HoverPreview
+            paper={panelPaper}
+            isClicked={isClicked}
+            isPinned={isPinned}
+            similarity={similarity}
+          />
         </div>
       )}
     </aside>
+  );
+}
+
+// Floating controls panel anchored to the top-left of the canvas.
+// Closed: a small semi-transparent icon button (~32px) so it doesn't
+// dominate. Opened: a small panel with mode tabs, slider, percentile
+// strip, and a stats footer. Click outside or the × → closes.
+//
+// Positioning uses absolute over the canvas (z-10 above the graph,
+// below modal-style overlays). The icon button is positioned in the
+// same top-left slot so the user's eye doesn't have to retarget when
+// they open/close.
+function FloatingControls({
+  open,
+  onOpenChange,
+  mode,
+  onModeChange,
+  slider,
+  distribution,
+  stats,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  mode: Mode;
+  onModeChange: (m: Mode) => void;
+  slider: SliderConfig;
+  distribution: SimilarityDistribution | null;
+  stats: SidebarStats;
+}) {
+  const panelRef = useRef<HTMLDivElement | null>(null);
+
+  // Click-outside-to-close: register a document-level listener while
+  // the panel is open and dismiss whenever a press lands outside the
+  // panel surface. Use pointerdown in capture phase because
+  // react-force-graph attaches its own pointer handlers on the canvas
+  // that stop propagation — without capture, clicks on the graph
+  // canvas wouldn't reach this handler.
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (ev: Event) => {
+      const target = ev.target as Node | null;
+      if (!target) return;
+      if (panelRef.current && panelRef.current.contains(target)) return;
+      onOpenChange(false);
+    };
+    document.addEventListener("pointerdown", onDown, true);
+    return () => document.removeEventListener("pointerdown", onDown, true);
+  }, [open, onOpenChange]);
+
+  if (!open) {
+    return (
+      <button
+        onClick={() => onOpenChange(true)}
+        title="Show controls"
+        className="absolute top-3 left-3 z-20 h-8 w-8 rounded-md border border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40 hover:bg-base-100/80 flex items-center justify-center text-base-content/70 hover:text-base-content transition-colors"
+      >
+        {/* Sliders icon — three horizontal lines with adjustable
+            handles, the universal "controls/settings" affordance. */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          className="h-4 w-4"
+        >
+          <path
+            fillRule="evenodd"
+            d="M3 5a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zm10.5-1a2 2 0 100 4 2 2 0 000-4zM3 10a1 1 0 011-1h2a1 1 0 110 2H4a1 1 0 01-1-1zm6.5-1a2 2 0 100 4 2 2 0 000-4zM3 15a1 1 0 011-1h10a1 1 0 110 2H4a1 1 0 01-1-1zm14.5-1a2 2 0 100 4 2 2 0 000-4z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
+    );
+  }
+
+  return (
+    <div
+      ref={panelRef}
+      className="absolute top-3 left-3 z-20 w-72 rounded-lg border border-base-300/60 bg-base-100/95 backdrop-blur shadow-xl"
+    >
+      <div className="flex items-center justify-between px-3 py-2 border-b border-base-300/60">
+        <span className="text-[11px] uppercase tracking-wider font-medium text-base-content/60">
+          Controls
+        </span>
+        <button
+          onClick={() => onOpenChange(false)}
+          title="Hide controls"
+          className="btn btn-ghost btn-xs btn-square text-base-content/40 hover:text-base-content"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="h-3.5 w-3.5"
+          >
+            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+          </svg>
+        </button>
+      </div>
+      <div className="p-3 flex flex-col gap-3">
+        <div>
+          <div className="text-[11px] uppercase tracking-wider font-medium text-base-content/50 mb-2">
+            Mode
+          </div>
+          <div className="grid grid-cols-3 gap-1 rounded-lg bg-base-300 p-1">
+            {(["topk", "threshold", "mutual_knn"] as Mode[]).map((m) => (
+              <button
+                key={m}
+                onClick={() => onModeChange(m)}
+                className={`btn btn-xs ${
+                  mode === m ? "btn-primary" : "btn-ghost"
+                }`}
+              >
+                {MODE_LABEL[m]}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">{slider.label}</span>
+            <span className="label-text-alt text-primary font-medium font-mono">
+              {slider.valueLabel}
+            </span>
+          </label>
+          <input
+            type="range"
+            min={slider.min}
+            max={slider.max}
+            step={slider.step}
+            value={slider.value}
+            onChange={(e) => slider.onChange(parseFloat(e.target.value))}
+            className="range range-primary range-sm"
+          />
+          <div className="mt-1 text-xs text-base-content/50">
+            {slider.helper}
+          </div>
+        </div>
+
+        {mode === "threshold" && distribution && (
+          <DistributionStrip
+            distribution={distribution}
+            threshold={slider.value}
+            min={slider.min}
+            max={slider.max}
+          />
+        )}
+
+        <div className="text-xs text-base-content/50 leading-relaxed">
+          <div>
+            nodes: {stats.renderedNodes}
+            {stats.renderedNodes !== stats.totalNodes && (
+              <span className="opacity-60">
+                {" "}
+                ({stats.totalNodes - stats.renderedNodes} hidden)
+              </span>
+            )}
+          </div>
+          <div>edges: {stats.edges}</div>
+          <div>cached expansions: {stats.cachedExpansions}</div>
+          {stats.loadingNodeId && (
+            <div className="text-warning mt-1">
+              fetching {stats.loadingNodeId}…
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
