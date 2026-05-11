@@ -682,22 +682,61 @@ export default function GraphPage() {
   // Visual helpers.
   // -------------------------------------------------------------------------
 
-  const linkColor = useCallback((link: any) => {
-    const s = typeof link.similarity === "number" ? link.similarity : 0.5;
-    const norm = Math.max(0, Math.min(1, (s - 0.3) / 0.55));
-    // Vercel blue (#0070f3 = 0,112,243) at variable opacity.
-    const alpha = (0.15 + norm * 0.7).toFixed(3);
-    return `rgba(0, 112, 243, ${alpha})`;
-  }, []);
+  // Per-render normalization: stretch the visible link-similarity range
+  // across the visual encoding so a graph with sims clustered in 0.7–0.85
+  // shows clear contrast between its weakest and strongest edges. Without
+  // normalization, a narrow input range would all map to similarly-thick
+  // similarly-opaque lines and lose all signal.
+  const linkSimRange = useMemo(() => {
+    if (edges.length === 0) return { lo: 0.5, hi: 0.9 };
+    let lo = Infinity;
+    let hi = -Infinity;
+    for (const e of edges) {
+      if (e.similarity < lo) lo = e.similarity;
+      if (e.similarity > hi) hi = e.similarity;
+    }
+    // Guard against a degenerate single-value range (one edge, or all
+    // edges at identical similarity). Force a minimum spread so the
+    // lerp doesn't blow up or collapse to a single visual value.
+    if (hi - lo < 1e-3) hi = lo + 1e-3;
+    return { lo, hi };
+  }, [edges]);
 
-  const linkWidth = useCallback((link: any) => {
-    // Width is the primary similarity signal (color/opacity remains
-    // secondary). Floor at 0.5px so even weak edges are visible; grow
-    // sharply above sim=0.5 so the typical 0.5–0.9 range maps to
-    // roughly 0.5–3.7px — clearly distinguishable at default zoom.
-    const s = typeof link.similarity === "number" ? link.similarity : 0.5;
-    return 0.5 + Math.max(0, s - 0.5) * 8;
-  }, []);
+  const normSim = useCallback(
+    (s: number) => {
+      const { lo, hi } = linkSimRange;
+      return Math.max(0, Math.min(1, (s - lo) / (hi - lo)));
+    },
+    [linkSimRange],
+  );
+
+  const linkColor = useCallback(
+    (link: any) => {
+      const s = typeof link.similarity === "number" ? link.similarity : 0.5;
+      const norm = normSim(s);
+      // Vercel blue (#0070f3 = 0,112,243) at variable opacity. Wider
+      // alpha range than before (0.12 → 0.95) so the strongest visible
+      // edge reads as nearly opaque while the weakest is a faint ghost.
+      const alpha = (0.12 + norm * 0.83).toFixed(3);
+      return `rgba(0, 112, 243, ${alpha})`;
+    },
+    [normSim],
+  );
+
+  const linkWidth = useCallback(
+    (link: any) => {
+      // Width is the primary similarity signal. Stretch the visual
+      // range across the per-render observed sim min/max so intra-graph
+      // contrast is dramatic even when raw sims sit in a narrow band
+      // (e.g. all edges between 0.70 and 0.84). Floor at 0.5px so even
+      // weak edges are visible; ~8px ceiling so strong edges read as
+      // bold connections.
+      const s = typeof link.similarity === "number" ? link.similarity : 0.5;
+      const norm = normSim(s);
+      return 0.5 + norm * 7.5;
+    },
+    [normSim],
+  );
 
   // Citation labels live INSIDE the node circle now, in world coordinates
   // so text and circle scale together with zoom. Each node's radius is
