@@ -539,6 +539,46 @@ class PaperDatabase:
             ).fetchall()
             return [(pid, float(sim)) for pid, sim in rows]
 
+    def sample_pairwise_similarities(self, n: int) -> list[float]:
+        """Sample ``n`` random pairs of distinct embedded papers and return
+        the cosine similarity for each pair.
+
+        Used to anchor the similarity-graph threshold slider in corpus-level
+        percentiles. Cosine similarity here is ``1 - (e1 <=> e2)`` because the
+        ``embedding_gemini_embedding_001`` column uses ``halfvec_cosine_ops``.
+
+        Implementation: pull ``2*n`` random embeddings in one shot via
+        ``ORDER BY random()`` (acceptable at our corpus size — ~470K rows;
+        the whole call is ~hundreds of ms and is invoked once per process).
+        Pair them up in SQL with ``ROW_NUMBER`` and compute the cosine in
+        Postgres so we never serialise 3072-dim halfvecs to Python.
+        """
+        if n <= 0:
+            return []
+        with self._get_con().cursor() as cur:
+            rows = cur.execute(
+                """
+                WITH sampled AS (
+                    SELECT embedding_gemini_embedding_001 AS emb,
+                           ROW_NUMBER() OVER () AS rn
+                    FROM (
+                        SELECT embedding_gemini_embedding_001
+                        FROM embedding
+                        WHERE embedding_gemini_embedding_001 IS NOT NULL
+                        ORDER BY random()
+                        LIMIT %s
+                    ) s
+                )
+                SELECT 1 - (a.emb <=> b.emb) AS sim
+                FROM sampled a
+                JOIN sampled b
+                  ON b.rn = a.rn + 1
+                WHERE a.rn %% 2 = 1
+                """,
+                [2 * n],
+            ).fetchall()
+        return [float(sim) for (sim,) in rows]
+
     def get_papers_by_ids(self, paper_ids: list[str]) -> list[tuple[Any, ...]]:
         """Fetch full paper rows for the given ``paper_ids`` in one round-trip.
 
