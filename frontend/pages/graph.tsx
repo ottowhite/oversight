@@ -707,24 +707,28 @@ export default function GraphPage() {
   // shows clear contrast between its weakest and strongest edges. Without
   // normalization, a narrow input range would all map to similarly-thick
   // similarly-opaque lines and lose all signal.
+  //
+  // The `degenerate` flag fires when there's a single edge (or every
+  // edge has identical similarity). In that case the lerp would map
+  // every edge to norm=0 (the floor of the visual range) → invisible
+  // hairline. Treat degenerate ranges as "all edges are the strongest
+  // visible" and return norm=1 instead, so the user sees a bold line
+  // rather than a vanishingly thin one.
   const linkSimRange = useMemo(() => {
-    if (edges.length === 0) return { lo: 0.5, hi: 0.9 };
+    if (edges.length === 0) return { lo: 0.5, hi: 0.9, degenerate: false };
     let lo = Infinity;
     let hi = -Infinity;
     for (const e of edges) {
       if (e.similarity < lo) lo = e.similarity;
       if (e.similarity > hi) hi = e.similarity;
     }
-    // Guard against a degenerate single-value range (one edge, or all
-    // edges at identical similarity). Force a minimum spread so the
-    // lerp doesn't blow up or collapse to a single visual value.
-    if (hi - lo < 1e-3) hi = lo + 1e-3;
-    return { lo, hi };
+    return { lo, hi, degenerate: hi - lo < 1e-3 };
   }, [edges]);
 
   const normSim = useCallback(
     (s: number) => {
-      const { lo, hi } = linkSimRange;
+      const { lo, hi, degenerate } = linkSimRange;
+      if (degenerate) return 1;
       return Math.max(0, Math.min(1, (s - lo) / (hi - lo)));
     },
     [linkSimRange],
