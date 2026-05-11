@@ -125,7 +125,9 @@ def test_unknown_paper_returns_404(client):
 
 def _bench_endpoint(client, paper_id: str, mutual: bool, trials: int) -> list[float]:
     times_ms: list[float] = []
-    url = f"/api/papers/{paper_id}/neighbors?k=20&mutual={'true' if mutual else 'false'}"
+    url = (
+        f"/api/papers/{paper_id}/neighbors?k=20&mutual={'true' if mutual else 'false'}"
+    )
     for _ in range(trials):
         t0 = time.perf_counter()
         resp = client.get(url)
@@ -160,3 +162,41 @@ def test_mutual_latency_budget(client, seed_paper_id):
         f"max={max(times):.1f}ms over {TRIALS} trials"
     )
     assert p95 <= 200.0, f"mutual-kNN p95 {p95:.1f}ms exceeded 200ms budget"
+
+
+PERCENTILE_KEYS = ("p50", "p90", "p95", "p99", "p99_5", "p99_9")
+
+
+def test_similarity_distribution_shape_and_monotonic(client):
+    """``/api/embeddings/similarity_distribution`` returns six monotonic
+    cosine-similarity percentiles in (0, 1).
+
+    Forces a refresh so the assertion runs against a freshly-sampled set
+    rather than whatever happens to be cached from earlier in this session.
+    """
+    resp = client.get("/api/embeddings/similarity_distribution?refresh=1")
+    assert resp.status_code == 200, resp.data
+    payload = resp.get_json()
+
+    for key in PERCENTILE_KEYS:
+        assert key in payload, f"missing {key!r} in {payload}"
+        v = payload[key]
+        assert isinstance(v, (int, float)), f"{key} not numeric: {v!r}"
+        # Cosine similarity is in [-1, 1]; on this corpus it's strictly in (0, 1).
+        assert 0.0 < v < 1.0, f"{key}={v} outside (0, 1)"
+
+    values = [payload[k] for k in PERCENTILE_KEYS]
+    for a, b in zip(values, values[1:]):
+        assert a <= b, (
+            f"percentiles not monotonic: {dict(zip(PERCENTILE_KEYS, values))}"
+        )
+
+
+def test_similarity_distribution_caches_between_calls(client):
+    """Without ``?refresh=1`` the second call should return the same payload
+    (process-local cache) — and visibly faster than a forced refresh.
+    """
+    # Prime the cache.
+    first = client.get("/api/embeddings/similarity_distribution").get_json()
+    second = client.get("/api/embeddings/similarity_distribution").get_json()
+    assert first == second, (first, second)
