@@ -1058,13 +1058,16 @@ export default function GraphPage() {
       <Head>
         <title>Graph · Oversight</title>
       </Head>
-      <main className="grid h-screen grid-rows-[auto,1fr]">
-        {/* Top-level header spans both the graph and the abstract panel. */}
-        <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40">
-          <div className="flex items-center gap-3 px-4 py-3">
+      <main className="grid h-screen grid-rows-[auto,1fr] overflow-hidden">
+        {/* Top-level header spans both the graph and the abstract panel.
+            overflow-hidden + min-w-0 on the inner flex prevent any child
+            (long error text, future title content) from stretching the
+            page off-screen. */}
+        <header className="border-b border-base-300/60 bg-base-100/60 backdrop-blur supports-[backdrop-filter]:bg-base-100/40 overflow-hidden">
+          <div className="flex items-center gap-3 px-4 py-3 min-w-0">
             <a
               href="/"
-              className="btn btn-ghost btn-sm btn-circle"
+              className="btn btn-ghost btn-sm btn-circle shrink-0"
               title="Back to search"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
@@ -1073,30 +1076,13 @@ export default function GraphPage() {
             </a>
             <h1 className="text-lg font-semibold shrink-0">Similarity graph</h1>
             {clickedIds.length > 0 && (
-              <div className="flex items-baseline gap-2 min-w-0 flex-1">
-                <span className="text-sm text-base-content/70 shrink-0">
-                  Exploring {clickedIds.length} paper
-                  {clickedIds.length === 1 ? "" : "s"}
-                </span>
-                {/* Each title gets its own ellipsis at ~60ch with shared
-                    flex-shrink so the wider viewport gets fuller titles. */}
-                <span className="text-xs text-base-content/40 flex items-baseline gap-2 min-w-0">
-                  {clickedIds.map((id, i) => (
-                    <span
-                      key={id}
-                      className="truncate"
-                      style={{ maxWidth: "60ch" }}
-                      title={unicodify(paperById[id]?.title ?? id)}
-                    >
-                      {i > 0 && <span className="opacity-60 mr-2">·</span>}
-                      {unicodify(paperById[id]?.title ?? id)}
-                    </span>
-                  ))}
-                </span>
-              </div>
+              <span className="text-sm text-base-content/70 shrink-0">
+                Exploring {clickedIds.length} paper
+                {clickedIds.length === 1 ? "" : "s"}
+              </span>
             )}
             {error && (
-              <span className="ml-auto shrink-0 text-xs text-error font-medium">
+              <span className="ml-auto min-w-0 truncate text-xs text-error font-medium">
                 {error}
               </span>
             )}
@@ -1105,16 +1091,19 @@ export default function GraphPage() {
 
         {/* Content row: graph canvas (flex) + collapsible right-side bar.
             Width of the bar drives the grid template; the canvas reflows
-            to fill whatever's left over. */}
+            to fill whatever's left over. minmax(0, 1fr) instead of 1fr is
+            the canonical fix for grid children overflowing their track —
+            the implicit min-width: auto on grid items lets intrinsic
+            content push the column wider than its share. */}
         <div
-          className="grid min-h-0"
+          className="grid min-h-0 min-w-0 overflow-hidden"
           style={{
-            gridTemplateColumns: `1fr ${sidebarOpen ? SIDEBAR_OPEN_PX : SIDEBAR_COLLAPSED_PX}px`,
+            gridTemplateColumns: `minmax(0, 1fr) ${sidebarOpen ? SIDEBAR_OPEN_PX : SIDEBAR_COLLAPSED_PX}px`,
           }}
         >
           <div
             ref={containerRef}
-            className="relative min-h-0 w-full overflow-hidden"
+            className="relative min-h-0 min-w-0 w-full overflow-hidden"
           >
             {ForceGraphCmp && (
               <ForceGraphCmp
