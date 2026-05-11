@@ -30,6 +30,13 @@ CORS(app, resources={r"/api/*": {"origins": cors_origins}})
 _neighbors_conn_lock = threading.Lock()
 _neighbors_conn: psycopg.Connection[tuple[Any, ...]] | None = None
 
+# Process-local cache for the similarity-distribution endpoint. Sampling 10K
+# random embedding pairs takes ~hundreds of ms; the result is stable for the
+# lifetime of the process under normal ingestion volume.
+_similarity_distribution_lock = threading.Lock()
+_similarity_distribution_cache: dict[str, float] | None = None
+_similarity_distribution_sample_size = 10_000
+
 
 def _get_neighbors_connection() -> psycopg.Connection[tuple[Any, ...]]:
     """Return a process-local pgvector-registered connection.
@@ -278,6 +285,76 @@ def paper_neighbors(paper_id: str) -> tuple[dict[str, Any], int]:
         "seed": _serialize_paper(seed_paper),
         "neighbors": neighbors_out,
     }, 200
+
+
+def _percentile(sorted_values: list[float], pct: float) -> float:
+    """Linear-interpolation percentile on an already-sorted list.
+
+    ``pct`` is in [0, 100]. Mirrors numpy's default ("linear") method so
+    results match what a casual reader would expect, without pulling numpy
+    into the request path.
+    """
+    n = len(sorted_values)
+    assert n > 0, "cannot compute percentile of empty list"
+    if n == 1:
+        return float(sorted_values[0])
+    rank = (pct / 100.0) * (n - 1)
+    lo = int(rank)
+    hi = min(lo + 1, n - 1)
+    frac = rank - lo
+    return float(sorted_values[lo] * (1 - frac) + sorted_values[hi] * frac)
+
+
+def _compute_similarity_distribution(sample_size: int) -> dict[str, float]:
+    """Sample pairwise similarities and reduce them to a percentile dict."""
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        db = PaperDatabase.from_connection(con)
+        sims = db.sample_pairwise_similarities(sample_size)
+    if not sims:
+        return {
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "p99": 0.0,
+            "p99_5": 0.0,
+            "p99_9": 0.0,
+        }
+    sims.sort()
+    return {
+        "p50": _percentile(sims, 50),
+        "p90": _percentile(sims, 90),
+        "p95": _percentile(sims, 95),
+        "p99": _percentile(sims, 99),
+        "p99_5": _percentile(sims, 99.5),
+        "p99_9": _percentile(sims, 99.9),
+    }
+
+
+@app.get("/api/embeddings/similarity_distribution")
+def embeddings_similarity_distribution() -> tuple[dict[str, Any], int]:
+    """Return cosine-similarity percentiles for random pairs of embedded papers.
+
+    The frontend uses these to anchor the threshold slider in corpus
+    percentiles ("0.71 is the 99th percentile of pairwise similarity in your
+    corpus") rather than asking the user to pick a raw cosine number.
+
+    The sample is computed lazily on first request and cached in-memory for
+    the lifetime of the process. Pass ``?refresh=1`` to force recomputation.
+    """
+    global _similarity_distribution_cache
+
+    refresh_raw = request.args.get("refresh", "0").strip().lower()
+    refresh = refresh_raw in {"1", "true", "yes"}
+
+    with _similarity_distribution_lock:
+        if refresh or _similarity_distribution_cache is None:
+            _similarity_distribution_cache = _compute_similarity_distribution(
+                _similarity_distribution_sample_size
+            )
+        payload = dict(_similarity_distribution_cache)
+
+    return payload, 200
 
 
 def _next_conference_dates(
