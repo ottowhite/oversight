@@ -272,7 +272,10 @@ const CONTROLS_STORAGE_KEY = "oversight.graphControls.open";
 const MODE_LABEL: Record<Mode, string> = {
   topk: "top-k",
   threshold: "threshold",
-  mutual_knn: "mutual-kNN",
+  // "mutual-kNN" wraps in the floating panel's snug 3-column tab grid
+  // (288px panel, ~76px per tab). The kNN suffix is implicit since the
+  // whole UI is a kNN similarity graph, so "mutual" is unambiguous.
+  mutual_knn: "mutual",
 };
 
 export default function GraphPage() {
