@@ -504,6 +504,32 @@ export default function GraphPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickedIds, graph.mode]);
 
+  // Reset pinned/hover state when the URL no longer reflects the user
+  // action that established it. clickPaper sets pinnedId at the same
+  // time it pushes the id into ?papers=; the symmetric back-nav must
+  // undo both. Without this, a click → back leaves the side panel
+  // stuck on the abstract of a paper the user just dismissed.
+  //
+  // Pin clears when the paper falls out of clickedIds even if it's
+  // still on-canvas as a neighbor — the user's "I want to read this"
+  // action was tied to the click, and back-nav undoes that action.
+  // Hover is transient and only clears when the paper is unreachable
+  // entirely (gone from the graph), since the natural mouse-leave
+  // already handles the common case.
+  useEffect(() => {
+    if (pinnedId && !clickedSet.has(pinnedId)) setPinnedId(null);
+    if (hoverId) {
+      const reachable = new Set<string>(clickedIds);
+      for (const id of clickedIds) {
+        const entry = graph.cache[id];
+        if (!entry) continue;
+        for (const n of entry.topN) reachable.add(n.paper_id);
+        if (entry.mutualN) for (const n of entry.mutualN) reachable.add(n.paper_id);
+      }
+      if (!reachable.has(hoverId)) setHoverId(null);
+    }
+  }, [clickedIds, clickedSet, graph.cache, pinnedId, hoverId]);
+
 
   // -------------------------------------------------------------------------
   // Slider / mode handlers (pure cache-derived re-renders).
