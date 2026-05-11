@@ -556,13 +556,24 @@ export default function GraphPage() {
   // happens inside onEngineStop once node positions exist.
   useEffect(() => {
     pendingFitRef.current = true;
-    // If the simulation is already cool (e.g. a slider drag with no
-    // re-layout), nudge it so onEngineStop fires shortly after.
+    // Gentle reheat so the layout settles into the changed graph without
+    // shocking existing nodes back to alpha=1 (which whips the whole
+    // cluster around when a single neighbor is added).
     const fg = fgRef.current;
     if (fg && typeof fg.d3ReheatSimulation === "function") {
       fg.d3ReheatSimulation();
     }
   }, [clickedIds, graph.mode, edges.length]);
+
+  // Persist node objects across renders so d3-force keeps each node's
+  // x/y/vx/vy state intact (the lib mutates input objects in place). If
+  // we passed fresh wrappers every render, every node would be treated
+  // as "new" and the simulation would re-shock from scratch on every
+  // slider drag or expansion.
+  //
+  // The map is keyed by paper_id; we add entries on first appearance and
+  // never delete (a small leak vs. a big jank fix).
+  const nodeObjRef = useRef<Map<string, any>>(new Map());
 
   const fgData = useMemo(() => {
     // Hide nodes that have no edges in the current derived view,
@@ -577,16 +588,59 @@ export default function GraphPage() {
       connected.add(typeof e.source === "string" ? e.source : String(e.source));
       connected.add(typeof e.target === "string" ? e.target : String(e.target));
     }
+
+    // For pre-positioning newly-added nodes, build a quick lookup of
+    // each cached neighbor → its parent (the clicked paper that pulled
+    // it in). When we first render a new neighbor, seed its x/y near
+    // the parent's current position so d3-force doesn't have to fly it
+    // in from (0, 0), which whips the existing layout around.
+    const parentOf = new Map<string, string>();
+    for (const id of clickedIds) {
+      const entry = graph.cache[id];
+      if (!entry) continue;
+      const list = entry.topN.concat(entry.mutualN ?? []);
+      for (const n of list) {
+        if (!parentOf.has(n.paper_id) && n.paper_id !== id) {
+          parentOf.set(n.paper_id, id);
+        }
+      }
+    }
+
+    const objs = nodeObjRef.current;
     const nodes = graph.nodes
       .filter((p) => connected.has(p.paper_id))
-      .map((p) => ({ id: p.paper_id, paper: p }));
+      .map((p) => {
+        let n = objs.get(p.paper_id);
+        if (!n) {
+          n = { id: p.paper_id, paper: p };
+          // Seed position near the parent (if any). Without this, every
+          // new node spawns at (0, 0) and the simulation has to drag it
+          // out — visible as a "pull toward origin" of the whole graph.
+          // Small jitter so coincident nodes don't share exact coords
+          // (d3-force handles coincident points poorly).
+          const parentId = parentOf.get(p.paper_id);
+          const parent = parentId ? objs.get(parentId) : null;
+          if (parent && typeof parent.x === "number" && typeof parent.y === "number") {
+            n.x = parent.x + (Math.random() - 0.5) * 30;
+            n.y = parent.y + (Math.random() - 0.5) * 30;
+          }
+          objs.set(p.paper_id, n);
+        } else {
+          // Refresh paper metadata in case it was enriched by a later
+          // fetch (e.g. an abstract that arrived after the initial
+          // top-k call). Identity-stable so d3-force still treats it
+          // as the same node.
+          n.paper = p;
+        }
+        return n;
+      });
     const links = edges.map((e) => ({
       source: e.source,
       target: e.target,
       similarity: e.similarity,
     }));
     return { nodes, links };
-  }, [graph.nodes, edges, clickedIds]);
+  }, [graph.nodes, edges, clickedIds, graph.cache]);
 
   // Per-node degree, for sizing.
   const degreeById = useMemo(() => {
@@ -1069,7 +1123,9 @@ export default function GraphPage() {
                   }
                 }}
                 cooldownTicks={120}
-                d3VelocityDecay={0.35}
+                warmupTicks={0}
+                d3AlphaDecay={0.05}
+                d3VelocityDecay={0.4}
               />
             )}
 
