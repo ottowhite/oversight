@@ -723,6 +723,14 @@ export default function AtlasPage() {
       canvasRef.current.width = Math.max(1, Math.floor(w * ratio));
       canvasRef.current.height = Math.max(1, Math.floor(h * ratio));
       scatter.set({ width: w, height: h });
+      // Resize can clobber the active filter (the lib re-does scale
+      // computation and bookkeeping). Re-apply from the current ref
+      // so toggled-off sources don't reappear after a layout shift.
+      if (hiddenSourcesRef.current.size === 0) {
+        scatter.unfilter();
+      } else {
+        scatter.filter(visibleIndicesRef.current);
+      }
     });
     ro.observe(containerRef.current!);
 
