@@ -1,0 +1,466 @@
+[
+  {
+    "paper_id": "10.1145/2976002.2976016",
+    "title": "Experience report: types for a relational algebra library",
+    "abstract": "As part of our software toolkit at a major financial institution we have a library for relational algebra. This library is written in C++ and the type checking of the operations on the relations is very dynamic; all relations have the same static type. Of course, relational algebra operations have stringent type constraints, and since we believe in static typing, we would prefer these to be checked at compile time.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976016",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Lennart",
+        "last_name": "Augustsson",
+        "institution": ""
+      },
+      {
+        "first_name": "Mårten",
+        "last_name": "Ågren",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/AugustssonA16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976006",
+    "title": "Experience report: developing high performance HTTP/2 server in Haskell",
+    "abstract": "While the speed of the Internet has been increasing, HTTP/1.1 has been plagued by head-of-line blocking, low concurrency and redundant headers. To solve these problems, HTTP/2 was standardized. This paper summarizes our experience implementing HTTP/2 in Haskell. We found several techniques to improve the performance of the header compression and identified a suitable data structure for HTTP/2 priority. Also, we showed that Haskell lightweight threads are useful for HTTP/2 where the common tactics of one lightweight thread per connection cannot be used. The HTTP/2 implementation of Warp, the popular HTTP server library in Haskell, ultimately provides better throughput than its HTTP/1.1 counterpart.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976006",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Kazuhiko",
+        "last_name": "Yamamoto",
+        "institution": "IIJ Research Laboratory"
+      }
+    ],
+    "dblp_key": "conf/haskell/Yamamoto16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976015",
+    "title": "High-performance client-side web applications through Haskell EDSLs",
+    "abstract": "We present Aplite, a domain-specific language embedded in Haskell for implementing performance-critical functions in client-side web applications. In Aplite, we apply partial evaluation, multi-stage programming and techniques adapted from machine code-targeting, high-performance EDSLs to the domain of web applications. We use Aplite to implement, among other benchmarks, procedural animation using Perlin noise, symmetrical encryption and K-means clustering, showing Aplite to be consistently faster than equivalent hand-written JavaScript -- up to an order of magnitude for some benchmarks. We also demonstrate how Aplite's multi-staged nature can be used to automatically tune programs to the environment in which they are running, as well as to inputs representative of the programs' intended workload.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976015",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Anton",
+        "last_name": "Ekblad",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/Ekblad16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976019",
+    "title": "Causal commutative arrows revisited",
+    "abstract": "Causal commutative arrows (CCA) extend arrows with additional constructs and laws that make them suitable for modelling domains such as functional reactive programming, differential equations and synchronous dataflow.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976019",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jeremy",
+        "last_name": "Yallop",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Hai",
+        "last_name": "Liu",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/YallopL16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976004",
+    "title": "How to twist pointers without breaking them",
+    "abstract": "Using the theory of monoids and monoid actions, we give a unified framework that handles three common pointer manipulation tasks, namely, data serialisation, deserialisation, and memory allocation. Our main theoretical contribution is the formulation of the notion of a twisted functor, a generalisation of the semi-direct product construction for monoids. We show that semi-direct products and twisted functors are particularly well suited as an abstraction for many pointer manipulation tasks.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976004",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Satvik",
+        "last_name": "Chauhan",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Piyush P.",
+        "last_name": "Kurur",
+        "institution": "Indian Institute of Technology Kanpur"
+      },
+      {
+        "first_name": "Brent A.",
+        "last_name": "Yorgey",
+        "institution": "Hendrix College"
+      }
+    ],
+    "dblp_key": "conf/haskell/ChauhanKY16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976008",
+    "title": "The Key monad: type-safe unconstrained dynamic typing",
+    "abstract": "We present a small extension to Haskell called the Key monad. With the Key monad, unique keys of different types can be created and can be tested for equality. When two keys are equal, we also obtain a concrete proof that their types are equal. This gives us a form of dynamic typing, without the need for Typeable constraints. We show that our extension allows us to safely do things we could not otherwise do: it allows us to implement the ST monad (inefficiently), to implement an embedded form of arrow notation, and to translate parametric HOAS to typed de Bruijn indices, among others. Although strongly related to the ST monad, the Key monad is simpler and might be easier to prove safe. We do not provide such a proof of the safety of the Key monad, but we note that, surprisingly, a full proof of the safety of the ST monad also remains elusive to this day. Hence, another reason for studying the Key monad is that a safety proof for it might be a stepping stone towards a safety proof of the ST monad.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976008",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Atze van der",
+        "last_name": "Ploeg",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Koen",
+        "last_name": "Claessen",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Pablo",
+        "last_name": "Buiras",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/haskell/PloegCB16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976007",
+    "title": "Desugaring Haskell's do-notation into applicative operations",
+    "abstract": "Monads have taken the world by storm, and are supported by do-notation (at least in Haskell). Programmers are increasingly waking up to the usefulness and ubiquity of Applicatives, but they have so far been hampered by the absence of supporting notation. In this paper we show how to re-use the very same do-notation to work for Applicatives as well, providing efficiency benefits for some types that are both Monad and Applicative, and syntactic convenience for those that are merely Applicative. The result is fully implemented as an optional extension in GHC, and is in use at Facebook to make it easy to write highly-parallel queries in a distributed system.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976007",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Meta (United Kingdom)"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Edward",
+        "last_name": "Kmett",
+        "institution": ""
+      },
+      {
+        "first_name": "Andrey",
+        "last_name": "Mokhov",
+        "institution": "Newcastle University"
+      }
+    ],
+    "dblp_key": "conf/haskell/MarlowJKM16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976017",
+    "title": "QuickFuzz: an automatic random fuzzer for common file formats",
+    "abstract": "Fuzzing is a technique that involves testing programs using invalid or erroneous inputs. Most fuzzers require a set of valid inputs as a starting point, in which mutations are then introduced. QuickFuzz is a fuzzer that leverages QuickCheck-style random test-case generationto automatically test programs that manipulate common file formats by fuzzing. We rely on existing Haskell implementations of file-format-handling libraries found on Hackage, the community-driven Haskell code repository. We have tried QuickFuzz in the wild and found that the approach is effective in discovering vulnerabilities in real-world implementations of browsers, image processing utilities and file compressors among others. In addition, we introduce a mechanism to automatically derive random generators for the types representing these formats. QuickFuzz handles most well-known image and media formats, and can be used to test programs and libraries written in any language.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976017",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Gustavo",
+        "last_name": "Grieco",
+        "institution": "Centro Internacional Franco-Argentino de Ciencias de la Información y de Sistemas"
+      },
+      {
+        "first_name": "Martín",
+        "last_name": "Ceresa",
+        "institution": "Consejo Nacional de Investigaciones Científicas y Técnicas"
+      },
+      {
+        "first_name": "Pablo",
+        "last_name": "Buiras",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/haskell/GriecoCB16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976020",
+    "title": "Revisiting software transactional memory in Haskell",
+    "abstract": "Software Transactional Memory (STM) has become very popular in Haskell. Currently, there are nearly 500 packages on Haskell’s package archive that directly use STM. Despite the widespread use in real world applications, Haskell’s STM implementation has seen very few updates since its introduction in 2005.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976020",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Le",
+        "institution": "Rochester Institute of Technology"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Yates",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Fluet",
+        "institution": "Rochester Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/LeYF16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976003",
+    "title": "FitSpec: refining property sets for functional testing",
+    "abstract": "This paper presents FitSpec, a tool providing automated assistance in the task of refining sets of test properties for Haskell functions. FitSpec tests mutant variations of functions under test against a given property set, recording any surviving mutants that pass all tests. The number of surviving mutants and any smallest survivor are presented to the user. A surviving mutant indicates incompleteness of the property set, prompting the user to amend a property or to add a new one, making the property set stronger. Based on the same test results, FitSpec also provides conjectures in the form of equivalences and implications between property subsets. These conjectures help the user to identify minimal core subsets of properties and so to reduce the cost of future property-based testing.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976003",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Rudy",
+        "last_name": "Braquehais",
+        "institution": "University of York"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "Runciman",
+        "institution": "University of York"
+      }
+    ],
+    "dblp_key": "conf/haskell/BraquehaisR16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976012",
+    "title": "Supermonads: one notion to bind them all",
+    "abstract": "Several popular generalizations of monads have been implemented in Haskell. Unfortunately, because the shape of the associated type constructors do not match the standard Haskell monad interface, each such implementation provides its own type class and versions of associated library functions. Furthermore, simultaneous use of different monadic notions can be cumbersome as it in general is necessary to be explicit about which notion is used where. In this paper we introduce supermonads: an encoding of monadic notions that captures several different generalizations along with a version of the standard library of monadic functions that work uniformly with all of them. As standard Haskell type inference does not work for supermonads due to their generality, our supermonad implementation is accompanied with a language extension, in the form of a plugin for the Glasgow Haskell Compiler (GHC), that allows type inference for supermonads, obviating the need for manual annotations.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976012",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jan",
+        "last_name": "Bracker",
+        "institution": "University of Nottingham"
+      },
+      {
+        "first_name": "Henrik",
+        "last_name": "Nilsson",
+        "institution": "University of Nottingham"
+      }
+    ],
+    "dblp_key": "conf/haskell/BrackerN16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976010",
+    "title": "Functional reactive programming, refactored",
+    "abstract": "Functional Reactive Programming (FRP) has come to mean many things. Yet, scratch the surface of the multitude of realisations, and there is great commonality between them. This paper investigates this commonality, turning it into a mathematically coherent and practical FRP realisation that allows us to express the functionality of many existing FRP systems and beyond by providing a minimal FRP core parameterised on a monad. We give proofs for our theoretical claims and we have verified the practical side by benchmarking a set of existing, non-trivial Yampa applications running on top of our new system with very good results.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976010",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Ivan",
+        "last_name": "Pérez",
+        "institution": "University of Nottingham"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Bärenz",
+        "institution": "University of Bamberg"
+      },
+      {
+        "first_name": "Henrik",
+        "last_name": "Nilsson",
+        "institution": "University of Nottingham"
+      }
+    ],
+    "dblp_key": "conf/haskell/PerezBN16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976018",
+    "title": "Embedding session types in Haskell",
+    "abstract": "We present a novel embedding of session-typed concurrency in Haskell. We extend an existing HOAS embedding of linear λ-calculus with a set of core session-typed primitives, using indexed type families to express the constraints of the session typing discipline. We give two interpretations of our embedding, one in terms of GHC’s built-in concurrency and another in terms of purely functional continuations. Our safety guarantees, including deadlock freedom, are assured statically and introduce no additional runtime overhead.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976018",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Sam",
+        "last_name": "Lindley",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "J. Garrett",
+        "last_name": "Morris",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/haskell/LindleyM16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976013",
+    "title": "Pattern synonyms",
+    "abstract": "Pattern matching has proven to be a convenient, expressive way of inspecting data. Yet this language feature, in its traditional form, is limited: patterns must be data constructors of concrete data types. No computation or abstraction is allowed. The data type in question must be concrete, with no ability to enforce any invariants. Any change in this data type requires all clients to update their code.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976013",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Matthew C.",
+        "last_name": "Pickering",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Gergő",
+        "last_name": "Érdi",
+        "institution": ""
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": "Bryn Mawr College"
+      }
+    ],
+    "dblp_key": "conf/haskell/PickeringEJE16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976005",
+    "title": "Free delivery (functional pearl)",
+    "abstract": "Remote procedure calls are computationally expensive, because network round-trips take several orders of magnitude longer than local interactions. One common technique for amortizing this cost is to batch together multiple independent requests into one compound request. Batching requests amounts to serializing the abstract syntax tree of a small program, in order to transmit it and run it remotely. The standard representation for abstract syntax is to use free monads; we show that free applicative functors are actually a better choice of representation for this scenario.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976005",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jeremy",
+        "last_name": "Gibbons",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/haskell/Gibbons16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976009",
+    "title": "Autobahn: using genetic algorithms to infer strictness annotations",
+    "abstract": "Although laziness enables beautiful code, it comes with non-trivial performance costs. The ghc compiler for Haskell has optimizations to reduce those costs, but the optimizations are not sufficient. As a result, Haskell also provides a variety of strictness annotations so that users can indicate program points where an expression should be evaluated eagerly. Skillful use of those annotations is a black art, known only to expert Haskell programmers. In this paper, we introduce AUTOBAHN, a tool that uses genetic algorithms to automatically infer strictness annotations that improve program performance on representative inputs. Users examine the suggested annotations for soundness and can instruct AUTOBAHN to automatically produce modified sources. Experiments on 60 programs from the NoFib benchmark suite show that AUTOBAHN can infer annotation sets that improve runtime performance by a geometric mean of 8.5%. Case studies show AUTOBAHN can reduce the live size of a GC simulator by 99% and infer application-specific annotations for Aeson library code. A 10-fold cross-validation study shows the AUTOBAHN -optimized GC simulator generally outperforms a version optimized by an expert.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976009",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Yisu Remy",
+        "last_name": "Wang",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Diogenes",
+        "last_name": "Nunez",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Kathleen",
+        "last_name": "Fisher",
+        "institution": "Tufts University"
+      }
+    ],
+    "dblp_key": "conf/haskell/WangNF16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976011",
+    "title": "Non-recursive make considered harmful: build systems at scale",
+    "abstract": "Most build systems start small and simple, but over time grow into hairy monsters that few dare to touch. As we demonstrate in this paper, there are a few issues that cause build systems major scalability challenges, and many pervasively used build systems (e.g. Make) do not scale well.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976011",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Andrey",
+        "last_name": "Mokhov",
+        "institution": "Newcastle University"
+      },
+      {
+        "first_name": "Neil",
+        "last_name": "Mitchell",
+        "institution": ""
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Meta (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/MokhovMJM16",
+    "venue": "haskell",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2976002.2976014",
+    "title": "Lazy graph processing in Haskell",
+    "abstract": "This paper presents a Haskell library for graph processing: DeltaGraph. One unique feature of this system is that intentions to perform graph updates can be memoized in-graph in a decentralized fashion, and the propagation of these intentions within the graph can be decoupled from the realization of the updates. As a result, DeltaGraph can respond to updates in constant time and work elegantly with parallelism support. We build a Twitter-like application on top of DeltaGraph to demonstrate its effectiveness and explore parallelism and opportunistic computing optimizations.",
+    "date": "2016-08-26",
+    "link": "https://doi.org/10.1145/2976002.2976014",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Philip",
+        "last_name": "Dexter",
+        "institution": "Binghamton University"
+      },
+      {
+        "first_name": "Yu David",
+        "last_name": "Liu",
+        "institution": "Binghamton University"
+      },
+      {
+        "first_name": "Kenneth",
+        "last_name": "Chiu",
+        "institution": "Binghamton University"
+      }
+    ],
+    "dblp_key": "conf/haskell/DexterLC16",
+    "venue": "haskell",
+    "year": 2016
+  }
+]

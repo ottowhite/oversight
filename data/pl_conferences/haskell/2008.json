@@ -1,0 +1,341 @@
+[
+  {
+    "paper_id": "10.1145/1411286.1411296",
+    "title": "Haskell, do you read me?: constructing and composing efficient top-down parsers at runtime",
+    "abstract": "The Haskell definition and implementation of read is far from perfect. In the first place read is not able to handle the associativities defined for infix operators. Furthermore, it puts constraints on the way show is defined, and especially forces it to generate far more parentheses than expected. Lastly, it may give rise to exponential parsing times. All this is due to the compositionality requirement for read functions, which imposes a top-down parsing strategy.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411296",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Marcos",
+        "last_name": "Viera",
+        "institution": "Universidad de la República"
+      },
+      {
+        "first_name": "S. Doaitse",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Eelco",
+        "last_name": "Lempsink",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/haskell/VieraSL08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411288",
+    "title": "Lightweight monadic regions",
+    "abstract": "We present Haskell libraries that statically ensure the safe use of resources such as file handles. We statically prevent accessing an already closed handle or forgetting to close it. The libraries can be trivially extended to other resources such as database connections and graphic contexts.Because file handles and similar resources are scarce, we want to not just assure their safe use but further deallocate them soon after they are no longer needed. Relying on Fluet and Morrisett's [4] calculus of nested regions, we contribute a novel, improved, and extended implementation of the calculus in Haskell, with file handles as resources.Our library supports region polymorphism and implicit region subtyping, along with higher-order functions, mutable state, recursion, and run-time exceptions. A program may allocate arbitrarily many resources and dispose of them in any order, not necessarily LIFO. Region annotations are part of an expression's inferred type.Our new Haskell encoding of monadic regions as monad transformers needs no witness terms. It assures timely deallocation even when resources have markedly different lifetimes and the identity of the longest-living resource is determined only dynamically.For contrast, we also implement a Haskell library for manual resource management, where deallocation is explicit and safety is assured by a form of linear types. We implement the linear typing in Haskell with the help of phantom types and a parameterized monad to statically track the type-state of resources.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411288",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Oleg",
+        "last_name": "Kiselyov",
+        "institution": ""
+      },
+      {
+        "first_name": "Chung-chieh",
+        "last_name": "Shan",
+        "institution": "Rutgers, The State University of New Jersey"
+      }
+    ],
+    "dblp_key": "conf/haskell/KiselyovS08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411294",
+    "title": "Yi: an editor in haskell for haskell",
+    "abstract": "Yi is a text editor written in Haskell and extensible in Haskell. We take advantage of Haskell's expressive power to define embedded DSLs that form the foundation of the editor. In turn, these DSLs provide a flexible mechanism to create extended versions of the editor. Yi also provides some support for editing Haskell code.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411294",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jean-Philippe",
+        "last_name": "Bernardy",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/Bernardy08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411290",
+    "title": "Haskell session types with (almost) no class",
+    "abstract": "We describe an implementation of session types in Haskell. Session types statically enforce that client-server communication proceeds according to protocols. They have been added to several concurrent calculi, but few implementations of session types are available.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411290",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Riccardo",
+        "last_name": "Pucella",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Jesse A.",
+        "last_name": "Tov",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/haskell/PucellaT08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411302",
+    "title": "Clase: cursor library for a structured editor",
+    "abstract": "The zipper is a well known design pattern for providing a cursor-like interface to a data structure. However, the classic treatise by Huet (1) only scratches the surface of some of the potential applications of the zipper. In this work we have taken inspiration from Huet, and built a library suitable as an underpinning for a structured editor for programming languages. We consider a zipper structure that is suitable for traversing heterogeneous data types, encoding routes to other places in the tree (for bookmark or quick-jump functionality), expressing lexically bound information using contexts, and traversals for rendering a program indicating where the cursor is currently focused in the whole.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411302",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Tristan O.R.",
+        "last_name": "Allwood",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Susan",
+        "last_name": "Eisenbach",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/haskell/AllwoodE08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411292",
+    "title": "Smallcheck and lazy smallcheck: automatic exhaustive testing for small values",
+    "abstract": "This paper describes two Haskell libraries for property-based testing. Following the lead of QuickCheck, these testing libraries SmallCheck and Lazy SmallCheck also use type-based generators to obtain test-sets of finite values for which properties are checked, and report any counter-examples found. But instead of using a sample of randomly generated values they test properties for all values up to some limiting depth, progressively increasing this limit. The paper explains the design and implementation of both libraries and evaluates them in comparison with each other and with QuickCheck.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411292",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Colin",
+        "last_name": "Runciman",
+        "institution": "University of York"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Naylor",
+        "institution": "University of York"
+      },
+      {
+        "first_name": "Fredrik",
+        "last_name": "Lindblad",
+        "institution": "University of Gothenburg"
+      }
+    ],
+    "dblp_key": "conf/haskell/RuncimanNL08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411293",
+    "title": "Not all patterns, but enough: an automatic verifier for partial but sufficient pattern matching",
+    "abstract": "We describe an automated analysis of Haskell 98 programs to check statically that, despite the possible use of partial (or nonexhaustive) pattern matching, no pattern-match failure can occur. Our method is an iterative backward analysis using a novel form of pattern-constraint to represent sets of data values. The analysis is defined for a core first-order language to which Haskell 98 programs are reduced. Our analysis tool has been successfully applied to a range of programs, and our techniques seem to scale well. Throughout the paper, methods are represented much as we have implemented them in practice, again in Haskell.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411293",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Neil",
+        "last_name": "Mitchell",
+        "institution": "University of York"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "Runciman",
+        "institution": "University of York"
+      }
+    ],
+    "dblp_key": "conf/haskell/MitchellR08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411300",
+    "title": "Making monads first-class with template haskell",
+    "abstract": "Monads as an organizing principle for programming and semantics are notoriously difficult to grasp, yet they are a central and powerful abstraction in Haskell. This paper introduces a domain-specific language, MonadLab, that simplifies the construction of monads, and describes its implementation in Template Haskell. MonadLab makes monad construction truly first class, meaning that arcane theoretical issues with respect to monad transformers are completely hidden from the programmer. The motivation behind the design of MonadLab is to make monadic programming in Haskell simpler while providing a tool for non-Haskell experts that will assist them in understanding this powerful abstraction.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411300",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Pericles S.",
+        "last_name": "Kariotis",
+        "institution": "University of Missouri"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Procter",
+        "institution": "University of Missouri"
+      },
+      {
+        "first_name": "William L.",
+        "last_name": "Harrison",
+        "institution": "University of Missouri"
+      }
+    ],
+    "dblp_key": "conf/haskell/KariotisPH08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411297",
+    "title": "Shared subtypes: subtyping recursive parametrized algebraic data types",
+    "abstract": "A newtype declaration in Haskell introduces a new type renaming an existing type. The two types are viewed by the programmer as semantically different, but share the same runtime representation. When operations on the two semantic views coincide, the run-time cost of conversion between the two types is reduced to zero (in both directions) because of this common representation.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411297",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Ki Yung",
+        "last_name": "Ahn",
+        "institution": "Portland State University"
+      },
+      {
+        "first_name": "Tim",
+        "last_name": "Sheard",
+        "institution": "Portland State University"
+      }
+    ],
+    "dblp_key": "conf/haskell/AhnS08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411303",
+    "title": "Haskell: batteries included",
+    "abstract": "The quality of a programming language itself is only one component in the ability of application writers to get the job done. Programming languages can succeed or fail based on the breadth and quality of their library collection. Over the last few years, the Haskell community has risen to the task of building the library infrastructure necessary for Haskell to succeed as a programming language suitable for writing real-world applications.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411303",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Duncan",
+        "last_name": "Coutts",
+        "institution": ""
+      },
+      {
+        "first_name": "Isaac",
+        "last_name": "Potoczny-Jones",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Don",
+        "last_name": "Stewart",
+        "institution": "Galois (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/CouttsPS08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411298",
+    "title": "Language and program design for functional dependencies",
+    "abstract": "Eight years ago, functional dependencies, a concept from the theory of relational databases, were proposed as a mechanism for avoiding common problems with multiple parameter type classes in Haskell. In this context, functional dependencies give programmers a means to specify the semantics of a type class more precisely, and to obtain more accurate inferred types as a result. As time passed, however, several issues were uncovered - both in the design of a language to support functional dependencies, and in the ways that programmers use them - that led some to search for new, better alternatives.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411298",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Mark P.",
+        "last_name": "Jones",
+        "institution": "Portland State University"
+      },
+      {
+        "first_name": "Iavor S.",
+        "last_name": "Diatchki",
+        "institution": "Galois (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/JonesD08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411289",
+    "title": "A library for light-weight information-flow security in haskell",
+    "abstract": "Protecting confidentiality of data has become increasingly important for computing systems. Information-flow techniques have been developed over the years to achieve that purpose, leading to special-purpose languages that guarantee information-flow security in programs. However, rather than producing a new language from scratch, information-flow security can also be provided as a library. This has been done previously in Haskell using the arrow framework. In this paper, we show that arrows are not necessary to design such libraries and that a less general notion, namely monads, is sufficient to achieve the same goals. We present a monadic library to provide information-flow security for Haskell programs. The library introduces mechanisms to protect confidentiality of data for pure computations, that we then easily, and modularly, extend to include dealing with side-effects. We also present combinators to dynamically enforce different declassification policies when release of information is required in a controlled manner. It is possible to enforce policies related to what, by whom, and when information is released or a combination of them. The well-known concept of monads together with the light-weight characteristic of our approach makes the library suitable to build applications where confidentiality of data is an issue.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411289",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Alejandro",
+        "last_name": "Russo",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Koen",
+        "last_name": "Claessen",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Hughes",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/RussoCH08",
+    "venue": "haskell",
+    "year": 2008
+  },
+  {
+    "paper_id": "10.1145/1411286.1411301",
+    "title": "Comparing libraries for generic programming in haskell",
+    "abstract": "Datatype-generic programming is defining functions that depend on the structure, or \"shape\", of datatypes. It has been around for more than 10 years, and a lot of progress has been made, in particular in the lazy functional programming language Haskell. There are morethan 10 proposals for generic programming libraries orlanguage extensions for Haskell. To compare and characterise the many generic programming libraries in atyped functional language, we introduce a set of criteria and develop a generic programming benchmark: a set of characteristic examples testing various facets of datatype-generic programming. We have implemented the benchmark for nine existing Haskell generic programming libraries and present the evaluation of the libraries. The comparison is useful for reaching a common standard for generic programming, but also for a programmer who has to choose a particular approach for datatype-generic programming.",
+    "date": "2008-09-25",
+    "link": "https://doi.org/10.1145/1411286.1411301",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Alexey",
+        "last_name": "Rodriguez",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Johan",
+        "last_name": "Jeuring",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Patrik",
+        "last_name": "Jansson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Gerdes",
+        "institution": "The Open University"
+      },
+      {
+        "first_name": "Oleg",
+        "last_name": "Kiselyov",
+        "institution": ""
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/haskell/RodriguezJJGKO08",
+    "venue": "haskell",
+    "year": 2008
+  }
+]

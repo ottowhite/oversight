@@ -1,0 +1,287 @@
+[
+  {
+    "paper_id": "10.1145/3546189.3549921",
+    "title": "Liquid proof macros",
+    "abstract": "Liquid Haskell is a popular verifier for Haskell programs, leveraging the power of SMT solvers to ease users' burden of proof. However, this power does not come without a price: convincing Liquid Haskell that a program is correct often necessitates giving hints to the underlying solver, which can be a tedious and verbose process that sometimes requires intricate knowledge of Liquid Haskell's inner workings.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549921",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Henry",
+        "last_name": "Blanchette",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Niki",
+        "last_name": "Vazou",
+        "institution": "IMDEA Software"
+      },
+      {
+        "first_name": "Leonidas",
+        "last_name": "Lampropoulos",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/haskell/BlanchetteVL22",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549922",
+    "title": "Coinduction inductively: mechanizing coinductive proofs in Liquid Haskell",
+    "abstract": "Liquid Haskell is an inductive verifier that cannot reason about codata. In this work we present two alternative approaches, namely indexed and constructive coinduction, to consistently encode coinductive proofs in Liquid Haskell. The intuition is that indices can be used to enforce the base case in the setting of classical logic and the guardedness check in the constructive proofs. We use our encodings to machine check 10 coinductive proofs, about unary and binary predicates on infinite streams and lists, showcasing how an inductive verifier can be used to check coinductive properties of Haskell code.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549922",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Lykourgos",
+        "last_name": "Mastorou",
+        "institution": "IMDEA Software"
+      },
+      {
+        "first_name": "Nikolaos",
+        "last_name": "Papaspyrou",
+        "institution": "National Technical University of Athens"
+      },
+      {
+        "first_name": "Niki",
+        "last_name": "Vazou",
+        "institution": "IMDEA Software"
+      }
+    ],
+    "dblp_key": "conf/haskell/MastorouPV22",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549923",
+    "title": "Partial type constructors in practice",
+    "abstract": "Type constructors in functional programming languages are total: a Haskell programmer can equally readily construct lists of any element type. In practice, however, not all applications of type constructors are equally sensible: collections may only make sense for orderable elements, or embedded DSLs might only make sense for serializable return types. Jones et al. proposed a theory of partial type constructors, which guarantees that type applications are sensible, and extends higher-order abstractions to apply equally well to partial and total type constructors. This paper evaluates the practicality of partial type constructors, in terms of both language design and implementation. We extend GHC, the most widely used Haskell compiler, with support for partial type constructors, and test our extension on the compiler itself and its libraries. We show that introducing partial type constructors has a minimal impact on most code, but raises important questions in language and library design.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549923",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Apoorv",
+        "last_name": "Ingle",
+        "institution": "University of Iowa"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Hubers",
+        "institution": "University of Iowa"
+      },
+      {
+        "first_name": "J. Garrett",
+        "last_name": "Morris",
+        "institution": "University of Iowa"
+      }
+    ],
+    "dblp_key": "conf/haskell/IngleHM22",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549915",
+    "title": "A totally predictable outcome: an investigation of traversals of infinite structures",
+    "abstract": "Functors with an instance of the Traversable type class can be thought of as data structures which permit a traversal of their elements. This has been made precise by the correspondence between traversable functors and finitary containers (also known as polynomial functors) -- established in the context of total, necessarily terminating, functions. However, the Haskell language is non-strict and permits functions that do not terminate. It has long been observed that traversals can at times in fact operate over infinite lists, for example in distributing the Reader applicative. The result of such a traversal remains an infinite structure, however it nonetheless is productive -- i.e. successive amounts of finite computation yield either termination or successive results. To investigate this phenomenon, we draw on tools from guarded recursion, making use of equational reasoning directly in Haskell.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549915",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Gershom",
+        "last_name": "Bazerman",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/Bazerman22",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549917",
+    "title": "Embedded pattern matching",
+    "abstract": "Haskell is a popular choice for hosting deeply embedded languages. A recurring challenge for these embeddings is how to seamlessly integrate user defined algebraic data types. In particular, one important, convenient, and expressive feature for creating and inspecting data -- pattern matching -- is not directly available on embedded terms. We present a novel technique, embedded pattern matching, which enables a natural and user friendly embedding of user defined algebraic data types into the embedded language, and allows programmers to pattern match on terms in the embedded language in much the same way they would in the host language.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549917",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Trevor L.",
+        "last_name": "McDonell",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Joshua D.",
+        "last_name": "Meredith",
+        "institution": ""
+      },
+      {
+        "first_name": "Gabriele",
+        "last_name": "Keller",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/haskell/McDonellMK22",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549919",
+    "title": "How to safely use extensionality in Liquid Haskell",
+    "abstract": "Refinement type checkers are a powerful way to reason about functional programs. For example, one can prove properties of a slow, specification implementation and port the proofs to an optimized pure implementation that behaves the same. But to reason about higher-order programs, we must reason about equalities between functions: we need a consistent encoding of functional extensionality.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549919",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Niki",
+        "last_name": "Vazou",
+        "institution": "IMDEA Software"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Greenberg",
+        "institution": "Stevens Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/Vazou022",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549918",
+    "title": "Investigating magic numbers: improving the inlining heuristic in the Glasgow Haskell Compiler",
+    "abstract": "Inlining is a widely studied compiler optimization that is particularly important for functional languages such as Haskell and OCaml. The Glasgow Haskell Compiler (GHC) inliner is a heuristic of such complexity, however, that it has not significantly changed for nearly 20 years. It heavily relies on hard-coded numeric constants, or magic numbers, based on out-of-date intuition. Dissatisfaction with inlining performance has led to the widespread use of inlining pragmas by programmers.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549918",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Celeste",
+        "last_name": "Hollenbeck",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "O’Boyle",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Michel",
+        "last_name": "Steuwer",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/haskell/HollenbeckOS22",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549924",
+    "title": "Open transactional actions: interacting with non-transactional resources in STM Haskell",
+    "abstract": "This paper addresses the problem of accessing external resources from inside transactions in STM Haskell, and for that purpose introduces a new abstraction called Open Transactional Actions (OTAs) that provides a framework for wrapping non-transactional resources in a transactional layer. OTAs allow the programmer to access resources through IO actions, from inside transactions, and also to register commit and abort handlers: the former are used to make the accesses to resources visible to other transactions at commit time, and the latter to undo changes in the resource if the transaction has to roll back. OTAs, once started, are guaranteed to be executed completely before the hosting transaction can be aborted, guarantying that if a resource is accessed, its respective commit and abort actions will be properly registered. We believe that OTAs could be used by expert programmers to implement useful system libraries and also to give a transactional semantics to fast linearizable data structures, i.e., transactional boosting. As a proof of concept, we present examples that use OTAs to implement transactional file access and transactional boosted data types that are faster than pure STM Haskell in most cases.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549924",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jonathas Augusto de Oliveira",
+        "last_name": "Conceição",
+        "institution": "Universidade Federal de Pelotas"
+      },
+      {
+        "first_name": "André Rauber Du",
+        "last_name": "Bois",
+        "institution": "Universidade Federal de Pelotas"
+      },
+      {
+        "first_name": "Samuel da Silva",
+        "last_name": "Feitosa",
+        "institution": "Universidade Federal da Fronteira Sul"
+      },
+      {
+        "first_name": "Gerson Geraldo H.",
+        "last_name": "Cavalheiro",
+        "institution": "Universidade Federal de Pelotas"
+      },
+      {
+        "first_name": "Rodrigo",
+        "last_name": "Ribeiro",
+        "institution": "Universidade Federal de Ouro Preto"
+      }
+    ],
+    "dblp_key": "conf/haskell/ConceicaoBFCR22",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549920",
+    "title": "Reasonable Agda is correct Haskell: writing verified Haskell using agda2hs",
+    "abstract": "Modern dependently typed languages such as Agda can be used to statically enforce the correctness of programs. However, they still lack the large ecosystem of a more popular language like Haskell. To combine the strength of both approaches, we present agda2hs, a tool that translates an expressive subset of Agda to readable Haskell, erasing dependent types and proofs in the process. Thanks to Agda's support for erasure annotations, this process is both safe and transparent to the user. Compared to other tools for program extraction, agda2hs uses a syntax that is already familiar to functional programmers, allows for both intrinsic and extrinsic approaches to verification, and produces Haskell code that is easy to read and audit by programmers with no knowledge of Agda.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549920",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jesper",
+        "last_name": "Cockx",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Orestis",
+        "last_name": "Melkonian",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Lucas",
+        "last_name": "Escot",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Chapman",
+        "institution": ""
+      },
+      {
+        "first_name": "Ulf",
+        "last_name": "Norell",
+        "institution": "University of Gothenburg"
+      }
+    ],
+    "dblp_key": "conf/haskell/CockxME0N22",
+    "venue": "haskell",
+    "year": 2022
+  },
+  {
+    "paper_id": "10.1145/3546189.3549916",
+    "title": "Oregano: staging regular expressions with Moore Cayley fusion",
+    "abstract": "Regular expressions are a tool for recognising regular languages, historically implemented using derivatives or non-deterministic finite automata. They are convenient for many light-weight parsing workloads, but their traditional formulation only lends them to matching text, not returning fully-structured results. This contrasts with other forms of parsing, where the aim is to extract meaningful data, for example abstract syntax trees. Yet, most regular expression libraries do not support this useful output, and those that do are often slower, and backed by parser combinator libraries.",
+    "date": "2022-09-06",
+    "link": "https://doi.org/10.1145/3546189.3549916",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jamie",
+        "last_name": "Willis",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Wu",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/haskell/WillisWS22",
+    "venue": "haskell",
+    "year": 2022
+  }
+]
