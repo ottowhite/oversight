@@ -17,6 +17,8 @@ from .PaperDatabase import PaperDatabase
 from .PaperRepository import PaperRepository
 from .ArXivRepository import ArXivRepository
 from .ResearchListener import research_listener_group
+from .atlas_labels import compute_cluster_label, cache_label
+from .atlas_tree import get_tree
 
 # Load environment variables early so repo/db can connect
 load_dotenv()
@@ -442,6 +444,122 @@ def atlas() -> tuple[dict[str, Any], int]:
         for (pid, title, source, x, y) in rows
     ]
     return {"projection": projection, "count": len(points), "points": points}, 200
+
+
+@app.get("/api/atlas/labels")
+def atlas_labels() -> tuple[dict[str, Any], int]:
+    """Lazy fractal labels for the atlas page.
+
+    Query params:
+      projection   str  — projection name in atlas_cluster
+      viewport     "xmin,ymin,xmax,ymax" — required, the visible rect
+      target_count int  in [1, 50], default 6 — desired # of labels
+      include_pending bool — if true, force-compute every missing label
+                            in this single request (slower but no
+                            follow-up roundtrip required)
+
+    Returns labels for the clusters whose bbox intersects the viewport
+    at a lambda value chosen so the slice contains ~target_count
+    clusters. Labels are looked up in ``atlas_cluster_label``; misses
+    trigger an inline c-TF-IDF compute, get inserted, and are returned.
+    If more than ``FRESH_LABEL_CAP`` labels need fresh generation, the
+    overflow is returned in a ``pending`` list so the FE can re-fetch
+    with ``include_pending=true`` (which forces all of them to compute
+    in-line).
+    """
+    projection = request.args.get("projection", "").strip()
+    if not projection:
+        return {"error": "projection is required"}, 400
+
+    viewport_raw = request.args.get("viewport")
+    if not viewport_raw:
+        return {"error": "viewport is required"}, 400
+    parts = viewport_raw.split(",")
+    if len(parts) != 4:
+        return {"error": "viewport must be xmin,ymin,xmax,ymax"}, 400
+    try:
+        xmin, ymin, xmax, ymax = (float(p) for p in parts)
+    except ValueError:
+        return {"error": "viewport values must be floats"}, 400
+    viewport: tuple[float, float, float, float] = (xmin, ymin, xmax, ymax)
+
+    target_raw = request.args.get("target_count", "6")
+    try:
+        target_count = int(target_raw)
+    except ValueError:
+        return {"error": "target_count must be an integer"}, 400
+    target_count = max(1, min(50, target_count))
+
+    include_pending_raw = request.args.get("include_pending", "false").lower()
+    include_pending = include_pending_raw in {"1", "true", "yes"}
+
+    # Cap how many fresh c-TF-IDF computations we do per request, so a
+    # cold viewport doesn't hang the user for many seconds. The FE
+    # re-requests with include_pending=true to flush the rest.
+    fresh_cap = 20
+
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        try:
+            tree = get_tree(con, projection)
+        except Exception as e:
+            return {"error": f"failed to load tree: {e!s}"}, 500
+
+        clusters = tree.slice_for_viewport(viewport, target_count)
+        if not clusters:
+            return {"labels": [], "pending": []}, 200
+
+        cluster_ids = [c.cluster_id for c in clusters]
+        # Pull existing cached labels in one round-trip.
+        with con.cursor() as cur:
+            cur.execute(
+                """
+                SELECT cluster_id, label, keywords
+                FROM atlas_cluster_label
+                WHERE projection = %s AND cluster_id = ANY(%s)
+                """,
+                [projection, cluster_ids],
+            )
+            cached: dict[int, tuple[str, list[str]]] = {
+                int(cid): (lab, kws) for cid, lab, kws in cur.fetchall()
+            }
+
+        labels_out: list[dict[str, Any]] = []
+        pending: list[int] = []
+        fresh_done = 0
+        for c in clusters:
+            cid = c.cluster_id
+            entry = cached.get(cid)
+            if entry is None:
+                if not include_pending and fresh_done >= fresh_cap:
+                    pending.append(cid)
+                    continue
+                try:
+                    label, keywords = compute_cluster_label(con, projection, cid)
+                except Exception as e:
+                    app.logger.error(f"label compute failed for {cid}: {e!s}")
+                    continue
+                if not label:
+                    continue
+                cache_label(con, projection, cid, label, keywords)
+                fresh_done += 1
+                entry = (label, keywords)
+            label, keywords = entry
+            labels_out.append(
+                {
+                    "cluster_id": cid,
+                    "centroid": [c.centroid_x, c.centroid_y],
+                    "bbox": [c.bbox_xmin, c.bbox_ymin, c.bbox_xmax, c.bbox_ymax],
+                    "paper_count": c.paper_count,
+                    "parent_id": c.parent_id,
+                    "label": label,
+                    "keywords": keywords,
+                }
+            )
+        # Commit so the freshly inserted labels persist past this request.
+        con.commit()
+
+    return {"labels": labels_out, "pending": pending}, 200
 
 
 @app.get("/api/embeddings/similarity_distribution")
