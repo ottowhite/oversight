@@ -90,8 +90,11 @@ def search() -> tuple[dict[str, Any], int]:
 
     time_window_days = body.get("time_window_days")
     try:
+        # Default to "all time" — anything older than the oldest paper in the
+        # corpus (POPL 1973). The frontend's slider exposes a finer scale; this
+        # default only kicks in for API clients that omit the field.
         time_window_days_int = (
-            int(time_window_days) if time_window_days is not None else 365 * 5
+            int(time_window_days) if time_window_days is not None else 36500
         )
     except Exception:
         return {"error": "time_window_days must be an integer"}, 400
