@@ -7,6 +7,12 @@ import {
   useState,
   type ComponentType,
 } from "react";
+import {
+  streamAtlas,
+  makeNormalizer,
+  type AtlasPoint,
+  type AtlasHeader,
+} from "../lib/streamAtlas";
 
 // regl-scatterplot touches WebGL/canvas/window at import time so it must
 // be loaded only in the browser. Mirrors the lazy-import dance graph.tsx
@@ -64,14 +70,9 @@ type ScatterplotApi = {
 // API contract.
 // ---------------------------------------------------------------------------
 
-type AtlasPoint = {
-  paper_id: string;
-  title: string;
-  source: string | null;
-  x: number;
-  y: number;
-};
-
+// AtlasPoint is imported from ../lib/streamAtlas — keep AtlasResponse here
+// since it's the shape of the legacy JSON endpoint and only the JSON path
+// uses it.
 type AtlasResponse = {
   projection: string;
   count: number;
@@ -197,7 +198,19 @@ export default function AtlasPage() {
     const sp = new URLSearchParams(window.location.search);
     return sp.get("projection")?.trim() || DEFAULT_PROJECTION;
   });
-  const [points, setPoints] = useState<AtlasPoint[] | null>(null);
+  // Stream mode is a one-shot, read-once query flag. We hold it as a
+  // const (not state) so the JSON vs NDJSON code paths can fork cleanly
+  // at effect-level without React fighting us about deps.
+  const streamMode: boolean =
+    typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get("stream") === "1";
+  // In JSON mode `points === null` means "still loading"; in stream mode
+  // we initialise to [] and use `header === null` as the loading sentinel
+  // instead — points genuinely starts empty and grows batch-by-batch.
+  const [points, setPoints] = useState<AtlasPoint[] | null>(
+    streamMode ? [] : null,
+  );
+  const [header, setHeader] = useState<AtlasHeader | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(
@@ -322,8 +335,41 @@ export default function AtlasPage() {
     setHiddenSources(all);
   }, []);
 
-  // Fetch points on mount.
+  // Fetch points on mount. Two completely separate paths so neither
+  // accidentally pessimises the other; we deliberately don't try to
+  // unify them.
   useEffect(() => {
+    if (streamMode) {
+      // NDJSON streaming path: a fresh AbortController per effect run
+      // so projection changes / unmount cancel the in-flight fetch
+      // cleanly (the underlying ReadableStream propagates abort).
+      const ctrl = new AbortController();
+      // Reset header + points on (re)entry — a projection change must
+      // not show stale geometry from the previous projection while the
+      // new stream is in flight.
+      setHeader(null);
+      setPoints([]);
+      (async () => {
+        try {
+          await streamAtlas(
+            projection,
+            ctrl.signal,
+            (h) => setHeader(h),
+            // Functional setState: batches arriving back-to-back must
+            // compose. Without `prev =>` we'd race and clobber.
+            (batch) => setPoints((prev) => (prev ?? []).concat(batch)),
+          );
+        } catch (err) {
+          // AbortError from the cleanup below is expected — swallow it.
+          if ((err as { name?: string } | null)?.name === "AbortError") return;
+          setError(String(err));
+        }
+      })();
+      return () => {
+        ctrl.abort();
+      };
+    }
+    // Legacy JSON path — unchanged.
     let cancelled = false;
     (async () => {
       try {
@@ -344,7 +390,7 @@ export default function AtlasPage() {
     return () => {
       cancelled = true;
     };
-  }, [projection]);
+  }, [projection, streamMode]);
 
   // Map paper_id → atlas index, so checking a result can call
   // scatter.select([idx]) without scanning the full points array.
@@ -471,10 +517,34 @@ export default function AtlasPage() {
   // Base "no-highlights" points array — exposed as a memo so the
   // selection-aware redraw below can mutate just the affected rows
   // without re-running normalize/build on every toggle.
-  const normalized = useMemo(
-    () => (points ? normalizePoints(points, categoryByIndex) : []),
-    [points, categoryByIndex],
-  );
+  //
+  // Stream-mode caveat: we can't do the JSON-path's global min/max
+  // scan because the data arrives in batches; instead the backend's
+  // header carries the bbox of the full corpus and we feed that to
+  // makeNormalizer once. While `header` is null we return [] so the
+  // canvas just shows the loading state — the first batch's arrival
+  // will already have set the header (the stream contract guarantees
+  // header-then-points order).
+  //
+  // Known cost (acceptable, documented): buildSourceColorIndex above
+  // discovers sources in insertion order, so a source that first
+  // appears in batch N lands in the legend at position N rather than
+  // wherever it would land under a full-corpus scan. We could fix this
+  // by ordering on the backend but that would defeat the point of
+  // streaming.
+  const normalized = useMemo(() => {
+    if (streamMode) {
+      if (!header || !points || points.length === 0) return [];
+      const norm = makeNormalizer(header.bbox);
+      const out: number[][] = new Array(points.length);
+      for (let i = 0; i < points.length; i++) {
+        const [nx, ny] = norm(points[i]);
+        out[i] = [nx, ny, categoryByIndex[i]];
+      }
+      return out;
+    }
+    return points ? normalizePoints(points, categoryByIndex) : [];
+  }, [points, categoryByIndex, streamMode, header]);
 
   // Points array with selected rows recoloured to highlightCategory.
   // We allocate fresh rows for the changed indices and reuse the
@@ -835,7 +905,13 @@ export default function AtlasPage() {
             <h1 className="text-lg font-semibold">Paper Atlas</h1>
             <span className="text-xs text-base-content/50 ml-2">
               projection: <code>{projection}</code>
-              {points ? ` · ${points.length.toLocaleString()} papers` : ""}
+              {points
+                ? streamMode
+                  ? ` · ${points.length.toLocaleString()} / ${
+                      header ? header.total.toLocaleString() : "?"
+                    } papers`
+                  : ` · ${points.length.toLocaleString()} papers`
+                : ""}
             </span>
             <a
               href="/graph"
@@ -853,8 +929,11 @@ export default function AtlasPage() {
         <div ref={containerRef} className="relative min-h-0 w-full">
           <canvas ref={canvasRef} className="block h-full w-full" />
 
-          {/* Loading state */}
-          {!points && !error && (
+          {/* Loading state. JSON mode: points === null until the fetch
+              lands. Stream mode: points starts as [] (truthy) so we
+              instead key off `header === null`, which is the stream's
+              equivalent "nothing useful yet" sentinel. */}
+          {((streamMode && !header) || (!streamMode && !points)) && !error && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="text-base-content/70 text-sm">
                 Loading atlas…
