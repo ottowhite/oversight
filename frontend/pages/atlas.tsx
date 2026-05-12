@@ -63,6 +63,22 @@ type ScatterplotApi = {
   getScreenPosition: (
     pointIdx: number,
   ) => [number, number] | undefined | null;
+  // get('cameraView') -> Float32Array(16) is the row-major view matrix
+  // we need to project arbitrary NDC coords (cluster centroids) to the
+  // screen without faking a ghost point. We only need a typed narrow
+  // here because pulling regl-scatterplot's full Properties shape into
+  // this component would explode our imports.
+  get: (property: string) => unknown;
+  // Zoom the camera so the rect (in NDC) fills the viewport. Used when
+  // the user clicks a cluster label.
+  zoomToArea: (
+    rect: { x: number; y: number; width: number; height: number },
+    opts?: {
+      transition?: boolean;
+      transitionDuration?: number;
+      transitionEasing?: string;
+    },
+  ) => Promise<void>;
 };
 
 // ---------------------------------------------------------------------------
@@ -111,6 +127,25 @@ type PaperDetail = {
 // "pacmap_v1" once the sibling agent's full-corpus CSV is loaded.
 const DEFAULT_PROJECTION = "pacmap_pl_v1";
 
+// Cluster-label payload from /api/atlas/labels.
+type ClusterLabel = {
+  cluster_id: number;
+  centroid: [number, number]; // in PaCMAP world space
+  bbox: [number, number, number, number]; // [xmin, ymin, xmax, ymax]
+  paper_count: number;
+  parent_id: number | null;
+  label: string;
+  keywords: string[];
+};
+
+// Persisted control-panel state. v1 has a single knob (label density);
+// stored as a versioned object so adding sliders later doesn't require
+// a localStorage migration.
+const CONTROL_PANEL_STORAGE_KEY = "atlas/controlPanel/v1";
+const DEFAULT_TARGET_COUNT = 6;
+const MIN_TARGET_COUNT = 1;
+const MAX_TARGET_COUNT = 50;
+
 // Stable color palette keyed by source. Order matters — the first
 // distinct source the data exposes lands on COLOR_PALETTE[0], etc.
 // All colours are picked to read against the Vercel-style #000 bg.
@@ -146,6 +181,47 @@ function buildSourceColorIndex(
   }));
   const byIndex = points.map((p) => seen.get(p.source ?? "unknown") ?? 0);
   return { byIndex, legend };
+}
+
+// Project a single NDC-space (x, y) point to canvas-CSS pixels via the
+// scatterplot's current view + projectionLocal. Mirrors esm.js ~8377
+// (getScreenPosition) but doesn't require a registered point index, so
+// we can position cluster-label overlays at arbitrary world coords.
+//
+// projectionLocal in regl-scatterplot is fromScaling([1/aspect, 1, 1]),
+// model is identity for our setup (dataAspectRatio == 1), so:
+//   v = view * [x, y, 0, 1]; v[0] *= 1/aspect; v[1] unchanged
+//   screen_x = width  * (v[0] + 1) / 2
+//   screen_y = height * (0.5 - v[1] / 2)
+// Returns null when the projected point falls outside the [-1, 1]^2
+// clip-space cube along x or y so callers can cheaply skip off-screen
+// labels rather than draw and then hide them.
+function projectNdcToScreen(
+  ndcX: number,
+  ndcY: number,
+  view: Float32Array,
+  cssWidth: number,
+  cssHeight: number,
+  cullOffscreen: boolean,
+): { x: number; y: number } | null {
+  // view is row-major 4x4. The relevant rows for a [x, y, 0, 1] point
+  // are the first two: v[0] = m00*x + m01*y + m02*0 + m03*1, etc.
+  // regl-scatterplot uses gl-matrix, which is COLUMN-major in storage:
+  // index = col*4 + row. We mirror its convention exactly so a
+  // copy-paste from esm.js stays correct.
+  const vx = view[0] * ndcX + view[4] * ndcY + view[12];
+  const vy = view[1] * ndcX + view[5] * ndcY + view[13];
+  const aspect = cssWidth / cssHeight;
+  // projectionLocal: [1/aspect, 1, 1, 1] scaling
+  const cx = vx / aspect;
+  const cy = vy;
+  if (cullOffscreen && (Math.abs(cx) > 1.05 || Math.abs(cy) > 1.05)) {
+    return null;
+  }
+  return {
+    x: (cssWidth * (cx + 1)) / 2,
+    y: cssHeight * (0.5 - cy / 2),
+  };
 }
 
 // regl-scatterplot expects points in normalized device coords ([-1, 1] on
@@ -195,6 +271,24 @@ export default function AtlasPage() {
   const [hiddenSources, setHiddenSources] = useState<Set<string>>(
     () => new Set(),
   );
+
+  // Control-panel state. We rehydrate from localStorage on mount so a
+  // user's label-density preference survives reload, but kick off as
+  // the default until the effect below runs (avoids SSR/CSR mismatch).
+  const [targetCount, setTargetCount] = useState<number>(DEFAULT_TARGET_COUNT);
+  const [controlPanelOpen, setControlPanelOpen] = useState<boolean>(true);
+  // Fractal cluster labels — fetched from /api/atlas/labels on viewport
+  // change. Keyed by cluster_id so we can smoothly fade in/out as the
+  // user pans (labels with stable ids don't flicker).
+  const [clusterLabels, setClusterLabels] = useState<
+    Record<number, ClusterLabel>
+  >({});
+  const [pendingClusterIds, setPendingClusterIds] = useState<number[]>([]);
+  // Mirror in a ref so the labels-fetch effect (debounced, fires from
+  // a setTimeout closure) reads the current target count without
+  // re-arming on every keystroke of the slider.
+  const targetCountRef = useRef(targetCount);
+  targetCountRef.current = targetCount;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const scatterRef = useRef<ScatterplotApi | null>(null);
@@ -272,6 +366,43 @@ export default function AtlasPage() {
     },
     [],
   );
+
+  // localStorage rehydration. Only runs once on mount — afterwards the
+  // controlled state is the source of truth and the write-back effect
+  // below mirrors it back to disk.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(CONTROL_PANEL_STORAGE_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as {
+        targetCount?: number;
+        open?: boolean;
+      };
+      if (typeof parsed.targetCount === "number") {
+        const clamped = Math.max(
+          MIN_TARGET_COUNT,
+          Math.min(MAX_TARGET_COUNT, Math.floor(parsed.targetCount)),
+        );
+        setTargetCount(clamped);
+      }
+      if (typeof parsed.open === "boolean") {
+        setControlPanelOpen(parsed.open);
+      }
+    } catch {
+      // Corrupt JSON — ignore and let the user reset by clicking once.
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        CONTROL_PANEL_STORAGE_KEY,
+        JSON.stringify({ targetCount, open: controlPanelOpen }),
+      );
+    } catch {
+      // localStorage may be unavailable in private-browsing or quota'd;
+      // we just lose persistence in that case, no fatal.
+    }
+  }, [targetCount, controlPanelOpen]);
 
   const toggleSource = useCallback((source: string) => {
     setHiddenSources((prev) => {
@@ -481,6 +612,34 @@ export default function AtlasPage() {
     [points, categoryByIndex],
   );
 
+  // The PaCMAP-world → NDC transform we apply in normalizePoints. We
+  // recompute it here (rather than threading it through that helper's
+  // return type) so the cluster-label overlay can project arbitrary
+  // PaCMAP coords (cluster centroids, bbox corners) into the same NDC
+  // frame regl-scatterplot expects. transform: (x_world, y_world)
+  //   -> ((x_world - cx) * scale, (y_world - cy) * scale)
+  // Mirror the constants from normalizePoints exactly.
+  const worldToNdc = useMemo(() => {
+    if (!points || points.length === 0) return null;
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    let maxY = -Infinity;
+    for (const p of points) {
+      if (p.x < minX) minX = p.x;
+      if (p.x > maxX) maxX = p.x;
+      if (p.y < minY) minY = p.y;
+      if (p.y > maxY) maxY = p.y;
+    }
+    const spanX = maxX - minX || 1;
+    const spanY = maxY - minY || 1;
+    const span = Math.max(spanX, spanY);
+    const cx = (minX + maxX) / 2;
+    const cy = (minY + maxY) / 2;
+    const scale = 1.8 / span;
+    return { cx, cy, scale };
+  }, [points]);
+
   // Precompute per-source index arrays once per points load. Toggling
   // a source then becomes a flat concat of the *visible* source
   // buckets — O(unique_sources) rather than O(N) per toggle. At 524k
@@ -604,6 +763,12 @@ export default function AtlasPage() {
       });
       scatterRef.current = scatter;
       await scatter.draw(normalized);
+      // Bump the overlay tick once on init so the label-fetch effect
+      // (which depends on overlayTick) fires after the first draw.
+      // The 'view' event only fires when the camera *changes*, so a
+      // freshly-drawn scatter at the default camera wouldn't otherwise
+      // emit a signal for the label overlay to latch onto.
+      setOverlayTick((t) => t + 1);
       // Re-apply the current filter immediately after the initial draw
       // so a points refetch (or projection change) preserves the user's
       // toggles. The standalone filter effect handles subsequent flips.
@@ -699,6 +864,229 @@ export default function AtlasPage() {
     // on every toggle would needlessly tear down the GL context.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [normalized, legend, fetchPaperDetail]);
+
+  // --- Fractal cluster labels ----------------------------------------------
+  //
+  // On viewport change we ask the API for ~targetCount labels that fall
+  // inside the visible NDC rectangle. The visible NDC rect is the
+  // inverse-projection of the canvas corners; we then invert the
+  // worldToNdc transform once on the backend's side by converting our
+  // computed NDC rect back to PaCMAP-world coords. That keeps the API
+  // honest (its bboxes are in world space) and lets us reuse it across
+  // projections without per-projection knowledge of the FE transform.
+  const fetchClusterLabelsRef = useRef<(includePending: boolean) => void>(
+    () => {},
+  );
+  fetchClusterLabelsRef.current = (includePending: boolean) => {
+    const scatter = scatterRef.current;
+    const container = containerRef.current;
+    if (!scatter || !container || !worldToNdc) return;
+    const view = scatter.get("cameraView") as Float32Array | undefined;
+    if (!view || view.length < 16) return;
+
+    // Visible NDC rectangle: we need to inverse-project the screen
+    // rectangle through projectionLocal and camera.view. Easier path
+    // (and good enough for our bbox-intersect test): project the four
+    // canvas corners forward and use that as the bounding rect in
+    // world space.
+    const rect = container.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+    // For each canvas corner, undo:
+    //   ndc_clip = (screen) -> in [-1, 1]^2
+    //   ndc_local = ndc_clip * [aspect, 1]   (undo projectionLocal scale)
+    //   ndc_world = inverse(view) * ndc_local
+    // Build inverse of the 2x2 affine part of the view matrix (gl-matrix
+    // column-major, so [0,4,1,5] correspond to view[0..]):
+    const m00 = view[0];
+    const m01 = view[4];
+    const m10 = view[1];
+    const m11 = view[5];
+    const tx = view[12];
+    const ty = view[13];
+    const det = m00 * m11 - m01 * m10;
+    if (Math.abs(det) < 1e-9) return;
+    const inv00 = m11 / det;
+    const inv01 = -m01 / det;
+    const inv10 = -m10 / det;
+    const inv11 = m00 / det;
+
+    const aspect = w / h;
+    function unproject(sx: number, sy: number): [number, number] {
+      // screen → clip
+      const cx = (2 * sx) / w - 1;
+      const cy = 1 - (2 * sy) / h;
+      // undo projectionLocal scale
+      const lx = cx * aspect;
+      const ly = cy;
+      // undo view: t = inv * (ndc - translate)
+      const dx = lx - tx;
+      const dy = ly - ty;
+      return [inv00 * dx + inv01 * dy, inv10 * dx + inv11 * dy];
+    }
+    const corners: [number, number][] = [
+      unproject(0, 0),
+      unproject(w, 0),
+      unproject(0, h),
+      unproject(w, h),
+    ];
+    let nxMin = Infinity;
+    let nyMin = Infinity;
+    let nxMax = -Infinity;
+    let nyMax = -Infinity;
+    for (const [nx, ny] of corners) {
+      if (nx < nxMin) nxMin = nx;
+      if (nx > nxMax) nxMax = nx;
+      if (ny < nyMin) nyMin = ny;
+      if (ny > nyMax) nyMax = ny;
+    }
+    // NDC → PaCMAP-world: inverse of worldToNdc
+    const wxMin = nxMin / worldToNdc.scale + worldToNdc.cx;
+    const wxMax = nxMax / worldToNdc.scale + worldToNdc.cx;
+    const wyMin = nyMin / worldToNdc.scale + worldToNdc.cy;
+    const wyMax = nyMax / worldToNdc.scale + worldToNdc.cy;
+
+    const params = new URLSearchParams({
+      projection,
+      viewport: `${wxMin},${wyMin},${wxMax},${wyMax}`,
+      target_count: String(targetCountRef.current),
+    });
+    if (includePending) params.set("include_pending", "true");
+    void (async () => {
+      try {
+        const resp = await fetch(`/api/atlas/labels?${params.toString()}`);
+        if (!resp.ok) return;
+        const body = (await resp.json()) as {
+          labels: ClusterLabel[];
+          pending: number[];
+        };
+        // Merge into the existing map keyed by cluster_id so labels
+        // that survive across a small pan keep stable identity (their
+        // DOM nodes don't get unmounted/remounted, which avoids the
+        // dreaded label-flicker on the mouse-wheel).
+        setClusterLabels((prev) => {
+          const next: Record<number, ClusterLabel> = {};
+          for (const l of body.labels) next[l.cluster_id] = l;
+          // Keep old labels for one extra tick so a slow re-fetch
+          // doesn't briefly drop the whole overlay; the next fetch
+          // will then drop anything not in the fresh slice.
+          for (const cid in prev) {
+            if (!(cid in next) && body.labels.length === 0) {
+              next[cid as unknown as number] = prev[cid];
+            }
+          }
+          return next;
+        });
+        setPendingClusterIds(body.pending ?? []);
+      } catch {
+        // Network blip — keep the previous labels rather than blanking
+        // the overlay. The next viewport change will retry.
+      }
+    })();
+  };
+
+  // Initial + targetCount-change fetch. Camera-driven refetches are
+  // wired through the existing 'view' subscription (overlayTick) below.
+  useEffect(() => {
+    // Wait until both the scatter and the points are ready; we trigger
+    // via overlayTick too, so the very first scatter.draw() will fire
+    // a 'view' event that retriggers this effect's body via the
+    // separate debounced effect below.
+    const handle = setTimeout(() => fetchClusterLabelsRef.current(false), 50);
+    return () => clearTimeout(handle);
+  }, [projection, normalized, targetCount]);
+
+  // Debounced refetch on camera-view changes. The 'view' subscription
+  // in the scatter init bumps overlayTick on every pan/zoom; we listen
+  // here and debounce so a smooth wheel-zoom doesn't issue 30 fetches
+  // per second.
+  useEffect(() => {
+    const handle = setTimeout(() => {
+      fetchClusterLabelsRef.current(false);
+    }, 200);
+    return () => clearTimeout(handle);
+  }, [overlayTick]);
+
+  // If the backend returned `pending` (more labels needed than fit in
+  // the per-request fresh-compute cap), kick off a follow-up call with
+  // include_pending=true so the FE eventually shows everything.
+  useEffect(() => {
+    if (pendingClusterIds.length === 0) return;
+    const handle = setTimeout(() => {
+      fetchClusterLabelsRef.current(true);
+    }, 100);
+    return () => clearTimeout(handle);
+  }, [pendingClusterIds]);
+
+  // Project each cluster centroid to canvas-CSS pixels for the overlay.
+  // Re-runs on every overlayTick (i.e. every regl 'view' event), so
+  // labels stay anchored as the user pans/zooms. Cheap: this is a 4x4
+  // multiply + 2 divides per label, with target_count <= 50.
+  const projectedLabels = useMemo(() => {
+    const scatter = scatterRef.current;
+    const container = containerRef.current;
+    if (!scatter || !container || !worldToNdc) return [];
+    let view: Float32Array | undefined;
+    try {
+      view = scatter.get("cameraView") as Float32Array | undefined;
+    } catch {
+      view = undefined;
+    }
+    if (!view || view.length < 16) return [];
+    const rect = container.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+    const out: Array<{
+      cluster_id: number;
+      label: string;
+      paper_count: number;
+      x: number;
+      y: number;
+      bbox: [number, number, number, number];
+    }> = [];
+    for (const cid of Object.keys(clusterLabels)) {
+      const lbl = clusterLabels[cid as unknown as number];
+      const ndcX = (lbl.centroid[0] - worldToNdc.cx) * worldToNdc.scale;
+      const ndcY = (lbl.centroid[1] - worldToNdc.cy) * worldToNdc.scale;
+      const screen = projectNdcToScreen(ndcX, ndcY, view, w, h, true);
+      if (!screen) continue;
+      out.push({
+        cluster_id: lbl.cluster_id,
+        label: lbl.label,
+        paper_count: lbl.paper_count,
+        x: screen.x,
+        y: screen.y,
+        bbox: lbl.bbox,
+      });
+    }
+    return out;
+  }, [clusterLabels, overlayTick, worldToNdc]);
+
+  // Click a label -> zoom the scatter camera to fill the viewport with
+  // its bbox. After the zoom completes, the 'view' event fires
+  // overlayTick, which triggers a re-fetch at the new (deeper) lambda.
+  const handleLabelClick = useCallback(
+    (bbox: [number, number, number, number]) => {
+      const scatter = scatterRef.current;
+      if (!scatter || !worldToNdc) return;
+      // Convert PaCMAP-world bbox to NDC, padded slightly so the label
+      // doesn't graze the canvas edge.
+      const PADDING = 1.25;
+      const cxw = (bbox[0] + bbox[2]) / 2;
+      const cyw = (bbox[1] + bbox[3]) / 2;
+      const halfW = ((bbox[2] - bbox[0]) / 2) * PADDING;
+      const halfH = ((bbox[3] - bbox[1]) / 2) * PADDING;
+      const cx = (cxw - worldToNdc.cx) * worldToNdc.scale;
+      const cy = (cyw - worldToNdc.cy) * worldToNdc.scale;
+      const w = Math.max(halfW * 2 * worldToNdc.scale, 0.02);
+      const h = Math.max(halfH * 2 * worldToNdc.scale, 0.02);
+      void scatter.zoomToArea(
+        { x: cx - w / 2, y: cy - h / 2, width: w, height: h },
+        { transition: true, transitionDuration: 600 },
+      );
+    },
+    [worldToNdc],
+  );
 
   // Apply the legend filter to the live scatterplot. We do this in a
   // separate effect (rather than during init) so toggling sources
@@ -1028,6 +1416,116 @@ export default function AtlasPage() {
               />
             </div>
           ))}
+
+          {/* Fractal cluster labels — HTML overlay synced to regl-
+              scatterplot's camera via overlayTick. No collision
+              detection: if labels overlap, the user zooms in (or
+              dials down the density slider). The control panel below
+              lets them tune the label-count knob. */}
+          {projectedLabels.map((l) => {
+            // Font size + opacity scale with paper_count per the plan.
+            // We additionally damp opacity when many labels are visible
+            // so a dense viewport reads more like a tag cloud than a
+            // wall of text.
+            const pc = Math.max(1, l.paper_count);
+            const fontSize = Math.min(28, Math.max(10, 12 + 2 * Math.log10(pc)));
+            const opacity = Math.min(1, Math.max(0.55, Math.log10(pc) / 4));
+            return (
+              <button
+                key={l.cluster_id}
+                type="button"
+                onClick={() => handleLabelClick(l.bbox)}
+                title={`${l.paper_count.toLocaleString()} papers`}
+                className="absolute z-10 select-none whitespace-nowrap font-medium text-white/90 hover:text-white hover:underline focus:outline-none transition-colors"
+                style={{
+                  left: l.x,
+                  top: l.y,
+                  transform: "translate(-50%, -50%)",
+                  fontSize: `${fontSize}px`,
+                  opacity,
+                  textShadow:
+                    "0 0 4px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.9)",
+                  // Tag the DOM so headless-Chrome verification can
+                  // confirm we rendered something. The visual screenshot
+                  // is the ground truth but a data-attr helps when the
+                  // canvas behind is also white-ish (it isn't, but still).
+                }}
+                data-cluster-id={l.cluster_id}
+                data-cluster-label
+              >
+                {l.label}
+              </button>
+            );
+          })}
+
+          {/* Control panel — collapsible, pinned to bottom-right. v1
+              holds a single label-density knob. Future controls (max
+              paper age, embedding-distance threshold, etc.) anchor
+              here. The header chevron toggles open/closed; the panel
+              persists open/closed and slider value to localStorage. */}
+          <div className="absolute bottom-3 right-3 z-20 select-none">
+            <div className="card bg-base-200/85 backdrop-blur border border-base-300/60 text-xs shadow-lg overflow-hidden min-w-[220px]">
+              <button
+                type="button"
+                onClick={() => setControlPanelOpen((v) => !v)}
+                className="w-full flex items-center justify-between gap-3 px-3 py-2 hover:bg-base-300/30"
+                aria-expanded={controlPanelOpen}
+                title={controlPanelOpen ? "Collapse" : "Expand"}
+                data-control-panel-toggle
+              >
+                <span className="text-base-content/60 font-semibold uppercase tracking-wider text-[10px]">
+                  Controls
+                </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className={`h-3 w-3 text-base-content/40 transition-transform ${controlPanelOpen ? "rotate-180" : ""}`}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+              {controlPanelOpen && (
+                <div className="px-3 pb-3 pt-1 space-y-2">
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label
+                        htmlFor="atlas-label-density"
+                        className="text-base-content/70"
+                      >
+                        Label density
+                      </label>
+                      <span className="text-base-content/50 font-mono tabular-nums text-[11px]">
+                        {targetCount}
+                      </span>
+                    </div>
+                    <input
+                      id="atlas-label-density"
+                      type="range"
+                      min={MIN_TARGET_COUNT}
+                      max={MAX_TARGET_COUNT}
+                      step={1}
+                      value={targetCount}
+                      onChange={(e) => {
+                        const v = parseInt(e.target.value, 10);
+                        if (!Number.isNaN(v)) setTargetCount(v);
+                      }}
+                      className="w-full range range-xs"
+                      data-control-target-count
+                    />
+                    <div className="flex justify-between text-[10px] text-base-content/40 mt-0.5">
+                      <span>{MIN_TARGET_COUNT}</span>
+                      <span>{MAX_TARGET_COUNT}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
 
           {/* Hint */}
           <div className="absolute bottom-3 left-3 text-[10px] text-base-content/40 pointer-events-none">
