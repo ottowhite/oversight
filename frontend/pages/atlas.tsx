@@ -58,11 +58,6 @@ type ScatterplotApi = {
     opts?: { merge?: boolean; remove?: boolean; preventEvent?: boolean },
   ) => Promise<void> | void;
   deselect: (opts?: { preventEvent?: boolean }) => Promise<void> | void;
-  // World-space → screen-space for one point. Returns null when the
-  // index is out of range or the scatter hasn't drawn yet.
-  getScreenPosition: (
-    pointIdx: number,
-  ) => [number, number] | undefined | null;
 };
 
 // ---------------------------------------------------------------------------
@@ -220,6 +215,11 @@ export default function AtlasPage() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const scatterRef = useRef<ScatterplotApi | null>(null);
+  // Serializes scatter.draw calls — the lib rejects concurrent draws
+  // with an "Ignoring draw call on the previous draw call has not yet
+  // finished" error, so we await any in-flight draw before issuing a
+  // new one.
+  const drawInflightRef = useRef<Promise<unknown> | null>(null);
   // Keep the points list in a ref so event callbacks (registered once)
   // can look up paper_ids without re-subscribing on every render.
   const pointsRef = useRef<AtlasPoint[] | null>(null);
@@ -440,68 +440,54 @@ export default function AtlasPage() {
     }
     return out;
   }, [selectedIds, indexByPaperId]);
-  // Mirror in a ref so the scatter init's onSelect callback (registered
-  // once, captures via closure) can read the current selection without
-  // re-subscribing.
-  const selectedIndicesRef = useRef<number[]>(selectedIndices);
-  selectedIndicesRef.current = selectedIndices;
-
-  // Screen-space positions of selected points, used to render DOM
-  // overlay markers on top of the canvas. We can't rely on
-  // pointColorActive alone — regl-scatterplot ignores it when colorBy
-  // is set (esm.js ~6596), so search highlights would otherwise just
-  // be slightly bigger same-coloured dots. The overlay gives us a
-  // distinctive yellow ring + drop-shadow regardless of source colour.
-  const [overlayPositions, setOverlayPositions] = useState<
-    Array<{ idx: number; paperId: string; x: number; y: number }>
-  >([]);
-  // Bump counter to force a recompute even when selection didn't change
-  // (e.g. on pan/zoom or resize the screen positions move).
-  const [overlayTick, setOverlayTick] = useState(0);
-  useEffect(() => {
-    const scatter = scatterRef.current;
-    const list = pointsRef.current;
-    if (!scatter || !list || selectedIndices.length === 0) {
-      setOverlayPositions([]);
-      return;
-    }
-    const ratio = window.devicePixelRatio || 1;
-    const next: Array<{
-      idx: number;
-      paperId: string;
-      x: number;
-      y: number;
-    }> = [];
-    for (const idx of selectedIndices) {
-      let pos: [number, number] | undefined | null;
-      try {
-        pos = scatter.getScreenPosition(idx);
-      } catch {
-        pos = null;
-      }
-      if (!pos) continue;
-      // getScreenPosition returns canvas-buffer pixels (multiplied by
-      // DPR). Divide back to CSS pixels so absolute-positioned divs
-      // line up with what the user sees.
-      next.push({
-        idx,
-        paperId: list[idx].paper_id,
-        x: pos[0] / ratio,
-        y: pos[1] / ratio,
-      });
-    }
-    setOverlayPositions(next);
-  }, [selectedIndices, overlayTick]);
 
   const { byIndex: categoryByIndex, legend } = useMemo(
     () => (points ? buildSourceColorIndex(points) : { byIndex: [], legend: [] }),
     [points],
   );
 
+  // We highlight selected points by repainting them in a special
+  // "highlight" colour category (index = legend.length, after all
+  // source categories). That index is set in pointColor below at
+  // scatterplot init. When the selection set changes, we rebuild the
+  // points array with the third column swapped to the highlight
+  // category for selected indices and call scatter.draw(...) again.
+  //
+  // The original implementation used DOM <div> overlay rings
+  // positioned via scatter.getScreenPosition. The math broke on
+  // devicePixelRatio > 1 and even at dpr=1 the rings drifted ~17px
+  // from the underlying dot. Pushing the highlight through regl's
+  // own pipeline (recolouring the affected points) is pixel-perfect
+  // by construction.
+  const HIGHLIGHT_COLOR = "#ffd84a";
+  const highlightCategory = legend.length;
+
+  // Base "no-highlights" points array — exposed as a memo so the
+  // selection-aware redraw below can mutate just the affected rows
+  // without re-running normalize/build on every toggle.
   const normalized = useMemo(
     () => (points ? normalizePoints(points, categoryByIndex) : []),
     [points, categoryByIndex],
   );
+
+  // Points array with selected rows recoloured to highlightCategory.
+  // We allocate fresh rows for the changed indices and reuse the
+  // shared rows otherwise to keep allocation cost proportional to the
+  // selection size rather than the corpus size.
+  const normalizedHighlighted = useMemo(() => {
+    if (normalized.length === 0) return normalized;
+    if (selectedIndices.length === 0) return normalized;
+    const next = normalized.slice();
+    for (const idx of selectedIndices) {
+      const row = next[idx];
+      if (!row) continue;
+      // Clone just the rows we change — the rest stay reference-equal,
+      // which regl-scatterplot handles fine since draw() does its own
+      // copy into a GPU buffer.
+      next[idx] = [row[0], row[1], highlightCategory];
+    }
+    return next;
+  }, [normalized, selectedIndices, highlightCategory]);
 
   // Precompute per-source index arrays once per points load. Toggling
   // a source then becomes a flat concat of the *visible* source
@@ -596,7 +582,15 @@ export default function AtlasPage() {
       canvas.width = Math.max(1, Math.floor(rect.width * dpr));
       canvas.height = Math.max(1, Math.floor(rect.height * dpr));
 
-      const colors = legend.map((l) => l.color);
+      const sourceColors = legend.map((l) => l.color);
+      // Final pointColor list: source palette + the highlight slot.
+      // colorBy='valueA' (the 3rd column on each point) indexes into
+      // this list, so selected points encoded as highlightCategory
+      // (= legend.length) render in HIGHLIGHT_COLOR.
+      const pointColors =
+        sourceColors.length > 0
+          ? [...sourceColors, HIGHLIGHT_COLOR]
+          : [FALLBACK_COLOR, HIGHLIGHT_COLOR];
       scatter = createScatterplot({
         canvas,
         // 'auto' tells the lib to use the canvas's own dimensions
@@ -609,28 +603,41 @@ export default function AtlasPage() {
         // renderer ignores it and paints every point with pointColor[0].
         // 'valueA' is the encoding name for the 3rd column.
         colorBy: "valueA",
-        pointColor: colors.length > 0 ? colors : [FALLBACK_COLOR],
-        // Selected/hover colours. NB: regl-scatterplot's getColors path
-        // (esm.js ~6596) ignores pointColorActive when colorBy is set,
-        // so we additionally render explicit DOM markers on top of the
-        // canvas to make search-selected papers obviously stand out.
-        // pointSizeSelected still gives a visible body bump, which acts
-        // as a fallback even if our DOM overlay is mis-positioned.
-        pointColorActive: "#ffd84a",
+        pointColor: pointColors,
+        pointColorActive: "#ffffff",
         pointColorHover: "#ffffff",
+        // pointSize accepts an array indexed by the same value used by
+        // colorBy. We give every source the base size and the special
+        // highlight category a much bigger size so search-selected
+        // papers pop out from the surrounding cloud.
+        pointSize: [
+          ...sourceColors.map(() => 3),
+          12, // size for the highlight category
+        ],
         // asinh keeps point size manageable at the full-corpus zoom
         // levels — without it, zooming out at 524k smears the cloud
         // into a solid blob. opacity is dialed down so dense clusters
         // don't saturate to fully-opaque mid-canvas.
         pointScaleMode: "asinh",
-        pointSize: 3,
         pointSizeSelected: 14,
         pointOutlineWidth: 3,
         opacity: 0.55,
         backgroundColor: [0, 0, 0, 1],
       });
       scatterRef.current = scatter;
-      await scatter.draw(normalized);
+      // First draw uses the highlighted variant so any initial
+      // selection (e.g. restored from URL state in future) is shown
+      // immediately. The dedicated selection effect handles subsequent
+      // changes. We track the inflight draw promise so the selection
+      // effect doesn't fire a concurrent draw and trip regl's
+      // "previous draw not finished" guard.
+      const initDraw = Promise.resolve(scatter.draw(normalizedHighlighted));
+      drawInflightRef.current = initDraw;
+      try {
+        await initDraw;
+      } finally {
+        if (drawInflightRef.current === initDraw) drawInflightRef.current = null;
+      }
       // Re-apply the current filter immediately after the initial draw
       // so a points refetch (or projection change) preserves the user's
       // toggles. The standalone filter effect handles subsequent flips.
@@ -670,26 +677,15 @@ export default function AtlasPage() {
         // fallthrough (pinned ?? hover).
         setPinnedPaperId(paperId);
         void fetchPaperDetail(paperId);
-        // regl-scatterplot also writes its internal selectedPoints
-        // when the user clicks. We don't want a stray white halo on
-        // the pinned point — the sidebar already communicates the
-        // pin — so immediately re-assert the canonical search-driven
-        // selection. The dedicated selection effect would do this
-        // eventually on the next render, but doing it here avoids a
-        // single-frame flash.
-        const want = selectedIndicesRef.current;
-        if (want.length === 0) scatter?.unfilter && scatter?.deselect?.();
-        else scatter?.select(want, { preventEvent: true });
+        // regl-scatterplot's internal "active" point set is now
+        // unused (search highlights go through the per-point colour
+        // encoding instead), so we deselect to suppress the white
+        // pointColorActive halo that would otherwise flash on click.
+        scatter?.deselect({ preventEvent: true });
       };
-      // The 'view' event fires on every pan/zoom — bump a tick so the
-      // DOM overlay markers reposition. Throttling here would be nice
-      // but regl already throttles to one event per draw, so the
-      // re-render cadence is sane.
-      const onView = () => setOverlayTick((t) => t + 1);
       scatter.subscribe("pointOver", onOver);
       scatter.subscribe("pointOut", onOut);
       scatter.subscribe("select", onSelect);
-      scatter.subscribe("view", onView);
     })().catch((err) => {
       console.error("[atlas] failed to init scatterplot", err);
       setError(String(err));
@@ -710,7 +706,6 @@ export default function AtlasPage() {
       canvasRef.current.width = Math.max(1, Math.floor(w * ratio));
       canvasRef.current.height = Math.max(1, Math.floor(h * ratio));
       scatter.set({ width: w, height: h });
-      setOverlayTick((t) => t + 1);
     });
     ro.observe(containerRef.current!);
 
@@ -741,18 +736,44 @@ export default function AtlasPage() {
     }
   }, [visibleIndices, hiddenSources]);
 
-  // Apply the search multi-select to the live scatterplot. preventEvent
-  // stops regl from firing back at our onSelect handler (which would
-  // try to pin the selected points to the sidebar in a loop).
+  // Apply the search multi-select to the live scatterplot by redrawing
+  // with the highlighted points array (selected rows have category set
+  // to highlightCategory). regl-scatterplot's draw() preserves camera
+  // pan/zoom, so the only cost is the buffer upload (~hundreds of ms at
+  // 524k). This replaces the previous DOM-overlay approach which had
+  // DPR/positioning bugs.
+  //
+  // regl-scatterplot.draw rejects overlapping calls ("Ignoring draw
+  // call on the previous draw call has not yet finished"), so we
+  // serialize through a small queue: each new selection schedules a
+  // redraw that awaits any in-flight draw first.
   useEffect(() => {
     const scatter = scatterRef.current;
     if (!scatter) return;
-    if (selectedIndices.length === 0) {
-      scatter.deselect({ preventEvent: true });
-    } else {
-      scatter.select(selectedIndices, { preventEvent: true });
-    }
-  }, [selectedIndices]);
+    if (normalizedHighlighted.length === 0) return;
+    let cancelled = false;
+    (async () => {
+      // If a draw is already in flight, wait for it.
+      if (drawInflightRef.current) {
+        try {
+          await drawInflightRef.current;
+        } catch {
+          /* ignore — we're about to redraw anyway */
+        }
+      }
+      if (cancelled) return;
+      const p = Promise.resolve(scatter.draw(normalizedHighlighted));
+      drawInflightRef.current = p;
+      try {
+        await p;
+      } finally {
+        if (drawInflightRef.current === p) drawInflightRef.current = null;
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [normalizedHighlighted]);
 
   const hovered = hoverIdx !== null && points ? points[hoverIdx] : null;
   // If the hovered point's source has just been filtered out, suppress
@@ -1030,31 +1051,9 @@ export default function AtlasPage() {
             </div>
           )}
 
-          {/* Search-selected markers: yellow ring overlays sitting on
-              top of the canvas so chosen papers stand out even against
-              dense same-coloured neighbours. Pointer-events disabled
-              so they don't intercept the scatter's pan/zoom/click. */}
-          {overlayPositions.map((p) => (
-            <div
-              key={p.paperId}
-              className="pointer-events-none absolute z-20"
-              style={{
-                left: p.x,
-                top: p.y,
-                width: 20,
-                height: 20,
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <div
-                className="h-full w-full rounded-full border-2"
-                style={{
-                  borderColor: "#ffd84a",
-                  boxShadow: "0 0 8px 2px rgba(255, 216, 74, 0.55)",
-                }}
-              />
-            </div>
-          ))}
+          {/* Search-selected papers are highlighted by recolouring
+              them through regl-scatterplot's own colour-encoding (see
+              normalizedHighlighted above) — no DOM overlay required. */}
 
           {/* Hint */}
           <div className="absolute bottom-3 left-3 text-[10px] text-base-content/40 pointer-events-none">
