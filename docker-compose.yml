@@ -1,18 +1,42 @@
 services:
+  oversight-db:
+    image: pgvector/pgvector:pg17
+    container_name: oversight-db
+    restart: unless-stopped
+    shm_size: 16gb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: oversight
+      POSTGRES_PASSWORD: ${OVERSIGHT_DB_PASSWORD:?OVERSIGHT_DB_PASSWORD must be set}
+      POSTGRES_DB: oversight
+    volumes:
+      - /var/lib/oversight/postgres:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oversight -d oversight"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   oversight-backend:
     build:
       context: .
       dockerfile: Dockerfile.api
     image: oversight-backend
+    restart: unless-stopped
     ports:
-      - "5001:5001"
+      - "50:50"
     environment:
-      - FLASK_PORT=5001
+      - FLASK_PORT=50
       - FLASK_ENV=production
-      - DATABASE_URL=${DATABASE_URL}
-      - CORS_ORIGINS=http://localhost:3000,http://oversight-frontend:3000
+      - DATABASE_URL=postgresql://oversight:${OVERSIGHT_DB_PASSWORD_URL_ENCODED:?OVERSIGHT_DB_PASSWORD_URL_ENCODED must be set}@oversight-db:5432/oversight
+      - CORS_ORIGINS=http://localhost,http://oversight-frontend:3000
+    depends_on:
+      oversight-db:
+        condition: service_healthy
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:5001/api/health" ]
+      test: ["CMD", "curl", "-f", "http://localhost:50/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -23,15 +47,34 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:5001
+        - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:50
     image: oversight-frontend
-    ports:
-      - "3000:3000"
+    restart: unless-stopped
+    expose:
+      - "3000"
     environment:
-      - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:5001
+      - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:50
     depends_on:
       oversight-backend:
         condition: service_healthy
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - oversight-frontend
+
+volumes:
+  caddy_data:
+  caddy_config:
 
 networks:
   default:

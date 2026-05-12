@@ -14,7 +14,7 @@ RUN npm ci --only=production
 COPY . .
 
 # Accept build argument for backend URL
-ARG NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:5001
+ARG NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:50
 # Set environment variable for backend URL BEFORE building (required for Next.js build)
 ENV NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL
 

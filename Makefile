@@ -1,19 +1,23 @@
 api/build:
-	docker build -f Dockerfile.api -t oversight-backend .
+	docker compose build oversight-backend
 
 frontend/build:
-	docker build -f frontend/Dockerfile -t oversight-frontend ./frontend
+	docker compose build oversight-frontend
 
-build: api/build frontend/build
+build:
+	docker compose build
 
 compose/up: build
-	docker compose up
+	docker compose up --remove-orphans -d
 
 api/down:
 	docker compose down
 
 compose/down:
 	docker compose down
+
+compose/logs:
+	docker compose logs -f
 
 dev:
 	./dev.sh
