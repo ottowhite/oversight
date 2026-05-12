@@ -123,9 +123,8 @@ type PaperDetail = {
   paper_date?: string | null;
 };
 
-// Default projection: matches the 18k-PL load. Will be flipped to
-// "pacmap_v1" once the sibling agent's full-corpus CSV is loaded.
-const DEFAULT_PROJECTION = "pacmap_pl_v1";
+// Default projection: full 524k-paper corpus.
+const DEFAULT_PROJECTION = "pacmap_v1";
 
 // Cluster-label payload from /api/atlas/labels.
 type ClusterLabel = {
