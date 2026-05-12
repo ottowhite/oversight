@@ -287,6 +287,28 @@ def paper_neighbors(paper_id: str) -> tuple[dict[str, Any], int]:
     }, 200
 
 
+@app.get("/api/papers/<path:paper_id>")
+def paper_detail(paper_id: str) -> tuple[dict[str, Any], int]:
+    """Return a single paper's full metadata (title, authors, abstract, link).
+
+    The ``<path:paper_id>`` converter accepts slashes so DOI-style ids
+    like ``10.1145/3704910`` work without client-side encoding gymnastics.
+    Used by the /atlas page's hover sidebar — extending /api/atlas to
+    include abstracts would balloon the 18k-point payload from 3.5 MB
+    to ~30 MB, so we lazy-fetch on hover instead.
+    """
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        db = PaperDatabase.from_connection(con)
+        rows = db.get_papers_by_ids([paper_id])
+
+    if not rows:
+        return {"error": f"paper {paper_id!r} not found"}, 404
+
+    paper, _ = Paper.from_database_row(rows[0])
+    return _serialize_paper(paper), 200
+
+
 def _percentile(sorted_values: list[float], pct: float) -> float:
     """Linear-interpolation percentile on an already-sorted list.
 
