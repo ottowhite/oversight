@@ -23,6 +23,33 @@ cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
 CORS(app, resources={r"/api/*": {"origins": cors_origins}})
 
 
+# Every valid `source` value the search API recognises. The frontend
+# groups these visually (AI / Systems / PL) but the backend doesn't
+# care about the grouping — a flat list is all the filter needs.
+KNOWN_CONFERENCES: list[str] = [
+    "ICML",
+    "NeurIPS",
+    "ICLR",
+    "OSDI",
+    "SOSP",
+    "ASPLOS",
+    "ATC",
+    "NSDI",
+    "MLSys",
+    "EuroSys",
+    "VLDB",
+    "POPL",
+    "PLDI",
+    "ICFP",
+    "OOPSLA",
+    "ESOP",
+    "ECOOP",
+    "CC",
+    "Haskell",
+]
+KNOWN_SOURCES: list[str] = ["arxiv", *KNOWN_CONFERENCES]
+
+
 @app.get("/api/health")
 def health() -> tuple[dict[str, str], int]:
     return {"status": "ok"}, 200
@@ -31,84 +58,12 @@ def health() -> tuple[dict[str, str], int]:
 def _build_filters(
     repo: PaperRepository, sources_flags: dict[str, bool]
 ) -> list[sql.Composable]:
-    filters: list[sql.Composable] = []
-
-    # Collect individual sources
-    selected_sources: list[str] = []
-
-    # Handle arXiv
-    if sources_flags.get("arxiv", False):
-        selected_sources.append("arxiv")
-
-    # Handle individual AI conferences
-    ai_conferences = ["ICML", "NeurIPS", "ICLR"]
-    for conf in ai_conferences:
-        if sources_flags.get(conf, False):
-            selected_sources.append(conf)
-
-    # Handle individual Systems conferences
-    systems_conferences = [
-        "OSDI",
-        "SOSP",
-        "ASPLOS",
-        "ATC",
-        "NSDI",
-        "MLSys",
-        "EuroSys",
-        "VLDB",
-    ]
-    for conf in systems_conferences:
-        if sources_flags.get(conf, False):
-            selected_sources.append(conf)
-
-    # Handle individual PL conferences
-    pl_conferences = [
-        "POPL",
-        "PLDI",
-        "ICFP",
-        "OOPSLA",
-        "ESOP",
-        "ECOOP",
-        "CC",
-        "Haskell",
-    ]
-    for conf in pl_conferences:
-        if sources_flags.get(conf, False):
-            selected_sources.append(conf)
-
-    # Build filter from selected sources
-    if selected_sources:
-        filters.append(repo.build_filter_sql(selected_sources))
-    else:
-        # If nothing selected, default to everything
-        filters.append(
-            repo.build_filter_sql(
-                [
-                    "arxiv",
-                    "ICML",
-                    "NeurIPS",
-                    "ICLR",
-                    "OSDI",
-                    "SOSP",
-                    "ASPLOS",
-                    "ATC",
-                    "NSDI",
-                    "MLSys",
-                    "EuroSys",
-                    "VLDB",
-                    "POPL",
-                    "PLDI",
-                    "ICFP",
-                    "OOPSLA",
-                    "ESOP",
-                    "ECOOP",
-                    "CC",
-                    "Haskell",
-                ]
-            )
-        )
-
-    return filters
+    selected = [src for src in KNOWN_SOURCES if sources_flags.get(src, False)]
+    # If the caller didn't pick any sources, treat that as "I want everything"
+    # rather than "I want zero rows back".
+    if not selected:
+        selected = KNOWN_SOURCES
+    return [repo.build_filter_sql(selected)]
 
 
 @app.post("/api/search")
@@ -117,44 +72,10 @@ def search() -> tuple[dict[str, Any], int]:
     body: dict[str, Any] = request.get_json(silent=True) or {}
     # Support query params for GET as well
     if request.method == "GET" and not body:
-        # Create sources dict from individual conference params
         sources: dict[str, bool] = {
-            "arxiv": request.args.get("arxiv", "false").lower() == "true",
+            src: request.args.get(src, "false").lower() == "true"
+            for src in KNOWN_SOURCES
         }
-
-        # Add individual AI conferences
-        ai_conferences = ["ICML", "NeurIPS", "ICLR"]
-        for conf in ai_conferences:
-            sources[conf] = request.args.get(conf, "false").lower() == "true"
-
-        # Add individual Systems conferences
-        systems_conferences = [
-            "OSDI",
-            "SOSP",
-            "ASPLOS",
-            "ATC",
-            "NSDI",
-            "MLSys",
-            "EuroSys",
-            "VLDB",
-        ]
-        for conf in systems_conferences:
-            sources[conf] = request.args.get(conf, "false").lower() == "true"
-
-        # Add individual PL conferences
-        pl_conferences = [
-            "POPL",
-            "PLDI",
-            "ICFP",
-            "OOPSLA",
-            "ESOP",
-            "ECOOP",
-            "CC",
-            "Haskell",
-        ]
-        for conf in pl_conferences:
-            sources[conf] = request.args.get(conf, "false").lower() == "true"
-
         body = {
             "text": request.args.get("text", ""),
             "time_window_days": request.args.get("time_window_days"),
