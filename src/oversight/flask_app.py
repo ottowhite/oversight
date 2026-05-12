@@ -198,7 +198,7 @@ def _serialize_paper(paper: Any, similarity: float | None = None) -> dict[str, A
     return out
 
 
-@app.get("/api/papers/<paper_id>/neighbors")
+@app.get("/api/papers/<path:paper_id>/neighbors")
 def paper_neighbors(paper_id: str) -> tuple[dict[str, Any], int]:
     """Return the seed paper and its similarity-graph neighbors.
 
