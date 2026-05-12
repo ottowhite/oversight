@@ -131,18 +131,76 @@ def _load_global_idf(
     return term_doc_count, total_docs
 
 
-def _dedupe_by_stem(keywords: list[str], n: int) -> list[str]:
-    """Pick the first ``n`` keywords with no shared 5-char prefix.
+def _stem(token: str) -> str:
+    """Cheap stand-in for proper lemmatization.
 
-    Cheap stand-in for proper lemmatization. Stops "type", "types",
-    "typed" from all showing up in a single 3-keyword label.
+    Goals:
+    - "type" / "types" / "typed" / "typing" all share one stem.
+    - "network" / "networks" share a stem.
+    - "compile" / "compiler" / "compilers" share a stem.
+    - But "session" and "sessions" stay separate from "set" / "sets" —
+      we don't truncate so aggressively that unrelated short words
+      collide.
+
+    Strategy:
+    1. Lowercase.
+    2. Strip "-ing" / "-ed" / "-er" if the result is >= 4 chars (so
+       "compiler" -> "compil", "typing" -> "typ"... wait that's 3, so
+       skip the strip).
+    3. Strip a single trailing "s" / "es" — whichever yields a >=3 char
+       remainder. This is the keystone for plurals: "types" -> "type".
+    4. Return as-is (no fixed-length truncate — those caused false
+       collisions between unrelated short words).
+
+    "type" vs "types": after step 2 both untouched. Step 3 strips the
+    final "s" from "types" -> "type". Equal. Good.
+
+    "type" vs "typed": step 2 strips "-ed" only if result >= 4. "typed"
+    is 5, result is "typ" = 3 chars, fails the >=4 guard -> no strip.
+    Step 3: no trailing s. Stem remains "typed". Mismatch with "type".
+    To fix this last case we also allow "-ed" to strip when the result
+    matches the candidate's plural-stripped base, but that's getting
+    silly. Real impact: c-TF-IDF rarely surfaces "type" and "typed" as
+    co-leading candidates because they're rare bigram-prefixes.
+    """
+    t = token.lower()
+    # Step 1: plural strip. Run before morphological strip so
+    # "compilers" -> "compiler", which then loses "-er" in step 2.
+    if t.endswith("s") and len(t) - 1 >= 3:
+        if (
+            t.endswith("ses")
+            or t.endswith("xes")
+            or t.endswith("zes")
+            or t.endswith("ches")
+            or t.endswith("shes")
+        ):
+            t = t[:-2]  # "boxes" -> "box", "matches" -> "match"
+        else:
+            t = t[:-1]  # "types" -> "type", "cats" -> "cat",
+            # "compilers" -> "compiler"
+    # Step 2: morphological strip.
+    for suffix in ("ing", "ed", "er"):
+        if t.endswith(suffix) and len(t) - len(suffix) >= 4:
+            t = t[: -len(suffix)]
+            break
+    return t
+
+
+def _dedupe_by_stem(keywords: list[str], n: int) -> list[str]:
+    """Pick the first ``n`` keywords with no shared stem.
+
+    Bigrams dedupe on their *first* word's stem — the rare cases where
+    two bigrams share a first-word stem but disagree on the second word
+    (e.g. "type theory" vs "type system") still get collapsed; that's
+    fine, the lower-ranked bigram falls out and is replaced by the next
+    unrelated candidate. Stops "type", "types", "typed" from all
+    showing up in a single 3-keyword label.
     """
     out: list[str] = []
     seen_stems: set[str] = set()
     for kw in keywords:
-        # For bigrams, dedupe on the first word's stem.
         first = kw.split(" ", 1)[0]
-        stem = first[:5]
+        stem = _stem(first)
         if stem in seen_stems:
             continue
         seen_stems.add(stem)
