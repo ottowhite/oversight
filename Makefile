@@ -59,3 +59,9 @@ typecheck:
 
 oversight/sync:
 	uv run python -m oversight.ArXivRepository --sync
+
+oversight/digest:
+	uv run python -m oversight.ArXivRepository --digest
+
+oversight/install-cron:
+	sudo ./scripts/install_sync_cron.sh
