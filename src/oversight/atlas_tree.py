@@ -81,55 +81,128 @@ class ClusterTree:
         self,
         viewport: tuple[float, float, float, float],
         target_count: int,
+        max_size_ratio: float = 8.0,
     ) -> list[ClusterNode]:
-        """Find a slice with approximately ``target_count`` clusters
-        whose bbox intersects ``viewport``.
+        """Find ~target_count viewport-intersecting clusters of roughly
+        similar size.
 
-        Algorithm: binary search over the sorted distinct lambda values.
-        At each candidate lambda L:
-          n = #(clusters alive at L) whose bbox intersects viewport
-        We seek the largest L such that n >= target_count (deeper zoom →
-        more, smaller clusters). Caveat: at the very deepest lambda the
-        slice is empty, so we also clamp.
+        Why not just bisect on lambda? HDBSCAN's condensed tree on this
+        corpus is *unbalanced* at low lambda: one root cluster holds
+        ~99% of points and the rest are tiny noise-eaten fringes. A
+        single-lambda slice at small target_count gives you "1 huge
+        cluster + (target_count - 1) tiny leaves" which is useless as
+        labels. So instead, we do a top-down recursive split:
 
-        Returns the slice itself (sorted by paper_count desc so the FE
-        gets the largest/most-visible labels first).
+        1. Start with the slice at lambda=0 (the root), filtered to
+           viewport-intersecting nodes. Same effect: typically just
+           the root.
+        2. Repeatedly take the *largest* cluster in the current slice
+           and replace it with its viewport-intersecting children.
+           Stop when either:
+             a. We have >= target_count clusters AND the size-ratio
+                between largest and smallest in the slice is <=
+                max_size_ratio.
+             b. The largest cluster has no further children (we hit
+                a leaf — no more splitting possible).
+             c. We've hit a hard cap of 4 * target_count to prevent
+                runaway expansion in pathological trees.
+
+        This guarantees that no single cluster dominates the label
+        layer by ~100x.
+
+        Returns the slice sorted by paper_count desc so the FE renders
+        the most visually-dominant labels first.
         """
-        axis = self._lambda_axis
-        if not axis:
+        if not self.nodes:
             return []
 
-        def count_at(L: float) -> tuple[int, list[ClusterNode]]:
-            slice_ = self.slice_at_lambda(L)
-            visible = [n for n in slice_ if n.bbox_intersects(viewport)]
-            return len(visible), visible
+        # Children-of map (computed once and stashed; the slice loop
+        # below does O(target_count) lookups, so amortised it's fine).
+        children = self._children_map()
 
-        # Binary search over the lambda axis.
-        lo, hi = 0, len(axis) - 1
-        best: list[ClusterNode] = []
-        best_diff = float("inf")
-        while lo <= hi:
-            mid = (lo + hi) // 2
-            L = axis[mid]
-            cnt, visible = count_at(L)
-            # Track the slice whose count is closest to target_count.
-            diff = abs(cnt - target_count)
-            if diff < best_diff or (diff == best_diff and cnt >= target_count):
-                best_diff = diff
-                best = visible
-            if cnt < target_count:
-                # Need finer clusters → higher lambda → larger axis index.
-                lo = mid + 1
-            elif cnt > target_count:
-                # Too many → coarser → lower lambda.
-                hi = mid - 1
-            else:
+        # Start at the root(s). The root has parent_id=None. There may
+        # be more than one root if HDBSCAN found disjoint top-level
+        # density blobs (rare but possible), so we union them.
+        roots = [n for n in self.nodes if n.parent_id is None]
+        if not roots:
+            # No root — pick the smallest cluster_id as a fallback.
+            roots = [min(self.nodes, key=lambda n: n.cluster_id)]
+
+        current: list[ClusterNode] = [n for n in roots if n.bbox_intersects(viewport)]
+        if not current:
+            # Root doesn't intersect viewport — fall back to all
+            # viewport-intersecting nodes at lambda=0.
+            current = [n for n in self.nodes if n.bbox_intersects(viewport)]
+        if not current:
+            return []
+
+        # Two stop conditions. The harder cap exists so a pathological
+        # tree (very long unsplittable chain) can't run away. Pick the
+        # smaller of "target_count + a generous margin" and "10x
+        # target_count"; both grow with target_count so users can dial
+        # the slider up sensibly.
+        hard_cap = min(max(target_count * 5, target_count + 16), 200)
+
+        def imbalance_ratio(slice_: list[ClusterNode]) -> float:
+            sizes = [c.paper_count for c in slice_ if c.paper_count > 0]
+            if not sizes:
+                return float("inf")
+            return max(sizes) / min(sizes)
+
+        # Walk: always split the largest cluster, until either (a) we
+        # have >= target_count AND ratio fits, or (b) hard_cap, or (c)
+        # the largest cluster is unsplittable in this viewport AND can't
+        # find any other splittable cluster.
+        while True:
+            current.sort(key=lambda n: n.paper_count, reverse=True)
+            ratio = imbalance_ratio(current)
+            if len(current) >= target_count and ratio <= max_size_ratio:
+                break
+            if len(current) >= hard_cap:
                 break
 
-        # Sort by descending paper_count: the FE renders top-down, and
-        # larger clusters dominate the visual footprint.
-        best.sort(key=lambda n: n.paper_count, reverse=True)
-        return best
+            # Try to split the largest cluster first. If it's a leaf in
+            # the viewport (no intersecting children), walk down the
+            # list to find one we *can* split.
+            split_idx = None
+            split_kids: list[ClusterNode] = []
+            for i, c in enumerate(current):
+                kids = [
+                    k
+                    for k in children.get(c.cluster_id, [])
+                    if k.bbox_intersects(viewport)
+                ]
+                if kids:
+                    split_idx = i
+                    split_kids = kids
+                    break
+            if split_idx is None:
+                # Nothing left to split.
+                break
+            current = current[:split_idx] + current[split_idx + 1 :] + split_kids
+
+        current.sort(key=lambda n: n.paper_count, reverse=True)
+        # Soft trim if we materially overshot the target. We keep the
+        # *largest* clusters because they're the visually-dominant ones
+        # — better to show the user 6 prominent labels than 18 small
+        # ones at default slider value. The user can dial up the
+        # density slider to surface more.
+        if len(current) > target_count + max(2, target_count // 2):
+            current = current[:target_count]
+        return current
+
+    def _children_map(self) -> dict[int, list[ClusterNode]]:
+        """Build cluster_id -> direct children list. Cached on the tree."""
+        cached = getattr(self, "_children_cache", None)
+        if cached is not None:
+            return cached
+        out: dict[int, list[ClusterNode]] = {}
+        for n in self.nodes:
+            if n.parent_id is None:
+                continue
+            out.setdefault(n.parent_id, []).append(n)
+        self._children_cache = out
+        return out
 
 
 # Process-local cache. The tree is read-only and rebuilt only when the

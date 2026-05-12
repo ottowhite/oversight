@@ -1498,7 +1498,10 @@ export default function AtlasPage() {
             // wall of text.
             const pc = Math.max(1, l.paper_count);
             const fontSize = Math.min(28, Math.max(10, 12 + 2 * Math.log10(pc)));
-            const opacity = Math.min(1, Math.max(0.55, Math.log10(pc) / 4));
+            // 100% opacity per user request — easier to read on the
+            // dark canvas. We still scale font-size with paper_count so
+            // visually-dominant clusters get bigger labels.
+            const opacity = 1;
             return (
               <button
                 key={l.cluster_id}
