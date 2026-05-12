@@ -1,0 +1,374 @@
+[
+  {
+    "paper_id": "10.1145/2364506.2364523",
+    "title": "xmonad in Coq <i>(experience report)</i>: programming a window manager in a proof assistant",
+    "abstract": "This report documents the insights gained from implementing the core functionality of xmonad, a popular window manager written in Haskell, in the Coq proof assistant. Rather than focus on verification, this report outlines the technical challenges involved with incorporating Coq code in a Haskell project.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364523",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Wouter",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/haskell/Swierstra12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364524",
+    "title": "Safe haskell",
+    "abstract": "Though Haskell is predominantly type-safe, implementations contain a few loopholes through which code can bypass typing and module encapsulation. This paper presents Safe Haskell, a language extension that closes these loopholes. Safe Haskell makes it possible to confine and safely execute untrusted, possibly malicious code. By strictly enforcing types, Safe Haskell allows a variety of different policies from API sandboxing to information-flow control to be implemented easily as monads. Safe Haskell is aimed to be as unobtrusive as possible. It enforces properties that programmers tend to meet already by convention. We describe the design of Safe Haskell and an implementation (currently shipping with GHC) that infers safety for code that lies in a safe subset of the language. We use Safe Haskell to implement an online Haskell interpreter that can securely execute arbitrary untrusted code with no overhead. The use of Safe Haskell greatly simplifies this task and allows the use of a large body of existing code and tools.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364524",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Terei",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Mazières",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/haskell/TereiMJM12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364509",
+    "title": "Template your boilerplate: using template haskell for efficient generic programming",
+    "abstract": "Generic programming allows the concise expression of algorithms that would otherwise require large amounts of handwritten code. A number of such systems have been developed over the years, but a common drawback of these systems is poor runtime performance relative to handwritten, non-generic code. Generic-programming systems vary significantly in this regard, but few consistently match the performance of handwritten code. This poses a dilemma for developers. Generic-programming systems offer concision but cost performance. Handwritten code offers performance but costs concision.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364509",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Michael D.",
+        "last_name": "Adams",
+        "institution": "Portland State University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Dubuisson",
+        "institution": "Portland State University"
+      }
+    ],
+    "dblp_key": "conf/haskell/AdamsD12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364519",
+    "title": "Wormholes: introducing effects to FRP",
+    "abstract": "Functional reactive programming (FRP) is a useful model for programming real-time and reactive systems in which one defines a signal function to process a stream of input values into a stream of output values. However, performing side effects (e.g. memory mutation or input/output) in this model is tricky and typically unsafe. In previous work, Winograd-Cort et al. [2012] introduced resource types and wormholes to address this problem.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364519",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Winograd-Cort",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Hudak",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/haskell/Winograd-CortH12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364518",
+    "title": "Surveyor: a DSEL for representing and analyzing strongly typed surveys",
+    "abstract": "Polls and surveys are increasingly employed to gather information about attitudes and experiences of all kinds of populations and user groups. The ultimate purpose of a survey is to identify trends and relationships that can inform decision makers. To this end, the data gathered by a survey must be appropriately analyzed.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364518",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Wyatt",
+        "last_name": "Allen",
+        "institution": "Oregon State University"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Erwig",
+        "institution": "Oregon State University"
+      }
+    ],
+    "dblp_key": "conf/haskell/AllenE12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364516",
+    "title": "Shrinking and showing functions: <i>(functional pearl)</i>",
+    "abstract": "Although quantification over functions in QuickCheck properties has been supported from the beginning, displaying and shrinking them as counter examples has not. The reason is that in general, functions are infinite objects, which means that there is no sensible show function for them, and shrinking an infinite object within a finite number of steps seems impossible. This paper presents a general technique with which functions as counter examples can be shrunk to finite objects, which can then be displayed to the user. The approach turns out to be practically usable, which is shown by a number of examples. The two main limitations are that higher-order functions cannot be dealt with, and it is hard to deal with terms that contain functions as subterms.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364516",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Koen",
+        "last_name": "Claessen",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/Claessen12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364522",
+    "title": "Dependently typed programming with singletons",
+    "abstract": "Haskell programmers have been experimenting with dependent types for at least a decade, using clever encodings that push the limits of the Haskell type system. However, the cleverness of these encodings is also their main drawback. Although the ideas are inspired by dependently typed programs, the code looks significantly different. As a result, GHC implementors have responded with extensions to Haskell's type system, such as GADTs, type families, and datatype promotion. However, there remains a significant difference between programming in Haskell and in full-spectrum dependently typed languages. Haskell enforces a phase separation between runtime values and compile-time types. Therefore, singleton types are necessary to express the dependency between values and types. These singleton types introduce overhead and redundancy for the programmer.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364522",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/haskell/EisenbergW12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364520",
+    "title": "Monoids: theme and variations <i>(functional pearl)</i>",
+    "abstract": "The monoid is a humble algebraic structure, at first glance even downright boring. However, there's much more to monoids than meets the eye. Using examples taken from the diagrams vector graphics framework as a case study, I demonstrate the power and beauty of monoids for library design. The paper begins with an extremely simple model of diagrams and proceeds through a series of incremental variations, all related somehow to the central theme of monoids. Along the way, I illustrate the power of compositional semantics; why you should also pay attention to the monoid's even humbler cousin, the semigroup; monoid homomorphisms; and monoid actions.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364520",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Brent A.",
+        "last_name": "Yorgey",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/haskell/Yorgey12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364514",
+    "title": "Testing type class laws",
+    "abstract": "The specification of a class in Haskell often starts with stating, in comments, the laws that should be satisfied by methods defined in instances of the class, followed by the type of the methods of the class. This paper develops a framework that supports testing such class laws using QuickCheck. Our framework is a light-weight class law testing framework, which requires a limited amount of work per class law, and per datatype for which the class law is tested. We also show how to test class laws with partially-defined values. Using partially-defined values, we show that the standard lazy and strict implementations of the state monad do not satisfy the expected laws.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364514",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Johan",
+        "last_name": "Jeuring",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Patrik",
+        "last_name": "Jansson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Cláudio do Prado",
+        "last_name": "Amaral",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/JeuringJA12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364526",
+    "title": "Layout-sensitive language extensibility with SugarHaskell",
+    "abstract": "Programmers need convenient syntax to write elegant and concise programs. Consequently, the Haskell standard provides syntactic sugar for some scenarios (e.g., do notation for monadic code), authors of Haskell compilers provide syntactic sugar for more scenarios (e.g., arrow notation in GHC), and some Haskell programmers implement preprocessors for their individual needs (e.g., idiom brackets in SHE). But manually written preprocessors cannot scale: They are expensive, error-prone, and not composable. Most researchers and programmers therefore refrain from using the syntactic notations they need in actual Haskell programs, but only use them in documentation or papers. We present a syntactically extensible version of Haskell, SugarHaskell, that empowers ordinary programmers to implement and use custom syntactic sugar.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364526",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Erdweg",
+        "institution": "Philipps University of Marburg"
+      },
+      {
+        "first_name": "Felix",
+        "last_name": "Rieger",
+        "institution": "Philipps University of Marburg"
+      },
+      {
+        "first_name": "Tillmann",
+        "last_name": "Rendel",
+        "institution": "Philipps University of Marburg"
+      },
+      {
+        "first_name": "Klaus",
+        "last_name": "Ostermann",
+        "institution": "Philipps University of Marburg"
+      }
+    ],
+    "dblp_key": "conf/haskell/ErdwegRRO12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364511",
+    "title": "Guiding parallel array fusion with indexed types",
+    "abstract": "We present a refined approach to parallel array fusion that uses indexed types to specify the internal representation of each array. Our approach aids the client programmer in reasoning about the performance of their program in terms of the source code. It also makes the intermediate code easier to transform at compile-time, resulting in faster compilation and more reliable runtimes. We demonstrate how our new approach improves both the clarity and performance of several end-user written programs, including a fluid flow solver and an interpolator for volumetric data.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364511",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Ben",
+        "last_name": "Lippmeier",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Gabriele",
+        "last_name": "Keller",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/LippmeierCKJ12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364508",
+    "title": "The HERMIT in the machine: a plugin for the interactive transformation of GHC core language programs",
+    "abstract": "The importance of reasoning about and refactoring programs is a central tenet of functional programming. Yet our compilers and development toolchains only provide rudimentary support for these tasks. This paper introduces a programmatic and compiler-centric interface that facilitates refactoring and equational reasoning. To develop our ideas, we have implemented HERMIT, a toolkit enabling informal but systematic transformation of Haskell programs from inside the Glasgow Haskell Compiler's optimization pipeline. With HERMIT, users can experiment with optimizations and equational reasoning, while the tedious heavy lifting of performing the actual transformations is done for them.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364508",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Andrew",
+        "last_name": "Farmer",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Andy",
+        "last_name": "Gill",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Ed",
+        "last_name": "Komp",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Neil",
+        "last_name": "Sculthorpe",
+        "institution": "University of Kansas"
+      }
+    ],
+    "dblp_key": "conf/haskell/FarmerGKS12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364515",
+    "title": "Feat: functional enumeration of algebraic types",
+    "abstract": "In mathematics, an enumeration of a set S is a bijective function from (an initial segment of) the natural numbers to S. We define \"functional enumerations\" as efficiently computable such bijections. This paper describes a theory of functional enumeration and provides an algebra of enumerations closed under sums, products, guarded recursion and bijections. We partition each enumerated set into numbered, finite subsets.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364515",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Duregård",
+        "institution": "University of Gothenburg"
+      },
+      {
+        "first_name": "Patrik",
+        "last_name": "Jansson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Meng",
+        "last_name": "Wang",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/DuregardJW12",
+    "venue": "haskell",
+    "year": 2012
+  },
+  {
+    "paper_id": "10.1145/2364506.2364512",
+    "title": "Vectorisation avoidance",
+    "abstract": "Flattening nested parallelism is a vectorising code transform that converts irregular nested parallelism into flat data parallelism. Although the result has good asymptotic performance, flattening thoroughly restructures the code. Many intermediate data structures and traversals are introduced, which may or may not be eliminated by subsequent optimisation. We present a novel program analysis to identify parts of the program where flattening would only introduce overhead, without appropriate gain. We present empirical evidence that avoiding vectorisation in these cases leads to more efficient programs than if we had applied vectorisation and then relied on array fusion to eliminate intermediates from the resulting code.",
+    "date": "2012-09-12",
+    "link": "https://doi.org/10.1145/2364506.2364512",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Gabriele",
+        "last_name": "Keller",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Roman",
+        "last_name": "Leshchinskiy",
+        "institution": ""
+      },
+      {
+        "first_name": "Ben",
+        "last_name": "Lippmeier",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/KellerCLLJ12",
+    "venue": "haskell",
+    "year": 2012
+  }
+]

@@ -1,0 +1,336 @@
+[
+  {
+    "paper_id": "10.1145/2503778.2503787",
+    "title": "Maintaining verified software",
+    "abstract": "Maintaining software in the face of evolving dependencies is a challenging problem, and in addition to good release practices there is a need for automatic dependency analysis tools to avoid errors creeping in. Verified software reveals more semantic information in the form of mechanized proofs of functional specifications, and this can be used for dependency analysis. In this paper we present a scheme for automatic dependency analysis of verified software, which for each program checks that the collection of installed libraries is sufficient to guarantee its functional correctness. We illustrate the scheme with a case study of Haskell packages verified in higher order logic. The dependency analysis reduces the burden of maintaining verified Haskell packages by automatically computing version ranges for the packages they depend on, such that any combination provides the functionality required for correct operation.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503787",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Joe",
+        "last_name": "Leslie-Hurd",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/Leslie-Hurd13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503791",
+    "title": "Extensible effects: an alternative to monad transformers",
+    "abstract": "We design and implement a library that solves the long-standing problem of combining effects without imposing restrictions on their interactions (such as static ordering). Effects arise from interactions between a client and an effect handler (interpreter); interactions may vary throughout the program and dynamically adapt to execution conditions. Existing code that relies on monad transformers may be used with our library with minor changes, gaining efficiency over long monad stacks. In addition, our library has greater expressiveness, allowing for practical idioms that are inefficient, cumbersome, or outright impossible with monad transformers.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503791",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Oleg",
+        "last_name": "Kiselyov",
+        "institution": "Monterey Technologies (United States)"
+      },
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Cameron",
+        "last_name": "Swords",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/haskell/KiselyovSS13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503789",
+    "title": "An EDSL approach to high performance Haskell programming",
+    "abstract": "This paper argues for a new methodology for writing high performance Haskell programs by using Embedded Domain Specific Languages.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503789",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Johan",
+        "last_name": "Ankner",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Josef",
+        "last_name": "Svenningsson",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/AnknerS13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503780",
+    "title": "Names for free: polymorphic views of names and binders",
+    "abstract": "We propose a novel technique to represent names and binders in Haskell. The dynamic (run-time) representation is based on de Bruijn indices, but it features an interface to write and manipulate variables conviently, using Haskell-level lambdas and variables. The key idea is to use rich types: a subterm with an additional free variable is viewed either as forallν.ν → Term(ɑ + ν) or ϶ν.ν x Term(ν.ν) depending on whether it is constructed or analysed. We demonstrate on a number of examples how this approach permits to express term construction and manipulation in a natural way, while retaining the good properties of representations based on de Bruijn indices.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503780",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jean-Philippe",
+        "last_name": "Bernardy",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Pouillard",
+        "institution": "IT University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/haskell/BernardyP13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503788",
+    "title": "Causality of optimized Haskell: what is burning our cycles?",
+    "abstract": "Profiling real-world Haskell programs is hard, as compiler optimizations make it tricky to establish causality between the source code and program behavior. In this paper we attack the root issue by performing a causality analysis of functional programs under optimization. We apply our findings to build a novel profiling infrastructure on top of the Glasgow Haskell Compiler, allowing for performance analysis even of aggressively optimized programs.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503788",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Peter M.",
+        "last_name": "Wortmann",
+        "institution": "University of Leeds"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Duke",
+        "institution": "University of Leeds"
+      }
+    ],
+    "dblp_key": "conf/haskell/WortmannD13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503786",
+    "title": "Hasochism: the pleasure and pain of dependently typed haskell programming",
+    "abstract": "Haskell's type system has outgrown its Hindley-Milner roots to the extent that it now stretches to the basics of dependently typed programming. In this paper, we collate and classify techniques for programming with dependent types in Haskell, and contribute some new ones. In particular, through extended examples---merge-sort and rectangular tilings---we show how to exploit Haskell's constraint solver as a theorem prover, delivering code which, as Agda programmers, we envy. We explore the compromises involved in simulating variations on the theme of the dependent function space in an attempt to help programmers put dependent types to work, and to inform the evolving language design both of Haskell and of dependently typed languages more broadly.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503786",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Sam",
+        "last_name": "Lindley",
+        "institution": "University of Strathclyde"
+      },
+      {
+        "first_name": "Conor",
+        "last_name": "McBride",
+        "institution": "University of Strathclyde"
+      }
+    ],
+    "dblp_key": "conf/haskell/LindleyM13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503783",
+    "title": "Monadic functional reactive programming",
+    "abstract": "Functional Reactive Programming (FRP) is a way to program reactive systems in functional style, eliminating many of the problems that arise from imperative techniques. In this paper, we present an alternative FRP formulation that is based on the notion of a reactive computation: a monadic computation which may require the occurrence of external events to continue. A signal computation is a reactive computation that may also emit values. In contrast to signals in other FRP formulations, signal computations can end, leading to a monadic interface for sequencing signal phases. This interface has several advantages: routing is implicit, sequencing signal phases is easier and more intuitive than when using the switching combinators found in other FRP approaches, and dynamic lists require much less boilerplate code. In other FRP approaches, either the entire FRP expression is re-evaluated on each external stimulus, or impure techniques are used to prevent redundant re-computations. We show how Monadic FRP can be implemented straightforwardly in a purely functional way while preventing redundant re-computations.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503783",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Atze van der",
+        "last_name": "Ploeg",
+        "institution": "Centrum Wiskunde & Informatica"
+      }
+    ],
+    "dblp_key": "conf/haskell/Ploeg13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503790",
+    "title": "Mio: a high-performance multicore io manager for GHC",
+    "abstract": "Haskell threads provide a key, lightweight concurrency abstraction to simplify the programming of important network applications such as web servers and software-defined network (SDN) controllers. The flagship Glasgow Haskell Compiler (GHC) introduces a run-time system (RTS) to achieve a high-performance multicore implementation of Haskell threads, by introducing effective components such as a multicore scheduler, a parallel garbage collector, an IO manager, and efficient multicore memory allocation. Evaluations of the GHC RTS, however, show that it does not scale well on multicore processors, leading to poor performance of many network applications that try to use lightweight Haskell threads. In this paper, we show that the GHC IO manager, which is a crucial component of the GHC RTS, is the scaling bottleneck. Through a series of experiments, we identify key data structure, scheduling, and dispatching bottlenecks of the GHC IO manager. We then design a new multicore IO manager named Mio that eliminates all these bottlenecks. Our evaluations show that the new Mio manager improves realistic web server throughput by 6.5x and reduces expected web server response time by 5.7x. We also show that with Mio, McNettle (an SDN controller written in Haskell) can scale effectively to 40+ cores, reach a throughput of over 20 million new requests per second on a single machine, and hence become the fastest of all existing SDN controllers.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503790",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Voellmy",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Junchang",
+        "last_name": "Wang",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Hudak",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Kazuhiko",
+        "last_name": "Yamamoto",
+        "institution": "IIJ Research Laboratory"
+      }
+    ],
+    "dblp_key": "conf/haskell/VoellmyWHY13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503779",
+    "title": "The Intel labs Haskell research compiler",
+    "abstract": "The Glasgow Haskell Compiler (GHC) is a well supported optimizing compiler for the Haskell programming language, along with its own extensions to the language and libraries. Haskell's lazy semantics imposes a runtime model which is in general difficult to implement efficiently. GHC achieves good performance across a wide variety of programs via aggressive optimization taking advantage of the lack of side effects, and by targeting a carefully tuned virtual machine. The Intel Labs Haskell Research Compiler uses GHC as a frontend, but provides a new whole-program optimizing backend by compiling the GHC intermediate representation to a relatively generic functional language compilation platform. We found that GHC's external Core language was relatively easy to use, but reusing GHC's libraries and achieving full compatibility were harder. For certain classes of programs, our platform provides substantial performance benefits over GHC alone, performing 2x faster than GHC with the LLVM backend on selected modern performance-oriented benchmarks; for other classes of programs, the benefits of GHC's tuned virtual machine continue to outweigh the benefits of more aggressive whole program optimization. Overall we achieve parity with GHC with the LLVM backend. In this paper, we describe our Haskell compiler stack, its implementation and optimization approach, and present benchmark results comparing it to GHC.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503779",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Hai",
+        "last_name": "Liu",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Neal",
+        "last_name": "Glew",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Leaf",
+        "last_name": "Petersen",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Todd A.",
+        "last_name": "Anderson",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/LiuGPA13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503785",
+    "title": "Adding structure to monoids: thus hopefully ending Haskell's string type confusion",
+    "abstract": "This paper presents the rationale and design of monoid-subclasses. This Haskell library consists of a collection of type classes that generalize the interface of several common data types, most importantly those used to represent strings. We demonstrate that the mathematical theory behind monoid-subclasses can bring substantial practical benefits to the Haskell library ecosystem by generalizing attoparsec, one of the most popular Haskell parsing libraries.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503785",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Mario",
+        "last_name": "BlaĚević",
+        "institution": "Magna International (Canada)"
+      }
+    ],
+    "dblp_key": "conf/haskell/BlaEevic13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503781",
+    "title": "Understanding idiomatic traversals backwards and forwards",
+    "abstract": "We present new ways of reasoning about a particular class of effectful Haskell programs, namely those expressed as idiomatic traversals. Starting out with a specific problem about labelling and unlabelling binary trees, we extract a general inversion law, applicable to any monad, relating a traversal over the elements of an arbitrary traversable type to a traversal that goes in the opposite direction. This law can be invoked to show that, in a suitable sense, unlabelling is the inverse of labelling. The inversion law, as well as a number of other properties of idiomatic traversals, is a corollary of a more general theorem characterising traversable functors as finitary containers: an arbitrary traversable object can be decomposed uniquely into shape and contents, and traversal be understood in terms of those. Proof of the theorem involves the properties of traversal in a special idiom related to the free applicative functor.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503781",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Richard",
+        "last_name": "Bird",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Jeremy",
+        "last_name": "Gibbons",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Stefan",
+        "last_name": "Mehner",
+        "institution": "University of Bonn"
+      },
+      {
+        "first_name": "Janis",
+        "last_name": "Voigtländer",
+        "institution": "University of Bonn"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "Ghent University"
+      }
+    ],
+    "dblp_key": "conf/haskell/BirdGMVS13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503784",
+    "title": "Splittable pseudorandom number generators using cryptographic hashing",
+    "abstract": "We propose a new splittable pseudorandom number generator (PRNG) based on a cryptographic hash function. Splittable PRNGs, in contrast to linear PRNGs, allow the creation of two (seemingly) independent generators from a given random number generator. Splittable PRNGs are very useful for structuring purely functional programs, as they avoid the need for threading around state. We show that the currently known and used splittable PRNGs are either not efficient enough, have inherent flaws, or lack formal arguments about their randomness. In contrast, our proposed generator can be implemented efficiently, and comes with a formal statements and proofs that quantify how 'random' the results are that are generated. The provided proofs give strong randomness guarantees under assumptions commonly made in cryptography.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503784",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Koen",
+        "last_name": "Claessen",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Michał H.",
+        "last_name": "Pałka",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/ClaessenP13",
+    "venue": "haskell",
+    "year": 2013
+  },
+  {
+    "paper_id": "10.1145/2503778.2503782",
+    "title": "Data flow fusion with series expressions in Haskell",
+    "abstract": "Existing approaches to array fusion can deal with straight-line producer consumer pipelines, but cannot fuse branching data flows where a generated array is consumed by several different consumers. Branching data flows are common and natural to write, but a lack of fusion leads to the creation of an intermediate array at every branch point. We present a new array fusion system that handles branches, based on Waters's series expression framework, but extended to work in a functional setting. Our system also solves a related problem in stream fusion, namely the introduction of duplicate loop counters. We demonstrate speedup over existing fusion systems for several key examples.",
+    "date": "2013-09-17",
+    "link": "https://doi.org/10.1145/2503778.2503782",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Ben",
+        "last_name": "Lippmeier",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Gabriele",
+        "last_name": "Keller",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Amos",
+        "last_name": "Robinson",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/haskell/LippmeierCKR13",
+    "venue": "haskell",
+    "year": 2013
+  }
+]

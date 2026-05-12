@@ -1,39 +1,310 @@
 [
   {
-    "paper_id": "10.1145/1596638.1667736",
-    "title": "Tool DemonstrationCLasHFrom Haskell to Hardware",
-    "abstract": "C\\ensuremath{\\lambda}aSH is a functional hardware description language that borrows both its syntax and semantics from the functional programming language Haskell. Polymorphism and higher-order functions provide a level of abstraction and generality that allow a circuit designer to describe circuits in a more natural way than possible with the language elements found in the traditional hardware description languages.",
-    "date": "2009-01-01",
-    "link": "https://doi.org/10.1145/1596638.1667736",
+    "paper_id": "10.1145/1596638.1596641",
+    "title": "Losing functions without gaining data: another look at defunctionalisation",
+    "abstract": "We describe a transformation which takes a higher-order program, and produces an equivalent first-order program. Unlike Reynolds-style defunctionalisation, it does not introduce any new data types, and the results are more amenable to subsequent analysis operations. We can use our method to improve the results of existing analysis operations, including strictness analysis, pattern-match safety and termination checking. Our transformation is implemented, and works on a Core language to which Haskell programs can be reduced. Our method cannot always succeed in removing all functional values, but in practice is remarkably successful.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596641",
     "conference_name": "Haskell",
     "authors": [
       {
-        "first_name": "Christiaan",
-        "last_name": "Baaij",
-        "institution": ""
+        "first_name": "Neil",
+        "last_name": "Mitchell",
+        "institution": "University of York"
       },
       {
-        "first_name": "Matthijs",
-        "last_name": "Kooijman",
-        "institution": ""
-      },
+        "first_name": "Colin",
+        "last_name": "Runciman",
+        "institution": "University of York"
+      }
+    ],
+    "dblp_key": "conf/haskell/MitchellR09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596643",
+    "title": "Push-pull functional reactive programming",
+    "abstract": "Functional reactive programming (FRP) has simple and powerful semantics, but has resisted efficient implementation. In particular, most past implementations have used demand-driven sampling, which accommodates FRP's continuous time semantics and fits well with the nature of functional programming. Consequently, values are wastefully recomputed even when inputs don't change, and reaction latency can be as high as the sampling period. This paper presents a way to implement FRP that combines data- and demand-driven evaluation, in which values are recomputed only when necessary, and reactions are nearly instantaneous. The implementation is rooted in a new simple formulation of FRP and its semantics and so is easy to understand and reason about. On the road to a new implementation, we'll meet some old friends (monoids, functors, applicative functors, monads, morphisms, and improving values) and make some new friends (functional future values, reactive normal form, and concurrent unambiguous choice).",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596643",
+    "conference_name": "Haskell",
+    "authors": [
       {
-        "first_name": "Jan",
-        "last_name": "Kuper",
-        "institution": ""
-      },
-      {
-        "first_name": "Marco",
-        "last_name": "Gerards",
-        "institution": ""
-      },
-      {
-        "first_name": "Bert",
-        "last_name": "Molenkamp",
+        "first_name": "Conal",
+        "last_name": "Elliott",
         "institution": ""
       }
     ],
-    "dblp_key": "conf/haskell/BaaijKKGM09",
+    "dblp_key": "conf/haskell/Elliott09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1667734",
+    "title": "Haskell Symposium Program Chair's Report",
+    "abstract": "No abstract available.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1667734",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "Philadelphia University"
+      }
+    ],
+    "dblp_key": "conf/haskell/Weirich09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596650",
+    "title": "The architecture of the Utrecht Haskell compiler",
+    "abstract": "In this paper we describe the architecture of the Utrecht Haskell Compiler (UHC).",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596650",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Atze",
+        "last_name": "Dijkstra",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Jeroen D.",
+        "last_name": "Fokker",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "S. Doaitse",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/haskell/DijkstraFS09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596646",
+    "title": "Roll your own test bed for embedded real-time protocols: a haskell experience",
+    "abstract": "We present by example a new application domain for functional languages: emulators for embedded real-time protocols. As a case-study, we implement a simple emulator for the Biphase Mark Protocol, a physical-layer network protocol in Haskell. The surprising result is that a pure functional language with no built-in notion of time is extremely well-suited for constructing such emulators. Furthermore, we use Haskell's property-checker QuickCheck to automatically generate real-time parameters for simulation. We also describe a novel use of QuickCheck as a \"probability calculator\" for reliability analysis.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596646",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Lee",
+        "last_name": "Pike",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Geoffrey",
+        "last_name": "Brown",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Alwyn E.",
+        "last_name": "Goodloe",
+        "institution": "National Institute of Aerospace"
+      }
+    ],
+    "dblp_key": "conf/haskell/PikeBG09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596652",
+    "title": "Alloy: fast generic transformations for Haskell",
+    "abstract": "Data-type generic programming can be used to traverse and manipulate specific parts of large heterogeneously-typed tree structures, without the need for tedious boilerplate. Generic programming is often approached from a theoretical perspective, where the emphasis lies on the power of the representation rather than on efficiency. We describe use cases for a generic system derived from our work on a nanopass compiler, where efficiency is a real concern, and detail a new generics approach (Alloy) that we have developed in Haskell to allow our compiler passes to traverse the abstract syntax tree quickly. We benchmark our approach against several other Haskell generics approaches and statistically analyse the results, finding that Alloy is fastest on heterogeneously-typed trees.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596652",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Neil C. C.",
+        "last_name": "Brown",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Adam T.",
+        "last_name": "Sampson",
+        "institution": "University of Kent"
+      }
+    ],
+    "dblp_key": "conf/haskell/BrownS09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596653",
+    "title": "Type-safe observable sharing in Haskell",
+    "abstract": "Haskell is a great language for writing and supporting embedded Domain Specific Languages (DSLs). Some form of observable sharing is often a critical capability for allowing so-called deep DSLs to be compiled and processed. In this paper, we describe and explore uses of an IO function for reification which allows direct observation of sharing.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596653",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Andy",
+        "last_name": "Gill",
+        "institution": "University of Kansas"
+      }
+    ],
+    "dblp_key": "conf/haskell/Gill09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596649",
+    "title": "Parallel performance tuning for Haskell",
+    "abstract": "Parallel Haskell programming has entered the mainstream with support now included in GHC for multiple parallel programming models, along with multicore execution support in the runtime. However, tuning programs for parallelism is still something of a black art. Without much in the way of feedback provided by the runtime system, it is a matter of trial and error combined with experience to achieve good parallel speedups.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596649",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "D. L.",
+        "last_name": "Jones",
+        "institution": "University of Kentucky"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Satnam",
+        "last_name": "Singh",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/JonesMS09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596644",
+    "title": "Unembedding domain-specific languages",
+    "abstract": "Higher-order abstract syntax provides a convenient way of embedding domain-specific languages, but is awkward to analyse and manipulate directly. We explore the boundaries of higher-order abstract syntax. Our key tool is the unembedding of embedded terms as de Bruijn terms, enabling intensional analysis. As part of our solution we present techniques for separating the definition of an embedded program from its interpretation, giving modular extensions of the embedded language, and different ways to encode the types of the embedded language.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596644",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Atkey",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Lindley",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Jeremy",
+        "last_name": "Yallop",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/haskell/AtkeyLY09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596654",
+    "title": "Finding the needle: stack traces for GHC",
+    "abstract": "Even Haskell programs can occasionally go wrong.Programs calling head on an empty list, and incomplete patterns in function definitions can cause program crashes, reporting little more than the precise location where error was ultimately called.Being told that one application of the head function in your program went wrong, without knowing which use of head went wrong can be infuriating.We present our work on adding the ability to get stack traces out of GHC, for example that our crashing head was used during the evaluation of foo, which was called during the evaluation of bar , during the evaluation of main.We provide a transformation that converts GHC Core programs into ones that pass a stack around, and a stack library that ensures bounded heap usage despite the highly recursive nature of Haskell.We call our extension to GHC StackTrace.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596654",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Tristan O.R.",
+        "last_name": "Allwood",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Susan",
+        "last_name": "Eisenbach",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/haskell/AllwoodJE09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596640",
+    "title": "Types are calling conventions",
+    "abstract": "It is common for compilers to derive the calling convention of a function from its type. Doing so is simple and modular but misses many optimisation opportunities, particularly in lazy, higher-order functional languages with extensive use of currying. We restore the lost opportunities by defining Strict Core, a new intermediate language whose type system makes the missing distinctions: laziness is explicit, and functions take multiple arguments and return multiple results.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596640",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Bolingbroke",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/BolingbrokeJ09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596645",
+    "title": "Lazy functional incremental parsing",
+    "abstract": "Structured documents are commonly edited using a free-form editor. Even though every string is an acceptable input, it makes sense to maintain a structured representation of the edited document. The structured representation has a number of uses: structural navigation (and optional structural editing), structure highlighting, etc. The construction of the structure must be done incrementally to be efficient: the time to process an edit operation should be proportional to the size of the change, and (ideally) independent of the total size of the document. We show that combining lazy evaluation and caching of intermediate (partial) results enables incremental parsing. We build a complete incremental parsing library for interactive systems with support for error-correction.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596645",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jean-Philippe",
+        "last_name": "Bernardy",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/Bernardy09",
+    "venue": "haskell",
+    "year": 2009
+  },
+  {
+    "paper_id": "10.1145/1596638.1596648",
+    "title": "A compositional theory for STM Haskell",
+    "abstract": "We address the problem of reasoning about Haskell programs that use Software Transactional Memory (STM). As a motivating example, we consider Haskell code for a concurrent non-deterministic tree rewriting algorithm implementing the operational semantics of the ambient calculus. The core of our theory is a uniform model, in the spirit of process calculi, of the run-time state of multi-threaded STM Haskell programs. The model was designed to simplify both local and compositional reasoning about STM programs. A single reduction relation captures both pure functional computations and also effectful computations in the STM and I/O monads. We state and prove liveness, soundness, completeness, safety, and termination properties relating source processes and their Haskell implementation. Our proof exploits various ideas from concurrency theory, such as the bisimulation technique, but in the setting of a widely used programming language rather than an abstract process calculus. Additionally, we develop an equational theory for reasoning about STM Haskell programs, and establish for the first time equations conjectured by the designers of STM Haskell. We conclude that using a pure functional language extended with STM facilitates reasoning about concurrent implementation code.",
+    "date": "2009-09-03",
+    "link": "https://doi.org/10.1145/1596638.1596648",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Johannes",
+        "last_name": "Borgström",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Karthikeyan",
+        "last_name": "Bhargavan",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Andrew D.",
+        "last_name": "Gordon",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/BorgstromBG09",
     "venue": "haskell",
     "year": 2009
   }

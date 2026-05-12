@@ -1,0 +1,486 @@
+[
+  {
+    "paper_id": "10.1145/2804302.2804307",
+    "title": "Improving Haskell types with SMT",
+    "abstract": "We present a technique for integrating GHC's type-checker with an SMT solver. The technique was developed to add support for reasoning about type-level functions on natural numbers, and so our implementation uses the theory of linear arithmetic. However, the approach is not limited to this theory, and makes it possible to experiment with other external decision procedures, such as reasoning about type-level booleans, bit-vectors, or any other theory supported by SMT solvers.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804307",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Iavor S.",
+        "last_name": "Diatchki",
+        "institution": "Galois (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/Diatchki15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804303",
+    "title": "Reasoning with the HERMIT: tool support for equational reasoning on GHC core programs",
+    "abstract": "A benefit of pure functional programming is that it encourages equational reasoning. However, the Haskell language has lacked direct tool support for such reasoning. Consequently, reasoning about Haskell programs is either performed manually, or in another language that does provide tool support (e.g. Agda or Coq). HERMIT is a Haskell-specific toolkit designed to support equational reasoning and user-guided program transformation, and to do so as part of the GHC compilation pipeline. This paper describes HERMIT's recently developed support for equational reasoning, and presents two case studies of HERMIT usage: checking that type-class laws hold for specific instance declarations, and mechanising textbook equational reasoning.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804303",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Andrew",
+        "last_name": "Farmer",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Neil",
+        "last_name": "Sculthorpe",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Andy",
+        "last_name": "Gill",
+        "institution": "University of Kansas"
+      }
+    ],
+    "dblp_key": "conf/haskell/FarmerSG15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804312",
+    "title": "Formally proving a compiler transformation safe",
+    "abstract": "We prove that the Call Arity analysis and transformation, as implemented in the Haskell compiler GHC, is safe, i.e. does not impede the performance of the program. We formalized syntax, semantics, the analysis and the transformation in the interactive theorem prover Isabelle to obtain a machine-checked proof and hence a level of rigor rarely obtained for compiler optimization safety theorems. The proof is modular and introduces trace trees as a suitable abstraction in abstract cardinality analyses. We discuss the breadth of the formalization gap.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804312",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Joachim",
+        "last_name": "Breitner",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/Breitner15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804306",
+    "title": "D&#233;j&#224; Fu: a concurrency testing library for Haskell",
+    "abstract": "Systematic concurrency testing (SCT) is an approach to testing potentially nondeterministic concurrent programs. SCT avoids potentially unrepeatable results that may arise from unit testing concurrent programs. It seems to have received little attention from Haskell programmers. This paper introduces a generalisation of Haskell's concurrency abstraction in the form of typeclasses, and a library for testing concurrent programs. A number of examples are provided, some of which come from pre-existing packages.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804306",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Walker",
+        "institution": "University of York"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "Runciman",
+        "institution": "University of York"
+      }
+    ],
+    "dblp_key": "conf/haskell/WalkerR15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804309",
+    "title": "Embedding a full linear Lambda calculus in Haskell",
+    "abstract": "We present an encoding of full linear lambda calculus in Haskell using higher order abstract syntax. By making use of promoted data kinds, multi-parameter type classes and functional dependencies, the encoding allows Haskell to do both linear type checking and linear type inference.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804309",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jeff",
+        "last_name": "Polakow",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/Polakow15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804319",
+    "title": "Freer monads, more extensible effects",
+    "abstract": "We present a rational reconstruction of extensible effects, the recently proposed alternative to monad transformers, as the confluence of efforts to make effectful computations compose. Free monads and then extensible effects emerge from the straightforward term representation of an effectful computation, as more and more boilerplate is abstracted away. The generalization process further leads to freer monads, constructed without the Functor constraint. The continuation exposed in freer monads can then be represented as an efficient type-aligned data structure. The end result is the algorithmically efficient extensible effects library, which is not only more comprehensible but also faster than earlier implementations. As an illustration of the new library, we show three surprisingly simple applications: non-determinism with committed choice (LogicT), catching IO exceptions in the presence of other effects, and the semi-automatic management of file handles and other resources through monadic regions. We extensively use and promote the new sort of `laziness', which underlies the left Kan extension: instead of performing an operation, keep its operands and pretend it is done.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804319",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Oleg",
+        "last_name": "Kiselyov",
+        "institution": "Tohoku University"
+      },
+      {
+        "first_name": "Hiromi",
+        "last_name": "Ishii",
+        "institution": "University of Tsukuba"
+      }
+    ],
+    "dblp_key": "conf/haskell/KiselyovI15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804310",
+    "title": "Functional pearl: getting a quick fix on comonads",
+    "abstract": "A piece of functional programming folklore due to Piponi provides Löb's theorem from modal provability logic with a computational interpretation as an unusual fixed point. Interpreting modal necessity as an arbitrary Functor in Haskell, the \"type\" of Löb's theorem is inhabited by a fixed point function allowing each part of a structure to refer to the whole. However, Functor's logical interpretation may be used to prove Löb's theorem only by relying on its implicit functorial strength, an axiom not available in the provability modality. As a result, the well known loeb fixed point \"cheats\" by using functorial strength to implement its recursion. Rather than Functor, a closer Curry analogue to modal logic's Howard inspiration is a closed (semi-)comonad, of which Haskell's ComonadApply typeclass provides analogous structure. Its computational interpretation permits the definition of a novel fixed point function allowing each part of a structure to refer to its own context within the whole. This construction further guarantees maximal sharing and asymptotic efficiency superior to loeb for locally contextual computations upon a large class of structures. With the addition of a distributive law, closed comonads may be composed into spaces of arbitrary dimensionality while preserving the performance guarantees of this new fixed point. From these elements, we construct a small embedded domain-specific language to elegantly express and evaluate multidimensional \"spreadsheet-like\" recurrences for a variety of cellular automata.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804310",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Kenneth",
+        "last_name": "Foner",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/haskell/Foner15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804305",
+    "title": "A typechecker plugin for units of measure: domain-specific constraint solving in GHC Haskell",
+    "abstract": "Typed functional programming and units of measure are a natural combination, as F# ably demonstrates. However, encoding statically-checked units in Haskell’s type system leads to inevitable disappointment with the usability of the resulting system. Extending the language itself would produce a much better result, but it would be a lot of work! In this paper, I demonstrate how typechecker plugins in the Glasgow Haskell Compiler allow users to define domain-specific constraint solving behaviour, making it possible to implement units of measure as a type system extension without rebuilding the compiler. This paves the way for a more modular treatment of constraint solving in GHC.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804305",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Adam",
+        "last_name": "Gundry",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/Gundry15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804304",
+    "title": "Type families with class, type classes with family",
+    "abstract": "Type classes and type families are key ingredients in Haskell programming. Type classes were introduced to deal with ad-hoc polymorphism, although with the introduction of functional dependencies, their use expanded to type-level programming. Type families also allow encoding type-level functions, but more directly in the form of rewrite rules. In this paper we show that type families are powerful enough to simulate type classes (without overlapping instances), and we provide a formal proof of the soundness and completeness of this simulation. Encoding instance constraints as type families eases the path to proposed extensions to type classes, like closed sets of instances, instance chains, and control over the search procedure. The only feature which type families cannot simulate is elaboration, that is, generating code from the derivation of a rewriting. We look at ways to solve this problem in current Haskell, and propose an extension to allow elaboration during the rewriting phase.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804304",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Alejandro",
+        "last_name": "Serrano",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Jurriaan",
+        "last_name": "Hage",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Bahr",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/haskell/SerranoHB15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804308",
+    "title": "Improving implicit parallelism",
+    "abstract": "Using static analysis techniques compilers for lazy functional languages can be used to identify parts of a program that can be legitimately evaluated in parallel and ensure that those expressions are executed concurrently with the main thread of execution. These techniques can produce improvements in the runtime performance of a program, but are limited by the static analyses’ poor prediction of runtime performance. This paper outlines the development of a system that uses iterative profile-directed improvement in addition to well-studied static analysis techniques. This allows us to achieve higher performance gains than through static analysis alone.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804308",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "José Manuel Calderón",
+        "last_name": "Trilla",
+        "institution": "University of York"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "Runciman",
+        "institution": "University of York"
+      }
+    ],
+    "dblp_key": "conf/haskell/TrillaR15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804311",
+    "title": "The remote monad design pattern",
+    "abstract": "Remote Procedure Calls are expensive. This paper demonstrates how to reduce the cost of calling remote procedures from Haskell by using the remote monad design pattern, which amortizes the cost of remote calls. This gives the Haskell community access to remote capabilities that are not directly supported, at a surprisingly inexpensive cost. We explore the remote monad design pattern through six models of remote execution patterns, using a simulated Internet of Things toaster as a running example. We consider the expressiveness and optimizations enabled by each remote execution model, and assess the feasibility of our approach. We then present a full-scale case study: a Haskell library that provides a Foreign Function Interface to the JavaScript Canvas API. Finally, we discuss existing instances of the remote monad design pattern found in Haskell libraries.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804311",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Andy",
+        "last_name": "Gill",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Neil",
+        "last_name": "Sculthorpe",
+        "institution": "Swansea University"
+      },
+      {
+        "first_name": "Justin",
+        "last_name": "Dawson",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Aleksander",
+        "last_name": "Eskilson",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Farmer",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Mark",
+        "last_name": "Grebe",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Jeffrey",
+        "last_name": "Rosenbluth",
+        "institution": ""
+      },
+      {
+        "first_name": "Ryan G.",
+        "last_name": "Scott",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "James B.",
+        "last_name": "Stanton",
+        "institution": "University of Kansas"
+      }
+    ],
+    "dblp_key": "conf/haskell/GillSDEFGRSS15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804315",
+    "title": "Modular reifiable matching: a list-of-functors approach to two-level types",
+    "abstract": "This paper presents Modular Reifiable Matching (MRM): a new approach to two level types using a fixpoint of list-of-functors representation. MRM allows the modular definition of datatypes and functions by pattern matching, using a style similar to the widely popular Datatypes a la Carte (DTC) approach. However, unlike DTC, MRM uses a fixpoint of list-of-functors approach to two-level types. This approach has advantages that help with various aspects of extensibility, modularity and reuse. Firstly, modular pattern matching definitions are collected using a list of matches that is fully reifiable. This allows for extensible pattern matching definitions to be easily reused/inherited, and particular matches to be overridden. Such flexibility is used, among other things, to implement extensible generic traversals. Secondly, the subtyping relation between lists of functors is quite simple, does not require backtracking, and is easy to model in languages like Haskell. MRM is implemented as a Haskell library, and its use and applicability are illustrated through various examples in the paper.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804315",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Shin-Cheng",
+        "last_name": "Mu",
+        "institution": "Academia Sinica"
+      },
+      {
+        "first_name": "Shu-Hung",
+        "last_name": "You",
+        "institution": "National Taiwan University"
+      }
+    ],
+    "dblp_key": "conf/haskell/OliveiraMY15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804314",
+    "title": "Injective type families for Haskell",
+    "abstract": "Haskell, as implemented by the Glasgow Haskell Compiler (GHC), allows expressive type-level programming. The most popular type-level programming extension is TypeFamilies, which allows users to write functions on types. Yet, using type functions can cripple type inference in certain situations. In particular, lack of injectivity in type functions means that GHC can never infer an instantiation of a type variable appearing only under type functions. In this paper, we describe a small modification to GHC that allows type functions to be annotated as injective. GHC naturally must check validity of the injectivity annotations. The algorithm to do so is surprisingly subtle. We prove soundness for a simplification of our algorithm, and state and prove a completeness property, though the algorithm is not fully complete. As much of our reasoning surrounds functions defined by a simple pattern-matching structure, we believe our results extend beyond just Haskell. We have implemented our solution on a branch of GHC and plan to make it available to regular users with the next stable release of the compiler.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804314",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jan",
+        "last_name": "Stolarek",
+        "institution": "Lodz University of Technology"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/haskell/StolarekJE15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804320",
+    "title": "Variations on variants",
+    "abstract": "Extensible variants improve the modularity and expressiveness of programming languages: they allow program functionality to be decomposed into independent blocks, and allow seamless extension of existing code with both new cases of existing data types and new operations over those data types. This paper considers three approaches to providing extensible variants in Haskell. Row typing is a long understood mechanism for typing extensible records and variants, but its adoption would require extension of Haskell's core type system. Alternatively, we might hope to encode extensible variants in terms of existing mechanisms, such as type classes. We describe an encoding of extensible variants using instance chains, a proposed extension of the class system. Unlike many previous encodings of extensible variants, ours does not require the definition of a new type class for each function that consumes variants. Finally, we translate our encoding to use closed type families, an existing feature of GHC. Doing so demonstrates the interpretation of instances chains and functional dependencies in closed type families. One concern with encodings like ours is how completely they match the encoded system. We compare the expressiveness of our encodings with each other and with systems based on row types. We find that, while equivalent terms are typable in each system, both encodings require explicit type annotations to resolve ambiguities in typing not present in row type systems, and the type family implementation retains more constraints in principal types than does the instance chain implementation. We propose a general mechanism to guide the instantiation of ambiguous type variables, show that it eliminates the need for type annotations in our encodings, and discuss conditions under which it preserves coherence.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804320",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "J. Garrett",
+        "last_name": "Morris",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/haskell/Morris15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804317",
+    "title": "Practical probabilistic programming with monads",
+    "abstract": "The machine learning community has recently shown a lot of interest in practical probabilistic programming systems that target the problem of Bayesian inference. Such systems come in different forms, but they all express probabilistic models as computational processes using syntax resembling programming languages. In the functional programming community monads are known to offer a convenient and elegant abstraction for programming with probability distributions, but their use is often limited to very simple inference problems. We show that it is possible to use the monad abstraction to construct probabilistic models for machine learning, while still offering good performance of inference in challenging models. We use a GADT as an underlying representation of a probability distribution and apply Sequential Monte Carlo-based methods to achieve efficient inference. We define a formal semantics via measure theory. We demonstrate a clean and elegant implementation that achieves performance comparable with Anglican, a state-of-the-art probabilistic programming system.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804317",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Adam",
+        "last_name": "Ścibior",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Zoubin",
+        "last_name": "Ghahramani",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Andrew D.",
+        "last_name": "Gordon",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/haskell/ScibiorGG15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804316",
+    "title": "Bridging the GUI gap with reactive values and relations",
+    "abstract": "There are at present two ways to write GUIs for functional code. One is to use standard GUI toolkits, with all the benefits they bring in terms of feature completeness, choice of platform, conformance to platform-specific look-and-feel, long-term viability, etc. How- ever, such GUI APIs mandate an imperative programming style for the GUI and related parts of the application. Alternatively, we can use a functional GUI toolkit. The GUI can then be written in a func- tional style, but at the cost of foregoing many advantages of stan- dard toolkits that often will be of critical importance. This paper introduces a light-weight framework structured around the notions of reactive values and reactive relations. It allows standard toolk- its to be used from functional code written in a functional style. We thus bridge the gap between the two worlds, bringing the ad- vantages of both to the developer. Our framework is available on Hackage and has been been validated through the development of non-trivial applications in a commercial context, and with different standard GUI toolkits.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804316",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Ivan",
+        "last_name": "Pérez",
+        "institution": "University of Nottingham"
+      },
+      {
+        "first_name": "Henrik",
+        "last_name": "Nilsson",
+        "institution": "University of Nottingham"
+      }
+    ],
+    "dblp_key": "conf/haskell/PerezN15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804318",
+    "title": "Guilt free ivory",
+    "abstract": "Ivory is a language that enforces memory safety and avoids most undefined behaviors while providing low-level control of memory- manipulation. Ivory is embedded in a modern variant of Haskell, as implemented by the GHC compiler. The main contributions of the paper are two-fold. First, we demonstrate how to embed the type-system of a safe-C language into the type extensions of GHC. Second, Ivory is of interest in its own right, as a powerful language for writing high-assurance embedded programs. Beyond invariants enforced by its type-system, Ivory has direct support for model-checking, theorem-proving, and property-based testing. Ivory’s semantics have been formalized and proved to guarantee memory safety.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804318",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Trevor",
+        "last_name": "Elliott",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Lee",
+        "last_name": "Pike",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Winwood",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Pat",
+        "last_name": "Hickey",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Bielman",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Jamey",
+        "last_name": "Sharp",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Eric L.",
+        "last_name": "Seidel",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": "Willamette University"
+      }
+    ],
+    "dblp_key": "conf/haskell/ElliottPWHBSSL15",
+    "venue": "haskell",
+    "year": 2015
+  },
+  {
+    "paper_id": "10.1145/2804302.2804313",
+    "title": "Type-safe runtime code generation: accelerate to LLVM",
+    "abstract": "Embedded languages are often compiled at application runtime; thus, embedded compile-time errors become application runtime errors. We argue that advanced type system features, such as GADTs and type families, play a crucial role in minimising such runtime errors. Specifically, a rigorous type discipline reduces runtime errors due to bugs in both embedded language applications and the implementation of the embedded language compiler itself. In this paper, we focus on the safety guarantees achieved by type preserving compilation. We discuss the compilation pipeline of Accelerate, a high-performance array language targeting both multicore CPUs and GPUs, where we are able to preserve types from the source language down to a low-level register language in SSA form. Specifically, we demonstrate the practicability of our approach by creating a new type-safe interface to the industrial-strength LLVM compiler infrastructure, which we used to build two new Accelerate backends that show competitive runtimes on a set of benchmarks across both CPUs and GPUs.",
+    "date": "2015-08-24",
+    "link": "https://doi.org/10.1145/2804302.2804313",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Trevor L.",
+        "last_name": "McDonell",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Vinod",
+        "last_name": "Grover",
+        "institution": "Nvidia (United Kingdom)"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Newton",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "conf/haskell/McDonellCGN15",
+    "venue": "haskell",
+    "year": 2015
+  }
+]

@@ -1,0 +1,354 @@
+[
+  {
+    "paper_id": "10.1145/1863523.1863528",
+    "title": "A systematic derivation of the STG machine verified in Coq",
+    "abstract": "Shared Term Graph (STG) is a lazy functional language used as an intermediate language in the Glasgow Haskell Compiler (GHC). In this article, we present a natural operational semantics for STG and we mechanically derive a lazy abstract machine from this semantics, which turns out to coincide with Peyton-Jones and Salkild's Spineless Tagless G-machine (STG machine) used in GHC. Unlike other constructions of STG-like machines present in the literature, ours is based on a systematic and scalable derivation method (inspired by Danvy et al.'s functional correspondence between evaluators and abstract machines) and it leads to an abstract machine that differs from the original STG machine only in inessential details. In particular, it handles non-trivial update scenarios and partial applications identically as the STG machine.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863528",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Maciej",
+        "last_name": "Piróg",
+        "institution": "University of Wrocław"
+      },
+      {
+        "first_name": "Dariusz",
+        "last_name": "Biernacki",
+        "institution": "University of Wrocław"
+      }
+    ],
+    "dblp_key": "conf/haskell/PirogB10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863536",
+    "title": "Scalable i/o event handling for GHC",
+    "abstract": "We have developed a new, portable I/O event manager for the Glasgow Haskell Compiler (GHC) that scales to the needs of modern server applications. Our new code is transparently available to existing Haskell applications. Performance at lower concurrency levels is comparable with the existing implementation. We support millions of concurrent network connections, with millions of active timeouts, from a single multithreaded program, levels far beyond those achievable with the current I/O manager. In addition, we provide a public API to developers who need to create event-driven network applications.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863536",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Bryan",
+        "last_name": "O’Sullivan",
+        "institution": ""
+      },
+      {
+        "first_name": "Johan",
+        "last_name": "Tibell",
+        "institution": "Google (Switzerland)"
+      }
+    ],
+    "dblp_key": "conf/haskell/OSullivanT10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863540",
+    "title": "Supercompilation by evaluation",
+    "abstract": "This paper shows how call-by-need supercompilation can be recast to be based explicitly on an evaluator, contrasting with standard presentations which are specified as algorithms that mix evaluation rules with reductions that are unique to supercompilation. Building on standard operational-semantics technology for call-by-need languages, we show how to extend the supercompilation algorithm to deal with recursive let expressions.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863540",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Bolingbroke",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/BolingbrokeJ10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863538",
+    "title": "An llVM backend for GHC",
+    "abstract": "In the presence of ever-changing computer architectures, high-quality optimising compiler backends are moving targets that require specialist knowledge and sophisticated algorithms. In this paper, we explore a new backend for the Glasgow Haskell Compiler (GHC) that leverages the Low Level Virtual Machine (LLVM), a new breed of compiler written explicitly for use by other compiler writers, not high-level programmers, that promises to enable outsourcing of low-level and architecture-dependent aspects of code generation. We discuss the conceptual challenges and our backend design. We also provide an extensive quantitative evaluation of the performance of the backend and of the code it produces.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863538",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Terei",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/haskell/TereiC10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863534",
+    "title": "Concurrent orchestration in Haskell",
+    "abstract": "We present a concurrent scripting language embedded in Haskell, emulating the functionality of the Orc orchestration language by providing many-valued (real) non-determinism in the context of concurrent effects. We provide many examples of its use, as well as a brief description of how we use the embedded Orc DSL in practice. We describe the abstraction layers of the implementation, and use the fact that we have a layered approach to demonstrate algebraic properties satisfied by the combinators.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863534",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Trevor",
+        "last_name": "Elliott",
+        "institution": "Galois (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/LaunchburyE10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863531",
+    "title": "Experience report: using hackage to inform language design",
+    "abstract": "Hackage, an online repository of Haskell applications and libraries, provides a hub for programmers to both release code to and use code from the larger Haskell community. We suggest that Hackage can also serve as a valuable resource for language designers: by providing a large collection of code written by different programmers and in different styles, it allows language designers to see not just how features could be used theoretically, but how they are (and are not) used in practice.We were able to make such a use of Hackage during the design of the class system for a new Haskell-like programming language. In this paper, we sketch our language design problem, and how we used Hackage to help answer it. We describe our methodology in some detail, including both ways that it was and was not effective, and summarize our results.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863531",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "J. Garrett",
+        "last_name": "Morris",
+        "institution": "Portland State University"
+      }
+    ],
+    "dblp_key": "conf/haskell/Morris10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863526",
+    "title": "The performance of the Haskell containers package",
+    "abstract": "In this paper, we perform a thorough performance analysis of the containers package, the de facto standard Haskell containers library, comparing it to the most of existing alternatives on HackageDB. We then significantly improve its performance, making it comparable to the best implementations available. Additionally, we describe a new persistent data structure based on hashing, which offers the best performance out of available data structures containing Strings and ByteStrings.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863526",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Milan",
+        "last_name": "Straka",
+        "institution": "Charles University"
+      }
+    ],
+    "dblp_key": "conf/haskell/Straka10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863525",
+    "title": "Invertible syntax descriptions: unifying parsing and pretty printing",
+    "abstract": "Parsers and pretty-printers for a language are often quite similar, yet both are typically implemented separately, leading to redundancy and potential inconsistency. We propose a new interface of syntactic descriptions, with which both parser and pretty-printer can be described as a single program. Whether a syntactic description is used as a parser or as a pretty-printer is determined by the implementation of the interface. Syntactic descriptions enable programmers to describe the connection between concrete and abstract syntax once and for all, and use these descriptions for parsing or pretty-printing as needed. We also discuss the generalization of our programming technique towards an algebra of partial isomorphisms.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863525",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Tillmann",
+        "last_name": "Rendel",
+        "institution": "Philipps University of Marburg"
+      },
+      {
+        "first_name": "Klaus",
+        "last_name": "Ostermann",
+        "institution": "Philipps University of Marburg"
+      }
+    ],
+    "dblp_key": "conf/haskell/RendelO10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863539",
+    "title": "Hoopl: a modular, reusable library for dataflow analysis and transformation",
+    "abstract": "Dataflow analysis and transformation of control-flow graphs is pervasive in optimizing compilers, but it is typically entangled with the details of a particular compiler. We describe Hoopl, a reusable library that makes it unusually easy to define new analyses and transformations for any compiler written in Haskell. Hoopl's interface is modular and polymorphic, and it offers unusually strong static guarantees. The implementation encapsulates state-of-the-art algorithms (interleaved analysis and rewriting, dynamic error isolation), and it cleanly separates their tricky elements so that they can be understood independently.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863539",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "João",
+        "last_name": "Dias",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/RamseyDJ10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863533",
+    "title": "Nikola: embedding compiled GPU functions in Haskell",
+    "abstract": "We describe Nikola, a first-order language of array computations embedded in Haskell that compiles to GPUs via CUDA using a new set of type-directed techniques to support re-usable computations. Nikola automatically handles a range of low-level details for Haskell programmers, such as marshaling data to/from the GPU, size inference for buffers, memory management, and automatic loop parallelization. Additionally, Nikola supports both compile-time and run-time code generation, making it possible for programmers to choose when and where to specialize embedded programs.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863533",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Geoffrey",
+        "last_name": "Mainland",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/haskell/MainlandM10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863529",
+    "title": "A generic deriving mechanism for Haskell",
+    "abstract": "Haskell's deriving mechanism supports the automatic generation of instances for a number of functions. The Haskell 98 Report only specifies how to generate instances for the Eq, Ord, Enum, Bounded, Show, and Read classes. The description of how to generate instances is largely informal. The generation of instances imposes restrictions on the shape of datatypes, depending on the particular class to derive. As a consequence, the portability of instances across different compilers is not guaranteed.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863529",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "José Pedro",
+        "last_name": "Magalhães",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Atze",
+        "last_name": "Dijkstra",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Johan",
+        "last_name": "Jeuring",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Andres",
+        "last_name": "Löh",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/haskell/MagalhaesDJL10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863535",
+    "title": "Seq no more: better strategies for parallel Haskell",
+    "abstract": "We present a complete redesign of evaluation strategies, a key abstraction for specifying pure, deterministic parallelism in Haskell. Our new formulation preserves the compositionality and modularity benefits of the original, while providing significant new benefits. First, we introduce an evaluation-order monad to provide clearer, more generic, and more efficient specification of parallel evaluation. Secondly, the new formulation resolves a subtle space management issue with the original strategies, allowing parallelism (sparks) to be preserved while reclaiming heap associated with superfluous parallelism. Related to this, the new formulation provides far better support for speculative parallelism as the garbage collector now prunes unneeded speculation. Finally, the new formulation provides improved compositionality: we can directly express parallelism embedded within lazy data structures, producing more compositional strategies, and our basic strategies are parametric in the coordination combinator, facilitating a richer set of parallelism combinators.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863535",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Maier",
+        "institution": "Heriot-Watt University"
+      },
+      {
+        "first_name": "Hans‐Wolfgang",
+        "last_name": "Loidl",
+        "institution": "Heriot-Watt University"
+      },
+      {
+        "first_name": "Mustafa",
+        "last_name": "Aswad",
+        "institution": "Heriot-Watt University"
+      },
+      {
+        "first_name": "Phil",
+        "last_name": "Trinder",
+        "institution": "Heriot-Watt University"
+      }
+    ],
+    "dblp_key": "conf/haskell/MarlowMLAT10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863542",
+    "title": "Species and functors and types, oh my!",
+    "abstract": "The theory of combinatorial species, although invented as a purely mathematical formalism to unify much of combinatorics, can also serve as a powerful and expressive language for talking about data types. With potential applications to automatic test generation, generic programming, and language design, the theory deserves to be much better known in the functional programming community. This paper aims to teach the basic theory of combinatorial species using motivation and examples from the world of functional programming. It also introduces the species library, available on Hackage, which is used to illustrate the concepts introduced and can serve as a platform for continued study and research.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863542",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Brent A.",
+        "last_name": "Yorgey",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/haskell/Yorgey10",
+    "venue": "haskell",
+    "year": 2010
+  },
+  {
+    "paper_id": "10.1145/1863523.1863530",
+    "title": "Exchanging sources between clean and Haskell: a double-edged front end for the clean compiler",
+    "abstract": "The functional programming languages Clean and Haskell have been around for over two decades. Over time, both languages have developed a large body of useful libraries and come with interesting language features. It is our primary goal to benefit from each other's evolutionary results by facilitating the exchange of sources between Clean and Haskell and study the forthcoming interactions between their distinct languages features. This is achieved by using the existing Clean compiler as starting point, and implementing a double-edged front end for this compiler: it supports both standard Clean 2.1 and (currently a large part of) standard Haskell 98. Moreover, it allows both languages to seamlessly use many of each other's language features that were alien to each other before. For instance, Haskell can now use uniqueness typing anywhere, and Clean can use newtypes efficiently. This has given birth to two new dialects of Clean and Haskell, dubbed Clean* and Haskell*. Additionally, measurements of the performance of the new compiler indicate that it is on par with the flagship Haskell compiler GHC.",
+    "date": "2010-09-28",
+    "link": "https://doi.org/10.1145/1863523.1863530",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "John van",
+        "last_name": "Groningen",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Thomas van",
+        "last_name": "Noort",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Achten",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Pieter",
+        "last_name": "Koopman",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Rinus",
+        "last_name": "Plasmeijer",
+        "institution": "Radboud University Nijmegen"
+      }
+    ],
+    "dblp_key": "conf/haskell/GroningenNAKP10",
+    "venue": "haskell",
+    "year": 2010
+  }
+]

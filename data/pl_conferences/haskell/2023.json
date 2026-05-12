@@ -1,0 +1,252 @@
+[
+  {
+    "paper_id": "10.1145/3609026.3609733",
+    "title": "falsify: Internal Shrinking Reimagined for Haskell",
+    "abstract": "In unit testing we apply the function under test to known inputs and check for known outputs. By contrast, in property based testing we state properties relating inputs and outputs, apply the function to random inputs, and verify that the property holds; if not, we found a bug. Randomly generated inputs tend to be large and should therefore be minimised. Traditionally this is done with an explicitly provided shrinker, but in this paper we propose a way to write generators that obsoletes the need to write a separate shrinker. Inspired by the Python library Hypothesis, the approach can work even across monadic bind. Compared to Hypothesis, our approach is more suitable to the Haskell setting: it depends on a minimal set of core principles, and handles generation and shrinking of infinite data structures, including functions.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3609733",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Edsko de",
+        "last_name": "Vries",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/Vries23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3609730",
+    "title": "Don't Go Down the Rabbit Hole: Reprioritizing Enumeration for Property-Based Testing",
+    "abstract": "In our implementation, we integrate a state-of-the-art enumeration-based property-based testing framework, LazySearch, with a state-of-the-art combinatorial testing tool, NIST’s ACTS, and demonstrate how it can significantly speed up the effectiveness of testing—up to more than 20× in the case of a prior System F case study from the literature.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3609730",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Segev Elazar",
+        "last_name": "Mittelman",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Aviel",
+        "last_name": "Resnick",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Ivan",
+        "last_name": "Pérez",
+        "institution": "Ames Research Center"
+      },
+      {
+        "first_name": "Alwyn E.",
+        "last_name": "Goodloe",
+        "institution": "Langley Research Center"
+      },
+      {
+        "first_name": "Leonidas",
+        "last_name": "Lampropoulos",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/haskell/MittelmanR0GL23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3615581",
+    "title": "The Evolution of Effects (Keynote)",
+    "abstract": "Functional programming has been celebrated for its promise of pure functions, delivering referential transparency and elegant reasoning about programs. However, real-world applications are not pure, and necessitate interaction with the outside world, introducing computational effects such as IO, state, and exceptions. The journey to harmonize these seemingly contradictory paradigms has led to a fascinating evolution of effectful programming in Haskell.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3615581",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Nicolas",
+        "last_name": "Wu",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/haskell/Wu23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3615580",
+    "title": "Haskell for Choice-Based Learning (Keynote)",
+    "abstract": "Machine learning has achieved many successes during the past decades, spanning domains of game-playing, protein folding, competitive programming, and many others. However, while there have been major efforts in building programming techniques and frameworks for machine learning programming, there has been very little study of general language design for machine learning programming.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3615580",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Ningning",
+        "last_name": "Xie",
+        "institution": "Google (Canada)"
+      }
+    ],
+    "dblp_key": "conf/haskell/Xie23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3609732",
+    "title": "Haskell Library for Safer Virtual Machine Introspection (Experience Report)",
+    "abstract": "Virtual machine introspection (VMI) is a technique for inspecting a virtual machine from the outside, typically to analyze the operating system (guest OS) running on it. LibVMI is a C library for VMI and provides APIs for accessing guest OS's memory. However, in using LibVMI APIs directly in C, the programmer must compute target addresses in the kernel memory and then access them with their exact bit widths and types. This is an enormous burden for the programmer and is prone to introducing statically undetected but fatal errors. We create HaVMI, a Haskell library that facilitates VMI programming. HaVMI provides meta-functions for compile-time code generation by Template Haskell. These meta-functions make it easy to write safer VMI programs. HaVMI uses Haskell language features to detect the programmer's errors statically.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3609732",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Takato",
+        "last_name": "Otsuka",
+        "institution": "University of Electro-Communications"
+      },
+      {
+        "first_name": "Hideya",
+        "last_name": "Iwasaki",
+        "institution": "Meiji University"
+      }
+    ],
+    "dblp_key": "conf/haskell/OtsukaI23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3609726",
+    "title": "This Is Driving Me Loopy: Efficient Loops in Arrowized Functional Reactive Programs",
+    "abstract": "Arrowized Functional Reactive Programming (AFRP) is one approach to writing reactive programs declaratively, based on the arrows abstraction in Haskell. While AFRP elegantly expresses the relationships between inputs and outputs of a reactive system, na'ive implementations suffer from poor performance. In particular, the loop combinator depends on lazy semantics: this inflicts the overheads of lazy evaluation and simultaneously prevents existing optimisation techniques from being applied to it.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3609726",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Finnbar",
+        "last_name": "Keating",
+        "institution": "University of Warwick"
+      },
+      {
+        "first_name": "Michael B.",
+        "last_name": "Gale",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/KeatingG23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3609728",
+    "title": "An Exceptional Actor System (Functional Pearl)",
+    "abstract": "The Glasgow Haskell Compiler is known for its feature-laden runtime system (RTS), which includes lightweight threads, asynchronous exceptions, and a slew of other features. Their combination is powerful enough that a programmer may complete the same task in many different ways --- some more advisable than others.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3609728",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Redmond",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Lindsey",
+        "last_name": "Kuper",
+        "institution": "University of California, Santa Cruz"
+      }
+    ],
+    "dblp_key": "conf/haskell/RedmondK23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3609729",
+    "title": "Effect Handlers for Programmable Inference",
+    "abstract": "Inference algorithms for probabilistic programming are complex imperative programs with many moving parts. Efficient inference often requires customising an algorithm to a particular probabilistic model or problem, sometimes called inference programming. Most inference frameworks are implemented in languages that lack a disciplined approach to side effects, which can result in monolithic implementations where the structure of the algorithms is obscured and inference programming is hard. Functional programming with typed effects offers a more structured and modular foundation for programmable inference, with monad transformers being the primary structuring mechanism explored to date.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3609729",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Minh Son",
+        "last_name": "Nguyen",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Roly",
+        "last_name": "Perera",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Meng",
+        "last_name": "Wang",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Steven",
+        "last_name": "Ramsay",
+        "institution": "University of Bristol"
+      }
+    ],
+    "dblp_key": "conf/haskell/NguyenPWR23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3609731",
+    "title": "HasTEE: Programming Trusted Execution Environments with Haskell",
+    "abstract": "Trusted Execution Environments (TEEs) are hardware enforced memory isolation units, emerging as a pivotal security solution for security-critical applications. TEEs, like Intel SGX and ARM TrustZone, allow the isolation of confidential code and data within an untrusted host environment, such as the cloud and IoT. Despite strong security guarantees, TEE adoption has been hindered by an awkward programming model. This model requires manual application partitioning and the use of error-prone, memory-unsafe, and potentially information-leaking low-level C/C++ libraries.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3609731",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Abhiroop",
+        "last_name": "Sarkar",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Krook",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Alejandro",
+        "last_name": "Russo",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Koen",
+        "last_name": "Claessen",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/SarkarKRC23",
+    "venue": "haskell",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1145/3609026.3609727",
+    "title": "The Essence of Reactivity",
+    "abstract": "Reactive programming, functional reactive programming, event-based programming, stream programming, and temporal logic all share an underlying commonality: values can vary over time. These languages differ in multiple ways, including the nature of time itself (e.g., continuous or discrete, dense or sparse, implicit or explicit), on how much of the past and future can be referenced, on the kinds of values that can be represented, as well as the mechanisms used to evaluate expressions or formulas. This paper presents a series of abstractions that capture the essence of different forms of time variance. By separating the aspects that differentiate each family of formalisms, we can better express the commonalities and differences between them. We demonstrate our work with a prototype in Haskell that allows us to write programs in terms of a generic interface that can be later instantiated to different abstractions depending on the desired target.",
+    "date": "2023-08-30",
+    "link": "https://doi.org/10.1145/3609026.3609727",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Ivan",
+        "last_name": "Pérez",
+        "institution": "Ames Research Center"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Dedden",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/0001D23",
+    "venue": "haskell",
+    "year": 2023
+  }
+]
