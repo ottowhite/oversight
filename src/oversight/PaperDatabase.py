@@ -19,7 +19,7 @@ logger = get_logger()
 class PaperDatabase:
     def __init__(self) -> None:
         load_dotenv()
-        self.ai_categories = [
+        self.arxiv_embed_categories = [
             "cs:cs:AI",
             "cs:cs:CL",
             "cs:cs:LG",
@@ -220,7 +220,7 @@ class PaperDatabase:
 
         return True
 
-    def get_unembedded_arxiv_ai_papers(self) -> list[tuple[Any, ...]]:
+    def get_unembedded_arxiv_papers(self) -> list[tuple[Any, ...]]:
         query = sql.SQL("""
                 SELECT DISTINCT ps.paper_id, ps.document
                 FROM paper AS ps
@@ -231,7 +231,9 @@ class PaperDatabase:
                 WHERE se.embedding_gemini_embedding_001 IS NULL
                   AND pc.category IN ({categories})
             """).format(
-            categories=sql.SQL(",").join(sql.Literal(c) for c in self.ai_categories)
+            categories=sql.SQL(",").join(
+                sql.Literal(c) for c in self.arxiv_embed_categories
+            )
         )
         with self._get_con().cursor() as cur:
             return cur.execute(query).fetchall()
