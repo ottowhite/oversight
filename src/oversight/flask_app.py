@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from datetime import date, timedelta
+import json
 import os
 import threading
 from typing import Any
 
 import psycopg
-from flask import Flask, request
+from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 from dotenv import load_dotenv
 from pgvector.psycopg import register_vector
@@ -315,19 +316,27 @@ def _compute_similarity_distribution(sample_size: int) -> dict[str, float]:
 
 
 @app.get("/api/atlas")
-def atlas() -> tuple[dict[str, Any], int]:
+def atlas() -> Any:
     """Return 2D coordinates for the paper-atlas scatter plot.
 
     Query params:
       projection  str (required) — projection name in paper_projection_2d
       viewport    "xmin,ymin,xmax,ymax" (optional) — restrict to a rectangle
       limit       int in [1, 1_000_000] (default 1_000_000)
+      format      "json" (default) or "ndjson" — opt into streaming NDJSON
 
-    Returns:
+    JSON returns:
       {"projection": ..., "count": N, "points": [{paper_id, title, source, x, y}, ...]}
 
-    Points are ordered by paper_id so a future cursor-style pagination
-    layer has a deterministic ordering to slice on.
+    NDJSON streams one header line first
+      {"projection": ..., "total": N, "bbox": [xmin, ymin, xmax, ymax]}
+    then one point per line as
+      {"paper_id": ..., "title": ..., "source": ..., "x": ..., "y": ...}
+
+    Points are ordered by paper_id (JSON path only) so a future cursor-style
+    pagination layer has a deterministic ordering to slice on. The NDJSON
+    path drops ORDER BY because sorting forces PG to buffer the entire
+    result before emitting any row, defeating the point of streaming.
 
     The 1M cap leaves headroom over today's largest projection
     (pacmap_v1 at 524k) without exposing an unbounded SELECT.
@@ -335,6 +344,10 @@ def atlas() -> tuple[dict[str, Any], int]:
     projection = request.args.get("projection", "").strip()
     if not projection:
         return {"error": "projection is required"}, 400
+
+    fmt = request.args.get("format", "json").strip().lower()
+    if fmt not in ("json", "ndjson"):
+        return {"error": "format must be 'json' or 'ndjson'"}, 400
 
     limit_raw = request.args.get("limit", "1000000")
     try:
@@ -355,6 +368,9 @@ def atlas() -> tuple[dict[str, Any], int]:
         except ValueError:
             return {"error": "viewport values must be floats"}, 400
         viewport = (xmin, ymin, xmax, ymax)
+
+    if fmt == "ndjson":
+        return _atlas_ndjson(projection, viewport, limit)
 
     # Reuse the neighbors connection: this endpoint is read-only and the
     # ~25ms connect + register_vector cost dominates at small payloads.
@@ -406,6 +422,131 @@ def atlas() -> tuple[dict[str, Any], int]:
         for (pid, title, source, x, y) in rows
     ]
     return {"projection": projection, "count": len(points), "points": points}, 200
+
+
+def _atlas_ndjson(
+    projection: str,
+    viewport: tuple[float, float, float, float] | None,
+    limit: int,
+) -> Response:
+    """Stream atlas points as NDJSON.
+
+    Uses a fresh psycopg connection (not the shared _neighbors_conn) plus a
+    *named* server-side cursor so PG emits rows in batches instead of
+    buffering the full ~500k-row result. The shared connection can't be
+    reused here: a server-side cursor pins the connection for the duration
+    of the response, which would block every other endpoint.
+    """
+    database_url = os.getenv("DATABASE_URL")
+    assert database_url is not None, "Database URL is not set"
+
+    def generate() -> Any:
+        with psycopg.connect(database_url) as con:
+            register_vector(con)
+
+            # Header line first: a small aggregate query on an anonymous
+            # cursor so the client gets total + bbox in <100ms, well before
+            # the streaming SELECT starts emitting rows.
+            with con.cursor() as cur:
+                if viewport is not None:
+                    cur.execute(
+                        """
+                        SELECT COUNT(*), MIN(x), MAX(x), MIN(y), MAX(y)
+                        FROM paper_projection_2d
+                        WHERE projection = %s
+                          AND x BETWEEN %s AND %s
+                          AND y BETWEEN %s AND %s
+                        """,
+                        [
+                            projection,
+                            viewport[0],
+                            viewport[2],
+                            viewport[1],
+                            viewport[3],
+                        ],
+                    )
+                else:
+                    cur.execute(
+                        """
+                        SELECT COUNT(*), MIN(x), MAX(x), MIN(y), MAX(y)
+                        FROM paper_projection_2d
+                        WHERE projection = %s
+                        """,
+                        [projection],
+                    )
+                agg = cur.fetchone()
+
+            total = int(agg[0]) if agg is not None else 0
+            if agg is not None and agg[1] is not None:
+                bbox = [
+                    float(agg[1]),
+                    float(agg[3]),
+                    float(agg[2]),
+                    float(agg[4]),
+                ]
+            else:
+                bbox = [0.0, 0.0, 0.0, 0.0]
+
+            header = {"projection": projection, "total": total, "bbox": bbox}
+            yield (json.dumps(header) + "\n").encode("utf-8")
+
+            # Named cursor → DECLARE ... CURSOR server-side, so PG streams
+            # rows in batches of itersize rather than materializing the full
+            # result client-side. ORDER BY is intentionally dropped:
+            # sorting forces PG to buffer the entire result before emitting
+            # the first row, which is exactly what we're trying to avoid.
+            with con.cursor(name="atlas_stream") as cur:
+                cur.itersize = 5000
+                if viewport is not None:
+                    cur.execute(
+                        """
+                        SELECT pp.paper_id, p.title, p.source, pp.x, pp.y
+                        FROM paper_projection_2d AS pp
+                        JOIN paper AS p ON p.paper_id = pp.paper_id
+                        WHERE pp.projection = %s
+                          AND pp.x BETWEEN %s AND %s
+                          AND pp.y BETWEEN %s AND %s
+                        LIMIT %s
+                        """,
+                        [
+                            projection,
+                            viewport[0],
+                            viewport[2],
+                            viewport[1],
+                            viewport[3],
+                            limit,
+                        ],
+                    )
+                else:
+                    cur.execute(
+                        """
+                        SELECT pp.paper_id, p.title, p.source, pp.x, pp.y
+                        FROM paper_projection_2d AS pp
+                        JOIN paper AS p ON p.paper_id = pp.paper_id
+                        WHERE pp.projection = %s
+                        LIMIT %s
+                        """,
+                        [projection, limit],
+                    )
+                for pid, title, source, x, y in cur:
+                    yield (
+                        json.dumps(
+                            {
+                                "paper_id": pid,
+                                "title": title,
+                                "source": source,
+                                "x": float(x),
+                                "y": float(y),
+                            }
+                        )
+                        + "\n"
+                    ).encode("utf-8")
+
+    return Response(
+        stream_with_context(generate()),
+        mimetype="application/x-ndjson",
+        direct_passthrough=True,
+    )
 
 
 @app.get("/api/embeddings/similarity_distribution")
