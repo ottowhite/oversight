@@ -153,6 +153,21 @@ class ClusterTree:
         # have >= target_count AND ratio fits, or (b) hard_cap, or (c)
         # the largest cluster is unsplittable in this viewport AND can't
         # find any other splittable cluster.
+        #
+        # HDBSCAN's condensed tree on this corpus is long-chain
+        # unbalanced. Each split typically sheds a small leaf and keeps
+        # a huge chain-continuation. Naively accumulating the sheds
+        # makes ratio asymptote to "one giant + many tiny" rather than
+        # "all roughly equal". So when we split a cluster and the
+        # biggest child holds >= 90% of the parent's mass, treat it as
+        # a chain-continuation: replace the parent with *just* the big
+        # child (the small sheds get folded back into the chain — they
+        # might resurface higher up the size-rank order later).
+        # When the split is a real bifurcation (biggest child < 90%),
+        # we keep both children. This way we eventually escape the
+        # chain and land at clusters of comparable size.
+        chain_threshold = 0.90
+
         while True:
             current.sort(key=lambda n: n.paper_count, reverse=True)
             ratio = imbalance_ratio(current)
@@ -179,7 +194,24 @@ class ClusterTree:
             if split_idx is None:
                 # Nothing left to split.
                 break
-            current = current[:split_idx] + current[split_idx + 1 :] + split_kids
+            parent_cluster = current[split_idx]
+            split_kids.sort(key=lambda n: n.paper_count, reverse=True)
+            if (
+                split_kids
+                and split_kids[0].paper_count
+                >= chain_threshold * parent_cluster.paper_count
+            ):
+                # Chain-continuation: replace parent with just the
+                # dominant child. The shed siblings get dropped here,
+                # but their cluster_ids will still be returned at
+                # deeper lambda when the user zooms in and the chain
+                # continuation no longer dominates the viewport.
+                current = (
+                    current[:split_idx] + current[split_idx + 1 :] + [split_kids[0]]
+                )
+            else:
+                # Real bifurcation: keep all children.
+                current = current[:split_idx] + current[split_idx + 1 :] + split_kids
 
         current.sort(key=lambda n: n.paper_count, reverse=True)
         # Soft trim if we materially overshot the target. We keep the
