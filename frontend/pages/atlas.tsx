@@ -210,9 +210,12 @@ export default function AtlasPage() {
   );
   // Sources that the user has clicked off in the legend. Empty Set =
   // show everything. We key by source string (not category index) so
-  // toggles survive a points refetch / projection change.
+  // toggles survive a points refetch / projection change. arxiv is
+  // hidden by default — at the full-corpus scale it dominates 80%+ of
+  // the cloud and washes out the conference clusters; the user can
+  // always click it back on from the legend.
   const [hiddenSources, setHiddenSources] = useState<Set<string>>(
-    () => new Set(),
+    () => new Set(["arxiv"]),
   );
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
