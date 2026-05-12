@@ -43,6 +43,14 @@ type ScatterplotApi = {
   subscribe: (event: string, cb: (payload: unknown) => void) => void;
   unsubscribe: (event: string, cb: (payload: unknown) => void) => void;
   set: (props: Record<string, unknown>) => void;
+  // filter(indices) restricts what's drawn to those original point
+  // indices (so click → paper_id lookup via list[idx] still works).
+  // unfilter() restores the full set.
+  filter: (
+    pointIdxs: number[],
+    opts?: { preventEvent?: boolean },
+  ) => Promise<void> | void;
+  unfilter: (opts?: { preventEvent?: boolean }) => Promise<void> | void;
 };
 
 // ---------------------------------------------------------------------------
@@ -146,6 +154,12 @@ export default function AtlasPage() {
   const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(
     null,
   );
+  // Sources that the user has clicked off in the legend. Empty Set =
+  // show everything. We key by source string (not category index) so
+  // toggles survive a points refetch / projection change.
+  const [hiddenSources, setHiddenSources] = useState<Set<string>>(
+    () => new Set(),
+  );
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const scatterRef = useRef<ScatterplotApi | null>(null);
@@ -153,6 +167,27 @@ export default function AtlasPage() {
   // can look up paper_ids without re-subscribing on every render.
   const pointsRef = useRef<AtlasPoint[] | null>(null);
   pointsRef.current = points;
+
+  const toggleSource = useCallback((source: string) => {
+    setHiddenSources((prev) => {
+      const next = new Set(prev);
+      if (next.has(source)) next.delete(source);
+      else next.add(source);
+      return next;
+    });
+  }, []);
+  const showAllSources = useCallback(() => setHiddenSources(new Set()), []);
+  const hideAllSources = useCallback(() => {
+    // "Hide all" — but if everything would be hidden, the canvas
+    // goes blank; that's fine and reversible, the user can click
+    // any legend entry to restore it.
+    const all = new Set<string>();
+    const list = pointsRef.current;
+    if (list) {
+      for (const p of list) all.add(p.source ?? "unknown");
+    }
+    setHiddenSources(all);
+  }, []);
 
   // Fetch points on mount.
   useEffect(() => {
@@ -187,6 +222,21 @@ export default function AtlasPage() {
     () => (points ? normalizePoints(points, categoryByIndex) : []),
     [points, categoryByIndex],
   );
+
+  // Recompute the indices regl-scatterplot should keep visible. We use
+  // scatter.filter([idx, ...]) rather than re-drawing with a subset
+  // because filter() preserves the original indices — that means the
+  // click handler can still look up paper_id via pointsRef.current[idx]
+  // without remapping.
+  const visibleIndices = useMemo(() => {
+    if (!points) return [] as number[];
+    if (hiddenSources.size === 0) return [] as number[];
+    const out: number[] = [];
+    for (let i = 0; i < points.length; i++) {
+      if (!hiddenSources.has(points[i].source ?? "unknown")) out.push(i);
+    }
+    return out;
+  }, [points, hiddenSources]);
 
   // Track mouse position so the hover tooltip can follow the cursor.
   // Using a single listener on the container is cheap and avoids
@@ -255,6 +305,17 @@ export default function AtlasPage() {
       });
       scatterRef.current = scatter;
       await scatter.draw(normalized);
+      // Re-apply the current filter immediately after the initial draw
+      // so a points refetch (or projection change) preserves the user's
+      // toggles. The standalone filter effect handles subsequent flips.
+      if (hiddenSources.size > 0) {
+        const list = pointsRef.current ?? [];
+        const idxs: number[] = [];
+        for (let i = 0; i < list.length; i++) {
+          if (!hiddenSources.has(list[i].source ?? "unknown")) idxs.push(i);
+        }
+        scatter.filter(idxs);
+      }
 
       const onOver = (idx: unknown) => {
         if (typeof idx === "number") setHoverIdx(idx);
@@ -306,7 +367,25 @@ export default function AtlasPage() {
     };
   }, [normalized, legend, router]);
 
+  // Apply the legend filter to the live scatterplot. We do this in a
+  // separate effect (rather than during init) so toggling sources
+  // doesn't tear down and rebuild the GL context — that would be slow
+  // and would reset the camera pan/zoom.
+  useEffect(() => {
+    const scatter = scatterRef.current;
+    if (!scatter) return;
+    if (hiddenSources.size === 0) {
+      scatter.unfilter();
+    } else {
+      scatter.filter(visibleIndices);
+    }
+  }, [visibleIndices, hiddenSources]);
+
   const hovered = hoverIdx !== null && points ? points[hoverIdx] : null;
+  // If the hovered point's source has just been filtered out, suppress
+  // the tooltip so we don't show metadata for an invisible point.
+  const hoveredSourceVisible =
+    hovered && !hiddenSources.has(hovered.source ?? "unknown");
 
   return (
     <>
@@ -361,28 +440,72 @@ export default function AtlasPage() {
             </div>
           )}
 
-          {/* Legend */}
+          {/* Legend — clickable to toggle source visibility */}
           {legend.length > 0 && (
-            <div className="absolute top-3 right-3 card bg-base-200/80 backdrop-blur border border-base-300/60 p-2 text-xs">
-              <div className="text-base-content/60 mb-1 font-semibold">
-                Source
+            <div className="absolute top-3 right-3 card bg-base-200/80 backdrop-blur border border-base-300/60 p-2 text-xs select-none">
+              <div className="flex items-center justify-between gap-3 mb-1">
+                <span className="text-base-content/60 font-semibold">
+                  Source
+                </span>
+                <span className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={showAllSources}
+                    title="Show all sources"
+                    className="text-[10px] uppercase tracking-wide text-base-content/50 hover:text-base-content"
+                  >
+                    all
+                  </button>
+                  <span className="text-base-content/30">·</span>
+                  <button
+                    type="button"
+                    onClick={hideAllSources}
+                    title="Hide all sources"
+                    className="text-[10px] uppercase tracking-wide text-base-content/50 hover:text-base-content"
+                  >
+                    none
+                  </button>
+                </span>
               </div>
               <ul className="space-y-0.5">
-                {legend.map((l) => (
-                  <li key={l.source} className="flex items-center gap-2">
-                    <span
-                      className="inline-block h-2 w-2 rounded-full"
-                      style={{ backgroundColor: l.color }}
-                    />
-                    <span className="text-base-content/80">{l.source}</span>
-                  </li>
-                ))}
+                {legend.map((l) => {
+                  const hidden = hiddenSources.has(l.source);
+                  return (
+                    <li key={l.source}>
+                      <button
+                        type="button"
+                        onClick={() => toggleSource(l.source)}
+                        title={
+                          hidden
+                            ? `Show ${l.source}`
+                            : `Hide ${l.source}`
+                        }
+                        className={`w-full flex items-center gap-2 rounded px-1 -mx-1 text-left transition-colors hover:bg-base-300/40 ${
+                          hidden ? "opacity-40 line-through" : ""
+                        }`}
+                      >
+                        <span
+                          className="inline-block h-2 w-2 rounded-full"
+                          style={{
+                            backgroundColor: hidden ? "transparent" : l.color,
+                            boxShadow: hidden
+                              ? `inset 0 0 0 1px ${l.color}`
+                              : undefined,
+                          }}
+                        />
+                        <span className="text-base-content/80">
+                          {l.source}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}
 
           {/* Hover tooltip — anchored to mouse, follows the cursor */}
-          {hovered && mousePos && (
+          {hovered && hoveredSourceVisible && mousePos && (
             <div
               className="pointer-events-none absolute z-30 max-w-sm card bg-base-200/95 backdrop-blur border border-base-300/60 p-2 text-xs shadow-lg"
               style={{
