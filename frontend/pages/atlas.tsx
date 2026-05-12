@@ -50,6 +50,19 @@ type ScatterplotApi = {
     opts?: { preventEvent?: boolean },
   ) => Promise<void> | void;
   unfilter: (opts?: { preventEvent?: boolean }) => Promise<void> | void;
+  // select() restricts the "active" highlight to those indices — they
+  // get drawn in pointColorActive. preventEvent stops it from firing
+  // the 'select' event back at our own subscriber.
+  select: (
+    pointIdxs: number[],
+    opts?: { merge?: boolean; remove?: boolean; preventEvent?: boolean },
+  ) => Promise<void> | void;
+  deselect: (opts?: { preventEvent?: boolean }) => Promise<void> | void;
+  // World-space → screen-space for one point. Returns null when the
+  // index is out of range or the scatter hasn't drawn yet.
+  getScreenPosition: (
+    pointIdx: number,
+  ) => [number, number] | undefined | null;
 };
 
 // ---------------------------------------------------------------------------
@@ -68,6 +81,15 @@ type AtlasResponse = {
   projection: string;
   count: number;
   points: AtlasPoint[];
+};
+
+// A single dropdown entry returned by /api/search.
+type SearchResult = {
+  paper_id: string;
+  title: string;
+  source?: string | null;
+  paper_date?: string | null;
+  authors?: string[];
 };
 
 // Rich paper metadata fetched lazily on hover. Mirrors what
@@ -198,6 +220,27 @@ export default function AtlasPage() {
   const [pinnedPaperId, setPinnedPaperId] = useState<string | null>(null);
   const sidebarPaperId = pinnedPaperId ?? hoverPaperId;
 
+  // Search bar state.
+  // - `searchInput` mirrors the input field.
+  // - `searchResults` is the dropdown list, fetched (debounced) from
+  //   /api/search. Each entry is filtered down to papers that actually
+  //   appear in the current atlas — we can't highlight a point that
+  //   isn't on the map.
+  // - `selectedIds` is the multi-select set of papers the user has
+  //   ticked; those points get the white-halo "active" treatment via
+  //   regl-scatterplot's select() API.
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
+  const [searchResults, setSearchResults] = useState<SearchResult[] | null>(
+    null,
+  );
+  const [searchLoading, setSearchLoading] = useState<boolean>(false);
+  const [searchError, setSearchError] = useState<string | null>(null);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(
+    () => new Set(),
+  );
+  const searchSeqRef = useRef(0); // protects against out-of-order responses
+
   // In-flight dedup: a single paper_id won't kick off two fetches if
   // the hover event fires twice in quick succession.
   const inflightDetailRef = useRef<Map<string, Promise<PaperDetail | null>>>(
@@ -274,6 +317,159 @@ export default function AtlasPage() {
       cancelled = true;
     };
   }, [projection]);
+
+  // Map paper_id → atlas index, so checking a result can call
+  // scatter.select([idx]) without scanning the full points array.
+  const indexByPaperId = useMemo(() => {
+    const m = new Map<string, number>();
+    if (points) {
+      for (let i = 0; i < points.length; i++) m.set(points[i].paper_id, i);
+    }
+    return m;
+  }, [points]);
+
+  // Debounced semantic search. We send the query to /api/search and
+  // filter results down to papers that actually appear in the atlas;
+  // any others are unhighlightable on this map. The seq counter
+  // guards against a slow earlier request landing after a faster
+  // later one — a real risk when the user is still typing.
+  useEffect(() => {
+    const q = searchInput.trim();
+    if (!q) {
+      setSearchResults(null);
+      setSearchLoading(false);
+      setSearchError(null);
+      return;
+    }
+    const seq = ++searchSeqRef.current;
+    setSearchLoading(true);
+    const handle = setTimeout(() => {
+      (async () => {
+        try {
+          // Pass every source flag = true so the embedding search isn't
+          // accidentally filtered by the legend toggles. We still keep
+          // the legend filter — it controls visibility on the canvas,
+          // not which papers are reachable via search.
+          const params = new URLSearchParams({
+            text: q,
+            time_window_days: "99999",
+            arxiv: "true",
+            ICML: "true",
+            NeurIPS: "true",
+            ICLR: "true",
+            OSDI: "true",
+            SOSP: "true",
+            ASPLOS: "true",
+            ATC: "true",
+            NSDI: "true",
+            MLSys: "true",
+            EuroSys: "true",
+            VLDB: "true",
+            POPL: "true",
+            PLDI: "true",
+            ICFP: "true",
+            OOPSLA: "true",
+            ESOP: "true",
+            ECOOP: "true",
+            Haskell: "true",
+            CC: "true",
+          });
+          const resp = await fetch(`/api/search?${params.toString()}`);
+          if (!resp.ok) throw new Error(`search failed (${resp.status})`);
+          const body = (await resp.json()) as { results: SearchResult[] };
+          if (seq !== searchSeqRef.current) return; // a newer query won
+          // Keep only papers that have a coordinate in the current
+          // projection — others can't be highlighted on the map.
+          const mapped = body.results.filter((r) =>
+            indexByPaperId.has(r.paper_id),
+          );
+          setSearchResults(mapped);
+          setSearchError(null);
+        } catch (err) {
+          if (seq !== searchSeqRef.current) return;
+          setSearchError(String(err));
+          setSearchResults([]);
+        } finally {
+          if (seq === searchSeqRef.current) setSearchLoading(false);
+        }
+      })();
+    }, 280); // small debounce so a fast typist doesn't flood the API
+    return () => clearTimeout(handle);
+  }, [searchInput, indexByPaperId]);
+
+  const toggleSelected = useCallback((paperId: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(paperId)) next.delete(paperId);
+      else next.add(paperId);
+      return next;
+    });
+  }, []);
+  const clearSelected = useCallback(() => setSelectedIds(new Set()), []);
+
+  // Atlas indices of the currently-selected paper ids. Recomputed
+  // when either the selection set or the points layout changes (a
+  // projection swap remaps every id → idx).
+  const selectedIndices = useMemo(() => {
+    const out: number[] = [];
+    for (const pid of selectedIds) {
+      const idx = indexByPaperId.get(pid);
+      if (idx !== undefined) out.push(idx);
+    }
+    return out;
+  }, [selectedIds, indexByPaperId]);
+  // Mirror in a ref so the scatter init's onSelect callback (registered
+  // once, captures via closure) can read the current selection without
+  // re-subscribing.
+  const selectedIndicesRef = useRef<number[]>(selectedIndices);
+  selectedIndicesRef.current = selectedIndices;
+
+  // Screen-space positions of selected points, used to render DOM
+  // overlay markers on top of the canvas. We can't rely on
+  // pointColorActive alone — regl-scatterplot ignores it when colorBy
+  // is set (esm.js ~6596), so search highlights would otherwise just
+  // be slightly bigger same-coloured dots. The overlay gives us a
+  // distinctive yellow ring + drop-shadow regardless of source colour.
+  const [overlayPositions, setOverlayPositions] = useState<
+    Array<{ idx: number; paperId: string; x: number; y: number }>
+  >([]);
+  // Bump counter to force a recompute even when selection didn't change
+  // (e.g. on pan/zoom or resize the screen positions move).
+  const [overlayTick, setOverlayTick] = useState(0);
+  useEffect(() => {
+    const scatter = scatterRef.current;
+    const list = pointsRef.current;
+    if (!scatter || !list || selectedIndices.length === 0) {
+      setOverlayPositions([]);
+      return;
+    }
+    const ratio = window.devicePixelRatio || 1;
+    const next: Array<{
+      idx: number;
+      paperId: string;
+      x: number;
+      y: number;
+    }> = [];
+    for (const idx of selectedIndices) {
+      let pos: [number, number] | undefined | null;
+      try {
+        pos = scatter.getScreenPosition(idx);
+      } catch {
+        pos = null;
+      }
+      if (!pos) continue;
+      // getScreenPosition returns canvas-buffer pixels (multiplied by
+      // DPR). Divide back to CSS pixels so absolute-positioned divs
+      // line up with what the user sees.
+      next.push({
+        idx,
+        paperId: list[idx].paper_id,
+        x: pos[0] / ratio,
+        y: pos[1] / ratio,
+      });
+    }
+    setOverlayPositions(next);
+  }, [selectedIndices, overlayTick]);
 
   const { byIndex: categoryByIndex, legend } = useMemo(
     () => (points ? buildSourceColorIndex(points) : { byIndex: [], legend: [] }),
@@ -359,9 +555,17 @@ export default function AtlasPage() {
         // 'valueA' is the encoding name for the 3rd column.
         colorBy: "valueA",
         pointColor: colors.length > 0 ? colors : [FALLBACK_COLOR],
-        pointColorActive: "#ffffff",
+        // Selected/hover colours. NB: regl-scatterplot's getColors path
+        // (esm.js ~6596) ignores pointColorActive when colorBy is set,
+        // so we additionally render explicit DOM markers on top of the
+        // canvas to make search-selected papers obviously stand out.
+        // pointSizeSelected still gives a visible body bump, which acts
+        // as a fallback even if our DOM overlay is mis-positioned.
+        pointColorActive: "#ffd84a",
         pointColorHover: "#ffffff",
         pointSize: 3,
+        pointSizeSelected: 14,
+        pointOutlineWidth: 3,
         opacity: 0.7,
         backgroundColor: [0, 0, 0, 1],
       });
@@ -406,10 +610,26 @@ export default function AtlasPage() {
         // fallthrough (pinned ?? hover).
         setPinnedPaperId(paperId);
         void fetchPaperDetail(paperId);
+        // regl-scatterplot also writes its internal selectedPoints
+        // when the user clicks. We don't want a stray white halo on
+        // the pinned point — the sidebar already communicates the
+        // pin — so immediately re-assert the canonical search-driven
+        // selection. The dedicated selection effect would do this
+        // eventually on the next render, but doing it here avoids a
+        // single-frame flash.
+        const want = selectedIndicesRef.current;
+        if (want.length === 0) scatter?.unfilter && scatter?.deselect?.();
+        else scatter?.select(want, { preventEvent: true });
       };
+      // The 'view' event fires on every pan/zoom — bump a tick so the
+      // DOM overlay markers reposition. Throttling here would be nice
+      // but regl already throttles to one event per draw, so the
+      // re-render cadence is sane.
+      const onView = () => setOverlayTick((t) => t + 1);
       scatter.subscribe("pointOver", onOver);
       scatter.subscribe("pointOut", onOut);
       scatter.subscribe("select", onSelect);
+      scatter.subscribe("view", onView);
     })().catch((err) => {
       console.error("[atlas] failed to init scatterplot", err);
       setError(String(err));
@@ -430,6 +650,7 @@ export default function AtlasPage() {
       canvasRef.current.width = Math.max(1, Math.floor(w * ratio));
       canvasRef.current.height = Math.max(1, Math.floor(h * ratio));
       scatter.set({ width: w, height: h });
+      setOverlayTick((t) => t + 1);
     });
     ro.observe(containerRef.current!);
 
@@ -459,6 +680,19 @@ export default function AtlasPage() {
       scatter.filter(visibleIndices);
     }
   }, [visibleIndices, hiddenSources]);
+
+  // Apply the search multi-select to the live scatterplot. preventEvent
+  // stops regl from firing back at our onSelect handler (which would
+  // try to pin the selected points to the sidebar in a loop).
+  useEffect(() => {
+    const scatter = scatterRef.current;
+    if (!scatter) return;
+    if (selectedIndices.length === 0) {
+      scatter.deselect({ preventEvent: true });
+    } else {
+      scatter.select(selectedIndices, { preventEvent: true });
+    }
+  }, [selectedIndices]);
 
   const hovered = hoverIdx !== null && points ? points[hoverIdx] : null;
   // If the hovered point's source has just been filtered out, suppress
@@ -522,6 +756,139 @@ export default function AtlasPage() {
               </div>
             </div>
           )}
+
+          {/* Search bar (top-left). Typed query fires a debounced
+              semantic search against /api/search; results that exist
+              in the current atlas projection appear in the dropdown
+              with checkboxes. Checked papers stay highlighted on the
+              scatter via regl-scatterplot's select() API even after
+              the dropdown closes, so the user can compare the spatial
+              positions of multiple chosen papers at once. */}
+          <div className="absolute top-3 left-3 w-80 z-20 select-none">
+            <div className="card bg-base-200/85 backdrop-blur border border-base-300/60 p-2">
+              <div className="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="h-4 w-4 text-base-content/40 shrink-0"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  value={searchInput}
+                  onChange={(e) => {
+                    setSearchInput(e.target.value);
+                    setSearchOpen(true);
+                  }}
+                  onFocus={() => setSearchOpen(true)}
+                  placeholder="Search papers… (e.g. type theory)"
+                  className="flex-1 bg-transparent text-sm placeholder:text-base-content/30 focus:outline-none"
+                />
+                {searchInput && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchInput("");
+                      setSearchResults(null);
+                      setSearchOpen(false);
+                    }}
+                    title="Clear input"
+                    className="text-base-content/40 hover:text-base-content"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="h-3.5 w-3.5"
+                    >
+                      <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              {selectedIds.size > 0 && (
+                <div className="mt-1 flex items-center justify-between text-[11px] text-base-content/60">
+                  <span>
+                    <span className="text-accent font-semibold">
+                      {selectedIds.size}
+                    </span>{" "}
+                    selected
+                  </span>
+                  <button
+                    type="button"
+                    onClick={clearSelected}
+                    className="text-base-content/50 hover:text-base-content underline"
+                  >
+                    clear
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Dropdown — only when the input is focused / non-empty. */}
+            {searchOpen && searchInput.trim() && (
+              <div className="mt-1 card bg-base-200/95 backdrop-blur border border-base-300/60 max-h-[60vh] overflow-y-auto">
+                {searchLoading && (
+                  <div className="px-3 py-2 text-xs text-base-content/50">
+                    Searching…
+                  </div>
+                )}
+                {!searchLoading && searchError && (
+                  <div className="px-3 py-2 text-xs text-error">
+                    {searchError}
+                  </div>
+                )}
+                {!searchLoading &&
+                  !searchError &&
+                  searchResults &&
+                  searchResults.length === 0 && (
+                    <div className="px-3 py-2 text-xs text-base-content/50">
+                      No results on this map.
+                    </div>
+                  )}
+                {!searchLoading &&
+                  searchResults &&
+                  searchResults.length > 0 && (
+                    <ul className="divide-y divide-base-300/40">
+                      {searchResults.map((r) => {
+                        const checked = selectedIds.has(r.paper_id);
+                        return (
+                          <li key={r.paper_id}>
+                            <label className="flex items-start gap-2 px-3 py-2 cursor-pointer hover:bg-base-300/30">
+                              <input
+                                type="checkbox"
+                                checked={checked}
+                                onChange={() => toggleSelected(r.paper_id)}
+                                className="mt-0.5 accent-accent"
+                              />
+                              <span className="flex-1 min-w-0">
+                                <span className="block text-xs text-base-content/90 leading-snug line-clamp-2">
+                                  {unicodifySafe(r.title)}
+                                </span>
+                                <span className="block mt-0.5 text-[10px] text-base-content/40 font-mono truncate">
+                                  {r.source || "?"}
+                                  {r.paper_date
+                                    ? ` · ${formatDateShort(r.paper_date)}`
+                                    : ""}
+                                  {" · "}
+                                  {r.paper_id}
+                                </span>
+                              </span>
+                            </label>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+              </div>
+            )}
+          </div>
 
           {/* Legend — clickable to toggle source visibility */}
           {legend.length > 0 && (
@@ -602,6 +969,32 @@ export default function AtlasPage() {
               </div>
             </div>
           )}
+
+          {/* Search-selected markers: yellow ring overlays sitting on
+              top of the canvas so chosen papers stand out even against
+              dense same-coloured neighbours. Pointer-events disabled
+              so they don't intercept the scatter's pan/zoom/click. */}
+          {overlayPositions.map((p) => (
+            <div
+              key={p.paperId}
+              className="pointer-events-none absolute z-20"
+              style={{
+                left: p.x,
+                top: p.y,
+                width: 20,
+                height: 20,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <div
+                className="h-full w-full rounded-full border-2"
+                style={{
+                  borderColor: "#ffd84a",
+                  boxShadow: "0 0 8px 2px rgba(255, 216, 74, 0.55)",
+                }}
+              />
+            </div>
+          ))}
 
           {/* Hint */}
           <div className="absolute bottom-3 left-3 text-[10px] text-base-content/40 pointer-events-none">
