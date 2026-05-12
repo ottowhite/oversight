@@ -62,7 +62,7 @@ class ArXivRepository:
         from_date = newest_date - self.overlap_timedelta
         logger.info(f"Syncing from {from_date} to avoid missed papers")
         self._sync_from_date(from_date)
-        self._embed_missing_ai_papers()
+        self._embed_missing_arxiv_papers()
 
     def _sync_from_date(self, from_date: Any) -> None:
         new_papers = self.sickle.get_new_papers(from_date)
@@ -90,8 +90,8 @@ class ArXivRepository:
             f"Updated {updated_rows_total} rows, inserted {new_rows_total} rows, and skipped {skipped_rows_total} rows"
         )
 
-    def _embed_missing_ai_papers(self) -> None:
-        papers_to_embed = self.arxiv_db.get_unembedded_arxiv_ai_papers()
+    def _embed_missing_arxiv_papers(self) -> None:
+        papers_to_embed = self.arxiv_db.get_unembedded_arxiv_papers()
         logger.info(f"Embedding {len(papers_to_embed)} papers")
 
         paper_ids: list[str] = []
