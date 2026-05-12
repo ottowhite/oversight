@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import {
   useCallback,
   useEffect,
@@ -69,6 +68,21 @@ type AtlasResponse = {
   projection: string;
   count: number;
   points: AtlasPoint[];
+};
+
+// Rich paper metadata fetched lazily on hover. Mirrors what
+// /api/papers/<id> returns. We don't include this in /api/atlas
+// because abstracts would balloon the 18k-point payload from 3.5 MB
+// to ~30 MB (and worse on the 940k corpus).
+type PaperDetail = {
+  paper_id: string;
+  title: string;
+  abstract?: string | null;
+  source?: string | null;
+  link?: string | null;
+  authors: string[];
+  institutions?: string[];
+  paper_date?: string | null;
 };
 
 // Default projection: matches the 18k-PL load. Will be flipped to
@@ -146,7 +160,6 @@ function normalizePoints(
 }
 
 export default function AtlasPage() {
-  const router = useRouter();
   const [projection] = useState<string>(DEFAULT_PROJECTION);
   const [points, setPoints] = useState<AtlasPoint[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -167,6 +180,55 @@ export default function AtlasPage() {
   // can look up paper_ids without re-subscribing on every render.
   const pointsRef = useRef<AtlasPoint[] | null>(null);
   pointsRef.current = points;
+
+  // Process-local cache of rich paper metadata. Keys are paper_id.
+  // A hover may flip over many points in quick succession — without
+  // a cache we'd re-fetch the same abstract every time the user wiggles
+  // back to a point they already saw.
+  const [paperCache, setPaperCache] = useState<Record<string, PaperDetail>>(
+    {},
+  );
+  const paperCacheRef = useRef(paperCache);
+  paperCacheRef.current = paperCache;
+  // Sidebar display follows hoverPaperId by default; if the user clicks
+  // a point, that paper is pinned and overrides subsequent hovers until
+  // they either click a different point or hit the X to clear. Mirrors
+  // the graph page's "click to latch" behaviour.
+  const [hoverPaperId, setHoverPaperId] = useState<string | null>(null);
+  const [pinnedPaperId, setPinnedPaperId] = useState<string | null>(null);
+  const sidebarPaperId = pinnedPaperId ?? hoverPaperId;
+
+  // In-flight dedup: a single paper_id won't kick off two fetches if
+  // the hover event fires twice in quick succession.
+  const inflightDetailRef = useRef<Map<string, Promise<PaperDetail | null>>>(
+    new Map(),
+  );
+  const fetchPaperDetail = useCallback(
+    async (paperId: string): Promise<PaperDetail | null> => {
+      const cached = paperCacheRef.current[paperId];
+      if (cached) return cached;
+      const existing = inflightDetailRef.current.get(paperId);
+      if (existing) return existing;
+      const promise = (async () => {
+        try {
+          const resp = await fetch(
+            `/api/papers/${encodeURI(paperId)}`,
+          );
+          if (!resp.ok) return null;
+          const body = (await resp.json()) as PaperDetail;
+          setPaperCache((prev) => ({ ...prev, [paperId]: body }));
+          return body;
+        } catch {
+          return null;
+        } finally {
+          inflightDetailRef.current.delete(paperId);
+        }
+      })();
+      inflightDetailRef.current.set(paperId, promise);
+      return promise;
+    },
+    [],
+  );
 
   const toggleSource = useCallback((source: string) => {
     setHiddenSources((prev) => {
@@ -318,7 +380,16 @@ export default function AtlasPage() {
       }
 
       const onOver = (idx: unknown) => {
-        if (typeof idx === "number") setHoverIdx(idx);
+        if (typeof idx !== "number") return;
+        setHoverIdx(idx);
+        const list = pointsRef.current;
+        if (!list || idx < 0 || idx >= list.length) return;
+        const pid = list[idx].paper_id;
+        // Latch the sidebar onto this paper id immediately so the panel
+        // re-renders with a header (and a "Loading…" body) while the
+        // fetch is in flight. fetchPaperDetail dedups in-flight calls.
+        setHoverPaperId(pid);
+        void fetchPaperDetail(pid);
       };
       const onOut = () => setHoverIdx(null);
       const onSelect = (payload: unknown) => {
@@ -328,10 +399,13 @@ export default function AtlasPage() {
         const list = pointsRef.current;
         if (!list || idx < 0 || idx >= list.length) return;
         const paperId = list[idx].paper_id;
-        // Navigate to the existing /graph page so a click on the
-        // atlas immediately opens the similarity-graph view for
-        // that paper's neighborhood.
-        router.push(`/graph?papers=${encodeURIComponent(paperId)}`);
+        // Pin this paper to the sidebar instead of navigating away —
+        // the user can keep panning the atlas while the chosen paper
+        // stays put for reference. The hover state still updates the
+        // sidebar normally; the pin "wins" via the sidebarPaperId
+        // fallthrough (pinned ?? hover).
+        setPinnedPaperId(paperId);
+        void fetchPaperDetail(paperId);
       };
       scatter.subscribe("pointOver", onOver);
       scatter.subscribe("pointOut", onOut);
@@ -365,7 +439,12 @@ export default function AtlasPage() {
       if (scatter) scatter.destroy();
       scatterRef.current = null;
     };
-  }, [normalized, legend, router]);
+    // hiddenSources intentionally omitted: we only read it once at
+    // init for the initial filter; subsequent toggles are handled by
+    // the dedicated filter effect below, so re-running this whole init
+    // on every toggle would needlessly tear down the GL context.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [normalized, legend, fetchPaperDetail]);
 
   // Apply the legend filter to the live scatterplot. We do this in a
   // separate effect (rather than during init) so toggling sources
@@ -416,6 +495,10 @@ export default function AtlasPage() {
           </div>
         </header>
 
+        {/* Two-column body: scatter canvas | paper details sidebar. The
+            sidebar is fixed-width so the canvas can hand its full
+            measured width to regl-scatterplot without juggling. */}
+        <div className="grid min-h-0 grid-cols-[1fr,360px]">
         <div ref={containerRef} className="relative min-h-0 w-full">
           <canvas ref={canvasRef} className="block h-full w-full" />
 
@@ -522,11 +605,210 @@ export default function AtlasPage() {
 
           {/* Hint */}
           <div className="absolute bottom-3 left-3 text-[10px] text-base-content/40 pointer-events-none">
-            Scroll to zoom · drag to pan · click a point to open the graph
-            view
+            Scroll to zoom · drag to pan · click a point to pin it to the
+            sidebar
           </div>
+        </div>
+
+        {/* Right sidebar — full paper details for the most recently
+            hovered (or sidebar-pinned via search) paper. Mirrors the
+            graph page's HoverPreview so the two pages feel consistent. */}
+        <AtlasSidebar
+          paper={
+            sidebarPaperId
+              ? paperCache[sidebarPaperId] ?? {
+                  paper_id: sidebarPaperId,
+                  title:
+                    pointsRef.current?.find(
+                      (p) => p.paper_id === sidebarPaperId,
+                    )?.title ?? sidebarPaperId,
+                  source:
+                    pointsRef.current?.find(
+                      (p) => p.paper_id === sidebarPaperId,
+                    )?.source ?? null,
+                  authors: [],
+                }
+              : null
+          }
+          pinned={!!pinnedPaperId && sidebarPaperId === pinnedPaperId}
+          loading={!!sidebarPaperId && !paperCache[sidebarPaperId]}
+          onClear={() => {
+            // Clear-button always removes the pin (if any) and the
+            // transient hover latch, so the panel goes back to its
+            // "Hover a point…" empty state.
+            setPinnedPaperId(null);
+            setHoverPaperId(null);
+          }}
+        />
         </div>
       </main>
     </>
   );
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar — pure presentational. Mirrors HoverPreview from graph.tsx so
+// hovering a node on either page produces the same rich paper preview.
+// ---------------------------------------------------------------------------
+
+function AtlasSidebar({
+  paper,
+  pinned,
+  loading,
+  onClear,
+}: {
+  paper: PaperDetail | null;
+  pinned: boolean;
+  loading: boolean;
+  onClear: () => void;
+}) {
+  return (
+    <aside className="border-l border-base-300/60 bg-base-200/40 min-h-0 flex flex-col">
+      <div className="flex items-center justify-between border-b border-base-300/60 px-3 py-2">
+        <span className="text-[11px] uppercase tracking-wider font-medium text-base-content/50 flex items-center gap-2">
+          Paper details
+          {pinned && (
+            <span className="text-primary font-semibold normal-case tracking-normal text-[10px] px-1.5 py-0.5 rounded bg-primary/10">
+              pinned
+            </span>
+          )}
+        </span>
+        {paper && (
+          <button
+            type="button"
+            onClick={onClear}
+            title="Clear preview"
+            className="btn btn-ghost btn-xs btn-square text-base-content/40 hover:text-base-content"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="h-3.5 w-3.5"
+            >
+              <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      <div className="flex-1 min-h-0 overflow-y-auto p-4">
+        {!paper ? (
+          <p className="text-sm text-base-content/40 leading-relaxed">
+            Hover a point on the map to preview its details. Click to pin
+            the paper here so you can keep panning while it stays put.
+          </p>
+        ) : (
+          <>
+            <div className="flex items-center gap-2 mb-2 text-[11px] uppercase tracking-wider font-medium text-base-content/50">
+              {paper.source && (
+                <span className="font-mono">{paper.source}</span>
+              )}
+              {paper.paper_date && (
+                <span className="font-mono">
+                  {formatDateShort(paper.paper_date)}
+                </span>
+              )}
+            </div>
+
+            <h2 className="text-base font-semibold leading-snug text-base-content">
+              {paper.link ? (
+                <a
+                  href={paper.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent hover:underline"
+                >
+                  {unicodifySafe(paper.title)}
+                </a>
+              ) : (
+                unicodifySafe(paper.title)
+              )}
+            </h2>
+
+            {paper.authors && paper.authors.length > 0 && (
+              <p className="mt-2 text-xs text-base-content/60 leading-relaxed">
+                {paper.authors.map(unicodifySafe).join(", ")}
+              </p>
+            )}
+
+            <p className="mt-1 text-[11px] text-base-content/30 font-mono break-all">
+              {paper.paper_id}
+            </p>
+
+            {paper.link && (
+              <a
+                href={paper.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary btn-sm mt-3 w-full"
+              >
+                View paper →
+              </a>
+            )}
+
+            {loading ? (
+              <p className="mt-3 text-sm text-base-content/40 italic">
+                Loading abstract…
+              </p>
+            ) : paper.abstract ? (
+              <p className="mt-3 text-sm text-base-content/80 whitespace-pre-wrap leading-relaxed">
+                {unicodifySafe(paper.abstract)}
+              </p>
+            ) : (
+              <p className="mt-3 text-sm text-base-content/40 italic">
+                No abstract available.
+              </p>
+            )}
+          </>
+        )}
+      </div>
+    </aside>
+  );
+}
+
+// Small local copies of helpers from graph.tsx. We don't import them
+// to avoid coupling the two pages tightly — if the graph version ever
+// changes, the atlas version is free to follow at its own pace.
+
+// "2026-01-16" → "Jan 2026". Falls back to the raw string on bad input.
+function formatDateShort(iso: string): string {
+  const m = /^(\d{4})-(\d{2})-/.exec(iso);
+  if (!m) return iso;
+  const months = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  ];
+  const monthIdx = parseInt(m[2], 10) - 1;
+  return `${months[monthIdx] ?? m[2]} ${m[1]}`;
+}
+
+// Lightweight TeX-accent decoder so titles like "Sch\"on" render as
+// "Schön". Mirrors graph.tsx's unicodify but stripped down — the atlas
+// only renders titles/authors, never math.
+const TEX_ACCENT_ATLAS: Record<string, string> = {
+  "'": "́", // acute
+  "`": "̀", // grave
+  "^": "̂", // circumflex
+  '"': "̈", // diaeresis
+  "~": "̃", // tilde
+  ".": "̇", // dot above
+  "=": "̄", // macron
+  c: "̧", // cedilla
+};
+function unicodifySafe(s: string | null | undefined): string {
+  if (!s) return "";
+  if (s.indexOf("\\") < 0) return s;
+  const re = /\\([c'`^"~.=])(?:\{([A-Za-z])\}|([A-Za-z]))/g;
+  let out = s.replace(
+    re,
+    (_m, accent: string, braced?: string, bare?: string) => {
+      const letter = braced ?? bare;
+      const combiner = TEX_ACCENT_ATLAS[accent];
+      if (!letter || !combiner) return _m;
+      return (letter + combiner).normalize("NFC");
+    },
+  );
+  out = out.replace(/\\([A-Za-z])/g, "$1");
+  return out;
 }
