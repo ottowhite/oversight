@@ -218,18 +218,38 @@ export default function AtlasPage() {
     (async () => {
       const createScatterplot = await loadCreateScatterplot();
       if (cancelled) return;
-      const rect = containerRef.current!.getBoundingClientRect();
+      const container = containerRef.current!;
+      const canvas = canvasRef.current!;
+      // regl-scatterplot's createRegl reads the canvas's intrinsic
+      // size (canvas.width/height — the attribute, not the CSS prop)
+      // when it allocates the WebGL backing buffer. Our canvas is
+      // sized via Tailwind classes ("h-full w-full"), which only sets
+      // CSS dims; the attribute width/height default to 300x150. If we
+      // don't seed those, regl can fail to acquire a GL context (or
+      // allocate a 300x150 buffer that we then stretch). Set them
+      // explicitly to the container's measured size before init.
+      const rect = container.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+
       const colors = legend.map((l) => l.color);
       scatter = createScatterplot({
-        canvas: canvasRef.current,
-        width: rect.width,
-        height: rect.height,
-        // Source category lives in points[i][2]; tell the renderer to
-        // colour by it and provide one colour per category index.
+        canvas,
+        // 'auto' tells the lib to use the canvas's own dimensions
+        // rather than overriding them. Combined with the explicit
+        // canvas.width/height above, this gives a correctly-sized
+        // backing buffer on the first paint.
+        width: "auto",
+        height: "auto",
+        // Source category lives in points[i][2]; without colorBy the
+        // renderer ignores it and paints every point with pointColor[0].
+        // 'valueA' is the encoding name for the 3rd column.
+        colorBy: "valueA",
         pointColor: colors.length > 0 ? colors : [FALLBACK_COLOR],
         pointColorActive: "#ffffff",
         pointColorHover: "#ffffff",
-        pointSize: 2.5,
+        pointSize: 3,
         opacity: 0.7,
         backgroundColor: [0, 0, 0, 1],
       });
@@ -261,14 +281,19 @@ export default function AtlasPage() {
     });
 
     // Resize: when the container changes size, push the new dims into
-    // the scatter. ResizeObserver fires on first hookup as well, so
+    // both the canvas backing buffer and the scatter. Without the
+    // canvas resize, the buffer stays at its init dims and the points
+    // get stretched. ResizeObserver fires on first hookup as well, so
     // this also handles the initial layout cleanly.
     const ro = new ResizeObserver((entries) => {
-      if (!scatter) return;
+      if (!scatter || !canvasRef.current) return;
       const entry = entries[0];
       if (!entry) return;
       const w = entry.contentRect.width;
       const h = entry.contentRect.height;
+      const ratio = window.devicePixelRatio || 1;
+      canvasRef.current.width = Math.max(1, Math.floor(w * ratio));
+      canvasRef.current.height = Math.max(1, Math.floor(h * ratio));
       scatter.set({ width: w, height: h });
     });
     ro.observe(containerRef.current!);
