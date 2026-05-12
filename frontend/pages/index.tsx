@@ -14,8 +14,12 @@ type Paper = {
 
 const API_BASE = ""; // use Next.js rewrite to proxy to backend
 
-const TIME_STEPS = [7, 14, 30, 90, 180, 365, 730, 1095, 1825, 2555, 3650];
-const DEFAULT_TIME_INDEX = 7; // 1095 days = 3 years
+// The last entry (36500 days ≈ 100 years) effectively means "all time" —
+// any sentinel that's larger than the age of the oldest paper in the corpus
+// (POPL 1973) would do.
+const TIME_STEPS = [7, 14, 30, 90, 180, 365, 730, 1095, 1825, 2555, 3650, 36500];
+const ALL_TIME_DAYS = 36500;
+const DEFAULT_TIME_INDEX = TIME_STEPS.length - 1; // "all time"
 
 const LIMIT_STEPS = [10, 15, 20, 25, 30, 40, 50];
 const DEFAULT_LIMIT_INDEX = 0; // 10 results
@@ -102,6 +106,9 @@ export default function HomePage() {
   }, [sidebarOpen]);
 
   const timeLabel = useMemo(() => {
+    if (timeDays >= ALL_TIME_DAYS) {
+      return "All time";
+    }
     if (timeDays >= 365) {
       const years = Math.round(timeDays / 365);
       return `${years} year${years === 1 ? "" : "s"}`;
