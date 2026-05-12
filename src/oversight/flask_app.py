@@ -292,6 +292,97 @@ def _compute_similarity_distribution(sample_size: int) -> dict[str, float]:
     }
 
 
+@app.get("/api/atlas")
+def atlas() -> tuple[dict[str, Any], int]:
+    """Return 2D coordinates for the paper-atlas scatter plot.
+
+    Query params:
+      projection  str (required) — projection name in paper_projection_2d
+      viewport    "xmin,ymin,xmax,ymax" (optional) — restrict to a rectangle
+      limit       int in [1, 200000] (default 50000)
+
+    Returns:
+      {"projection": ..., "count": N, "points": [{paper_id, title, source, x, y}, ...]}
+
+    Points are ordered by paper_id so a future cursor-style pagination
+    layer has a deterministic ordering to slice on.
+    """
+    projection = request.args.get("projection", "").strip()
+    if not projection:
+        return {"error": "projection is required"}, 400
+
+    limit_raw = request.args.get("limit", "50000")
+    try:
+        limit = int(limit_raw)
+    except (TypeError, ValueError):
+        return {"error": "limit must be an integer"}, 400
+    if limit < 1 or limit > 200000:
+        return {"error": "limit must be between 1 and 200000"}, 400
+
+    viewport_raw = request.args.get("viewport")
+    viewport: tuple[float, float, float, float] | None = None
+    if viewport_raw:
+        parts = viewport_raw.split(",")
+        if len(parts) != 4:
+            return {"error": "viewport must be xmin,ymin,xmax,ymax"}, 400
+        try:
+            xmin, ymin, xmax, ymax = (float(p) for p in parts)
+        except ValueError:
+            return {"error": "viewport values must be floats"}, 400
+        viewport = (xmin, ymin, xmax, ymax)
+
+    # Reuse the neighbors connection: this endpoint is read-only and the
+    # ~25ms connect + register_vector cost dominates at small payloads.
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        with con.cursor() as cur:
+            if viewport is not None:
+                rows = cur.execute(
+                    """
+                    SELECT pp.paper_id, p.title, p.source, pp.x, pp.y
+                    FROM paper_projection_2d AS pp
+                    JOIN paper AS p ON p.paper_id = pp.paper_id
+                    WHERE pp.projection = %s
+                      AND pp.x BETWEEN %s AND %s
+                      AND pp.y BETWEEN %s AND %s
+                    ORDER BY pp.paper_id
+                    LIMIT %s
+                    """,
+                    [
+                        projection,
+                        viewport[0],
+                        viewport[2],
+                        viewport[1],
+                        viewport[3],
+                        limit,
+                    ],
+                ).fetchall()
+            else:
+                rows = cur.execute(
+                    """
+                    SELECT pp.paper_id, p.title, p.source, pp.x, pp.y
+                    FROM paper_projection_2d AS pp
+                    JOIN paper AS p ON p.paper_id = pp.paper_id
+                    WHERE pp.projection = %s
+                    ORDER BY pp.paper_id
+                    LIMIT %s
+                    """,
+                    [projection, limit],
+                ).fetchall()
+
+    points = [
+        {
+            "paper_id": pid,
+            "title": title,
+            "source": source,
+            "x": float(x),
+            "y": float(y),
+        }
+        for (pid, title, source, x, y) in rows
+    ]
+    return {"projection": projection, "count": len(points), "points": points}, 200
+
+
 @app.get("/api/embeddings/similarity_distribution")
 def embeddings_similarity_distribution() -> tuple[dict[str, Any], int]:
     """Return cosine-similarity percentiles for random pairs of embedded papers.
