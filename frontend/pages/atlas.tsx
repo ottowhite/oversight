@@ -1062,6 +1062,75 @@ export default function AtlasPage() {
     return out;
   }, [clusterLabels, overlayTick, worldToNdc]);
 
+  // Hover a label -> highlight that cluster's papers on the scatter
+  // using regl-scatterplot's selection API. We resolve member paper_ids
+  // through a tiny per-cluster endpoint, dedup in-flight requests so a
+  // hover-as-you-pan interaction doesn't flood the API, and clear the
+  // highlight (restoring the search-selection) on mouse-out.
+  const clusterMembersCache = useRef<Map<number, string[]>>(new Map());
+  const clusterMembersInflight = useRef<Map<number, Promise<string[]>>>(
+    new Map(),
+  );
+  const hoveredClusterRef = useRef<number | null>(null);
+
+  const fetchClusterMembers = useCallback(
+    async (cid: number): Promise<string[]> => {
+      const cached = clusterMembersCache.current.get(cid);
+      if (cached) return cached;
+      const existing = clusterMembersInflight.current.get(cid);
+      if (existing) return existing;
+      const promise = (async () => {
+        try {
+          const resp = await fetch(
+            `/api/atlas/clusters/${cid}/members?projection=${encodeURIComponent(projection)}`,
+          );
+          if (!resp.ok) return [];
+          const body = (await resp.json()) as { paper_ids: string[] };
+          clusterMembersCache.current.set(cid, body.paper_ids);
+          return body.paper_ids;
+        } finally {
+          clusterMembersInflight.current.delete(cid);
+        }
+      })();
+      clusterMembersInflight.current.set(cid, promise);
+      return promise;
+    },
+    [projection],
+  );
+
+  const handleLabelHoverEnter = useCallback(
+    async (cid: number) => {
+      hoveredClusterRef.current = cid;
+      const memberIds = await fetchClusterMembers(cid);
+      // Bail if the user has already moved on to another label before
+      // our fetch landed — selection-thrash is annoying to look at.
+      if (hoveredClusterRef.current !== cid) return;
+      const scatter = scatterRef.current;
+      if (!scatter) return;
+      const idxs: number[] = [];
+      for (const pid of memberIds) {
+        const idx = indexByPaperId.get(pid);
+        if (idx !== undefined) idxs.push(idx);
+      }
+      if (idxs.length > 0) {
+        scatter.select(idxs, { preventEvent: true });
+      }
+    },
+    [fetchClusterMembers, indexByPaperId],
+  );
+
+  const handleLabelHoverLeave = useCallback(() => {
+    hoveredClusterRef.current = null;
+    const scatter = scatterRef.current;
+    if (!scatter) return;
+    // Restore the search-selection. If there's no search-selection,
+    // deselect entirely. We preventEvent so our own onSelect handler
+    // doesn't fire and pin a paper from a cluster's member list.
+    const want = selectedIndicesRef.current;
+    if (want.length === 0) scatter.deselect({ preventEvent: true });
+    else scatter.select(want, { preventEvent: true });
+  }, []);
+
   // Click a label -> zoom the scatter camera to fill the viewport with
   // its bbox. After the zoom completes, the 'view' event fires
   // overlayTick, which triggers a re-fetch at the new (deeper) lambda.
@@ -1435,6 +1504,8 @@ export default function AtlasPage() {
                 key={l.cluster_id}
                 type="button"
                 onClick={() => handleLabelClick(l.bbox)}
+                onMouseEnter={() => handleLabelHoverEnter(l.cluster_id)}
+                onMouseLeave={handleLabelHoverLeave}
                 title={`${l.paper_count.toLocaleString()} papers`}
                 className="absolute z-10 select-none whitespace-nowrap font-medium text-white/90 hover:text-white hover:underline focus:outline-none transition-colors"
                 style={{

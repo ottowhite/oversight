@@ -562,6 +562,32 @@ def atlas_labels() -> tuple[dict[str, Any], int]:
     return {"labels": labels_out, "pending": pending}, 200
 
 
+@app.get("/api/atlas/clusters/<int:cluster_id>/members")
+def atlas_cluster_members(cluster_id: int) -> tuple[dict[str, Any], int]:
+    """Return all paper_ids in a given atlas cluster.
+
+    Used by the /atlas page to highlight a cluster's points when the
+    user hovers a label. The response is intentionally tiny
+    (paper_ids only, no titles/abstracts) so a hover-as-you-pan
+    interaction is sub-100ms even for large clusters.
+    """
+    projection = request.args.get("projection", "").strip()
+    if not projection:
+        return {"error": "projection is required"}, 400
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        with con.cursor() as cur:
+            cur.execute(
+                """
+                SELECT paper_id FROM atlas_cluster_member
+                WHERE projection = %s AND cluster_id = %s
+                """,
+                [projection, cluster_id],
+            )
+            paper_ids = [row[0] for row in cur.fetchall()]
+    return {"cluster_id": cluster_id, "paper_ids": paper_ids}, 200
+
+
 @app.get("/api/embeddings/similarity_distribution")
 def embeddings_similarity_distribution() -> tuple[dict[str, Any], int]:
     """Return cosine-similarity percentiles for random pairs of embedded papers.
