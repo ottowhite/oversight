@@ -220,6 +220,12 @@ export default function AtlasPage() {
   // finished" error, so we await any in-flight draw before issuing a
   // new one.
   const drawInflightRef = useRef<Promise<unknown> | null>(null);
+  // Mirrors of state that the post-draw re-filter step reads — we use
+  // refs because the redraw effect runs inside an async closure that
+  // captures the props at scheduling time, but we want the *latest*
+  // filter state at apply time.
+  const visibleIndicesRef = useRef<number[]>([]);
+  const hiddenSourcesRef = useRef<Set<string>>(new Set());
   // Keep the points list in a ref so event callbacks (registered once)
   // can look up paper_ids without re-subscribing on every render.
   const pointsRef = useRef<AtlasPoint[] | null>(null);
@@ -536,6 +542,8 @@ export default function AtlasPage() {
     }
     return merged;
   }, [points, hiddenSources, sourceIndices]);
+  visibleIndicesRef.current = visibleIndices;
+  hiddenSourcesRef.current = hiddenSources;
 
   // Track mouse position so the hover tooltip can follow the cursor.
   // Using a single listener on the container is cheap and avoids
@@ -602,26 +610,35 @@ export default function AtlasPage() {
         // Source category lives in points[i][2]; without colorBy the
         // renderer ignores it and paints every point with pointColor[0].
         // 'valueA' is the encoding name for the 3rd column.
+        // The 3rd column (valueA) drives colour, size, and opacity so
+        // selected papers (encoded as highlightCategory) jump out from
+        // the surrounding cloud in all three channels at once. Each
+        // *By: 'valueA' is required to actually wire the per-category
+        // array into the GPU encoding (esm.js DEFAULT_*_BY = null).
         colorBy: "valueA",
+        sizeBy: "valueA",
+        opacityBy: "valueA",
         pointColor: pointColors,
         pointColorActive: "#ffffff",
         pointColorHover: "#ffffff",
-        // pointSize accepts an array indexed by the same value used by
-        // colorBy. We give every source the base size and the special
-        // highlight category a much bigger size so search-selected
-        // papers pop out from the surrounding cloud.
+        // Per-category size and opacity arrays. Highlight category
+        // gets ~10x the cloud point size and full opacity (1.0 vs
+        // 0.55) so it reads as obvious bright yellow against the
+        // surrounding cloud — no shape change needed.
         pointSize: [
           ...sourceColors.map(() => 3),
-          12, // size for the highlight category
+          30, // highlight slot — ~10x the cloud size, very obvious
+        ],
+        opacity: [
+          ...sourceColors.map(() => 0.55),
+          1.0, // highlight slot — fully opaque
         ],
         // asinh keeps point size manageable at the full-corpus zoom
         // levels — without it, zooming out at 524k smears the cloud
-        // into a solid blob. opacity is dialed down so dense clusters
-        // don't saturate to fully-opaque mid-canvas.
+        // into a solid blob.
         pointScaleMode: "asinh",
         pointSizeSelected: 14,
         pointOutlineWidth: 3,
-        opacity: 0.55,
         backgroundColor: [0, 0, 0, 1],
       });
       scatterRef.current = scatter;
@@ -768,6 +785,17 @@ export default function AtlasPage() {
         await p;
       } finally {
         if (drawInflightRef.current === p) drawInflightRef.current = null;
+      }
+      if (cancelled) return;
+      // scatter.draw() resets any prior filter() — the lib treats a
+      // fresh point buffer as a fresh visibility set. Re-apply the
+      // current legend filter so toggling search-select doesn't bring
+      // hidden sources back. visibleIndicesRef is kept in sync below.
+      const want = visibleIndicesRef.current;
+      if (hiddenSourcesRef.current.size === 0) {
+        scatter.unfilter();
+      } else {
+        scatter.filter(want);
       }
     })();
     return () => {
