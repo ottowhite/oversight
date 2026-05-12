@@ -88,46 +88,34 @@ Modeled on `OpenReviewHarvester.py`. Responsibilities:
 - For each entry: fetch OpenAlex by DOI, fall back to Semantic Scholar, fall back to ACM scrape, fall back to skip-with-log.
 - Emit one JSON file per (venue, year) at `data/pl_conferences/<venue>/<year>.json`.
 
-### 2. Source registry + unified sync
+### 2. Sync integration
 
-The current sync surface has grown organically:
-`make oversight/sync` runs only arxiv, and conference ingestion is manual.
-Replace this with a registry of source-pollers and a single `oversight sync`
-command. (The user pushed back on per-source commands — this addresses it.)
+Add a `make oversight/sync/pl` target that runs the harvester (with
+`--skip-existing-doi` for cheap incremental behaviour — the DBLP TOC
+is still walked but OpenAlex / Semantic Scholar lookups are short-
+circuited for DOIs already in the DB) and then consumes the resulting
+JSON into the database. Make `make oversight/sync` depend on both
+`oversight/sync/arxiv` and `oversight/sync/pl`, so the daily cron
+picks up both.
 
-```python
-# Sketch
-SOURCES = {
-    "arxiv":   ArxivPoller(),       # daily incremental, OAI-PMH cs:cs
-    "ml":      MLConfPoller(),      # OpenReview venues (NeurIPS/ICLR/ICML/MLSys)
-    "systems": SystemsConfPoller(), # OSDI/SOSP/ASPLOS/EuroSys/ATC/NSDI/VLDB
-    "pl":      PLConfPoller(),      # POPL/PLDI/ICFP/OOPSLA/ESOP/ECOOP/CC/Haskell
-}
+```make
+oversight/sync: oversight/sync/arxiv oversight/sync/pl
+
+oversight/sync/arxiv:
+	uv run python -m oversight.ArXivRepository --sync
+
+oversight/sync/pl:
+	uv run python -m oversight.PLConferenceHarvester --skip-existing-doi
+	uv run oversight consume data/pl_conferences/ --format scraped
 ```
 
-CLI surface:
-
-| Command | Effect |
-|---|---|
-| `oversight sync` | All sources, incremental (only fetch what's newer than newest DB row per source). |
-| `oversight sync --sources pl,ml` | Restrict to a subset. |
-| `oversight sync --sources pl --backfill` | Ignore newest-date watermark; re-fetch entire venue history. One-shot bootstrap. |
-| `oversight sync --dry-run` | Print what would be fetched/inserted. |
-
-Each poller implements:
-
-```python
-class SourcePoller(Protocol):
-    name: str
-    def latest_in_db(self, db: PaperDatabase) -> date: ...
-    def fetch_since(self, since: date) -> Iterator[Paper]: ...
-    def fetch_all(self) -> Iterator[Paper]: ...   # for --backfill
-```
-
-This integrates PL ingestion into the same daily cron as arxiv. The
-incremental case for PL is "did a new POPL/PLDI/ICFP/OOPSLA volume drop
-since the last run?" — typically `false`, so the marginal cost of
-including it in the daily sync is one DBLP HEAD request per venue.
+No new abstractions. PL ingestion runs alongside arxiv via Make's
+dependency mechanism. Earlier versions of this plan proposed a
+`SourcePoller` protocol with one wrapper class per source; that was
+landed and then reverted as over-engineered for the actual achieved
+scope (only arxiv + PL would have ever used it). ML conferences and
+systems conferences continue to use their existing ad-hoc workflows
+until they have a real reason to migrate.
 
 ### 3. Embedding pass
 
@@ -151,16 +139,18 @@ sensible results.
 ### Phase 2 — back-catalogue (one-shot)
 
 - [ ] Expand to all Tier 1 + Tier 2 venues, all years DBLP has.
-- [ ] Run `oversight sync --sources pl --backfill`.
-- [ ] Embed everything (~10–15k new papers; budget for embedding API cost).
+- [ ] Run the harvester across all venues; let it write JSON files
+      under `data/pl_conferences/<venue>/<year>.json`.
+- [ ] `oversight consume data/pl_conferences/ --format scraped` to
+      load them and trigger embedding (~10–15k new papers; cost low).
 - [ ] Spot-check Hutchins POPL 2010 lands in the DB.
 
-### Phase 3 — sync refactor
+### Phase 3 — sync integration
 
-- [ ] Introduce `SourcePoller` protocol.
-- [ ] Migrate arxiv, ML conferences, systems conferences, PL conferences into pollers.
-- [ ] Single `oversight sync` command replaces `oversight/sync` makefile target.
-- [ ] Cron runs `oversight sync` daily.
+- [ ] Add `oversight/sync/pl` Make target running the harvester +
+      consume, with `--skip-existing-doi` for incremental behaviour.
+- [ ] Wire `oversight/sync` to depend on both arxiv and PL sync targets.
+- [ ] Daily cron picks up new PL volumes when DBLP indexes them.
 
 ## Scope estimate
 
