@@ -241,6 +241,14 @@ export default function HomePage() {
             </svg>
           </button>
           <h1 className="text-lg font-semibold">Oversight</h1>
+          <Link href="/atlas">
+            <a
+              className="ml-3 text-sm text-base-content/60 transition-colors hover:text-base-content"
+              title="2D paper-cloud map"
+            >
+              Map view
+            </a>
+          </Link>
           <a
             href="https://github.com/ottowhite/oversight"
             target="_blank"
