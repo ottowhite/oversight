@@ -321,25 +321,28 @@ def atlas() -> tuple[dict[str, Any], int]:
     Query params:
       projection  str (required) — projection name in paper_projection_2d
       viewport    "xmin,ymin,xmax,ymax" (optional) — restrict to a rectangle
-      limit       int in [1, 200000] (default 50000)
+      limit       int in [1, 1_000_000] (default 1_000_000)
 
     Returns:
       {"projection": ..., "count": N, "points": [{paper_id, title, source, x, y}, ...]}
 
     Points are ordered by paper_id so a future cursor-style pagination
     layer has a deterministic ordering to slice on.
+
+    The 1M cap leaves headroom over today's largest projection
+    (pacmap_v1 at 524k) without exposing an unbounded SELECT.
     """
     projection = request.args.get("projection", "").strip()
     if not projection:
         return {"error": "projection is required"}, 400
 
-    limit_raw = request.args.get("limit", "50000")
+    limit_raw = request.args.get("limit", "1000000")
     try:
         limit = int(limit_raw)
     except (TypeError, ValueError):
         return {"error": "limit must be an integer"}, 400
-    if limit < 1 or limit > 200000:
-        return {"error": "limit must be between 1 and 200000"}, 400
+    if limit < 1 or limit > 1_000_000:
+        return {"error": "limit must be between 1 and 1_000_000"}, 400
 
     viewport_raw = request.args.get("viewport")
     viewport: tuple[float, float, float, float] | None = None

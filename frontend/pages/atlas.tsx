@@ -107,13 +107,16 @@ type PaperDetail = {
   paper_date?: string | null;
 };
 
-// Default projection: matches the 18k-PL load. Will be flipped to
-// "pacmap_v1" once the sibling agent's full-corpus CSV is loaded.
-const DEFAULT_PROJECTION = "pacmap_pl_v1";
+// Default projection — full 524k corpus. Users can override with
+// ?projection=pacmap_pl_v1 (or any other future projection name) to
+// see a smaller slice; the page reads the query string on mount.
+const DEFAULT_PROJECTION = "pacmap_v1";
 
 // Stable color palette keyed by source. Order matters — the first
 // distinct source the data exposes lands on COLOR_PALETTE[0], etc.
 // All colours are picked to read against the Vercel-style #000 bg.
+// The full corpus has ~20 sources, so this list is generously sized;
+// the FALLBACK_COLOR below is reserved for anything past the end.
 const COLOR_PALETTE = [
   "#3b82f6", // blue
   "#10b981", // emerald
@@ -127,6 +130,16 @@ const COLOR_PALETTE = [
   "#14b8a6", // teal
   "#eab308", // yellow
   "#8b5cf6", // indigo
+  "#22d3ee", // sky
+  "#f43f5e", // rose
+  "#65a30d", // lime-dark
+  "#d946ef", // fuchsia
+  "#0ea5e9", // sky-strong
+  "#16a34a", // green
+  "#dc2626", // red-strong
+  "#7c3aed", // purple
+  "#facc15", // yellow-strong
+  "#0891b2", // cyan-dark
 ];
 const FALLBACK_COLOR = "#9ca3af"; // gray-400, for unknown sources
 
@@ -182,7 +195,13 @@ function normalizePoints(
 }
 
 export default function AtlasPage() {
-  const [projection] = useState<string>(DEFAULT_PROJECTION);
+  // Initial projection: ?projection=<name> wins over the default. We
+  // read from window.location so it works without router.isReady wait.
+  const [projection] = useState<string>(() => {
+    if (typeof window === "undefined") return DEFAULT_PROJECTION;
+    const sp = new URLSearchParams(window.location.search);
+    return sp.get("projection")?.trim() || DEFAULT_PROJECTION;
+  });
   const [points, setPoints] = useState<AtlasPoint[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
@@ -596,10 +615,15 @@ export default function AtlasPage() {
         // as a fallback even if our DOM overlay is mis-positioned.
         pointColorActive: "#ffd84a",
         pointColorHover: "#ffffff",
+        // asinh keeps point size manageable at the full-corpus zoom
+        // levels — without it, zooming out at 524k smears the cloud
+        // into a solid blob. opacity is dialed down so dense clusters
+        // don't saturate to fully-opaque mid-canvas.
+        pointScaleMode: "asinh",
         pointSize: 3,
         pointSizeSelected: 14,
         pointOutlineWidth: 3,
-        opacity: 0.7,
+        opacity: 0.55,
         backgroundColor: [0, 0, 0, 1],
       });
       scatterRef.current = scatter;
