@@ -510,14 +510,23 @@ export default function GraphPage() {
   // undo both. Without this, a click → back leaves the side panel
   // stuck on the abstract of a paper the user just dismissed.
   //
-  // Pin clears when the paper falls out of clickedIds even if it's
-  // still on-canvas as a neighbor — the user's "I want to read this"
-  // action was tied to the click, and back-nav undoes that action.
+  // Important: the trigger is "removed from clickedIds", not "not in
+  // clickedSet". After clickPaper(X), pinnedId becomes X synchronously
+  // while router.push schedules the URL update — there's a render in
+  // between where pinnedId=X but clickedSet doesn't yet include X. A
+  // naive "if !clickedSet.has(pinnedId)" check fires during that gap
+  // and wipes the pin before it can be observed. Comparing against the
+  // previous render's clickedIds lets us distinguish "just-clicked,
+  // URL still in flight" from "back-nav removed it".
+  //
   // Hover is transient and only clears when the paper is unreachable
   // entirely (gone from the graph), since the natural mouse-leave
   // already handles the common case.
+  const prevClickedIdsRef = useRef<string[]>(clickedIds);
   useEffect(() => {
-    if (pinnedId && !clickedSet.has(pinnedId)) setPinnedId(null);
+    const prev = prevClickedIdsRef.current;
+    const removed = prev.filter((id) => !clickedSet.has(id));
+    if (pinnedId && removed.includes(pinnedId)) setPinnedId(null);
     if (hoverId) {
       const reachable = new Set<string>(clickedIds);
       for (const id of clickedIds) {
@@ -528,6 +537,7 @@ export default function GraphPage() {
       }
       if (!reachable.has(hoverId)) setHoverId(null);
     }
+    prevClickedIdsRef.current = clickedIds;
   }, [clickedIds, clickedSet, graph.cache, pinnedId, hoverId]);
 
 
