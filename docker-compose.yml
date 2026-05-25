@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     shm_size: 16gb
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"   # localhost-only (was world-open; Docker bypasses the host firewall)
     environment:
       POSTGRES_USER: oversight
       POSTGRES_PASSWORD: ${OVERSIGHT_DB_PASSWORD:?OVERSIGHT_DB_PASSWORD must be set}
@@ -26,7 +26,7 @@ services:
     image: oversight-backend
     restart: unless-stopped
     ports:
-      - "50:50"
+      - "127.0.0.1:50:50"   # localhost-only (frontend reaches it over the docker network anyway)
     environment:
       - FLASK_PORT=50
       - FLASK_ENV=production
@@ -50,31 +50,20 @@ services:
         - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:50
     image: oversight-frontend
     restart: unless-stopped
-    expose:
-      - "3000"
+    ports:
+      - "127.0.0.1:3000:3000"   # published to localhost so the host's native Caddy can reverse-proxy it
+                                 # (was `expose`, i.e. docker-network-only, reachable only by the old caddy container)
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:50
     depends_on:
       oversight-backend:
         condition: service_healthy
 
-  caddy:
-    image: caddy:2-alpine
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      - oversight-frontend
-
-volumes:
-  caddy_data:
-  caddy_config:
+  # The caddy reverse-proxy container has been removed: on the NixOS host the
+  # reverse proxy is provided natively by `services.caddy`, which terminates TLS
+  # and proxies to the frontend at 127.0.0.1:3000 (published above). Running a
+  # caddy container here too would fight the host Caddy for ports 80/443.
+  # NOTE: this assumes a host-level reverse proxy — see PR description.
 
 networks:
   default:
