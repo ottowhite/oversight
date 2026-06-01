@@ -69,8 +69,8 @@ oversight/sync/pl:
 oversight/digest:
 	uv run python -m oversight.ArXivRepository --digest
 
-oversight/project:
-	uv run oversight project --name pacmap_v1
+oversight/projections:
+	uv run oversight projections --name pacmap_v1
 
 oversight/install-cron:
 	sudo ./scripts/install_sync_cron.sh
