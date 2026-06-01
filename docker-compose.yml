@@ -23,7 +23,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.api
-    image: oversight-backend
+    # Tag defaults to :dev so local builds never clobber prod's images on the
+    # shared docker daemon. Prod sets OVERSIGHT_TAG (see configuration.nix).
+    image: oversight-backend:${OVERSIGHT_TAG:-dev}
     restart: unless-stopped
     ports:
       - "127.0.0.1:50:50"   # localhost-only (frontend reaches it over the docker network anyway)
@@ -48,7 +50,7 @@ services:
       dockerfile: Dockerfile
       args:
         - NEXT_PUBLIC_BACKEND_URL=http://oversight-backend:50
-    image: oversight-frontend
+    image: oversight-frontend:${OVERSIGHT_TAG:-dev}
     restart: unless-stopped
     ports:
       - "127.0.0.1:3000:3000"   # published to localhost so the host's native Caddy can reverse-proxy it
