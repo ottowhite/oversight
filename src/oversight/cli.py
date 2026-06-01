@@ -117,6 +117,110 @@ def _consume_dry_run(args: argparse.Namespace) -> None:
     print(f"\nDry run: {total} papers would be upserted (no DB writes performed).")
 
 
+def cmd_project(args: argparse.Namespace) -> None:
+    """Fetch embeddings, run PaCMAP, upsert 2D coords for /atlas.
+
+    Replaces the old scripts/load_pacmap_coords.py loader — there's no CSV
+    intermediate any more, the embeddings are pulled directly from the DB
+    and the resulting coords are written back in the same process.
+    Designed to be run on a weekly cron (see scripts/install_sync_cron.sh)
+    so the projection stays roughly fresh without manual intervention.
+    """
+    import numpy as np
+    import psycopg
+    from pacmap import PaCMAP
+    from pgvector.psycopg import register_vector
+
+    database_url = os.getenv("DATABASE_URL")
+    assert database_url is not None, "DATABASE_URL is not set"
+
+    # Two literal queries rather than an f-string built from clauses, so
+    # the SQL is a LiteralString (psycopg's `execute` rejects arbitrary
+    # `str` for safety — there's no user-injected interpolation here, but
+    # ty enforces the contract uniformly).
+    print(f"[project] fetching embeddings (projection={args.name!r})...")
+    ids: list[str] = []
+    vectors: list = []
+    with psycopg.connect(database_url) as con:
+        register_vector(con)
+        with con.cursor() as cur:
+            if args.sources:
+                sources = [s.strip() for s in args.sources.split(",") if s.strip()]
+                cur.execute(
+                    """
+                    SELECT p.paper_id, e.embedding_gemini_embedding_001
+                    FROM paper AS p
+                    JOIN embedding AS e ON e.paper_id = p.paper_id
+                    WHERE e.embedding_gemini_embedding_001 IS NOT NULL
+                      AND p.source = ANY(%s)
+                    """,
+                    [sources],
+                )
+            else:
+                cur.execute(
+                    """
+                    SELECT p.paper_id, e.embedding_gemini_embedding_001
+                    FROM paper AS p
+                    JOIN embedding AS e ON e.paper_id = p.paper_id
+                    WHERE e.embedding_gemini_embedding_001 IS NOT NULL
+                    """
+                )
+            for paper_id, emb in cur:
+                ids.append(paper_id)
+                vectors.append(emb)
+
+    if not ids:
+        print("[project] no embeddings matched; nothing to project.")
+        return
+
+    print(f"[project] running PaCMAP on {len(ids):,} × 3072-d embeddings...")
+    # PaCMAP needs contiguous float32; cast once and free the row list.
+    embeddings = np.asarray(vectors, dtype=np.float32)
+    del vectors
+    reducer = PaCMAP(
+        n_components=2,
+        n_neighbors=args.n_neighbors,
+        MN_ratio=0.5,
+        FP_ratio=2.0,
+        random_state=args.seed,
+    )
+    coords = reducer.fit_transform(embeddings)
+    del embeddings
+
+    print(f"[project] upserting {len(ids):,} coords into paper_projection_2d...")
+    with psycopg.connect(database_url) as con:
+        # autocommit=False so a crash mid-load doesn't leave the
+        # projection half-overwritten — the table flips atomically.
+        con.autocommit = False
+        with con.cursor() as cur:
+            batch_size = 5000
+            written = 0
+            for i in range(0, len(ids), batch_size):
+                end = min(i + batch_size, len(ids))
+                rows = [
+                    (ids[j], args.name, float(coords[j, 0]), float(coords[j, 1]))
+                    for j in range(i, end)
+                ]
+                cur.executemany(
+                    """
+                    INSERT INTO paper_projection_2d (paper_id, projection, x, y)
+                    VALUES (%s, %s, %s, %s)
+                    ON CONFLICT (paper_id, projection)
+                    DO UPDATE SET
+                        x = EXCLUDED.x,
+                        y = EXCLUDED.y,
+                        created_at = CURRENT_TIMESTAMP
+                    """,
+                    rows,
+                )
+                written = end
+                if (i // batch_size) % 4 == 0:
+                    print(f"  ...upserted {written:,}/{len(ids):,}")
+        con.commit()
+
+    print(f"[project] done — projection={args.name!r} rows={len(ids):,}.")
+
+
 def cmd_inventory(args: argparse.Namespace) -> None:
     from .PaperDatabase import PaperDatabase
 
@@ -192,6 +296,36 @@ def main() -> None:
         help="Parse and print what would be inserted without writing to the database",
     )
     sp_consume.set_defaults(func=cmd_consume)
+
+    # oversight project
+    sp_project = subparsers.add_parser(
+        "project",
+        help="Compute a 2D PaCMAP projection of embeddings for /atlas",
+    )
+    sp_project.add_argument(
+        "--name",
+        default="pacmap_v1",
+        help="Projection name written to paper_projection_2d (default: pacmap_v1)",
+    )
+    sp_project.add_argument(
+        "--sources",
+        help="Optional comma-separated source filter (e.g. ICFP,POPL,PLDI for a "
+        "PL-only projection). Defaults to all sources.",
+    )
+    sp_project.add_argument(
+        "--n-neighbors",
+        type=int,
+        default=10,
+        dest="n_neighbors",
+        help="PaCMAP n_neighbors hyperparameter (default: 10)",
+    )
+    sp_project.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for PaCMAP — keep fixed for reproducible projections",
+    )
+    sp_project.set_defaults(func=cmd_project)
 
     # oversight inventory
     sp_inventory = subparsers.add_parser(
