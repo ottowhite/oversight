@@ -117,88 +117,188 @@ def _consume_dry_run(args: argparse.Namespace) -> None:
     print(f"\nDry run: {total} papers would be upserted (no DB writes performed).")
 
 
-def cmd_project(args: argparse.Namespace) -> None:
-    """Fetch embeddings, run PaCMAP, upsert 2D coords for /atlas.
+def cmd_projections(args: argparse.Namespace) -> None:
+    """Compute a 2D PaCMAP projection of every embedded paper and upsert
+    the coords into paper_projection_2d for the /atlas page.
 
-    Replaces the old scripts/load_pacmap_coords.py loader — there's no CSV
-    intermediate any more, the embeddings are pulled directly from the DB
-    and the resulting coords are written back in the same process.
-    Designed to be run on a weekly cron (see scripts/install_sync_cron.sh)
-    so the projection stays roughly fresh without manual intervention.
+    Pipeline (lifted verbatim from the original one-shot
+    scripts/build_pacmap_coords.py — the same script that produced the
+    in-prod /tmp/pacmap_all.csv that the old loader script ingested):
+
+      1. Server-side-cursor stream of (paper_id, embedding) from
+         Postgres into a pre-allocated float32 ndarray. The
+         halfvec→vector cast in SQL is the load-bearing trick that
+         lets pgvector-python decode straight into np.float32 instead
+         of HalfVector wrappers.
+      2. L2-normalize in place (avoids a 6 GB copy at full-corpus scale).
+      3. PCA → 50 dimensions (PaCMAP is much faster from 50-d input than
+         from raw 3072-d; the variance loss is negligible after L2
+         normalize).
+      4. PaCMAP → 2 dimensions with init="pca".
+      5. Upsert (paper_id, projection, x, y) into paper_projection_2d
+         under a single transaction so a crash mid-load doesn't leave
+         the projection half-overwritten.
+
+    The previous CSV intermediate (and the plotting + nearest-neighbour
+    sanity-check from the original script) are dropped — the CLI is the
+    cron-driven happy path and doesn't need diagnostic artefacts.
     """
+    import time
+
     import numpy as np
+    import pacmap
     import psycopg
-    from pacmap import PaCMAP
     from pgvector.psycopg import register_vector
+    from sklearn.decomposition import PCA
 
     database_url = os.getenv("DATABASE_URL")
     assert database_url is not None, "DATABASE_URL is not set"
 
-    # Two literal queries rather than an f-string built from clauses, so
-    # the SQL is a LiteralString (psycopg's `execute` rejects arbitrary
-    # `str` for safety — there's no user-injected interpolation here, but
-    # ty enforces the contract uniformly).
-    print(f"[project] fetching embeddings (projection={args.name!r})...")
-    ids: list[str] = []
-    vectors: list = []
-    with psycopg.connect(database_url) as con:
-        register_vector(con)
-        with con.cursor() as cur:
-            if args.sources:
-                sources = [s.strip() for s in args.sources.split(",") if s.strip()]
-                cur.execute(
-                    """
-                    SELECT p.paper_id, e.embedding_gemini_embedding_001
-                    FROM paper AS p
-                    JOIN embedding AS e ON e.paper_id = p.paper_id
-                    WHERE e.embedding_gemini_embedding_001 IS NOT NULL
-                      AND p.source = ANY(%s)
-                    """,
-                    [sources],
-                )
-            else:
-                cur.execute(
-                    """
-                    SELECT p.paper_id, e.embedding_gemini_embedding_001
-                    FROM paper AS p
-                    JOIN embedding AS e ON e.paper_id = p.paper_id
-                    WHERE e.embedding_gemini_embedding_001 IS NOT NULL
-                    """
-                )
-            for paper_id, emb in cur:
-                ids.append(paper_id)
-                vectors.append(emb)
+    DIM = 3072
+    ITERSIZE = 5000
 
-    if not ids:
-        print("[project] no embeddings matched; nothing to project.")
+    # Cast halfvec -> vector so pgvector-python decodes into np.float32
+    # ndarray. The optional source filter mirrors the script's behaviour
+    # (none by default = full corpus); two literal SQL strings rather
+    # than an f-string so the query stays LiteralString-typed.
+    count_sql_all = """
+        SELECT count(*)
+        FROM paper p
+        JOIN embedding e ON e.paper_id = p.paper_id
+        WHERE e.embedding_gemini_embedding_001 IS NOT NULL
+    """
+    count_sql_sources = """
+        SELECT count(*)
+        FROM paper p
+        JOIN embedding e ON e.paper_id = p.paper_id
+        WHERE e.embedding_gemini_embedding_001 IS NOT NULL
+          AND p.source = ANY(%s)
+    """
+    stream_sql_all = """
+        SELECT p.paper_id,
+               e.embedding_gemini_embedding_001::vector AS emb
+        FROM paper p
+        JOIN embedding e ON e.paper_id = p.paper_id
+        WHERE e.embedding_gemini_embedding_001 IS NOT NULL
+    """
+    stream_sql_sources = """
+        SELECT p.paper_id,
+               e.embedding_gemini_embedding_001::vector AS emb
+        FROM paper p
+        JOIN embedding e ON e.paper_id = p.paper_id
+        WHERE e.embedding_gemini_embedding_001 IS NOT NULL
+          AND p.source = ANY(%s)
+    """
+    if args.sources:
+        sources = [s.strip() for s in args.sources.split(",") if s.strip()]
+        source_params: list = [sources]
+    else:
+        source_params = []
+
+    t_total = time.time()
+    print(f"[projections] connecting to DB (projection={args.name!r})...", flush=True)
+    con = psycopg.connect(database_url)
+    register_vector(con)
+
+    with con.cursor() as cur:
+        if args.sources:
+            cur.execute(count_sql_sources, source_params)
+        else:
+            cur.execute(count_sql_all)
+        row = cur.fetchone()
+        n_rows = int(row[0]) if row is not None else 0
+    print(f"[projections] rows to fetch: {n_rows}", flush=True)
+
+    if n_rows == 0:
+        print("[projections] no embeddings; nothing to project.")
+        con.close()
         return
 
-    print(f"[project] running PaCMAP on {len(ids):,} × 3072-d embeddings...")
-    # PaCMAP needs contiguous float32; cast once and free the row list.
-    embeddings = np.asarray(vectors, dtype=np.float32)
-    del vectors
-    reducer = PaCMAP(
+    # Pre-allocate float32 (N, 3072). For 524k rows this is ~6.4 GB.
+    X = np.empty((n_rows, DIM), dtype=np.float32)
+    paper_ids: list[str] = [""] * n_rows
+
+    print("[projections] streaming embeddings...", flush=True)
+    t_db = time.time()
+    with con.cursor(name="proj_stream") as cur:
+        cur.itersize = ITERSIZE
+        if args.sources:
+            cur.execute(stream_sql_sources, source_params)
+        else:
+            cur.execute(stream_sql_all)
+        i = 0
+        for pid, emb in cur:
+            paper_ids[i] = pid
+            X[i] = emb
+            i += 1
+            if i % 50000 == 0:
+                elapsed = time.time() - t_db
+                rate = i / max(elapsed, 1e-6)
+                eta = (n_rows - i) / max(rate, 1e-6)
+                print(
+                    f"  streamed {i}/{n_rows} rate={rate:.0f}/s "
+                    f"elapsed={elapsed:.1f}s eta={eta:.0f}s",
+                    flush=True,
+                )
+    db_time = time.time() - t_db
+    assert i == n_rows, f"streamed {i} but expected {n_rows}"
+    print(f"[projections] DB stream done in {db_time:.1f}s", flush=True)
+    con.close()
+
+    # L2 normalize in place to avoid a 6 GB copy at full-corpus scale.
+    print("[projections] L2-normalising in place...", flush=True)
+    norms = np.linalg.norm(X, axis=1, keepdims=True)
+    zero_mask = (norms == 0).flatten()
+    if zero_mask.any():
+        print(
+            f"  WARNING: {zero_mask.sum()} zero-norm rows; setting to 1.",
+            flush=True,
+        )
+        norms[zero_mask] = 1.0
+    np.divide(X, norms, out=X)
+    del norms
+
+    # PCA → 50 then PaCMAP → 2. PaCMAP from 50-d is much faster than from
+    # raw 3072-d and PCA explains nearly all the variance after L2 norm.
+    print("[projections] PCA→50...", flush=True)
+    t_pca = time.time()
+    pca = PCA(n_components=50, random_state=42)
+    X50 = pca.fit_transform(X)
+    print(
+        f"[projections] PCA done in {time.time() - t_pca:.1f}s "
+        f"(explained_variance_ratio_sum={pca.explained_variance_ratio_.sum():.4f})",
+        flush=True,
+    )
+    del X
+
+    print("[projections] PaCMAP→2...", flush=True)
+    t_pm = time.time()
+    reducer = pacmap.PaCMAP(
         n_components=2,
-        n_neighbors=args.n_neighbors,
+        n_neighbors=None,
         MN_ratio=0.5,
         FP_ratio=2.0,
-        random_state=args.seed,
+        random_state=42,
+        verbose=True,
     )
-    coords = reducer.fit_transform(embeddings)
-    del embeddings
+    X2 = reducer.fit_transform(X50, init="pca")
+    print(f"[projections] PaCMAP done in {time.time() - t_pm:.1f}s", flush=True)
+    del X50
 
-    print(f"[project] upserting {len(ids):,} coords into paper_projection_2d...")
+    print(
+        f"[projections] upserting {n_rows} coords into projection={args.name!r}...",
+        flush=True,
+    )
     with psycopg.connect(database_url) as con:
         # autocommit=False so a crash mid-load doesn't leave the
         # projection half-overwritten — the table flips atomically.
         con.autocommit = False
         with con.cursor() as cur:
             batch_size = 5000
-            written = 0
-            for i in range(0, len(ids), batch_size):
-                end = min(i + batch_size, len(ids))
+            for i in range(0, n_rows, batch_size):
+                end = min(i + batch_size, n_rows)
                 rows = [
-                    (ids[j], args.name, float(coords[j, 0]), float(coords[j, 1]))
+                    (paper_ids[j], args.name, float(X2[j, 0]), float(X2[j, 1]))
                     for j in range(i, end)
                 ]
                 cur.executemany(
@@ -213,12 +313,15 @@ def cmd_project(args: argparse.Namespace) -> None:
                     """,
                     rows,
                 )
-                written = end
                 if (i // batch_size) % 4 == 0:
-                    print(f"  ...upserted {written:,}/{len(ids):,}")
+                    print(f"  ...upserted {end:,}/{n_rows:,}")
         con.commit()
 
-    print(f"[project] done — projection={args.name!r} rows={len(ids):,}.")
+    print(
+        f"[projections] done in {time.time() - t_total:.1f}s total "
+        f"(projection={args.name!r} rows={n_rows:,}).",
+        flush=True,
+    )
 
 
 def cmd_inventory(args: argparse.Namespace) -> None:
@@ -297,35 +400,22 @@ def main() -> None:
     )
     sp_consume.set_defaults(func=cmd_consume)
 
-    # oversight project
-    sp_project = subparsers.add_parser(
-        "project",
+    # oversight projections
+    sp_projections = subparsers.add_parser(
+        "projections",
         help="Compute a 2D PaCMAP projection of embeddings for /atlas",
     )
-    sp_project.add_argument(
+    sp_projections.add_argument(
         "--name",
         default="pacmap_v1",
         help="Projection name written to paper_projection_2d (default: pacmap_v1)",
     )
-    sp_project.add_argument(
+    sp_projections.add_argument(
         "--sources",
         help="Optional comma-separated source filter (e.g. ICFP,POPL,PLDI for a "
         "PL-only projection). Defaults to all sources.",
     )
-    sp_project.add_argument(
-        "--n-neighbors",
-        type=int,
-        default=10,
-        dest="n_neighbors",
-        help="PaCMAP n_neighbors hyperparameter (default: 10)",
-    )
-    sp_project.add_argument(
-        "--seed",
-        type=int,
-        default=42,
-        help="Random seed for PaCMAP — keep fixed for reproducible projections",
-    )
-    sp_project.set_defaults(func=cmd_project)
+    sp_projections.set_defaults(func=cmd_projections)
 
     # oversight inventory
     sp_inventory = subparsers.add_parser(
