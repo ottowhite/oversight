@@ -1,0 +1,638 @@
+[
+  {
+    "paper_id": "10.1145/1159803.1159841",
+    "title": "Abstraction preservation and subtyping in distributed languages",
+    "abstract": "In most programming languages, type abstraction is guaranteed by syntactic scoping in a single program, but is not preserved by marshalling during distributed communication. A solution is to generate hash types at compile time that consist of a fingerprint of the source code implementing the data type. These hash types can be tupled with a marshalled value and compared efficiently at unmarshall time to guarantee abstraction safety. In this paper, we extend a core calculus of ML-like modules, functions, distributed communication, and hash types, to integrate structural subtyping, user-declared subtyping between abstract types, and bounded existential types. Our semantics makes two contributions: (1) the explicit tracking of the interaction between abstraction boundaries and subtyping; (2) support for user-declared module upgrades with propagation of the resulting subhashing relation throughout the network during communication. We prove type preservation, progress, determinacy, and erasure for our system.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159841",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Pierre-Malo",
+        "last_name": "Deniélou",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "James J.",
+        "last_name": "Leifer",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/DenielouL06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159805",
+    "title": "The development of Chez Scheme",
+    "abstract": "Chez Scheme is now over 20 years old, the first version having been released in 1985. This paper takes a brief look back on the history of Chez Scheme's development to explore how and why it became the system it is today.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159805",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "R. Kent",
+        "last_name": "Dybvig",
+        "institution": "Cadence Design Systems (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Dybvig06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159823",
+    "title": "Modelling deterministic concurrent I/O",
+    "abstract": "The problem of expressing I/O and side effects in functional languages is a well-established one. This paper addresses this problem from a general semantic viewpoint by giving a unified framework for describing shared state, I/O and deterministic concurrency. We develop a modified state transformer which lets us mathematically model the API, then investigate and machine verify some broad conditions under which confluence holds. This semantics is used as the basis for a small deterministic Haskell language extension called CURIO, which enforces determinism using runtime checks.Our confluence condition is first shown to hold for a variety of small components, such as individual shared variables, 1-to-1 communication channels, and I-structures. We then show how models of substantial APIs (like a modification of Haskell's file I/O API which permits inter-process communication) may be constructed from these smaller components using \"combinators\" in such a way that determinism is always preserved. We describe combinators for product, name-indexing and dynamic allocation, the last of which requires some small extensions to cater for process locality.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159823",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Malcolm",
+        "last_name": "Dowse",
+        "institution": ""
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Butterfield",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/DowseB06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159829",
+    "title": "OCaml + XDuce",
+    "abstract": "This paper presents the core type system and type inference algorithm of OCamlDuce, a merger between OCaml and XDuce. The challenge was to combine two type checkers of very different natures while preserving the best properties of both (principality and automatic type reconstruction on one side; very precise types and implicit subtyping on the other side). Type inference can be described by two successive passes: the first one is an ML-like unification-based algorithm which also extracts data flow constraints about XML values; the second one is an XDuce-like algorithm which computes XML types in a direct way. An optional preprocessing pass, called strengthening, can be added to allow more implicit use of XML subtyping. This pass is also very similar to an ML type checker.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159829",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Alain",
+        "last_name": "Frisch",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/Frisch06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159839",
+    "title": "Access control in a core calculus of dependency",
+    "abstract": "The Dependency Core Calculus (DCC) is an extension of the computational lambda calculus that was designed in order to capture the notion of dependency that arises in information-flow control, partial evaluation, and other programming-language settings. We show that, unexpectedly, DCC can also be used as a calculus for access control in distributed systems. Initiating the study of DCC from this perspective, we explore some of its appealing properties.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159839",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Martı́n",
+        "last_name": "Abadi",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Abadi06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159825",
+    "title": "Modular development of certified program verifiers with a proof assistant",
+    "abstract": "I report on an experience using the Coq proof assistant to develop a program verification tool with a machine-checkable proof of full correctness. The verifier is able to prove memory safety of x86 machine code programs compiled from code that uses algebraic datatypes. The tool's soundness theorem is expressed in terms of the bit-level semantics of x86 programs, so its correctness depends on very few assumptions. I take advantage of Coq's support for programming with dependent types and modules in the structure of my development. The approach is based on developing a library of reusable functors for transforming a verifier at one level of abstraction into a verifier at a lower level. Using this library, it's possible to prototype a verifier based on a new type system with a minimal amount of work, while obtaining a very strong soundness theorem about the final product.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159825",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Adam",
+        "last_name": "Chlipala",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/icfp/Chlipala06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159821",
+    "title": "Transactional events",
+    "abstract": "Concurrent programs require high-level abstractions in order to manage complexity and enable compositional reasoning. In this paper, we introduce a novel concurrency abstraction, dubbed transactional events, which combines first-class synchronous messagepassing events with all-or-nothing transactions. This combination enables simple solutions to interesting problems in concurrent programming. For example, guarded synchronous receive can be implemented as an abstract transactional event, whereas in other languages it requires a non-abstract, non-modular protocol. Likewise, three-way rendezvous can also be implemented as an abstract transactional event, which is impossible using first-class events alone. Both solutions are easy to code and easy to reason about.The expressive power of transactional events arises from a sequencing combinator whose semantics enforces an all-or-nothing transactional property - either both of the constituent events synchronize in sequence or neither of them synchronizes. This sequencing combinator, along with a non-deterministic choice combinator, gives transactional events the compositional structure of a monad-with-plus. We provide a formal semantics for and a preliminary implementation of transactional events.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159821",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "K.",
+        "last_name": "Donnelly",
+        "institution": ""
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Fluet",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/icfp/DonnellyF06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159836",
+    "title": "Extensible programming with first-class cases",
+    "abstract": "We present language mechanisms for polymorphic, extensible records and their exact dual, polymorphic sums with extensible first-class cases. These features make it possible to easily extend existing code with new cases. In fact, such extensions do not require any changes to code that adheres to a particular programming style. Using that style, individual extensions can be written independently and later be composed to form larger components. These language mechanisms provide a solution to the expression problem.We study the proposed mechanisms in the context of an implicitly typed, purely functional language PolyR. We give a type system for the language and provide rules for a 2-phase transformation: first into an explicitly typed λ-calculus with record polymorphism, and finally to efficient index-passing code. The first phase eliminates sums and cases by taking advantage of the duality with records.We implement a version of PolyR extended with imperative features and pattern matching - we call this language MLPolyR. Programs in MLPolyR require no type annotations - the implementation employs a reconstruction algorithm to infer all types. The compiler generates machine code (currently for PowerPC) and optimizes the representation of sums by eliminating closures generated by the dual construction.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159836",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "M.",
+        "last_name": "Blume",
+        "institution": "Toyota Technological Institute at Chicago"
+      },
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Toyota Technological Institute at Chicago"
+      },
+      {
+        "first_name": "Wonseok",
+        "last_name": "Chae",
+        "institution": "Toyota Technological Institute at Chicago"
+      }
+    ],
+    "dblp_key": "conf/icfp/BlumeAC06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159811",
+    "title": "Simple unification-based type inference for GADTs",
+    "abstract": "Generalized algebraic data types (GADTs), sometimes known as “guarded recursive data types ” or “first-class phantom types”, are a simple but powerful generalization of the data types of Haskell and ML. Recent works have given compelling examples of the utility of GADTs, although type inference is known to be difficult. Our contribution is to show how to exploit programmer-supplied type annotations to make the type inference task almost embarrassingly easy. Our main technical innovation is wobbly types, which express in a declarative way the uncertainty caused by the incremental nature of typical type-inference algorithms. 1.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159811",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Dimitrios",
+        "last_name": "Vytiniotis",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Geoffrey",
+        "last_name": "Washburn",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/icfp/JonesVWW06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159817",
+    "title": "Static analysis for syntax objects",
+    "abstract": "We describe an s-expression based syntax-extension framework much like Scheme macros, with a key additional facility: the ability to define static semantics, such as type systems or program analysis, for the new, user-defined forms or embedded languages, thus allowing us to construct \"towers\" of language levels. In addition, the static semantics of the languages at two adjacent levels in the tower can be connected, allowing improved reasoning power at a higher (and perhaps more restricted) level to be reflected down to the static semantics of the language level below. We demonstrate our system by designing macros for an assembly language, together with some example static analyses (termination analysis, type inference and control-flow analysis).",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159817",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Fisher",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": "Universidad del Noreste"
+      }
+    ],
+    "dblp_key": "conf/icfp/FisherS06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159835",
+    "title": "Algebraic fusion of functions with an accumulating parameter and its improvement",
+    "abstract": "We present a unifying solution to the problem of fusion of functions, where both the producer function and the consumer function have one accumulating parameter. The key idea in this development is to formulate the producer function as a function which computes over a monoid of data contexts. Upon this formulation, we develop a fusion method called algebraic fusion based on the elementary theory of universal algebra and monoids. The producer function is fused with a monoid homomorphism that is derived from the definition of the consumer function, and is turned into a higher-order function f that computes over the monoid of endofunctions.We then introduce a general concept called improvement, in order to reduce the cost of computing over the monoid of endofunctions (i. e., function closures). An improvement of the function f via a monoid homomorphism h is a function g that satisfies f =h ºg. This provides a principled way of finding a first-order function representing a solution to the fusion problem. It also presents a clean and unifying account for varying fusion methods that have been proposed so far. Furthermore, we show that our method extends to support partial and infinite data structures, by means of an appropriate monoid structure.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159835",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Shin-ya",
+        "last_name": "Katsumata",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Susumu",
+        "last_name": "Nishimura",
+        "institution": "Kyoto University"
+      }
+    ],
+    "dblp_key": "conf/icfp/KatsumataN06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159808",
+    "title": "Delimited dynamic binding",
+    "abstract": "Dynamic binding and delimited control are useful together in many settings, including Web applications, database cursors, and mobile code. We examine this pair of language features to show that the semantics of their interaction is ill-defined yet not expressive enough for these uses.We solve this open and subtle problem. We formalise a typed language DB+DC that combines a calculus DB of dynamic binding and a calculus DC of delimited control. We argue from theoretical and practical points of view that its semantics should be based on delimited dynamic binding: capturing a delimited continuation closes over part of the dynamic environment, rather than all or none of it; reinstating the captured continuation supplements the dynamic environment, rather than replacing or inheriting it. We introduce a type- and reduction-preserving translation from DB + DC to DC, which proves that delimited control macro-expresses dynamic binding. We use this translation to implement DB+DC in Scheme, OCaml, and Haskell.We extend DB + DC with mutable dynamic variables and a facility to obtain not only the latest binding of a dynamic variable but also older bindings. This facility provides for stack inspection and (more generally) folding over the execution context as an inductive data structure.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159808",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Oleg",
+        "last_name": "Kiselyov",
+        "institution": ""
+      },
+      {
+        "first_name": "Chung-chieh",
+        "last_name": "Shan",
+        "institution": "Rutgers Sexual and Reproductive Health and Rights"
+      },
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "conf/icfp/KiselyovSS06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159834",
+    "title": "A pattern for almost compositional functions",
+    "abstract": "This paper introduces a pattern for almost compositional functions over recursive data types, and over families of mutually recursive data types. Here \"almost compositional\" means that for a number of the constructors in the type(s), the result of the function depends only on the constructor and the results of calling the function on the constructor's arguments. The pattern consists of a generic part constructed once for each data type or family of data types, and a task-specific part. The generic part contains the code for the predictable compositional cases, leaving the interesting work to the task-specific part. Examples of the pattern implemented in dependent type theory with inductive families, in Haskell with generalized algebraic data types and rank-2 polymorphism, and in Java using a variant of the Visitor design pattern are given. The relationship to the \"Scrap Your Boilerplate\" approach to generic programming, and to general tree types in dependent type theory are also investigated.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159834",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Björn",
+        "last_name": "Bringert",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Aarne",
+        "last_name": "Ranta",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/BringertR06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159830",
+    "title": "biXid: a bidirectional transformation language for XML",
+    "abstract": "Often, independent organizations define and advocate different XML formats for a similar purpose and, as a result, application programs need to mutually convert between such formats. Existng XML transformation languages, such as XSLT and XDuce, are unsatisfactory for this purpose since we would have to write, e.g., two programs for the forward and the backward transformations in case of two formats, incur high developing and maintenance costs.This paper proposes the bidirectional XML transformation language biXid, allowing us to write only one program for both directions of conversion. Our language adopts a common paradigm programming-by-relation, where a program defines a relation over documents and transforms a document to another in a way satisfying this relation. Our contributions here are specific language features for facilitating realistic conversions whose target formats are loosely in parallel but have many discrepancies in details. Concretely, we (1) adopt XDuce-style regular expression patterns for describing and analyzing XML structures, (2) fully permit ambiguity for treating formats that do not have equivalent expressivenesses, and (3) allow non-linear pattern variables for expressing non-trivial transformations that cannot be written only with linear patterns, such as conversion between unordered and ordered data.We further develop an efficient evaluation algorithm for biXid, consisting of the \"parsing\" phase that transforms the input document to an intermediate \"parse tree\" structure and the \"unparsing\" phase that transforms it to an output document. Both phases use a variant of finite tree automata for performing a one-pass scan on the input or the parse tree by using a standard technique that \"maintains the set of all transitable states.\" However, the construction of the \"unparsing\" phase is challenging since ambiguity causes different ways of consuming the parse tree and thus results in multiple possible outputs that may have different structures.We have implemented a prototype system of biXid and confirmed that it has enough expressiveness and a linear-time performance from experiments with several realistic bidirectional transformations including one between vCard-XML and ContactXML.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159830",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Shinya",
+        "last_name": "Kawanaka",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Haruo",
+        "last_name": "Hosoya",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/icfp/KawanakaH06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159826",
+    "title": "Mechanized meta-reasoning using a hybrid HOAS/de bruijn representation and reflection",
+    "abstract": "We investigate the development of a general-purpose framework for mechanized reasoning about the meta-theory of programming languages. In order to provide a standard, uniform account of a programming language, we propose to define it as a logic in a logical framework, using the same mechanisms for definition, reasoning, and automation that are available to other logics. Then, in order to reason about the language's meta-theory, we use reflection to inject the programming language into (usually richer and more expressive) meta-theory.One of the key features of our approach is that structure of the language is preserved when it is reflected, including variables, meta-variables, and binding structure. This allows the structure of proofs to be preserved as well, and there is a one-to-one map from proof steps in the original programming logic to proof steps in the reflected logic. The act of reflecting a language is automated; all definitions, theorems, and proofs are preserved by the transformation and all the key lemmas (such as proof and structural induction) are automatically derived.The principal representation used by the reflected logic is higher-order abstract syntax (HOAS). However, reasoning about terms in HOAS can be awkward in some cases, especially for variables. For this reason, we define a computationally equivalent variable-free de Bruijn representation that is interchangeable with the HOAS in all contexts. The de Bruijn representation inherits the properties of substitution and alpha-equality from the logical framework, and it is not complicated by administrative issues like variable renumbering.We further develop the concepts and principles of proofs, provability, and structural and proof induction. This work is fully implemented in the MetaPRL theorem prover. We illustrate with an application to F<: as defined in the POPLmark challenge.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159826",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jason",
+        "last_name": "Hickey",
+        "institution": "California Institute of Technology"
+      },
+      {
+        "first_name": "Aleksey",
+        "last_name": "Nogin",
+        "institution": "California Institute of Technology"
+      },
+      {
+        "first_name": "Xin",
+        "last_name": "Yu",
+        "institution": "California Institute of Technology"
+      },
+      {
+        "first_name": "Alexei",
+        "last_name": "Kopylov",
+        "institution": "California Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/HickeyNYK06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159840",
+    "title": "Programming monads operationally with Unimo",
+    "abstract": "Monads are widely used in Haskell for modeling computational effects, but defining monads remains a daunting challenge. Since every part of a monad's definition depends on its computational effects, programmers cannot leverage the common behavior of all monads easily and thus must build from scratch each monad that models a new computational effect.I propose the Unimo framework which allows programmers to define monads and monad transformers in a modular manner. Unimo contains a heavily parameterized observer function which enforces the monad laws, and programmers define a monad by invoking the observer function with arguments that specify the computational effects of the monad. Since Unimo provides the common behavior of all monads in a reusable form, programmers no longer need to rebuild the semantic boilerplate for each monad and can instead focus on the more interesting and rewarding task of modeling the desired computational effects.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159840",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Chuan-kai",
+        "last_name": "Lin",
+        "institution": "Portland State University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Lin06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159807",
+    "title": "Improving flow analyses via GammaCFA: abstract garbage collection and counting",
+    "abstract": "We present two independent and complementary improvements for flow-based analysis of higher-order languages: (1) abstract garbage collection and (2) abstract counting, collectively titled ΓCFA.Abstract garbage collection is an analog to its concrete counterpart: we determine when an abstract resource has become unreachable, and then reallocate it as fresh. This prevents flow sets from merging in the abstract, which has two immediate effects: (1) the precision of the analysis is increased, and (2) the running time of the analysis is frequently reduced. In some nontrivial cases, we achieve an order of magnitude improvement in precision and time simultaneously.In abstract counting, we track how many times an abstract resource has been allocated. A count of one implies that the abstract resource momentarily represents only one concrete resource. This, in turn, allows us to perform environment analysis and to expand the kinds (rather than just the degree) of optimizations available to the compiler.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159807",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Might",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": "Universidad del Noreste"
+      }
+    ],
+    "dblp_key": "conf/icfp/MightS06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159815",
+    "title": "From structures and functors to modules and units",
+    "abstract": "Component programming techniques encourage abstraction and reuse through external linking. Some parts of a program, however, must use concrete, internally specified references, so a pure component system is not a sufficient mechanism for structuring programs. We present the combination of a static, internally-linked module system and a purely abstractive component system. The latter extends our previous model of typed units to properly account for translucency and sharing. We also show how units and modules can express an SML-style system of structures and functors, and we explore the consequences for recursive structures and functors.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159815",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Scott",
+        "last_name": "Owens",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Flatt",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/icfp/OwensF06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159813",
+    "title": "Recursive modules for programming",
+    "abstract": "TheML module system is useful for building large-scale programs. The programmer can factor programs into nested and parameterized modules, and can control abstraction with signatures. Yet ML prohibits recursion between modules. As a result of this constraint, the programmer may have to consolidate conceptually separate components into a single module, intruding on modular programming. Introducing recursive modules is a natural way out of this predicament. Existing proposals, however, vary in expressiveness and verbosity. In this paper, we propose a type system for recursive modules, which can infer their signatures. Opaque signatures can also be given explicitly, to provide type abstraction either inside or outside the recursion. The type system is decidable, and is sound for a call-by-value semantics. We also present a solution to the expression problem, in support of our design choices.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159813",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Keiko",
+        "last_name": "Nakata",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Jacques",
+        "last_name": "Garrigue",
+        "institution": "Nagoya University"
+      }
+    ],
+    "dblp_key": "conf/icfp/NakataG06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159832",
+    "title": "Fifteen years of functional pearls",
+    "abstract": "In 1991, when the Journal of Functional Programming was inaugurated, the editors, Simon Peyton Jones and Philip Wadler, asked me to contribute a regular column to be called Functional Pearls. The idea was to emulate the very successful series of essays that Jon Bentley had written under the title Programming Pearls in the Communications of the ACM. A possible alternative model for the column was Martin Rem's Small Programming Exercises that appeared regularly in the Science of Computer Programming in the 1980s. In Rem's articles, various programming tasks were posed in one issue, and solved in the subsequent one. It was felt that similar material could be adapted to a functional style, using equational reasoning rather than the Dijkstra-Hoare framework to derive the final product. After all, one reason that functional programming stimulated the interest of many at that time was that it was good for equational reasoning, a slogan captured in Mark Jone's GOFER system (Good For Equational Reasoning).I agreed to the suggestion, but only under the proviso that other contributors to the column should be sought. Counting to the end of the present year, 2006, about 64 pearls will have appeared in JFP, of which I have written 14. There are also various pearls that have been presented at ICFP and at MPC (Mathematics of Program Construction). The pearls range in content, from (hopefully) instructive exercises in program calculation - my own area of interest, to attractive presentations of new functional data structures - of which Ralf Hinze and Chris Okasaki were the main contributors, as well as interesting algorithms in their own right, such as Runciman's Lazy wheel sieves, and Huet's Zipper.This talk will review a little of the history of Functional Pearls, and tentatively try to suggest what ingredients make a good pearl and how pearls differ from normal research papers. Indeed, my brief from the Program Chair for this talk was expressed as follows: \"Well done Functional Pearls are often the highlight of an ICFP conference, but many of the submitted ones somehow miss the mark, by being too trivial, too complicated, or somehow not quite the elegant solution one hopes for. So it would be interesting to hear about your experiences as to what makes a good one and how to go about creating it.Having accepted this daunting commission, and being mindful of Horace's remark that good advice should be short, I am now busily engaged in finding a pearl that is not too trivial, nor too complicated, and is sufficiently elegant to serve as a decent example, both to illustrate the talk and to provide some technical content.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159832",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Richard",
+        "last_name": "Bird",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/icfp/Bird06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159816",
+    "title": "The missing link: dynamic components for ML",
+    "abstract": "Despite its powerful module system, ML has not yet evolved for the modern world of dynamic and open modular programming, to which more primitive languages have adapted better so far. We present the design and semantics of a simple yet expressive firstclass component system for ML. It provides dynamic linking in a type-safe and type-flexible manner, and allows selective execution in sandboxes. The system is defined solely by reduction to higherorder modules plus an extension with simple module-level dynamics, which we call packages. To represent components outside processes we employ generic pickling. We give a module calculus formalising the semantics of packages and pickling.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159816",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Rossberg",
+        "institution": "Saarland University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Rossberg06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159819",
+    "title": "Practical proofs of concurrent programs",
+    "abstract": "Invited Talk",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159819",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Marc",
+        "last_name": "Shapiro",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/Shapiro06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159838",
+    "title": "Boxy types: inference for higher-rank types and impredicativity",
+    "abstract": "Languages with rich type systems are beginning to employ a blend of type inference and type checking, so that the type inference engine is guided by programmer-supplied type annotations. In this paper we show, for the first time, how to combine the virtues of two well-established ideas: unification-based inference, and bidi-rectional propagation of type annotations. The result is a type system that conservatively extends Hindley-Milner, and yet supports both higher-rank types and impredicativity.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159838",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dimitrios",
+        "last_name": "Vytiniotis",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/icfp/VytiniotisWJ06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159827",
+    "title": "Equality of streams is a Pi0 over 2-complete problem",
+    "abstract": "This paper gives a precise characterization for the complexity of the problem of proving equal two streams defined with a finite number of equations: Π0 over 2. Since the Π 0 over 2 class includes properly both the reursively enumerable and the corecursively enumerable classes, this result implies that neither the set of pairs of equal streams nor the set of pairs of unequal streams is recursively enumerable. Consequently, one can find no algorithm for determining equality of streams, as well as no algorithm for determining inequality of streams. In particular, there is no complete proof system for equality of streams and no complete system for inequality of streams.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159827",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Grigore",
+        "last_name": "Roşu",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/icfp/Rosu06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159812",
+    "title": "Polymorphism and separation in hoare type theory",
+    "abstract": "In previous work, we proposed a Hoare Type Theory (HTT) which combines effectful higher-order functions, dependent types and Hoare Logic specifications into a unified framework. However, the framework did not support polymorphism, and ailed to provide a modular treatment of state in specifications. In this paper, we address these shortcomings by showing that the addition of polymorphism alone is sufficient for capturing modular state specifications in the style of Separation Logic. Furthermore, we argue that polymorphism is an essential ingredient of the extension, as the treatment of higher-order functions requires operations not encodable via the spatial connectives of Separation Logic.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159812",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Aleksandar",
+        "last_name": "Nanevski",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "IT University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/icfp/NanevskiMB06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159809",
+    "title": "Static typing for a faulty lambda calculus",
+    "abstract": "A transient hardware fault occurs when an energetic particle strikes a transistor, causing it to change state. These faults do not cause permanent damage, but may result in incorrect program execution by altering signal transfers or stored values. While the likelihood that such transient faults will cause any significant damage may seem remote, over the last several years transient faults have caused costly failures in high-end machines at America Online, eBay, and the Los Alamos Neutron Science Center, among others [6, 44, 15]. Because susceptibility to transient faults is proportional to the size and density of transistors, the problem of transient faults will become increasingly important in the coming decades.This paper defines the first formal, type-theoretic framework for studying reliable computation in the presence of transient faults. More specifically, it defines λzap, a lambda calculus that exhibits intermittent data faults. In order to detect and recover from these faults, λzap programs replicate intermediate computations and use majority voting, thereby modeling software-based fault tolerance techniques studied extensively, but informally [10, 20, 30, 31, 32, 33, 41].To ensure that programs maintain the proper invariants and use λzap primitives correctly, the paper defines a type system for the language. This type system guarantees that well-typed programs can tolerate any single data fault. To demonstrate that λzap can serve as an idealized typed intermediate language, we define a type-preserving translation from a standard simply-typed lambda calculus into λzap.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159809",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Lester",
+        "last_name": "Mackey",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Jay",
+        "last_name": "Ligatti",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "George A.",
+        "last_name": "Reis",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David I.",
+        "last_name": "August",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/icfp/WalkerMLRA06",
+    "venue": "icfp",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159803.1159822",
+    "title": "Stabilizers: a modular checkpointing abstraction for concurrent functional programs",
+    "abstract": "Transient faults that arise in large-scale software systems can often be repaired by re-executing the code in which they occur. Ascribing a meaningful semantics for safe re-execution in multi-threaded code is not obvious, however. For a thread to correctly rexecute a region of code, it must ensure that all other threads which have witnessed its unwanted effects within that region are also reverted to a meaningful earlier state. If not done properly, data inconsistencies and other undesirable behavior may result. however, automatically determining what constitutes a consistent global checkpoint is not straightforward since thread interactions are a dynamic property of the program.In this paper, we present a safe and efficient checkpointing mechanism for Concurrent ML (CML) that can be used to recover from transient faults. We introduce a new linguistic abstraction called stabilizers that permits the specification of per-thread monitors and the restoration of globally consistent checkpoints. Safe global states are computed through lightweight monitoring of communication events among threads (e.g. message-passing operations or updates to shared variables).Our experimental results on several realistic, multithreaded, server-style CML applications, including a web server and a windowing toolkit, show that the overheads to use stabilizers are small, and lead us to conclude that they are a viable mechanism for defining safe checkpoints in concurrent functional programs.",
+    "date": "2006-09-16",
+    "link": "https://doi.org/10.1145/1159803.1159822",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Lukasz",
+        "last_name": "Ziarek",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Philip",
+        "last_name": "Schatz",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/icfp/ZiarekSJ06",
+    "venue": "icfp",
+    "year": 2006
+  }
+]

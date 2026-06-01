@@ -1,0 +1,793 @@
+[
+  {
+    "paper_id": "10.1145/263699.263722",
+    "title": "A Curry-Howard Foundation for Functional Computation with Control",
+    "abstract": "We introduce the type theory λμv, a call-by-value variant of Parigot's λμ-calculus, as a Curry-Howard representation theory of classical propositional proofs. The associated rewrite system is Church-Rosser and strongly normalizing, and definitional equality of the type theory is consistent, compatible with cut, congruent and decidable. The attendant call-by-value programming language μPCFv is obtained from λμv by augmenting it by basic arithmetic, conditionals and fixpoints. We study the behavioural properties of μPCFv and show that, though simple, it is a very general language for functional computation with control: it can express all the main control constructs such as exceptions and first-class continuations. Proof-theoretically the dual λμv-constructs of naming and μ-abstraction witness the introduction and elimination rules of absurdity respectively. Computationally they give succinct expression to a kind of generic (forward) \"jump\" operator, which may be regarded as a unifying control construct for functional computation. Our goal is that λμv and μPCFv respectively should be to functional computation with first-class access to the flow of control what λ-calculus and PCF respectively are to pure functional programming: λμv gives the logical basis via the Curry-Howard correspondence, and μPCFv is a prototypical language albeit in purified form.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263722",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "C.-H. Luke",
+        "last_name": "Ong",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Charles",
+        "last_name": "Stewart",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/popl/OngS97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263712",
+    "title": "Proof-Carrying Code",
+    "abstract": "This paper describes proof-carrying code (PCC), a mechanism by which a host system can determine with certainty that it is safe to execute a program supplied (possibly in binary form) by an untrusted source. For this to be possible, the untrusted code producer must supply with the code a safety proof that attests to the code's adherence to a previously defined safety policy. The host can then easily and quickly validate the proof without using cryptography and without consulting any external agents.In order to gain preliminary experience with PCC, we have performed several case studies. We show in this paper how proof-carrying code might be used to develop safe assembly-language extensions of ML programs. In the context of this case study, we present and prove the adequacy of concrete representations for the safety policy, the safety proofs, and the proof validation. Finally, we briefly discuss how we use proof-carrying code to develop network packet filters that are faster than similar filters developed using other techniques and are formally guaranteed to be safe with respect to a given operating system safety policy.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263712",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "George C.",
+        "last_name": "Necula",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/Necula97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263719",
+    "title": "Maximizing Parallelism and Minimizing Synchronization with Affine Transforms",
+    "abstract": "This paper presents the first algorithm to find the optimal affine transform that maximizes the degree of parallelism while minimizing the degree of synchronization in a program with arbitrary loop nestings and affine data accesses. The problem is formulated without the use of imprecise data dependence abstractions such as data dependence vectors. The algorithm presented subsumes previously proposed program transformation algorithms that are based on unimodular transformations, loop fusion, fission, scaling, reindexing and/or statement reordering.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263719",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Amy W.",
+        "last_name": "Lim",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Monica S.",
+        "last_name": "Lam",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/LimL97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263744",
+    "title": "Types as Abstract Interpretations",
+    "abstract": "Starting from a denotational semantics of the eager untyped lambda-calculus with explicit runtime errors, the standard collecting semantics is defined as specifying the strongest program properties. By a first abstraction, a new sound type collecting semantics is derived in compositional fix-point form. Then by successive (semi-dual) Galois connection based abstractions, type systems and/or type inference algorithms are designed as abstract semantics or abstract interpreters approximating the type collecting semantics. This leads to a hierarchy of type systems, which is part of the lattice of abstract interpretations of the untyped lambda-calculus. This hierarchy includes two new a la Church/Curry polytype systems. Abstractions of this polytype semantics lead to classical Milner/Mycroft and Damas/Milner polymorphic type schemes, Church/Curry monotypes and Hindley principal typing algorithm. This shows that types are abstract interpretations.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263744",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Cousot",
+        "institution": "École Normale Supérieure - PSL"
+      }
+    ],
+    "dblp_key": "conf/popl/Cousot97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263731",
+    "title": "Comparing the Expressive Power of the Synchronous and the Asynchronous pi-calculus",
+    "abstract": "The Asynchronous π-calculus, as recently proposed by Boudol and, independently, by Honda and Tokoro, is a subset of the π-calculus which contains no explicit operators for choice and output-prefixing. The communication mechanism of this calculus, however, is powerful enough to simulate output-prefixing, as shown by Boudol, and input-guarded choice, as shown recently by Nestmann and Pierce. A natural question arises, then, whether or not it is possible to embed in it the full π-calculus. We show that this is not possible, i.e. there does not exist any uniform, parallel-preserving, translation from the π-calculus into the asynchronous π-calculus, up to any \"reasonable\" notion of equivalence. This result is based on the incapablity of the asynchronous π-calculus of breaking certain symmetries possibly present in the initial communication graph. By similar arguments, we prove a separation result between the π-calculus and CCS.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263731",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Catuscia",
+        "last_name": "Palamidessi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Palamidessi97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263708",
+    "title": "Rolling Your Own MADT - A Connection Between Linear Types and Monads",
+    "abstract": "A methodology is described whereby a linear ADT may be rigorously encapsulated within a state monad. A CPS-like translation from the original ADT axioms into monadic ones is also described and proven correct, so that reasoning can be accomplished at the monadic level without exposing the state. The ADT axioms are suitably constrained by a linear type system to make this translation possible. This constraint also allows the state to be &amp;quot;updated in place,&amp;quot; a notion made precise via a graph-rewrite operational semantics. 1 Introduction In recent years, numerous proposals for I/O, destructive updates to data structures, mutable variables, nondeterminism, and concurrency have been put forth, all using monads to structure programs in such a way that details of the computation are effectively hidden and encapsulated [18, 20]. One of the most important uses of monads is in dealing with state, resulting in a style of programming referred to appropriately by Peyton Jones and Wadler as imperativ...",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263708",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Chih‐Ping",
+        "last_name": "Chen",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Hudak",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/popl/ChenH97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263765",
+    "title": "First-class Polymorphism with Type Inference",
+    "abstract": "Languages like ML and Haskell encourage the view of values as first-class entities that can be passed as arguments or results of functions, or stored as components of data structures. The same languages offer parametric polymorphism, which allows the use of values that behave uniformly over a range of different types. But the combination of these features is not supported-- polymorphic values are not first-class. This restriction is sometimes attributed to the dependence of such languages on type inference, in contrast to more expressive, explicitly typed languages, like System F, that do support first-class polymorphism.This paper uses relationships between types and logic to develop a type system, FCP, that supports first-class polymorphism, type inference, and also first-class abstract datatypes. The immediate result is a more expressive language, but there are also long term implications for language design.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263765",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mark P.",
+        "last_name": "Jones",
+        "institution": "University of Nottingham"
+      }
+    ],
+    "dblp_key": "conf/popl/Jones97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263759",
+    "title": "Reducing Nondeterminism while Specializing Logic Programs",
+    "abstract": "Program specialization is a collection of program transformation techniques for improving program efficiency by exploiting some information available at compile-time about the input data. We show that current techniques for program specialization based on partial evaluation do not perform well on nondeterministic logic programs. We then consider a set of transformation rules which extend the ones used for partial evaluation, and we propose a strategy to direct the application of these extended rules so to derive very efficient specialized programs. The efficiency improvements which may even be exponential, are achieved because the derived programs are semi-deterministic and the operations which are performed by the initial programs in different branches of the computation trees, are performed in the specialized programs within single branches. We also make use of mode information to guide the unfolding process and to reduce nondeterminism. To exemplify our technique, we show that we can automatically derive very efficient semi-deterministic matching programs and semi-deterministic parsers for regular languages. The derivations we have performed could not have been done by previously known partial evaluation techniques.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263759",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Alberto",
+        "last_name": "Pettorossi",
+        "institution": "University of Rome Tor Vergata"
+      },
+      {
+        "first_name": "Maurizio",
+        "last_name": "Proietti",
+        "institution": "Istituto di Analisi dei Sistemi ed Informatica Antonio Ruberti"
+      },
+      {
+        "first_name": "Sophie",
+        "last_name": "Renault",
+        "institution": "University of Rome Tor Vergata"
+      }
+    ],
+    "dblp_key": "conf/popl/PettorossiPR97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263763",
+    "title": "Polyp - A Polytypic Programming Language",
+    "abstract": "Many functions have to be written over and over again for different datatypes, either because datatypes change during the development of programs, or because functions with similar functionality are needed on different datatypes. Examples of such functions are pretty printers, debuggers, equality functions, unifiers, pattern matchers, rewriting functions, etc. Such functions are called polytypic functions. A polytypic function is a function that is defined by induction on the structure of user-defined datatypes. This paper extends a functional language (a subset of Haskell) with a construct for writing polytypic functions. The extended language type checks definitions of polytypic functions, and infers the types of all other expressions using an extension of Jones' theories of qualified types and higher-order polymorphism. The semantics of the programs in the extended language is obtained by adding type arguments to functions in a dictionary passing style. Programs in the extended language are translated to Haskell.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263763",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Patrik",
+        "last_name": "Jansson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Johan",
+        "last_name": "Jeuring",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/JanssonJ97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263714",
+    "title": "Parameterized Types for Java",
+    "abstract": "Java offers the real possibility that most programs can be written in a type-safe language. However, for Java to be broadly useful, it needs additional expressive power. This paper extends Java in one area where more power is needed: support for parametric polymorphism, which allows the definition and implementation of generic abstractions. We discuss both the rationale for our design decisions and the impact of the extension on other parts of Java, including arrays and the class library. We also describe optional extensions to the Java virtual machine to allow parameterized bytecodes, and how to verify them efficiently. We have extended the Java bytecode interpreter to provide good performance for parameterized code in both execution speed and code size, without slowing down non-parameterized code.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263714",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Joseph A.",
+        "last_name": "Bank",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Andrew C.",
+        "last_name": "Myers",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Liskov",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/BankLM97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263710",
+    "title": "A Unified Computation Model for Functional and Logic Programming",
+    "abstract": "We propose a new computation model which combines the operational principles of functional languages (reduction), logic languages (non-deterministic search for solutions), and integrated functional logic languages (residuation and narrowing). This computation model combines efficient evaluation principles of functional languages with the problem-solving capabilities of logic programming. Since the model allows the delay of function calls which are not sufficiently instantiated, it also supports a concurrent style of programming. We provide soundness and completeness results and show that known evaluation principles of functional logic languages are particular instances of this model. Thus, our model is a suitable basis for future declarative programming languages.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263710",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Hanus",
+        "institution": "RWTH Aachen University"
+      }
+    ],
+    "dblp_key": "conf/popl/Hanus97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263716",
+    "title": "Determining the Idle Time of a Tiling",
+    "abstract": "This paper investigates the idle time associated with a parallel computation, that is, the time that processors are idle because they are either waiting for data from other processors or waiting to synchronize with other processors. We study doubly-nested loops corresponding to parallelogram- or trapezoidal-shaped iteration spaces that have been parallelized by the well-known tiling transformation. We introduce the notion of rise r, which relates the shape of the iteration space to that of the tiles. For parallelogram- shaped iteration spaces, we show that when r < -2, the idle time is linear in P, the number of processors, but when r > -1, it is quadratic in P. In the context of hierarchical tiling, where multiple levels of tiling are used, a good choice of rise can lead to less idle time and better performance. While idle time is not the only cost that should be considered in evaluating a tiling strategy, current architectural trends (of deeper memory hierarchies and multiple levels of parallelism) suggest it has increasing importance.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263716",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Karin",
+        "last_name": "Högstedt",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Larry",
+        "last_name": "Carter",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Jeanne",
+        "last_name": "Ferrante",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "conf/popl/CarterFH97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263735",
+    "title": "Program Fragments, Linking, and Modularization",
+    "abstract": "Module mechanisms have received considerable theoretical attention, but the associated concepts of separate compilation and linking have not been emphasized. Anomalous module systems have emerged in functional and object-oriented programming where software components are not separately typecheckable and compilable. In this paper we provide a context where linking can be studied, and separate compilability can be formally stated and checked. We propose a framework where each module is separately compiled to a self-contained entity called a linkset; we show that separately compiled, compatible modules can be safely linked together. 1 Introduction Program modularization arose from the necessity of splitting large programs into fragments in order to compile them. As system libraries grew in size, it became essential to compile the libraries separately from the user programs; libraries acquired interfaces that minimized compilation dependencies. A linker was used to patch compiled fragmen...",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263735",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Luca",
+        "last_name": "Cardelli",
+        "institution": "Digital Equipment (Germany)"
+      }
+    ],
+    "dblp_key": "conf/popl/Cardelli97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263713",
+    "title": "Is &quot;Just in Time&quot; = &quot;Better Late than Never&quot;?",
+    "abstract": "The World-Wide Web is emerging as a medium for distributing platform-independent, intermediate-form programs. Most Java vendors have recently announced plans to construct \"just-in-time\" systems, which translate the intermediate text into native code on demand. In this paper, we present experiments that show the benefits of just-in-time systems as compared with the traditional (compile prior to execution) systems. We introduce a new method--the continuous compiler-- that can outperform just-in-time systems by overlapping compilation with program interpretation and native execution. Based on those results, we then present a smart just-in-time system that blends interpretation with native-code execution, thereby obtaining improved performance.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263713",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Michael P.",
+        "last_name": "Plezbert",
+        "institution": "Washington University in St. Louis"
+      },
+      {
+        "first_name": "Ron K.",
+        "last_name": "Cytron",
+        "institution": "Washington University in St. Louis"
+      }
+    ],
+    "dblp_key": "conf/popl/PlezbertC97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263758",
+    "title": "Constraints to Stop Higher-Order Deforestation",
+    "abstract": "Wadler&amp;apos;s deforestation algorithm removes intermediate data structures from functional programs. To be appropriate for inclusion in a compiler, deforestation must terminate on all programs. Several techniques exist to ensure termination of deforestation on all first-order programs, but a technique for higher-order programs was only recently introduced by Hamilton and later Marlow. We present a new technique for ensuring termination of deforestation on all higher-order programs that allows useful transformation steps prohibited in Hamilton&amp;apos;s and Marlow&amp;apos;s techniques. The technique uses a constraint-based higher-order control-flow analysis. 1 Introduction Lazy, higher-order, functional programming languages lend themselves to a certain style of programming which uses intermediate data structures [28]. However, this style also leads to inefficient programs. Example 1 Consider the following program. letrec a = x; y: case x of [] ! y (h : t) ! h : a t y in u; v; w: a (a u v) w The mai...",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263758",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Helmut",
+        "last_name": "Seidl",
+        "institution": "Universität Trier"
+      },
+      {
+        "first_name": "Morten Heine",
+        "last_name": "Sørensen",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/popl/SeidlS97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263729",
+    "title": "Behavioral Equivalence in the Polymorphic Pi-calculus",
+    "abstract": "We investigate parametric polymorphism in message-based concurrent programming, focusing on behavioral equivalences in a typed process calculus analogous to the polymorphic lambda-calculus of Girard and Reynolds.Polymorphism constrains the power of observers by preventing them from directly manipulating data values whose types are abstract, leading to notions of equivalence much coarser than the standard untyped ones. We study the nature of these constraints through simple examples of concurrent abstract data types and develop basic theoretical machinery for establishing bisimilarity of polymorphic processes.We also observe some surprising interactions between polymorphism and aliasing, drawing examples from both the polymorphic pi-calculus and ML.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263729",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Davide",
+        "last_name": "Sangiorgi",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/PierceS97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263745",
+    "title": "Infinitary Control Flow Analysis: a Collecting Semantics for Closure Analysis",
+    "abstract": "Defining the collecting semantics is usually the first crucial step in adapting the general methodology of abstract interpretation to the semantic framework or programming language at hand. In this paper we show how to define a collecting semantics for control flow analysis: due to the generality of the formulation we need to appeal to coinduction (or greatest fixed points) in order to define the analysis. We then prove the semantic soundness of the collecting semantics and that all totally deterministic instantiations have a least solution; this incorporates k-CFA, polymorphic splitting and a new class of uniform-k-CFA analyses.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263745",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Flemming",
+        "last_name": "Nielson",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Hanne Riis",
+        "last_name": "Nielson",
+        "institution": "Technical University of Denmark"
+      }
+    ],
+    "dblp_key": "conf/popl/NielsonN97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263743",
+    "title": "Type-Checking Higher-Order Polymorphic Multi-Methods",
+    "abstract": "We present a new predicative and decidable type system, called ML≤, suitable for languages that integrate functional programming and parametric polymorphism in the tradition of ML [21, 28], and class-based object-oriented programming and higher-order multimethods in the tradition of CLOS [12]. Instead of using extensible records as a foundation for object-oriented extensions of functional languages, we propose to reinterpret ML datatype declarations as abstract and concrete class declarations, and to replace pattern matching on run-time values by dynamic dispatch on run-time types. ML≤ is based on universally quantified polymorphic constrained types. Constraints are conjunctions of inequalities between monotypes built from type constructors organized into extensible and partially ordered classes. We give type checking rules for a small, explicitly typed functional language á la XML [20] with multi-methods, show that the resulting system has decidable minimal types, and discuss subject reduction. Finally, we propose a new object-oriented programming language based on the ML≤ type system.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263743",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Bourdoncle",
+        "institution": "École Nationale Supérieure des Mines de Paris"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Merz",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/BourdoncleM97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263726",
+    "title": "The Pi-calculus in Direct Style",
+    "abstract": "We introduce a calculus which is a direct extension of both the λ and the π calculi. We give a simple type system for it, that encompasses both Curry's type inference for the λ-calculus, and Milner's sorting for the π-calculus as particular cases of typing. We observe that the various continuation passing style transformations for λ-terms, written in our calculus, actually correspond to encodings already given by Milner and others for evaluation strategies of λ-terms into the π-calculus. Furthermore, the associated sortings correspond to well-known double negation translations on types. Finally we provide an adequate CPS transform from our calculus to the π-calculus. This shows that the latter may be regarded as an \"assembly language\", while our calculus seems to provide a better programming notation for higher-order concurrency.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263726",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gérard",
+        "last_name": "Boudol",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/Boudol97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263718",
+    "title": "Synchronization Transformations for Parallel Computing",
+    "abstract": "As parallel machines become part of the mainstream computing environment, compilers will need to apply synchronization optimizations to deliver efficient parallel software. This paper describes a new framework for synchronization optimizations and a new set of transformations for programs that implement critical sections using mutual exclusion locks. These transformations allow the compiler to move constructs that acquire and release locks both within and between procedures and to eliminate acquire and release constructs.The paper also presents a new synchronization algorithm, lock elimination, for reducing synchronization overhead. This optimization locates computations that repeatedly acquire and release the same lock, then uses the transformations to obtain equivalent computations that acquire and release the lock only once. Experimental results from a parallelizing compiler for object-based programs illustrate the practical utility of this optimization. For three benchmark programs the optimization dramatically reduces the number of times the computations acquire and release locks, which significantly reduces the amount of time processors spend acquiring and releasing locks. For one of the three benchmarks, the optimization always significantly improves the overall performance. Depending on the number of processors executing the computation, the optimized version runs between 2.11 and 1.83 times faster than the unoptimized version. For one of the other benchmarks, the optimized version runs between 1.13 and 0.96 times faster than the unoptimized version, with a mean of 1.08 times faster. For the final benchmark, the optimization reduces the overall performance.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263718",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Pedro C.",
+        "last_name": "Diniz",
+        "institution": "University of California, Santa Barbara"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "University of California, Santa Barbara"
+      }
+    ],
+    "dblp_key": "conf/popl/RinardD97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263706",
+    "title": "Shape Types",
+    "abstract": "Type systems currently available for imperative languages are too weak to detect a significant class of programming errors. For example, they cannot express the property that a list is doubly-linked or circular. We propose a solution to this problem based on a notion of shape types defined as context-free graph grammars. We define graphs in set-theoretic terms, and graph modifications as multiset rewrite rules. These rules can be checked statically to ensure that they preserve the structure of the graph specified by the grammar. We provide a syntax for a smooth integration of shape types in C. The programmer can still express pointer manipulations with the expected constant time execution and benefits from the additional guarantee that the property specified by the shape type is an invariant of the program.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263706",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Pascal",
+        "last_name": "Fradet",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "Daniel Le",
+        "last_name": "Métayer",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      }
+    ],
+    "dblp_key": "conf/popl/FradetM97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263753",
+    "title": "A Demand-Driven Set-Based Analysis",
+    "abstract": "In this paper we present an analysis technique for isolating dead code in higher-order functional programs. First, we formalize what it means for a program fragment to contribute to the value returned by the program. Next, we provide a purely declarative specification of a subset of terms which constitute dead code. This is done by a refinement of the set-based semantics technique, developed by Nevin Heintze, by the introduction of a concept of demand. We then develop a demand-driven set-based analysis to compute dead code specified by the declarative specification. The demand-driven set-based analysis developed in this paper is polynomial time, in the size of the input program.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263753",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sandip K.",
+        "last_name": "Biswas",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/Biswas97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263709",
+    "title": "Search and Imperative Programming",
+    "abstract": "We augment the expressive power of imperative programming in order to make it a more attractive vehicle for problems that involve search. The proposed additions are limited yet powerful and are inspired by the logic programming paradigm. We illustrate their use by presenting solutions to a number of classical problems, including the straight search problem, the knapsack problem, and the 8 queens problem. These solutions are substantially simpler than their counterparts written in the conventional way and can be used for different purposes without any modification.The proposed language is an intermediate stage on the road towards a realization of a strongly typed constraint programming language that combines the advantages of the logic programming and imperative programming.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263709",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Krzysztof R.",
+        "last_name": "Apt",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Andrea",
+        "last_name": "Schaerf",
+        "institution": "Sapienza University of Rome"
+      }
+    ],
+    "dblp_key": "conf/popl/AptS97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263762",
+    "title": "High Level Reading and Data Structure Compilation",
+    "abstract": "In [Paige89], it was shown how to simulate a set machine in real-time on a RAM that provides cursor or even only pointer access to data. The underlying assumption was that the establishment of efficient data structures would be provided by some 'client' program. In the current paper, we fill in the gap by presenting a linear-time high level reading method that translates external input in string form into data structures that facilitate such real-time simulation. The algorithm builds the data structures for a much richer type system than what appeared in [Paige94], and is powerful enough to support our reading algorithm itself in an efficient way. Consequently, it equips a high level set-theoretic language with I/O, without the loss of computational transparency.This work alleviates the burden of creating low-level data structures manually, and builds the internal pointer-based inputs required by most pointer algorithms [Ben-Amram95] from the external string representation.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263762",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Paige",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Zhe",
+        "last_name": "Yang",
+        "institution": "New York University"
+      }
+    ],
+    "dblp_key": "conf/popl/PaigeY97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263747",
+    "title": "Automatic Verification of Parameterized Linear Networks of Processes",
+    "abstract": "This paper describes a method to verify safety properties of parameterized linear networks of processes. The method is based on the construction of a network invariant, defined as a fixpoint. Such invariants can often be automatically computed using heuristics based on Cousot's widening techniques. These techniques have been implemented and some non-trivial examples are presented.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263747",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Lesens",
+        "institution": "Université Grenoble Alpes"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Halbwachs",
+        "institution": "Université Grenoble Alpes"
+      },
+      {
+        "first_name": "Pascal",
+        "last_name": "Raymond",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/popl/Halbwachs97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263750",
+    "title": "On the Complexity of Escape Analysis",
+    "abstract": "Escape analysis is an abstract interpretation technique for statically optimizing storage management devised by Park & Goldberg [30]. The main application of escape analysis is the optimization of storage management and data locality in garbage-collected languages such as ML or JAVA.We improve the previously known exponential complexity bound of Park & Goldberg: we show that first-order escape analysis (EA1) can be solved in almost linear time, and that second-order escape analysis (EA2) is DEXPTIME-hard. We exhibit a fast, equational, path-compression based abstract interpretation algorithm for EA1. We prove that it is sound and complete, and that its time complexity is O(n log2 n).We sketch an extension of the analysis to higher-order functions and imperative operations that is approximate. Finally we briefly present some experimental evidence that escape analysis may be useful in practice.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263750",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Alain",
+        "last_name": "Deutsch",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/Deutsch97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263707",
+    "title": "Objective ML: A Simple Object-Oriented Extension of ML",
+    "abstract": "Objective ML is a small practical extension of ML with objects and toplevel classes. It is fully compatible with ML; its type system is based on ML polymorphism, record types with polymorphic access, and a better treatment of type abbreviations. Objective ML allows for most features of object-oriented languages including multiple inheritance, methods returning self and binary methods as well as parametric classes. This demonstrates that objects can be added to strongly typed languages based on ML polymorphism.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263707",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Didier",
+        "last_name": "Rémy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Jérôme",
+        "last_name": "Vouillon",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/RemyV97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263715",
+    "title": "Pizza into Java: Translating Theory into Practice",
+    "abstract": "Pizza is a strict superset of Java that incorporates three ideas from the academic community: parametric polymorphism, higher-order functions, and algebraic data types. Pizza is defined by translation into Java and compiles into the Java Virtual Machine, requirements which strongly constrain the design space. Nonetheless, Pizza fits smoothly to Java, with only a few rough edges.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263715",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Odersky",
+        "institution": "Karlsruhe Institute of Technology"
+      },
+      {
+        "first_name": "Philip",
+        "last_name": "Wadler",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/popl/OderskyW97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263717",
+    "title": "Model Checking for Programming Languages using Verisoft",
+    "abstract": "Verification by state-space exploration, also often referred to as \"model checking\", is an effective method for analyzing the correctness of concurrent reactive systems (e.g., communication protocols). Unfortunately, existing model-checking techniques are restricted to the verification of properties of models, i.e., abstractions, of concurrent systems.In this paper, we discuss how model checking can be extended to deal directly with \"actual\" descriptions of concurrent systems, e.g., implementations of communication protocols written in programming languages such as C or C++. We then introduce a new search technique that is suitable for exploring the state spaces of such systems. This algorithm has been implemented in VeriSoft, a tool for systematically exploring the state spaces of systems composed of several concurrent processes executing arbitrary C code. As an example of application, we describe how VeriSoft successfully discovered an error in a 2500-line C program controlling robots operating in an unpredictable environment.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263717",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Patrice",
+        "last_name": "Godefroid",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Godefroid97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263738",
+    "title": "Minimal Typings in Atomic Subtyping",
+    "abstract": "This paper studies the problem of simplifying typings and the size-complexity of most general typings in typed programming languages with atomic subtyping. We define a notion of minimal typings relating all typings which are equivalent with respect to instantiation. The notion of instance is that of Fuh and Mishra [13], which supports many interesting simplifications. We prove that every typable term has a unique minimal typing, which is the logically most succinct among all equivalent typings. We study completeness properties, with respect to our notion of minimality, of well-known simplification techniques. Drawing upon these results, we prove a tight exponential lower bound for the worst case dag-size of constraint sets as well as of types in most general typings. To the best of our knowledge, the best previously proven lower bound was linear. 1 Introduction Subtyping is a fundamental idea in type systems for programming languages, which can in principle be integrated into standar...",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263738",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jakob",
+        "last_name": "Rehof",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/popl/Rehof97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263711",
+    "title": "Call by Need Computations to Root-Stable Form",
+    "abstract": "The following theorem of Huet and Lévy forms the basis of all results on optimal reduction strategies for orthogonal term rewriting systems: every term not in normal form contains a needed redex, and repeated contraction of needed redexes results in the normal form, if the term under consideration has one. We generalize this theorem to computations to root-stable form and we argue that the resulting notion of root-neededness is more fundamental than (other variants of) neededness when it comes to infinitary normalization.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263711",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Aart",
+        "last_name": "Middeldorp",
+        "institution": "University of Tsukuba"
+      }
+    ],
+    "dblp_key": "conf/popl/Middeldorp97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263705",
+    "title": "Partitioning Dataflow Analyses Using Types",
+    "abstract": "We present a simple method for partitioning a dataflow analysis problem into a series of related subproblems. We use type information (either declared by the programmer, or computed via nonstandard type inference) to conservatively approximate analysis-time data dependences between program quantities. This dependence information frees us from the need to model all program quantities simultaneously in a single, monolithic analysis. Instead, we can model quantities in any order, or even in parallel, so long as we respect the dependences. Our approach is independent of the means used to solve the subproblems, and enables the wider application of existing sparse approaches previously restricted to \"separable\" dataflow problems. Preliminary experiments applying our technique to flow-sensitive points-to analysis of C programs have achieved storage savings of 1.3-7.2x over existing methods.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263705",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Erik",
+        "last_name": "Ruf",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/Ruf97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263761",
+    "title": "Relational Parametricity and Units of Measure",
+    "abstract": "Type systems for programming languages with numeric types can be extended to support the checking of units of measure. Quantification over units then introduces a new kind of parametric polymorphism with a corresponding Reynolds-style representation independence principle: that the behaviour of programs is invariant under changes to the units used. We prove this 'dimensional invariance' result and describe four consequences. The first is that the type of an expression can be used to derive equations which describe its properties with respect to scaling (akin to Wadler's 'theorems for free' for System F). Secondly there are certain types which are inhabited only by trivial terms. For example, we prove that a fully polymorphic square root function cannot be written using just the usual arithmetic primitives. Thirdly we exhibit interesting isomorphisms between types and for first-order types relate these to the central theorem of classical dimensional analysis. Finally we suggest that for any expression whose behaviour is dimensionally invariant there exists some equivalent expression whose type reflects this behaviour, a consequence of which would be a full abstraction result for a model of the language.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263761",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Andrew",
+        "last_name": "Kennedy",
+        "institution": "École Polytechnique"
+      }
+    ],
+    "dblp_key": "conf/popl/Kennedy97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263742",
+    "title": "Typing Algorithm in Type Theory with Inheritance",
+    "abstract": "We propose and study a new typing algorithm for dependent type theory. This new algorithm typechecks more terms by using inheritance between classes. This inheritance mechanism turns out to be powerful: it supports multiple inheritance, classes with parameters and uses new abstract classes FUNCLASS and SORTCLASS (respectively classes of functions and sorts). We also defines classes as records, particularily suitable for the formal development of mathematical theories. This mechanism, implemented in the proof checker Coq, can be adapted to all typed -calculus. 1 Introduction In the last years, proof checkers based on type theory appeared as convincing systems to formalize mathematics (especially constructive mathematics) and to prove correctness of software and hardware. In a proof checker, one can interactively build definitions, statements and proofs. The system is then able to check automatically whether the definitions are well-formed and the proofs are correct. Modern systems ar...",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263742",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Amokrane",
+        "last_name": "Saïbi",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/Saibi97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263760",
+    "title": "From SOS Rules to Proof Principles: An Operational Metatheory for Functional Languages",
+    "abstract": "Structural Operational Semantics (SOS) is a widely used formalism for specifying the computational meaning of programs, and is commonly used in specifying the semantics of functional languages. Despite this widespread use there has been relatively little work on the for such semantics. As a consequence the operational approach to reasoning is considered ad hoc since the same basic proof techniques and reasoning tools are reestablished over and over, once for each operational semantics specification. This paper develops some metatheory for a certain class of SOS language specifications for functional languages. We define a rule format, Globally Deterministic SOS (GDSOS), and establish some proof principles for reasoning about equivalence which are sound for all languages which can be expressed in this format. More specifically, if the SOS rules for the operators of a language conform to the syntax of the GDSOS format, then - a syntactic analogy of continuity holds, which relates a recursive function to its finite unwindings, and forms the basis of a Scott-style fixed-point induction technique; - a powerful induction principle called improvement induction holds for a certain class of GDSOS semantics; the Improvement Theorem from [Sands, POPL'95] is a simple corollary; - a useful bisimulation-based coinductive proof technique for operational approximation (and its instrumented variants) is sound.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263760",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Sands",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/Sands97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263703",
+    "title": "Fast and Accurate Flow-Insensitive Points-To Analysis",
+    "abstract": "In order to analyze a program that involves pointers, it is necessary to have (safe) information about what each pointer points to. There are many different approaches to computing points-to information. This paper addresses techniques for flow- and context-insensitive interprocedural analysis of stack-based storage.The paper makes two contributions to work in this area: - The first contribution is a set of experiments that explore the trade-offs between techniques previously defined by Lars Andersen and Bjarne Steensgaard. The former has a cubic worst-case running time, while the latter is essentially linear. However, the former may be much more precise than the latter. We have found that in practice, Andersen's algorithm is consistently more precise than Steensgaard's. For small programs, there is very little difference in the times required by the two approaches; however, for larger programs, Andersen's algorithm can be much slower than Steensgaard's. - The second contribution is the definition of two new algorithms. The first algorithm can be \"tuned\" so that its worst-case time and space requirements, as well as its accuracy range from those of Steensgaard to those of Andersen. We have experimented with several versions of this algorithm; one version provided a significant increase in accuracy over Steensgaard's algorithm, while keeping the running time within a factor of two. The second algorithm uses the first as a subroutine. Its worst-case time and space requirements are a factor of log N (where N is the number of variables in the program) worse than those of Steensgaard's algorithm. In practice, it appears to run about ten times slower than Steensgaard's algorithm; however it is significantly more accurate than Steensgaard's algorithm, and significantly faster than Andersen's algorithm on large programs.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263703",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Marc",
+        "last_name": "Shapiro",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Susan",
+        "last_name": "Horwitz",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/popl/ShapiroH97",
+    "venue": "popl",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/263699.263755",
+    "title": "Denotational Semantics Using an Operationally-Based Term Model",
+    "abstract": "We introduce a method for proving the correctness of transformations of programs in languages like Scheme and ML. The method consists of giving the programs a denotational semantics in an operationally-based term model in which interaction is the basic observable, and showing that the transformation is meaning-preserving. This allows us to consider correctness for programs that interact with their environment without terminating, and also for transformations that change the internal store behavior of the program. We illustrate the technique on one of the Meyer-Sieber examples, and we use it to prove the correctness of assignment elimination for Scheme. The latter is an important but subtle step for Scheme compilers; we believe ours is the first proof of its correctness.",
+    "date": "1997-01-01",
+    "link": "https://doi.org/10.1145/263699.263755",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Gregory T.",
+        "last_name": "Sullivan",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/popl/WandS97",
+    "venue": "popl",
+    "year": 1997
+  }
+]

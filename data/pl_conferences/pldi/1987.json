@@ -1,0 +1,493 @@
+[
+  {
+    "paper_id": "10.1145/29650.29668",
+    "title": "GL-a denotational testbed with continuations and partial continuations as first-class objects",
+    "abstract": "In this paper we describe GL, a language designed to support interactive experimentation with denotational semantics of programming languages, and the novel features of its interpreter. GL is an expressional language that might best be described as an implementation of lambda calculus augmented with several useful basic data types including 1-values.A unique aspect of the GL environment is that it presents a visible, user-accessible implementation of the continuation semantics of GL. The user is expected to understand a denotational definition of GL, and to interact with the system in terms of that definition. In particular, if a computation is temporarily halted the expression continuation extant at that point can be interactively captured and later applied to other values and stores. The implementation of this feature is via a pair of routines called setjmpup and longjmpup that provide what might be called a partial continuation facility. A partial continuation is a function over stores or store/value pairs that represents execution of a partially executed program from its current state to some later state possibly before its half state. The semantics of partial continuations is interesting, and an extension of GL is presented that contains continuations and partial continuations as first-class objects.The GL environment is fairly complete; it has an experimental polymorphic type inference mechanism that supports self-application and report likely sources of user error in a robust manner, and it has a flexible breakpoint and trace facility that permits program execution to be observed and controlled at a variety of levels of granularity. Moreover, it has been used successfully to teach a graduate course in Theory of Programming Languages.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29668",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "G. F.",
+        "last_name": "Johnson",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/Johnson87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29660",
+    "title": "A generator for language-specific debugging systems",
+    "abstract": "We present a system which generates interactive high-level debugging systems from formal language definitions. The language definer has to specify a denotational semantics augmented with a formal description of the language specific debugging facilities. The generated debugger offers the traditional features such as tracing programs, setting breakpoints, displaying variables etc; interaction with the user is always on language level rather than on machine level. The concept has been implemented as part of the PSG-Programming System Generator, and has successfully been used to generate debuggers for Pascal and Modula-2. The core of the implementation consists of an interpreter for a functional language, which has been extended with the language-independent mechanisms needed in order to allow interaction with the user during program execution.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29660",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "R.",
+        "last_name": "Bahlke",
+        "institution": "Darmstadt University of Applied Sciences"
+      },
+      {
+        "first_name": "Brödel",
+        "last_name": "Moritz",
+        "institution": "Darmstadt University of Applied Sciences"
+      },
+      {
+        "first_name": "G.",
+        "last_name": "Snelting",
+        "institution": "Darmstadt University of Applied Sciences"
+      }
+    ],
+    "dblp_key": "conf/pldi/BahlkeMS87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29672",
+    "title": "Interpreting ABF - a language for document construction",
+    "abstract": "This paper describes an interpreter for ABF, a language for constructing legal documents. The ABF language defines both commands to develop documents and commands to manipulate those documents. The language has typical programming constructs for sequence, selection, and repetition but also allows the user other capabilities to aid in document construction; the user can modify the program while it is running (change the document while it is being processed), type the variables during the initial processing of a document, and then change the type during later processing, enter commands that require a change of context during the processing of a document, output a document with variables still undefined. A document is constructed using conditional and repeat statements and incorporation of other documents by reference. Data types include documents, strings, numbers, dollar amounts and logical values. Arrays can be formed for all types except documents. There are three forms of subprograms: documents can be incorporated by reference in other documents at any point at which a variable name is permitted; rules (subprocedures) for computing values can be attached to any variable; and alternate questions can be attached to variables in a similar manner. The ABF system queries the user for any values needed to complete a document; questions are generated from variable names.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29672",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "H.",
+        "last_name": "Harr",
+        "institution": "DePaul University"
+      },
+      {
+        "first_name": "M. W.",
+        "last_name": "Evens",
+        "institution": "Chicago Kent College of Law"
+      },
+      {
+        "first_name": "J.",
+        "last_name": "Sprowl",
+        "institution": "Chicago Kent College of Law"
+      }
+    ],
+    "dblp_key": "conf/pldi/HarrES87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29664",
+    "title": "Efficient interpretation of Prolog programs",
+    "abstract": "The paper focuses on three ideas for solving problems with writing interpreters for the logic programming language Prolog in Prolog and how to combine these ideas to an interpreter for Prolog which is both simple and efficient. The resulting interpreter system can be incorporated into a Prolog based on Warren's Abstract Machine and built mostly from existing parts of it. The interpreter has been implemented and is used in a Prolog system developed at Uppsala University.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29664",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "J.",
+        "last_name": "Barklund",
+        "institution": "Uppsala University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Barklund87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29662",
+    "title": "Selective interpretation as a technique for debugging computationally intensive programs",
+    "abstract": "As part of Rice University's project to build a programming environment for scientific software, we have built a facility for program execution that solves some of the problems inherent in debugging large, computationally intensive programs. By their very nature such programs do not lend themselves to full-scale interpretation. In moderation however, interpretation can be extremely useful during the debugging process. In addition to discussing the particular benefits that we expect from interpretation, this paper addresses how interpretive techniques can be effectively used in conjunction with the execution of compiled code. The same implementation technique that permits interpretation to be incorporated as part of execution will also permit the execution facility to be used for debugging parallel programs running on a remote machine.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29662",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "B. B.",
+        "last_name": "Chase",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Hood",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChaseH87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29679",
+    "title": "Parallelism, persistence and meta-cleanliness in the symmetric Lisp interpreter",
+    "abstract": "Symmetric Lisp is a programming language designed around first-class environments, where an environment is a dictionary that associates names with definitions or values. In this paper we describe the logical structure of the Symmetric Lisp interpreter. In other interpreted languages, the interpreter is a virtual machine that evaluates user input on the basis of its own internal state. The Symmetric Lisp interpreter, on the other hand, is a simple finite-state machine with no internal state. Its role is to attach user input to whatever environment the user has specified; such environments are transparent objects created by, maintained by and fully accessible to the user. The interpreter's semantics are secondary to the semantics of environments in Symmetric Lisp: it is the environment-object to which an expression is attached, not the interpreter, that controls the evaluation of expressions.This arrangement has several consequences. Because environments in Symmetric Lisp are governed by a parallel evaluation rule, the Symmetric Lisp interpreter is a parallel interpreter. A Symmetric Lisp environment evaluates to another environment; a session with the interpreter therefore yields a well-defined environment object as its result. Users are free to write routines that manage these interpreter-created objects - routines that list the elements of a namespace, coalesce environments, maintain multiple name definitions and so on precisely because environment objects may be freely inspected and manipulated. Because a named environment may contain other named environments as elements, interpreter-created objects may be regarded as hierarchical file systems. Because of the parallel evaluation semantics of environments, the interpreter is well-suited as an interface to a concurrent, language-based computer system that uses Symmetric Lisp as its base language. We argue that - in short - a basic semantic simplification in Symmetric Lisp promises a correspondingly basic increase in power at the user-interpreter interface.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29679",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Gelernter",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Suresh",
+        "last_name": "Jagannathan",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "T.B.",
+        "last_name": "London",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/GelernterJL87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29671",
+    "title": "Design of an interpretive environment for Turing",
+    "abstract": "This paper presents the design of an interpreter structure for modern programming languages such as Turing and Modula II that is modular and highly orthogonal while providing maximal flexibility and efficiency in implementation. At the outermost level, the structure consists of a front end, responsible for interaction with the user, and a back end, responsible for execution. The two are linked by a single database consisting of the tokenized statements of the user program. Interfaces between the major modules of each part are defined in such a way as to maximize reusability, and each interface can service a range of plug-compatible modules implementing radically different semantics. The design accommodates a wide spectrum of interpreter types ranging from batch-oriented compiler-simulators to statement-by-statement interactive execution, and provides for a range of program editing tools from simple line editors through to modern language-directed programming environments. It has served as the basis for several interpretive systems including the production Turing interpreter, the Turing Programming Environment, and the Turing Tool software maintenance tool.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29671",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "James R.",
+        "last_name": "Cordy",
+        "institution": "Queen's University"
+      },
+      {
+        "first_name": "T.C. Nicholas",
+        "last_name": "Graham",
+        "institution": "Queen's University"
+      }
+    ],
+    "dblp_key": "conf/pldi/CordyG87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29673",
+    "title": "Constructive real interpretation of numerical programs",
+    "abstract": "We explore the feasibility of providing exact real arithmetic for use in conventional numerical programs. We have built a prototype interpreter which replaces floating point operations with operations on constructive real numbers in the execution of conventional Fortran programs. Such a facility makes it unnecessary to concern oneself with issues of numerical stability in the solution of small problems. It also provides a useful tool for the development of larger numerical programs.We discuss the computability and algorithmic issues involved in the design of the interpreter, as well as some preliminary experiences and performance measurements.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29673",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Hans‐J.",
+        "last_name": "Boehm",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Boehm87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29667",
+    "title": "TOOLS: a unifying approach to object-oriented language interpretation",
+    "abstract": "The object-oriented paradigm is applied to the interpreting of programming languages. An intermediate representation of a program is created as a collection of objects representing various entities in the conceptual world of the source language. These objects cover both the static and the dynamic aspects of a program. As a major advantage of this approach, issues that are traditionally handled by very different techniques (like symbol table management and the generation and execution of intermediate code) can be treated in a unified manner. The specification language of an interpreter generator based on these principles is described.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29667",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "K.",
+        "last_name": "Koskimies",
+        "institution": "University of Helsinki"
+      },
+      {
+        "first_name": "J.",
+        "last_name": "Paakki",
+        "institution": "University of Helsinki"
+      }
+    ],
+    "dblp_key": "conf/pldi/KoskimiesP87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29670",
+    "title": "Cint: a RISC interpreter for the C programming language",
+    "abstract": "Cint is an interpretation system for the C programming language. Like most interpretation systems, it provides \"load and go\" type execution as well as enhanced debugging and performance analysis tools. Cint consists of two phases--a translator and an interpreter. The translator compiles the source program into code for a virtual machine. The interpreter then loads and executes this code. While providing services similar to traditional interpreters, Cint differs from them in two important ways. First, the virtual machine languages used by many interpreters are quite large; machines with 100 to 200 operations are common. In contrast, Cint's virtual machine has only 63 operations. Second, to achieve acceptable execution speeds, interpreters are often implemented in the assembly language of the host machine. Cint, however, is written entirely in C and is therefore portable. In fact, it has been transported to four machines without modification. Despite the compact size of the virtual machine language and the high-level language implementation, Cint's execution speed is comparable to that of other interpreters. This paper describes the design of the virtual machine, the implementation of the interpreter, and the performance of the system.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29670",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jack W.",
+        "last_name": "Davidson",
+        "institution": "University of Virginia"
+      },
+      {
+        "first_name": "J. V.",
+        "last_name": "Gresh",
+        "institution": "University of Virginia"
+      }
+    ],
+    "dblp_key": "conf/pldi/DavidsonG87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29674",
+    "title": "The JADE interpreter: a RISC interpreter for syntax directed editing",
+    "abstract": "This paper describes key features of an interpreter for a language-based editor. The interpreter unites in a RISC framework features which have been used in other domains. The paper examines each feature's integration into the RISC framework.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29674",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "C. F.",
+        "last_name": "Clark",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Clark87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29655",
+    "title": "Enhancement through extension: the extension interpreter",
+    "abstract": "The ability to extend programs dynamically has clear advantages. However, providing efficient yet sufficiently flexible support for such capabilities system-wide presents significant challenges. We describe a design and implementation of an extension mechanism that depends heavily on interpretive techniques, including call arbitration, dynamic linking, and multilanguage extensions. We discuss these mechanisms in the context of our Extension Interpreter, which embodies our ideas and provides a framework for discussing the efficiency and generality of the implementation. Our current implementation runs under BSD UNIX 4.2 and 4.3 on VAXes and SUN workstations. Extensions can be written in both C and in Icon, demonstrating our ability to address problems both of compiled and interpreted languages.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29655",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "D.",
+        "last_name": "Notkin",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "William G.",
+        "last_name": "Griswold",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/NotkinG87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29651",
+    "title": "Mimic: a fast system/370 simulator",
+    "abstract": "Software simulation of one computer on another tends to be slow. Traditional simulators typically execute about 100 instructions on the host machine per instruction simulated. Newer simulators reduce the expansion factor to about 10, by saving and reusing translations of individual instructions. This paper describes an experimental simulator which takes the progression one step further, translating groups of instructions as a unit. This approach, combined with flow analysis, reduces the expansion factor to about 4. The new simulator simulates System/370 on a RISC, namely the IBM RT PC.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29651",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "C.",
+        "last_name": "May",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/pldi/May87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29665",
+    "title": "A recursive interpreter for the Icon programming language",
+    "abstract": "The implementation of the Icon programming language is more interesting and difficult than the implementation of many other programming languages because an expression in Icon can generate a sequence of results. The implementation therefore must support control backtracking in expression evaluation. There also are several novel control structures related to generators. Because expression evaluation is limited lexically, a full coroutine mechanism is not needed and expression evaluation can be handled in a stack-like fashion.The implementation of Icon consists of a virtual machine with a stack-based architecture and an interpreter that executes the virtual machine instructions. There have been several different interpreters for Icon's virtual machine. This paper describes a new approach in which the interpreter is called recursively whenever the context for expression evaluation changes. This recursive interpreter has the advantage of being conceptually clear and flexible without sacrificing efficiency.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29665",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "J.",
+        "last_name": "O'Bagy",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Ralph E.",
+        "last_name": "Griswold",
+        "institution": "University of Arizona"
+      }
+    ],
+    "dblp_key": "conf/pldi/OBagyG87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29678",
+    "title": "Distributed garbage collection",
+    "abstract": "There are two basic approachs to the problem of storage reclamation, process- and processor-based, named for the view point used to recognize when a particular piece of storage can be reclaimed. Examples of the processor approach include mark/sweep and copying algorithms and their variants, while reference counting schemes use a process view of the collection. It is argued that the process approach is better suited for distributed computation where links between dynamically allocated objects may cross processor boundaries. In addition, the process approach allows the heap to be more conveniently shared with other processes in those cases when different processes might not have their own virtual address spaces. A new algorithm using the process approach is given. Its space requirement per object is better than that for reference counting. In addition, a restricted form of pointer replacement is supported which allows circular structures so constructed to be properly collected.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29678",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "J. D.",
+        "last_name": "Eckart",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "R. J.",
+        "last_name": "LeBlanc",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/EckartL87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29676",
+    "title": "Memory allocation and higher-order functions",
+    "abstract": "This paper presents a constant-time marking-collecting algorithm to efficiently implement recursion with a general heap memory rather than with a vectorial stack, in a context of frequent captures of continuations. It has been seen to reduce the 80% garbage collection overhead to less than 5% on average.The algorithm has been built into a virtual machine to efficiently implement at the assembly level the Actor language PLASMA, an Actor-oriented version of PROLOG and a variant of SCHEME, currently in use on 8086, 68000 and Vax.The rationale to use the heap memory is that continuations are available via a single pointer in a unified memory and can be shared optimally when recurrently captured, which is simply impossible using a strategy based on stack recopy. Further, non-captured continuations can be incrementally garbage collected on the fly.Part I describes the elementary recursive instructions of the virtual machine. Part II presents and proves the marking-collecting strategy. Part III safely generalizes the transformation \"call + return = branch\" in a way compatible with the possible capture of the current continuation. An appendix relates its integration in the Virtual Scheme Machine supporting Scheme 84.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29676",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Olivier",
+        "last_name": "Danvy",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/pldi/Danvy87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29652",
+    "title": "A block-and-actions generator as an alternative to a simulator for collecting architecture measurements",
+    "abstract": "To design a new processor or to modify an existing one, designers need to gather data to estimate the influence of specific architecture features on the performance of the proposed machine (PM). To obtain this data, it is necessary to measure on an existing machine (EM) the dynamic behavior of typical programs. Traditionally, simulators have been used to obtain measurements for PMs. Since several hundred EM instructions are required to decode, interpret, and measure each simulated (PM) instruction, the simulation time of typical programs is prohibitively large. Thus, designers tend to simulate only small programs and the results obtained might not be representative of a real system behavior. In this paper we present an alternative tool for collecting architecture measurements: the Block-and-Actions Generator (BKGEN). BKGEN produces a version of the program being measured which is directly executable by the EM. This executable version is obtained directly with the EM compiler or with the PM compiler and a assembly-to-assembly translator. The choice between these alternatives depends on the EM and PM compiler technology and the type of measurements to be obtained. BKGEN also collects the PM events to be measured (called actions). Each EM block of instructions is associated with a PM block of actions so that when the program is executed, it collects the measurements associated with the PM. The main advantage of BKGEN is that the execution time is substantially reduced compared to the execution time of a simulator while collecting similar data. Thus, large typical programs (compilers, assemblers, word processors, ...) can be used by the designer to obtain meaningful measurements.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29652",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "M.",
+        "last_name": "Huguet",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "T.",
+        "last_name": "Lang",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Y.",
+        "last_name": "Tamir",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/pldi/HuguetLT87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29666",
+    "title": "Two-level hybrid interpreter/native code execution for combined space-time program efficiency",
+    "abstract": "A two-level programming model permits the applications programmer to write programs that benefit both from the code density of interpreted virtual machines and from the speed of native code execution. A well-defined boundary between the native code and the virtual machine facilitates the development of translators to be used at both levels.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29666",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "T.",
+        "last_name": "Pittman",
+        "institution": "Kansas State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Pittman87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29680",
+    "title": "CCAL: An interpreted language for experimentation in concurrent control",
+    "abstract": "Concurrent Control Abstraction Language, CCAL, is an interpreted language which provides no particular control regime to the user. CCAL instead supports five primitive operations which manipulate an abstract model of inter-procedural control. This model is intrinsically concurrent, and the user is allowed to construct high-level concurrent control operations from the primitives (hence, control abstraction). The primary use of CCAL is as a vehicle by which rapid prototyping of application specific control forms may be done and as a tool for the construction and evaluation of novel control forms, especially control forms for highly concurrent and distributed systems. The CCAL interpreter is implemented as a distributed program on a network of Vaxen and Sun-3 workstations under 4.2bsd and 4.3bsd Unix1. CCAL programs appear as multi-process programs in a shared memory system. Both true and apparent concurrency are possible. This paper describes the control abstraction facilities offered by the CCAL interpreter, its use, and implementation strategies in the distributed environment.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29680",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Phil",
+        "last_name": "Kearns",
+        "institution": "Williams (United States)"
+      },
+      {
+        "first_name": "Megan Culler",
+        "last_name": "Freeman",
+        "institution": "University of Pittsburgh"
+      }
+    ],
+    "dblp_key": "conf/pldi/KearnsF87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29661",
+    "title": "DI: an interactive debugging interpreter for applicative languages",
+    "abstract": "The DI interpreter is both a debugger and interpreter of SISAL programs. Its use as a program interpreter is only a small part of its role; it is designed to be a tool for studying compilation techniques for applicative languages. DI interprets dataflow graphs expressed in the IF1 and IF2 languages, and is heavily instrumented to report the activity of dynamic storage activity, reference counting, copying and updating of structured data values. It also aids the SISAL language evaluation by providing an interim execution vehicle for SISAL programs. DI provides determinate, sequential interpretation of graph nodes for sequential and parallel operations in a canonical order. As a debugging aid, DI allows tracing, breakpointing, and interactive display of program data values. DI handles creation of SISAL and IF1 error values for each data type and propagates them according to a well-defined algebra. We have begun to implement IF1 optimizers and have measured the improvements with DI.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29661",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "S.",
+        "last_name": "Skedzielewski",
+        "institution": "Lawrence Livermore National Laboratory"
+      },
+      {
+        "first_name": "Robert K.",
+        "last_name": "Yates",
+        "institution": "Lawrence Livermore National Laboratory"
+      },
+      {
+        "first_name": "R. R.",
+        "last_name": "Oldehoeft",
+        "institution": "Colorado State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/SkedzielewskiYO87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29658",
+    "title": "Efficient interpretation of synchronizable series expressions",
+    "abstract": "The benefits of programming in a functional style are well known. For example, algorithms which are expressed as compositions of functions operating on series/vectors/streams of data elements are much easier to understand and modify than equivalent algorithms expressed as loops. Unfortunately, many programmers hesitate to use series expressions because they are typically implemented very inefficiently-the prime source of inefficiency being the creation of intermediate series objects.A restricted class of series expressions, obviously synchronizable series expressions, is defined which can be evaluated very efficiently because they do not require the creation of any intermediate series objects. A Common Lisp macro package has been implemented which supports obviously synchronizable series expressions. Using this macro package, programmers can obtain the advantages of expressing computations as series expressions without incurring any runtime overhead. Obviously synchronizable series expressions could be straightforwardly supported in any programming language.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29658",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Richard C.",
+        "last_name": "Waters",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/Waters87",
+    "venue": "pldi",
+    "year": 1987
+  },
+  {
+    "paper_id": "10.1145/29650.29656",
+    "title": "The type inference and coercion facilities in the scratchpad II interpreter",
+    "abstract": "The Scratchpad II system is an abstract datatype programming language, a compiler for the language, a library of packages of polymorphic functions and parametrized abstract datatypes, and an interpreter that provides sophisticated type inference and coercion facilities. Although originally designed for the implementation of symbolic mathematical algorithms, Scratchpad II is a general purpose programming language. This paper discusses aspects of the implementation of the interpreter and how it attempts to provide a user friendly and relatively weakly typed front end for the strongly typed programming language.",
+    "date": "1987-01-01",
+    "link": "https://doi.org/10.1145/29650.29656",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Robert S.",
+        "last_name": "Sutor",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Richard D.",
+        "last_name": "Jenks",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/pldi/SutorJ87",
+    "venue": "pldi",
+    "year": 1987
+  }
+]

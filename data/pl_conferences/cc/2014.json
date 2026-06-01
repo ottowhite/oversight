@@ -1,0 +1,48 @@
+[
+  {
+    "paper_id": "10.1007/978-3-642-54807-9_12",
+    "title": "String Analysis for Dynamic Field Access",
+    "abstract": "In JavaScript, and scripting languages in general, dynamic field access is a commonly used feature. Unfortunately, current static analysis tools either completely ignore dynamic field access or use overly conservative approximations that lead to poor precision and scalability. We present new string domains to reason about dynamic field access in a static analysis tool. A key feature of the domains is that the equal, concatenate and join operations take $\\mathcal{O}$ (1) time. Experimental evaluation on four common JavaScript libraries, including jQuery and Prototype, shows that traditional string domains are insufficient. For instance, the commonly used constant string domain can only ensure that at most 21% dynamic field accesses are without false positives. In contrast, our string domain $\\mathcal{H}$ ensures no false positives for up to 90% of all dynamic field accesses. We demonstrate that a dataflow analysis equipped with the $\\mathcal{H}$ domain gains significant precision resulting in an analysis speedup of more than 1.5x for 7 out of 10 benchmark programs.",
+    "date": "2014-01-01",
+    "link": "https://doi.org/10.1007/978-3-642-54807-9_12",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Magnus",
+        "last_name": "Madsen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Esben",
+        "last_name": "Andreasen",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/cc/MadsenA14",
+    "venue": "cc",
+    "year": 2014
+  },
+  {
+    "paper_id": "10.1007/978-3-642-54807-9_8",
+    "title": "Taming Control Divergence in GPUs through Control Flow Linearization",
+    "abstract": "Branch divergence is a very commonly occurring performance problem in GPGPU in which the execution of diverging branches is serialized to execute only one control flow path at a time. Existing hardware mechanism to reconverge threads using a stack causes duplicate execution of code for unstructured control flow graphs. Also the stack mechanism cannot effectively utilize the available parallelism among diverging branches. Further, the amount of nested divergence allowed is also limited by depth of the branch divergence stack. In this paper we propose a simple and elegant transformation to handle all of the above mentioned problems. The transformation converts an unstructured CFG to a structured CFG without duplicating user code. It incurs only a linear increase in the number of basic blocks and also the number of instructions. Our solution linearizes the CFG using a predicate variable. This mechanism reconverges the divergent threads as early as possible. It also reduces the depth of the reconvergence stack. The available parallelism in nested branches can be effectively extracted by scheduling the basic blocks to reduce the effect of stalls due to memory accesses. It can also increase execution efficiency of nested loops with different trip counts for different threads. We implemented the proposed transformation at PTX level using the Ocelot compiler infrastructure. We evaluated the technique using various benchmarks to show that it can be effective in handling the performance problem due to divergence in unstructured CFGs.",
+    "date": "2014-01-01",
+    "link": "https://doi.org/10.1007/978-3-642-54807-9_8",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Jayvant",
+        "last_name": "Anantpur",
+        "institution": "Indian Institute of Science Bangalore"
+      },
+      {
+        "first_name": "R.",
+        "last_name": "Govindarajan",
+        "institution": "Indian Institute of Science Bangalore"
+      }
+    ],
+    "dblp_key": "conf/cc/AnantpurG14",
+    "venue": "cc",
+    "year": 2014
+  }
+]

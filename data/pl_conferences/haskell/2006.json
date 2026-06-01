@@ -1,0 +1,266 @@
+[
+  {
+    "paper_id": "10.1145/1159842.1159860",
+    "title": "Haskell' status report",
+    "abstract": "The Haskell programming language is more-or-less divided into two \"branches\". The Haskell 98 standard is the \"stable\" branch of the language, and that has been a big success. A lot of progress has been made over the last few years in the \"research\" branch of the Haskell language. It is constantly advancing, and we feel that it is time for a new standard which reflects those advancements. This talk is a status report from the Haskell' committee to the Haskell community.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159860",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Isaac H.",
+        "last_name": "Jones",
+        "institution": "Galois (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/Jones06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159848",
+    "title": "Polymorphic variants in Haskell",
+    "abstract": "In languages that support polymorphic variants, a single variant value can be passed to many contexts that accept different sets of constructors. Polymorphic variants can be used in order to introduce extensible algebraic datatypes into functional programming languages and are potentially useful for application domains such as interpreters, graphical user interface (GUI) libraries and database interfaces, where the number of necessary constructors cannot be determined in advance. Very few functional languages, however, have a mechanism to extend existing datatypes by adding new constructors. In general, for polymorphic variants to be useful, we would need some mechanisms to reuse existing functions and extend them for new constructors.Actually, the type system of Haskell, when extended with parametric type classes (or multi-parameter type classes with functional dependencies), has enough power not only to mimic polymorphic variants but also to extend existing functions for new constructors.This paper, first, explains how to do this in Haskell's type system (Haskell 98 with popular extensions). However, this encoding of polymorphic variants is difficult to use in practice. This is because it is quite tedious for programmers to write mimic codes by hand and because the problem of ambiguous overloading resolution would embarrass programmers. Therefore, the paper proposes an extension of Haskell's type classes that supports polymorphic variants directly. It has a novel form of instance declarations where records and variants are handled symmetrically.This type system can produce vanilla Haskell codes as a result of type inference. Therefore it behaves as a preprocessor which translates the extended language into plain Haskell. Programmers would be able to use polymorphic variants without worrying nasty problems such as ambiguities.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159848",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Koji",
+        "last_name": "Kagawa",
+        "institution": "Kagawa University"
+      }
+    ],
+    "dblp_key": "conf/haskell/Kagawa06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159858",
+    "title": "GenI: natural language generation in Haskell",
+    "abstract": "In this article we present GenI, a chart based surface realisation tool implemented in Haskell. GenI takes as input a set of first order terms (the input semantics) and a grammar for a given target language (e.g., English, French, Spanish, etc.) and generates sentences in the target language, whose semantic meaning corresponds to the input semantics.The aim of the article is not so much to present GenI or to describe how it is implemented. Rather, we will focus on the aspects of functional programming (higher order functions, monads) and Haskell (typeclasses) that we found important to its design.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159858",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Eric",
+        "last_name": "Kow",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/haskell/Kow06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159844",
+    "title": "RepLib: a library for derivable type classes",
+    "abstract": "Some type class instances can be automatically derived from the structure of types. As a result, the Haskell language includes the \"deriving\" mechanism to automatic generates such instances for a small number of built-in type classes. In this paper, we present RepLib, a GHC library that enables a similar mechanism for arbitrary type classes. Users of RepLib can define the relationship between the structure of a datatype and the associated instance declaration by a normal Haskell functions that pattern-matches a representation type. Furthermore, operations defined in this manner are extensible-instances for specific types not defined by type structure may also be incorporated. Finally, this library also supports the definition of operations defined by parameterized types.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159844",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/haskell/Weirich06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159853",
+    "title": "User-level transactional programming in Haskell",
+    "abstract": "Correct handling of concurrently accessed external resources is a demanding problem in programming. The standard approaches rely on database transactions or concurrency mechanisms like locks. The paper considers two such resources, global variables and databases, and defines transactional APIs for them in Haskell. The APIs provide a novel flavor of user-level transactions which are particularly suitable in the context of web-based systems. This suitability is demonstrated by providing a second implementation in the context of WASH, a Haskell-based Web programming system. The underlying implementation framework works for both kinds of resources and can serve as a blueprint for further implementations of user-level transactions. The Haskell type system provides an encapsulation of the transactional scope that avoids unintended breakage of the transactional guarantees.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159853",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Fribourg"
+      }
+    ],
+    "dblp_key": "conf/haskell/Thiemann06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159851",
+    "title": "Strongly typed memory areas programming systems-level data structures in a functional language",
+    "abstract": "Modern functional languages offer several attractive features to support development of reliable and secure software. However, in our efforts to use Haskell for systems programming tasks-including device driver and operating system construction-we have also encountered some significant gaps in functionality. As a result, we have been forced, either to code some non-trivial components in more traditional but unsafe languages like C or assembler, or else to adopt aspects of the foreign function interface that compromise on strong typing and type safety.In this paper, we describe how we have filled one of these gaps by extending a Haskell-like language with facilities for working directly with low-level, memory-based data structures. Using this extension, we are able to program a wide range of examples, including hardware interfaces, kernel data structures, and operating system APIs. Our design allows us to address concerns about representation, alignment, and placement (in virtual or physical address spaces) that are critical in some systems applications, but clearly beyond the scope of most existing functional languages.Our approach leverages type system features that are wellknown and widely supported in existing Haskell implementations, including kinds, multiple parameter type classes, functional dependencies, and improvement. One interesting feature is the use of a syntactic abbreviation that makes it easy to define and work with functions at the type level.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159851",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Iavor S.",
+        "last_name": "Diatchki",
+        "institution": "Oregon Health & Science University"
+      },
+      {
+        "first_name": "Mark P.",
+        "last_name": "Jones",
+        "institution": "Oregon Health & Science University"
+      }
+    ],
+    "dblp_key": "conf/haskell/DiatchkiJ06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159854",
+    "title": "An extensible dynamically-typed hierarchy of exceptions",
+    "abstract": "In this paper we address the lack of extensibility of the exception type in Haskell. We propose a lightweight solution involving the use of existential types and the Typeable class only, and show how our solution allows a fully extensible hierarchy of exception types to be declared, in which a single overloaded catch operator can be used to catch either specific exception types, or exceptions belonging to any subclass in the hierarchy. We also show how to combine the existing object-oriented framework OOHaskell with our design, such that OOHaskell objects can be thrown and caught as exceptions, with full support for implicit OOHaskell subtyping in the catch operator.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159854",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/Marlow06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159855",
+    "title": "Interactive debugging with GHCi",
+    "abstract": "With my presentation I intend to demonstrate an implementation of breakpoint combinators in GHCi. These combinators are designed to aid the debugging process of Haskell programs by halting the execution and letting the user observe variables of their choice. In contrast to the existing tools (such as Hat, Hood, Buddha and Debug. Trace), which in effect allow something similar, the combinators I will be demonstrating give the user the ability to observe the properties, not just the stringification, of variables. The combinators are a more low-level approach to the problem of debugging and do not provide as advanced features as Hat or Buddha. However, no sophisticated debugging system for Haskell has been really widely adopted by the Haskell community, primarily because they lack support for a variety of commonly used Glasgow Haskell extensions. The breakpoint combinators, on the other hand, are integrated in GHCi and work out-of-the-box with all Glasgow Haskell programs.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159855",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Himmelstrup",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/Himmelstrup06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159856",
+    "title": "Introducing the Haskell equational reasoning assistant",
+    "abstract": "We introduce the new, improved version of the Haskell Equational Reasoning Assistant, which consists of an Ajax application for rewriting Haskell fragments in their context, and an API for scripting non-trivial rewrites.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159856",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Andy",
+        "last_name": "Gill",
+        "institution": "Galois (United States)"
+      }
+    ],
+    "dblp_key": "conf/haskell/Gill06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159850",
+    "title": "Running the manual: an approach to high-assurance microkernel development",
+    "abstract": "We propose a development methodology for designing and prototyping high assurance microkernels, and describe our application of it. The methodology is based on rapid prototyping and iterative refinement of the microkernel in a functional programming language. The prototype provides a precise semi-formal model, which is also combined with a machine simulator to form a reference implementation capable of executing real user-level software, to obtain accurate feedback on the suitability of the kernel API during development phases. We extract from the prototype a machine-checkable formal specification in higher-order logic, which may be used to verify properties of the design, and also results in corrections to the design without the need for full verification. We found the approach leads to productive, highly iterative development where formal modelling, semi-formal design and prototyping, and end use all contribute to a more mature final design in a shorter period of time.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159850",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Philip",
+        "last_name": "Derrin",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Kevin",
+        "last_name": "Elphinstone",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Gerwin",
+        "last_name": "Klein",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Cock",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Manuel M. T.",
+        "last_name": "Chakravarty",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/haskell/DerrinEKCC06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159849",
+    "title": "Extended static checking for haskell",
+    "abstract": "Program errors are hard to detect and are costly both to programmers who spend significant efforts in debugging, and to systems that are guarded by runtime checks. Extended static checking can reduce these costs by helping to detect bugs at compile-time, where possible. Extended static checking has been applied to objectoriented languages, like Java and C#, but it has not been applied to a lazy functional language, like Haskell. In this paper, we describe an extended static checking tool for Haskell, named ESC/Haskell, that is based on symbolic computation and assisted by a few novel strategies. One novelty is our use of Haskell as the specification language itself for pre/post conditions. Any Haskell function (including recursive and higher order functions) can be used in our specification which allows sophisticated properties to be expressed. To perform automatic verification, we rely on a novel technique based on symbolic computation that is augmented by counter-example guided unrolling. This technique can automate our verification process and be efficiently implemented.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159849",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Dana N.",
+        "last_name": "Xu",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/haskell/Xu06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159845",
+    "title": "A generic recursion toolbox for Haskell or: scrap your boilerplate systematically",
+    "abstract": "Haskell programmers who deal with complex data types often need to apply functions to specific nodes deeply nested inside of terms. Typically, implementations for those applications require so-called boilerplate code, which recursively visits the nodes and carries the functions to the places where they need to be applied. The scrap-your-boilerplate approach proposed by Lämmel and Peyton Jones tries to solve this problem by defining a general traversal design pattern that performs the traversal automatically so that the programmers can focus on the code that performs the actual transformation.In practice we often encounter applications that require variations of the recursion schema and call for more sophisticated generic traversals. Defining such traversals from scratch requires a profound understanding of the underlying mechanism and is everything but trivial.In this paper we analyze the problem domain of recursive traversal strategies, by integrating and extending previous approaches. We then extend the scrap-your-boilerplate approach by rich traversal strategies and by a combination of transformations and accumulations, which leads to a comprehensive recursive traversal library Reclib in a statically typed framework.We define a two-layer library targeted at general programmers and programmers with knowledge in traversal strategies. The highlevel interface defines a universal combinator that can be customized to different one-pass traversal strategies with different coverage and different traversal order. The lower-layer interface provides a set of primitives that can be used for defining more sophisticated traversal strategies such as fixpoint traversals. The interfaceis simple and succinct. Like the original scrap-your-boilerplate approach, it makes use of rank-2 polymorphism and functional dependencies, implemented in GHC.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159845",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Deling",
+        "last_name": "Ren",
+        "institution": "Oregon State University"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Erwig",
+        "institution": "Oregon State University"
+      }
+    ],
+    "dblp_key": "conf/haskell/RenE06",
+    "venue": "haskell",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1159842.1159859",
+    "title": "Statically typed linear algebra in Haskell",
+    "abstract": "Numerical computations are often specified in terms of operations on vectors and matrices. This is partly because it is often natural to do so; but it is also partly because, being otherwise useful, such operations have been provided very fast implementations in linear algebra libraries such as ATLAS (implementing BLAS), LAPACK, fftw, etc. Due to their better cache awareness and use of specialized processor instructions, a high-level invocation of an operation such as matrix multiplication using these libraries may execute orders of magnitude more quickly than a straightforward low-level implementation written in, say, C. The combination of efficiency and expressivity has made the framework of linear algebra an exceedingly popular one for scientists. For example, Matlab[1], an interpreter of a simple linear algebra language, has become a standard research tool in many fields.The process of expressing an algorithm in terms of matrices can be error-prone. Matlab and other popular matrix languages are dynamically-typed, which means that type errors are only detected at run-time. Even statically typed languages rarely keep track of more information in an object type than its tensor rank (e.g., to discriminate between matrices and vectors) and element type.If we could additionally expose object dimensions to the type system then we would ideally be able to detect a much wider variety of common errors at compile time than is currently possible. This would in turn make it easier to build and maintain larger numericsintensive software projects.We call our idea of exposing dimensions to the type system \"strongly typed linear algebra\". We have written a prototype implementation in Haskell, which is based on Alberto Ruiz's GSLHaskell[2] and which uses techniques from Kiselyov and Shan's \"Implicit Configurations\" paper[3].The presentation will cover the key aspects of our design such as the use of GADTs to combine matrix and vector types, and the use of higher-rank types and staging (namely, Template Haskell) to closely approximate a dependent-type system. Then, we will give a demonstration of interactive use, and compare our system to existing systems in the areas of speed and usability.",
+    "date": "2006-09-17",
+    "link": "https://doi.org/10.1145/1159842.1159859",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Frederik",
+        "last_name": "Eaton",
+        "institution": "UCL Australia"
+      }
+    ],
+    "dblp_key": "conf/haskell/Eaton06",
+    "venue": "haskell",
+    "year": 2006
+  }
+]

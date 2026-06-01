@@ -1,0 +1,1137 @@
+[
+  {
+    "paper_id": "10.1145/2951913.2976746",
+    "title": "TensorFlow: learning functions at scale",
+    "abstract": "TensorFlow is a machine learning system that operates at large scale and in heterogeneous environments. Its computational model is based on dataflow graphs with mutable state. Graph nodes may be mapped to different machines in a cluster, and within each machine to CPUs, GPUs, and other devices. TensorFlow supports a variety of applications, but it particularly targets training and inference with deep neural networks. It serves as a platform for research and for deploying machine learning systems across many areas, such as speech recognition, computer vision, robotics, information retrieval, and natural language processing. In this talk, we describe TensorFlow and outline some of its applications. We also discuss the question of what TensorFlow and deep learning may have to do with functional programming. Although TensorFlow is not purely functional, many of its uses are concerned with optimizing functions (during training), then with applying those functions (during inference). These functions are defined as compositions of simple primitives (as is common in functional programming), with internal data representations that are learned rather than manually designed. TensorFlow is joint work with many other people in the Google Brain team and elsewhere. More information is available at tensorflow.org.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2976746",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Martı́n",
+        "last_name": "Abadi",
+        "institution": "Google (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Abadi16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951943",
+    "title": "Higher-order ghost state",
+    "abstract": "The development of concurrent separation logic (CSL) has sparked a long line of work on modular verification of sophisticated concurrent programs. Two of the most important features supported by several existing extensions to CSL are higher-order quantification and custom ghost state. However, none of the logics that support both of these features reap the full potential of their combination. In particular, none of them provide general support for a feature we dub \"higher-order ghost state\": the ability to store arbitrary higher-order separation-logic predicates in ghost variables.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951943",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ralf",
+        "last_name": "Jung",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Robbert",
+        "last_name": "Krebbers",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Derek",
+        "last_name": "Dreyer",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/icfp/0002KBD16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951950",
+    "title": "A type theory for incremental computational complexity with control flow changes",
+    "abstract": "Incremental computation aims to speed up re-runs of a program after its inputs have been modified slightly. It works by recording a trace of the program's first run and propagating changes through the trace in incremental runs, trying to re-use as much of the original trace as possible. The recent work CostIt is a type and effect system to establish the time complexity of incremental runs of a program, as a function of input changes. However, CostIt is limited in two ways. First, it prohibits input changes that influence control flow. This makes it impossible to type programs that, for instance, branch on inputs that may change. Second, the soundness of CostIt is proved relative to an abstract cost semantics, but it is unclear how the semantics can be realized.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951950",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ezgi",
+        "last_name": "Çiçek",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Zoe",
+        "last_name": "Paraskevopoulou",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "Garg",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/icfp/CicekP016",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951946",
+    "title": "Dag-calculus: a calculus for parallel computation",
+    "abstract": "Increasing availability of multicore systems has led to greater focus on the design and implementation of languages for writing parallel programs. Such languages support various abstractions for parallelism, such as fork-join, async-finish, futures. While they may seem similar, these abstractions lead to different semantics, language design and implementation decisions, and can significantly impact the performance of end-user applications.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951946",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Arthur",
+        "last_name": "Charguéraud",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Mike",
+        "last_name": "Rainey",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Filip",
+        "last_name": "Sieczkowski",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/AcarCRS16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951932",
+    "title": "Elaborator reflection: extending Idris in Idris",
+    "abstract": "Many programming languages and proof assistants are defined by elaboration from a high-level language with a great deal of implicit information to a highly explicit core language. In many advanced languages, these elaboration facilities contain powerful tools for program construction, but these tools are rarely designed to be repurposed by users. We describe elaborator reflection, a paradigm for metaprogramming in which the elaboration machinery is made directly available to metaprograms, as well as a concrete realization of elaborator reflection in Idris, a functional language with full dependent types. We demonstrate the applicability of Idris’s reflected elaboration framework to a number of realistic problems, we discuss the motivation for the specific features of its design, and we explore the broader meaning of elaborator reflection as it can relate to other languages.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951932",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David Thrane",
+        "last_name": "Christiansen",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Edwin",
+        "last_name": "Brady",
+        "institution": "University of St Andrews"
+      }
+    ],
+    "dblp_key": "conf/icfp/ChristiansenB16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951920",
+    "title": "Farms, pipes, streams and reforestation: reasoning about structured parallel processes using types and hylomorphisms",
+    "abstract": "The increasing importance of parallelism has motivated the creation of better abstractions for writing parallel software, including structured parallelism using nested algorithmic skeletons. Such approaches provide high-level abstractions that avoid common problems, such as race conditions, and often allow strong cost models to be defined. However, choosing a combination of algorithmic skeletons that yields good parallel speedups for a program on some specific parallel architecture remains a difficult task. In order to achieve this, it is necessary to simultaneously reason both about the costs of different parallel structures and about the semantic equivalences between them. This paper presents a new type-based mechanism that enables strong static reasoning about these properties. We exploit well-known properties of a very general recursion pattern, hylomorphisms, and give a denotational semantics for structured parallel processes in terms of these hylomorphisms. Using our approach, it is possible to determine formally whether it is possible to introduce a desired parallel structure into a program without altering its functional behaviour, and also to choose a version of that parallel structure that minimises some given cost model.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951920",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Castro",
+        "institution": "University of St Andrews"
+      },
+      {
+        "first_name": "Kevin",
+        "last_name": "Hammond",
+        "institution": "University of St Andrews"
+      },
+      {
+        "first_name": "Susmit",
+        "last_name": "Sarkar",
+        "institution": "University of St Andrews"
+      }
+    ],
+    "dblp_key": "conf/icfp/CastroHS16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951928",
+    "title": "Set-theoretic types for polymorphic variants",
+    "abstract": "Polymorphic variants are a useful feature of the OCaml language whose current definition and implementation rely on kinding constraints to simulate a subtyping relation via unification. This yields an awkward formalization and results in a type system whose behaviour is in some cases unintuitive and/or unduly restrictive.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951928",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Giuseppe",
+        "last_name": "Castagna",
+        "institution": "Institut de Recherche en Informatique Fondamentale"
+      },
+      {
+        "first_name": "Tommaso",
+        "last_name": "Petrucciani",
+        "institution": "Ingegneria dei Sistemi (Italy)"
+      },
+      {
+        "first_name": "Kim",
+        "last_name": "Nguyễn",
+        "institution": "Université Paris-Sud"
+      }
+    ],
+    "dblp_key": "conf/icfp/CastagnaP016",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951937",
+    "title": "An abstract memory functor for verified C static analyzers",
+    "abstract": "Abstract interpretation provides advanced techniques to infer numerical invariants on programs. There is an abundant literature about numerical abstract domains that operate on scalar variables. This work deals with lifting these techniques to a realistic C memory model. We present an abstract memory functor that takes as argument any standard numerical abstract domain, and builds a memory abstract domain that finely tracks properties about memory contents, taking into account union types, pointer arithmetic and type casts. This functor is implemented and verified inside the Coq proof assistant with respect to the CompCert compiler memory model. Using the Coq extraction mechanism, it is fully executable and used by the Verasco C static analyzer.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951937",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sandrine",
+        "last_name": "Blazy",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "Vincent",
+        "last_name": "Laporte",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Pichardie",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      }
+    ],
+    "dblp_key": "conf/icfp/BlazyLP16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951948",
+    "title": "Datafun: a functional Datalog",
+    "abstract": "Datalog may be considered either an unusually powerful query language or a carefully limited logic programming language. Datalog is declarative, expressive, and optimizable, and has been applied successfully in a wide variety of problem domains. However, most use-cases require extending Datalog in an application-specific manner. In this paper we define Datafun, an analogue of Datalog supporting higher-order functional programming. The key idea is to track monotonicity with types.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951948",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Arntzenius",
+        "institution": "University of Birmingham"
+      },
+      {
+        "first_name": "Neelakantan R.",
+        "last_name": "Krishnaswami",
+        "institution": "University of Birmingham"
+      }
+    ],
+    "dblp_key": "conf/icfp/ArntzeniusK16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951949",
+    "title": "All sorts of permutations (functional pearl)",
+    "abstract": "The combination of non-determinism and sorting is mostly associated with permutation sort, a sorting algorithm that is not very useful for sorting and has an awful running time. In this paper we look at the combination of non-determinism and sorting in a different light: given a sorting function, we apply it to a non-deterministic predicate to gain a function that enumerates permutations of the input list. We get to the bottom of necessary properties of the sorting algorithms and predicates in play as well as discuss variations of the modelled non-determinism. On top of that, we formulate and prove a theorem stating that no matter which sorting function we use, the corresponding permutation function enumerates all permutations of the input list. We use free theorems, which are derived from the type of a function alone, to prove the statement.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951949",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jan",
+        "last_name": "Christiansen",
+        "institution": "Flensburg University of Applied Sciences"
+      },
+      {
+        "first_name": "Nikita",
+        "last_name": "Danilenko",
+        "institution": "Kiel University"
+      },
+      {
+        "first_name": "Sandra",
+        "last_name": "Dylus",
+        "institution": "Kiel University"
+      }
+    ],
+    "dblp_key": "conf/icfp/ChristiansenDD16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951933",
+    "title": "Partial type equivalences for verified dependent interoperability",
+    "abstract": "Full-spectrum dependent types promise to enable the development of correct-by-construction software. However, even certified software needs to interact with simply-typed or untyped programs, be it to perform system calls, or to use legacy libraries. Trading static guarantees for runtime checks, the dependent interoperability framework provides a mechanism by which simply-typed values can safely be coerced to dependent types and, conversely, dependently-typed programs can defensively be exported to a simply-typed application. In this paper, we give a semantic account of dependent interoperability. Our presentation relies on and is guided by a pervading notion of type equivalence, whose importance has been emphasized in recent work on homotopy type theory. Specifically, we develop the notion of partial type equivalences as a key foundation for dependent interoperability. Our framework is developed in Coq; it is thus constructive and verified in the strictest sense of the terms. Using our library, users can specify domain-specific partial equivalences between data structures. Our library then takes care of the (sometimes, heavy) lifting that leads to interoperable programs. It thus becomes possible, as we shall illustrate, to internalize and hand-tune the extraction of dependently-typed programs to interoperable OCaml programs within Coq itself.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951933",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Pierre-Évariste",
+        "last_name": "Dagand",
+        "institution": "Laboratoire de Recherche en Informatique de Paris 6"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Tabareau",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "University of Chile"
+      }
+    ],
+    "dblp_key": "conf/icfp/DagandTT16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951917",
+    "title": "Unifiers as equivalences: proof-relevant unification of dependently typed data",
+    "abstract": "Dependently typed languages such as Agda, Coq and Idris use a syntactic first-order unification algorithm to check definitions by dependent pattern matching. However, these algorithms don’t adequately consider the types of the terms being unified, leading to various unintended results. As a consequence, they require ad hoc restrictions to preserve soundness, but this makes them very hard to prove correct, modify, or extend.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951917",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jesper",
+        "last_name": "Cockx",
+        "institution": "iMinds"
+      },
+      {
+        "first_name": "Dominique",
+        "last_name": "Devriese",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Piessens",
+        "institution": "iMinds"
+      }
+    ],
+    "dblp_key": "conf/icfp/CockxDP16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951931",
+    "title": "Sequent calculus as a compiler intermediate language",
+    "abstract": "The λ-calculus is popular as an intermediate language for practical compilers. But in the world of logic it has a lesser-known twin, born at the same time, called the sequent calculus. Perhaps that would make for a good intermediate language, too? To explore this question we designed Sequent Core, a practically-oriented core calculus based on the sequent calculus, and used it to re-implement a substantial chunk of the Glasgow Haskell Compiler.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951931",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Downen",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Luke",
+        "last_name": "Maurer",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Zena M.",
+        "last_name": "Ariola",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/icfp/DownenMAJ16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951942",
+    "title": "A lambda-calculus foundation for universal probabilistic programming",
+    "abstract": "We develop the operational semantics of an untyped probabilistic λ-calculus with continuous distributions, and both hard and soft constraints,as a foundation for universal probabilistic programming languages such as Church, Anglican, and Venture. Our first contribution is to adapt the classic operational semantics of λ-calculus to a continuous setting via creating a measure space on terms and defining step-indexed approximations. We prove equivalence of big-step and small-step formulations of this distribution-based semantics. To move closer to inference techniques, we also define the sampling-based semantics of a term as a function from a trace of random samples to a value. We show that the distribution induced by integration over the space of traces equals the distribution-based semantics. Our second contribution is to formalize the implementation technique of trace Markov chain Monte Carlo (MCMC) for our calculus and to show its correctness. A key step is defining sufficient conditions for the distribution induced by trace MCMC to converge to the distribution-based semantics. To the best of our knowledge, this is the first rigorous correctness proof for trace MCMC for a higher-order functional language, or for a language with soft constraints.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951942",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Johannes",
+        "last_name": "Borgström",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Ugo Dal",
+        "last_name": "Lago",
+        "institution": "University of Bologna"
+      },
+      {
+        "first_name": "Andrew D.",
+        "last_name": "Gordon",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Marcin",
+        "last_name": "Szymczak",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/icfp/BorgstromLGS16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951930",
+    "title": "Oh Lord, please don&apos;t let contracts be misunderstood (functional pearl)",
+    "abstract": "Contracts feel misunderstood, especially those with a higher-order soul. While software engineers appreciate contracts as tools for articulating the interface between components, functional programmers desperately search for their types and meaning, completely forgetting about their pragmatics.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951930",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Christos",
+        "last_name": "Dimoulas",
+        "institution": ""
+      },
+      {
+        "first_name": "Max S.",
+        "last_name": "New",
+        "institution": ""
+      },
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": ""
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/DimoulasNFF16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951934",
+    "title": "Constructive Galois connections: taming the Galois connection framework for mechanized metatheory",
+    "abstract": "Galois connections are a foundational tool for structuring abstraction in semantics and their use lies at the heart of the theory of abstract interpretation. Yet, mechanization of Galois connections remains limited to restricted modes of use, preventing their general application in mechanized metatheory and certified programming.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951934",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Darais",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "David Van",
+        "last_name": "Horn",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/icfp/DaraisH16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951938",
+    "title": "Think like a vertex, behave like a function! a functional DSL for vertex-centric big graph processing",
+    "abstract": "The vertex-centric programming model, known as “think like a vertex”, is being used more and more to support various big graph processing methods through iterative supersteps that execute in parallel a user-defined vertex program over each vertex of a graph. However, the imperative and message-passing style of existing systems makes defining a vertex program unintuitive. In this paper, we show that one can benefit more from “Thinking like a vertex” by “Behaving like a function” rather than “Acting like a procedure” with full use of side effects and explicit control of message passing, state, and termination. We propose a functional approach to vertex-centric graph processing in which the computation at every vertex is abstracted as a higher-order function and present Fregel, a new domain-specific language. Fregel has clear functional semantics, supports declarative description of vertex computation, and can be automatically translated into Pregel, an emerging imperative-style distributed graph processing framework, and thereby achieve promising performance. Experimental results for several typical examples show the promise of this functional approach.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951938",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kento",
+        "last_name": "Emoto",
+        "institution": "Kyushu Institute of Technology"
+      },
+      {
+        "first_name": "Kiminori",
+        "last_name": "Matsuzaki",
+        "institution": "Kochi University of Technology"
+      },
+      {
+        "first_name": "Zhenjiang",
+        "last_name": "Hu",
+        "institution": "National Institute of Informatics"
+      },
+      {
+        "first_name": "Akimasa",
+        "last_name": "Morihata",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Hideya",
+        "last_name": "Iwasaki",
+        "institution": "University of Electro-Communications"
+      }
+    ],
+    "dblp_key": "conf/icfp/EmotoMHMI16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2976748",
+    "title": "A functional programmer&apos;s guide to homotopy type theory",
+    "abstract": "Dependent type theories are functional programming languages with types rich enough to do computer-checked mathematics and software verification. Homotopy type theory is a recent area of work that connects dependent type theory to the mathematical disciplines of homotopy theory and higher-dimensional category theory. From a programming point of view, these connections have revealed that all types in dependent type theory support a certain generic program that had not previously been exploited. Specifically, each type can be equipped with computationally relevant witnesses of equality of elements of that type, and all types support a generic program that transports elements along these equalities. One mechanism for equipping types with non-trivial witnesses of equality is Voevodsky’s univalence axiom, which implies that equality of types themselves is witnessed by type isomorphism. Another is higher inductive types, an extended datatype schema that allows identifications between different datatype constructors. While these new mechanisms were originally formulated as axiomatic extensions of type theory, recent work has investigated their computational meaning, leading to the development of new programming languages that better support them. In this talk, I will illustrate what univalence and higher inductive types mean in programming terms. I will also discuss how studying some related semantic settings can reveal additional structure on types; for example, moving from groupoids (categories where all maps are invertible) to general categories yields an account of coercions instead of equalities. Overall, I hope to convey some of the beauty and richness of these connections between disciplines, which we are just beginning to understand.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2976748",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Daniel R.",
+        "last_name": "Licata",
+        "institution": "Wesleyan University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Licata16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951939",
+    "title": "Combining effects and coeffects via grading",
+    "abstract": "Effects and coeffects are two general, complementary aspects of program behaviour. They roughly correspond to computations which change the execution context (effects) versus computations which make demands on the context (coeffects). Effectful features include partiality, non-determinism, input-output, state, and exceptions. Coeffectful features include resource demands, variable access, notions of linearity, and data input requirements. The effectful or coeffectful behaviour of a program can be captured and described via type-based analyses, with fine grained information provided by monoidal effect annotations and semiring coeffects. Various recent work has proposed models for such typed calculi in terms of graded (strong) monads for effects and graded (monoidal) comonads for coeffects. Effects and coeffects have been studied separately so far, but in practice many computations are both effectful and coeffectful, e.g., possibly throwing exceptions but with resource requirements. To remedy this, we introduce a new general calculus with a combined effect-coeffect system. This can describe both the changes and requirements that a program has on its context, as well as interactions between these effectful and coeffectful features of computation. The effect-coeffect system has a denotational model in terms of effect-graded monads and coeffect-graded comonads where interaction is expressed via the novel concept of graded distributive laws. This graded semantics unifies the syntactic type theory with the denotational model. We show that our calculus can be instantiated to describe in a natural way various different kinds of interaction between a program and its evaluation context.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951939",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Marco",
+        "last_name": "Gaboardi",
+        "institution": "Buffalo State University"
+      },
+      {
+        "first_name": "Shin-ya",
+        "last_name": "Katsumata",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Dominic",
+        "last_name": "Orchard",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Flavien",
+        "last_name": "Breuvart",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Tarmo",
+        "last_name": "Uustalu",
+        "institution": "Tallinn University of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/GaboardiKOBU16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951923",
+    "title": "Queueing and glueing for optimal partitioning (functional pearl)",
+    "abstract": "The queueing-glueing algorithm is the nickname we give to an algorithmic pattern that provides amortised linear time solutions to a number of optimal list partition problems that have a peculiar property: at various moments we know that two of three candidate solutions could be optimal. The algorithm works by keeping a queue of lists, glueing them from one end, while chopping from the other end, hence the name. We give a formal derivation of the algorithm, and demonstrate it with several non-trivial examples.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951923",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Shin-Cheng",
+        "last_name": "Mu",
+        "institution": "Academia Sinica"
+      },
+      {
+        "first_name": "Yu-Hsi",
+        "last_name": "Chiang",
+        "institution": "National Taiwan University"
+      },
+      {
+        "first_name": "Yu-Han",
+        "last_name": "Lyu",
+        "institution": "Dartmouth College"
+      }
+    ],
+    "dblp_key": "conf/icfp/MuCL16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951945",
+    "title": "Disjoint intersection types",
+    "abstract": "Dunfield showed that a simply typed core calculus with intersection types and a merge operator is able to capture various programming language features. While his calculus is type-safe, it is not coherent: different derivations for the same expression can elaborate to expressions that evaluate to different values. The lack of coherence is an important disadvantage for adoption of his core calculus in implementations of programming languages, as the semantics of the programming language becomes implementation-dependent.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951945",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Zhiyuan",
+        "last_name": "Shi",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "João",
+        "last_name": "Alpuim",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/icfp/OliveiraSA16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951936",
+    "title": "Allocation characterizes polyvariance: a unified methodology for polyvariant control-flow analysis",
+    "abstract": "The polyvariance of a static analysis is the degree to which it structurally differentiates approximations of program values. Polyvariant techniques come in a number of different flavors that represent alternative heuristics for managing the trade-off an analysis strikes between precision and complexity. For example, call sensitivity supposes that values will tend to correlate with recent call sites, object sensitivity supposes that values will correlate with the allocation points of related objects, the Cartesian product algorithm supposes correlations between the values of arguments to the same function, and so forth.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951936",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Gilray",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Adams",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Might",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/icfp/Gilray0M16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951935",
+    "title": "Hierarchical memory management for parallel programs",
+    "abstract": "An important feature of functional programs is that they are parallel by default. Implementing an efficient parallel functional language, however, is a major challenge, in part because the high rate of allocation and freeing associated with functional programs requires an efficient and scalable memory manager.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951935",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ram",
+        "last_name": "Raghunathan",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Stefan K.",
+        "last_name": "Muller",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Guy E.",
+        "last_name": "Blelloch",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/RaghunathanMAB16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2976747",
+    "title": "Journey to find bugs in JavaScript web applications in the wild",
+    "abstract": "Analyzing real-world JavaScript web applications is a challenging task. On top of understanding the semantics of JavaScript, it requires modeling of web documents, platform objects, and interactions between them. Not only the JavaScript language itself but also its usage patterns are extremely dynamic. JavaScript can generate code and run it during evaluation, and most web applications load JavaScript code dynamically. Such dynamic characteristics of JavaScript web applications make pure static analysis approaches inapplicable. In this talk, we present our attempts to analyze JavaScript web applications in the wild mostly statically using various approaches. From pure JavaScript programs to JavaScript web applications using platform-specific libraries and dynamic code loading, we explain technical challenges in analyzing each of them and how we built an open-source analysis framework for JavaScript, SAFE, that addresses the challenges incrementally. In spite of active research accomplishments in analysis of JavaScript web applications, many issues still remain to be resolved such as events, callback functions, and hybrid web applications. We discuss possible future research directions and open challenges.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2976747",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sukyoung",
+        "last_name": "Ryu",
+        "institution": "Korea Advanced Institute of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/Ryu16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951922",
+    "title": "Deriving a probability density calculator (functional pearl)",
+    "abstract": "Given an expression that denotes a probability distribution, often we want a corresponding density function, to use in probabilistic inference. Fortunately, the task of finding a density has been automated. It turns out that we can derive a compositional procedure for finding a density, by equational reasoning about integrals, starting with the mathematical specification of what a density is. Moreover, the density found can be run as an estimation algorithm, as well as simplified as an exact formula to improve the estimate.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951922",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Wazim Mohammed",
+        "last_name": "Ismail",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Chung-chieh",
+        "last_name": "Shan",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "conf/icfp/IsmailS16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951925",
+    "title": "The best of both worlds: linear functional programming without compromise",
+    "abstract": "We present a linear functional calculus with both the safety guarantees expressible with linear types and the rich language of combinators and composition provided by functional programming. Unlike previous combinations of linear typing and functional programming, we compromise neither the linear side (for example, our linear values are first-class citizens of the language) nor the functional side (for example, we do not require duplicate definitions of compositions for linear and unrestricted functions). To do so, we must generalize abstraction and application to encompass both linear and unrestricted functions. We capture the typing of the generalized constructs with a novel use of qualified types. Our system maintains the metatheoretic properties of the theory of qualified types, including principal types and decidable type inference. Finally, we give a formal basis for our claims of expressiveness, by showing that evaluation respects linearity, and that our language is a conservative extension of existing functional calculi.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951925",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "J. Garrett",
+        "last_name": "Morris",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/icfp/Morris16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951921",
+    "title": "Talking bananas: structural recursion for session types",
+    "abstract": "Session types provide static guarantees that concurrent programs respect communication protocols. We give a novel account of recursive session types in the context of GV, a small concurrent extension of the linear λ-calculus. We extend GV with recursive types and catamorphisms, following the initial algebra semantics of recursion, and show that doing so naturally gives rise to recursive session types. We show that this principled approach to recursion resolves long-standing problems in the treatment of duality for recursive session types.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951921",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sam",
+        "last_name": "Lindley",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "J. Garrett",
+        "last_name": "Morris",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/icfp/LindleyM16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951914",
+    "title": "Ghostbuster: a tool for simplifying and converting GADTs",
+    "abstract": "Generalized Algebraic Dataypes, or simply GADTs, can encode non-trivial properties in the types of the constructors. Once such properties are encoded in a datatype, however, all code manipulating that datatype must provide proof that it maintains these properties in order to typecheck. In this paper, we take a step towards gradualizing these obligations. We introduce a tool, Ghostbuster, that produces simplified versions of GADTs which elide selected type parameters, thereby weakening the guarantees of the simplified datatype in exchange for reducing the obligations necessary to manipulate it. Like ornaments, these simplified datatypes preserve the recursive structure of the original, but unlike ornaments we focus on information-preserving bidirectional transformations. Ghostbuster generates type-safe conversion functions between the original and simplified datatypes, which we prove are the identity function when composed. We evaluate a prototype tool for Haskell against thousands of GADTs found on the Hackage package database, generating simpler Haskell'98 datatypes and round-trip conversion functions between the two.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951914",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Trevor L.",
+        "last_name": "McDonell",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Timothy A. K.",
+        "last_name": "Zakian",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Matteo",
+        "last_name": "Cimini",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Newton",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "conf/icfp/McDonellZCN16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951941",
+    "title": "Fully abstract compilation via universal embedding",
+    "abstract": "A fully abstract compiler guarantees that two source components are observationally equivalent in the source language if and only if their translations are observationally equivalent in the target. Full abstraction implies the translation is secure: target-language attackers can make no more observations of a compiled component than a source-language attacker interacting with the original source component. Proving full abstraction for realistic compilers is challenging because realistic target languages contain features (such as control effects) unavailable in the source, while proofs of full abstraction require showing that every target context to which a compiled component may be linked can be back-translated to a behaviorally equivalent source context.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951941",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Max S.",
+        "last_name": "New",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "William J.",
+        "last_name": "Bowman",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Amal",
+        "last_name": "Ahmed",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/icfp/NewBA16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951940",
+    "title": "Refinement through restraint: bringing down the cost of verification",
+    "abstract": "We present a framework aimed at significantly reducing the cost of verifying certain classes of systems software, such as file systems. Our framework allows for equational reasoning about systems code written in our new language, Cogent. Cogent is a restricted, polymorphic, higher-order, and purely functional language with linear types and without the need for a trusted runtime or garbage collector. Linear types allow us to assign two semantics to the language: one imperative, suitable for efficient C code generation; and one functional, suitable for equational reasoning and verification. As Cogent is a restricted language, it is designed to easily interoperate with existing C functions and to connect to existing C verification frameworks. Our framework is based on certifying compilation: For a well-typed Cogent program, our compiler produces C code, a high-level shallow embedding of its semantics in Isabelle/HOL, and a proof that the C code correctly refines this embedding. Thus one can reason about the full semantics of real-world systems code productively and equationally, while retaining the interoperability and leanness of C. The compiler certificate is a series of language-level proofs and per-program translation validation phases, combined into one coherent top-level theorem in Isabelle/HOL.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951940",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Liam",
+        "last_name": "O’Connor",
+        "institution": "Data61"
+      },
+      {
+        "first_name": "Zilin",
+        "last_name": "Chen",
+        "institution": "Data61"
+      },
+      {
+        "first_name": "Christine",
+        "last_name": "Rizkallah",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Sidney",
+        "last_name": "Amani",
+        "institution": "Data61"
+      },
+      {
+        "first_name": "Japheth",
+        "last_name": "Lim",
+        "institution": "Data61"
+      },
+      {
+        "first_name": "Toby",
+        "last_name": "Murray",
+        "institution": "University of Melbourne"
+      },
+      {
+        "first_name": "Yutaka",
+        "last_name": "Nagashima",
+        "institution": "Data61"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Sewell",
+        "institution": "Data61"
+      },
+      {
+        "first_name": "Gerwin",
+        "last_name": "Klein",
+        "institution": "Data61"
+      }
+    ],
+    "dblp_key": "conf/icfp/OConnorCRALMNSK16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951915",
+    "title": "Dynamic witnesses for static type errors (or, ill-typed programs usually go wrong)",
+    "abstract": "Static type errors are a common stumbling block for newcomers to typed functional languages. We present a dynamic approach to explaining type errors by generating counterexample witness inputs that illustrate how an ill-typed program goes wrong. First, given an ill-typed function, we symbolically execute the body to synthesize witness values that make the program go wrong. We prove that our procedure synthesizes general witnesses in that if a witness is found, then for all inhabited input types, there exist values that can make the function go wrong. Second, we show how to extend the above procedure to produce a reduction graph that can be used to interactively visualize and debug witness executions. Third, we evaluate the coverage of our approach on two data sets comprising over 4,500 ill-typed student programs. Our technique is able to generate witnesses for 88% of the programs, and our reduction graph yields small counterexamples for 81% of the witnesses. Finally, we evaluate whether our witnesses help students understand and fix type errors, and find that students presented with our witnesses show a greater understanding of type errors than those presented with a standard error message.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951915",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Eric L.",
+        "last_name": "Seidel",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Ranjit",
+        "last_name": "Jhala",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Westley",
+        "last_name": "Weimer",
+        "institution": "University of Virginia"
+      }
+    ],
+    "dblp_key": "conf/icfp/SeidelJW16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951916",
+    "title": "A glimpse of Hopjs",
+    "abstract": "Hop.js is a multitier programming environment for JavaScript. It allows a single JavaScript program to describe the client-side and the server-side components of a web application. Its runtime environment ensures consistent executions of the application on the server and on the client.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951916",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Serrano",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Vincent",
+        "last_name": "Prunet",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/SerranoP16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951947",
+    "title": "String diagrams for free monads (functional pearl)",
+    "abstract": "We show how one can reason about free monads using their universal properties rather than any concrete implementation. We introduce a graphical, two-dimensional calculus tailor-made to accommodate these properties.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951947",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Maciej",
+        "last_name": "Piróg",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Wu",
+        "institution": "University of Bristol"
+      }
+    ],
+    "dblp_key": "conf/icfp/PirogW16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951918",
+    "title": "Compact bit encoding schemes for simply-typed lambda-terms",
+    "abstract": "We consider the problem of how to compactly encode simply-typed λ-terms into bit strings. The work has been motivated by Kobayashi et al.’s recent work on higher-order data compression, where data are encoded as functional programs (or, λ-terms) that generate them. To exploit its good compression power, the compression scheme has to come with a method for compactly encoding the λ-terms into bit strings. To this end, we propose two type-based bit-encoding schemes; the first one encodes a λ-term into a sequence of symbols by using type information, and then applies arithmetic coding to convert the sequence to a bit string. The second one is more sophisticated; we prepare a context-free grammar (CFG) that describes only well-typed terms, and then use a variation of arithmetic coding specialized for the CFG. We have implemented both schemes and confirmed that they often output more compact codes than previous bit encoding schemes for λ-terms.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951918",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kotaro",
+        "last_name": "Takeda",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Naoki",
+        "last_name": "Kobayashi",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Kazuya",
+        "last_name": "Yaguchi",
+        "institution": "Tohoku University"
+      },
+      {
+        "first_name": "Ayumi",
+        "last_name": "Shinohara",
+        "institution": "Tohoku University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Takeda0YS16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951929",
+    "title": "Indexed codata types",
+    "abstract": "Indexed data types allow us to specify and verify many interesting invariants about finite data in a general purpose programming language. In this paper we investigate the dual idea: indexed codata types, which allow us to describe data-dependencies about infinite data structures. Unlike finite data which is defined by constructors, we define infinite data by observations. Dual to pattern matching on indexed data which may refine the type indices, we define copattern matching on indexed codata where type indices guard observations we can make.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951929",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Thibodeau",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Cave",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Brigitte",
+        "last_name": "Pientka",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/icfp/ThibodeauCP16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951944",
+    "title": "A fully concurrent garbage collector for functional programs on multicore processors",
+    "abstract": "This paper presents a concurrent garbage collection method for functional programs running on a multicore processor. It is a concurrent extension of our bitmap-marking non-moving collector with Yuasa's snapshot-at-the-beginning strategy. Our collector is unobtrusive in the sense of the Doligez-Leroy-Gonthier collector; the collector does not stop any mutator thread nor does it force them to synchronize globally. The only critical sections between a mutator and the collector are the code to enqueue/dequeue a 32 kB allocation segment to/from a global segment list and the write barrier code to push an object pointer onto the collector's stack. Most of these data structures can be implemented in standard lock-free data structures. This achieves both efficient allocation and unobtrusive collection in a multicore system. The proposed method has been implemented in SML#, a full-scale Standard ML compiler supporting multiple native threads on multicore CPUs. Our benchmark tests show a drastically short pause time with reasonably low overhead compared to the sequential bitmap-marking collector.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951944",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Katsuhiro",
+        "last_name": "Ueno",
+        "institution": "Tohoku University"
+      },
+      {
+        "first_name": "Atsushi",
+        "last_name": "Ohori",
+        "institution": "Tohoku University"
+      }
+    ],
+    "dblp_key": "conf/icfp/UenoO16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951926",
+    "title": "Context-free session types",
+    "abstract": "Session types describe structured communication on heterogeneously typed channels at a high level. Their tail-recursive structure imposes a protocol that can be described by a regular language. The types of transmitted values are drawn from the underlying functional language, abstracting from the details of serializing values of structured data types.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951926",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Vasco T.",
+        "last_name": "Vasconcelos",
+        "institution": "University of Lisbon"
+      }
+    ],
+    "dblp_key": "conf/icfp/ThiemannV16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951924",
+    "title": "A new verified compiler backend for CakeML",
+    "abstract": "We have developed and mechanically verified a new compiler backend for CakeML. Our new compiler features a sequence of intermediate languages that allows it to incrementally compile away high-level features and enables verification at the right levels of semantic detail. In this way, it resembles mainstream (unverified) compilers for strict functional languages. The compiler supports efficient curried multi-argument functions, configurable data representations, exceptions that unwind the call stack, register allocation, and more. The compiler targets several architectures: x86-64, ARMv6, ARMv8, MIPS-64, and RISC-V. In this paper, we present the overall structure of the compiler, including its 12 intermediate languages, and explain how everything fits together. We focus particularly on the interaction between the verification of the register allocator and the garbage collector, and memory representations. The entire development has been carried out within the HOL4 theorem prover.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951924",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Yong Kiam",
+        "last_name": "Tan",
+        "institution": "A*STAR Graduate Academy"
+      },
+      {
+        "first_name": "Magnus O.",
+        "last_name": "Myreen",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Ramana",
+        "last_name": "Kumar",
+        "institution": "Commonwealth Scientific and Industrial Research Organisation"
+      },
+      {
+        "first_name": "Anthony",
+        "last_name": "Fox",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Owens",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Norrish",
+        "institution": "Commonwealth Scientific and Industrial Research Organisation"
+      }
+    ],
+    "dblp_key": "conf/icfp/TanMKFON16",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951919",
+    "title": "Automatically disproving fair termination of higher-order functional programs",
+    "abstract": "We propose an automated method for disproving fair termination of higher-order functional programs, which is complementary to Murase et al.’s recent method for proving fair termination. A program is said to be fair terminating if it has no infinite execution trace that satisfies a given fairness constraint. Fair termination is an important property because program verification problems for arbitrary ω-regular temporal properties can be transformed to those of fair termination. Our method reduces the problem of disproving fair termination to higher-order model checking by using predicate abstraction and CEGAR. Given a program, we convert it to an abstract program that generates an approximation of the (possibly infinite) execution traces of the original program, so that the original program has a fair infinite execution trace if the tree generated by the abstract program satisfies a certain property. The method is a non-trivial extension of Kuwahara et al.’s method for disproving plain termination.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951919",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Keiichi",
+        "last_name": "Watanabe",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Ryosuke",
+        "last_name": "Sato",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Takeshi",
+        "last_name": "Tsukada",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Naoki",
+        "last_name": "Kobayashi",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/icfp/WatanabeST016",
+    "venue": "icfp",
+    "year": 2016
+  },
+  {
+    "paper_id": "10.1145/2951913.2951927",
+    "title": "Experience report: growing and shrinking polygons for random testing of computational geometry algorithms",
+    "abstract": "This paper documents our experience of adapting and using the QuickCheck-style approach for extensive randomised property-based testing of computational geometry algorithms.",
+    "date": "2016-08-29",
+    "link": "https://doi.org/10.1145/2951913.2951927",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ilya",
+        "last_name": "Sergey",
+        "institution": "University College London"
+      }
+    ],
+    "dblp_key": "conf/icfp/Sergey16",
+    "venue": "icfp",
+    "year": 2016
+  }
+]

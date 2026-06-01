@@ -1,0 +1,526 @@
+[
+  {
+    "paper_id": "10.1145/3302516.3307354",
+    "title": "Enabling prefix sum parallelism pattern for recurrences with principled function reconstruction",
+    "abstract": "Much research work has been done to parallelize loops with recurrences over the last several decades. Recently, sampling-and-reconstruction method was proposed to parallelize a broad class of loops with recurrences in an automated fashion, with a practical runtime approach. Although the parallelized codes achieve linear scalability across multi-cores architectures, the sequential merge inherent to this method makes it not scalable on many core architectures, such as GPUs. At the same time, existing parallel merge approaches used for simple reduction loops cannot be directly and correctly applied to this method.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307354",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Xia",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Peng",
+        "last_name": "Jiang",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Gagan",
+        "last_name": "Agrawal",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/cc/XiaJA19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307361",
+    "title": "The sparse tensor algebra compiler (keynote)",
+    "abstract": "Tensor algebra is a powerful tool with applications in machine learning, data analytics, engineering, and science. Increasingly often the tensors are sparse, which means most components are zeros. To get the best performance, currently programmers are left to write kernels for every operation, with different mixes of sparse and dense tensors in different formats. There are countless combinations, which makes it impossible to manually implement and optimize them all. The Tensor Algebra Compiler (TACO) is the first system to automatically generate kernels for any tensor algebra operation on tensors in any of the commonly used formats. Its performance is competitive with best-in-class hand-optimized kernels in popular libraries, while supporting far more tensor operations. For more information, see http://tensor-compiler.org.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307361",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Saman",
+        "last_name": "Amarasinghe",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/Amarasinghe19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307349",
+    "title": "Path sensitive MFP solutions in presence of intersecting infeasible control flow path segments",
+    "abstract": "Data flow analysis computes Maximum Fix Point (MFP) solution which represents an over approximation of the data reaching a program point along all control flow paths (cfps). Some of these cfps may be infeasible; meaning, the necessary pre-condition for execution of cfp is not satisfiable in any run of the program. Approximations that do not discern data along infeasible cfps may lead to imprecision, because they include spurious information.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307349",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Komal",
+        "last_name": "Pathade",
+        "institution": "Indian Institute of Technology Bombay"
+      },
+      {
+        "first_name": "Uday P.",
+        "last_name": "Khedker",
+        "institution": "Indian Institute of Technology Bombay"
+      }
+    ],
+    "dblp_key": "conf/cc/PathadeK19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307352",
+    "title": "GPU-accelerated fixpoint algorithms for faster compiler analyses",
+    "abstract": "Inter-procedural data-flow analyses are slow. We parallelize these predicate propagation fixpoint algorithms efficiently on a GPU.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307352",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Thorsten",
+        "last_name": "Blaß",
+        "institution": "Friedrich-Alexander-Universität Erlangen-Nürnberg"
+      },
+      {
+        "first_name": "Michæl",
+        "last_name": "Philippsen",
+        "institution": "Friedrich-Alexander-Universität Erlangen-Nürnberg"
+      }
+    ],
+    "dblp_key": "conf/cc/BlassP19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307359",
+    "title": "Compare less, defer more: scaling value-contexts based whole-program heap analyses",
+    "abstract": "The precision of heap analyses determines the precision of several associated optimizations, and has been a prominent area in compiler research. It has been shown that context-sensitive heap analyses are more precise than the insensitive ones, but their scalability continues to be a cause of concern. Though the value-contexts approach improves the scalability of classical call-string based context-sensitive analyses, it still does not scale well for several popular whole-program heap analyses. In this paper, we propose a three-stage analysis approach that lets us scale complex whole-program value-contexts based heap analyses for large programs, without losing their precision.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307359",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Manas",
+        "last_name": "Thakur",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "V. Krishna",
+        "last_name": "Nandivada",
+        "institution": "Indian Institute of Technology Madras"
+      }
+    ],
+    "dblp_key": "conf/cc/ThakurN19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307344",
+    "title": "Property caches revisited",
+    "abstract": "Property caches are a well-known technique invented over 30 years ago to improve dynamic object accesses. They have been adapted to JavaScript, which they have greatly contributed to accelerate. However, this technique is applicable only when some constraints are satisfied by the objects, the properties, and the property access sites. In this work, we propose enhancements to improve two common usage patterns: prototype accesses and megamorphic accesses. We have implemented these in the Hopc AOT JavaScript compiler and we have measured their impact. We observe that they effectively complement traditional caches. They reduce cache misses and consequently accelerate execution. Moreover, they do not cause a slowdown in the handling of the other usage patterns.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307344",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Serrano",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Feeley",
+        "institution": "Université de Montréal"
+      }
+    ],
+    "dblp_key": "conf/cc/SerranoF19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307358",
+    "title": "Codestitcher: inter-procedural basic block layout optimization",
+    "abstract": "Modern software executes a large amount of code. Previous techniques of code layout optimization were developed one or two decades ago and have become inadequate to cope with the scale and complexity of new types of applications such as compilers, browsers, interpreters, language VMs and shared libraries.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307358",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Rahman",
+        "last_name": "Lavaee",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Criswell",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Chen",
+        "last_name": "Ding",
+        "institution": "University of Rochester"
+      }
+    ],
+    "dblp_key": "conf/cc/LavaeeCD19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307348",
+    "title": "Automatic adaptive approximation for stencil computations",
+    "abstract": "Approximate computing is necessary to meet deadlines in some compute-intensive applications like simulation. Building them requires a high level of expertise from the application designers as well as a significant development effort. Some application programming interfaces greatly facilitate their conception but they still heavily rely on the developer's domain-specific knowledge and require many modifications to successfully generate an approximate version of the program. In this paper we present new techniques to semi-automatically discover relevant approximate computing parameters. We believe that superior compiler-user interaction is the key to improved productivity. After pinpointing the region of interest to optimize, the developer is guided by the compiler in making the best implementation choices. Static analysis and runtime monitoring are used to infer approximation parameter values for the application. We evaluated these techniques on multiple application kernels that support approximation and show that with the help of our method, we achieve similar performance as non-assisted, hand-tuned version while requiring minimal intervention from the user.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307348",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Maxime",
+        "last_name": "Schmitt",
+        "institution": "Université de Strasbourg"
+      },
+      {
+        "first_name": "Philippe",
+        "last_name": "Helluy",
+        "institution": "Université de Strasbourg"
+      },
+      {
+        "first_name": "Cédric",
+        "last_name": "Bastoul",
+        "institution": "Central Compilation & Translation Bureau"
+      }
+    ],
+    "dblp_key": "conf/cc/SchmittHB19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307356",
+    "title": "Spinal code: automatic code extraction for near-user computation in fogs",
+    "abstract": "In the Internet of Things (IoT) environments, cloud servers integrate various IoT devices including sensors and actuators, and provide new services that assist daily lives of users interacting with the physical world. While response time is a crucial factor of quality of the services, supporting short response time is challenging for the cloud servers due to a growing number and amount of connected devices and their communication. To reduce the burden of the cloud servers, fog computing is a promising alternative to offload computation and communication overheads from the cloud servers to fog nodes. However, since existing fog computing frameworks do not extract codes for fog nodes fully automatically, programmers should manually write and analyze their applications for fog computing. This work proposes Spinal Code, a new compiler-runtime framework for near-user computation that automatically partitions an original cloud-centric program into distributed sub-programs running over the cloud and fog nodes. Moreover, to reduce response time in the physical world, Spinal Code allows programmers to annotate latency sensitive actuators in a program, and optimizes the critical paths from required sensors to the actuators when it generates the sub-programs. This work implements 9 IoT programs across 4 service domains: healthcare, smart home, smart building and smart factory, and demonstrates that Spinal Code successfully reduces 44.3% of response time and 79.9% of communication on the cloud compared with a cloud-centric model.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307356",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Bongjun",
+        "last_name": "Kim",
+        "institution": "Pohang University of Science and Technology"
+      },
+      {
+        "first_name": "Seonyeong",
+        "last_name": "Heo",
+        "institution": "Pohang University of Science and Technology"
+      },
+      {
+        "first_name": "Gyeongmin",
+        "last_name": "Lee",
+        "institution": "Korea Post"
+      },
+      {
+        "first_name": "Seungbin",
+        "last_name": "Song",
+        "institution": "Yonsei University"
+      },
+      {
+        "first_name": "Jong",
+        "last_name": "Kim",
+        "institution": "Pohang University of Science and Technology"
+      },
+      {
+        "first_name": "Hanjun",
+        "last_name": "Kim",
+        "institution": "Yonsei University"
+      }
+    ],
+    "dblp_key": "conf/cc/KimHLS0K19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307357",
+    "title": "Revec: program rejuvenation through revectorization",
+    "abstract": "Modern microprocessors are equipped with Single Instruction Multiple Data (SIMD) or vector instructions which expose data level parallelism at a fine granularity. Programmers exploit this parallelism by using low-level vector intrinsics in their code. However, once programs are written using vector intrinsics of a specific instruction set, the code becomes non-portable. Modern compilers are unable to analyze and retarget the code to newer vector instruction sets. Hence, programmers have to manually rewrite the same code using vector intrinsics of a newer generation to exploit higher data widths and capabilities of new instruction sets. This process is tedious, error-prone and requires maintaining multiple code bases. We propose Revec, a compiler optimization pass which revectorizes already vectorized code, by retargeting it to use vector instructions of newer generations. The transformation is transparent, happening at the compiler intermediate representation level, and enables performance portability of hand-vectorized code.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307357",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Charith",
+        "last_name": "Mendis",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Ajay",
+        "last_name": "Jain",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Paras",
+        "last_name": "Jain",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Saman",
+        "last_name": "Amarasinghe",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/MendisJJA19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307346",
+    "title": "Low-cost deterministic C++ exceptions for embedded systems",
+    "abstract": "The C++ programming language offers a strong exception mechanism for error handling at the language level, improving code readability, safety, and maintainability. However, current C++ implementations are targeted at general-purpose systems, often sacrificing code size, memory usage, and resource determinism for the sake of performance. This makes C++ exceptions a particularly undesirable choice for embedded applications where code size and resource determinism are often paramount. Consequently, embedded coding guidelines either forbid the use of C++ exceptions, or embedded C++ tool chains omit exception handling altogether. In this paper, we develop a novel implementation of C++ exceptions that eliminates these issues, and enables their use for embedded systems. We combine existing stack unwinding techniques with a new approach to memory management and run-time type information (RTTI). In doing so we create a compliant C++ exception handling implementation, providing bounded runtime and memory usage, while reducing code size requirements by up to 82%, and incurring only a minimal runtime overhead for the common case of no exceptions.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307346",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "James",
+        "last_name": "Renwick",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Spink",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Björn",
+        "last_name": "Franke",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/RenwickSF19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307350",
+    "title": "PPOpenCL: a performance-portable OpenCL compiler with host and kernel thread code fusion",
+    "abstract": "OpenCL offers code portability but no performance portability. Given an OpenCL program X specifically written for one platform P, existing OpenCL compilers, which usually optimize its host and kernel codes individually, often yield poor performance for another platform Q. Instead of obtaining a performance-improved version of X for Q via manual tuning, we aim to achieve this automatically by a source-to-source OpenCL compiler framework, PPOpenCL. By fusing X's host and kernel thread codes (with the operations in different work-items in the same work-group represented explicitly), we are able to apply data flow analyses, and subsequently, performance-enhancing optimizations on a fused control flow graph specifically for platform Q. Validation against OpenCL benchmarks shows that PPOpenCL (implemented in Clang 3.9.1) can achieve significantly improved portable performance on seven platforms considered.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307350",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Ying",
+        "last_name": "Liu",
+        "institution": "Chinese Academy of Sciences"
+      },
+      {
+        "first_name": "Lei",
+        "last_name": "Huang",
+        "institution": "Institute of Computing Technology"
+      },
+      {
+        "first_name": "Ming-Chuan",
+        "last_name": "Wu",
+        "institution": "Institute of Computing Technology"
+      },
+      {
+        "first_name": "Huimin",
+        "last_name": "Cui",
+        "institution": "Institute of Computing Technology"
+      },
+      {
+        "first_name": "Fang",
+        "last_name": "Lv",
+        "institution": "Chinese Academy of Sciences"
+      },
+      {
+        "first_name": "Xiaobing",
+        "last_name": "Feng",
+        "institution": "University of Chinese Academy of Sciences"
+      },
+      {
+        "first_name": "Jingling",
+        "last_name": "Xue",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/cc/LiuHWCL0X19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307351",
+    "title": "Valence: variable length calling context encoding",
+    "abstract": "Many applications, including program optimizations, debugging tools, and event loggers, rely on calling context to gain additional insight about how a program behaves during execution. One common strategy for determining calling contexts is to use compiler instrumentation at each function call site and return sites to encode the call paths and store them in a designated area of memory. While recent works have shown that this approach can generate precise calling context encodings with low overhead, the encodings can grow to hundreds or even thousands of bytes to encode a long call path, for some applications. Such lengthy encodings increase the costs associated with storing, detecting, and decoding call path contexts, and can limit the effectiveness of this approach for many usage scenarios.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307351",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Tong",
+        "last_name": "Zhou",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Michael R.",
+        "last_name": "Jantz",
+        "institution": "University of Tennessee at Knoxville"
+      },
+      {
+        "first_name": "Prasad A.",
+        "last_name": "Kulkarni",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "Kshitij",
+        "last_name": "Doshi",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/cc/ZhouJKDS19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307347",
+    "title": "To unify or not to unify: a case study on unified builds (in WebKit)",
+    "abstract": "Unified builds are a simple but effective technique to reduce the build time of large software projects. Unified builds generate large compiler tasks by bundling multiple source files into one, resulting in a significant reduction in build time through removal of redundant work incurred by shared headers. However, unified builds have a negative effect on incremental builds because each compiler task gets larger. An ad-hoc unification strategy causes an excessive slowdown in incremental builds. A rough report from WebKit says the worst slowdown is 20% (6s → 7s), but our investigation shows it is as high as 479% (19s → 110s).",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307347",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Takafumi",
+        "last_name": "Kubota",
+        "institution": "Keio University"
+      },
+      {
+        "first_name": "Yusuke",
+        "last_name": "Suzuki",
+        "institution": "Keio University"
+      },
+      {
+        "first_name": "Kenji",
+        "last_name": "Kono",
+        "institution": "Keio University"
+      }
+    ],
+    "dblp_key": "conf/cc/KubotaSK19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307355",
+    "title": "Accelerating web application loading with snapshot of event and DOM handling",
+    "abstract": "Reducing the loading time of a web app is important for a better user experience. The loading time includes a large amount of JavaScript execution, often composed of the execution of the global code in the script tags followed by the execution of event handlers. One approach to accelerate the app loading is saving the already-loaded execution state of JavaScript objects in a file called the snapshot in advance. Then, we start an app by copying the objects in the snapshot to the JavaScript heap directly, instead of executing JavaScript code to create them. Unfortunately, existing works save only the execution state of the global code in the snapshot, not that of the event handlers. Also, JavaScript code whose execution may change the DOM (Document Object Model) tree is not saved in the snapshot, limiting the coverage of the snapshot.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307355",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Jihwan",
+        "last_name": "Yeo",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Jin-Seok",
+        "last_name": "Oh",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Soo‐Mook",
+        "last_name": "Moon",
+        "institution": "Seoul National University"
+      }
+    ],
+    "dblp_key": "conf/cc/YeoOM19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307345",
+    "title": "A static slicing method for functional programs and its incremental version",
+    "abstract": "An effective static slicing technique for functional programs must have two features. Its handling of function calls must be context sensitive without being inefficient, and, because of the widespread use of algebraic datatypes, it must take into account structure transmitted dependences. It has been shown that any analysis that combines these two characteristics is undecidable, and existing slicing methods drop one or the other. We propose a slicing method that only weakens (and not entirely drop) the requirement of context-sensitivity and that too for some and not all programs.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307345",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Prasanna Kumar",
+        "last_name": "K.",
+        "institution": "Indian Institute of Technology Bombay"
+      },
+      {
+        "first_name": "Amitabha",
+        "last_name": "Sanyal",
+        "institution": "Indian Institute of Technology Bombay"
+      },
+      {
+        "first_name": "Amey",
+        "last_name": "Karkare",
+        "institution": "Indian Institute of Technology Kanpur"
+      },
+      {
+        "first_name": "Saswat",
+        "last_name": "Padhi",
+        "institution": "University of California, Los Angeles"
+      }
+    ],
+    "dblp_key": "conf/cc/KSKP19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307360",
+    "title": "Efficiency and expressiveness in UW-OpenMP",
+    "abstract": "OpenMP uses the efficient ‘team of workers’ model, where workers are given chunks of tasks (iterations of a parallel-for-loop, or sections in a parallel-sections block) to execute, and worker (not tasks) can be synchronized using barriers. Thus, OpenMP restricts the invocation of barriers in these tasks; as otherwise, the behavior of the program would be dependent on the number of runtime workers. To address such a restriction which can adversely impact programmability and readability, Aloor and Nandivada proposed UW-OpenMP by taking inspiration from the more intuitive interaction of tasks and barriers in newer task parallel languages like X10, HJ, Chapel and so on. UW-OpenMP gives the programmer an impression that each parallel task is executed by a unique worker, and importantly these parallel tasks can be synchronized using a barrier construct. Though UW-OpenMP is a useful extension of OpenMP (more expressive and efficient), it does not admit barriers within recursive functions invoked from parallel-for-loops, because of the inherent challenges in handing them. In this paper, we extend UW-OpenMP (we call it UWOmp++) to address this challenging limitation and in the process also realize more efficient programs.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307360",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Raghesh",
+        "last_name": "Aloor",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "V. Krishna",
+        "last_name": "Nandivada",
+        "institution": "Indian Institute of Technology Madras"
+      }
+    ],
+    "dblp_key": "conf/cc/AloorN19",
+    "venue": "cc",
+    "year": 2019
+  },
+  {
+    "paper_id": "10.1145/3302516.3307353",
+    "title": "Efficient concolic testing of MPI applications",
+    "abstract": "Software testing is widely used in industry, but its application in the High Performance Computing area has been scarce. Concolic testing, that automates testing via generation of inputs, has been highly successful for desktop applications and thus recent work on the COMPI tool has extended it to MPI programs. However, COMPI has two limitations. First, it requires the user to specify an upper limit on input size – if the chosen limit is too big, considerable time is wasted and if the chosen limit is too small, the branch coverage achieved is limited. Second, COMPI does not support floating point arithmetic that is common in HPC applications.",
+    "date": "2019-02-14",
+    "link": "https://doi.org/10.1145/3302516.3307353",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Hongbo",
+        "last_name": "Li",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Zizhong",
+        "last_name": "Chen",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Rajiv",
+        "last_name": "Gupta",
+        "institution": "University of California, Riverside"
+      }
+    ],
+    "dblp_key": "conf/cc/LiC019",
+    "venue": "cc",
+    "year": 2019
+  }
+]

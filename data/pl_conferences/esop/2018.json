@@ -1,0 +1,1060 @@
+[
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_1",
+    "title": "Consistent Subtyping for All",
+    "abstract": "Consistent subtyping is employed in some gradual type systems to validate type conversions. The original definition by Siek and Taha serves as a guideline for designing gradual type systems with subtyping. Polymorphic types à la System F also induce a subtyping relation that relates polymorphic types to their instantiations. However Siek and Taha’s definition is not adequate for polymorphic subtyping. The first goal of this paper is to propose a generalization of consistent subtyping that is adequate for polymorphic subtyping, and subsumes the original definition by Siek and Taha. The new definition of consistent subtyping provides novel insights with respect to previous polymorphic gradual type systems, which did not employ consistent subtyping. The second goal of this paper is to present a gradually typed calculus for implicit (higher-rank) polymorphism that uses our new notion of consistent subtyping. We develop both declarative and (bidirectional) algorithmic versions for the type system. We prove that the new calculus satisfies all static aspects of the refined criteria for gradual typing, which are mechanically formalized using the Coq proof assistant.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_1",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Ningning",
+        "last_name": "Xie",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Xuan",
+        "last_name": "Bi",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/esop/XieBO18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_4",
+    "title": "Deterministic Concurrency: A Clock-Synchronised Shared Memory Approach",
+    "abstract": "Concurrency and determinacy do not go well with each other when resources must be shared. Haskell provides parallel programming abstractions such as IVar and LVar in the Par monad and concurrent abstractions such as MVar and TVar in the in IO and STM monads, respectively. The former are determinate but have no destructive updates and the latter have destructive updates but do not guarantee determinacy. Programming patterns that are both concurrent and determinate, such as those provided by Kahn or Berry require memory abstractions at a higher level than is currently available. In this paper we describe a new type context PSM for policy synchronised memory in Haskell. Like STM and IO, the computations in PSM can access persistent state and, as a side-effect, update the memory in imperative style. Like the Par and IO monads, PSM supports concurrent threads and shared state. However, in contrast to IO, our PSM contexts are race-free since concurrent accesses are policy coordinated which guarantees determinacy.Well-typed transactions in the PSM context can accommodate abstract data structures that are imperative, concurrently shareable and still behave deterministically, by construction.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_4",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Joaquín",
+        "last_name": "Aguado",
+        "institution": "University of Bamberg"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Mendler",
+        "institution": "University of Bamberg"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Pouzet",
+        "institution": "Laboratoire de Géologie de l’École Normale Supérieure"
+      },
+      {
+        "first_name": "Partha S.",
+        "last_name": "Roop",
+        "institution": "University of Auckland"
+      },
+      {
+        "first_name": "Reinhard von",
+        "last_name": "Hanxleden",
+        "institution": "Kiel University"
+      }
+    ],
+    "dblp_key": "conf/esop/AguadoMPRH18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_14",
+    "title": "Logical Reasoning for Disjoint Permissions",
+    "abstract": "Resource sharing is a fundamental phenomenon in concurrent programming where several threads have permissions to access a common resource. Logics for verification need to capture the notion of permission ownership and transfer. One typical practice is the use of rational numbers in (0, 1] as permissions in which 1 is the full permission and the rest are fractional permissions. Rational permissions are not a good fit for separation logic because they remove the essential “disjointness” feature of the logic itself. We propose a general logic framework that supports permission reasoning in separation logic while preserving disjointness. Our framework is applicable to sophisticated verification tasks such as doing induction over the finiteness of the heap within the object logic or carrying out biabductive inference. We can also prove precision of recursive predicates within the object logic. We developed the ShareInfer tool to benchmark our techniques. We introduce “scaling separation algebras,” a compositional extension of separation algebras, to model our logic, and use them to construct a concrete model.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_14",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Xuan-Bach",
+        "last_name": "Le",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Aquinas",
+        "last_name": "Hobor",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "conf/esop/LeH18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_16",
+    "title": "Fragment Abstraction for Concurrent Shape Analysis",
+    "abstract": "A major challenge in automated verification is to develop techniques that are able to reason about fine-grained concurrent algorithms that consist of an unbounded number of concurrent threads, which operate on an unbounded domain of data values, and use unbounded dynamically allocated memory. Existing automated techniques consider the case where shared data is organized into singly-linked lists. We present a novel shape analysis for automated verification of fine-grained concurrent algorithms that can handle heap structures which are more complex than just singly-linked lists, in particular skip lists and arrays of singly linked lists, while at the same time handling an unbounded number of concurrent threads, an unbounded domain of data values (including timestamps), and an unbounded shared heap. Our technique is based on a novel shape abstraction, which represents a set of heaps by a set of fragments. A fragment is an abstraction of a pair of heap cells that are connected by a pointer field. We have implemented our approach and applied it to automatically verify correctness, in the sense of linearizability, of most linearizable concurrent implementations of sets, stacks, and queues, which employ singly-linked lists, skip lists, or arrays of singly-linked lists with timestamps, which are known to us in the literature.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_16",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Parosh Aziz",
+        "last_name": "Abdulla",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Bengt",
+        "last_name": "Jönsson",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Cong Quy",
+        "last_name": "Trinh",
+        "institution": "Uppsala University"
+      }
+    ],
+    "dblp_key": "conf/esop/AbdullaJT18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_2",
+    "title": "HOBiT: Programming Lenses Without Using Lens Combinators",
+    "abstract": "We propose HOBiT, a higher-order bidirectional programming language, in which users can write bidirectional programs in the familiar style of conventional functional programming, while enjoying the full expressiveness of lenses. A bidirectional transformation, or a lens, is a pair of mappings between source and view data objects, one in each direction. When the view is modified, the source is updated accordingly with respect to some laws—a pattern that is found in databases, model-driven development, compiler construction, and so on. The most common way of programming lenses is with lens combinators, which are lens-to-lens functions that compose simpler lenses to form more complex ones. Lens combinators preserve the bidirectionality of lenses and are expressive; but they compel programmers to a specialised point-free style—i.e., no naming of intermediate computation results—limiting the scalability of bidirectional programming. To address this issue, we propose a new bidirectional programming language HOBiT, in which lenses are represented as standard functions, and combinators are mapped to language constructs with binders. This design transforms bidirectional programming, enabling programmers to write bidirectional programs in a flexible functional style and at the same time access the full expressiveness of lenses. We formally define the syntax, type system, and the semantics of the language, and then show that programs in HOBiT satisfy bidirectionality. Additionally, we demonstrate HOBiT ’s programmability with examples.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_2",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Kazutaka",
+        "last_name": "Matsuda",
+        "institution": "Tohoku University"
+      },
+      {
+        "first_name": "Meng",
+        "last_name": "Wang",
+        "institution": "University of Bristol"
+      }
+    ],
+    "dblp_key": "conf/esop/Matsuda018",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_5",
+    "title": "An Assertion-Based Program Logic for Probabilistic Programs",
+    "abstract": "We present Ellora, a sound and relatively complete assertion-based program logic, and demonstrate its expressivity by verifying several classical examples of randomized algorithms using an implementation in the EasyCrypt proof assistant. Ellora features new proof rules for loops and adversarial code, and supports richer assertions than existing program logics. We also show that Ellora allows convenient reasoning about complex probabilistic concepts by developing a new program logic for probabilistic independence and distribution law, and then smoothly embedding it into Ellora.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_5",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Gilles",
+        "last_name": "Barthe",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Espitau",
+        "institution": "Sorbonne Université"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Gaboardi",
+        "institution": "University at Buffalo, State University of New York"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Grégoire",
+        "institution": "Centre Inria d'Université Côte d'Azur"
+      },
+      {
+        "first_name": "Justin",
+        "last_name": "Hsu",
+        "institution": "University College London"
+      },
+      {
+        "first_name": "Pierre-Yves",
+        "last_name": "Strub",
+        "institution": "École Polytechnique"
+      }
+    ],
+    "dblp_key": "conf/esop/BartheEGGHS18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_7",
+    "title": "How long, O Bayesian network, will I sample thee? - A program analysis perspective on expected sampling times",
+    "abstract": "Bayesian networks (BNs) are probabilistic graphical models for describing complex joint probability distributions. The main problem for BNs is inference: Determine the probability of an event given observed evidence. Since exact inference is often infeasible for large BNs, popular approximate inference methods rely on sampling. We study the problem of determining the expected time to obtain a single valid sample from a BN. To this end, we translate the BN together with observations into a probabilistic program. We provide proof rules that yield the exact expected runtime of this program in a fully automated fashion. We implemented our approach and successfully analyzed various real–world BNs taken from the Bayesian network repository.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_7",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Kevin",
+        "last_name": "Batz",
+        "institution": "RWTH Aachen University"
+      },
+      {
+        "first_name": "Benjamin Lucien",
+        "last_name": "Kaminski",
+        "institution": "RWTH Aachen University"
+      },
+      {
+        "first_name": "Joost-Pieter",
+        "last_name": "Katoen",
+        "institution": "RWTH Aachen University"
+      },
+      {
+        "first_name": "Christoph",
+        "last_name": "Matheja",
+        "institution": "RWTH Aachen University"
+      }
+    ],
+    "dblp_key": "conf/esop/BatzKKM18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_15",
+    "title": "Deadlock-Free Monitors",
+    "abstract": "Monitors constitute one of the common techniques to synchronize threads in multithreaded programs, where calling a $$\\mathsf {wait}$$ command on a condition variable suspends the caller thread and notifying a condition variable causes the threads waiting for that condition variable to resume their execution. One potential problem with these programs is that a waiting thread might be suspended forever leading to deadlock, a state where each thread of the program is waiting for a condition variable or a lock. In this paper, a modular verification approach for deadlock-freedom of such programs is presented, ensuring that in any state of the execution of the program if there are some threads suspended then there exists at least one thread running. The main idea behind this approach is to make sure that for any condition variable v for which a thread is waiting there exists a thread obliged to fulfil an obligation for v that only waits for a waitable object whose wait level, an arbitrary number associated with each waitable object, is less than the wait level of v. The relaxed precedence relation introduced in this paper, aiming to avoid cycles, can also benefit some other verification approaches, verifying deadlock-freedom of other synchronization constructs such as channels and semaphores, enabling them to accept a wider range of deadlock-free programs. We encoded the proposed proof rules in the VeriFast program verifier and by defining some appropriate invariants for the locks associated with some condition variables succeeded in verifying some popular use cases of monitors including unbounded/bounded buffer, sleeping barber, barrier, and readers-writers locks. A soundness proof for the presented approach is provided; some of the trickiest lemmas in this proof have been machine-checked with Coq.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_15",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Jafar",
+        "last_name": "Hamin",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Bart",
+        "last_name": "Jacobs",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/esop/Hamin018",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_8",
+    "title": "Relational Reasoning for Markov Chains in a Probabilistic Guarded Lambda Calculus",
+    "abstract": "We extend the simply-typed guarded $$\\lambda $$ -calculus with discrete probabilities and endow it with a program logic for reasoning about relational properties of guarded probabilistic computations. This provides a framework for programming and reasoning about infinite stochastic processes like Markov chains. We demonstrate the logic sound by interpreting its judgements in the topos of trees and by using probabilistic couplings for the semantics of relational assertions over distributions on discrete types. The program logic is designed to support syntax-directed proofs in the style of relational refinement types, but retains the expressiveness of higher-order logic extended with discrete distributions, and the ability to reason relationally about expressions that have different types or syntactic structure. In addition, our proof system leverages a well-known theorem from the coupling literature to justify better proof rules for relational reasoning about probabilistic expressions. We illustrate these benefits with a broad range of examples that were beyond the scope of previous systems, including shift couplings and lump couplings between random walks.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_8",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Alejandro",
+        "last_name": "Aguirre",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Gilles",
+        "last_name": "Barthe",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Aleš",
+        "last_name": "Bizjak",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Gaboardi",
+        "institution": "University at Buffalo, State University of New York"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "Garg",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/esop/0001BBBG018",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_13",
+    "title": "A Separation Logic for a Promising Semantics",
+    "abstract": "We present SLR, the first expressive program logic for reasoning about concurrent programs under a weak memory model addressing the out-of-thin-air problem. Our logic includes the standard features from existing logics, such as RSL and GPS, that were previously known to be sound only under stronger memory models: (1) separation, (2) per-location invariants, and (3) ownership transfer via release-acquire synchronisation—as well as novel features for reasoning about (4) the absence of out-of-thin-air behaviours and (5) coherence. The logic is proved sound over the recent “promising” memory model of Kang et al., using a substantially different argument to soundness proofs of logics for simpler memory models.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_13",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Kasper",
+        "last_name": "Svendsen",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Jean",
+        "last_name": "Pichon-Pharabod",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Marko",
+        "last_name": "Doko",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Ori",
+        "last_name": "Lahav",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Vafeiadis",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/esop/SvendsenPDLV18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_9",
+    "title": "Failure is Not an Option - An Exceptional Type Theory",
+    "abstract": "We define the exceptional translation, a syntactic translation of the Calculus of Inductive Constructions (CIC) into itself, that covers full dependent elimination. The new resulting type theory features call-by-name exceptions with decidable type-checking and canonicity, but at the price of inconsistency. Then, noticing parametricity amounts to Kreisel’s realizability in this setting, we provide an additional layer on top of the exceptional translation in order to tame exceptions and ensure that all exceptions used locally are caught, leading to the parametric exceptional translation which fully preserves consistency. This way, we can consistently extend the logical expressivity of CIC with independence of premises, Markov’s rule, and the negation of function extensionality while retaining $$\\eta $$ -expansion. As a byproduct, we also show that Markov’s principle is not provable in CIC. Both translations have been implemented in a Coq plugin, which we use to formalize the examples.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_9",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Pierre-Marie",
+        "last_name": "Pédrot",
+        "institution": "Max Planck Society"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Tabareau",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      }
+    ],
+    "dblp_key": "conf/esop/PedrotT18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_11",
+    "title": "Behavioural Equivalence via Modalities for Algebraic Effects",
+    "abstract": "The paper investigates behavioural equivalence between programs in a call-by-value functional language extended with a signature of (algebraic) effect-triggering operations. Two programs are considered as being behaviourally equivalent if they enjoy the same behavioural properties. To formulate this, we define a logic whose formulas specify behavioural properties. A crucial ingredient is a collection of modalities expressing effect-specific aspects of behaviour. We give a general theory of such modalities. If two conditions, openness and decomposability, are satisfied by the modalities then the logically specified behavioural equivalence coincides with a modality-defined notion of applicative bisimilarity, which can be proven to be a congruence by a generalisation of Howe’s method. We show that the openness and decomposability conditions hold for several examples of algebraic effects: nondeterminism, probabilistic choice, global store and input/output.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_11",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Alex",
+        "last_name": "Simpson",
+        "institution": "University of Ljubljana"
+      },
+      {
+        "first_name": "Niels",
+        "last_name": "Voorneveld",
+        "institution": "University of Ljubljana"
+      }
+    ],
+    "dblp_key": "conf/esop/SimpsonV18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_10",
+    "title": "Let Arguments Go First",
+    "abstract": "Bi-directional type checking has proved to be an extremely useful and versatile tool for type checking and type inference. The conventional presentation of bi-directional type checking consists of two modes: inference mode and checked mode. In traditional bi-directional type-checking, type annotations are used to guide (via the checked mode) the type inference/checking procedure to determine the type of an expression, and type information flows from functions to arguments. This paper presents a variant of bi-directional type checking where the type information flows from arguments to functions. This variant retains the inference mode, but adds a so-called application mode. Such design can remove annotations that basic bi-directional type checking cannot, and is useful when type information from arguments is required to type-check the functions being applied. We present two applications and develop the meta-theory (mostly verified in Coq) of the application mode.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_10",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Ningning",
+        "last_name": "Xie",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/esop/XieO18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_6",
+    "title": "Fine-Grained Semantics for Probabilistic Programs",
+    "abstract": "Probabilistic programming is an emerging technique for modeling processes involving uncertainty. Thus, it is important to ensure these programs are assigned precise formal semantics that also cleanly handle typical exceptions such as non-termination or division by zero. However, existing semantics of probabilistic programs do not fully accommodate different exceptions and their interaction, often ignoring some or conflating multiple ones into a single exception state, making it impossible to distinguish exceptions or to study their interaction. In this paper, we provide an expressive probabilistic programming language together with a fine-grained measure-theoretic denotational semantics that handles and distinguishes non-termination, observation failures and error states. We then investigate the properties of this semantics, focusing on the interaction of different kinds of exceptions. Our work helps to better understand the intricacies of probabilistic programs and ensures their behavior matches the intended semantics.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_6",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Benjamin",
+        "last_name": "Bichsel",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Timon",
+        "last_name": "Gehr",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/esop/BichselGV18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_3",
+    "title": "Dualizing Generalized Algebraic Data Types by Matrix Transposition",
+    "abstract": "We characterize the relation between generalized algebraic datatypes (GADTs) with pattern matching on their constructors one hand, and generalized algebraic co-datatypes (GAcoDTs) with copattern matching on their destructors on the other hand: GADTs can be converted mechanically to GAcoDTs by refunctionalization, GAcoDTs can be converted mechanically to GADTs by defunctionalization, and both defunctionalization and refunctionalization correspond to a transposition of the matrix in which the equations for each constructor/destructor pair of the (co-)datatype are organized. We have defined a calculus, $$GADT^T$$ , which unifies GADTs and GAcoDTs in such a way that GADTs and GAcoDTs are merely different ways to partition the program. We have formalized the type system and operational semantics of $$GADT^T$$ in the Coq proof assistant and have mechanically verified the following results: (1) The type system of $$GADT^T$$ is sound, (2) defunctionalization and refunctionalization can translate GADTs to GAcoDTs and back, (3) both transformations are type- and semantics-preserving and are inverses of each other, (4) (co-)datatypes can be represented by matrices in such a way the aforementioned transformations correspond to matrix transposition, (5) GADTs are extensible in an exactly dual way to GAcoDTs; we thereby clarify folklore knowledge about the “expression problem”. We believe that the identification of this relationship can guide future language design of “dual features” for data and codata.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_3",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Klaus",
+        "last_name": "Ostermann",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Julian",
+        "last_name": "Jabs",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "conf/esop/OstermannJ18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_12",
+    "title": "Explicit Effect Subtyping",
+    "abstract": "As popularity of algebraic effects and handlers increases, so does a demand for their efficient execution. Eff, an ML-like language with native support for handlers, has a subtyping-based effect system on which an effect-aware optimizing compiler could be built. Unfortunately, in our experience, implementing optimizations for Eff is overly error-prone because its core language is implicitly-typed, making code transformations very fragile.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_12",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Amr Hany",
+        "last_name": "Saleh",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Georgios",
+        "last_name": "Karachalias",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Matija",
+        "last_name": "Pretnar",
+        "institution": "University of Ljubljana"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/esop/SalehKPS18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_17",
+    "title": "Reasoning About a Machine with Local Capabilities - Provably Safe Stack and Return Pointer Management",
+    "abstract": "Capability machines provide security guarantees at machine level which makes them an interesting target for secure compilation schemes that provably enforce properties such as control-flow correctness and encapsulation of local state. We provide a formalization of a representative capability machine with local capabilities and study a novel calling convention. We provide a logical relation that semantically captures the guarantees provided by the hardware (a form of capability safety) and use it to prove control-flow correctness and encapsulation of local state. The logical relation is not specific to our calling convention and can be used to reason about arbitrary programs.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_17",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Lau",
+        "last_name": "Skorstengaard",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Dominique",
+        "last_name": "Devriese",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/esop/SkorstengaardDB18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_21",
+    "title": "Program Verification by Coinduction",
+    "abstract": "We present a novel program verification approach based on coinduction, which takes as input an operational semantics. No intermediates like program logics or verification condition generators are needed. Specifications can be written using any state predicates. We implement our approach in Coq, giving a certifying language-independent verification framework. Our proof system is implemented as a single module imported unchanged into language-specific proofs. Automation is reached by instantiating a generic heuristic with language-specific tactics. Manual assistance is also smoothly allowed at points the automation cannot handle. We demonstrate the power and versatility of our approach by verifying algorithms as complicated as Schorr-Waite graph marking and instantiating our framework for object languages in several styles of semantics. Finally, we show that our coinductive approach subsumes reachability logic, a recent language-independent sound and (relatively) complete logic for program verification that has been instantiated with operational semantics of languages as complex as C, Java and JavaScript.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_21",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Brandon",
+        "last_name": "Moore",
+        "institution": "Runtime Verification (United States)"
+      },
+      {
+        "first_name": "Lucas",
+        "last_name": "Peña",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Grigore",
+        "last_name": "Roşu",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/esop/MoorePR18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_18",
+    "title": "Modular Product Programs",
+    "abstract": "Many interesting program properties like determinism or information flow security are hyperproperties, that is, they relate multiple executions of the same program. Hyperproperties can be verified using relational logics, but these logics require dedicated tool support and are difficult to automate. Alternatively, constructions such as self-composition represent multiple executions of a program by one product program, thereby reducing hyperproperties of the original program to trace properties of the product. However, existing constructions do not fully support procedure specifications, for instance, to derive the determinism of a caller from the determinism of a callee, making verification non-modular. We present modular product programs, a novel kind of product program that permits hyperproperties in procedure specifications and, thus, can reason about calls modularly. We demonstrate its expressiveness by applying it to information flow security with advanced features such as declassification and termination-sensitivity. Modular product programs can be verified using off-the-shelf verifiers; we have implemented our approach to secure information flow using the Viper verification infrastructure.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_18",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Marco",
+        "last_name": "Eilers",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Péter",
+        "last_name": "Müller",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Samuel",
+        "last_name": "Hitz",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/esop/EilersMH18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_20",
+    "title": "Verified Learning Without Regret - From Algorithmic Game Theory to Distributed Systems with Mechanized Complexity Guarantees",
+    "abstract": "Multiplicative Weights (MW) is a simple yet powerful algorithm for learning linear classifiers, for ensemble learning à la boosting, for approximately solving linear and semidefinite systems, for computing approximate solutions to multicommodity flow problems, and for online convex optimization, among other applications. Recent work in algorithmic game theory, which applies a computational perspective to the design and analysis of systems with mutually competitive actors, has shown that no-regret algorithms like MW naturally drive games toward approximate Coarse Correlated Equilibria (CCEs), and that for certain games, approximate CCEs have bounded cost with respect to the optimal states of such systems. In this paper, we put such results to practice by building distributed systems such as routers and load balancers with performance and convergence guarantees mechanically verified in Coq. The main contributions on which our results rest are (1) the first mechanically verified implementation of Multiplicative Weights (specifically, we show that our MW is no regret) and (2) a language-based formulation, in the form of a DSL, of the class of games satisfying Roughgarden smoothness, a broad characterization of those games whose approximate CCEs have cost bounded with respect to optimal. Composing (1) with (2) within Coq yields a new strategy for building distributed systems with mechanically verified complexity guarantees on the time to convergence to near-optimal system configurations.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_20",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Samuel",
+        "last_name": "Merten",
+        "institution": "Ohio University"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Bagnall",
+        "institution": "Ohio University"
+      },
+      {
+        "first_name": "Gordon",
+        "last_name": "Stewart",
+        "institution": "Ohio University"
+      }
+    ],
+    "dblp_key": "conf/esop/MertenBS18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_19",
+    "title": "A Fistful of Dollars: Formalizing Asymptotic Complexity Claims via Deductive Program Verification",
+    "abstract": "We present a framework for simultaneously verifying the functional correctness and the worst-case asymptotic time complexity of higher-order imperative programs. We build on top of Separation Logic with Time Credits, embedded in an interactive proof assistant. We formalize the O notation, which is key to enabling modular specifications and proofs. We cover the subtleties of the multivariate case, where the complexity of a program fragment depends on multiple parameters. We propose a way of integrating complexity bounds into specifications, present lemmas and tactics that support a natural reasoning style, and illustrate their use with a collection of examples.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_19",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Armaël",
+        "last_name": "Guéneau",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Arthur",
+        "last_name": "Charguéraud",
+        "institution": "Université de Strasbourg"
+      },
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/esop/GueneauCP18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_30",
+    "title": "Concurrent Kleene Algebra: Free Model and Completeness",
+    "abstract": "Concurrent Kleene Algebra (CKA) was introduced by Hoare, Moeller, Struth and Wehrman in 2009 as a framework to reason about concurrent programs. We prove that the axioms for CKA with bounded parallelism are complete for the semantics proposed in the original paper; consequently, these semantics are the free model for this fragment. This result settles a conjecture of Hoare and collaborators. Moreover, the technique developed to this end allows us to establish a Kleene Theorem for CKA, extending an earlier Kleene Theorem for a fragment of CKA.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_30",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Kappé",
+        "institution": "University College London"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Brunet",
+        "institution": "University College London"
+      },
+      {
+        "first_name": "Alexandra",
+        "last_name": "Silva",
+        "institution": "University College London"
+      },
+      {
+        "first_name": "Fabio",
+        "last_name": "Zanasi",
+        "institution": "University College London"
+      }
+    ],
+    "dblp_key": "conf/esop/KappeB0Z18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_24",
+    "title": "An Abstract Interpretation Framework for Input Data Usage",
+    "abstract": "Data science software plays an increasingly important role in critical decision making in fields ranging from economy and finance to biology and medicine. As a result, errors in data science applications can have severe consequences, especially when they lead to results that look plausible, but are incorrect. A common cause of such errors is when applications erroneously ignore some of their input data, for instance due to bugs in the code that reads, filters, or clusters it. In this paper, we propose an abstract interpretation framework to automatically detect unused input data. We derive a program semantics that precisely captures data usage by abstraction of the program's operational trace semantics and express it in a constructive fixpoint form. Based on this semantics, we systematically derive static analyses that automatically detect unused input data by fixpoint approximation. This clear design principle provides a framework that subsumes existing analyses; we show that secure information flow analyses and a form of live variables analysis can be used for data usage, with varying degrees of precision. Additionally, we derive a static analysis to detect single unused data inputs, which is similar to dependency analyses used in the context of backward program slicing. Finally, we demonstrate the value of expressing such analyses as abstract interpretation by combining them with an existing abstraction of compound data structures such as arrays and lists to detect unused chunks of the data.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_24",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Caterina",
+        "last_name": "Urban",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Péter",
+        "last_name": "Müller",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/esop/UrbanM18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_29",
+    "title": "On Polymorphic Sessions and Functions - A Tale of Two (Fully Abstract) Encodings",
+    "abstract": "This work exploits the logical foundation of session types to determine what kind of type discipline for the $$\\pi $$ -calculus can exactly capture, and is captured by, $$\\lambda $$ -calculus behaviours. Leveraging the proof theoretic content of the soundness and completeness of sequent calculus and natural deduction presentations of linear logic, we develop the first mutually inverse and fully abstract processes-as-functions and functions-as-processes encodings between a polymorphic session $$\\pi $$ -calculus and a linear formulation of System F. We are then able to derive results of the session calculus from the theory of the $$\\lambda $$ -calculus: (1) we obtain a characterisation of inductive and coinductive session types via their algebraic representations in System F; and (2) we extend our results to account for value and process passing, entailing strong normalisation.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_29",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Bernardo",
+        "last_name": "Toninho",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/esop/ToninhoY18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_28",
+    "title": "A Typing Discipline for Statically Verified Crash Failure Handling in Distributed Systems",
+    "abstract": "A key requirement for many distributed systems is to be resilient toward partial failures, allowing a system to progress despite the failure of some components. This makes programming of such systems daunting, particularly in regards to avoiding inconsistencies due to failures and asynchrony. This work introduces a formal model for crash failure handling in asynchronous distributed systems featuring a lightweight coordinator, modeled in the image of widely used systems such as ZooKeeper and Chubby. We develop a typing discipline based on multiparty session types for this model that supports the specification and static verification of multiparty protocols with explicit failure handling. We show that our type system ensures subject reduction and progress in the presence of failures. In other words, in a well-typed system even if some participants crash during execution, the system is guaranteed to progress in a consistent manner with the remaining participants.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_28",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Malte",
+        "last_name": "Viering",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "Tzu‐Chun",
+        "last_name": "Chen",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Eugster",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "Raymond",
+        "last_name": "Hu",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Lukasz",
+        "last_name": "Ziarek",
+        "institution": "University at Buffalo, State University of New York"
+      }
+    ],
+    "dblp_key": "conf/esop/VieringCEHZ18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_22",
+    "title": "Velisarios: Byzantine Fault-Tolerant Protocols Powered by Coq",
+    "abstract": "Our increasing dependence on complex and critical information infrastructures and the emerging threat of sophisticated attacks, ask for extended efforts to ensure the correctness and security of these systems. Byzantine fault-tolerant state-machine replication (BFT-SMR) provides a way to harden such systems. It ensures that they maintain correctness and availability in an application-agnostic way, provided that the replication protocol is correct and at least $$n-f$$ out of n replicas survive arbitrary faults. This paper presents Velisarios, a logic-of-events based framework implemented in Coq, which we developed to implement and reason about BFT-SMR protocols. As a case study, we present the first machine-checked proof of a crucial safety property of an implementation of the area’s reference protocol: PBFT.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_22",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Vincent",
+        "last_name": "Rahli",
+        "institution": "University of Luxembourg"
+      },
+      {
+        "first_name": "Ivana",
+        "last_name": "Vukotic",
+        "institution": "University of Luxembourg"
+      },
+      {
+        "first_name": "Marcus",
+        "last_name": "Völp",
+        "institution": "University of Luxembourg"
+      },
+      {
+        "first_name": "Paulo",
+        "last_name": "Verı́ssimo",
+        "institution": "University of Luxembourg"
+      }
+    ],
+    "dblp_key": "conf/esop/RahliVVV18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_23",
+    "title": "Evaluating Design Tradeoffs in Numeric Static Analysis for Java",
+    "abstract": "Numeric static analysis for Java has a broad range of potentially useful applications, including array bounds checking and resource usage estimation. However, designing a scalable numeric static analysis for real-world Java programs presents a multitude of design choices, each of which may interact with others. For example, an analysis could handle method calls via either a top-down or bottom-up interprocedural analysis. Moreover, this choice could interact with how we choose to represent aliasing in the heap and/or whether we use a relational numeric domain, e.g., convex polyhedra. In this paper, we present a family of abstract interpretation-based numeric static analyses for Java and systematically evaluate the impact of 162 analysis configurations on the DaCapo benchmark suite. Our experiment considered the precision and performance of the analyses for discharging array bounds checks. We found that top-down analysis is generally a better choice than bottom-up analysis, and that using access paths to describe heap objects is better than using summary objects corresponding to points-to analysis locations. Moreover, these two choices are the most significant, while choices about the numeric domain, representation of abstract objects, and context-sensitivity make much less difference to the precision/performance tradeoff.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_23",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Shiyi",
+        "last_name": "Wei",
+        "institution": "The University of Texas at Dallas"
+      },
+      {
+        "first_name": "Piotr",
+        "last_name": "Mardziel",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Ruef",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/esop/WeiMRF018",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_27",
+    "title": "Session-Typed Concurrent Contracts",
+    "abstract": "Multi-process systems control the behavior of everything from datacenters storing our information to banking systems managing money. Each one of these processes has a prescribed role, their contract, that governs their behavior during the joint computation. When a single process violates their communication contract, the impact of this misbehavior can rapidly propagate through the system. This thesisdevelops techniques for dynamically monitoring expressive classes of concurrent contracts. We provide multiple mechanisms to monitor contracts of increasing complexity.In order to model message-passing concurrent computation, we use a session type system. First, we present a method for dynamic monitoring and blame assignment where communication contracts are expressed using session types. Second, we describe contract-checking processes that handle stateful contracts that cannot be expressed with a session type. These contract-checking processes are also able to encode type refinements. Third, we encode dependent types in our system which allow us to monitor complex invariants. Finally, we survey a number of other monitoring extensions including a mechanism to monitor deadlock.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_27",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Hannah",
+        "last_name": "Gommerstadt",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Limin",
+        "last_name": "Jia",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Pfenning",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/esop/GommerstadtJP18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_26",
+    "title": "Quantitative Analysis of Smart Contracts",
+    "abstract": "Smart contracts are computer programs that are executed by a network of mutually distrusting agents, without the need of an external trusted authority. Smart contracts handle and transfer assets of considerable value (in the form of crypto-currency like Bitcoin). Hence, it is crucial that their implementation is bug-free. We identify the utility (or expected payoff) of interacting with such smart contracts as the basic and canonical quantitative property for such contracts. We present a framework for such quantitative analysis of smart contracts. Such a formal framework poses new and novel research challenges in programming languages, as it requires modeling of game-theoretic aspects to analyze incentives for deviation from honest behavior and modeling utilities which are not specified as standard temporal properties such as safety and termination. While game-theoretic incentives have been analyzed in the security community, their analysis has been restricted to the very special case of stateless games. However, to analyze smart contracts, stateful analysis is required as it must account for the different program states of the protocol. Our main contributions are as follows: we present (i) a simplified programming language for smart contracts; (ii) an automatic translation of the programs to state-based games; (iii) an abstraction-refinement approach to solve such games; and (iv) experimental results on real-world-inspired smart contracts.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_26",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Krishnendu",
+        "last_name": "Chatterjee",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Amir Kafshdar",
+        "last_name": "Goharshady",
+        "institution": "Institute of Science and Technology Austria"
+      },
+      {
+        "first_name": "Yaron",
+        "last_name": "Velner",
+        "institution": "Hebrew University of Jerusalem"
+      }
+    ],
+    "dblp_key": "conf/esop/ChatterjeeGV18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_25",
+    "title": "Higher-Order Program Verification via HFL Model Checking",
+    "abstract": "There are two kinds of higher-order extensions of model checking: HORS model checking and HFL model checking. Whilst the former has been applied to automated verification of higher-order functional programs, applications of the latter have not been well studied. In the present paper, we show that various verification problems for functional programs, including may/must-reachability, trace properties, and linear-time temporal properties (and their negations), can be naturally reduced to (extended) HFL model checking. The reductions yield a sound and complete logical characterization of those program properties. Compared with the previous approaches based on HORS model checking, our approach provides a more uniform, streamlined method for higher-order program verification.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_25",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Naoki",
+        "last_name": "Kobayashi",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Takeshi",
+        "last_name": "Tsukada",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Keiichi",
+        "last_name": "Watanabe",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/esop/0001TW18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_31",
+    "title": "Correctness of a Concurrent Object Collector for Actor Languages",
+    "abstract": "ORCA is a garbage collection protocol for actor-based programs. Multiple actors may mutate the heap while the collector is running without any dedicated synchronisation. ORCA is applicable to any actor language whose type system prevents data races and which supports causal message delivery. We present a model of ORCA which is parametric to the host language and its type system. We describe the interplay between the host language and the collector. We give invariants preserved by ORCA, and prove its soundness and completeness.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_31",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Juliana",
+        "last_name": "Franco",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Sylvan",
+        "last_name": "Clebsch",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Sophia",
+        "last_name": "Drossopoulou",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Czech Technical University in Prague"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Wrigstad",
+        "institution": "Uppsala University"
+      }
+    ],
+    "dblp_key": "conf/esop/FrancoCDVW18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_32",
+    "title": "Paxos Consensus, Deconstructed and Abstracted",
+    "abstract": "Lamport’s Paxos algorithm is a classic consensus protocol for state machine replication in environments that admit crash failures. Many versions of Paxos exploit the protocol’s intrinsic properties for the sake of gaining better run-time performance, thus widening the gap between the original description of the algorithm, which was proven correct, and its real-world implementations. In this work, we address the challenge of specifying and verifying complex Paxos-based systems by (a) devising composable specifications for implementations of Paxos’s single-decree version, and (b) engineering disciplines to reason about protocol-aware, semantics-preserving optimisations to single-decree Paxos. In a nutshell, our approach elaborates on the deconstruction of single-decree Paxos by Boichat et al. We provide novel non-deterministic specifications for each module in the deconstruction and prove that the implementations refine the corresponding specifications, such that the proofs of the modules that remain unchanged can be reused across different implementations. We further reuse this result and show how to obtain a verified implementation of Multi-Paxos from a verified implementation of single-decree Paxos, by a series of novel protocol-aware transformations of the network semantics, which we prove to be behaviour-preserving.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_32",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Álvaro",
+        "last_name": "García-Pérez",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Alexey",
+        "last_name": "Gotsman",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Yuri",
+        "last_name": "Meshman",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Ilya",
+        "last_name": "Sergey",
+        "institution": "University College London"
+      }
+    ],
+    "dblp_key": "conf/esop/Garcia-PerezGMS18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_33",
+    "title": "On Parallel Snapshot Isolation and Release/Acquire Consistency",
+    "abstract": "Parallel snapshot isolation (PSI) is a standard transactional consistency model used in databases and distributed systems. We argue that PSI is also a useful formal model for software transactional memory (STM) as it has certain advantages over other consistency models. However, the formal PSI definition is given declaratively by acyclicity axioms, which most programmers find hard to understand and reason about. To address this, we develop a simple lock-based reference implementation for PSI built on top of the release-acquire memory model, a well-behaved subset of the C/C++11 memory model. We prove that our implementation is sound and complete against its higher-level declarative specification. We further consider an extension of PSI allowing transactional and non-transactional code to interact, and provide a sound and complete reference implementation for the more general setting. Supporting this interaction is necessary for adopting a transactional model in programming languages.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_33",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Azalea",
+        "last_name": "Raad",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Ori",
+        "last_name": "Lahav",
+        "institution": "Tel Aviv University"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Vafeiadis",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/esop/RaadLV18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_34",
+    "title": "Eventual Consistency for CRDTs",
+    "abstract": "We address the problem of validity in eventually consistent (EC) systems: In what sense does an EC data structure satisfy the sequential specification of that data structure? Because EC is a very weak criterion, our definition does not describe every EC system; however it is expressive enough to describe any Convergent or Commutative Replicated Data Type (CRDT).",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_34",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Radha",
+        "last_name": "Jagadeesan",
+        "institution": "DePaul University"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Riely",
+        "institution": "DePaul University"
+      }
+    ],
+    "dblp_key": "conf/esop/JagadeesanR18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_36",
+    "title": "Compositional Verification of Compiler Optimisations on Relaxed Memory",
+    "abstract": "A valid compiler optimisation transforms a block in a program without introducing new observable behaviours to the program as a whole. Deciding which optimisations are valid can be difficult, and depends closely on the semantic model of the programming language. Axiomatic relaxed models, such as C++11, present particular challenges for determining validity, because such models allow subtle effects of a block transformation to be observed by the rest of the program. In this paper we present a denotational theory that captures optimisation validity on an axiomatic model corresponding to a fragment of C++11. Our theory allows verifying an optimisation compositionally, by considering only the block it transforms instead of the whole program. Using this property, we realise the theory in the first push-button tool that can verify real-world optimisations under an axiomatic memory model.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_36",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Mike",
+        "last_name": "Dodds",
+        "institution": "Galois (United States)"
+      },
+      {
+        "first_name": "Mark",
+        "last_name": "Batty",
+        "institution": "University of Kent"
+      },
+      {
+        "first_name": "Alexey",
+        "last_name": "Gotsman",
+        "institution": "IMDEA Software Institute"
+      }
+    ],
+    "dblp_key": "conf/esop/DoddsBG18",
+    "venue": "esop",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1007/978-3-319-89884-1_35",
+    "title": "A Verified Compiler from Isabelle/HOL to CakeML",
+    "abstract": "Many theorem provers can generate functional programs from definitions or proofs. However, this code generation needs to be trusted. Except for the HOL4 system, which has a proof producing code generator for a subset of ML. We go one step further and provide a verified compiler from Isabelle/HOL to CakeML. More precisely we combine a simple proof producing translation of recursion equations in Isabelle/HOL into a deeply embedded term language with a fully verified compilation chain to the target language CakeML.",
+    "date": "2018-01-01",
+    "link": "https://doi.org/10.1007/978-3-319-89884-1_35",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Lars",
+        "last_name": "Hupel",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Nipkow",
+        "institution": "Technical University of Munich"
+      }
+    ],
+    "dblp_key": "conf/esop/HupelN18",
+    "venue": "esop",
+    "year": 2018
+  }
+]

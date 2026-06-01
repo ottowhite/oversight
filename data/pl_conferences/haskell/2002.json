@@ -1,0 +1,204 @@
+[
+  {
+    "paper_id": "10.1145/581690.581693",
+    "title": "A recursive do for Haskell",
+    "abstract": "Certain programs making use of monads need to perform recursion over the values of monadic actions. Although the do-notation of Haskell provides a convenient framework for monadic programming, it lacks the generality to support such recursive bindings. In this paper, we describe an enhanced translation schema for the donotation and its integration into Haskell. The new translation allows variables to be bound recursively, provided the underlying monad comes equipped with an appropriate fixed-point operator.",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581693",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Levent",
+        "last_name": "Erkök",
+        "institution": "Oregon Health & Science University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": "Ola Grimsby Institute"
+      }
+    ],
+    "dblp_key": "conf/haskell/ErkokL02",
+    "venue": "haskell",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581690.581691",
+    "title": "Template meta-programming for Haskell",
+    "abstract": "We propose a new extension to the purely functional programming language Haskell that supports compile-time meta-programming. The purpose of the system is to support the algorithmic construction of programs at compile-time. The ability to generate code at compile time allows the programmer to implement such features as polytypic programs, macro-like expansion, user directed optimization (such as inlining), and the generation of supporting data structures and functions from existing data structures and functions. Our design is being implemented in the Glasgow Haskell Compiler, ghc. 1",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581691",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Tim",
+        "last_name": "Sheard",
+        "institution": "Oregon Health & Science University"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/SheardJ02",
+    "venue": "haskell",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581690.581692",
+    "title": "A formal specification of the Haskell 98 module system",
+    "abstract": "Many programming languages provide means to split large programs into smaller modules. The module system of a language specifies what constitutes a module and how modules interact.This paper presents a formal specification of the module system for the functional programming language Haskell. Although many aspects of Haskell have been subjected to formal analysis, the module system has, to date, been described only informally as part of the Haskell language report. As a result, some aspects of it are not well understood or are under-specified; this causes difficulties in reasoning about Haskell programs, and leads to practical problems such as inconsistencies between different implementations. One significant aspect of our work is that the specification is written in Haskell, which means that it can also be used as an executable test-bed, and as a starting point for Haskell implementers.",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581692",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Iavor S.",
+        "last_name": "Diatchki",
+        "institution": "Oregon Health & Science University"
+      },
+      {
+        "first_name": "Mark P.",
+        "last_name": "Jones",
+        "institution": "Oregon Health & Science University"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Hallgren",
+        "institution": "Oregon Health & Science University"
+      }
+    ],
+    "dblp_key": "conf/haskell/DiatchkiJH02",
+    "venue": "haskell",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581690.581698",
+    "title": "A lightweight implementation of generics and dynamics",
+    "abstract": "The recent years have seen a number of proposals for extending statically typed languages by dynamics or generics. Most proposals --- if not all --- require significant extensions to the underlying language. In this paper we show that this need not be the case. We propose a particularly lightweight extension that supports both dynamics and generics. Furthermore, the two features are smoothly integrated: dynamic values, for instance, can be passed to generic functions. Our proposal makes do with a standard Hindley-Milner type system augmented by existential types. Building upon these ideas we have implemented a small library that is readily usable both with Hugs and with the Glasgow Haskell compiler.",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581698",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "James",
+        "last_name": "Cheney",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Ralf",
+        "last_name": "Hinze",
+        "institution": "University of Bonn"
+      }
+    ],
+    "dblp_key": "conf/haskell/CheneyH02",
+    "venue": "haskell",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581690.581694",
+    "title": "Eager Haskell: resource-bounded execution yields efficient iteration",
+    "abstract": "The advantages of the Haskell programming language are rooted in its clean equational semantics. Those advantages evaporate as soon as programmers try to write simple iterative computations and discover that their code must be annotated with calls to seq in order to overcome space leaks introduced by lazy evaluation. The Eager Haskell compiler executes Haskell programs eagerly by default, i.e., bindings and function arguments are evaluated before bodies. When resource bounds are exceeded, computation falls back and is restarted lazily. By using a hybrid of eager and lazy evaluation, we preserve the semantics of Haskell and yet permit efficient iteration.",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581694",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Jan-Willem",
+        "last_name": "Maessen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/Maessen02",
+    "venue": "haskell",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581690.581695",
+    "title": "Functional reactive programming, continued",
+    "abstract": "Functional Reactive Programming (FRP) extends a host programming language with a notion of time flow. Arrowized FRP (AFRP) is a version of FRP embedded in Haskell based on the arrow combinators. AFRP is a powerful synchronous dataflow programming language with hybrid modeling capabilities, combining advanced synchronous dataflow features with the higher-order lazy functional abstractions of Haskell. In this paper, we describe the AFRP programming style and our Haskell-based implementation. Of particular interest are the AFRP combinators that support dynamic collections and continuation-based switching. We show how these combinators can be used to express systems with an evolving structure that are difficult to model in more traditional dataflow languages.",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581695",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Henrik",
+        "last_name": "Nilsson",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Antony",
+        "last_name": "Courtney",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Peterson",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/haskell/NilssonCP02",
+    "venue": "haskell",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581690.581699",
+    "title": "Techniques for embedding postfix languages in Haskell",
+    "abstract": "One popular use for Haskell in recent years has been as a host language for domain-specific embedded languages. But how can one embed a postfix language in Haskell, given that Haskell only supports prefix and infix syntax? This paper describes several such embeddings for increasingly complex postfix languages.",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581699",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Okasaki",
+        "institution": "United States Military Academy"
+      }
+    ],
+    "dblp_key": "conf/haskell/Okasaki02",
+    "venue": "haskell",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581690.581696",
+    "title": "Testing monadic code with QuickCheck",
+    "abstract": "QuickCheck is a previously published random testing tool for Haskell programs. In this paper we show how to use it for testing monadic code, and in particular imperative code written using the ST monad. QuickCheck tests a program against a specification: we show that QuickCheck's specification language is sufficiently powerful to represent common forms of specifications: algebraic, model-based (both functional and relational), and pre-/post-conditional. Moreover, all these forms of specification can be used directly for testing. We define a new language of monadic properties, and make a link between program testing and the notion of observational equivalence.",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581696",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Koen",
+        "last_name": "Claessen",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Hughes",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/Claessen002",
+    "venue": "haskell",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581690.581697",
+    "title": "Haddock, a Haskell documentation tool",
+    "abstract": "This paper describes Haddock, a tool for automatically generating documentation from Haskell source code. Haddock's unique approach to source code annotations provides a useful separation between the implementation of a library and the interface (and hence also the documentation) of that library, so that as far as possible the documentation annotations in the source code do not affect the programmer's freedom over the structure of the implementation. The internal structure and implementation of Haddock is also discussed.",
+    "date": "2002-10-03",
+    "link": "https://doi.org/10.1145/581690.581697",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/Marlow02",
+    "venue": "haskell",
+    "year": 2002
+  }
+]

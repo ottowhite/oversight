@@ -1,0 +1,572 @@
+[
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_5",
+    "title": "Builtin Types Viewed as Inductive Families",
+    "abstract": "Abstract State of the art optimisation passes for dependently typed languages can help erase the redundant information typical of invariant-rich data structures and programs. These automated processes do not dramatically change the structure of the data, even though more efficient representations could be available. Using Quantitative Type Theory as implemented in Idris 2, we demonstrate how to define an invariant-rich, typechecking-time data structure packing an efficient runtime representation together with runtime irrelevant invariants. The compiler can then aggressively erase all such invariants during compilation. Unlike other approaches, the complexity of the resulting representation is entirely predictable, we do not require both representations to have the same structure, and yet we are able to seamlessly program as if we were using the high-level structure.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_5",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Guillaume",
+        "last_name": "Allais",
+        "institution": "University of St Andrews"
+      }
+    ],
+    "dblp_key": "conf/esop/Allais23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_3",
+    "title": "Adversarial Reachability for Program-level Security Analysis",
+    "abstract": "Abstract Many program analysis tools and techniques have been developed to assess program vulnerability. Yet, they are based on the standard concept of reachability and represent an attacker able to craft smart legitimate input, while in practice attackers can be much more powerful, using for instance micro-architectural exploits or fault injection methods. We introduce adversarial reachability , a framework allowing to reason about such advanced attackers and check whether a system is vulnerable or immune to a particular attacker. As equipping the attacker with new capacities significantly increases the state space of the program under analysis, we present a new symbolic exploration algorithm, namely adversarial symbolic execution , injecting faults in a forkless manner to prevent path explosion, together with optimizations dedicated to reduce the number of injections to consider while keeping the same attacker power. Experiments on representative benchmarks from fault injection show that our method significantly reduces the number of adversarial paths to explore, allowing to scale up to 10 faults where prior work timeout for 3 faults. In addition, we analyze the well-tested WooKey bootloader, and demonstrate the ability of our analysis to find attacks and evaluate countermeasures in real-life security scenarios. We were especially able to find an attack not mentioned in a previous patch.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_3",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Soline",
+        "last_name": "Ducousso",
+        "institution": "Laboratoire d'Intégration des Systèmes et des Technologies"
+      },
+      {
+        "first_name": "Sébastien",
+        "last_name": "Bardin",
+        "institution": "Commissariat à l'Énergie Atomique et aux Énergies Alternatives"
+      },
+      {
+        "first_name": "Marie-Laure",
+        "last_name": "Potet",
+        "institution": "Verimag"
+      }
+    ],
+    "dblp_key": "conf/esop/DucoussoBP23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_2",
+    "title": "Clustered Relational Thread-Modular Abstract Interpretation with Local Traces",
+    "abstract": "Abstract We construct novel thread-modular analyses that track relational information for potentially overlapping clusters of global variables – given that they are protected by common mutexes. We provide a framework to systematically increase the precision of clustered relational analyses by splitting control locations based on abstractions of local traces . As one instance, we obtain an analysis of dynamic thread creation and joining. Interestingly, tracking less relational information for globals may result in higher precision. We consider the class of 2-decomposable domains that encompasses many weakly relational domains (e.g., Octagons ). For these domains, we prove that maximal precision is attained already for clusters of globals of sizes at most 2.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_2",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Schwarz",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Simmo",
+        "last_name": "Saan",
+        "institution": "University of Tartu"
+      },
+      {
+        "first_name": "Helmut",
+        "last_name": "Seidl",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Julian",
+        "last_name": "Erhard",
+        "institution": "Technical University of Munich"
+      },
+      {
+        "first_name": "Vesal",
+        "last_name": "Vojdani",
+        "institution": "University of Tartu"
+      }
+    ],
+    "dblp_key": "conf/esop/SchwarzSSEV23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_9",
+    "title": "A Type System for Effect Handlers and Dynamic Labels",
+    "abstract": "Abstract We consider a simple yet expressive $$\\lambda $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mi>λ</mml:mi> </mml:math> -calculus equipped with references, effect handlers, and dynamic allocation of effect labels, and whose operational semantics does not involve coercions or rely on type information. We equip this language with a type system that supports type and effect polymorphism, allows reordering row entries and extending a row with new entries, and supports (but is not restricted to) lexically scoped handlers. This requires addressing the issue of potential aliasing between effect names. Our original solution is to interpret a row not only as a permission to perform certain effects but also as a disjointness requirement bearing on effect names. The type system guarantees strong type soundness: a well-typed program cannot crash or perform an unhandled effect. We prove this fact by encoding the type system into a novel Separation Logic for effect handlers, which we build on top of Iris. Our results are formalized in Coq.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_9",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Paulo Emílio de",
+        "last_name": "Vilhena",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/esop/VilhenaP23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_6",
+    "title": "Pragmatic Gradual Polymorphism with References",
+    "abstract": "Abstract Gradualizing System F has been widely discussed. A big challenge is to preserve relational parametricity and/or the gradual guarantee. Most past work has focused on the preservation of parametricity, but often without the gradual guarantee. A few recent works satisfy both properties by giving up System F syntax, or with some restrictions and the introduction of sophisticated mechanisms in the dynamic semantics. While parametricity is important for polymorphic languages, most mainstream languages typically do not satisfy it, for a variety of different reasons. In this paper, we explore the design space of polymorphic languages that satisfy the gradual guarantee, but do not preserve parametricity. When parametricity is not a goal, the design of polymorphic gradual languages can be considerably simplified. Moreover, it becomes easy to add features that are of practical importance, such as mutable references. We present a new gradually typed polymorphic calculus, called $$\\lambda ^{G}_{gpr}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msubsup> <mml:mi>λ</mml:mi> <mml:mrow> <mml:mi>gpr</mml:mi> </mml:mrow> <mml:mi>G</mml:mi> </mml:msubsup> </mml:math> , with mutable references and with an easy proof of the gradual guarantee. In addition, compared to other gradual polymorphism work, $$\\lambda ^{G}_{gpr}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msubsup> <mml:mi>λ</mml:mi> <mml:mrow> <mml:mi>gpr</mml:mi> </mml:mrow> <mml:mi>G</mml:mi> </mml:msubsup> </mml:math> is defined using a Type-Directed Operational Semantics (TDOS), which allows the dynamic semantics to be defined directly instead of elaborating to a target cast language. $$\\lambda ^{G}_{gpr}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msubsup> <mml:mi>λ</mml:mi> <mml:mrow> <mml:mi>gpr</mml:mi> </mml:mrow> <mml:mi>G</mml:mi> </mml:msubsup> </mml:math> and all the proofs in this paper are formalized in Coq.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_6",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Wenjia",
+        "last_name": "Ye",
+        "institution": "Chinese University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/esop/YeO23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_10",
+    "title": "Interpreting Knowledge-based Programs",
+    "abstract": "Abstract Knowledge-based programs specify multi-agent protocols with epistemic guards that abstract from how agents learn and record facts or information about other agents and the environment. Their interpretation involves a non-monotone mutual dependency between the evaluation of epistemic guards over the reachable states and the derivation of the reachable states depending on the evaluation of epistemic guards. We apply the technique of a must/cannot analysis invented for synchronous programming languages to the interpretation problem of knowledge-based programs and demonstrate that the resulting constructive interpretation is monotone and has a least fixed point. We relate our approach with existing interpretation schemes for both synchronous and asynchronous programs. Finally, we describe an implementation of the constructive interpretation and illustrate the procedure by several examples and an application to the Java memory model.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_10",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Alexander",
+        "last_name": "Knapp",
+        "institution": "University of Augsburg"
+      },
+      {
+        "first_name": "Heribert",
+        "last_name": "Mühlberger",
+        "institution": "University of Augsburg"
+      },
+      {
+        "first_name": "Bernhard",
+        "last_name": "Reus",
+        "institution": "University of Sussex"
+      }
+    ],
+    "dblp_key": "conf/esop/KnappMR23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_11",
+    "title": "Contextual Modal Type Theory with Polymorphic Contexts",
+    "abstract": "Abstract Modal types—types that are derived from proof systems of modal logic—have been studied as theoretical foundations of metaprogramming, where program code is manipulated as first-class values. In modal type systems, modality corresponds to a type constructor for code types and controls free variables and their types in code values. Nanevski et al. have proposed contextual modal type theory , which has modal types with fine-grained information on free variables: modal types are explicitly indexed by contexts —the types of all free variables in code values. This paper presents $$\\lambda _{\\forall []}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msub> <mml:mi>λ</mml:mi> <mml:mrow> <mml:mo>∀</mml:mo> <mml:mo>[</mml:mo> <mml:mo>]</mml:mo> </mml:mrow> </mml:msub> </mml:math> , a novel extension of contextual modal type theory with parametric polymorphism over contexts . Such an extension has been studied in the literature but, unlike earlier proposals, $$\\lambda _{\\forall []}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msub> <mml:mi>λ</mml:mi> <mml:mrow> <mml:mo>∀</mml:mo> <mml:mo>[</mml:mo> <mml:mo>]</mml:mo> </mml:mrow> </mml:msub> </mml:math> is more general in that it allows multiple occurrence of context variables in a single context. We formalize $$\\lambda _{\\forall []}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msub> <mml:mi>λ</mml:mi> <mml:mrow> <mml:mo>∀</mml:mo> <mml:mo>[</mml:mo> <mml:mo>]</mml:mo> </mml:mrow> </mml:msub> </mml:math> with its type system and operational semantics given by $$\\beta $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mi>β</mml:mi> </mml:math> -reduction and prove its basic properties including subject reduction, strong normalization, and confluence. Moreover, to demonstrate the expressive power of polymorphic contexts, we show a type-preserving embedding from a two-level fragment of Davies’ $$\\lambda _{\\bigcirc }$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msub> <mml:mi>λ</mml:mi> <mml:mo>◯</mml:mo> </mml:msub> </mml:math> , which is based on linear-time temporal logic, to $$\\lambda _{\\forall []}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msub> <mml:mi>λ</mml:mi> <mml:mrow> <mml:mo>∀</mml:mo> <mml:mo>[</mml:mo> <mml:mo>]</mml:mo> </mml:mrow> </mml:msub> </mml:math> .",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_11",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Yuito",
+        "last_name": "Murase",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Yuichi",
+        "last_name": "Nishiwaki",
+        "institution": ""
+      },
+      {
+        "first_name": "Atsushi",
+        "last_name": "Igarashi",
+        "institution": "Kyoto University"
+      }
+    ],
+    "dblp_key": "conf/esop/MuraseNI23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_13",
+    "title": "Quorum Tree Abstractions of Consensus Protocols",
+    "abstract": "Abstract Distributed algorithms solving agreement problems like consensus or state machine replication are essential components of modern fault-tolerant distributed services. They are also notoriously hard to understand and reason about. Their complexity stems from the different assumptions on the environment they operate with, i.e., process or network link failures, Byzantine failures etc. In this paper, we propose a novel abstract representation of the dynamics of such protocols which focuses on quorums of responses (votes) to a request (proposal) that form during a run of the protocol. We show that focusing on such quorums, a run of a protocol can be viewed as working over a tree structure where different branches represent different possible outcomes of the protocol, the goal being to stabilize on the choice of a fixed branch. This abstraction resembles the description of recent protocols used in Blockchain infrastructures, e.g., the protocol supporting Bitcoin or Hotstuff. We show that this abstraction supports reasoning about the safety of various algorithms, e.g., Paxos, PBFT, Raft, and HotStuff, in a uniform way. In general, it provides a novel induction based argument for proving that such protocols are safe.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_13",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Berk",
+        "last_name": "Çirişci",
+        "institution": "Université Paris Cité"
+      },
+      {
+        "first_name": "Constantin",
+        "last_name": "Enea",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Süha Orhun",
+        "last_name": "Mutluergil",
+        "institution": "Sabancı Üniversitesi"
+      }
+    ],
+    "dblp_key": "conf/esop/CirisciEM23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_7",
+    "title": "Modal Crash Types for Intermittent Computing",
+    "abstract": "Abstract Intermittent computing is gaining traction in application domains such as Energy Harvesting Devices (EHDs) that experience arbitrary power failures during program execution. To make progress, programs require system support to checkpoint state and re-execute after power failure by restoring the last saved state. This re-execution should be correct , i.e., simulated by a continuously-powered execution. We study the logical underpinning of intermittent computing and model checkpoint, crash, restore, and re-execution operations as computation on Crash types. We draw inspiration from adjoint logic and define Crash types by introducing two adjoint modality operators to model persistent and transient memory values of partial (re-)executions and the transitions between them caused by checkpoints and restoration. We define a Crash type system for a core calculus. We prove the correctness of intermittent systems by defining a novel logical relation for Crash types.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_7",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Farzaneh",
+        "last_name": "Derakhshan",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Myra",
+        "last_name": "Dotzel",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Milijana",
+        "last_name": "Surbatovich",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Limin",
+        "last_name": "Jia",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/esop/DerakhshanDSJ23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_1",
+    "title": "Logics for Extensional, Locally Complete Analysis via Domain Refinements",
+    "abstract": "Abstract Abstract interpretation is a framework to design sound static analyses by over-approximating the set of program behaviours. While over-approximations can prove correctness, they cannot witness incorrectness because false alarms may arise. An ideal, but uncommon, situation is completeness of the abstraction that can ensure no false alarm is introduced by the abstract interpreter. Local Completeness Logic is a proof system that can decide both correctness and incorrectness of a program: any provable triple $$\\vdash _{A}[P]~\\textsf{c}~[Q]$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mrow> <mml:msub> <mml:mo>⊢</mml:mo> <mml:mi>A</mml:mi> </mml:msub> <mml:mrow> <mml:mo>[</mml:mo> <mml:mi>P</mml:mi> <mml:mo>]</mml:mo> </mml:mrow> <mml:mspace/> <mml:mi>c</mml:mi> <mml:mspace/> <mml:mrow> <mml:mo>[</mml:mo> <mml:mi>Q</mml:mi> <mml:mo>]</mml:mo> </mml:mrow> </mml:mrow> </mml:math> in the logic implies completeness of an intensional abstraction of program $$\\textsf{c}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mi>c</mml:mi> </mml:math> on input P and is such that Q can be used to decide (in)correctness. However, completeness itself is an extensional property of the function computed by the program, while the above intensional analysis depends on the way the program is written and therefore not all valid triples can be derived in the proof system. Our main contribution is the study of new inference rules which allow one to perform part of the intensional analysis in a more precise abstract domain, and then to transfer the result back to the coarser domain. With these new rules, all (extensionally) valid triples can be derived in the proof system, thus untying the set of provable properties from the way the program is written.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_1",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Flavio",
+        "last_name": "Ascari",
+        "institution": "University of Pisa"
+      },
+      {
+        "first_name": "Roberto",
+        "last_name": "Bruni",
+        "institution": "University of Pisa"
+      },
+      {
+        "first_name": "Roberta",
+        "last_name": "Gori",
+        "institution": "University of Pisa"
+      }
+    ],
+    "dblp_key": "conf/esop/AscariBG23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_8",
+    "title": "Gradual Tensor Shape Checking",
+    "abstract": "Abstract Tensor shape mismatch is a common source of bugs in deep learning programs. We propose a new type-based approach to detect tensor shape mismatches. One of the main features of our approach is the best-effort shape inference. As the tensor shape inference problem is undecidable in general, we allow static type/shape inference to be performed only in a best-effort manner. If the static inference cannot guarantee the absence of the shape inconsistencies, dynamic checks are inserted into the program. Another main feature is gradual typing, where users can improve the precision of the inference by adding appropriate type annotations to the program. We formalize our approach and prove that it satisfies the criteria of gradual typing proposed by Siek et al. in 2015. We have implemented a prototype shape checking tool based on our approach and evaluated its effectiveness by applying it to some deep neural network programs.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_8",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Momoko",
+        "last_name": "Hattori",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Naoki",
+        "last_name": "Kobayashi",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Ryosuke",
+        "last_name": "Sato",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/esop/HattoriKS23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_16",
+    "title": "Safe Session-Based Concurrency with Shared Linear State",
+    "abstract": "Abstract We introduce $$\\textsf{CLASS}$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:mi>CLASS</mml:mi></mml:math> , a session-typed, higher-order, core language that supports concurrent computation with shared linear state.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_16",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Pedro",
+        "last_name": "Rocha",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Luı́s",
+        "last_name": "Caires",
+        "institution": "University of Lisbon"
+      }
+    ],
+    "dblp_key": "conf/esop/RochaC23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_14",
+    "title": "MAG&#960;: Types for Failure-Prone Communication",
+    "abstract": "Abstract Multiparty Session Types (MPST) are a typing discipline for communication-centric systems, guaranteeing communication safety, deadlock freedom and protocol compliance. Several works have emerged which model failures and introduce fault-tolerance techniques. However, such works often make assumptions on the underlying network, e.g. , assuming TCP-based communication where messages are guaranteed to be delivered; or adopting centralised reliable nodes and ad-hoc notions of reliability; or only addressing a single kind of failure, such as node crashes. In this work, we develop MAG $$\\pi $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:mi>π</mml:mi></mml:math> —a Multiparty, Asynchronous and Generalised $$\\pi $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:mi>π</mml:mi></mml:math> -calculus, which is the first language and type system to accommodate in unison: ( i ) the widest range of non-Byzantine faults, including message loss, delays and reordering ; crash and link failures ; and network partitioning ; ( ii ) a novel and most general notion of reliability , taking into account the viewpoint of each participant in the protocol; ( iii ) a spectrum of network assumptions from the lowest UDP-based network programming to the TCP-based application level. We prove subject reduction and session fidelity; process properties (deadlock freedom, termination, etc. ); failure-handling safety and reliability adherence.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_14",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Matthew Alan Le",
+        "last_name": "Brun",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Ornela",
+        "last_name": "Dardha",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/esop/BrunD23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_4",
+    "title": "Automated Grading of Regular Expressions",
+    "abstract": "Abstract With the rapid transition to distance learning, automatic grading software becomes more important to both teachers and students. We study the problem of automatically grading the regular expressions submitted by students in courses related to automata and formal language theory. In order to utilize the semantic information of the regular expression, we define a declarative logic that can be described by regular language and at the same time has natural language characteristics, and use it for the following tasks: 1) to assign partial grades for incorrect regular expressions and 2) to provide helpful feedback to students to make them understand the reason for the grades and a way to revise the incorrect regular expressions into correct ones. We categorize the cases when students’ incorrect submissions deserve partial grades and suggest how to assign appropriate grades for each of the cases. In order to optimize the runtime complexity of the algorithm, two heuristics based on automata theory are proposed and evaluated on the dataset collected from undergraduate students. In addition, we suggest Regex2NL which translates regular expressions to natural language descriptions to give insight to students so that they can understand how the regular expressions work.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_4",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Su-Hyeon",
+        "last_name": "Kim",
+        "institution": "Kangwon National University"
+      },
+      {
+        "first_name": "Youngwook",
+        "last_name": "Kim",
+        "institution": "Yonsei University"
+      },
+      {
+        "first_name": "Yo-Sub",
+        "last_name": "Han",
+        "institution": "Yonsei University"
+      },
+      {
+        "first_name": "Hyeonseung",
+        "last_name": "Im",
+        "institution": "Kangwon National University"
+      },
+      {
+        "first_name": "Sang‐Ki",
+        "last_name": "Ko",
+        "institution": "Kangwon National University"
+      }
+    ],
+    "dblp_key": "conf/esop/KimKHIK23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_12",
+    "title": "A Complete Inference System for Skip-free Guarded Kleene Algebra with Tests",
+    "abstract": "Abstract Guarded Kleene Algebra with Tests (GKAT) is a fragment of Kleene Algebra with Tests (KAT) that was recently introduced to reason efficiently about imperative programs. In contrast to KAT, GKAT does not have an algebraic axiomatization, but relies on an analogue of Salomaa’s axiomatization of Kleene Algebra. In this paper, we present an algebraic axiomatization and prove two completeness results for a large fragment of GKAT consisting of skip-free programs .",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_12",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Kappé",
+        "institution": "Open University of the Netherlands"
+      },
+      {
+        "first_name": "Todd",
+        "last_name": "Schmid",
+        "institution": "University College London"
+      },
+      {
+        "first_name": "Alexandra",
+        "last_name": "Silva",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/esop/SchmidKS23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_15",
+    "title": "System F<sup>&#956;</sup> <sub>&#248;mega</sub> with Context-free Session Types",
+    "abstract": "Abstract We study increasingly expressive type systems, from $$F^\\mu $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:msup><mml:mi>F</mml:mi><mml:mi>μ</mml:mi></mml:msup></mml:math> —an extension of the polymorphic lambda calculus with equirecursive types—to $$F^{\\mu ;}_\\omega $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:msubsup><mml:mi>F</mml:mi><mml:mi>ω</mml:mi><mml:mrow><mml:mi>μ</mml:mi><mml:mo>;</mml:mo></mml:mrow></mml:msubsup></mml:math> —the higher-order polymorphic lambda calculus with equirecursive types and context-free session types. Type equivalence is given by a standard bisimulation defined over a novel labelled transition system for types. Our system subsumes the contractive fragment of $$F^\\mu _\\omega $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"><mml:msubsup><mml:mi>F</mml:mi><mml:mi>ω</mml:mi><mml:mi>μ</mml:mi></mml:msubsup></mml:math> as studied in the literature. Decidability results for type equivalence of the various type languages are obtained from the translation of types into objects of an appropriate computational model: finite-state automata, simple grammars and deterministic pushdown automata. We show that type equivalence is decidable for a significant fragment of the type language. We further propose a message-passing, concurrent functional language equipped with the expressive type language and show that it enjoys preservation and absence of runtime errors for typable processes.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_15",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Diogo",
+        "last_name": "Poças",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Diana",
+        "last_name": "Costa",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Andreia",
+        "last_name": "Mordido",
+        "institution": "University of Lisbon"
+      },
+      {
+        "first_name": "Vasco T.",
+        "last_name": "Vasconcelos",
+        "institution": "University of Lisbon"
+      }
+    ],
+    "dblp_key": "conf/esop/PocasCMV23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_17",
+    "title": "Bunched Fuzz: Sensitivity for Vector Metrics",
+    "abstract": "Abstract Program sensitivity measures the distance between the outputs of a program when run on two related inputs. This notion, which plays a key role in areas such as data privacy and optimization, has been the focus of several program analysis techniques introduced in recent years. Among the most successful ones, we can highlight type systems inspired by linear logic, as pioneered by Reed and Pierce in the Fuzz programming language. In Fuzz, each type is equipped with its own distance, and sensitivity analysis boils down to type checking. In particular, Fuzz features two product types, corresponding to two different notions of distance: the tensor product combines the distances of each component by adding them, while the with product takes their maximum . In this work, we show that these products can be generalized to arbitrary $$L^p$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msup> <mml:mi>L</mml:mi> <mml:mi>p</mml:mi> </mml:msup> </mml:math> distances , metrics that are often used in privacy and optimization. The original Fuzz products, tensor and with, correspond to the special cases $$L^1$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msup> <mml:mi>L</mml:mi> <mml:mn>1</mml:mn> </mml:msup> </mml:math> and $$L^\\infty $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msup> <mml:mi>L</mml:mi> <mml:mi>∞</mml:mi> </mml:msup> </mml:math> . To ease the handling of such products, we extend the Fuzz type system with bunches —as in the logic of bunched implications—where the distances of different groups of variables can be combined using different $$L^p$$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msup> <mml:mi>L</mml:mi> <mml:mi>p</mml:mi> </mml:msup> </mml:math> distances. We show that our extension can be used to reason about quantitative properties of probabilistic programs.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_17",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "june",
+        "last_name": "wunder",
+        "institution": ""
+      },
+      {
+        "first_name": "Arthur Azevedo de",
+        "last_name": "Amorim",
+        "institution": "Rochester Institute of Technology"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Baillot",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Marco",
+        "last_name": "Gaboardi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/esop/wunderABG23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_18",
+    "title": "Fast and Correct Gradient-Based Optimisation for Probabilistic Programming via Smoothing",
+    "abstract": "Abstract We study the foundations of variational inference, which frames posterior inference as an optimisation problem, for probabilistic programming. The dominant approach for optimisation in practice is stochastic gradient descent. In particular, a variant using the so-called reparameterisation gradient estimator exhibits fast convergence in a traditional statistics setting. Unfortunately, discontinuities, which are readily expressible in programming languages, can compromise the correctness of this approach. We consider a simple (higher-order, probabilistic) programming language with conditionals, and we endow our language with both a measurable and a smoothed (approximate) value semantics. We present type systems which establish technical pre-conditions. Thus we can prove stochastic gradient descent with the reparameterisation gradient estimator to be correct when applied to the smoothed problem. Besides, we can solve the original problem up to any error tolerance by choosing an accuracy coefficient suitably. Empirically we demonstrate that our approach has a similar convergence as a key competitor, but is simpler, faster, and attains orders of magnitude reduction in work-normalised variance.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_18",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Basim",
+        "last_name": "Khajwal",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "C.-H. Luke",
+        "last_name": "Ong",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Dominik",
+        "last_name": "Wagner",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/esop/KhajwalOW23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_19",
+    "title": "Type-safe Quantum Programming in Idris",
+    "abstract": "Abstract Variational Quantum Algorithms are hybrid classical-quantum algorithms where classical and quantum computation work in tandem to solve computational problems. These algorithms create interesting challenges for the design of suitable programming languages. In this paper we introduce Qimaera, which is a set of libraries for the Idris 2 programming language that enable the programmer to implement hybrid classical-quantum algorithms where the full power of the elegant Idris language works in synchrony with quantum programming primitives. The two key ingredients of Idris that make this possible are (1) dependent types which allow us to implement unitary quantum operations; and (2) linearity which allows us to enforce fine-grained control over the execution of quantum operations so that we may detect and reject many physically inadmissible programs. We also show that Qimaera is suitable for variational quantum programming by providing implementations of two prominent variational quantum algorithms – QAOA and VQE.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_19",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Liliane-Joy",
+        "last_name": "Dandy",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Emmanuel",
+        "last_name": "Jeandel",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Vladimir",
+        "last_name": "Zamdzhiev",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/esop/DandyJZ23",
+    "venue": "esop",
+    "year": 2023
+  },
+  {
+    "paper_id": "10.1007/978-3-031-30044-8_20",
+    "title": "Automatic Alignment in Higher-Order Probabilistic Programming Languages",
+    "abstract": "Abstract Probabilistic Programming Languages (PPLs) allow users to encode statistical inference problems and automatically apply an inference algorithm to solve them. Popular inference algorithms for PPLs, such as sequential Monte Carlo (SMC) and Markov chain Monte Carlo (MCMC), are built around checkpoints —relevant events for the inference algorithm during the execution of a probabilistic program. Deciding the location of checkpoints is, in current PPLs, not done optimally. To solve this problem, we present a static analysis technique that automatically determines checkpoints in programs, relieving PPL users of this task. The analysis identifies a set of checkpoints that execute in the same order in every program run—they are aligned . We formalize alignment, prove the correctness of the analysis, and implement the analysis as part of the higher-order functional PPL Miking CorePPL. By utilizing the alignment analysis, we design two novel inference algorithm variants: aligned SMC and aligned lightweight MCMC . We show, through real-world experiments, that they significantly improve inference execution time and accuracy compared to standard PPL versions of SMC and MCMC.",
+    "date": "2023-01-01",
+    "link": "https://doi.org/10.1007/978-3-031-30044-8_20",
+    "conference_name": "ESOP",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Lundén",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Gizem",
+        "last_name": "Çaylak",
+        "institution": "KTH Royal Institute of Technology"
+      },
+      {
+        "first_name": "Fredrik",
+        "last_name": "Ronquist",
+        "institution": "Stockholm University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Broman",
+        "institution": "KTH Royal Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/esop/LundenCRB23",
+    "venue": "esop",
+    "year": 2023
+  }
+]

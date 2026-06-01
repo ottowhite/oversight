@@ -1,0 +1,835 @@
+[
+  {
+    "paper_id": "10.1145/277650.277665",
+    "title": "Improving Data-flow Analysis with Path Profiles",
+    "abstract": "Data-flow analysis computes its solutions over the paths in a control-flow graph. These paths---whether feasible or infeasible, heavily or rarely executed---contribute equally to a solution. However, programs execute only a small fraction of their potential paths and, moreover, programs' execution time and cost is concentrated in a far smaller subset of hot paths.This paper describes a new approach to analyzing and optimizing programs, which improves the precision of data flow analysis along hot paths. Our technique identifies and duplicates hot paths, creating a hot path graph in which these paths are isolated. After flow analysis, the graph is reduced to eliminate unnecessary duplicates of unprofitable paths. In experiments on SPEC95 benchmarks, path qualification identified 2--112 times more non-local constants (weighted dynamically) than the Wegman-Zadek conditional constant algorithm, which translated into 1--7% more dynamic instructions with constant results.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277665",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Glenn",
+        "last_name": "Ammons",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "James R.",
+        "last_name": "Larus",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/AmmonsL98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277754",
+    "title": "Automatically Closing Open Reactive Programs",
+    "abstract": "We study in this paper the problem of analyzing implementations of open systems --- systems in which only some of the components are present. We present an algorithm for automatically closing an open concurrent reactive system with its most general environment, i.e., the environment that can provide any input at any time to the system. The result is a nondeterministic closed (i.e., self-executable) system which can exhibit all the possible reactive behaviors of the original open system. These behaviors can then be analyzed using VeriSoft, an existing tool for systematically exploring the state spaces of closed systems composed of multiple (possibly nondeterministic) processes executing arbitrary code. We have implemented the techniques introduced in this paper in a prototype tool for automatically closing open programs written in the C programming language. We discuss preliminary experimental results obtained with a large telephone-switching software application developed at Lucent Technologies.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277754",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Christopher",
+        "last_name": "Colby",
+        "institution": "Loyola University Chicago"
+      },
+      {
+        "first_name": "Patrice",
+        "last_name": "Godefroid",
+        "institution": "Alcatel Lucent (Germany)"
+      },
+      {
+        "first_name": "Lalita Jategaonkar",
+        "last_name": "Jagadeesan",
+        "institution": "Alcatel Lucent (Germany)"
+      }
+    ],
+    "dblp_key": "conf/pldi/ColbyGJ98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277734",
+    "title": "Thin Locks: Featherweight Synchronization for Java",
+    "abstract": "Language-supported synchronization is a source of serious performance problems in many Java programs. Even single-threaded applications may spend up to half their time performing useless synchronization due to the thread-safe nature of the Java libraries. We solve this performance problem with a new algorithm that allows lock and unlock operations to be performed with only a few machine instructions in the most common cases. Our locks only require a partial word per object, and were implemented without increasing object size. We present measurements from our implementation in the JDK 1.1.2 for AIX, demonstrating speedups of up to a factor of 5 in micro-benchmarks and up to a factor of 1.7 in real programs.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277734",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David F.",
+        "last_name": "Bacon",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Ravi",
+        "last_name": "Konuru",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Chet",
+        "last_name": "Murthy",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Maurício",
+        "last_name": "Serrano",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/BaconKMS98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277745",
+    "title": "Scalable Cross-Module Optimization",
+    "abstract": "Large applications are typically partitioned into separately compiled modules. Large performance gains in these applications are available by optimizing across module boundaries. One barrier to applying crossmodule optimization (CMO) to large applications is the potentially enormous amount of time and space consumed by the optimization process.We describe a framework for scalable CMO that provides large gains in performance on applications that contain millions of lines of code. Two major techniques are described. First, careful management of in-memory data structures results in sub-linear memory occupancy when compared to the number of lines of code being optimized. Second, profile data is used to focus optimization effort on the performance-critical portions of applications. We also present practical issues that arise in deploying this framework in a production environment. These issues include debuggability and compatibility with existing development tools, such as make. Our framework is deployed in Hewlett-Packard's (HP) UNIX compiler products and speeds up shipped independent software vendors' applications by as much as 71%.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277745",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Andrew",
+        "last_name": "Ayers",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Stuart de",
+        "last_name": "Jong",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Peyton",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Richard",
+        "last_name": "Schooler",
+        "institution": "Hewlett-Packard (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/AyersJPS98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277738",
+    "title": "Garbage Collection and Local Variable Type-Precision and Liveness in Java Virtual Machines",
+    "abstract": "Full precision in garbage collection implies retaining only those heap allocated objects that will actually be used in the future. Since full precision is not computable in general, garbage collectors use safe (i.e., conservative) approximations such as reachability from a set of root references. Ambiguous roots collectors (commonly called \"conservative\") can be overly conservative because they overestimate the root set, and thereby retain unexpectedly large amounts of garbage. We consider two more precise collection schemes for Java virtual machines (JVMs). One uses a type analysis to obtain a type-precise root set (only those variables that contain references); the other adds a live variable analysis to reduce the root set to only the live reference variables. Even with the Java programming language's strong typing, it turns out that the JVM specification has a feature that makes type-precise root sets difficult to compute. We explain the problem and ways in which it can be solved.Our experimental results include measurements of the costs of the type and liveness analyses at load time, of the incremental benefits at run time of the liveness analysis over the type analysis alone, and of various map sizes and counts. We find that the liveness analysis often produces little or no improvement in heap size, sometimes modest improvements, and occasionally the improvement is dramatic. While further study is in order, we conclude that the main benefit of the liveness analysis is preventing bad surprises.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277738",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ole",
+        "last_name": "Agesen",
+        "institution": ""
+      },
+      {
+        "first_name": "David",
+        "last_name": "Detlefs",
+        "institution": ""
+      },
+      {
+        "first_name": "J. Eliot B.",
+        "last_name": "Moss",
+        "institution": "University of Massachusetts Amherst"
+      }
+    ],
+    "dblp_key": "conf/pldi/AgesenDM98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277668",
+    "title": "Using Static Single Assignment Form to Improve Flow-Insensitive Pointer Analysis",
+    "abstract": "A pointer-analysis algorithm can be either flow-sensitive or flow-insensitive. While flow-sensitive analysis usually provides more precise information, it is also usually considerably more costly in terms of time and space. The main contribution of this paper is the presentation of another option in the form of an algorithm that can be 'tuned' to provide a range of results that fall between the results of flow-insensitive and flow-sensitive analysis. The algorithm combines a flow-insensitive pointer analysis with static single assignment (SSA) form and uses an iterative process to obtain progressively better results.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277668",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rebecca",
+        "last_name": "Hasti",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Susan",
+        "last_name": "Horwitz",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/HastiH98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277721",
+    "title": "Using Integer Sets for Data-Parallel Program Analysis and Optimization",
+    "abstract": "In this paper, we describe our experience with using an abstract integer-set framework to develop the Rice dHPF compiler, a compiler for High Performance Fortran. We present simple, yet general formulations of the major computation partitioning and communication analysis tasks as well as a number of important optimizations in terms of abstract operations on sets of integer tuples. This approach has made it possible to implement a comprehensive collection of advanced optimizations in dHPF, and to do so in the context of a more general computation partitioning model than previous compilers. One potential limitation of the approach is that the underlying class of integer set problems is fundamentally unable to represent HPF data distributions on a symbolic number of processors. We describe how we extend the approach to compile codes for a symbolic number of processors, without requiring any changes to the set formulations for the above optimizations. We show experimentally that the set re...",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277721",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Vikram",
+        "last_name": "Adve",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Mellor‐Crummey",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/AdveM98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277730",
+    "title": "Units: Cool Modules for HOT Languages",
+    "abstract": "A module system ought to enable assembly-line programming using separate compilation and an expressive linking language. Separate compilation allows programmers to develop parts of a program independently. A linking language gives programmers precise control over the assembly of parts into a whole. This paper presents models of program units, MzScheme's module language for assembly-line programming. Units support separate compilation, independent module reuse, cyclic dependencies, hierarchical structuring, and dynamic linking. The models explain how to integrate units with untyped and typed languages such as Scheme and ML.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277730",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Flatt",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/FlattF98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277718",
+    "title": "Generational Stack Collection and Profile-Driven Pretenuring",
+    "abstract": "This paper presents two techniques for improving garbage collection performance: generational stack collection and profile-driven pretenuring. The first is applicable to stack-based implementations of functional languages while the second is useful for any generational collector. We have implemented both techniques in a generational collector used by the TIL compiler (Tarditi, Morrisett, Cheng, Stone, Harper, and Lee 1996), and have observed decreases in garbage collection times of as much as 70% and 30%, respectively.Functional languages encourage the use of recursion which can lead to a long chain of activation records. When a collection occurs, these activation records must be scanned for roots. We show that scanning many activation records can take so long as to become the dominant cost of garbage collection. However, most deep stacks unwind very infrequently, so most of the root information obtained from the stack remains unchanged across successive garbage collections. Generational stack collection greatly reduces the stack scan cost by reusing information from previous scans.Generational techniques have been successful in reducing the cost of garbage collection (Ungar 1984). Various complex heap arrangements and tenuring policies have been proposed to increase the effectiveness of generational techniques by reducing the cost and frequency of scanning and copying. In contrast, we show that by using profile information to make lifetime predictions, pretenuring can avoid copying data altogether. In essence, this technique uses a refinement of the generational hypothesis (most data die young) with a locality principle concerning the age of data: most allocations sites produce data that immediately dies, while a few allocation sites consistently produce data that survives many collections.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277718",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Perry",
+        "last_name": "Cheng",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Lee",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChengHL98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277743",
+    "title": "Optimizing Direct-threaded Code by Selective Inlining",
+    "abstract": "Achieving good performance in bytecoded language interpreters is difficult without sacrificing both simplicity and portability. This is due to the complexity of dynamic translation (\"just-in-time compilation\") of bytecodes into native code, which is the mechanism employed universally by high-performance interpreters.We demonstrate that a few simple techniques make it possible to create highly-portable dynamic translators that can attain as much as 70% the performance of optimized C for certain numerical computations. Translators based on such techniques can offer respectable performance without sacrificing either the simplicity or portability of much slower \"pure\" bytecode interpreters.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277743",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ian",
+        "last_name": "Piumarta",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Fabio",
+        "last_name": "Riccardi",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/pldi/PiumartaR98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277748",
+    "title": "Memory Management with Explicit Regions",
+    "abstract": "Much research has been devoted to studies of and algorithms for memory management based on garbage collection or explicit allocation and deallocation. An alternative approach, region-based memory management, has been known for decades, but has not been well-studied. In a region-based system each allocation specifies a region, and memory is reclaimed by destroying a region, freeing all the storage allocated therein. We show that on a suite of allocation-intensive C programs, regions are competitive with malloc/free and sometimes substantially faster. We also show that regions support safe memory management with low overhead. Experience with our benchmarks suggests that modifying many existing programs to use regions is not difficult.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277748",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Gay",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/GayA98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277670",
+    "title": "Type-Based Alias Analysis",
+    "abstract": "This paper evaluates three alias analyses based on programming language types. The first analysis uses type compatibility to determine aliases. The second extends the first by using additional high-level information such as field names. The third extends the second with a flow-insensitive analysis. Although other researchers suggests using types to disambiguate memory references, none evaluates its effectiveness. We perform both static and dynamic evaluations of type-based alias analyses for Modula-3, a statically-typed type-safe language. The static analysis reveals that type compatibility alone yields a very imprecise alias analysis, but the other two analyses significantly improve alias precision. We use redundant load elimination (RLE) to demonstrate the effectiveness of the three alias algorithms in terms of the opportunities for optimization, the impact on simulated execution times, and to compute an upper bound on what a perfect alias analysis would yield. We show modest dynamic improvements for (RLE), and more surprisingly, that on average our alias analysis is within 2.5% of a perfect alias analysis with respect to RLE on 8 Modula-3 programs. These results illustrate that to explore thoroughly the effectiveness of alias analyses, researchers need static, dynamic, and upper-bound analysis. In addition, we show that for type-safe languages like Modula-3 and Java, a fast and simple alias analysis may be sufficient for many applications.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277670",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Amer",
+        "last_name": "Diwan",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "J. Eliot B.",
+        "last_name": "Moss",
+        "institution": "University of Massachusetts Amherst"
+      }
+    ],
+    "dblp_key": "conf/pldi/DiwanMM98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277719",
+    "title": "Proper Tail Recursion and Space Efficiency",
+    "abstract": "The IEEE/ANSI standard for Scheme requires implementations to be properly tail recursive. This ensures that portable code can rely upon the space efficiency of continuation-passing style and other idioms. On its face, proper tail recursion concerns the efficiency of procedure calls that occur within a tail context. When examined closely, proper tail recursion also depends upon the fact that garbage collection can be asymptotically more space-efficient than Algol-like stack allocation.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277719",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "William",
+        "last_name": "Clinger",
+        "institution": "Universidad del Noreste"
+      }
+    ],
+    "dblp_key": "conf/pldi/Clinger98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277656",
+    "title": "A New Algorithm for Scalar Register Promotion based on SSA Form",
+    "abstract": "We present a new register promotion algorithm based on Static Single Assignment (SSA) form. Register promotion is aimed at promoting program names from memory locations to registers. Our algorithm is profile-driven and is based on the scope of intervals. In cases where a complete promotion is not possible because of the presence of function calls or pointer references, the proposed algorithm is capable of eliminating loads and stores on frequently executed paths by placing loads and stores on less frequently executed paths. We also describe an efficient method to incrementally update SSA form when new definitions are cloned from an existing name during register promotion. On SPECInt95 benchmarks, our algorithm removes about ~12% of memory operations which access scalar variables.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277656",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "A. V. S.",
+        "last_name": "Sastry",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Roy Dz-Ching",
+        "last_name": "Ju",
+        "institution": "Hewlett-Packard (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/SastryJ98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277725",
+    "title": "The Implementation of the Cilk-5 Multithreaded Language",
+    "abstract": "The fifth release of the multithreaded language Cilk uses a provably good \"work-stealing\" scheduling algorithm similar to the first system, but the language has been completely redesigned and the runtime system completely reengineered. The efficiency of the new implementation was aided by a clear strategy that arose from a theoretical analysis of the scheduling algorithm: concentrate on minimizing overheads that contribute to the work, even at the expense of overheads that contribute to the critical path. Although it may seem counterintuitive to move overheads onto the critical path, this \"work-first\" principle has led to a portable Cilk-5 implementation in which the typical cost of spawning a parallel thread is only between 2 and 6 times the cost of a C function call on a variety of contemporary machines. Many Cilk programs run on one processor with virtually no degradation compared to equivalent C programs. This paper describes how the work-first principle was exploited in the design of Cilk-5's compiler and its runtime system. In particular, we present Cilk-5's novel \"two-clone\" compilation strategy and its Dijkstra-like mutual-exclusion protocol for implementing the ready deque in the work-stealing scheduler.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277725",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Matteo",
+        "last_name": "Frigo",
+        "institution": ""
+      },
+      {
+        "first_name": "Charles E.",
+        "last_name": "Leiserson",
+        "institution": ""
+      },
+      {
+        "first_name": "Keith H.",
+        "last_name": "Randall",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/FrigoLR98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277653",
+    "title": "Complete Removal of Redundant Computations",
+    "abstract": "Partial redundancy elimination (PRE), the most important component of global optimizers, generalizes the removal of common subexpressions and loop-invariant computations. Because existing PRE implementations are based on code motion, they fail to completely remove the redundancies. In fact, we observed that 73% of loop-invariant statements cannot be eliminated from loops by code motion alone. In dynamic terms, traditional PRE eliminates only half of redundancies that are strictly partial. To achieve a complete PRE, control flow restructuring must be applied. However, the resulting code duplication may cause code size explosion.This paper focuses on achieving a complete PRE while incurring an acceptable code growth. First, we present an algorithm for complete removal of partial redundancies, based on the integration of code motion and control flow restructuring. In contrast to existing complete techniques, we resort to restructuring merely to remove obstacles to code motion, rather than to carry out the actual optimization.Guiding the optimization with a profile enables additional code growth reduction through selecting those duplications whose cost is justified by sufficient execution-time gains. The paper develops two methods for determining the optimization benefit of restructuring a program region, one based on path-profiles and the other on data-flow frequency analysis. Furthermore, the abstraction underlying the new PRE algorithm enables a simple formulation of speculative code motion guaranteed to have positive dynamic improvements. Finally, we show how to balance the three transformations (code motion, restructuring, and speculation) to achieve a near-complete PRE with very little code growth.We also present algorithms for efficiently computing dynamic benefits. In particular, using an elimination-style data-flow framework, we derive a demand-driven frequency analyzer whose cost can be controlled by permitting a bounded degree of conservative imprecision in the solution.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277653",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of Pittsburgh"
+      },
+      {
+        "first_name": "Rajiv",
+        "last_name": "Gupta",
+        "institution": "University of Pittsburgh"
+      },
+      {
+        "first_name": "Mary Lou",
+        "last_name": "Soffa",
+        "institution": "University of Pittsburgh"
+      }
+    ],
+    "dblp_key": "conf/pldi/BodikGS98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277659",
+    "title": "Register Promotion by Partial Redundancy Elimination of Loads and Stores",
+    "abstract": "An algorithm for register promotion is presented based on the observation that the circumstances for promoting a memory location’s value to register coincide with situations where the program exhibits partial redundancy between ac-cesses to the memory location. The recent SSAPRE al-gorithm for eliminating partial redundancy using a sparse SSA representation forms the foundation for the present al-gorithm to eliminate redundancy among memory accesses, enabling us to achieve both computational and live range op-timality in our register promotion results. We discuss how to effect speculative code motion in the SSAPRE framework. We present two different algorithms for performing specu-lative code motion: the conservative speculation algorithm used in the absence of profile data, and the the profile-driven",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277659",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Raymond",
+        "last_name": "Lo",
+        "institution": "Silicon Labs (United States)"
+      },
+      {
+        "first_name": "Fred",
+        "last_name": "Chow",
+        "institution": "Silicon Labs (United States)"
+      },
+      {
+        "first_name": "Robert E.",
+        "last_name": "Kennedy",
+        "institution": "Silicon Labs (United States)"
+      },
+      {
+        "first_name": "Shin-Ming",
+        "last_name": "Liu",
+        "institution": "Silicon Labs (United States)"
+      },
+      {
+        "first_name": "Peng",
+        "last_name": "Tu",
+        "institution": "Silicon Labs (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChowKLLT98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277667",
+    "title": "Partial Online Cycle Elimination in Inclusion Constraint Graphs",
+    "abstract": "Many program analyses are naturally formulated and implemented using inclusion constraints. We present new results on the scalable implementation of such analyses based on two insights: first, that online elimination of cyclic constraints yields orders-of-magnitude improvements in analysis time for large problems; second, that the choice of constraint representation affects the quality and efficiency of online cycle elimination. We present an analytical model that explains our design choices and show that the model's predictions match well with results from a substantial experiment.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277667",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Fähndrich",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Zhendong",
+        "last_name": "Su",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/FahndrichFSA98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277740",
+    "title": "Fast, Effective Code Generation in a Just-In-Time Java Compiler",
+    "abstract": "A Just-In-Time (JIT) Java compiler produces native code from Java byte code instructions during program execution. As such, compilation speed is more important in a Java JIT compiler than in a traditional compiler, requiring optimization algorithms to be lightweight and effective. We present the structure of a Java JIT compiler for the Intel Architecture, describe the lightweight implementation of JIT compiler optimizations (e.g., common subexpression elimination, register allocation, and elimination of array bounds checking), and evaluate the performance benefits and tradeoffs of the optimizations. This JIT compiler has been shipped with version 2.5 of Intel's VTune for Java product.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277740",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ali-Reza",
+        "last_name": "Adl-Tabatabai",
+        "institution": "Oracle (United States)"
+      },
+      {
+        "first_name": "Michał",
+        "last_name": "Cierniak",
+        "institution": "Mission College"
+      },
+      {
+        "first_name": "Guei-Yuan",
+        "last_name": "Lueh",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Vishesh M.",
+        "last_name": "Parikh",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "James M.",
+        "last_name": "Stichnoth",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Adl-TabatabaiCLPS98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277664",
+    "title": "Simplification of Array Access Patterns for Compiler Optimizations",
+    "abstract": "Existing array region representation techniques are sensitive to the complexity of array subscripts. In general, these techniques are very accurate and efficient for simple subscript expressions, but lose accuracy or require potentially expensive algorithms for complex subscripts. We found that in scientific applications, many access patterns are simple even when the subscript expressions are complex. In this work, we present a new, general array access representation and define operations for it. This allows us to aggregate and simplify the representation enough that precise region operations may be applied to enable compiler optimizations. Our experiments show that these techniques hold promise for speeding up applications.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277664",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yunheung",
+        "last_name": "Paek",
+        "institution": "New Jersey Institute of Technology"
+      },
+      {
+        "first_name": "Jay",
+        "last_name": "Hoeflinger",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Padua",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/pldi/PaekHP98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277663",
+    "title": "The Implementation and Evaluation of Fusion and Contraction in Array Languages",
+    "abstract": "Array languages such as Fortran 90, HPF and ZPL have many benefits in simplifying array-based computations and expressing data parallelism. However, they can suffer large performance penalties because they introduce intermediate arrays---both at the source level and during the compilation process---which increase memory usage and pollute the cache. Most compilers address this problem by simply scalarizing the array language and relying on a scalar language compiler to perform loop fusion and array contraction. We instead show that there are advantages to performing a form of loop fusion and array contraction at the array level. This paper describes this approach and explains its advantages. Experimental results show that our scheme typically yields runtime improvements of greater than 20% and sometimes up to 400%. In addition, it yields superior memory use when compared against commercial compilers and exhibits comparable memory use when compared with scalar languages. We also explore the interaction between these transformations and communication optimizations.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277663",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "E. Christopher",
+        "last_name": "Lewis",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Calvin",
+        "last_name": "Lin",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Lawrence",
+        "last_name": "Snyder",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/LewisLS98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277752",
+    "title": "The Design and Implementation of a Certifying Compiler",
+    "abstract": "This paper presents the design and implementation of a compiler that translates programs written in a type-safe subset of the C programming language into highly optimized DEC Alpha assembly language programs, and a certifier that automatically checks the type safety and memory safety of any assembly language program produced by the compiler. The result of the certifier is either a formal proof of type safety or a counterexample pointing to a potential violation of the type system by the target program. The ensemble of the compiler and the certifier is called a certifying compiler.Several advantages of certifying compilation over previous approaches can be claimed. The notion of a certifying compiler is significantly easier to employ than a formal compiler verification, in part because it is generally easier to verify the correctness of the result of a computation than to prove the correctness of the computation itself. Also, the approach can be applied even to highly optimizing compilers, as demonstrated by the fact that our compiler generates target code, for a range of realistic C programs, which is competitive with both the cc and gcc compilers with all optimizations enabled. The certifier also drastically improves the effectiveness of compiler testing because, for each test case, it statically signals compilation errors that might otherwise require many executions to detect. Finally, this approach is a practical way to produce the safety proofs for a Proof-Carrying Code system, and thus may be useful in a system for safe mobile code.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277752",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "George C.",
+        "last_name": "Necula",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Lee",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/NeculaL98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277715",
+    "title": "An Implementation for Complete, Asynchronous, Distributed Garbage Collection",
+    "abstract": "Most existing reference-based distributed object systems include some kind of acyclic garbage collection, but fail to provide acceptable collection of cyclic garbage. Those that do provide such GC currently suffer from one or more problems: synchronous operation, the need for expensive global consensus or termination algorithms, susceptibility to communication problems, or an algorithm that does not scale. We present a simple, complete, fault-tolerant, asynchronous extension to the (acyclic) cleanup protocol of the SSP Chains system. This extension is scalable, consumes few resources, and could easily be adapted to work in other reference-based distributed object systems---rendering them usable for very large-scale applications.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277715",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Fabrice Le",
+        "last_name": "Fessant",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Ian",
+        "last_name": "Piumarta",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Shapiro",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/pldi/FessantPS98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277661",
+    "title": "Data Transformations for Eliminating Conflict Misses",
+    "abstract": "Many cache misses in scientific programs are due to conflicts caused by limited set associativity. We examine two compile-time data-layout transformations for eliminating conflict misses, concentrating on misses occuring on every loop iteration. Inter-variable padding adjusts variable base addresses, while intra-variable padding modifies array dimension sizes. Two levels of precision are evaluated. PADLITE only uses array and column dimension sizes, relying on assumptions about common array reference patterns. PAD analyzes programs, detecting conflict misses by linearizing array references and calculating conflict distances between uniformly-generated references. The Euclidean algorithm for computing the gcd of two numbers is used to predict conflicts between different array columns for linear algebra codes. Experiments on a range of programs indicate PADLITE can eliminate conflicts for benchmarks, but PAD is more effective over a range of cache and problem sizes. Padding reduces cache miss rates by 16% on average for a 16K direct-mapped cache. Execution times are reduced by 6% on average, with some SPEC95 programs improving up to 15%.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277661",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Gabriel",
+        "last_name": "Rivera",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Chau‐Wen",
+        "last_name": "Tseng",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/RiveraT98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277709",
+    "title": "Exploiting Idle Floating-Point Resources for Integer Execution",
+    "abstract": "In conventional superscalar microarchitectures with partitioned integer and floating-point resources, all floating-point resources are idle during execution of integer programs. Palacharla and Smith [26] addressed this drawback and proposed that the floating-point subsystem be augmented to support integer operations. The hardware changes required are expected to be fairly minimal.To exploit these idle floating resources, the compiler must identify integer code that can be profitably offloaded to the augmented floating-point subsystem. In this paper, we present two compiler algorithms to do this. The basic scheme offloads integer computation to the floating-point subsystem using existing program loads/stores for inter-partition communication. For the SPECINT95 benchmarks, we show that this scheme offloads from 5% to 29% of the total dynamic instructions to the floating-point subsystem. The advanced scheme inserts copy instructions and duplicates some instructions to further offload computation. We evaluate the effectiveness of the two schemes using timing simulation. We show that the advanced scheme can offload from 9% to 41% of the total dynamic instructions to the floating-point subsystem. In doing so, speedups from 3% to 23% are achieved over a conventional microarchitecture.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277709",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Shiva",
+        "last_name": "Sastry",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Subbarao",
+        "last_name": "Palacharla",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "James E.",
+        "last_name": "Smith",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/SastryPS98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277714",
+    "title": "Quality and Speed in Linear-scan Register Allocation",
+    "abstract": "A linear-scan algorithm directs the global allocation of register candidates to registers based on a simple linear sweep over the program being compiled. This approach to register allocation makes sense for systems, such as those for dynamic compilation, where compilation speed is important. In contrast, most commercial and research optimizing compilers rely on a graph-coloring approach to global register allocation. In this paper, we compare the performance of a linear-scan method against a modern graph-coloring method. We implement both register allocators within the Machine SUIF extension of the Stanford SUIF compiler system. Experimental results show that linear scan is much faster than coloring on benchmarks with large numbers of register candidates. We also describe improvements to the linear-scan approach that do not change its linear character, but allow it to produce code of a quality near to that produced by graph coloring.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277714",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Omri",
+        "last_name": "Traub",
+        "institution": "Harvard University"
+      },
+      {
+        "first_name": "Glenn",
+        "last_name": "Holloway",
+        "institution": "Harvard University"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Smith",
+        "institution": "Harvard University"
+      }
+    ],
+    "dblp_key": "conf/pldi/TraubHS98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277727",
+    "title": "Run-time Code Generation and Modal-ML",
+    "abstract": "This paper presents a typed programming language and compiler for run-time code generation. The language, called ML', extends ML with modal operators in the style of the Mini-ML'e language of Davies and Pfenning. ML' allows programmers to use types to specify precisely the stages of computation in a program. The types also guide the compiler in generating target code that exploits the staging information through the use of run-time code generation. The target machine is currently a version of the Categorical Abstract Machine, called the CCAM, which we have extended with facilities for run-time code generation.This approach allows the programmer to express the staging that he wants directly to the compiler. It also provides a typed framework in which to verify the correctness of his staging intentions, and to discuss his staging decisions with other programmers. Finally, it supports in a natural way multiple stages of run-time specialization, so that dynamically generated code can be used in the generation of yet further specialized code.This paper presents an overview of the language, with several examples of programs that illustrate key concepts and programming techniques. Then, it discusses the CCAM and the compilation of ML' programs into CCAM code. Finally, the results of some experiments are shown, to demonstrate the benefits of this style of run-time code generation for some applications.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277727",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Philip",
+        "last_name": "Wickline",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Lee",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Pfenning",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/WicklineLP98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277750",
+    "title": "A Study of Dead Data Members in C++ Applications",
+    "abstract": "Object-oriented applications may contain data members that can be removed from the application without affecting program behavior. Such \"dead\" data members may occur due to unused functionality in class libraries, or due to the programmer losing track of member usage as the application changes over time. We present a simple and efficient algorithm for detecting dead data members in C++ applications. This algorithm has been implemented using a prototype version of the IBM VisualAge C++ compiler, and applied to a number of realistic benchmark programs ranging from 600 to 58,000 lines of code. For the non-trivial benchmarks, we found that up to 27.3% of the data members in the benchmarks are dead (average 12.5%), and that up to 11.6% of the object space of these applications may be occupied by dead data members at run-time (average 4.4%).",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277750",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Peter F.",
+        "last_name": "Sweeney",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/pldi/SweeneyT98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277723",
+    "title": "Communication Optimizations for Parallel C Programs",
+    "abstract": "This paper presents algorithms for reducing the communication overhead for parallel C programs that use dynamically-allocated data structures. The framework consists of an analysis phase called possible-placement analysis, and a transformation phase called communication selection.The fundamental idea of possible-placement analysis is to find all possible points for insertion of remote memory operations. Remote reads are propagated upwards, whereas remote writes are propagated downwards. Based on the results of the possible-placement analysis, the communication selection transformation selects the \"best\" place for inserting the communication, and determines if pipelining or blocking of communication should be performed.The framework has been implemented in the EARTH-McCAT optimizing/parallelizing C compiler, and experimental results are presented for five pointer-intensive benchmarks running on the EARTH-MANNA distributed-memory parallel architecture. These experiments show that the communication optimization can provide performance improvements of up to 16% over the unoptimized benchmarks.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277723",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yingchun",
+        "last_name": "Zhu",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Laurie",
+        "last_name": "Hendren",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ZhuH98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277711",
+    "title": "Improving Performance by Branch Reordering",
+    "abstract": "The conditional branch has long been considered an expensive operation. The relative cost of conditional branches has increased as recently designed machines are now relying on deeper pipelines and higher multiple issue. Reducing the number of conditional branches executed can often result in a substantial performance benefit. This paper describes a code-improving transformation to reorder sequences of conditional branches. First, sequences of branches that can be reordered are detected in the control flow. Second, profiling information is collected to predict the probability that each branch will transfer control out of the sequence. Third, the cost of performing each conditional branch is estimated. Fourth, the most beneficial ordering of the branches based on the estimated probability and cost is selected. The most beneficial ordering often included the insertion of additional conditional branches that did not previously exist in the sequence. Finally, the control flow is restructured to refflect the new ordering. The results of applying the transformation were significant reductions in the dynamic number of instructions and branches, as well as decreases in execution time.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277711",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Minghui",
+        "last_name": "Yang",
+        "institution": "Florida State University"
+      },
+      {
+        "first_name": "Gang‐Ryung",
+        "last_name": "Uh",
+        "institution": ""
+      },
+      {
+        "first_name": "David",
+        "last_name": "Whalley",
+        "institution": "Florida State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/YangUW98",
+    "venue": "pldi",
+    "year": 1998
+  },
+  {
+    "paper_id": "10.1145/277650.277732",
+    "title": "Eliminating Array Bound Checking Through Dependent Types",
+    "abstract": "We present a type-based approach to eliminating array bound checking and list tag checking by conservatively extending Standard ML with a restricted form of dependent types. This enables the programmer to capture more invariants through types while type-checking remains decidable in theory and can still be performed efficiently in practice. We illustrate our approach through concrete examples and present the result of our preliminary experiments which support support the feasibility and effectiveness of our approach.",
+    "date": "1998-05-01",
+    "link": "https://doi.org/10.1145/277650.277732",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Hongwei",
+        "last_name": "Xi",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Pfenning",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/XiP98",
+    "venue": "pldi",
+    "year": 1998
+  }
+]

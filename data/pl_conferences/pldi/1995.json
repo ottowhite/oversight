@@ -1,0 +1,691 @@
+[
+  {
+    "paper_id": "10.1145/207110.207150",
+    "title": "The Power of Assignment Motion",
+    "abstract": "Assignment motion (AM) and expression motion (EM) are the basis of powerful and at the first sight incomparable techniques for removing partially redundant code from a program. Whereas AM aims at the elimination of complete assignments, a transformation which is always desirable, the more flexible EM requires temporaries to remove partial redundancies. Based on the observation that a simple program transformation enhances AM to subsume EM, we develop an algorithm that for the first time captures all second order effects between AM and EM transformations. Under usual structural restrictions, the worst case time complexity of our algorithm is essentially quadratic, a fact which explains the promising experience with our implementation. Topics: data flow analysis, program optimization, partially redundant assignment and expression elimination, code motion, assignment motion, bit-vector data flow analyses. 1 Motivation A major source for improving the runtime efficiency of a program is...",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207150",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jens",
+        "last_name": "Knoop",
+        "institution": "University of Passau"
+      },
+      {
+        "first_name": "Oliver",
+        "last_name": "Rüthing",
+        "institution": "Kiel University"
+      },
+      {
+        "first_name": "Bernhard",
+        "last_name": "Steffen",
+        "institution": "University of Passau"
+      }
+    ],
+    "dblp_key": "conf/pldi/KnoopRS95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207119",
+    "title": "Selective Specialization for Object-Oriented Languages",
+    "abstract": "Dynamic dispatching is a major source of run-time overhead in object-oriented languages, due both to the direct cost of method lookup and to the indirect effect of preventing other optimizations. To reduce this overhead, optimizing compilers for object-oriented languages analyze the classes of objects stored in program variables, with the goal of bounding the possible classes of message receivers enough so that the compiler can uniquely determine the target of a message send at compile time and replace the message send with a direct procedure call. Specialization is one important technique for improving the precision of this static class information: by compiling multiple versions of a method, each applicable to a subset of the possible argument classes of the method, more precise static information about the classes of the method's arguments is obtained. Previous specialization strategies have not been selective about where this technique is applied, and therefore tended to significantly increase compile time and code space usage, particularly for large applications. In this paper, we present a more general framework for specialization in object-oriented languages and describe a goal directed specialization algorithm that makes selective decisions to apply specialization to those cases where it provides the highest benefit. Our results show that our algorithm improves the performance of a group of sizeable programs by 65% to 275% while increasing compiled code space requirements by only 4% to 10%. Moreover, when compared to the previous state-of-the-art specialization scheme, our algorithm improves performance by 11% to 67% while simultaneously reducing code space requirements by 65% to 73%.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207119",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jeffrey A.",
+        "last_name": "Dean",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Grove",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/DeanCG95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207121",
+    "title": "Simple and Effective Link-Time Optimization of Modula-3 Programs",
+    "abstract": "Modula-3 supports development of modular programs by separating an object's interface from its implementation. This separation induces a runtime overhead in the implementation of objects, because it prevents the compiler from having complete information about a program's type hierarchy. This overhead can be reduced at link time, when the entire type hierarchy becomes available. We describe opportunities for link-time optimization of Modula-3, present two link-time optimizations that reduce the runtime costs of Modula-3's opaque types and methods, and show how link-time optimization could provide C++ which the benefits of opaques types at no additional runtime cost.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207121",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mary",
+        "last_name": "Fernández",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Fernandez95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207164",
+    "title": "Garbage Collection Using a Dynamic Threatening Boundary",
+    "abstract": "Generational techniques have been very successful in reducing the impact of garbage collection algorithms upon the performance of programs. However, all generational algorithms occasionally promote objects that later become garbage, resulting in an accumulation of garbage in older generations. Reclaiming this tenured garbage without resorting to collecting the entire heap is a difficult problem. In this paper, we describe a mechanism that extends existing generational collection algorithms by allowing them to reclaim tenured garbage more effectively. In particular, our dynamic threatening boundary mechanism divides memory into two spaces, one for shortlived, and another for long-lived objects. Unlike previous work, our collection mechanism can dynamically adjust the boundary between these two spaces either forward or backward in time, essentially allowing data to become untenured. We describe an implementation of the dynamic threatening boundary mechanism and quantify its associated costs. We also describe a policy for setting the threatening boundary and evaluate its performance relative to existing generational collection algorithms. Our results show that a policy that uses the dynamic threatening boundary mechanism is effective at reclaiming tenured garbage.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207164",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David A.",
+        "last_name": "Barrett",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Benjamin G.",
+        "last_name": "Zorn",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/pldi/BarrettZ95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207145",
+    "title": "Unifying Data and Control Transformations for Distributed Shared Memory Machines",
+    "abstract": "We present a unified approach to locality optimization that employs both data and control transformations. Data transformations include changing the array layout in memory. Control transformations involve changing the execution order of programs. We have developed new techniques for compiler optimizations for distributed shared-memory machines, although the same techniques can be used for sequential machines with a memory hierarchy.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207145",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Michał",
+        "last_name": "Cierniak",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Wei",
+        "last_name": "Li",
+        "institution": "University of Rochester"
+      }
+    ],
+    "dblp_key": "conf/pldi/CierniakL95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207125",
+    "title": "Register Allocation Using Lazy Saves, Eager Restores, and Greedy Shuffling",
+    "abstract": "This paper presents a fast and effective linear intraprocedural register allocation strategy that optimizes register usage across procedure calls. It capitalizes on our observation that while procedures that do not contain calls (syntactic leaf routines) account for under one third of all procedure activations, procedures that actually make no calls (effective leaf routines) account for over two thirds of all procedure activations. Well-suited for both caller-and calle-save registers, our strategy employs a “lazy” save mechanism that avoids saves for all effective leaf routines, an “eager” restore mechanism that reduces the effect of memory latency, and a “greedy” register shuffling algorithm that does a remarkbly good job of minimizing the need for temporaries in setting up procedure calls.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207125",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Robert G.",
+        "last_name": "Burger",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Oscar",
+        "last_name": "Waddell",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "R. Kent",
+        "last_name": "Dybvig",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/pldi/BurgerWD95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207157",
+    "title": "Interprocedural Partial Redundancy Elimination and its Application to Distributed Memory Compilation",
+    "abstract": "Partial Redundancy Elimination (PRE) is a general scheme for suppressing partial redundancies which encompasses traditional optimizations like loop invariant code motion and redundant code elimination. In this paper we address the problem of performing this optimization interprocedurally. We use interprocedural partial redundancy elimination for placement of communication and communication preprocessing statements while compiling for distributed memory parallel machines.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207157",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Gagan",
+        "last_name": "Agrawal",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Joel",
+        "last_name": "Saltz",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Raja",
+        "last_name": "Das",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/AgrawalSD95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207165",
+    "title": "Stack Caching for Interpreters",
+    "abstract": "An interpreter can spend a significant part of its execution time on accessing arguments of virtual machine instructions. This paper explores two methods to reduce this overhead for virtual stack machines by caching top-of-stack values in (real machine) registers. The dynamic method is based on having, for every possible state of the cache, one specialized version of the whole interpreter; the execution of an instruction usually changes the state of the cache and the next instruction is executed in the version corresponding to the new state. In the static method a state machine that keeps track of the cache state is added to the compiler. Common instructions exist in specialized versions for several states, but it is not necessary to have a version of every instruction for every cache state. Stack manipulation instructions are optimized away.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207165",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "M. Anton",
+        "last_name": "Ertl",
+        "institution": "TU Wien"
+      }
+    ],
+    "dblp_key": "conf/pldi/Ertl95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207113",
+    "title": "Flow-Sensitive Interprocedural Constant Propagation",
+    "abstract": "We present a flow-sensitive interprocedural constant propagation algorithm, which supports recursion while only performing one flow-sensitive analysis of each procedure. We present experimental results which show that this method finds substantially more constants than previous methods and is efficient in practice. We introduce new metrics for evaluating interprocedural constant propagation algorithms which measure the number of interprocedural constant values that are propagated. We use these metrics to provide further experimental results for our algorithm.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207113",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Carini",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hind",
+        "institution": "SUNY New Paltz"
+      }
+    ],
+    "dblp_key": "conf/pldi/CariniH95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207154",
+    "title": "Global Code Motion / Global Value Mumbering",
+    "abstract": "We believe that optimizing compilers should treat the machine-independent optimizations (e.g., conditional constant propagation, global value numbering) and code motion issues separately.’ Removing the code motion requirements from the machine-independent optimization allows stronger optimizations using simpler algorithms. Preserving a legal schedule is one of the prime sources of complexity in algorithms like PRE [18, 13] or global congruence finding [2, 20].",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207154",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cliff",
+        "last_name": "Click",
+        "institution": "Hewlett-Packard (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Click95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207114",
+    "title": "APT: A Data Structure for Optimal Control Dependence Computation",
+    "abstract": "The control dependence relation is used extensively in restructuring compilers. This relation is usually represented using the control dependence graph; unfortunately, the size of this data structure can be quadratic in the size of the program, even for some structured programs. In this paper, we introduce a data structure called the augmented post-dominator tree (APT) which is constructed in space and time proportional to the size of the program, and which can answer control dependence queries in time proportional to the size of the output. Therefore, APT is an optimal representation of control dependence. We also show that using APT, we can compute SSA graphs, as well as sparse dataflow evaluator graphs, in time proportional to the size of the program. Finally, we put APT in perspective by showing that it can be viewed as a factored representation of control dependence graph in which filtered search is used to answer queries.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207114",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Keshav",
+        "last_name": "Pingali",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Gianfranco",
+        "last_name": "Bilardi",
+        "institution": "University of Padua"
+      }
+    ],
+    "dblp_key": "conf/pldi/PingaliB95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207162",
+    "title": "Tile Size Selection Using Cache Organization and Data Layout",
+    "abstract": "When dense matrix computations are too large to fit in cache, previous research proposes tiling to reduce or eliminate capacity misses. This paper presents a new algorithm for choosing problem-size dependent tile sizes based on the cache size and cache line size for a direct-mapped cache. The algorithm eliminates both capacity and self-interference misses and reduces cross-interference misses. We measured simulated miss rates and execution times for our algorithm and two others on a variety of problem sizes and cache organizations. At higher set associativity, our algorithm does not always achieve the best performance. However on direct-mapped caches, our algorithm improves simulated miss rates and measured execution times when compared with previous work.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207162",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Stephanie",
+        "last_name": "Coleman",
+        "institution": ""
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "University of Massachusetts Amherst"
+      }
+    ],
+    "dblp_key": "conf/pldi/ColemanM95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207132",
+    "title": "Improving Balanced Scheduling with Compiler Optimizations that Increase Instruction-Level Parallelism",
+    "abstract": "Traditional list schedulers order instructions based on an optimistic estimate of the load latency imposed by the hardware and therefore cannot respond to variations in memory latency caused by cache hits and misses on non-blocking architectures. In contrast, balanced scheduling schedules instructions based on an estimate of the amount of instruction-level parallelism in the program. By scheduling independent instructions behind loads based on what the program can provide, rather than what the implementation stipulates in the best case (i.e., a cache hit), balanced scheduling can hide variations in memory latencies more effectively.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207132",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jack",
+        "last_name": "Lo",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Susan J.",
+        "last_name": "Eggers",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/LoE95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207160",
+    "title": "Elimination of Redundant Array Subscript Range Checks",
+    "abstract": "This paper presents a compiler optimization algorithm to reduce the run time overhead of array subscript range checks in programs without compromising safety. The algorithm is based on partial redundancy elimination and it incorporates previously developed algorithms for range check optimization. We implemented the algorithm in our research compiler, Nascent, and conducted experiments on a suite of 10 benchmark programs to obtain four results: (1) the execution overhead of naive range checking is high enough to merit optimization, (2) there are substantial differences between various optimizations, (3) loop-based optimizations that hoist checks out of loops are effective in eliminating about 98% of the range checks, and (4) more sophisticated analysis and optimization algorithms produce very marginal benefits.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207160",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Priyadarshan",
+        "last_name": "Kolte",
+        "institution": "Oregon Health & Science University"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Wolfe",
+        "institution": "Oregon Museum of Science and Industry"
+      }
+    ],
+    "dblp_key": "conf/pldi/KolteW95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207134",
+    "title": "Implementation of the Data-Flow Synchronous Language SIGNAL",
+    "abstract": "This paper presents the techniques used for the compilation of the data-flow, synchronous language SIGNAL. The key feature of the compiler is that it performs formal calculus on systems of boolean equations. The originality of the implementation of the compiler lies in the use of a tree structure to solve the equations.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207134",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Pascalin",
+        "last_name": "Amagbégnon",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Loïc",
+        "last_name": "Besnard",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Paul Le",
+        "last_name": "Guernic",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/pldi/AmagbegnonBG95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207128",
+    "title": "Scheduling and Mapping: Software Pipelining in the Presence of Structural Hazards",
+    "abstract": "Recently, software pipelining methods based on an ILP (Integer Linear Programming) framework have been successfully applied to derive rate-optimal schedules for architectures involving clean pipelines - pipelines without structural hazards. The problem for architectures beyond such clean pipelines remains open. One challenge is how, under a unified ILP framework, to simultaneously represent resource constraints for unclean pipelines, and the assignment or mapping of operations from a loop to those pipelines. In this paper we provide a framework which does exactly this, and in addition constructs rate-optimal software pipelined schedules. The proposed formulation and a solution method have been implemented and tested on a set of 1006 loops taken from various scientific and integer benchmark suites. The formulation found a rate-optimal schedule for 75% of the loops, and required a median time of only 2 seconds per loop on a Sparc 10/30.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207128",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Erik",
+        "last_name": "Altman",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "R.",
+        "last_name": "Govindarajan",
+        "institution": "Memorial University of Newfoundland"
+      },
+      {
+        "first_name": "Guang R.",
+        "last_name": "Gao",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/pldi/AltmanGG95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207137",
+    "title": "Better Static Memory Management: Improving Region-Based Analysis of Higher-Order Languages",
+    "abstract": "Static memory management replaces runtime garbage collection with compile-time annotations that make all memory allocation and deallocation explicit in a program. We improve upon the Tofte/Talpin region-based scheme for compile-time memory management[TT94]. In the Tofte/Talpin approach, all values, including closures, are stored in regions. Region lifetimes coincide with lexical scope, thus forming a runtime stack of regions and eliminating the need for garbage collection. We relax the requirement that region lifetimes be lexical. Rather, regions are allocated late and deallocated as early as possible by explicit memory operations. The placement of allocation and deallocation annotations is determined by solving a system of constraints that expresses all possible annotations. Experiments show that our approach reduces memory requirements significantly, in some cases asymptotically.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207137",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Fähndrich",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Raph",
+        "last_name": "Levien",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/AikenFL95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207118",
+    "title": "Corpus-Based Static Branch Prediction",
+    "abstract": "Correctly predicting the direction that branches will take is increasingly important in today's wide-issue computer architectures. The name program-based branch prediction is given to static branch prediction techniques that base their prediction on a program's structure. In this paper, we investigate a new approach to program-based branch prediction that uses a body of existing programs to predict the branch behavior in a new program. We call this approach to program-based branch prediction, evidence-based static prediction, or ESP. The main idea of ESP is that the behavior of a corpus of programs can be used to infer the behavior of new programs. In this paper, we use a neural network to map static features associated with each branch to the probability that the branch will be taken. ESP shows significant advantages over other prediction mechanisms. Specifically, it is a program-based technique, it is effective across a range of programming languages and programming styles, and it does not rely on the use of expert-defined heuristics.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207118",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Brad",
+        "last_name": "Calder",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Dirk",
+        "last_name": "Grunwald",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Donald",
+        "last_name": "Lindsay",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Martin",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Michael C.",
+        "last_name": "Mozer",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "Benjamin G.",
+        "last_name": "Zorn",
+        "institution": "University of Colorado Boulder"
+      }
+    ],
+    "dblp_key": "conf/pldi/CalderGLMMZ95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207139",
+    "title": "Storage Assignment to Decrease Code Size",
+    "abstract": "DSP architectures typically provide indirect addressing modes with auto-increment and decrement. In addition, indexing mode is not available, and there are usually few, if any, general-purpose registers. Hence, it is necessary to use address registers and perform address arithmetic to access automatic variables. Subsuming the address arithmetic into auto-increment and auto-decrement modes improves the size of the generated code.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207139",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Stan",
+        "last_name": "Liao",
+        "institution": "IIT@MIT"
+      },
+      {
+        "first_name": "Srinivas",
+        "last_name": "Devadas",
+        "institution": "IIT@MIT"
+      },
+      {
+        "first_name": "Kurt",
+        "last_name": "Keutzer",
+        "institution": "Synopsys (Switzerland)"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Tjiang",
+        "institution": "Synopsys (Switzerland)"
+      },
+      {
+        "first_name": "Albert",
+        "last_name": "Wang",
+        "institution": "Synopsys (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/LiaoDKTW95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207142",
+    "title": "Optimizing Parallel Programs with Explicit Synchronization",
+    "abstract": "We present compiler analyses and optimizations for explicitly parallel programs that communicate through a shared address space. Any type of code motion on explicitly parallel programs requires a new kind of analysis to ensure that operations reordered on one processor cannot be observed by another. The analysis, based on work by Shasha and Snir, checks for cycles among interfering accesses. We improve the accuracy of their analysis by using additional information from post-wait synchronization, barriers, and locks.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207142",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Arvind",
+        "last_name": "Krishnamurthy",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Katherine",
+        "last_name": "Yelick",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/KrishnamurthyY95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207111",
+    "title": "Efficient Context-Sensitive Pointer Analysis for C Programs",
+    "abstract": "This paper proposes an efficient technique for context-sensitive pointer analysis that is applicable to real C programs. For efficiency, we summarize the effects of procedures using partial transfer functions. A partial transfer function (PTF) describes the behavior of a procedure assuming that certain alias relationships hold when it is called. We can reuse a PTF in many calling contexts as long as the aliases among the inputs to the procedure are the same. Our empirical results demonstrate that this technique is successful—a single PTF per procedure is usually sufficient to obtain completely context-sensitive results. Because many C programs use features such as type casts and pointer arithmetic to circumvent the high-level type system, our algorithm is based on a low-level representation of memory locations that safely handles all the features of C. We have implemented our algorithm in the SUIF compiler system and we show that it runs efficiently for a set of C benchmarks.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207111",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Robert P.",
+        "last_name": "Wilson",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Monica S.",
+        "last_name": "Lam",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/WilsonL95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207117",
+    "title": "Accurate Static Branch Prediction by Value Range Propagation",
+    "abstract": "The ability to predict at compile time the likelihood of a particular branch being taken provides valuable information for several optimizations, including global instruction scheduling, code layout, function inlining, interprocedural register allocation and many high level optimizations. Previous attempts at static branch prediction have either used simple heuristics, which can be quite inaccurate, or put the burden onto the programmer by using execution profiling data or source code hints. This paper presents a new approach to static branch prediction called value range propagation. This method tracks the weighted value ranges of variables through a program, much like constant propagation. These value ranges may be either numeric or symbolic in nature. Branch prediction is then performed by simply consulting the value range of the appropriate variable. Heuristics are used as a fallback for cases where the value range of the variable cannot be determined statically. In the process, va...",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207117",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jason R. C.",
+        "last_name": "Patterson",
+        "institution": "Queensland University of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/Patterson95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207112",
+    "title": "Context-Insensitive Alias Analysis Reconsidered",
+    "abstract": "Recent work on alias analysis in the presence of pointers has concentrated on context-sensitive interprocedural analyses, which treat multiple calls to a single procedure independently rather than constructing a single approximation to a procedure's effect on all of its callers. While context-sensitive modeling offers the potential for greater precision by considering only realizable call-return paths, its empirical benefits have yet to be measured.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207112",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Erik",
+        "last_name": "Ruf",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Ruf95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207123",
+    "title": "A Type-Based Compiler for Standard ML",
+    "abstract": "Compile-time type information should be valuable in efficient compilation of statically typed functional languages such as Standard ML. But how should type-directed compilation work in real compilers, and how much performance gain will type-based optimizations yield? In order to support more efficient data representations and gain more experience about type-directed compilation, we have implemented a new type-based middle end and back end for the Standard ML of New Jersey compiler. We describe the basic design of the new compiler, identify a number of practical issues, and then compare the performance of our new compiler with the old non-type-based compiler. Our measurement shows that a combination of several simple type-based optimizations reduces heap allocation by 36%; and improves the already-efficient code generated by the old non-type-based compiler by about 19% on a DECstation 500.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207123",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ShaoA95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207163",
+    "title": "EEL: Machine-Independent Executable Editing",
+    "abstract": "EEL (Executable Editing Library) is a library for building tools to analyze and modify an executable (compiled) program. The systems and languages communities have built many tools for error detection, fault isolation, architecture translation, performance measurement, simulation, and optimization using this approach of modifying executables. Currently, however, tools of this sort are difficult and time-consuming to write and are usually closely tied to a particular machine and operating system. EEL supports a machine- and system-independent editing model that enables tool builders to modify an executable without being aware of the details of the underlying architecture or operating system or being concerned with the consequences of deleting instructions or adding foreign code.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207163",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "James R.",
+        "last_name": "Larus",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Schnarr",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/LarusS95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207116",
+    "title": "Avoiding Conditional Branches by Code Replication",
+    "abstract": "On-chip instruction caches are increasing in size. Compiler writers are exploiting this fact by applying a variety of optimization that improve the execution performance of a program at the expense of increasing its code size. This paper describes a new optimization that can be used to avoid conditional branches by replicating code. The central idea is to determine if there are paths where the result of a conditional branch will be known and to replicate code to exploit it. Algorithms are described for detecting when branches are avoidable, for restructuring the control flow to avoid these branches, and for positioning the replicated blocks in the restructured code. The results indicate that the optimization can be frequently applied with reductions in both the number of instructions executed and total instruction cache work.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207116",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Frank",
+        "last_name": "Mueller",
+        "institution": "Humboldt-Universität zu Berlin"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Whalley",
+        "institution": "Florida State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/MuellerW95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207148",
+    "title": "The LRPD Test: Speculative Run-Time Parallelization of Loops with Privatization and Reduction Parallelization",
+    "abstract": "Current parallelizing compilers cannot identify a significant fraction of parallelizable loops because they have complex or statically insufficiently defined access patterns. As parallelizable loops arise frequently in practice, we advocate a novel framework for their identification: speculatively execute the loop as a doall, and apply a fully parallel data dependence test to determine if it had any cross-iteration dependences; if the test fails, then the loop is re-executed serially. Since, from our experience, a significant amount of the available parallelism in Fortran programs can be exploited by loops transformed through privatization and reduction parallelization, our methods can speculatively apply these transformations and then check their validity at run-time. Another important contribution of this paper is a novel method for reduction recognition which goes beyond syntactic pattern matching; it detects at run-time if the values stored in an array participate in a reduction operation, even if they are transferred through private variables and/or are affected by statically unpredictable control flow. We present experimental results on loops from the PERFECT Benchmarks which substantiate our claim that these techniques can yield significant speedups which are often superior to those obtainable by inspector/executor methods.",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207148",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Lawrence",
+        "last_name": "Rauchwerger",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Padua",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/pldi/RauchwergerP95",
+    "venue": "pldi",
+    "year": 1995
+  },
+  {
+    "paper_id": "10.1145/207110.207115",
+    "title": "Efficient Building and Placing of Gating Functions",
+    "abstract": "this paper, we present an almost linear time algorithm to construct the GSA. The new algorithm is more efficient and simpler than the existing algorithms for GSA construction [BMO90, Hav93]. Since SSA is a special case of GSA, it can also be used as an efficient alternative algorithm for SSA construction. The existing algorithms for building the GSA follow two steps. The first step is the same",
+    "date": "1995-06-01",
+    "link": "https://doi.org/10.1145/207110.207115",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Peng",
+        "last_name": "Tu",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Padua",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/pldi/TuP95",
+    "venue": "pldi",
+    "year": 1995
+  }
+]

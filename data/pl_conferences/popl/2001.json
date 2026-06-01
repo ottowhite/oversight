@@ -1,0 +1,565 @@
+[
+  {
+    "paper_id": "10.1145/360204.360212",
+    "title": "Efficient deductive methods for program analysis",
+    "abstract": "No abstract available.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360212",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Harald",
+        "last_name": "Ganzinger",
+        "institution": "Max Planck Institute for Informatics"
+      }
+    ],
+    "dblp_key": "conf/popl/Ganzinger01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.375719",
+    "title": "BI as an Assertion Language for Mutable Data Structures",
+    "abstract": "Reynolds has developed a logic for reasoning about mutable data structures in which the pre- and postconditions are written in an intuitionistic logic enriched with a spatial form of conjunction. We investigate the approach from the point of view of the logic BI of bunched implications of O'Hearnand Pym. We begin by giving a model in which the law of the excluded middleholds, thus showing that the approach is compatible with classical logic. The relationship between the intuitionistic and classical versions of the system is established by a translation, analogous to a translation from intuitionistic logic into the modal logic S4. We also consider the question of completeness of the axioms. BI's spatial implication is used to express weakest preconditions for object-component assignments, and an axiom for allocating a cons cell is shown to be complete under an interpretation of triplesthat allows a command to be applied to states with dangling pointers. We make this latter a feature, by incorporating an operation, and axiom, for disposing of memory. Finally, we describe a local character enjoyed by specifications in the logic, and show how this enables a class of frame axioms, which say what parts of the heap don't change, to be inferred automatically.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.375719",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Samin",
+        "last_name": "Ishtiaq",
+        "institution": "Queen Mary University of London"
+      },
+      {
+        "first_name": "Peter W.",
+        "last_name": "O’Hearn",
+        "institution": "Queen Mary University of London"
+      }
+    ],
+    "dblp_key": "conf/popl/IshtiaqO01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360219",
+    "title": "A compiler technique for improving whole-program locality",
+    "abstract": "Exploiting spatial and temporal locality is essential for obtaining high performance on modern computers. Writing programs that exhibit high locality of reference is difficult and error-prone. Compiler researchers have developed loop transformations that allow the conversion of programs to exploit locality. Recently, transformations that change the memory layouts of multi-dimensional arrays---called data transformations---have been proposed. Unfortunately, both data and loop transformations have some important draw-backs. In this work, we present an integrated framework that uses loop and data transformations in concert to exploit the benefits of both approaches while minimizing the impact of their disadvantages. Our approach works inter-procedurally on acyclic call graphs, uses profile data to eliminate layout conflicts, and is unique in its capability of resolving conflicting layout requirements of different references to the same array in the same nest and in different nests for regular array-based applications.The optimization technique presented in this paper has been implemented in a source-to-source translator. We evaluate its performance using standard benchmark suites and several math libraries (complete programs) with large input sizes. Experimental results show that our approach reduces the overall execution times of original codes by 17.5% on the average. This reduction comes from three important characteristics of the technique, namely, resolving layout conflicts between references to the same array in a loop nest, determining a suitable order to propagate layout modifications across loop nests, and propagating layouts between different procedures in the program --- all in a unified framework.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360219",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mahmut",
+        "last_name": "Kandemir",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "conf/popl/Kandemir01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360221",
+    "title": "What packets may come: automata for network monitoring",
+    "abstract": "We consider the problem of monitoring an interactive device, such as an implementation of a network protocol, in order to check whether its execution is consistent with its specification. At rst glance, it appears that a monitor could simply follow the input-output trace of the device and check it against the specification. However, if the monitor is able to observe inputs and outputs only from a vantage point external to the device---as is typically the case---the problem becomes surprisingly difficult. This is because events may be bu ered, and even lost, between the monitor and the device, in which case, even for a correctly running device, the trace observed at the monitor could be inconsistent with the specification.In this paper, we formulate the problem of external monitoring as a language recognition problem. Given a specification that accepts a certain language of input-output sequences, we de ne another language that corresponds to input-output sequences observable externally. We also give an algorithm to check membership of a string in the derived language. It turns out that without any assumptions on the specification, this algorithm may take unbounded time and space. To address this problem, we de ne a series of properties of device specifications or protocols that can be exploited to construct e cient language recognizers at the monitor. We characterize these properties and provide complexity bounds for monitoring in each case.To illustrate our methodology, we describe properties of the Internet Transmission Control Protocol (TCP), and identify features of the protocol that make it challenging to monitor e ciently.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360221",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Karthikeyan",
+        "last_name": "Bhargavan",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Satish",
+        "last_name": "Chandra",
+        "institution": "Bell (Canada)"
+      },
+      {
+        "first_name": "Peter J.",
+        "last_name": "McCann",
+        "institution": "Nokia (United States)"
+      },
+      {
+        "first_name": "Carl A.",
+        "last_name": "Gunter",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/BhargavanCMG01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360216",
+    "title": "Oracle-based checking of untrusted software",
+    "abstract": "We present a variant of Proof-Carrying Code (PCC) in which the trusted inference rules are represented as a higherorder logic program, the proof checker is replaced by a nondeterministic higher-order logic interpreter and the proof by an oracle implemented as a stream of bits that resolve the nondeterministic interpretation choices. In this setting, Proof-Carrying Code allows the receiver of the code the luxury of using nondeterminism in constructing a simple yet powerful checking procedure. This oracle-based variant of PCC is able to adapt quite naturally to situations when the property being checked is simple or there is a fairly directed search procedure for it. As an example, we demonstrate that if PCC is used to verify type safety of assembly language programs compiled from Java source programs, the oracles that are needed are on the average just 12% of the size of the code, which represents an improvement of a factor of 30 over previous syntactic representations of PCC proofs. ...",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360216",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "George C.",
+        "last_name": "Necula",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "S. P.",
+        "last_name": "Rahul",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/popl/NeculaR01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360210",
+    "title": "The size-change principle for program termination",
+    "abstract": "The \"size-change termination\" principle for a first-order functional language with well-founded data is: a program terminates on all inputs if every infinite call sequence (following program control flow) would cause an infinite descent in some data values.Size-change analysis is based only on local approximations to parameter size changes derivable from program syntax. The set of infinite call sequences that follow program flow and can be recognized as causing infinite descent is an &omega;-regular set, representable by a B&uuml;chi automaton. Algorithms for such automata can be used to decide size-change termination. We also give a direct algorithm operating on \"size-change graphs\" (without the passage to automata).Compared to other results in the literature, termination analysis based on the size-change principle is surprisingly simple and general: lexical orders (also called lexicographic orders), indirect function calls and permuted arguments (descent that is not in-situ) are all handled automatically and without special treatment, with no need for manually supplied argument orders, or theorem-proving methods not certain to terminate at analysis time.We establish the problem's intrinsic complexity. This turns out to be surprisingly high, complete for PSPACE, in spite of the simplicity of the principle. PSPACE hardness is proved by a reduction from Boolean program termination. An ineresting consequence: the same hardness result applies to many other analyses found in the termination and quasitermination literature.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360210",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Chin Soon",
+        "last_name": "Lee",
+        "institution": "University of Western Australia"
+      },
+      {
+        "first_name": "Neil D.",
+        "last_name": "Jones",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Amir M.",
+        "last_name": "Ben-Amram",
+        "institution": "Academic College of Tel Aviv-Yafo"
+      }
+    ],
+    "dblp_key": "conf/popl/LeeJB01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360220",
+    "title": "Avoiding exponential explosion: generating compact verification conditions",
+    "abstract": "Current verification condition (VC) generation algorithms, such as weakest preconditions, yield a VC whose size may be exponential in the size of the code fragment being checked. This paper describes a two-stage VC generation algorithm that generates compact VCs whose size is worst-case quadratic in the size of the source fragment, and is close to linear in practice.This two-stage VC generation algorithm has been implemented as part of the Extended Static Checker for Java. It has allowed us to check large and complex methods that would otherwise be impossible to check due to time and space constraints.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360220",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": ""
+      },
+      {
+        "first_name": "James B.",
+        "last_name": "Saxe",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/FlanaganS01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360215",
+    "title": "A generic type system for the Pi-calculus",
+    "abstract": "We propose a general, powerful framework of type systems for the &pi;-calculus, and show that we can obtain as its instances a variety of type systems guaranteeing non-trivial properties like deadlock-freedom and race-freedom. A key idea is to express types and type environments as abstract processes: We can check various properties of a process by checking the corresponding properties of its type environment. The framework clarifies the essence of recent complex type systems, and it also enables sharing of a large amount of work such as a proof of type preservation, making it easy to develop new type systems.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360215",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Atsushi",
+        "last_name": "Igarashi",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Naoki",
+        "last_name": "Kobayashi",
+        "institution": "Tokyo University of Information Sciences"
+      }
+    ],
+    "dblp_key": "conf/popl/IgarashiK01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360209",
+    "title": "Regular expression pattern matching for XML",
+    "abstract": "We propose regular expression pattern matching as a core feature for programming languages for manipulating XML (and similar tree-structured data formats). We extend conventional pattern-matching facilities with regular expression operators such as repetition (*), alternation (I), etc., that can match arbitrarily long sequences of subtrees, allowing a compact pattern to extract data from the middle of a complex sequence. We show how to check standard notions of exhaustiveness and redundancy for these patterns.Regular expression patterns are intended to be used in languages whose type systems are also based on the regular expression types. To avoid excessive type annotations, we develop a type inference scheme that propagates type constraints to pattern variables from the surrounding context. The type inference algorithm translates types and patterns into regular tree automata and then works in terms of standard closure operations (union, intersection, and difference) on tree automata. The main technical challenge is dealing with the interaction of repetition and alternation patterns with the first-match policy, which gives rise to subtleties concerning both the termination and the precision of the analysis. We address these issues by introducing a data structure representing closure operations lazily.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360209",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Haruo",
+        "last_name": "Hosoya",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Benjamin C.",
+        "last_name": "Pierce",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/HosoyaP01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360232",
+    "title": "Subtyping arithmetical types",
+    "abstract": "We consider the type system formed by a finite set of primitive types such as integer, character, real, etc., and three type construction operators: (i) Cartesian product, (ii) disjoint sum, and (iii) recursive type definitions. Type equivalence is defined to obey the arithmetical rules: commutativity and associativity of product and sum and distributivity of product over sum. We offer a compact representation of the types in this system as multivariate algebraic functions. This type system admits two natural notions of subtyping: \"multiplicative\", which roughly corresponds to the notion of object-oriented subtyping, and \"additive\", which seems to be more appropriate in our context. Both kinds of subtyping can be efficiently computed if no recursive definitions are allowed. Our main result is that additive subtyping is undecidable in the general case. Perhaps surprisingly, this undecidability result is by reduction from Hilbert's Tenth Problem (HIO): the solution of Diophantine equations.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360232",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Joseph",
+        "last_name": "Gil",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/Gil01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360223",
+    "title": "Secure safe ambients",
+    "abstract": "Secure Safe Ambients (SSA) are a typed variant of Safe Ambients [9], whose type system allows behavioral invariants of ambients to be expressed and verified. The most significant aspect of the type system is its ability to capture both explicit and implicit process and ambient behavior: process types account not only for immediate behavior, but also for the behavior resulting from capabilities a process acquires during its evolution in a given context. Based on that, the type system provides for static detection of security attacks such as Trojan Horses and other combinations of malicious agents.We study the type system of SSA, define algorithms for type checking and type reconstruction, define powerful languages for expressing security properties, and study a distributed version of SSA and its type system. For the latter, we show that distributed type checking ensures security even in ill-typed contexts, and discuss how it relates to the security architecture of the Java Virtual Machine.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360223",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Michele",
+        "last_name": "Bugliesi",
+        "institution": "Ca' Foscari University of Venice"
+      },
+      {
+        "first_name": "Giuseppe",
+        "last_name": "Castagna",
+        "institution": "École Normale Supérieure"
+      }
+    ],
+    "dblp_key": "conf/popl/BugliesiC01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360222",
+    "title": "Computational flux",
+    "abstract": "No abstract available.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360222",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robin",
+        "last_name": "Milner",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/Milner01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360228",
+    "title": "Typing a multi-language intermediate code",
+    "abstract": "The Microsoft .NET Framework is a new computing architecture designed to support a variety of distributed applications and web-based services. .NET software components are typically distributed in an object-oriented intermediate language, Microsoft IL, executed by the Microsoft Common Language Runtime. To allow convenient multi-language working, IL supports a wide variety of high-level language constructs, including class-based objects, inheritance, garbage collection, and a security mechanism based on type safe execution.This paper precisely describes the type system for a substantial fragment of IL that includes several novel features: certain objects may be allocated either on the heap or on the stack; those on the stack may be boxed onto the heap, and those on the heap may be unboxed onto the stack; methods may receive arguments and return results via typed pointers, which can reference both the stack and the heap, including the interiors of objects on the heap. We present a formal semantics for the fragment. Our typing rules determine well-typed IL instruction sequences that can be assembled and executed. Of particular interest are rules to ensure no pointer into the stack outlives its target. Our main theorem asserts type safety, that well-typed programs in our IL fragment do not lead to untrapped execution errors.Our main theorem does not directly apply to the product. Still, the formal system of this paper is an abstraction of informal and executable specifications we wrote for the full product during its development. Our informal specification became the basis of the product team's working specification of type-checking. The process of writing this specification, deploying the executable specification as a test oracle, and applying theorem proving techniques, helped us identify several security critical bugs during development.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360228",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Andrew D.",
+        "last_name": "Gordon",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Don",
+        "last_name": "Syme",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/GordonS01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360208",
+    "title": "Type-base flow analysis: from polymorphic subtyping to CFL-reachability",
+    "abstract": "We present a novel approach to scalable implementation of type-based flow analysis with polymorphic subtyping. Using a new presentation of polymorphic subytping with instantiation constraints, we are able to apply context-free language (CFL) reachability techniques to type-based flow analysis. We develop a CFL-based algorithm for computing flow-information in time O(n&sup3;), where n is the size of the typed program. The algorithm substantially improves upon the best previously known algorithm for flow analysis based on polymorphic subtyping with complexity O(n8). Our technique also yields the first demand-driven algorithm for polymorphic subtype-based flow-computation. It works directly on higher-order programs with structured data of finite type (unbounded data structures are incorporated via finite approximations), supports context-sensitive, global flow summariztion and includes polymorphic recursion.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360208",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jakob",
+        "last_name": "Rehof",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Fähndrich",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/RehofF01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360213",
+    "title": "Mobile values, new names, and secure communication",
+    "abstract": "We study the interaction of the \"new\" construct with a rich but common form of (first-order) communication. This interaction is crucial in security protocols, which are the main motivating examples for our work; it also appears in other programming-language contexts. Specifically, we introduce a simple, general extension of the pi calculus with value passing, primitive functions, and equations among terms. We develop semantics and proof techniques for this extended language and apply them in reasoning about some security protocols.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360213",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martı́n",
+        "last_name": "Abadi",
+        "institution": "Alcatel Lucent (Germany)"
+      },
+      {
+        "first_name": "Cédric",
+        "last_name": "Fournet",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/AbadiF01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360217",
+    "title": "Stratified operational semantics for safety and correctness of the region calculus",
+    "abstract": "The region analysis of Tofte and Talpin is an attempt to determine statically the life span of dynamically allocated objects. But the calculus is at once intuitively simple, yet deceptively subtle, and previous theoretical analyses have been frustratingly complex: no analysis has revealed and explained in simple terms the connection between the subleties of the calculus and the imperative features it builds on. We present a novel approach for proving safety and correctness of a simplified version of the region calculus. We give a stratified operational semantics, composed of a highlevel semantics dealing with the conceptual difficulties of effect annotations, and a low-level one with explicit operations on a region-indexed store. The main results of the paper are a proof simpler than previous ones, and a modular approach to type safety and correctness. The flexibility of this approach is demonstrated by the simplicity of the extension to the full calculus with type and region polymorphism.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360217",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Cristiano",
+        "last_name": "Calcagno",
+        "institution": "Queen Mary University of London"
+      }
+    ],
+    "dblp_key": "conf/popl/Calcagno01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360230",
+    "title": "Type-indexed rows",
+    "abstract": "Record calculi use labels to distinguish between the elements of products and sums. This paper presents a novel variation, type-indexed rows, in which labels are discarded and elements are indexed by their type alone. The calculus, &lambda;TIR, can express tuples, recursive datatypes, monomorphic records, polymorphic extensible records, and closed-world style type-based overloading. Our motivating application of &lambda;TIR, however, is to encode the \"choice\" types of XML, and the \"unordered tuple\" types of SGML. Indeed, &lambda;TIR is the kernel of the language XM&lambda;, a lazy functional language with direct support for XML types (\"DTDs\") and terms (\"documents\").The system is built from rows, equality constraints, insertion constraints and constrained, or qualified, parametric polymorphism. The test for constraint satisfaction is complete, and for constraint entailment is only mildly incomplete. We present a type checking algorithm, and show how &lambda;TIR may be implemented by a type-directed translation which replaces type-indexing by conventional natural-number indexing. Though not presented in this paper, we have also developed a constraint simplification algorithm and type inference system.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360230",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mark",
+        "last_name": "Shields",
+        "institution": "Oregon Research Institute"
+      },
+      {
+        "first_name": "Erik",
+        "last_name": "Meijer",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/popl/ShieldsM01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360205",
+    "title": "Programming language methods in computer security",
+    "abstract": "This invited talk will give a personal view of the field of computer security and summarize some ways that methods from the study of programming language principles can be applied to problems in computer security. Some background information is provided here in this short document.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360205",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John C.",
+        "last_name": "Mitchell",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/Mitchell01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360233",
+    "title": "Combining subsumption and binary methods: an object calculus with views",
+    "abstract": "We presen t an object-oriented calculus whic hallows arbitrary hiding of methods in protot ypes, even in the presence of binary methods and friend functions. This combination of features permits complete control of the in terface a class exposes to the remainder of a program (which is of key importance for program readability, security and ease of maintenance), while still allowing complex in teractions with other classes belonging to the same module or softw are component.This result is made possible by the use of views. A view is a name that specifies an in terface to an object. A set of views is attached to each object and a method can be invoked either directly or via a view of the object.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360233",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jérôme",
+        "last_name": "Vouillon",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/Vouillon01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360225",
+    "title": "Modules, abstract types, and distributed versioning",
+    "abstract": "In a wide-area distributed system it is often impractical to synchronise software updates, so one must deal with many coexisting versions. We study static typing support for modular wide-area programming, modelling separate compilation/linking and execution of programs that interact along typed channels. Interaction may involve communication of values of abstract types; we provide the developer with fine-grain versioning control of these types to support interoperation of old and new code. The system makes use of a second-class module system with singleton kinds; we give a novel operational semantics for separate compilation/linking and execution and prove soundness.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360225",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/Sewell01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360206",
+    "title": "Verifying safety properties of concurrent Java programs using 3-valued logic",
+    "abstract": "We provide a parametric framework for verifying safety properties of concurrent Java programs. The framework combines thread-scheduling information with information about the shape of the heap. This leads to error-detection algorithms that are more precise than existing techniques. The framework also provides the most precise shape-analysis algorithm for concurrent programs. In contrast to existing verification techniques, we do not put a bound on the number of allocated objects. The framework even produces interesting results when analyzing Java programs with an unbounded number of threads. The framework is applied to successfully verify the following properties of a concurrent program: &bull;Concurrent manipulation of linked-list based ADT preserves the ADT datatype invariant [19]. &bull;The program does not perform inconsistent updates due to interference. &bull;The program does not reach a deadlock. &bull;The program does not produce run-time errors due to illegal thread interactions. We also find bugs in erroneous versions of such implementations. A prototype of our framework has been implemented.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360206",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Eran",
+        "last_name": "Yahav",
+        "institution": "Tel Aviv University"
+      }
+    ],
+    "dblp_key": "conf/popl/Yahav01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360207",
+    "title": "Colored local type inference",
+    "abstract": "We present a type system for a language based on $F_\\\\leq$ , which allows certain type annotations to be elided in actual programs. Local type inference determines types by a combination of type propagation and local constraint solving, rather than by global constraint solving. We refine the previously existing local type inference system of Pierce and Turner[PT98] by allowing partial type information to be propagated. This is expressed by coloring types to indicate propagation directions. Propagating partial type information allows us to omit type annotations for the visitor pattern, the analogue of pattern matching in languages without sum types.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360207",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Odersky",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Christoph",
+        "last_name": "Zenger",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Zenger",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/popl/OderskyZZ01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360218",
+    "title": "Type-preserving garbage collectors",
+    "abstract": "By combining existing type systems with standard type-based compilation techniques, we describe how to write strongly typed programs that include a function that acts as a t racing garbage collector for the program. Since the garbage collector is an explicit function, we do not need to provide a t rusted garbage collector as a runtime service to manage memory.Since our language is strongly typed, the standard type soundness guarantee \"Well typed programs do not go wrong\" is extended to include the collector. Our type safety guarantee is non-trivial since not only does it guarantee the type safety of the garbage collector, but it guarantees that the collector preservers the type safety of the program being garbage collected. We describe the technique in detail and report performance measurements for a few microbench-marks as well as sketch the proofs of type soundness for our system.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360218",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Daniel C.",
+        "last_name": "Wang",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/WangA01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360214",
+    "title": "Nomadic pict: correct communication infrastructure for mobile computation",
+    "abstract": "This paper addresses the design and verification of infrastructure for mobile computation. In particular, we study language primitives for communication between mobile agents. They can be classi ed into two groups. At a low level there are location dependent primitives that require a programmer to know the current site of a mobile agent in order to communicate with it. At a high level there are location independent primitives that allow communication with a mobile agent irrespective of any migrations. Implementation of the high level requires delicate distributed infrastructure algorithms. In earlier work with Wojciechowski and Pierce we made the two levels precise as process calculi, allowing such algorithms to be expressed as encodings of the high level into the low level; we built NOMADIC PICT, a distributed programming language for experimenting with such encodings. In this paper we turn to semantics, giving a de nition of the core language and proving correctness of an example infrastructure. This requires novel techniques: we develop equivalences that take migration into account, and reasoning principles for agents that are temporarily immobile (eg. waiting on a lock elsewhere in the system).",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360214",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Asis",
+        "last_name": "Unyapoth",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/UnyapothS01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.375707",
+    "title": "Extensionality and Intensionality of the Ambient Logics",
+    "abstract": "The ambient logic has been proposed for expressing properties of process mobility in the calculus of Mobile Ambients (MA), and as a basis for query languages on semistructured data. To understand the extensionality and the intensionality of the logic, the equivalence on MA processes induced by the logic (=L) iscompared with the standard MA behavioural equivalence and with structural congruence (an intensional equivalence, used as an auxiliary relation in thedefinition of satisfaction of the logic). The main contributions include a co-inductive characterisation of <=L as a form of labelled bisimilarity, and axiomatisations of <=L on the synchronous and asynchronous (finite) calculus. The study shows that, surprisingly, the logic allows us to observe the internal structure of the processes at a very finegrained detail, much in the same way as structural congruence does. A spin-off of the study is a better understanding of behavioural equivalence in Ambient-like calculi. For instance, behavioural equivalence is shown to be insensitive to stuttering phenomena originated by processes that may repeatedly enter and exit an ambient.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.375707",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Davide",
+        "last_name": "Sangiorgi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Sangiorgi01",
+    "venue": "popl",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/360204.360211",
+    "title": "An abstract Monte-Carlo method for the analysis of probabilistic programs",
+    "abstract": "We introduce a new method, combination of random testing and abstract interpretation, for the analysis of programs featuring both probabilistic and non-probabilistic nondeterminism. After introducing \"ordinary\" testing, we show how to combine testing and abstract interpretation and give formulas linking the precision of the results to the number of iterations. We then discuss complexity and optimization issues and end with some experimental results.",
+    "date": "2001-01-01",
+    "link": "https://doi.org/10.1145/360204.360211",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Monniaux",
+        "institution": "École Normale Supérieure - PSL"
+      }
+    ],
+    "dblp_key": "conf/popl/Monniaux01",
+    "venue": "popl",
+    "year": 2001
+  }
+]

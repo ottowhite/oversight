@@ -1,0 +1,1518 @@
+[
+  {
+    "paper_id": "10.1145/3062341.3062377",
+    "title": "Generalizations of the theory and deployment of triangular inequality for compiler-based strength reduction",
+    "abstract": "Triangular Inequality (TI) has been used in many manual algorithm designs to achieve good efficiency in solving some distance calculation-based problems. This paper presents our generalization of the idea into a compiler optimization technique, named TI-based strength reduction. The generalization consists of three parts. The first is the establishment of the theoretic foundation of this new optimization via the development of a new form of TI named Angular Triangular Inequality, along with several fundamental theorems. The second is the revealing of the properties of the new forms of TI and the proposal of guided TI adaptation, a systematic method to address the difficulties in effective deployments of TI optimizations. The third is an integration of the new optimization technique in an open-source compiler. Experiments on a set of data mining and machine learning algorithms show that the new technique can speed up the standard implementations by as much as 134X and 46X on average for distance-related problems, outperforming previous TI-based optimizations by 2.35X on average. It also extends the applicability of TI-based optimizations to vector related problems, producing tens of times of speedup.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062377",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yufei",
+        "last_name": "Ding",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Lin",
+        "last_name": "Ning",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Hui",
+        "last_name": "Guan",
+        "institution": "North Carolina State University"
+      },
+      {
+        "first_name": "Xipeng",
+        "last_name": "Shen",
+        "institution": "North Carolina State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/DingNGS17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062353",
+    "title": "Synthesizing memory models from framework sketches and Litmus tests",
+    "abstract": "A memory consistency model specifies which writes to shared memory a given read may see. Ambiguities or errors in these specifications can lead to bugs in both compilers and applications. Yet architectures usually define their memory models with prose and litmus tests—small concurrent programs that demonstrate allowed and forbidden outcomes. Recent work has formalized the memory models of common architectures through substantial manual effort, but as new architectures emerge, there is a growing need for tools to aid these efforts.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062353",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "James",
+        "last_name": "Bornholt",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Emina",
+        "last_name": "Torlak",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/BornholtT17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062366",
+    "title": "Low-synchronization, mostly lock-free, elastic scheduling for streaming runtimes",
+    "abstract": "We present the scalable, elastic operator scheduler in IBM Streams 4.2. Streams is a distributed stream processing system used in production at many companies in a wide range of industries. The programming language for Streams, SPL, presents operators, tuples and streams as the primary abstractions. A fundamental SPL optimization is operator fusion, where multiple operators execute in the same process. Streams 4.2 introduces automatic submission-time fusion to simplify application development and deployment. However, potentially thousands of operators could then execute in the same process, with no user guidance for thread placement. We needed a way to automatically figure out how many threads to use, with arbitrarily sized applications on a wide variety of hardware, and without any input from programmers. Our solution has two components. The first is a scalable operator scheduler that minimizes synchronization, locks and global data, while allowing threads to execute any operator and dynamically come and go. The second is an elastic algorithm to dynamically adjust the number of threads to optimize performance, using the principles of trusted measurements to establish trends. We demonstrate our scheduler's ability to scale to over a hundred threads, and our elasticity algorithm's ability to adapt to different workloads on an Intel Xeon system with 176 logical cores, and an IBM Power8 system with 184 logical cores.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062366",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Scott",
+        "last_name": "Schneider",
+        "institution": ""
+      },
+      {
+        "first_name": "Kun‐Lung",
+        "last_name": "Wu",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/0001W17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062371",
+    "title": "Low overhead dynamic binary translation on ARM",
+    "abstract": "The ARMv8 architecture introduced AArch64, a 64-bit execution mode with a new instruction set, while retaining binary compatibility with previous versions of the ARM architecture through AArch32, a 32-bit execution mode. Most hardware implementations of ARMv8 processors support both AArch32 and AArch64, which comes at a cost in hardware complexity.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062371",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Amanieu",
+        "last_name": "d'Antras",
+        "institution": "University of Manchester"
+      },
+      {
+        "first_name": "Cosmin",
+        "last_name": "Gorgovan",
+        "institution": "University of Manchester"
+      },
+      {
+        "first_name": "Jim",
+        "last_name": "Garside",
+        "institution": "University of Manchester"
+      },
+      {
+        "first_name": "Mikel",
+        "last_name": "Luján",
+        "institution": "University of Manchester"
+      }
+    ],
+    "dblp_key": "conf/pldi/DAntrasGGL17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062385",
+    "title": "Cache locality optimization for recursive programs",
+    "abstract": "We present an approach to optimize the cache locality for recursive programs by dynamically splicing---recursively interleaving---the execution of distinct function invocations. By utilizing data effect annotations, we identify concurrency and data reuse opportunities across function invocations and interleave them to reduce reuse distance. We present algorithms that efficiently track effects in recursive programs, detect interference and dependencies, and interleave execution of function invocations using user-level (non-kernel) lightweight threads. To enable multi-core execution, a program is parallelized using a nested fork/join programming model. Our cache optimization strategy is designed to work in the context of a random work stealing scheduler. We present an implementation using the MIT Cilk framework that demonstrates significant improvements in sequential and parallel performance, competitive with a state-of-the-art compile-time optimizer for loop programs and a domain-specific optimizer for stencil programs.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062385",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jonathan",
+        "last_name": "Lifflander",
+        "institution": "Sandia National Laboratories"
+      },
+      {
+        "first_name": "Sriram",
+        "last_name": "Krishnamoorthy",
+        "institution": "Pacific Northwest National Laboratory"
+      }
+    ],
+    "dblp_key": "conf/pldi/LifflanderK17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062388",
+    "title": "Rigorous analysis of software countermeasures against cache attacks",
+    "abstract": "CPU caches introduce variations into the execution time of programs that can be exploited by adversaries to recover private information about users or cryptographic keys.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062388",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Goran",
+        "last_name": "Doychev",
+        "institution": "IMDEA Software"
+      },
+      {
+        "first_name": "Boris",
+        "last_name": "Köpf",
+        "institution": "IMDEA Software"
+      }
+    ],
+    "dblp_key": "conf/pldi/DoychevK17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062344",
+    "title": "Instruction punning: lightweight instrumentation for x86-64",
+    "abstract": "Existing techniques for injecting probes into running applications are limited;",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062344",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Buddhika",
+        "last_name": "Chamith",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Bo Joel",
+        "last_name": "Svensson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Luke",
+        "last_name": "Dalessandro",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Newton",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChamithSDN17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062356",
+    "title": "Proactive and adaptive energy-aware programming with mixed typechecking",
+    "abstract": "Application-level energy management is an important dimension of energy optimization. In this paper, we introduce ENT, a novel programming language for enabling *proactive* and *adaptive* mode-based energy management at the application level. The proactive design allows programmers to apply their application knowledge to energy management, by characterizing the energy behavior of different program fragments with modes. The adaptive design allows such characterization to be delayed until run time, useful for capturing dynamic program behavior dependent on program states, configuration settings, external battery levels, or CPU temperatures. The key insight is both proactiveness and adaptiveness can be unified under a type system combined with static typing and dynamic typing. ENT has been implemented as an extension to Java, and successfully ported to three energy-conscious platforms: an Intel-based laptop, a Raspberry Pi, and an Android phone. Evaluation shows ENT improves the programmability, debuggability, and energy efficiency of battery-aware and temperature-aware programs.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062356",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Anthony",
+        "last_name": "Canino",
+        "institution": "Binghamton University"
+      },
+      {
+        "first_name": "Yu David",
+        "last_name": "Liu",
+        "institution": "Binghamton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/CaninoL17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062347",
+    "title": "FunTAL: reasonably mixing a functional language with assembly",
+    "abstract": "We present FunTAL, the first multi-language system to formalize safe interoperability between a high-level functional language and low-level assembly code while supporting compositional reasoning about the mix. A central challenge in developing such a multi-language is bridging the gap between assembly, which is staged into jumps to continuations, and high-level code, where subterms return a result. We present a compositional stack-based typed assembly language that supports components, comprised of one or more basic blocks, that may be embedded in high-level contexts. We also present a logical relation for FunTAL that supports reasoning about equivalence of high-level components and their assembly replacements, mixed-language programs with callbacks between languages, and assembly components comprised of different numbers of basic blocks.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062347",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Patterson",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Jamie",
+        "last_name": "Perconti",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Christos",
+        "last_name": "Dimoulas",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Amal",
+        "last_name": "Ahmed",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/pldi/PattersonPDA17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062375",
+    "title": "Compiling Markov chain Monte Carlo algorithms for probabilistic modeling",
+    "abstract": "The problem of probabilistic modeling and inference, at a high-level, can be viewed as constructing a (model, query, inference) tuple, where an inference algorithm implements a query on a model. Notably, the derivation of inference algorithms can be a difficult and error-prone task. Hence, researchers have explored how ideas from probabilistic programming can be applied. In the context of constructing these tuples, probabilistic programming can be seen as taking a language-based approach to probabilistic modeling and inference. For instance, by using (1) appropriate languages for expressing models and queries and (2) devising inference techniques that operate on encodings of models (and queries) as program expressions, the task of inference can be automated.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062375",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Huang",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Jean-Baptiste",
+        "last_name": "Tristan",
+        "institution": "Oracle (United States)"
+      },
+      {
+        "first_name": "Greg",
+        "last_name": "Morrisett",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/pldi/HuangTM17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062387",
+    "title": "Similarity of binaries through re-optimization",
+    "abstract": "We present a scalable approach for establishing similarity between stripped binaries (with no debug information). The main challenge in binary similarity, is to establish similarity even when the code has been compiled using different compilers, with different optimization levels, or targeting different architectures. Overcoming this challenge, while avoiding false positives, is invaluable to the process of reverse engineering and the process of locating vulnerable code.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062387",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yaniv",
+        "last_name": "David",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Nimrod",
+        "last_name": "Partush",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Eran",
+        "last_name": "Yahav",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/DavidPY17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062384",
+    "title": "Flatten and conquer: a framework for efficient analysis of string constraints",
+    "abstract": "We describe a uniform and efficient framework for checking the satisfiability of a large class of string constraints. The framework is based on the observation that both satisfiability and unsatisfiability of common constraints can be demonstrated through witnesses with simple patterns. These patterns are captured using flat automata each of which consists of a sequence of simple loops. We build a Counter-Example Guided Abstraction Refinement (CEGAR) framework which contains both an under- and an over-approximation module. The flow of information between the modules allows to increase the precision in an automatic manner. We have implemented the framework as a tool and performed extensive experimentation that demonstrates both the generality and efficiency of our method.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062384",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Parosh Aziz",
+        "last_name": "Abdulla",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Mohamed Faouzi",
+        "last_name": "Atig",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Yu‐Fang",
+        "last_name": "Chen",
+        "institution": "Academia Sinica"
+      },
+      {
+        "first_name": "Bui Phi",
+        "last_name": "Diep",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Lukáš",
+        "last_name": "Holík",
+        "institution": "Brno University of Technology"
+      },
+      {
+        "first_name": "Ahmed",
+        "last_name": "Rezine",
+        "institution": "Linköping University"
+      },
+      {
+        "first_name": "Philipp",
+        "last_name": "Rümmer",
+        "institution": "Uppsala University"
+      }
+    ],
+    "dblp_key": "conf/pldi/AbdullaACDHRR17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062363",
+    "title": "Bringing the web up to speed with WebAssembly",
+    "abstract": "The maturation of the Web platform has given rise to sophisticated and demanding Web applications such as interactive 3D visualization, audio and video software, and games. With that, efficiency and security of code on the Web has become more important than ever. Yet JavaScript as the only built-in language of the Web is not well-equipped to meet these requirements, especially as a compilation target.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062363",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Haas",
+        "institution": ""
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Rossberg",
+        "institution": ""
+      },
+      {
+        "first_name": "Derek L.",
+        "last_name": "Schuff",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "Ben L.",
+        "last_name": "Titzer",
+        "institution": ""
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Holman",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Gohman",
+        "institution": ""
+      },
+      {
+        "first_name": "Luke",
+        "last_name": "Wagner",
+        "institution": ""
+      },
+      {
+        "first_name": "Alon",
+        "last_name": "Zakai",
+        "institution": ""
+      },
+      {
+        "first_name": "JF",
+        "last_name": "Bastien",
+        "institution": "Apple (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/HaasRSTHGWZB17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062383",
+    "title": "Achieving high coverage for floating-point code via unconstrained programming",
+    "abstract": "Achieving high code coverage is essential in testing, which gives us confidence in code quality. Testing floating-point code usually requires painstaking efforts in handling floating-point constraints, e.g., in symbolic execution. This paper turns the challenge of testing floating-point code into the opportunity of applying unconstrained programming --- the mathematical solution for calculating function minimum points over the entire search space. Our core insight is to derive a representing function from the floating-point program, any of whose minimum points is a test input guaranteed to exercise a new branch of the tested program. This guarantee allows us to achieve high coverage of the floating-point program by repeatedly minimizing the representing function.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062383",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Zhoulai",
+        "last_name": "Fu",
+        "institution": "University of California, Davis"
+      },
+      {
+        "first_name": "Zhendong",
+        "last_name": "Su",
+        "institution": "University of California, Davis"
+      }
+    ],
+    "dblp_key": "conf/pldi/FuS17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062348",
+    "title": "HoTTSQL: proving query rewrites with univalent SQL semantics",
+    "abstract": "Every database system contains a query optimizer that performs query rewrites. Unfortunately, developing query optimizers remains a highly challenging task. Part of the challenges comes from the intricacies and rich features of query languages, which makes reasoning about rewrite rules difficult. In this paper, we propose a machine-checkable denotational semantics for SQL, the de facto language for relational database, for rigorously validating rewrite rules. Unlike previously proposed semantics that are either non-mechanized or only cover a small amount of SQL language features, our semantics covers all major features of SQL, including bags, correlated subqueries, aggregation, and indexes. Our mechanized semantics, called HoTT SQL, is based on K-Relations and homotopy type theory, where we denote relations as mathematical functions from tuples to univalent types. We have implemented HoTTSQL in Coq, which takes only fewer than 300 lines of code and have proved a wide range of SQL rewrite rules, including those from database research literature (e.g., magic set rewrites) and real-world query optimizers (e.g., subquery elimination). Several of these rewrite rules have never been previously proven correct. In addition, while query equivalence is generally undecidable, we have implemented an automated decision procedure using HoTTSQL for conjunctive queries: a well studied decidable fragment of SQL that encompasses many real-world queries.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062348",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Shumo",
+        "last_name": "Chu",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Konstantin",
+        "last_name": "Weitz",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Alvin",
+        "last_name": "Cheung",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Dan",
+        "last_name": "Suciu",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChuWCS17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062367",
+    "title": "Network configuration synthesis with abstract topologies",
+    "abstract": "We develop Propane/AT, a system to synthesize provably-correct BGP (border gateway protocol) configurations for large, evolving networks from high-level specifications of topology, routing policy, and fault-tolerance requirements. Propane/AT is based on new abstractions for capturing parameterized network topologies and their evolution, and algorithms to analyze the impact of topology and routing policy on fault tolerance. Our algorithms operate entirely on abstract topologies. We prove that the properties established by our analyses hold for every concrete instantiation of the given abstract topology. Propane/AT also guarantees that only incremental changes to existing device configurations are required when the network evolves to add or remove devices and links. Our experiments with real-world topologies and policies show that our abstractions and algorithms are effective, and that, for large networks, Propane/AT synthesizes configurations two orders of magnitude faster than systems that operate on concrete topologies.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062367",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ryan",
+        "last_name": "Beckett",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Ratul",
+        "last_name": "Mahajan",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Todd",
+        "last_name": "Millstein",
+        "institution": "University of California, Los Angeles"
+      },
+      {
+        "first_name": "Jitendra",
+        "last_name": "Padhye",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BeckettMMPW17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062378",
+    "title": "Decomposition instead of self-composition for proving the absence of timing channels",
+    "abstract": "We present a novel approach to proving the absence of timing channels. The idea is to partition the program's execution traces in such a way that each partition component is checked for timing attack resilience by a time complexity analysis and that per-component resilience implies the resilience of the whole program. We construct a partition by splitting the program traces at secret-independent branches. This ensures that any pair of traces with the same public input has a component containing both traces. Crucially, the per-component checks can be normal safety properties expressed in terms of a single execution. Our approach is thus in contrast to prior approaches, such as self-composition, that aim to reason about multiple (k≥ 2) executions at once.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062378",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Timos",
+        "last_name": "Antonopoulos",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Gazzillo",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Koskinen",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Tachio",
+        "last_name": "Terauchi",
+        "institution": "Japan Advanced Institute of Science and Technology"
+      },
+      {
+        "first_name": "Shiyi",
+        "last_name": "Wei",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/AntonopoulosGHK17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062345",
+    "title": "Automatic program inversion using symbolic transducers",
+    "abstract": "We propose a fully-automated technique for inverting functional programs that operate over lists such as string encoders and decoders. We consider programs that can be modeled using symbolic extended finite transducers (), an expressive model that can describe complex list-manipulating programs while retaining several decidable properties. Concretely, given a program P expressed as an , we propose techniques for: (1) checking whether P is injective and, if that is the case, (2) building an P-1 describing its inverse. We first show that it is undecidable to check whether an is injective and propose an algorithm for checking injectivity for a restricted, but a practical class of . We then propose an algorithm for inverting based on the following idea: if an is injective, inverting it amounts to inverting all its individual transitions. We leverage recent advances program synthesis and show that the transition inversion problem can be expressed as an instance of the syntax-guided synthesis framework. Finally, we implement the proposed techniques in a tool called and show that can invert 13 out 14 real complex string encoders and decoders, producing inverse programs that are substantially identical to manually written ones.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062345",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Qinheping",
+        "last_name": "Hu",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Loris",
+        "last_name": "D’Antoni",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/HuD17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062342",
+    "title": "BARRACUDA: binary-level analysis of runtime RAces in CUDA programs",
+    "abstract": "GPU programming models enable and encourage massively parallel programming with over a million threads, requiring extreme parallelism to achieve good performance. Massive parallelism brings significant correctness challenges by increasing the possibility for bugs as the number of thread interleavings balloons. Conventional dynamic safety analyses struggle to run at this scale.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062342",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ariel",
+        "last_name": "Eizenberg",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Yuanfeng",
+        "last_name": "Peng",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Toma",
+        "last_name": "Pigli",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "William",
+        "last_name": "Mansky",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Devietti",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/pldi/EizenbergPPMD17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062349",
+    "title": "Synthesizing program input grammars",
+    "abstract": "We present an algorithm for synthesizing a context-free grammar encoding the language of valid program inputs from a set of input examples and blackbox access to the program. Our algorithm addresses shortcomings of existing grammar inference algorithms, which both severely overgeneralize and are prohibitively slow. Our implementation, GLADE, leverages the grammar synthesized by our algorithm to fuzz test programs with structured inputs. We show that GLADE substantially increases the incremental coverage on valid inputs compared to two baseline fuzzers.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062349",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Osbert",
+        "last_name": "Bastani",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Rahul",
+        "last_name": "Sharma",
+        "institution": "Microsoft Research (India)"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Percy",
+        "last_name": "Liang",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Bastani0AL17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062352",
+    "title": "Repairing sequential consistency in C/C++11",
+    "abstract": "The C/C++11 memory model defines the semantics of concurrent memory accesses in C/C++, and in particular supports racy \"atomic\" accesses at a range of different consistency levels, from very weak consistency (\"relaxed\") to strong, sequential consistency (\"SC\"). Unfortunately, as we observe in this paper, the semantics of SC atomic accesses in C/C++11, as well as in all proposed strengthenings of the semantics, is flawed, in that (contrary to previously published results) both suggested compilation schemes to the Power architecture are unsound. We propose a model, called RC11 (for Repaired C11), with a better semantics for SC accesses that restores the soundness of the compilation schemes to Power, maintains the DRF-SC guarantee, and provides stronger, more useful, guarantees to SC fences. In addition, we formally prove, for the first time, the correctness of the proposed stronger compilation schemes to Power that preserve load-to-store ordering and avoid \"out-of-thin-air\" reads.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062352",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ori",
+        "last_name": "Lahav",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Viktor",
+        "last_name": "Vafeiadis",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Jeehoon",
+        "last_name": "Kang",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Chung-Kil",
+        "last_name": "Hur",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Derek",
+        "last_name": "Dreyer",
+        "institution": "Max Planck Institute for Software Systems"
+      }
+    ],
+    "dblp_key": "conf/pldi/LahavVKHD17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062374",
+    "title": "Dynamic race prediction in linear time",
+    "abstract": "Writing reliable concurrent software remains a huge challenge for today's programmers. Programmers rarely reason about their code by explicitly considering different possible inter-leavings of its execution. We consider the problem of detecting data races from individual executions in a sound manner. The classical approach to solving this problem has been to use Lamport's happens-before (HB) relation. Until now HB remains the only approach that runs in linear time. Previous efforts in improving over HB such as causally-precedes (CP) and maximal causal models fall short due to the fact that they are not implementable efficiently and hence have to compromise on their race detecting ability by limiting their techniques to bounded sized fragments of the execution. We present a new relation weak-causally-precedes (WCP) that is provably better than CP in terms of being able to detect more races, while still remaining sound. Moreover, it admits a linear time algorithm which works on the entire execution without having to fragment it.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062374",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dileep",
+        "last_name": "Kini",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Umang",
+        "last_name": "Mathur",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Mahesh",
+        "last_name": "Viswanathan",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/pldi/KiniM017",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062358",
+    "title": "A formally verified compiler for Lustre",
+    "abstract": "The correct compilation of block diagram languages like Lustre, Scade, and a discrete subset of Simulink is important since they are used to program critical embedded control software. We describe the specification and verification in an Interactive Theorem Prover of a compilation chain that treats the key aspects of Lustre: sampling, nodes, and delays. Building on CompCert, we show that repeated execution of the generated assembly code faithfully implements the dataflow semantics of source programs.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062358",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Timothy",
+        "last_name": "Bourke",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Lélio",
+        "last_name": "Brun",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Pierre-Évariste",
+        "last_name": "Dagand",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Xavier",
+        "last_name": "Leroy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Pouzet",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Lionel",
+        "last_name": "Rieg",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BourkeBDLPR17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062355",
+    "title": "Synthesis of divide and conquer parallelism for loops",
+    "abstract": "Divide-and-conquer is a common parallel programming skeleton supported by many cross-platform multithreaded libraries, and most commonly used by programmers for parallelization. The challenges of producing (manually or automatically) a correct divide-and-conquer parallel program from a given sequential code are two-fold: (1) assuming that a good solution exists where individual worker threads execute a code identical to the sequential one, the programmer has to provide the extra code for dividing the tasks and combining the partial results (i.e. joins), and (2) the sequential code may not be suitable for divide-and-conquer parallelization as is, and may need to be modified to become a part of a good solution. We address both challenges in this paper. We present an automated synthesis technique to synthesize correct joins and an algorithm for modifying the sequential code to make it suitable for parallelization when necessary. This paper focuses on class of loops that traverse a read-only collection and compute a scalar function over that collection. We present theoretical results for when the necessary modifications to sequential code are possible, theoretical guarantees for the algorithmic solutions presented here, and experimental evaluation of the approach's success in practice and the quality of the produced parallel programs.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062355",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Azadeh",
+        "last_name": "Farzan",
+        "institution": "University of Toronto"
+      },
+      {
+        "first_name": "Victor",
+        "last_name": "Nicolet",
+        "institution": "University of Toronto"
+      }
+    ],
+    "dblp_key": "conf/pldi/FarzanN17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062357",
+    "title": "Levity polymorphism",
+    "abstract": "Parametric polymorphism is one of the linchpins of modern typed programming, but it comes with a real performance penalty. We describe this penalty; offer a principled way to reason about it (kinds as calling conventions); and propose levity polymorphism. This new form of polymorphism allows abstractions over calling conventions; we detail and verify restrictions that are necessary in order to compile levity-polymorphic functions. Levity polymorphism has created new opportunities in Haskell, including the ability to generalize nearly half of the type classes in GHC's standard library.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062357",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": "Bryn Mawr College"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/pldi/EisenbergJ17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062369",
+    "title": "StreamQRE: modular specification and efficient evaluation of quantitative queries over streaming data",
+    "abstract": "Real-time decision making in emerging IoT applications typically relies on computing quantitative summaries of large data streams in an efficient and incremental manner. To simplify the task of programming the desired logic, we propose StreamQRE, which provides natural and high-level constructs for processing streaming data. Our language has a novel integration of linguistic constructs from two distinct programming paradigms: streaming extensions of relational query languages and quantitative extensions of regular expressions. The former allows the programmer to employ relational constructs to partition the input data by keys and to integrate data streams from different sources, while the latter can be used to exploit the logical hierarchy in the input stream for modular specifications. We first present the core language with a small set of combinators, formal semantics, and a decidable type system. We then show how to express a number of common patterns with illustrative examples. Our compilation algorithm translates the high-level query into a streaming algorithm with precise complexity bounds on per-item processing time and total memory footprint. We also show how to integrate approximation algorithms into our framework. We report on an implementation in Java, and evaluate it with respect to existing high-performance engines for processing streaming data. Our experimental evaluation shows that (1) StreamQRE allows more natural and succinct specification of queries compared to existing frameworks, (2) the throughput of our implementation is higher than comparable systems (for example, two-to-four times greater than RxJava), and (3) the approximation algorithms supported by our implementation can lead to substantial memory savings.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062369",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Konstantinos",
+        "last_name": "Mamouras",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Mukund",
+        "last_name": "Raghothaman",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Rajeev",
+        "last_name": "Alur",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Zachary G.",
+        "last_name": "Ives",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Sanjeev",
+        "last_name": "Khanna",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/pldi/MamourasRAIK17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062354",
+    "title": "Futhark: purely functional GPU-programming with nested parallelism and in-place array updates",
+    "abstract": "Futhark is a purely functional data-parallel array language that offers a machine-neutral programming model and an optimising compiler that generates OpenCL code for GPUs.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062354",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Troels",
+        "last_name": "Henriksen",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Niels G. W.",
+        "last_name": "Serup",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Elsman",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Fritz",
+        "last_name": "Henglein",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Cosmin E.",
+        "last_name": "Oancea",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/pldi/HenriksenSEHO17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062351",
+    "title": "Component-based synthesis of table consolidation and transformation tasks from examples",
+    "abstract": "This paper presents a novel component-based synthesis algorithm that marries the power of type-directed search with lightweight SMT-based deduction and partial evaluation. Given a set of components together with their over-approximate first-order specifications, our method first generates a program sketch over a subset of the components and checks its feasibility using an SMT solver. Since a program sketch typically represents many concrete programs, the use of SMT-based deduction greatly increases the scalability of the algorithm. Once a feasible program sketch is found, our algorithm completes the sketch in a bottom-up fashion, using partial evaluation to further increase the power of deduction for rejecting partially-filled program sketches. We apply the proposed synthesis methodology for automating a large class of data preparation tasks that commonly arise in data science. We have evaluated our synthesis algorithm on dozens of data wrangling and consolidation tasks obtained from on-line forums, and we show that our approach can automatically solve a large class of problems encountered by R users.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062351",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Yu",
+        "last_name": "Feng",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Ruben",
+        "last_name": "Martins",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Jacob Van",
+        "last_name": "Geffen",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Işıl",
+        "last_name": "Dillig",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Swarat",
+        "last_name": "Chaudhuri",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/FengMGDC17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062382",
+    "title": "Gradual synthesis for static parallelization of single-pass array-processing programs",
+    "abstract": "Parallelizing of software improves its effectiveness and productivity. To guarantee correctness, the parallel and serial versions of the same code must be formally verified to be equivalent. We present a novel approach, called GRASSP, that automatically synthesizes parallel single-pass array-processing programs by treating the given serial versions as specifications. Given arbitrary segmentation of the input array, GRASSP synthesizes a code to determine a new segmentation of the array that allows computing partial results for each segment and merging them. In contrast to other parallelizers, GRASSP gradually considers several parallelization scenarios and certifies the results using constrained Horn solving. For several classes of programs, we show that such parallelization can be performed efficiently. The C++ translations of the GRASSP solutions sped performance by up to 5X relative to serial code on an 8-thread machine and Hadoop translations by up to 10X on a 10-node Amazon EMR cluster.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062382",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Grigory",
+        "last_name": "Fedyukovich",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "M",
+        "last_name": "Ahmad",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/FedyukovichAB17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062364",
+    "title": "Systematic black-box analysis of collaborative web applications",
+    "abstract": "Web applications, such as collaborative editors that allow multiple clients to concurrently interact on a shared resource, are difficult to implement correctly. Existing techniques for analyzing concurrent software do not scale to such complex systems or do not consider multiple interacting clients. This paper presents Simian, the first fully automated technique for systematically analyzing multi-client web applications.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062364",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Marina",
+        "last_name": "Billes",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "Anders",
+        "last_name": "Møller",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Pradel",
+        "institution": "Technical University of Darmstadt"
+      }
+    ],
+    "dblp_key": "conf/pldi/BillesMP17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062373",
+    "title": "Compositional recurrence analysis revisited",
+    "abstract": "Compositional recurrence analysis (CRA) is a static-analysis method based on a combination of symbolic analysis and abstract interpretation. This paper addresses the problem of creating a context-sensitive interprocedural version of CRA that handles recursive procedures. The problem is non-trivial because there is an \"impedance mismatch\" between CRA, which relies on analysis techniques based on regular languages (i.e., Tarjan's path-expression method), and the context-free-language underpinnings of context-sensitive analysis.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062373",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Zachary",
+        "last_name": "Kincaid",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Jason",
+        "last_name": "Breck",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Ashkan Forouhi",
+        "last_name": "Boroujeni",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": "GrammaTech (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/KincaidBBR17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062376",
+    "title": "Simple, fast, and safe manual memory management",
+    "abstract": "Safe programming languages are readily available, but many applications continue to be written in unsafe languages because of efficiency. As a consequence, many applications continue to have exploitable memory safety bugs. Since garbage collection is a major source of inefficiency in the implementation of safe languages, replacing it with safe manual memory management would be an important step towards solving this problem.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062376",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Piyus",
+        "last_name": "Kedia",
+        "institution": "Microsoft Research (India)"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Costa",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Parkinson",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Kapil",
+        "last_name": "Vaswani",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Dimitrios",
+        "last_name": "Vytiniotis",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Aaron",
+        "last_name": "Blankstein",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/KediaCPVVB17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062343",
+    "title": "Taming undefined behavior in LLVM",
+    "abstract": "A central concern for an optimizing compiler is the design of its intermediate representation (IR) for code. The IR should make it easy to perform transformations, and should also afford efficient and precise static analysis. In this paper we study an aspect of IR design that has received little attention: the role of undefined behavior. The IR for every optimizing compiler we have looked at, including GCC, LLVM, Intel's, and Microsoft's, supports one or more forms of undefined behavior (UB), not only to reflect the semantics of UB-heavy programming languages such as C and C++, but also to model inherently unsafe low-level operations such as memory stores and to avoid over-constraining IR semantics to the point that desirable transformations become illegal. The current semantics of LLVM's IR fails to justify some cases of loop unswitching, global value numbering, and other important \"textbook\" optimizations, causing long-standing bugs. We present solutions to the problems we have identified in LLVM's IR and show that most optimizations currently in LLVM remain sound, and that some desirable new transformations become permissible. Our solutions do not degrade compile time or performance of generated code.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062343",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Juneyoung",
+        "last_name": "Lee",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Yoonseung",
+        "last_name": "Kim",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Youngju",
+        "last_name": "Song",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Chung-Kil",
+        "last_name": "Hur",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Sanjoy",
+        "last_name": "Das",
+        "institution": ""
+      },
+      {
+        "first_name": "David",
+        "last_name": "Majnemer",
+        "institution": "Google (United States)"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Regehr",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Nuno P.",
+        "last_name": "Lopes",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/pldi/LeeKSHDMRL17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062380",
+    "title": "Compiling without continuations",
+    "abstract": "Many fields of study in compilers give rise to the concept of a join point—a place where different execution paths come together. Join points are often treated as functions or continuations, but we believe it is time to study them in their own right. We show that adding join points to a direct-style functional intermediate language is a simple but powerful change that allows new optimizations to be performed, including a significant improvement to list fusion. Finally, we report on recent work on adding join points to the intermediate language of the Glasgow Haskell Compiler.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062380",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Luke",
+        "last_name": "Maurer",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Downen",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Zena M.",
+        "last_name": "Ariola",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/pldi/MaurerDAJ17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062361",
+    "title": "Static deadlock detection for asynchronous C# programs",
+    "abstract": "Asynchronous programming is a standard approach for designing responsive applications. Modern languages such as C# provide async/await primitives for the disciplined use of asynchrony. In spite of this, programs can deadlock because of incorrect use of blocking operations along with non-blocking (asynchronous) operations. While developers are aware of this problem, there is no automated technique to detect deadlocks in asynchronous programs.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062361",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Anirudh",
+        "last_name": "Santhiar",
+        "institution": "Indian Institute of Science Bangalore"
+      },
+      {
+        "first_name": "Aditya",
+        "last_name": "Kanade",
+        "institution": "Indian Institute of Science Bangalore"
+      }
+    ],
+    "dblp_key": "conf/pldi/SanthiarK17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062362",
+    "title": "Fusing effectful comprehensions",
+    "abstract": "List comprehensions provide a powerful abstraction mechanism for expressing computations over ordered collections of data declaratively without having to use explicit iteration constructs. This paper puts forth effectful comprehensions as an elegant way to describe list comprehensions that incorporate loop-carried state. This is motivated by operations such as compression/decompression and serialization/deserialization that are common in log/data processing pipelines and require loop-carried state when processing an input stream of data.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062362",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Olli",
+        "last_name": "Saarikivi",
+        "institution": "Helsinki Institute for Information Technology"
+      },
+      {
+        "first_name": "Margus",
+        "last_name": "Veanes",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Todd",
+        "last_name": "Mytkowicz",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Madan",
+        "last_name": "Musuvathi",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/SaarikiviVMM17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062368",
+    "title": "Control-flow recovery from partial failure reports",
+    "abstract": "Debugging is difficult. When software fails in production, debugging is even harder, as failure reports usually provide only an incomplete picture of the failing execution. We present a system that answers control-flow queries posed by developers as formal languages, indicating whether the query expresses control flow that is possible or impossible for a given failure report. We consider three separate approaches that trade off precision, expressiveness for failure constraints, and scalability. We also introduce a new subclass of regular languages, the unreliable trace languages, which are particularly suited to answering control-flow queries in polynomial time. Our system answers queries remarkably efficiently when we encode failure constraints and user queries entirely as unreliable trace languages.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062368",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Peter",
+        "last_name": "Ohmann",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Brooks",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Loris",
+        "last_name": "D’Antoni",
+        "institution": "University of Wisconsin–Madison"
+      },
+      {
+        "first_name": "Ben",
+        "last_name": "Liblit",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/pldi/OhmannBDL17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062365",
+    "title": "Synthesizing highly expressive SQL queries from input-output examples",
+    "abstract": "SQL is the de facto language for manipulating relational data. Though powerful, many users find it difficult to write SQL queries due to highly expressive constructs.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062365",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Chenglong",
+        "last_name": "Wang",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Alvin",
+        "last_name": "Cheung",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Rastislav",
+        "last_name": "Bodík",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/WangCB17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062370",
+    "title": "Responsive parallel computation: bridging competitive and cooperative threading",
+    "abstract": "Competitive and cooperative threading are widely used abstractions in computing. In competitive threading, threads are scheduled preemptively with the goal of minimizing response time, usually of interactive applications. In cooperative threading, threads are scheduled non-preemptively with the goal of maximizing throughput or minimizing the completion time, usually in compute-intensive applications, e.g. scientific computing, machine learning and AI.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062370",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Stefan K.",
+        "last_name": "Muller",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/MullerA017",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062360",
+    "title": "Efficient and precise points-to analysis: modeling the heap by merging equivalent automata",
+    "abstract": "Mainstream points-to analysis techniques for object-oriented languages rely predominantly on the allocation-site abstraction to model heap objects. We present MAHJONG, a novel heap abstraction that is specifically developed to address the needs of an important class of type-dependent clients, such as call graph construction, devirtualization and may-fail casting. By merging equivalent automata representing type-consistent objects that are created by the allocation-site abstraction, MAHJONG enables an allocation-site-based points-to analysis to run significantly faster while achieving nearly the same precision for type-dependent clients.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062360",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Tian",
+        "last_name": "Tan",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Yue",
+        "last_name": "Li",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "Jingling",
+        "last_name": "Xue",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/pldi/TanLX17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062359",
+    "title": "Context transformations for pointer analysis",
+    "abstract": "Points-to analysis for Java benefits greatly from context sensitivity. CFL-reachability and k-limited context strings are two approaches to obtaining context sensitivity with different advantages: CFL-reachability allows local reasoning about data-value flow and thus is suitable for demand-driven analyses, whereas k-limited analyses allow object sensitivity which is a superior calling context abstraction for object-oriented languages. We combine the advantages of both approaches to obtain a context-sensitive analysis that is as precise as k-limited context strings, but is more efficient to compute. Our key insight is based on a novel abstraction of contexts adapted from CFL-reachability that represents a relation between two calling contexts as a composition of transformations over contexts.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062359",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Rei",
+        "last_name": "Thiessen",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/pldi/ThiessenL17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062372",
+    "title": "Alive-Infer: data-driven precondition inference for peephole optimizations in LLVM",
+    "abstract": "Peephole optimizations are a common source of compiler bugs. Compiler developers typically transform an incorrect peephole optimization into a valid one by strengthening the precondition. This process is challenging and tedious. This paper proposes ALIVE-INFER, a data-driven approach that infers preconditions for peephole optimizations expressed in Alive. ALIVE-INFER generates positive and negative examples for an optimization, enumerates predicates ondemand, and learns a set of predicates that separate the positive and negative examples. ALIVE-INFER repeats this process until it finds a precondition that ensures the validity of the optimization. ALIVE-INFER reports both a weakest precondition and a set of succinct partial preconditions to the developer. Our prototype generates preconditions that are weaker than LLVM's preconditions for 73 optimizations in the Alive suite. We also demonstrate the applicability of this technique to generalize 54 optimization patterns generated by Souper, an LLVM IR-based superoptimizer.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062372",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Menendez",
+        "institution": "Rutgers, The State University of New Jersey"
+      },
+      {
+        "first_name": "Santosh",
+        "last_name": "Nagarakatte",
+        "institution": "Rutgers, The State University of New Jersey"
+      }
+    ],
+    "dblp_key": "conf/pldi/MenendezN17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062346",
+    "title": "Miniphases: compilation using modular and efficient tree transformations",
+    "abstract": "Production compilers commonly perform dozens of transformations on an intermediate representation. Running those transformations in separate passes harms performance. One approach to recover performance is to combine transformations by hand in order to reduce number of passes. Such an approach harms modularity, and thus makes it hard to maintain and evolve a compiler over the long term, and makes reasoning about performance harder. This paper describes a methodology that allows a compiler writer to define multiple transformations separately, but fuse them into a single traversal of the intermediate representation when the compiler runs. This approach has been implemented in a compiler for the Scala language. Our performance evaluation indicates that this approach reduces the running time of tree transformations by 35% and shows that this is due to improved cache friendliness. At the same time, the approach improves total memory consumption by reducing the object tenuring rate by 50%. This approach enables compiler writers to write transformations that are both modular and fast at the same time.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062346",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dmitry",
+        "last_name": "Petrashko",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Odersky",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "conf/pldi/PetrashkoLO17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062379",
+    "title": "Skeletal program enumeration for rigorous compiler testing",
+    "abstract": "A program can be viewed as a syntactic structure P (syntactic skeleton) parameterized by a collection of identifiers V (variable names). This paper introduces the skeletal program enumeration (SPE) problem: Given a syntactic skeleton P and a set of variables V , enumerate a set of programs P exhibiting all possible variable usage patterns within P. It proposes an effective realization of SPE for systematic, rigorous compiler testing by leveraging three important observations: (1) Programs with different variable usage patterns exhibit diverse control- and data-dependence, and help exploit different compiler optimizations; (2) most real compiler bugs were revealed by small tests (i.e., small-sized P) — this “small-scope” observation opens up SPE for practical compiler validation; and (3) SPE is exhaustive w.r.t. a given syntactic skeleton and variable set, offering a level of guarantee absent from all existing compiler testing techniques.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062379",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Qirun",
+        "last_name": "Zhang",
+        "institution": "University of California, Davis"
+      },
+      {
+        "first_name": "C. P.",
+        "last_name": "Sun",
+        "institution": "University of California, Davis"
+      },
+      {
+        "first_name": "Zhendong",
+        "last_name": "Su",
+        "institution": "University of California, Davis"
+      }
+    ],
+    "dblp_key": "conf/pldi/ZhangSS17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062381",
+    "title": "Practical partial evaluation for high-performance dynamic language runtimes",
+    "abstract": "Most high-performance dynamic language virtual machines duplicate language semantics in the interpreter, compiler, and runtime system. This violates the principle to not repeat yourself. In contrast, we define languages solely by writing an interpreter. The interpreter performs specializations, e.g., augments the interpreted program with type information and profiling information. Compiled code is derived automatically using partial evaluation while incorporating these specializations. This makes partial evaluation practical in the context of dynamic languages: It reduces the size of the compiled code while still compiling all parts of an operation that are relevant for a particular program. When a speculation fails, execution transfers back to the interpreter, the program re-specializes in the interpreter, and later partial evaluation again transforms the new state of the interpreter to compiled code. We evaluate our approach by comparing our implementations of JavaScript, Ruby, and R with best-in-class specialized production implementations. Our general-purpose compilation system is competitive with production systems even when they have been heavily optimized for the one language they support. For our set of benchmarks, our speedup relative to the V8 JavaScript VM is 0.83x, relative to JRuby is 3.8x, and relative to GNU R is 5x.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062381",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Würthinger",
+        "institution": ""
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Wimmer",
+        "institution": "Oracle (United States)"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Humer",
+        "institution": ""
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Wöß",
+        "institution": ""
+      },
+      {
+        "first_name": "Lukas",
+        "last_name": "Stadler",
+        "institution": ""
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Seaton",
+        "institution": "Oracle (United Kingdom)"
+      },
+      {
+        "first_name": "Gilles",
+        "last_name": "Duboscq",
+        "institution": ""
+      },
+      {
+        "first_name": "Doug",
+        "last_name": "Simon",
+        "institution": ""
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Grimmer",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/WurthingerWHWSS17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062350",
+    "title": "BigFoot: static check placement for dynamic race detection",
+    "abstract": "Precise dynamic data race detectors provide strong correctness guarantees but have high overheads because they generally keep analysis state in a separate shadow location for each heap memory location, and they check (and potentially update) the corresponding shadow location on each heap access. The BigFoot dynamic data race detector uses a combination of static and dynamic analysis techniques to coalesce checks and compress shadow locations. With BigFoot, multiple accesses to an object or array often induce a single coalesced check that manipulates a single compressed shadow location, resulting in a performance improvement over FastTrack of 61%.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062350",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dustin",
+        "last_name": "Rhodes",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Stephen N.",
+        "last_name": "Freund",
+        "institution": "Williams College"
+      }
+    ],
+    "dblp_key": "conf/pldi/RhodesFF17",
+    "venue": "pldi",
+    "year": 2017
+  },
+  {
+    "paper_id": "10.1145/3062341.3062386",
+    "title": "DemoMatch: API discovery from demonstrations",
+    "abstract": "We introduce DemoMatch, a tool for API discovery that allows the user to discover how to implement functionality using a software framework by demonstrating the functionality in existing applications built with the same framework. DemoMatch matches the demonstrations against a database of execution traces called Semeru and generates code snippets explaining how to use the functionality. We evaluated DemoMatch on several case studies involving Java Swing and Eclipse RCP.",
+    "date": "2017-06-14",
+    "link": "https://doi.org/10.1145/3062341.3062386",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Kuat",
+        "last_name": "Yessenov",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Ivan",
+        "last_name": "Kuraj",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Armando",
+        "last_name": "Solar-Lezama",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/YessenovKS17",
+    "venue": "pldi",
+    "year": 2017
+  }
+]

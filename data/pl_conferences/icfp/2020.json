@@ -1,0 +1,1093 @@
+[
+  {
+    "paper_id": "10.1145/3408979",
+    "title": "Denotational recurrence extraction for amortized analysis",
+    "abstract": "A typical way of analyzing the time complexity of functional programs is to extract a recurrence expressing the running time of the program in terms of the size of its input, and then to solve the recurrence to obtain a big-O bound. For recurrence extraction to be compositional, it is also necessary to extract recurrences for the size of outputs of helper functions. Previous work has developed techniques for using logical relations to state a formal correctness theorem for a general recurrence extraction translation: a program is bounded by a recurrence when the operational cost is bounded by the extracted cost, and the output value is bounded, according to a value bounding relation defined by induction on types, by the extracted size. This previous work supports higher-order functions by viewing recurrences as programs in a lambda-calculus, or as mathematical entities in a denotational semantics thereof. In this paper, we extend these techniques to support amortized analysis, where costs are rearranged from one portion of a program to another to achieve more precise bounds. We give an intermediate language in which programs can be annotated according to the banker's method of amortized analysis; this language has an affine type system to ensure credits are not spent more than once. We give a recurrence extraction translation of this language into a recurrence language, a simply-typed lambda-calculus with a cost type, and state and prove a bounding logical relation expressing the correctness of this translation. The recurrence language has a denotational semantics in preorders, and we use this semantics to solve recurrences, e.g analyzing binary counters and splay trees.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408979",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Joseph W.",
+        "last_name": "Cutler",
+        "institution": "Wesleyan University"
+      },
+      {
+        "first_name": "Daniel R.",
+        "last_name": "Licata",
+        "institution": "Wesleyan University"
+      },
+      {
+        "first_name": "Norman",
+        "last_name": "Danner",
+        "institution": "Wesleyan University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CutlerLD20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408994",
+    "title": "Regular language type inference with term rewriting",
+    "abstract": "This paper defines a new type system applied to the fully automatic verification of safety properties of tree-processing higher-order functional programs. We use term rewriting systems to model the program and its semantics and tree automata to model algebraic data types. We define the regular abstract interpretation of the input term rewriting system where the abstract domain is a set of regular languages. From the regular abstract interpretation we derive a type system where each type is a regular language. We define an inference procedure for this type system which allows us check the validity of safety properties. The inference mechanism is built on an invariant learning procedure based on the tree automata completion algorithm. This invariant learning procedure is regularly-complete and complete in refutation, meaning that if it is possible to give a regular type to a term then we will eventually find it, and if there is no possible type (regular or not) then we will eventually find a counter-example.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408994",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Timothée",
+        "last_name": "Haudebourg",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Genet",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "Thomas Wiben",
+        "last_name": "Jensen",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HaudebourgGJ20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408980",
+    "title": "Duplo: a framework for OCaml post-link optimisation",
+    "abstract": "We present a novel framework, Duplo , for the low-level post-link optimisation of OCaml programs, achieving a speedup of 7% and a reduction of at least 15% of the code size of widely-used OCaml applications. Unlike existing post-link optimisers, which typically operate on target-specific machine code, our framework operates on a Low-Level Intermediate Representation (LLIR) capable of representing both the OCaml programs and any C dependencies they invoke through the foreign-function interface (FFI). LLIR is analysed, transformed and lowered to machine code by our post-link optimiser, LLIR-OPT. Most importantly, LLIR allows the optimiser to cross the OCaml-C language boundary, mitigating the overhead incurred by the FFI and enabling analyses and transformations in a previously unavailable context. The optimised IR is then lowered to amd64 machine code through the existing target-specific code generator of LLVM, modified to handle garbage collection just as effectively as the native OCaml backend. We equip our optimiser with a suite of SSA-based transformations and points-to analyses capable of capturing the semantics and representing the memory models of both languages, along with a cross-language inliner to embed C methods into OCaml callers. We evaluate the gains of our framework, which can be attributed to both our optimiser and the more sophisticated amd64 backend of LLVM, on a wide-range of widely-used OCaml applications, as well as an existing suite of micro- and macro-benchmarks used to track the performance of the OCaml compiler.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408980",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nandor",
+        "last_name": "Licker",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Timothy M.",
+        "last_name": "Jones",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LickerJ20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408974",
+    "title": "Achieving high-performance the functional way: a functional pearl on expressing high-performance optimizations as rewrite strategies",
+    "abstract": "Optimizing programs to run efficiently on modern parallel hardware is hard but crucial for many applications. The predominantly used imperative languages - like C or OpenCL - force the programmer to intertwine the code describing functionality and optimizations. This results in a portability nightmare that is particularly problematic given the accelerating trend towards specialized hardware devices to further increase efficiency. Many emerging DSLs used in performance demanding domains such as deep learning or high-performance image processing attempt to simplify or even fully automate the optimization process. Using a high-level - often functional - language, programmers focus on describing functionality in a declarative way. In some systems such as Halide or TVM, a separate schedule specifies how the program should be optimized. Unfortunately, these schedules are not written in well-defined programming languages. Instead, they are implemented as a set of ad-hoc predefined APIs that the compiler writers have exposed. In this functional pearl, we show how to employ functional programming techniques to solve this challenge with elegance. We present two functional languages that work together - each addressing a separate concern. RISE is a functional language for expressing computations using well known functional data-parallel patterns. ELEVATE is a functional language for describing optimization strategies. A high-level RISE program is transformed into a low-level form using optimization strategies written in ELEVATE . From the rewritten low-level program high-performance parallel code is automatically generated. In contrast to existing high-performance domain-specific systems with scheduling APIs, in our approach programmers are not restricted to a set of built-in operations and optimizations but freely define their own computational patterns in RISE and optimization strategies in ELEVATE in a composable and reusable way. We show how our holistic functional approach achieves competitive performance with the state-of-the-art imperative systems Halide and TVM.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408974",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Bastian",
+        "last_name": "Hagedorn",
+        "institution": "University of Münster"
+      },
+      {
+        "first_name": "Johannes",
+        "last_name": "Lenfers",
+        "institution": "University of Münster"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Kœhler",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Xueying",
+        "last_name": "Qin",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Sergei",
+        "last_name": "Gorlatch",
+        "institution": "University of Münster"
+      },
+      {
+        "first_name": "Michel",
+        "last_name": "Steuwer",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HagedornLKQGS20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408988",
+    "title": "Liquid resource types",
+    "abstract": "This article presents liquid resource types, a technique for automatically verifying the resource consumption of functional programs. Existing resource analysis techniques trade automation for flexibility – automated techniques are restricted to relatively constrained families of resource bounds, while more expressive proof techniques admitting value-dependent bounds rely on handwritten proofs. Liquid resource types combine the best of these approaches, using logical refinements to automatically prove precise bounds on a program’s resource consumption. The type system augments refinement types with potential annotations to conduct an amortized resource analysis. Importantly, users can annotate data structure declarations to indicate how potential is allocated within the type, allowing the system to express bounds with polynomials and exponentials, as well as more precise expressions depending on program values. We prove the soundness of the type system, provide a library of flexible and reusable data structures for conducting resource analysis, and use our prototype implementation to automatically verify resource bounds that previously required a manual proof.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408988",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Tristan",
+        "last_name": "Knoth",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Di",
+        "last_name": "Wang",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Adam",
+        "last_name": "Reynolds",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Hoffmann",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Nadia",
+        "last_name": "Polikarpova",
+        "institution": "University of California San Diego"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KnothWRHP20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408990",
+    "title": "Parsing with zippers (functional pearl)",
+    "abstract": "Parsing with Derivatives (PwD) is an elegant approach to parsing context-free grammars (CFGs). It takes the equational theory behind Brzozowski's derivative for regular expressions and augments that theory with laziness, memoization, and fixed points. The result is a simple parser for arbitrary CFGs. Although recent work improved the performance of PwD, it remains inefficient due to the algorithm repeatedly traversing some parts of the grammar. In this functional pearl, we show how to avoid this inefficiency by suspending the state of the traversal in a zipper. When subsequent derivatives are taken, we can resume the traversal from where we left off without retraversing already traversed parts of the grammar. However, the original zipper is designed for use with trees, and we want to parse CFGs. CFGs can include shared regions, cycles, and choices between alternates, which makes them incompatible with the traditional tree model for zippers. This paper develops a generalization of zippers to properly handle these additional features. Just as PwD generalized Brzozowski's derivatives from regular expressions to CFGs, we generalize Huet's zippers from trees to CFGs. Abstract The resulting parsing algorithm is concise and efficient: it takes only 31 lines of OCaml code to implement the derivative function but performs 6,500 times faster than the original PwD and 3.24 times faster than the optimized implementation of PwD.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408990",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Pierce",
+        "last_name": "Darragh",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Adams",
+        "institution": "University of Michigan"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/DarraghA20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408989",
+    "title": "Lower your guards: a compositional pattern-match coverage checker",
+    "abstract": "A compiler should warn if a function defined by pattern matching does not cover its inputs—that is, if there are missing or redundant patterns. Generating such warnings accurately is difficult for modern languages due to the myriad of language features that interact with pattern matching. This is especially true in Haskell, a language with a complicated pattern language that is made even more complex by extensions offered by the Glasgow Haskell Compiler (GHC). Although GHC has spent a significant amount of effort towards improving its pattern-match coverage warnings, there are still several cases where it reports inaccurate warnings. We introduce a coverage checking algorithm called Lower Your Guards, which boils down the complexities of pattern matching into guard trees . While the source language may have many exotic forms of patterns, guard trees only have three different constructs, which vastly simplifies the coverage checking process. Our algorithm is modular, allowing for new forms of source-language patterns to be handled with little changes to the overall structure of the algorithm. We have implemented the algorithm in GHC and demonstrate places where it performs better than GHC’s current coverage checker, both in accuracy and performance.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408989",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Graf",
+        "institution": ""
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Ryan G.",
+        "last_name": "Scott",
+        "institution": "Indiana University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GrafJS20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408996",
+    "title": "Scala step-by-step: soundness for DOT with step-indexed logical relations in Iris",
+    "abstract": "The metatheory of Scala’s core type system—the Dependent Object Types (DOT) calculus—is hard to extend, like the metatheory of other type systems combining subtyping and dependent types. Soundness of important Scala features therefore remains an open problem in theory and in practice. To address some of these problems, we use a semantics-first approach to develop a logical relations model for a new version of DOT, called guarded DOT (gDOT) . Our logical relations model makes use of an abstract form of step-indexing , as supported by the Iris framework, to model various forms of recursion in gDOT. To demonstrate the expressiveness of gDOT, we show that it handles Scala examples that could not be handled by previous versions of DOT, and prove using our logical relations model that gDOT provides the desired data abstraction. The gDOT type system, its semantic model, its soundness proofs, and all examples in the paper have been mechanized in Coq.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408996",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Paolo G.",
+        "last_name": "Giarrusso",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Léo",
+        "last_name": "Stefanesco",
+        "institution": "Université Paris Cité"
+      },
+      {
+        "first_name": "Amin",
+        "last_name": "Timany",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Robbert",
+        "last_name": "Krebbers",
+        "institution": "Delft University of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GiarrussoSTBK20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408970",
+    "title": "A general approach to define binders using matching logic",
+    "abstract": "We propose a novel definition of binders using matching logic, where the binding behavior of object-level binders is directly inherited from the built-in exists binder of matching logic. We show that the behavior of binders in various logical systems such as lambda-calculus, System F, pi-calculus, pure type systems, can be axiomatically defined in matching logic as notations and logical theories. We show the correctness of our definitions by proving conservative extension theorems, which state that a sequent/judgment is provable in the original system if and only if it is provable in matching logic, in the corresponding theory. Our matching logic definition of binders also yields models to all binders, which are deductively complete with respect to formal reasoning in the original systems. For lambda-calculus, we further show that the yielded models are representationally complete, a desired property that is not enjoyed by many existing lambda-calculus semantics. This work is part of a larger effort to develop a logical foundation for the programming language semantics framework K (http://kframework.org).",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408970",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Xiaohong",
+        "last_name": "Chen",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Grigore",
+        "last_name": "Roşu",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ChenR20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408982",
+    "title": "Effects for efficiency: asymptotic speedup with first-class control",
+    "abstract": "We study the fundamental efficiency of delimited control. Specifically, we show that effect handlers enable an asymptotic improvement in runtime complexity for a certain class of functions. We consider the generic count problem using a pure PCF-like base language λ b and its extension with effect handlers λ h . We show that λ h admits an asymptotically more efficient implementation of generic count than any λ b implementation. We also show that this efficiency gap remains when λ b is extended with mutable state. To our knowledge this result is the first of its kind for control operators.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408982",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Hillerström",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Lindley",
+        "institution": "Heriot-Watt University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Longley",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HillerstromLL20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408998",
+    "title": "Separation logic for sequential programs (functional pearl)",
+    "abstract": "This paper presents a simple mechanized formalization of Separation Logic for sequential programs. This formalization is aimed for teaching the ideas of Separation Logic, including its soundness proof and its recent enhancements. The formalization serves as support for a course that follows the style of the successful Software Foundations series, with all the statement and proofs formalized in Coq. This course only assumes basic knowledge of lambda-calculus, semantics and logics, and therefore should be accessible to a broad audience.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408998",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Arthur",
+        "last_name": "Charguéraud",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Chargueraud20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408986",
+    "title": "Kinds are calling conventions",
+    "abstract": "A language supporting polymorphism is a boon to programmers: they can express complex ideas once and reuse functions in a variety of situations. However, polymorphism is pain for compilers tasked with producing efficient code that manipulates concrete values. This paper presents a new intermediate language that allows for efficient static compilation, while still supporting flexible polymorphism. Specifically, it permits polymorphism over not only the types of values, but also the representation of values, the arity of primitive machine functions, and the evaluation order of arguments---all three of which are useful in practice. The key insight is to encode information about a value's calling convention in the kind of its type, rather than in the type itself.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408986",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Downen",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Zena M.",
+        "last_name": "Ariola",
+        "institution": "University of Oregon"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": "Bryn Mawr College"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/DownenAJE20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3409005",
+    "title": "TLC: temporal logic of distributed components",
+    "abstract": "Distributed systems are critical to reliable and scalable computing; however, they are complicated in nature and prone to bugs. To manage this complexity, network middleware has been traditionally built in layered stacks of components.We present a novel approach to compositional verification of distributed stacks to verify each component based on only the specification of lower components. We present TLC (Temporal Logic of Components), a novel temporal program logic that offers intuitive inference rules for verification of both safety and liveness properties of functional implementations of distributed components. To support compositional reasoning, we define a novel transformation on the assertion language that lowers the specification of a component to be used as a subcomponent. We prove the soundness of TLC and the lowering transformation with respect to a novel operational semantics for stacks of composed components in partially synchronous networks. We successfully apply TLC to compose and verify a stack of fundamental distributed components.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3409005",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jeremiah",
+        "last_name": "Griffin",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Mohsen",
+        "last_name": "Lesani",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Narges",
+        "last_name": "Shadab",
+        "institution": "University of California, Riverside"
+      },
+      {
+        "first_name": "Xizhe",
+        "last_name": "Yin",
+        "institution": "University of California, Riverside"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GriffinLSY20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408993",
+    "title": "Recovering purity with comonads and capabilities",
+    "abstract": "In this paper, we take a pervasively effectful (in the style of ML) typed lambda calculus, and show how to extend it to permit capturing pure expressions with types. Our key observation is that, just as the pure simply-typed lambda calculus can be extended to support effects with a monadic type discipline, an impure typed lambda calculus can be extended to support purity with a comonadic type discipline. We establish the correctness of our type system via a simple denotational model, which we call the capability space model. Our model formalises the intuition common to systems programmers that the ability to perform effects should be controlled via access to a permission or capability, and that a program is capability-safe if it performs no effects that it does not have a runtime capability for. We then identify the axiomatic categorical structure that the capability space model validates, and use these axioms to give a categorical semantics for our comonadic type system. We then give an equational theory (substitution and the call-by-value β and η laws) for the imperative lambda calculus, and show its soundness relative to this semantics. Finally, we give a translation of the pure simply-typed lambda calculus into our comonadic imperative calculus, and show that any two terms which are βη-equal in the STLC are equal in the equational theory of the comonadic calculus, establishing that pure programs can be mapped in an equation-preserving way into our imperative calculus.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408993",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Vikraman",
+        "last_name": "Choudhury",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Neel",
+        "last_name": "Krishnaswami",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ChoudhuryK20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408983",
+    "title": "Elaboration with first-class implicit function types",
+    "abstract": "Implicit functions are dependently typed functions, such that arguments are provided (by default) by inference machinery instead of programmers of the surface language. Implicit functions in Agda are an archetypal example. In the Haskell language as implemented by the Glasgow Haskell Compiler (GHC), polymorphic types are another example. Implicit function types are first-class if they are treated as any other type in the surface language. This holds in Agda and partially holds in GHC. Inference and elaboration in the presence of first-class implicit functions poses a challenge; in the context of Haskell and ML-like languages, this has been dubbed “impredicative instantiation” or “impredicative inference”. We propose a new solution for elaborating first-class implicit functions, which is applicable to full dependent type theories and compares favorably to prior solutions in terms of power, generality and simplicity. We build atop Norell’s bidirectional elaboration algorithm for Agda, and we note that the key issue is incomplete information about insertions of implicit abstractions and applications. We make it possible to track and refine information related to such insertions, by adding a function type to a core Martin-L'of type theory, which supports strict (definitional) currying. This allows us to represent undetermined domain arities of implicit function types, and we can decide at any point during elaboration whether implicit abstractions should be inserted.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408983",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "András",
+        "last_name": "Kovács",
+        "institution": "Eötvös Loránd University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Kovacs20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408991",
+    "title": "Program sketching with live bidirectional evaluation",
+    "abstract": "We present a system called Smyth for program sketching in a typed functional language whereby the concrete evaluation of ordinary assertions gives rise to input-output examples, which are then used to guide the search to complete the holes. The key innovation, called live bidirectional evaluation, propagates examples \"backward\" through partially evaluated sketches. Live bidirectional evaluation enables Smyth to (a) synthesize recursive functions without trace-complete sets of examples and (b) specify and solve interdependent synthesis goals. Eliminating the trace-completeness requirement resolves a significant limitation faced by prior synthesis techniques when given partial specifications in the form of input-output examples. To assess the practical implications of our techniques, we ran several experiments on benchmarks used to evaluate Myth, a state-of-the-art example-based synthesis tool. First, given expert examples (and no partial implementations), we find that Smyth requires on average 66% of the number of expert examples required by Myth. Second, we find that Smyth is robust to randomly-generated examples, synthesizing many tasks with relatively few more random examples than those provided by an expert. Third, we create a suite of small sketching tasks by systematically employing a simple sketching strategy to the Myth benchmarks; we find that user-provided sketches in Smyth often further reduce the total specification burden (i.e. the combination of partial implementations and examples). Lastly, we find that Leon and Synquid, two state-of-the-art logic-based synthesis tools, fail to complete several tasks on which Smyth succeeds.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408991",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Justin",
+        "last_name": "Lubin",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Nick",
+        "last_name": "Collins",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Cyrus",
+        "last_name": "Omar",
+        "institution": "University of Michigan"
+      },
+      {
+        "first_name": "Ravi",
+        "last_name": "Chugh",
+        "institution": "University of Chicago"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LubinCOC20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408972",
+    "title": "A unified view of modalities in type systems",
+    "abstract": "We propose to unify the treatment of a broad range of modalities in typed lambda calculi. We do so by defining a generic structure of modalities, and show that this structure arises naturally from the structure of intuitionistic logic, and as such finds instances in a wide range of type systems previously described in literature. Despite this generality, this structure has a rich metatheory, which we expose.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408972",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Abel",
+        "institution": "University of Gothenburg"
+      },
+      {
+        "first_name": "Jean-Philippe",
+        "last_name": "Bernardy",
+        "institution": "University of Gothenburg"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AbelB20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3409000",
+    "title": "Sparcl: a language for partially-invertible computation",
+    "abstract": "Invertibility is a fundamental concept in computer science, with various manifestations in software development (serializer/deserializer, parser/printer, redo/undo, compressor/decompressor, and so on). Full invertibility necessarily requires bijectivity, but the direct approach of composing bijective functions to develop invertible programs is too restrictive to be useful. In this paper, we take a different approach by focusing on partially-invertible functions—functions that become invertible if some of their arguments are fixed. The simplest example of such is addition, which becomes invertible when fixing one of the operands. More involved examples include entropy-based compression methods (e.g., Huffman coding), which carry the occurrence frequency of input symbols (in certain formats such as Huffman tree), and fixing this frequency information makes the compression methods invertible. We develop a language Sparcl for programming such functions in a natural way, where partial-invertibility is the norm and bijectivity is a special case, hence gaining significant expressiveness without compromising correctness. The challenge in designing such a language is to allow ordinary programming (the “partially” part) to interact with the invertible part freely, and yet guarantee invertibility by construction. The language Sparcl is linear-typed, and has a type constructor to distinguish data that are subject to invertible computation and those that are not. We present the syntax, type system, and semantics of the language, and prove that Sparcl correctly guarantees invertibility for its programs. We demonstrate the expressiveness of Sparcl with examples including tree rebuilding from preorder and inorder traversals and Huffman coding.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3409000",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kazutaka",
+        "last_name": "Matsuda",
+        "institution": "Tohoku University"
+      },
+      {
+        "first_name": "Meng",
+        "last_name": "Wang",
+        "institution": "University of Bristol"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MatsudaW20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408997",
+    "title": "Sealing pointer-based optimizations behind pure functions",
+    "abstract": "Functional programming languages are particularly well-suited for building automated reasoning systems, since (among other reasons) a logical term is well modeled by an inductive type, traversing a term can be implemented generically as a higher-order combinator, and backtracking search is dramatically simplified by persistent datastructures. However, existing pure functional programming languages all suffer a major limitation in these domains: traversing a term requires time proportional to the tree size of the term as opposed to its graph size. This limitation would be particularly devastating when building automation for interactive theorem provers such as Lean and Coq, for which the exponential blowup of term-tree sizes has proved to be both common and difficult to prevent. All that is needed to recover the optimal scaling is the ability to perform simple operations on the memory addresses of terms, and yet allowing these operations to be used freely would clearly violate the basic premise of referential transparency. We show how to use dependent types to seal the necessary pointer-address manipulations behind pure functional interfaces while requiring only a negligible amount of additional trust. We have implemented our approach for the upcoming version (v4) of Lean, and our approach could be adopted by other languages based on dependent type theory as well.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408997",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Selsam",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Hudon",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Leonardo de",
+        "last_name": "Moura",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SelsamHM20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3409006",
+    "title": "The simple essence of algebraic subtyping: principal type inference with subtyping made easy (functional pearl)",
+    "abstract": "MLsub extends traditional Hindley-Milner type inference with subtyping while preserving compact principal types, an exciting new development. However, its specification in terms of biunification is difficult to understand, relying on the new concepts of bisubstitution and polar types, and making use of advanced notions from abstract algebra. In this paper, we show that these are in fact not essential to understanding the mechanisms at play in MLsub. We propose an alternative algorithm called Simple-sub, which can be implemented efficiently in under 500 lines of code (including parsing, simplification, and pretty-printing), looks more familiar, and is easier to understand. We present an experimental evaluation of Simple-sub against MLsub on a million randomly-generated well-scoped expressions, showing that the two systems agree. The mutable automaton-based implementation of MLsub is quite far from its algebraic specification, leaving a lot of space for errors; in fact, our evaluation uncovered several bugs in it. We sketch more straightforward soundness and completeness arguments for Simple-sub, based on a syntactic specification of the type system. This paper is meant to be light in formalism, rich in insights, and easy to consume for prospective designers of new type systems and programming languages. In particular, no abstract algebra is inflicted on readers.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3409006",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Lionel",
+        "last_name": "Parreaux",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Parreaux20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408978",
+    "title": "Cosmo: a concurrent separation logic for multicore OCaml",
+    "abstract": "Multicore OCaml extends OCaml with support for shared-memory concurrency. It is equipped with a weak memory model, for which an operational semantics has been published. This begs the question: what reasoning rules can one rely upon while writing or verifying Multicore OCaml code? To answer it, we instantiate Iris, a modern descendant of Concurrent Separation Logic, for Multicore OCaml. This yields a low-level program logic whose reasoning rules expose the details of the memory model. On top of it, we build a higher-level logic, Cosmo, which trades off some expressive power in return for a simple set of reasoning rules that allow accessing nonatomic locations in a data-race-free manner, exploiting the sequentially-consistent behavior of atomic locations, and exploiting the release/acquire behavior of atomic locations. Cosmo allows both low-level reasoning, where the details of the Multicore OCaml memory model are apparent, and high-level reasoning, which is independent of this memory model. We illustrate this claim via a number of case studies: we verify several implementations of locks with respect to a classic, memory-model-independent specification. Thus, a coarse-grained application that uses locks as the sole means of synchronization can be verified in the Concurrent-Separation-Logic fragment of Cosmo, without any knowledge of the weak memory model.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408978",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Glen",
+        "last_name": "Mével",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Jacques-Henri",
+        "last_name": "Jourdan",
+        "institution": "Laboratoire de Recherche en Informatique"
+      },
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MevelJP20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408985",
+    "title": "Kindly bent to free us",
+    "abstract": "Systems programming often requires the manipulation of resources like file handles, network connections, or dynamically allocated memory. Programmers need to follow certain protocols to handle these resources correctly. Violating these protocols causes bugs ranging from type mismatches over data races to use-after-free errors and memory leaks. These bugs often lead to security vulnerabilities. While statically typed programming languages guarantee type soundness and memory safety by design, most of them do not address issues arising from improper handling of resources. An important step towards handling resources is the adoption of linear and affine types that enforce single-threaded resource usage. However, the few languages supporting such types require heavy type annotations. We present Affe, an extension of ML that manages linearity and affinity properties using kinds and constrained types. In addition Affe supports the exclusive and shared borrowing of affine resources, inspired by features of Rust. Moreover, Affe retains the defining features of the ML family: it is an impure, strict, functional expression language with complete principal type inference and type abstraction. does not require any linearity annotations in expressions and supports common functional programming idioms.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408985",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Gabriel",
+        "last_name": "Radanne",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Hannes",
+        "last_name": "Saffrich",
+        "institution": "University of Freiburg"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Freiburg"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RadanneST20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408984",
+    "title": "Higher-order demand-driven symbolic evaluation",
+    "abstract": "Symbolic backwards execution (SBE) is a useful variation on standard forward symbolic evaluation; it allows a symbolic evaluation to start anywhere in the program and proceed by executing in reverse to the program start. SBE brings goal-directed reasoning to symbolic evaluation and has proven effective in e.g. automated test generation for imperative languages. In this paper we define DDSE, a novel SBE which operates on a functional as opposed to imperative language; furthermore, it is defined as a natural extension of a backwards-executing interpreter. We establish the soundness of DDSE and define a test generation algorithm for this toy language. We report on an initial reference implementation to confirm the correctness of the principles.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408984",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zachary",
+        "last_name": "Palmer",
+        "institution": "Swarthmore College"
+      },
+      {
+        "first_name": "Theodore",
+        "last_name": "Park",
+        "institution": "Swarthmore College"
+      },
+      {
+        "first_name": "Scott F.",
+        "last_name": "Smith",
+        "institution": "Johns Hopkins University"
+      },
+      {
+        "first_name": "Shiwei",
+        "last_name": "Weng",
+        "institution": "Johns Hopkins University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PalmerPSW20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3409001",
+    "title": "Stable relations and abstract interpretation of higher-order programs",
+    "abstract": "We present a novel denotational semantics for the untyped call-by-value λ-calculus, where terms are interpreted as stable relations , i.e. as binary relations between substitutions and values, enjoying a monotonicity property. The denotation captures the input-output behaviour of higher-order programs, and is proved sound and complete with respect to the operational semantics. The definition also admits a presentation as a program logic. Following the principles of abstract interpretation, we use our denotational semantics as a collecting semantics to derive a modular relational analysis for higher-order programs. The analysis infers equalities between the arguments of a program and its result—a form of frame condition for functional programs.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3409001",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Benoît",
+        "last_name": "Montagu",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Thomas Wiben",
+        "last_name": "Jensen",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MontaguJ20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408975",
+    "title": "Compiling effect handlers in capability-passing style",
+    "abstract": "Effect handlers encourage programmers to abstract over repeated patterns of complex control flow. As of today, this abstraction comes at a significant price in performance. In this paper, we aim to achieve abstraction without regret for effect handlers. We present a language for effect handlers in _capability-passing style_ (λ Cap ) and an implementation of this language as a translation to simply-typed lambda calculus in _iterated continuation-passing style_. A suite of benchmarks indicates that the novel combination of capability-passing style and iterated CPS enables significant speedups over existing languages with effect handlers or control operators. Our implementation technique is general and allows us to generate code in any language that supports first-class functions. We then identify a subset of programs for which we can further improve the performance and guarantee full elimination of the effect handler abstraction. To formally capture this subset, we refine λ Cap to λ λ Cap with a more restrictive type system. We present a type-directed translation for λ λ Cap that inserts staging annotations and prove that no abstractions or applications related to effect handlers occur in the translated program. Using this second translation we observe additional speedups in some of the benchmarks.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408975",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Philipp",
+        "last_name": "Schuster",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Jonathan Immanuel",
+        "last_name": "Brachthäuser",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Klaus",
+        "last_name": "Ostermann",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SchusterBO20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408987",
+    "title": "Liquid information flow control",
+    "abstract": "We present Lifty, a domain-specific language for data-centric applications that manipulate sensitive data. A Lifty programmer annotates the sources of sensitive data with declarative security policies, and the language statically and automatically verifies that the application handles the data according to the policies. Moreover, if verification fails, Lifty suggests a provably correct repair, thereby easing the programmer burden of implementing policy enforcing code throughout the application. The main insight behind Lifty is to encode information flow control using liquid types, an expressive yet decidable type system. Liquid types enable fully automatic checking of complex, data dependent policies, and power our repair mechanism via type-driven error localization and patch synthesis. Our experience using Lifty to implement three case studies from the literature shows that (1) the Lifty policy language is sufficiently expressive to specify many real-world policies, (2) the Lifty type checker is able to verify secure programs and find leaks in insecure programs quickly, and (3) even if the programmer leaves out all policy enforcing code, the Lifty repair engine is able to patch all leaks automatically within a reasonable time.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408987",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nadia",
+        "last_name": "Polikarpova",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Deian",
+        "last_name": "Stefan",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Jean",
+        "last_name": "Yang",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Shachar",
+        "last_name": "Itzhaky",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Travis",
+        "last_name": "Hance",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Armando",
+        "last_name": "Solar-Lezama",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PolikarpovaSYIH20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408977",
+    "title": "Computation focusing",
+    "abstract": "Focusing is a technique from proof theory that exploits type information to prune inessential nondeterminism from proof search procedures. Viewed through the lens of the Curry-Howard correspondence, a focused typing derivation yields terms in normal form. This paper explores how to exploit focusing for reasoning about contextual equivalences and full abstraction. We present a focused polymorphic call-by-push-value calculus and prove a computational completeness result: for every well-typed term, there exists a focused term that is βη-equivalent to it. This completeness result yields a powerful way to refine the context lemmas for establishing contextual equivalences, cutting down the set that must be considered to just focused contexts. The paper demonstrates the application of focusing to establish program equivalences, including free theorems. It also uses focusing to prove full abstraction of a translation of the pure, total call-by-push-value language into a language with divergence and simple effect types, yielding a novel solution to a simple-to-state, but hitherto difficult to solve problem.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408977",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nick",
+        "last_name": "Rioux",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/RiouxZ20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408999",
+    "title": "Signature restriction for polymorphic algebraic effects",
+    "abstract": "The naive combination of polymorphic effects and polymorphic type assignment has been well known to break type safety. Existing approaches to this problem are classified into two groups: one for restricting how effects are triggered and the other for restricting how they are implemented. This work explores a new approach to ensuring the safety of polymorphic effects in polymorphic type assignment. A novelty of our work lies in finding a restriction on effect interfaces. To formalize our idea, we employ algebraic effects and handlers, where an effect interface is given by a set of operations coupled with type signatures. We propose signature restriction, a new notion to restrict the type signatures of operations, and show that signature restriction is sufficient to ensure type safety of an effectful language equipped with unrestricted polymorphic type assignment. We also develop a type-and-effect system to enable the use of both operations that satisfy and do not satisfy the signature restriction in a single program.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408999",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Taro",
+        "last_name": "Sekiyama",
+        "institution": "National Institute of Informatics"
+      },
+      {
+        "first_name": "Takeshi",
+        "last_name": "Tsukada",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Atsushi",
+        "last_name": "Igarashi",
+        "institution": "Kyoto University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SekiyamaTI20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408971",
+    "title": "A quick look at impredicativity",
+    "abstract": "Type inference for parametric polymorphism is wildly successful, but has always suffered from an embarrassing flaw: polymorphic types are themselves not first class. We present Quick Look, a practical, implemented, and deployable design for impredicative type inference. To demonstrate our claims, we have modified GHC, a production-quality Haskell compiler, to support impredicativity. The changes required are modest, localised, and are fully compatible with GHC's myriad other type system extensions.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408971",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Alejandro",
+        "last_name": "Serrano",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Jurriaan",
+        "last_name": "Hage",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Dimitrios",
+        "last_name": "Vytiniotis",
+        "institution": "DeepMind (United Kingdom)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SerranoHJV20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3409004",
+    "title": "Strong functional pearl: Harper&apos;s regular-expression matcher in Cedille",
+    "abstract": "This paper describes an implementation of Harper's continuation-based regular-expression matcher as a strong functional program in Cedille; i.e., Cedille statically confirms termination of the program on all inputs. The approach uses neither dependent types nor termination proofs. Instead, a particular interface dubbed a recursion universe is provided by Cedille, and the language ensures that all programs written against this interface terminate. Standard polymorphic typing is all that is needed to check the code against the interface. This answers a challenge posed by Bove, Krauss, and Sozeau.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3409004",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Aaron",
+        "last_name": "Stump",
+        "institution": "University of Iowa"
+      },
+      {
+        "first_name": "Christa",
+        "last_name": "Jenkins",
+        "institution": "University of Iowa"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Spahn",
+        "institution": "University of Iowa"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "McDonald",
+        "institution": "University of Notre Dame"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/StumpJSM20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408995",
+    "title": "Retrofitting parallelism onto OCaml",
+    "abstract": "OCaml is an industrial-strength, multi-paradigm programming language, widely used in industry and academia. OCaml is also one of the few modern managed system programming languages to lack support for shared memory parallel programming. This paper describes the design, a full-fledged implementation and evaluation of a mostly-concurrent garbage collector (GC) for the multicore extension of the OCaml programming language. Given that we propose to add parallelism to a widely used programming language with millions of lines of existing code, we face the challenge of maintaining backwards compatibility--not just in terms of the language features but also the performance of single-threaded code running with the new GC. To this end, the paper presents a series of novel techniques and demonstrates that the new GC strikes a balance between performance and feature backwards compatibility for sequential programs and scales admirably on modern multicore processors.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408995",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "KC",
+        "last_name": "Sivaramakrishnan",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Dolan",
+        "institution": ""
+      },
+      {
+        "first_name": "Leo",
+        "last_name": "White",
+        "institution": ""
+      },
+      {
+        "first_name": "Sadiq",
+        "last_name": "Jaffer",
+        "institution": ""
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Kelly",
+        "institution": ""
+      },
+      {
+        "first_name": "Anmol",
+        "last_name": "Sahoo",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "Sudha",
+        "last_name": "Parimala",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "Atul",
+        "last_name": "Dhiman",
+        "institution": "Indian Institute of Technology Madras"
+      },
+      {
+        "first_name": "Anil",
+        "last_name": "Madhavapeddy",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Sivaramakrishnan20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3409003",
+    "title": "SteelCore: an extensible concurrent separation logic for effectful dependently typed programs",
+    "abstract": "Much recent research has been devoted to modeling effects within type theory. Building on this work, we observe that effectful type theories can provide a foundation on which to build semantics for more complex programming constructs and program logics, extending the reasoning principles that apply within the host effectful type theory itself. Concretely, our main contribution is a semantics for concurrent separation logic (CSL) within the F ⋆ proof assistant in a manner that enables dependently typed, effectful F ⋆ programs to make use of concurrency and to be specified and verified using a full-featured, extensible CSL. In contrast to prior approaches, we directly derive the partial-correctness Hoare rules for CSL from the denotation of computations in the effectful semantics of non-deterministically interleaved atomic actions. Demonstrating the flexibility of our semantics, we build generic, verified libraries that support various concurrency constructs, ranging from dynamically allocated, storable spin locks, to protocol-indexed channels. We conclude that our effectful semantics provides a simple yet expressive basis on which to layer domain-specific languages and logics for verified, concurrent programming.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3409003",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nikhil",
+        "last_name": "Swamy",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Aseem",
+        "last_name": "Rastogi",
+        "institution": "Microsoft Research (India)"
+      },
+      {
+        "first_name": "Aymeric",
+        "last_name": "Fromherz",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Denis",
+        "last_name": "Merigoux",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Danel",
+        "last_name": "Ahman",
+        "institution": "University of Ljubljana"
+      },
+      {
+        "first_name": "Guido",
+        "last_name": "Martínez",
+        "institution": "Consejo Nacional de Investigaciones Científicas y Técnicas"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SwamyRFMAM20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408973",
+    "title": "A dependently typed calculus with pattern matching and erasure inference",
+    "abstract": "Some parts of dependently typed programs constitute evidence of their type-correctness and, once checked, are unnecessary for execution. These parts can easily become asymptotically larger than the remaining runtime-useful computation, which can cause normally linear-time programs run in exponential time, or worse. We should not make programs run slower by just describing them more precisely. Current dependently typed systems do not erase such computation satisfactorily. By modelling erasure indirectly through type universes or irrelevance, they impose the limitations of these means to erasure. Some useless computation then cannot be erased and idiomatic programs remain asymptotically sub-optimal. In this paper, we explain why we need erasure, that it is different from other concepts like irrelevance, and propose a dependently typed calculus with pattern matching with erasure annotations to model it. We show that erasure in well-typed programs is sound in that it commutes with reduction. Assuming the Church-Rosser property, erasure furthermore preserves convertibility in general. We also give an erasure inference algorithm for erasure-unannotated or partially annotated programs and prove it sound, complete, and optimal with respect to the typing rules of the calculus. Finally, we show that this erasure method is effective in that it can not only recover the expected asymptotic complexity in compiled programs at run time, but it can also shorten compilation times.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408973",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matúš",
+        "last_name": "Tejiščák",
+        "institution": "University of St Andrews"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Tejiscak20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408992",
+    "title": "Raising expectations: automating expected cost analysis with types",
+    "abstract": "This article presents a type-based analysis for deriving upper bounds on the expected execution cost of probabilistic programs. The analysis is naturally compositional, parametric in the cost model, and supports higher-order functions and inductive data types. The derived bounds are multivariate polynomials that are functions of data structures. Bound inference is enabled by local type rules that reduce type inference to linear constraint solving. The type system is based on the potential method of amortized analysis and extends automatic amortized resource analysis (AARA) for deterministic programs. A main innovation is that bounds can contain symbolic probabilities, which may appear in data structures and function arguments. Another contribution is a novel soundness proof that establishes the correctness of the derived bounds with respect to a distribution-based operational cost semantics that also includes nontrivial diverging behavior. For cost models like time, derived bounds imply termination with probability one. To highlight the novel ideas, the presentation focuses on linear potential and a core language. However, the analysis is implemented as an extension of Resource Aware ML and supports polynomial bounds and user defined data structures. The effectiveness of the technique is evaluated by analyzing the sample complexity of discrete distributions and with a novel average-case estimation for deterministic programs that combines expected cost analysis with statistical methods.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408992",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Di",
+        "last_name": "Wang",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Kahn",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Hoffmann",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WangKH20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408981",
+    "title": "Effect handlers, evidently",
+    "abstract": "Algebraic effect handlers are a powerful way to incorporate effects in a programming language. Sometimes perhaps even _too_ powerful. In this article we define a restriction of general effect handlers with _scoped resumptions_. We argue one can still express all important effects, while improving reasoning about effect handlers. Using the newly gained guarantees, we define a sound and coherent evidence translation for effect handlers, which directly passes the handlers as evidence to each operation. We prove full soundness and coherence of the translation into plain lambda calculus. The evidence in turn enables efficient implementations of effect operations; in particular, we show we can execute tail-resumptive operations _in place_ (without needing to capture the evaluation context), and how we can replace the runtime search for a handler by indexing with a constant offset.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3408981",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ningning",
+        "last_name": "Xie",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Jonathan Immanuel",
+        "last_name": "Brachthäuser",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Hillerström",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Philipp",
+        "last_name": "Schuster",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Daan",
+        "last_name": "Leijen",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/XieBHSL20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3409002",
+    "title": "Staged selective parser combinators",
+    "abstract": "Parser combinators are a middle ground between the fine control of hand-rolled parsers and the high-level almost grammar-like appearance of parsers created via parser generators. They also promote a cleaner, compositional design for parsers. Historically, however, they cannot match the performance of their counterparts. This paper describes how to compile parser combinators into parsers of hand-written quality. This is done by leveraging the static information present in the grammar by representing it as a tree. However, in order to exploit this information, it will be necessary to drop support for monadic computation since this generates dynamic structure. Selective functors can help recover lost functionality in the absence of monads, and the parser tree can be partially evaluated with staging. This is implemented in a library called Parsley.",
+    "date": "2020-08-02",
+    "link": "https://doi.org/10.1145/3409002",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jamie",
+        "last_name": "Willis",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Wu",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Matthew C.",
+        "last_name": "Pickering",
+        "institution": "University of Bristol"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WillisWP20",
+    "venue": "icfp",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3408976",
+    "title": "Composing and decomposing op-based CRDTs with semidirect products",
+    "abstract": "Operation-based Conflict-free Replicated Data Types (CRDTs) are eventually consistent replicated data types that automatically resolve conflicts between concurrent operations. Op-based CRDTs must be designed differently for each data type, and current designs use ad-hoc techniques to handle concurrent operations that do not naturally commute. We present a new construction, the semidirect product of op-based CRDTs, which combines the operations of two CRDTs into one while handling conflicts between their concurrent operations in a uniform way. We demonstrate the construction's utility by using it to construct novel CRDTs, as well as decomposing several existing CRDTs as semidirect products of simpler CRDTs. Although it reproduces common CRDT semantics, the semidirect product can be viewed as a restricted kind of operational transformation, thus forming a bridge between these two opposing techniques for constructing replicated data types.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.1145/3408976",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Weidner",
+        "institution": ""
+      },
+      {
+        "first_name": "Heather",
+        "last_name": "Miller",
+        "institution": ""
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "Meiklejohn",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "journals/pacmpl/WeidnerMM20",
+    "venue": "icfp",
+    "year": 2020
+  }
+]

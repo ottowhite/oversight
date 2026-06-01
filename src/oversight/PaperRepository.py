@@ -114,6 +114,42 @@ class PaperRepository:
             papers.append(paper)
         return papers
 
+    def get_neighbors(
+        self,
+        paper_id: str,
+        k: int,
+        mutual: bool = False,
+        ef_search: int = 80,
+    ) -> list[tuple[Paper, float]]:
+        """Return the kNN of ``paper_id`` as ``[(Paper, similarity), ...]``.
+
+        Hydrates each neighbor via a single bulk fetch from the ``paper`` table,
+        preserving the similarity ordering returned by ``find_neighbors``.
+        """
+        neighbors = self.db.find_neighbors(
+            paper_id, k=k, mutual=mutual, ef_search=ef_search
+        )
+        if not neighbors:
+            return []
+
+        sim_by_id = {pid: sim for pid, sim in neighbors}
+        rows = self.db.get_papers_by_ids([pid for pid, _ in neighbors])
+        results: list[tuple[Paper, float]] = []
+        for row in rows:
+            paper, _ = Paper.from_database_row(row)
+            results.append((paper, sim_by_id[paper.paper_id]))
+        # Restore the similarity-sorted order (descending).
+        results.sort(key=lambda pair: pair[1], reverse=True)
+        return results
+
+    def get_paper(self, paper_id: str) -> Paper | None:
+        """Fetch a single Paper by id, or ``None`` if it isn't in the DB."""
+        rows = self.db.get_papers_by_ids([paper_id])
+        if not rows:
+            return None
+        paper, _ = Paper.from_database_row(rows[0])
+        return paper
+
     def compute_similarity_over_time(
         self,
         text: str,

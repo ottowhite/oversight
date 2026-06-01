@@ -1,0 +1,692 @@
+[
+  {
+    "paper_id": "10.1145/512644.512666",
+    "title": "Distributed Data Structures in Linda",
+    "abstract": "A <i>distributed data structure</i> is a data structure that can be manipulated by many parallel processes simultaneously. Distributed data structures are the natural complement to parallel program structures, where a <i>parallel program</i> (for our purposes) is one that is made up of many simultaneously active, communicating processes. Distributed data structures are impossible in most parallel programming languages, but they are supported in the parallel language Linda and they are central to Linda programming style. We outline Linda, then discuss some distributed data structures that have arisen in Linda programming experiments to date. Our intent is neither to discuss the design of the Linda system nor the performance of Linda programs, though we do comment on both topics; we are concerned instead with a few of the simpler and more basic techniques made possible by a language model that, we argue, is subtly but fundamentally different in its implications from most others.This material is based upon work supported by the National Science Foundation under Grant No. MCS-8303905. Jerry Leichter is supported by a Digital Equipment Corporation Graduate Engineering Education Program fellowship.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512666",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Nicholas",
+        "last_name": "Carriero",
+        "institution": ""
+      },
+      {
+        "first_name": "David",
+        "last_name": "Gelernter",
+        "institution": ""
+      },
+      {
+        "first_name": "Jerrold",
+        "last_name": "Leichter",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/CarrieroGL86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512654",
+    "title": "Retargetable High-Level Alias Analysis",
+    "abstract": "All optimizing compilers must deal with the problem of aliases arising due to the presence of multiple names that reference the same memory areas. Presented in this paper is a staged, high-level alias analysis methodology that provides detailed alias information to a global optimizer implemented at any level in the compilation process. The framework provides easy portability of optimizing compilers to new architectures, as well as the easy addition, of new compilers to an already existing family of optimizing compilers. The method involves the application of a set of language-specific alias rules to the source code in order to gather alias information. A language-independent component then performs a transitive closure of this information and transforms it into a presentation more suitable for use by a global optimizer. Each stage of the methodology is detailed. Results are given for an implemented family of compilers targeted for a reduced instruction set computer.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512654",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Deborah S.",
+        "last_name": "Coutant",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Coutant86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512653",
+    "title": "Higher-Order Strictness Analysis in Untyped Lambda Calculus",
+    "abstract": "A function is said to be <i>strict</i> in one of its formal parameters if, in all calls to the function, either the corresponding actual parameter is evaluated, or the call does not terminate. Detecting which arguments a function will surely evaluate is a problem that arises often in program transformation and compiler optimization. We present a strategy that allows one to infer strictness properties of functions expressed in the lambda calculus. Our analysis improves on previous work in that (1) a set-theoretic characterization of strictness is used that permits treatment of <i>free variables,</i> which in turn permits a broader range of interpretations, and (2) the analysis provides an effective treatment of higher-order functions. We also prove a result due to Meyer [15]: the problem of first-order strictness analysis is complete in deterministic exponential time. However, because the size of most functions is small, the complexity seems to be tractable in practice.This research was supported in part by NSF Grant MCS-8302018, and a Faculty Development Award from IBM.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512653",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Hudak",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Jonathan M.",
+        "last_name": "Young",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/popl/HudakY86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512646",
+    "title": "Dynamically Bypassing Copy Rule Chains in Attribute Grammars",
+    "abstract": "Attribute grammars require copy rules to transfer values between attribute instances distant in an attributed parse tree. We introduce copy bypass attribute propagation that dynamically replaces copy rules with nonlocal dependencies, resulting in faster incremental evaluation. A evaluation strategy is used that approximates a topological ordering of attribute instances. The result is an efficient incremental evaluator that allows multiple subtree replacement on any noncircular attribute grammar.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512646",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Roger",
+        "last_name": "Hoover",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Hoover86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512651",
+    "title": "Code Motion of Control Structures in High-Level Languages",
+    "abstract": "One trend among programmers is the increased use of abstractions. Through encapsulation techniques, abstractions extend the repertory of data structures and their concomitant operations that are processed directly by a compiler. For example, a compiler might not offer sets or set operations in its base language, but abstractions allow a programmer to define sets in terms of constructs already recognized by the compiler. In particular, abstractions can allow new constructs to be defined in terms of other abstractions. Although significant power is gained through the use of layered abstractions, object code quality suffers as increasingly less of a program's data structures and operations are exposed to the optimization phase of a compiler. Multiple references to abstractions are also inefficient, since the interaction between abstractions is often complex yet hidden from a compiler. Abstractions are most flexible when they are cast in general terms; a specific invocation is then tailored by the abstraction to obtain the appropriate code. A sequence of references to such abstractions can be inefficient due to functional redundancy that cannot be detected at compile-time. By integrating the references, the offending segments of code can be moved to a more advantageous position. Although procedure integration materializes abstracted constructs, the abstractions can still be ineligible for optimization using current techniques; in particular, abstractions often involve loops and conditional branches that can obscure code that would otherwise be eligible for code motion.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512651",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ron K.",
+        "last_name": "Cytron",
+        "institution": ""
+      },
+      {
+        "first_name": "Andy",
+        "last_name": "Lowry",
+        "institution": ""
+      },
+      {
+        "first_name": "F. Kenneth",
+        "last_name": "Zadeck",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/CytronLZ86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512664",
+    "title": "Logic and Inheritance",
+    "abstract": "An elaboration of the Prolog language is described in which the notion of first-order term is replaced by a more general one. This extended form of terms allows the integration of inheritance---an <i>IS-A</i> taxonomy---directly into the unification process rather than indirectly through the resolution-based inference mechanism of Prolog. This results in more efficient computations and enhanced language expressiveness. The language thus obtained, called LOGIN, subsumes Prolog, in the sense that conventional Prolog programs are equally well executed by LOGIN.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512664",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hassan",
+        "last_name": "Aı̈t-Kaci",
+        "institution": ""
+      },
+      {
+        "first_name": "Roger",
+        "last_name": "Nasr",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Ait-KaciN86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512665",
+    "title": "Unification in Many-Sorted Algebras as a Device for Incremental Semantic Analysis",
+    "abstract": "Language-specific editors for typed programming languages must contain a subsystem for semantic analysis in order to guarantee correctness of programs with respect to the context conditions of the language. As programs are usually incomplete during development, the semantic analysis must be able to cope with missing context information, e. g. incomplete variable declarations or calls to procedures imported from still missing modules. In this paper we present an algorithm for incremental semantic analysis, which guarantees immediate detection of semantic errors even in arbitrary incomplete program fragments. The algorithm is generated from the language's context conditions, which are described by inference rules. During editing, these rules are evaluated using a unification algorithm for many-sorted algebras with semi-lattice ordered subsorts and non-empty equational theories. The method has been implemented as part of the PSG system, which generates interactive programming environments from formal language definitions, and has been successfully used to generate an incremental semantic analysis for PASCAL and MODULA-2.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512665",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gregor",
+        "last_name": "Snelting",
+        "institution": "Darmstadt University of Applied Sciences"
+      },
+      {
+        "first_name": "Wolfgang",
+        "last_name": "Henhapl",
+        "institution": "Darmstadt University of Applied Sciences"
+      }
+    ],
+    "dblp_key": "conf/popl/SneltingH86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512674",
+    "title": "Executable Specifications with Quantifiers in the FASE System",
+    "abstract": "We present an overview of the FASE system for executable specifications based upon final, rather than initial, algebras. Particular emphasis is placed upon the execution of expressions involving quantifiers. The need for such expressions is explained, as is our method for evaluating them. By permitting quantifiers, we are able to give very natural specifications for many data types. As an example, we give the FASE specification of Kemmerer's library system.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512674",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Stan",
+        "last_name": "Jefferson",
+        "institution": ""
+      },
+      {
+        "first_name": "Samuel N.",
+        "last_name": "Kamin",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/JeffersonK86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512658",
+    "title": "Limitations of Synchronous Communication with Static Process Structure in Languages for Distributed Computing",
+    "abstract": "Modules in a distributed program are active, communicating entities. A language for distributed programs must choose a set of communication primitives and a structure for processes. This paper examines one possible choice: synchronous communication primitives (such as rendez-vous or remote procedure call) in combination with modules that encompass a fixed number of processes (such as Ada tasks or UNIX processes). An analysis of the concurrency requirements of distributed programs suggests that this combination imposes complex and indirect solutions to common problems and thus is poorly suited for applications such as distributed programs in which concurrency is important. To provide adequate expressive power, a language for distributed programs should abandon either synchronous communication primitives or the static process structure.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512658",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Barbara",
+        "last_name": "Liskov",
+        "institution": "Coral Reef Alliance"
+      },
+      {
+        "first_name": "Maurice",
+        "last_name": "Herlihy",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Lucy",
+        "last_name": "Gilbert",
+        "institution": "Coral Reef Alliance"
+      }
+    ],
+    "dblp_key": "conf/popl/LiskovHG86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512660",
+    "title": "A Really Abstract Concurrent Model and its Temporal Logic",
+    "abstract": "In this paper we advance the radical notion that a computational model based on the <i>reals</i> provides a more abstract description of concurrent and reactive systems, than the conventional <i>integers</i> based behavioral model of execution <i>sequences.</i> The real model is studied in the setting of temporal logic, and we illustrate its advantages by providing a <i>fully abstract</i> temporal semantics for a simple concurrent language, and an example of verification of a concurrent program within the real temporal logic defined here. It is shown that, by imposing the crucial condition of <i>finite variability,</i> we achieve a balanced formalism that is insensitive to <i>finite</i> stuttering, but can recognize <i>infinite</i> stuttering, a distinction which is essential for obtaining a fully abstract semantics of non-terminating processes. Among other advantages, going into real-based semantics obviates the need for the controversial representation of concurrency by interleaving, and most of the associated fairness constraints.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512660",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Howard",
+        "last_name": "Barringer",
+        "institution": ""
+      },
+      {
+        "first_name": "Ruurd",
+        "last_name": "Kuiper",
+        "institution": ""
+      },
+      {
+        "first_name": "Amir",
+        "last_name": "Pnueli",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/BarringerKP86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512650",
+    "title": "Hierarchical VLSI Design Systems Based on Attribute Grammars",
+    "abstract": "The attribute grammar technique used for design of structure editors is suggested as a foundation for building <i>hierarchical incremental design editors</i> for VLSI circuits. The usual definition of attribute grammars is extended: the cycles that occur in VLSI design make us come to terms with circular attributes (under conditions that guarantee their least fixpoint solution, namely that the functions be monotone and yield values over a lattice of bounded height). Many interesting VLSI design problems can be cast in attributes meeting this condition, for example, timing verification, logic simulation, power dissipation, and adherence to clocking disciplines, to name a few. As an illustration of the formalism, attributes are presented which solve the All Bidirectional Edges problem that labels the direction of information flow in a circuit. The incremental evaluation algorithm of [Rep82] is extended to handle fixpoint computations of circular attributes by noting that when the dependency graph is broken into its strongly connected components, a directed acyclic graph results. The worst-case running time of the resulting incremental evaluation algorithm is bounded by <i>O</i> (<i>hk</i> |AFFECTEDSCC|), where <i>h</i> is the height of the largest attribute lattice, <i>k</i> the largest number of attributes in any one strongly connected component, and |AFFECTEDSCC| the number of strongly connected components affected by a single modification to the design tree.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512650",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Larry G.",
+        "last_name": "Jones",
+        "institution": ""
+      },
+      {
+        "first_name": "Janoš",
+        "last_name": "Šimon",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/JonesS86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512649",
+    "title": "A Maximum-Flow Approach to Anomaly Isolation in Unification-Based Incremental Type Inference",
+    "abstract": "A crucial aspect of a program intended for general use is its behavior in the presence of erroneous inputs. For instance, much attention has been devoted to the problems of error detection, reporting, and correction in compilers1,2. As programming languages and systems based in one way or another on unification3 become more common, it becomes increasingly important to develop a theory of error detection and correction for unification-based systems. We report here on a language-based editor for a variant of ML4 that uses a novel approach to the isolation of likely causes of user errors. As the user edits and manipulates his or her program, unification is incrementally applied to determine its type correctness. If a type inconsistency arises, a maximum flow technique is applied to the set of type equations to determine the most likely source of error. In this way a determination can be made as to the relative strengths with which the set of type equations asserts multiple contradictory hypotheses. In a language such as ML, the type of an object is inferred from patterns of usage. Often it is the case that most uses of a given object are mutually consistent, whereas one or a very small number of uses conflict with the general usage pattern. In MOE (ML-Oriented Editor), if it is possible to discern that such a situation has arisen, likely errors are highlighted at high intensity and all other program components that contributed to the inferred type of the object are highlighted at a lower intensity. In providing error information to the user, two principles are observed:(1) Error indications should be complete but parsimonious; the user should see highlighted on the screen everything that contributed directly to an error, but nothing. more,(2) The user's attention should be drawn to what appear to be the anomalies that are responsible for errors.Language-based editors permit a new level of quality in the process of helping users when inputs are, for one reason or another, invalid. Unification-based type inference in language-based editors appears to have been first considered by Meertens 5. Snelting and Bahlke have more recently also explored this approach.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512649",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gregory F.",
+        "last_name": "Johnson",
+        "institution": ""
+      },
+      {
+        "first_name": "Janet A.",
+        "last_name": "Walz",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/JohnsonW86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512656",
+    "title": "A Parallel Language and its Compilation to Multiprocessor Machines or VLSI",
+    "abstract": "A language Crystal and its compiler for parallel programming is presented. The goal of Crystal is to help programmers in seeking efficient parallel implementations of an algorithm, and managing the complexity that might arise in dealing with hundreds of thousands of autonomous parallel processes. In Crystal, a program consists of a system of recursion equations and is interpreted as a parallel system. Crystal views a large complex system as consisting of a hierarchy of parallel sub-systems, built upon a set of Crystal programs by composition and abstraction. There is no mention of explicit communications in a Crystal program. The Crystal compiler automatically incorporates pipelining into programs, and generates a parallel program that is optimal with respect to an algorithm. Each optimizing compiler, targeted for a particular machine, determines the appropriate granular size of parallelism and attains a balance between computations and communications. Based on the language, a unified theory for understanding and generating any systolic design has been devised and it constitues a part of the compiler.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512656",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Marina C.",
+        "last_name": "Chen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Chen86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512652",
+    "title": "Compilers and Staging Transformations",
+    "abstract": "Computations can generally be separated into stages, which are distinguished from one another by either frequency of execution or availability of data. <i>Precomputation</i> and <i>frequency reduction</i> involve moving computation among a collection of stages so that work is done as early as possible (so less time is required in later steps) and as infrequently as possible (to reduce overall time).We present, by means of examples, several general transformation techniques for carrying out precomputation transformations. We illustrate the techniques by deriving fragments of simple compilers from interpreters, including an example of Prolog compilation, but the techniques are applicable in a broad range of circumstances. Our aim is to demonstrate how perspicuous accounts of precomputation and frequency reduction can be given for a wide range of applications using a small number of relatively straightforward techniques.Related work in partial evaluation, semantically directed compilation, and compiler optimization is discussed.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512652",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ulrik",
+        "last_name": "Jørring",
+        "institution": ""
+      },
+      {
+        "first_name": "William L.",
+        "last_name": "Scherlis",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/JorringS86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512647",
+    "title": "Global Storage Allocation in Attribute Evaluation",
+    "abstract": "Global storage allocation for attributes in an attribute grammar evaluator is discussed and an algorithm for determining if a given set of attribute occurrences can share a common global storage is obtained.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512647",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Takuya",
+        "last_name": "Katayama",
+        "institution": "Tokyo Institute of Technology"
+      },
+      {
+        "first_name": "Hisashi",
+        "last_name": "Sasaki",
+        "institution": "Tokyo Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/KatayamaS86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512655",
+    "title": "High-Quality Code Generation Via Bottom-Up Tree Pattern Matching",
+    "abstract": "High-quality local code generation is one of the most difficult tasks the compiler-writer faces. Even if register allocation decisions are postponed and common subexpressions are ignored, instruction selection on machines with complex addressing can be quite difficult. Efficient and general algorithms have been developed to do instruction selection, but these algorithms fail to always find optimal solutions. Instruction selection algorithms based on dynamic programming or complete enumeration always find optimal solutions, but seem to be too costly to be practical. This paper describes a new instruction selection algorithm, and its prototype implementation, based on bottom-up tree pattern-matching. This algorithm is both time and space efficient, and is capable of doing optimal instruction selection for the DEC VAX-11 with its rich set of addressing modes.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512655",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Philip J.",
+        "last_name": "Hatcher",
+        "institution": ""
+      },
+      {
+        "first_name": "Thomas W.",
+        "last_name": "Christopher",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/HatcherC86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512672",
+    "title": "Data Flow Analysis of Applicative Programs Using Minimal Function Graphs",
+    "abstract": "Data or program flow analysis is concerned with the static analysis of programs, to obtain as much information as possible about their possible run time behavior without actually having to run the programs. Due to the unsolvability of the halting problem (and nearly any other question concerning program behavior), such analyses are necessarily only approximate whenever the analysis algorithm is guaranteed to terminate. Further, exact analysis may be impossible due to the lack of knowledge of input data values, so the analysis can at best yield information about sets of possible computations.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512672",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Neil D.",
+        "last_name": "Jones",
+        "institution": ""
+      },
+      {
+        "first_name": "Alan",
+        "last_name": "Mycroft",
+        "institution": "Bridge University"
+      }
+    ],
+    "dblp_key": "conf/popl/JonesM86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512659",
+    "title": "Atomic Data Abstractions in a Distributed Collaborative Editing System",
+    "abstract": "This paper describes our experience implementing CES, a distributed Collaborative Editing System written in Argus, a language that includes facilities for managing long-lived distributed data. Argus provides <i>atomic actions,</i> which simplify the handling of concurrency and failures, and mechanisms for implementing <i>atomic data types,</i> which ensure serializability and recoverability of actions that use them. This paper focuses on the support for atomicity in Argus, especially the support for building new atomic types. Overall the mechanisms in Argus made it relatively easy to build CES; however, we encountered interesting problems in several areas. For example, much of the processing of an atomic action in Argus is handled automatically by the run-time system; several examples are presented that illustrate areas where more explicit control in the implementations of atomic types would be useful.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512659",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Irene",
+        "last_name": "Greif",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Seliger",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "William E.",
+        "last_name": "Weihl",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/GreifSW86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512673",
+    "title": "A Mechanically Certified Theorem about Optimal Concurrency of Sorting Networks",
+    "abstract": "Our concern is the mechanical certification of transformations of sequential program executions into parallel executions with equivalent semantics. The objective of such transformations is to accelerate the execution of programs. The result reported here is a mechanically certified theorem of optimality. We present a transformation which applies to every program in a particular programming language, the language of sorting networks. This transformation transforms the sequential execution of any sorting network into an execution which is as fast or faster than any other transformation which applies to every sorting network. The theorem is stated formally in a mechanized logic.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512673",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Lengauer",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Chua-Huang",
+        "last_name": "Huang",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/popl/LengauerH86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512662",
+    "title": "Operational Semantics of a Parallel Object-Oriented Language",
+    "abstract": "In this paper the semantics of the programming language POOL is described.It is a language that integrates the object-oriented structure of languages like Smalltalk-80 with facilities for concurrency and communication like the ones in Ada.The semantics is described in an operational way: it is based on transition systems.By using a way of representing parallel processes that is different from the traditional one, it is possible to overcome some difficulties pertaining to the latter.The resulting semantics shows a close resemblance with the informal language description and at the same time there are good prospects that it can serve as a secure guide for the implementation of the language.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512662",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Pierre",
+        "last_name": "America",
+        "institution": "Philips (Netherlands)"
+      },
+      {
+        "first_name": "Jaco de",
+        "last_name": "Bakker",
+        "institution": "Centrum Wiskunde & Informatica"
+      },
+      {
+        "first_name": "Joost N.",
+        "last_name": "Kok",
+        "institution": "Research!America (United States)"
+      },
+      {
+        "first_name": "J.J.M.M.",
+        "last_name": "Rutten",
+        "institution": "Centrum Wiskunde & Informatica"
+      }
+    ],
+    "dblp_key": "conf/popl/AmericaBKR86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512657",
+    "title": "Towards Programming with Knowledge Expressions",
+    "abstract": "Explicit use of knowledge expressions in the design of distributed algorithms is explored. A non-trivial case study is carried through, illustrating the facilities that a design language could have for setting and deleting the knowledge that the processes possess about the global state and about the knowledge of other processes. No implicit capabilities for logical reasoning are assumed. A language basis is used that allows common knowledge not only by an eager protocol but also in the true sense. The observation is made that the distinction between these two kinds of common knowledge can be associated with the level of abstraction: true common knowledge of higher levels of abstraction: true common knowledge of higher levels can be implemented as eager common knowledge on lower levels. A knowledge-motivated abstraction tool is therefore suggested to be useful in supporting stepwise refinement of distributed algorithms.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512657",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Reino",
+        "last_name": "Kurki-Suonio",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Kurki-Suonio86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512669",
+    "title": "Representation Independence and Data Abstraction",
+    "abstract": "One purpose of type checking in programming languages is to guarantee a degree of \"representation independence:\" programs should not depend on the way stacks are represented, only on the behavior of stacks with respect to push and pop operations. In languages with abstract data type declarations, representation independence should hold for user-defined types as well as built-in types. We study the representation independence properties of a typed functional language (second-order lambda calculus) with polymorphic functions and abstract data type declarations in which data type implementations (packages) may be passed as function parameters and returned as results. The type checking rules of the language guarantee that two data type implementations P and Q are equivalence whenever there is a correspondence between the behavior of the operations of P and the behavior of the operations of Q.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512669",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John C.",
+        "last_name": "Mitchell",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/Mitchell86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512671",
+    "title": "&quot;Type&quot; Is Not A Type",
+    "abstract": "A function has a <i>dependent type</i> when the type of its result depends upon the value of its argument. Dependent types originated in the type theory of intuitionistic mathematics and have reappeared independently in programming languages such as CLU, Pebble, and Russell. Some of these languages make the assumption that there exists a <i>type-of-all-types</i> which is its own type as well as the type of all other types. Girard proved that this approach is inconsistent from the perspective of intuitionistic logic. We apply Girard's techniques to establish that the type-of-all-types assumption creates serious pathologies from a programming perspective: a system using this assumption is inherently not normalizing, term equality is undecidable, and the resulting theory fails to be a conservative extension of the theory of the underlying base types. The failure of conservative extension means that classical reasoning about programs in such a system is not sound.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512671",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Albert R.",
+        "last_name": "Meyer",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Mark B.",
+        "last_name": "Reinhold",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/MeyerR86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512645",
+    "title": "Remote Attribute Updating for Language-Based Editors",
+    "abstract": "A major drawback to the use of attribute grammars in language-based editors has been that attributes can only depend on neighboring attributes in a program's syntax tree. This paper concerns new attribute-grammar-based methods that, for a suitable class of grammars, overcome this fundamental limitation. The techniques presented allow the updating algorithm to skip over arbitrarily large sections of the tree that more straightforward updating methods visit node by node. These techniques are then extended to deal with aggregate values, so that the attribute updating procedure need only follow dependencies due to a changed component of an aggregate value. Although our methods work only for a restricted class of attribute grammars, satisfying the necessary restrictions should not place an undue burden on the writer of the grammar.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512645",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Reps",
+        "institution": ""
+      },
+      {
+        "first_name": "Carla",
+        "last_name": "Marceau",
+        "institution": ""
+      },
+      {
+        "first_name": "Tim",
+        "last_name": "Teitelbaum",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/RepsMT86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512663",
+    "title": "Equational Logic Programming: An Extension to Equational Programming",
+    "abstract": "The paradigm of equational programming potentially possesses all the features provided by Prolog-like languages. In addition, the ability to reason about equations, which is not provided by Prolog, can be accommodated by equational languages. In this paper, we propose an extended equational programming paradigm, and describe an <i>equational logic</i> programming language which is an extension of the equational language defined in [Hoff82]. Semantic foundations for the extension are discussed. The extended language is a powerful logic programming language in the sense of Prolog and thus enjoys the programming features that Prolog possesses. Furthermore, it provides an ability to solve equations, which captures the essential power of equational programming.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512663",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jia-Huai",
+        "last_name": "You",
+        "institution": ""
+      },
+      {
+        "first_name": "P. A.",
+        "last_name": "Subrahmanyam",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/YouS86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512668",
+    "title": "Annotations for Distributed Programming in Logic",
+    "abstract": "It has been recognised that languages like Concurrent Prolog and Parlog which use committed choice non-determinism have departed from the original concept of logic programming, but no new paradigm has been suggested. In this paper we propose that programs in such languages be viewed as rewrite rules that hierarchically decompose a process into a network of distributed processes. Logical variables and unification provide a powerful means of communication, and annotations can provide a synchronization mechanism that complements them.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512668",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Raghu",
+        "last_name": "Ramakrishnan",
+        "institution": ""
+      },
+      {
+        "first_name": "Abraham",
+        "last_name": "Silberschatz",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/RamakrishnanS86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512667",
+    "title": "Para-Functional Programming: A Paradigm for Programming Multiprocessor Systems",
+    "abstract": "One of the most important pragmatic advantages of functional languages is that concurrency in a program is implicit -- there is no need for special constructs to express parallelism as is required in most conventional languages. Furthermore, it is fairly easy for compilers to automatically determine the concurrency as a step toward decomposing a program for execution on a suitable parallel architecture. Yet it is often the case that one knows precisely the optimal decomposition for execution on a particular machine, and one can never expect a compiler to determine such optimal mappings in all cases. This paper is concerned with ways to allow the programmer to explicitly express this mapping of program to machine, by using annotations that, given a few minor constraints, cannot alter the functional semantics of the program. We show through several detailed examples the expressiveness and conciseness of the resulting para-functional programming methodology, using an experimental language called ParAlfl based on our ideas. We also give a formal denotational description of the mapping semantics using a notion of execution trees.This research was supported in part by NSF Grants DCR-8403304 and DCR-8451415, and a Faculty Development Award from IBM.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512667",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Paul",
+        "last_name": "Hudak",
+        "institution": ""
+      },
+      {
+        "first_name": "Lauren",
+        "last_name": "Smith",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/HudakS86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512661",
+    "title": "Expressing Interesting Properties of Programs in Propositional Temporal Logic",
+    "abstract": "We show that the class of properties of programs expressible in propositional temporal logic can be substantially extended if we assume the programs to be <i>data-independent.</i> Basically, a program is data-independent if its behavior does not depend on the specific data it operates upon. Our results significantly extend the applicability of program verification and synthesis methods based on propositional temporal logic.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512661",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Pierre",
+        "last_name": "Wolper",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Wolper86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512648",
+    "title": "Finding the Source of Type Errors",
+    "abstract": "It is a truism that most bugs are detected only at a great distance from their source. Although polymorphic type-checking systems like those in ML help greatly by detecting potential run-time type errors at compile-time, such systems are still not very helpful for locating the source of a type error. Typically, an error is reported only when the type-checker can proceed no further, even though the programmer's actual error may have occurred much earlier in the text. We describe an algorithm which appears to be quite helpful in isolating and explaining the source of type errors. The algorithm works by keeping track of the <i>reasons</i> the checker makes deductions about the types of variables.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512648",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Wand86",
+    "venue": "popl",
+    "year": 1986
+  },
+  {
+    "paper_id": "10.1145/512644.512670",
+    "title": "Using Dependent Types to Express Modular Structure",
+    "abstract": "Writing any large program poses difficult problems of organization. In many modern programming languages these problems are addressed by special linguistic constructs, variously known as modules, packages, or clusters, which provide for partitioning programs into manageable components and for securely combining these components to form complete programs. Some general purpose components are able to take on a life of their own, being separately compiled and stored in libraries of generic, reusable program units. Usually modularity constructs also support some form of information hiding, such as \"abstract data types.\" \"Programming in the large\" is concerned with using such constructs to impose structure on large programs, in contrast to \"programming in the small\", which deals with the detailed implementation of algorithms in terms of data structures and control constructs. Our goal here is to examine some of the proposed linguistic notions with respect to how they meet the pragmatic requirements of programming in the large.",
+    "date": "1986-01-01",
+    "link": "https://doi.org/10.1145/512644.512670",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "MacQueen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/MacQueen86",
+    "venue": "popl",
+    "year": 1986
+  }
+]

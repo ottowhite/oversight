@@ -1,0 +1,738 @@
+[
+  {
+    "paper_id": "10.1145/504282.504294",
+    "title": "Incremental Computation of Complex Objects Queries",
+    "abstract": "The need for incremental algorithms for evaluating database queries is well known, but constructing algorithms that work on object-oriented databases (OODBs) has been difficult. The reason is that OODB query languages involve complex data types including composite objects and nested collections. As a result, existing algorithms have limitations in that the kinds of database updates are restricted, the operations found in many query languages are not supported, or the algorithms are too complex to be described precisely. We present an incremental computation algorithm that can handle any kind of database updates, can accept any expressions in complex query languages such as OQL, and can be described precisely. By translating primitive values and records into collections, we can reduce all query expressions comprehension. This makes the problems with incremental computation less complicated and thus allows us to decribe of two parts: one is to maintain the consistency in each comprehension occurrence and the other is to update the value of an entire expression. The algorithm is so flexible that we can use strict updates, lazy updates, and their combinations. By comparing the performance of applications built with our mechanism and that of equivalent hand written update programs, we show that our incremental algorithm can be iplemented efficiently.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504294",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Hiroaki",
+        "last_name": "Nakamura",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Nakamura01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504297",
+    "title": "Dynamic Optimistic Interprocedural Analysis: A Framework and an Application",
+    "abstract": "In this paper, we address the problem of dynamic optimistic interprocedural analysis. Our goal is to build on past work on static interprocedural analysis and dynamic optimization by combining their advantages. We present a framework for performing dynamic optimistic interprocedural analysis. the framework is designed to be used in the context of dynamic class loading and dynamic compilation, and includes mechanisms for event notification (on class loading and method compilation) and dependence tracking (to enable invalidation of optimistic assumptions). We illustrate the functionality of the framework by using it to be used in the context of dynamic class loading and dynamic compilation, and includes mechanisms for event notification (on class loading and method compilaton) and dependence tracking (to enable invalidation of optimistic assumptions). We illustrate the functionality of the framework by using it to implement a dynamic optimistic interprocedural type (DOIT) analysis algorithm. The DOIT algorithm uses a new global data structure called the Value Graph. The framework and DOIT analysis of the IBM Jalapeño Java virtual machine. Our experimental results for the SPECjvm benchmarks and two larger programs show promising benefits due to dynamic optimistic analysis. Compared to pessimistic analysis, the reduction in number of methods and fields analyzed was in the 2.7x-4.6x and 1.6-2.4x ranges respectively. The average fraction of polymorphic virtual calls decreased from 39.5% to 24.4% due to optimistic analysis, with a best-case decrease from 47.0% to 8.1%. The average fraction of polymorphic interface calls decreased from 96.4% to 36.2% due to optimistic analysis, with a best-case decrease from 100.0% to 0.0%. These benefits were obtained with a low dynamic analysis overhead in the range of 570-930 bytecode bytes/millisecond (about 2.5x-5.4x faster than the Jalapeño baseline compiler)",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504297",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Igor",
+        "last_name": "Pechtchanski",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Vivek",
+        "last_name": "Sarkar",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/PechtchanskiS01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504292",
+    "title": "Multitasking without Compromise: A Virtual Machine Evolution",
+    "abstract": "The multitasking virtual machine (called from now on simply MVM) is a modification of the Java virtual machine. It enables safe, secure, and scalable multitasking. Safety is achieved by strict isolation of application from one another. Resource control augment security by preventing some denial-of-service attacks. Improved scalability results from an aggressive application of the main design principle of MVM: share as much of the runtime as possible among applications and replicate everything else. The system can be described as a 'no compromise'approach --- all the known APIs and mechanisms of the Java programming language are available to applications. MVM is implemented as a series of carefully tuned modifications to the Java HotSpot virtual machine, including the dynamic compiler. this paper presents the design of MVM, focusing on several novel and general techniques: an in-runtime design of lightweight isolation, an extension of a copying, generational garbage collector to provide best-effort management of a portion of the heap space, and a transparent and automated mechanism for safe execution of user-level native code. MVM demonstrates that multitasking in a safe language can be accomplished with a high degree of protection, without constraining the language, and and with competitive performance characteristics",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504292",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Grzegorz",
+        "last_name": "Czajkowski",
+        "institution": ""
+      },
+      {
+        "first_name": "Laurent",
+        "last_name": "Daynès",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/CzajkowskiD01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504288",
+    "title": "Object Race Detection",
+    "abstract": "We present an on-the-fly mechanism that detects access conflicts in executions of multi-threaded Java programs. Access conflicts are a conservative approximation of data races. The checker tracks access information at the level of objects (object races) rather than at the level of individual variables. This viewpoint allows the checker to exploit specific properties of object-oriented programs for optimization by restricting dynamic checks to those objects that are identified by escape analysis as potentially shared. The checker has been implemented in collaboration with an \"ahead-of-time\"Java compiler. The combination fo static program analysis (escape-analysis) and inline instrumentation during code generation allows us to reduce the runtime overhead of detecting access conflicts. This overhead amounts to about 16-129% in time and less than 25% in space for typical benchmark applications and compares favorably to previously published on-the-fly mechanism that incurred an overhead of about a factor of 2-80 in time and up to a factor of 2 in space.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504288",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Christoph von",
+        "last_name": "Praun",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Thomas R.",
+        "last_name": "Gross",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/oopsla/PraunG01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504293",
+    "title": "Portable Resource Control in Java: The J-SEAL2 Approach",
+    "abstract": "Preventing abusive resource consumption is indispensable for all kinds of systems that execute untrusted mobile coee, such as mobile object sytems, extensible web servers, and web browsers. To implement the required defense mechanisms, some support for resource control must be available: accounting and limiting the usage of physical resources like CPU and memory, and of logical resources like threads. Java is the predominant implementation language for the kind of systems envisaged here, even though resource control is a missing feature on standard Java platforms. This paper describes the model and implementation mechanisms underlying the new resource-aware version of the J-SEAL2 mobile object kernel. Our fundamental objective is to achieve complete portability, and our approach is therefore based on Java bytecode transformations. Whereas resource control may be targeted towards the provision of quality of service or of usage-based billing, the focus of this paper is on security, and more specificlly on prevention of denial-of-service attacks orginating from hostile or poorly implemented mobile code.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504293",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Walter",
+        "last_name": "Binder",
+        "institution": ""
+      },
+      {
+        "first_name": "Jane G.",
+        "last_name": "Hulaas",
+        "institution": "University of Geneva"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Villazón",
+        "institution": "University of Geneva"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BinderHV01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504283",
+    "title": "Contract Soundness for Object-Oriented Languages",
+    "abstract": "Checking pre- and post-conditions of procedures and methods at runtime helps improve software reliability. In the procedural world, pre- and post-conditions have a straightforward interpretation. If a procedure's pre-condition doesn't hold, the caller failed to establish the proper context. If a post-condition doesn't hold, the caller failed to establish the proper context. If a post-condition doesn't hold, the procedure failed to compute the expected result.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504283",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/FindlerF01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504291",
+    "title": "Efficient Implementation of Java Interfaces: Invokeinterface Considered Harmless",
+    "abstract": "Single superclass inheritance enables simple and efficient table-driven virtual method dispathc. However, virtual method table dispatch does not handle multiple inheritance and interfaces. This complication has led to a widespread misimpression that interface method dispatch is inherently inefficient. This paper argues that with proper implementation techniques, Java interfaces need not be a source of significant performance degradation.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504291",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Bowen",
+        "last_name": "Alpern",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Anthony",
+        "last_name": "Cocchi",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Stephen J.",
+        "last_name": "Fink",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Grove",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/AlpernCFGL01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504289",
+    "title": "A Study of Exception Handling and Its Dynamic Optimization in Java",
+    "abstract": "ABSTRACT Optimizing exception handling is critical for programs that frequently throw exceptions. We observed that there are many such exception-intensive programs in various categories of Java programs. There are two commonly used exception handling techniques, stack unwinding and stack cutting. Stack unwinding optimizes the normal path, while stack cutting optimizes the exception handling path. However, there has been no single exception handling technique to optimize both paths. We propose a new technique called Exception-Directed Optimization (Edo), which optimizes exception-intensive programs without slowing down exception-minimal programs. Edo, a feedbackdirected dynamic optimization, consists of three steps, exception path profiling, exception path inlining, and throw elimination. Exception path profiling attempts to detect hot exception paths. Exception path inlining compiles the catching method in a hot exception path, inlining the rest of methods in the path. Throw elimination replaces a throw with the explicit control flow to the corresponding catch. We implemented Edo in IBM&amp;apos;s production Justin-Time compiler, and obtained the experimental results, which show that, in SPECjvm98, it improved performance of exceptionintensive programs by up to 18.3 % without affecting performance of exception-minimal programs at all.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504289",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Takeshi",
+        "last_name": "Ogasawara",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Hideaki",
+        "last_name": "Komatsu",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Toshio",
+        "last_name": "Nakatani",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/oopsla/OgasawaraKN01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504284",
+    "title": "A Core Calculus for Java Exceptions",
+    "abstract": "In this paper we present a simple calculus (called CJE) in ourder to fully investigate the exception mechanism of Java, and in particular its interaction with inheritance, which turns out to be non trivial. Moreover, we show that the type system for the calculus directly dirven by the Java language specification (called FULL) uses too many types, in the sense that there are different types which rpovide exactly the same information. Hence, we obtain from FULL a simplified type system called MIN where equivalent types have been identified. We show that is useful both for type-checking optimization and for clarifying the static semantics of the language. The two type systems are proved to satisfy the subject reduction property",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504284",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Davide",
+        "last_name": "Ancona",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Giovanni",
+        "last_name": "Lagorio",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Zucca",
+        "institution": "University of Genoa"
+      }
+    ],
+    "dblp_key": "conf/oopsla/AnconaLZ01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504301",
+    "title": "On Objects and Events",
+    "abstract": "This paper presents linguistic primitives for publish/subscribe programming using events and objects. We integrate our primitives into a strongly typed object-oriented language through four mechnisms: (1) serialization, (2) multiple subtyping, (3)closures, and (4) deferred code evaluation. We illustrate our primitives through Java, showing how we have overcome its respective lacks. A precompiler transforms statements based on our publish/subscribe primitives into calls to specifically generated typed adapters, which resemble the typed stubs and skeletons by the rmic precompiler for remote method invocations in Java",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504301",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Eugster",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Rachid",
+        "last_name": "Guerraoui",
+        "institution": "École Polytechnique Fédérale de Lausanne"
+      },
+      {
+        "first_name": "Christian Heide",
+        "last_name": "Damm",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/EugsterGD01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504300",
+    "title": "Encapsulating Objects with Confined Types",
+    "abstract": "Object-oriented languages provide little support for encapsulating objects. Reference semantics allows objects to escape their defining scope. The pervasive aliasing that ensues remains a major source of software defects. This paper introduces Kacheck/J a tool for inferring object encapulation properties in large Java programs. Our goal is to develop practical tools to assist software engineers, thus we focus on simple and scalable techniques. Kacheck/J is able to infer confinement for Java classes. A class and its sublasses are confined if all of their instances are encapsulated in their defining package. This simple property can be used to identify accidental leaks of sensitive objects. The analysis is scalable and efficient; Kacheck/J is able t infer confinement on a corpus of 46,000 classes (115 MB) in 6 minutes",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504300",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Grothoff",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Jens",
+        "last_name": "Palsberg",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Vítek",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/oopsla/GrothoffPV01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504290",
+    "title": "Efficient Subtyping Tests with PQ-Encoding",
+    "abstract": "Subtyping tests, i.e., determining whether one type is a subtype of another, are a frequent operation during the execution of objectoriented programs. The challenge is in encoding the hierarchy in a small space, while simultaneously making sure that subtyping tests have efficient implementation. We present a new scheme for encoding multiple and single inheritance hierarchies, which, in the standardized hierarchies, reduces the footprint of all previously published schemes. The scheme is called PQ-encoding after PQ-trees, a data structure previously used in graph theory for finding the orderings that satisfy a collection of constraints. In particular, we show that in the traditional object layout model, the extra memory requirements for single inheritance hierarchies is zero. In the PQ-encoding subtyping tests are constant time, and use only two comparisons. Other than PQ-trees, PQ-encoding uses several novel optimization techniques. These techniques are applicable also in improving the performance of other, previously published, encoding schemes.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504290",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yoav",
+        "last_name": "Zibin",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Gil",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/ZibinG01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504286",
+    "title": "Points-To Analysis for Java using Annotated Constraints",
+    "abstract": "The goal of point-to analysis for Java is to determine the set of objects pointed by a reference variable or a reference object field. This information has a wide variety of client applications in optimizing compilers and software engineering tools. In this paper we present a point-to analysis for Java based on Andersen's point-to analysis for C [5]. We implement the analysis by using a constraint-based approach which employs annotated inclusion constraints. Constraint annotations allow us model precisely and efficiently the semantics of virtual calls and the flow of values through object fields. By solving systems of annotated inclusion constraints, we have been albe to perform practical and precies points-to analysis for Java",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504286",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Atanas",
+        "last_name": "Rountev",
+        "institution": "Rutgers, The State University of New Jersey"
+      },
+      {
+        "first_name": "Ana",
+        "last_name": "Milanova",
+        "institution": "Rutgers, The State University of New Jersey"
+      },
+      {
+        "first_name": "Barbara G.",
+        "last_name": "Ryder",
+        "institution": "Rutgers, The State University of New Jersey"
+      }
+    ],
+    "dblp_key": "conf/oopsla/RountevMR01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504295",
+    "title": "Partial Method Compilation using Dynamic Profile Information",
+    "abstract": "The traditional tradeoff when performing dynamic compilation is that of fast compilation time versus fast code performance. Most dynamic compilation systems for Java perform selective compilation and/or optimization at a method granularity. This is the not the optimal granularity level. However, compiling at a sub-method granularity is thought to be too complicated to be practical. This paper describes a straightforward technique for performing compilation and optimizations at a finer, sub-method granularity. We utilize dynamic profile data to determine intra-method code regions that are rarely or never executed, and compile and optimize the code without those regions. If a branch that was predicted to be rare is actually taken at run time, we fall back to the interpreter or dynamically compile another version of the code. By avoiding compiling and optimizing code that is rarely executed, we are able to decrease compile time significantly, with little to no degradation in performance. Futhermore, ignoring rarely-executed code can open up more optimization opportunities on the common paths. We present two optimizations---partial dead code elimination and rare-path-sensitive pointer and escape analysis---that take advantage of rare path information. Using these optimizations, our technique is able to improve performance beyond the compile time improvements",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504295",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Whaley",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Whaley01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504285",
+    "title": "The Java Syntactic Extender",
+    "abstract": "The ability to extend a language with new syntactic forms is a powerful tool. A sufficiently flexible macro system allows programmers to build from a common base towards a language designed specifically for their problem domain. However, macro facilities that are integrated, capable, and at the same time simple enough to be widely used have been limited to the Lisp family of languages to date. In this paper we introduce a macro facility, called the Java Syntactic Extender (JSE), with the superior power and ease of use of Lisp macro systems, but for Java, a language with a more conventional algebraic syntax. The design is based on the Dylan macro system, but exploits Java’s compilation model to offer a full procedural macro engine. In other words, syntax expanders may be implemented in, and so use all the facilities of, the full Java language. 1.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504285",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Jonthan",
+        "last_name": "Bachrach",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Keith",
+        "last_name": "Playford",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/BachrachP01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504287",
+    "title": "A Parameterized Type System for Race-Free Java Programs",
+    "abstract": "... programs; any well-typed program in our system is free of data races. Our type system is significantly more expressive than previous such type systems. In particular, our system lets programmers write generic code to implement a class, then create dierent objects of the same class that have different protection mechanisms. This flexibility enables programmers to reduce the number of unnecessary synchronization operations in a program without risking data races. We also support default types which reduce the burden of writing the extra type annotations. Our experience indicates that our system provides a promising approach to make multithreaded programs more reliable and efficient.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504287",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Chandrasekhar",
+        "last_name": "Boyapati",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Rinard",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BoyapatiR01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504303",
+    "title": "Object-Oriented Composition Untangled",
+    "abstract": "Object-oriented languages come with pre-defined composition mechansims, such as inheritance, object composition, or delegation, each characterized by a certain set of composition properties, which do not themselves individually exist as abstractions at the language level. However, often non-standard composition semantics is needed, with a mixture of composition mechanisms. Such non-standard semantics are simulated by complicated architectures that are sensitive to requirement changes and cannot easily be adapted without invalidating existing clients. In this paper, we propose compound references, a new abstraction for object references, that allows us to provide explicit linguistic means for expressing and combining individual composition properties on-demand. The model is statically typed and allows the programmer to express a seamless spectrum of composition semantics in the interval between object composition and inheritance. The resulting programs are better understandable, due to explicity expressed design decisions, and less sensitive to requirement changes.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504303",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Klaus",
+        "last_name": "Ostermann",
+        "institution": "Siemens (Germany)"
+      },
+      {
+        "first_name": "Mira",
+        "last_name": "Mezini",
+        "institution": "Technical University of Darmstadt"
+      }
+    ],
+    "dblp_key": "conf/oopsla/OstermannM01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504302",
+    "title": "Visitor Combination and Traversal Control",
+    "abstract": "The Visitor design pattern allows the encapsulation of polymorphic behavior outside the class hierarchy on which it operates. A common application of Visitor is the encapsulation of tree traversals. A clean separation can be made between the generic parts of the combinator set and the parts that are specific to a particular class hierarchy. The generic parts form a reusable framework. The generic parts form a reusable framework. The specific parts can be generated from a (tree) grammar. Due to this separation, programming with visitor combinators becomes a form of generic programming with significant reuse of (visitor) code.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504302",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Joost",
+        "last_name": "Visser",
+        "institution": "Centrum Wiskunde & Informatica"
+      }
+    ],
+    "dblp_key": "conf/oopsla/Visser01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504304",
+    "title": "A Categorization of Classes based on the Visualization of their Internal Structure: The Class Blueprint",
+    "abstract": "The reengineering and reverse engineering of software systems is gaining importance in software industry, because the accelerated turnover in software industry, because the accelerated turnover in software companies creates legacy systems in a shorter period of time. Especially understanding classes is a key activity in object-oriented programming, since classes represent the primary abstractions from which applications are built. The main problem of this task is to quickly grasp the purpose of a class and its inner structure. To help the reverse engineers in their first contact with a foreign system, we propose a categorization of classes based on the visualization of their internal structure. The contributions of this paper are a novel categorization of classes and a visualization of the which we call the class blueprint. We have validated the categorization on several case studies, two of which we present here.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504304",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Michele",
+        "last_name": "Lanza",
+        "institution": ""
+      },
+      {
+        "first_name": "Sté́phane",
+        "last_name": "Ducasse",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/oopsla/LanzaD01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504296",
+    "title": "A Dynamic Optimization Framework for a Java Just-In-Time Compiler",
+    "abstract": "The high performance implementation of Java Virtual Machines (JVM) and just-in-time (JIT) compilers is directed toward adaptive compilation optimizations on the basis of online runtime profile information. This paper describes the design and implementation of a dynamic optimization framework in a production-level Java JIT compiler. Our approach is to employ a mixed mode interpreter and a three level optimizing compiler, supporting quick, full, and special optimization, each of which has a different set of tradeoffs between compilation overhead and execution speed. a lightweight sampling profiler operates continuously during the entire program's exectuion. When necessary, detailed information on runtime behavior is collected by dynmiacally generating instrumentation code which can be installed to and uninstalled from the specified recompilation target code. Value profiling with this instrumentation mechanism allows fully automatic code specialization to be performed on the basis of specific parameter values or global data at the highest optimization level. The experimental results show that our approach offers high performance and a low code expansion ratio in both program startup and steady state measurements in comparison to the compile-only approach, and that the code specialization can also contribute modest performance improvement",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504296",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Toshio",
+        "last_name": "Suganuma",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Toshiaki",
+        "last_name": "Yasue",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Motohiro",
+        "last_name": "Kawahito",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Hideaki",
+        "last_name": "Komatsu",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Toshio",
+        "last_name": "Nakatani",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/oopsla/SuganumaYKKN01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504299",
+    "title": "Modular Mixin-Based Inheritance for Application Frameworks",
+    "abstract": "Mixin modules are proposed as an extension of a class-based programming language. Mixin modules combine parallel extension of classes, including extension of the self types for those classes, with mixin-based inheritance. For soundness of sybtyping purposes, they require an explicit distinction between mixin-based objects and class-based objects. Applications of mixin modules are in statically type-safe monad-based aspect-oriented programming, and in modular mixin-based Internet programming.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504299",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Dominic",
+        "last_name": "Duggan",
+        "institution": "Stevens Institute of Technology"
+      },
+      {
+        "first_name": "Ching-Ching",
+        "last_name": "Techaubol",
+        "institution": "Stevens Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/DugganT01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504309",
+    "title": "An On-the-Fly Reference Counting Garbage Collector for Java",
+    "abstract": "Reference counting is not naturally suitable for running on multiprocessors. The update of pointers and reference counts requires atomic and synchronized operations. We present a novel reference counting algorithm suitable for a multiprocessor that does not require any synchronized operation in its write barrier (not even a compare-and-swap type of synchronization). The algorithm is efficient and may complete with any tracing algorithm.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504309",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Yossi",
+        "last_name": "Levanoni",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Erez",
+        "last_name": "Petrank",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/oopsla/LevanoniP01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504298",
+    "title": "Jiazzi: New-Age Components for Old-Fashioned Java",
+    "abstract": "We present Jiazzi, a system that enables the construction of large-scale binary components in Java. Jiazzi components can be thought of as generalizations of Java packages with added support for external linking and separate compilation. Jiazzi components are practical becuase they are constructed out of standard Java source code. Jiazzi requires neither extensions to the Java language nor special conventions for writing Java source code that will go inside a component. Our components are expressive becuase Jiazzi supports cyclic component linking and mixins, which are used together in an open class pattern that enables the modular addition of new features to existing classes. This paper describes Jiazzi, how it enhances Java with components, its implementation, and how type checking works. An implementation of Jiazzi is available for download.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504298",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Sean",
+        "last_name": "McDirmid",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Flatt",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Wilson C.",
+        "last_name": "Hsieh",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/oopsla/McDirmidFH01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504307",
+    "title": "Pretenuring for Java",
+    "abstract": "Pretenuring can reduce copying costs in garbage collectors by allocating long-lived objects into regions that the garbage collector with rarely, if ever, collect. We extend previous work on pretenuring as follows. (1) We produce pretenuring advice that is neutral with respect to the garbage collector algorithm and configuration. We thus can and do combine advice from different applications. We find that predictions using object lifetimes at each allocation site in Java prgroams are accurate, which simplifies the pretenuring implementation. (2) We gather and apply advice to applications and the Jalapeño JVM, a compiler and run-time system for Java written in Java. Our results demonstrate that building combined advice into Jalapeño from different application executions improves performance regardless of the application Jalapeño is compiling and executing. This build-time advice thus gives user applications some benefits of pretenuring without any application profiling. No previous work pretenures in the run-time system. (3) We find that application-only advice also improves performance, but that the combination of build-time and application-specific advice is almost always noticeably better. (4) Our same advice improves the performance of generational and Older First colleciton, illustrating that it is collector neutral.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504307",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Stephen M.",
+        "last_name": "Blackburn",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Sharad",
+        "last_name": "Singhai",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Hertz",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinely",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "J. Eliot B.",
+        "last_name": "Moss",
+        "institution": "University of Massachusetts Amherst"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BlackburnSHMM01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504306",
+    "title": "The Architecture of a UML Virtual Machine",
+    "abstract": "Current software development tools let developers model a software system and generate program code from the models to run the system. However, generating code and installing a non-trivial system induces a time delay between changing the model and executing it that makes rapid model prototyping awkard if not impossible. This paper presents the architecture of a virtual machine for UML that interprets UML models without any intermediate code-generation step. The paper shows how to embed UML in a metalevel architecture so that a key property of model-based systems, the casual connection between models and model instances, is guaranteed. With this architecture, changes to a model have immediate effects on its execution, providing users with rapid feedback about the model's structure and behavior. This approach supports model innovation better than today's code-generation approaches.",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504306",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Dirk",
+        "last_name": "Riehle",
+        "institution": "Start International"
+      },
+      {
+        "first_name": "Steven",
+        "last_name": "Fraleigh",
+        "institution": "Start International"
+      },
+      {
+        "first_name": "Dirk",
+        "last_name": "Bucka-Lassen",
+        "institution": ""
+      },
+      {
+        "first_name": "Nosa",
+        "last_name": "Omorogbe",
+        "institution": "Start International"
+      }
+    ],
+    "dblp_key": "conf/oopsla/RiehleFBO01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504308",
+    "title": "Controlling Garbage Collection and Heap Growth to Reduce the Execution Time of Java Applications",
+    "abstract": "In systems that support garbage collection a tension exists between collecting garbage too frequently and not collecting garbage frequently enough. Garbage collection that occurs too frequently may introduce unnecessary overheads at the risk of not collecting much garbage during each cycle. On the other hand, collecting garbage too infrequently can result in applications that execute with a large amount of virtual memory (i.e., with a large footprint) and suffer from increased execution times due to paging. In this paper we use a large collection of Java applications and the highly tuned and widely used BoehmDemers -Weiser conservative garbage collector to experimentally examine the extent to which the frequency of garbage collection impacts an application&amp;apos;s execution time, footprint, and pause times. We use these results to devise some guidelines for controlling garbage collection and heap growth in a conservative garbage collector in order to minimize application execution times. Then we describe new strategies for controlling garbage collection and heap growth that impact not only the frequency with which garbage collection occurs but also the points at which garbage collection occurs. Experimental results demonstrate that when compared with the existing approach our new strategy can significantly reduce application execution times. 1",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504308",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Tim",
+        "last_name": "Brecht",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Eshrat",
+        "last_name": "Arjomandi",
+        "institution": "York University"
+      },
+      {
+        "first_name": "Chang",
+        "last_name": "Li",
+        "institution": "York University"
+      },
+      {
+        "first_name": "Hang",
+        "last_name": "Pham",
+        "institution": "York University"
+      }
+    ],
+    "dblp_key": "conf/oopsla/BrechtALP01",
+    "venue": "oopsla",
+    "year": 2001
+  },
+  {
+    "paper_id": "10.1145/504282.504305",
+    "title": "Regression Test Selection for Java Software",
+    "abstract": "Regression testing is applied to modified software to provide confidence that the changed parts behave as intended and that the unchanged parts have not been adversely affected by the modifications. To reduce the cost of regression testing, test cases are selected from the test suite that was used to test the original version of the software---this process is called regression test selection. A safe regressiontest -selection algorithm selects every test case in the test suite that may reveal a fault in the modified software. Safe regression-test-selection techniques can help to reduce the time required to perform regression testing because they select only a portion of the test suite for use in the testing but guarantee that the faults revealed by this subset will be the same as those revealed by running the entire test suite. This paper presents the first safe regression-test-selection technique that, based on the use of a suitable representation, handles the features of the Java language. Unlike other safe regression test selection techniques, the presented technique also handles incomplete programs. The technique can thus be safely applied in the (very common) case of Java software that uses external libraries or components",
+    "date": "2001-10-01",
+    "link": "https://doi.org/10.1145/504282.504305",
+    "conference_name": "OOPSLA",
+    "authors": [
+      {
+        "first_name": "Mary Jean",
+        "last_name": "Harrold",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "James A.",
+        "last_name": "Jones",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Tongyu",
+        "last_name": "Li",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Donglin",
+        "last_name": "Liang",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Alessandro",
+        "last_name": "Orso",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Marinus",
+        "last_name": "Pennings",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Saurabh",
+        "last_name": "Sinha",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "S. Alexander",
+        "last_name": "Spoon",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Ashish M.",
+        "last_name": "Gujarathi",
+        "institution": "Citrix (Switzerland)"
+      }
+    ],
+    "dblp_key": "conf/oopsla/HarroldJLLOPSSG01",
+    "venue": "oopsla",
+    "year": 2001
+  }
+]

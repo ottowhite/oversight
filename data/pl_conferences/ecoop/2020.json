@@ -1,0 +1,1484 @@
+[
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.0",
+    "title": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "abstract": "Front Matter, Table of Contents, Preface, Conference Organization",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.0",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Hirschfeld",
+        "institution": "Hasso Plattner Institute"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Pape",
+        "institution": "Hasso Plattner Institute"
+      }
+    ],
+    "dblp_key": "conf/ecoop/X19a",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.2",
+    "title": "Perfect Is the Enemy of Good: Best-Effort Program Synthesis",
+    "abstract": "Program synthesis promises to help software developers with everyday tasks by generating code snippets automatically from input-output examples and other high-level specifications. The conventional wisdom is that a synthesizer must always satisfy the specification exactly. We conjecture that this all-or-nothing paradigm stands in the way of adopting program synthesis as a developer tool: in practice, the user-written specification often contains errors or is simply too hard for the synthesizer to solve within a reasonable time; in these cases, the user is left with a single over-fitted result or, more often than not, no result at all. In this paper we propose a new program synthesis paradigm we call best-effort program synthesis, where the synthesizer returns a ranked list of partially-valid results, i.e. programs that satisfy some part of the specification.&#13;\\nTo support this paradigm, we develop best-effort enumeration, a new synthesis algorithm that extends a popular program enumeration technique with the ability to accumulate and return multiple partially-valid results with minimal overhead. We implement this algorithm in a tool called BESTER, and evaluate it on 79 synthesis benchmarks from the literature. Contrary to the conventional wisdom, our evaluation shows that BESTER returns useful results even when the specification is flawed or too hard: i) for all benchmarks with an error in the specification, the top three BESTER results contain the correct solution, and ii) for most hard benchmarks, the top three results contain non-trivial fragments of the correct solution. We also performed an exploratory user study, which confirms our intuition that partially-valid results are useful: the study shows that programmers use the output of the synthesizer for comprehension and often incorporate it into their solutions.",
+    "date": "2020-11-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.2",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Hila",
+        "last_name": "Peleg",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Nadia",
+        "last_name": "Polikarpova",
+        "institution": "University of California San Diego"
+      }
+    ],
+    "dblp_key": "conf/ecoop/PelegP19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.3",
+    "title": "Blame for Null",
+    "abstract": "Multiple modern programming languages, including Kotlin, Scala, Swift, and C#, have type systems where nullability is explicitly specified in the types. All of the above also need to interoperate with languages where types remain implicitly nullable, like Java. This leads to runtime errors that can manifest in subtle ways. In this paper, we show how to reason about the presence and provenance of such nullability errors using the concept of blame from gradual typing. Specifically, we introduce a calculus, λ_null, where some terms are typed as implicitly nullable and others as explicitly nullable. Just like in the original blame calculus of Wadler and Findler, interactions between both kinds of terms are mediated by casts with attached blame labels, which indicate the origin of errors. On top of λ_null, we then create a second calculus, λ_null^s, which closely models the interoperability between languages with implicit nullability and languages with explicit nullability, such as Java and Scala. Our main result is a theorem that states that nullability errors in λ_null^s can always be blamed on terms with less-precise typing; that is, terms typed as implicitly nullable. By analogy, this would mean that NullPointerExceptions in combined Java/Scala programs are always the result of unsoundness in the Java type system. We summarize our result with the slogan explicitly nullable programs can't be blamed. All our results are formalized in the Coq proof assistant.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.3",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Nieto,",
+        "last_name": "Abel",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Rapoport,",
+        "last_name": "Marianna",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Richards,",
+        "last_name": "Gregor",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Lhoták,",
+        "last_name": "Ondřej",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/ecoop/NietoRRL19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.10",
+    "title": "Designing with Static Capabilities and Effects: Use, Mention, and Invariants (Pearl)",
+    "abstract": "Capabilities (whether object or reference capabilities) are fundamentally tools to restrict effects. Thus static capabilities (object or reference) and effect systems take different technical machinery to the same core problem of statically restricting or reasoning about effects in programs. Any time two approaches can in principle address the same sets of problems, it becomes important to understand the trade-offs between the approaches, how these trade-offs might interact with the problem at hand. Experts who have worked in these areas tend to find the trade-offs somewhat obvious, having considered them in context before. However, this kind of design discussion is often written down only implicitly as comparison between two approaches for a specific program reasoning problem, rather than as a discussion of general trade-offs between general classes of techniques. As a result, it is not uncommon to set out to solve a problem with one technique, only to find the other better-suited. We discuss the trade-offs between static capabilities (specifically reference capabilities) and effect systems, articulating the challenges each approach tends to have in isolation, and how these are sometimes mitigated. We also put our discussion in context, by appealing to examples of how these trade-offs were considered in the course of developing prior systems in the area. Along the way, we highlight how seemingly-minor aspects of type systems - weakening/framing and the mere existence of type contexts - play a subtle role in the efficacy of these systems.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.10",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Colin S.",
+        "last_name": "Gordon",
+        "institution": "Drexel University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Gordon19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.14",
+    "title": "Model-View-Update-Communicate: Session Types Meet the Elm Architecture",
+    "abstract": "Session types are a type discipline for communication channel endpoints which allow conformance to protocols to be checked statically. Safely implementing session types requires linearity, usually in the form of a linear type system. Unfortunately, linear typing is difficult to integrate with graphical user interfaces (GUIs), and to date most programs using session types are command line applications. In this paper, we propose the first principled integration of session typing and GUI development by building upon the Model-View-Update (MVU) architecture, pioneered by the Elm programming language. We introduce $λ_{\\textsf{MVU}}$, the first formal model of the MVU architecture, and prove it sound. By extending $λ_{\\textsf{MVU}}$ with \\emph{commands} as found in Elm, along with \\emph{linearity} and \\emph{model transitions}, we show the first formal integration of session typing and GUI programming. We implement our approach in the Links web programming language, and show examples including a two-factor authentication workflow and multi-room chat server.",
+    "date": "2019-10-24",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.14",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Fowler",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/ecoop/000119",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.12",
+    "title": "A Semantics for the Essence of React",
+    "abstract": "Traditionally, web applications have been written as HTML pages with embedded JavaScript code that implements dynamic and interactive features by manipulating the Document Object Model (DOM) through a low-level browser API. However, this unprincipled approach leads to code that is brittle, difficult to understand, non-modular, and does not facilitate incremental update of user-interfaces in response to state changes. React is a popular framework for constructing web applications that aims to overcome these problems. React applications are written in a declarative and object-oriented style, and consist of components that are organized in a tree structure. Each component has a set of properties representing input parameters, a state consisting of values that may vary over time, and a render method that declaratively specifies the subcomponents of the component. React’s concept of reconciliation determines the impact of state changes and updates the user-interface incrementally by selective mounting and unmounting of subcomponents. At designated points, the React framework invokes lifecycle hooks that enable programmers to perform actions outside the framework such as acquiring and releasing resources needed by a component. These mechanisms exhibit considerable complexity, but, to our knowledge, no formal specification of React’s semantics exists. This paper presents a small-step operational semantics that captures the essence of React, as a first step towards a long-term goal of developing automatic tools for program understanding, automatic testing, and bug finding for React web applications. To demonstrate that key operations such as mounting, unmounting, and reconciliation terminate, we define the notion of a well-behaved component and prove that well-behavedness is preserved by these operations.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.12",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Magnus",
+        "last_name": "Madsen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MadsenLT19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.13",
+    "title": "Test-Case Reduction via Test-Case Generation: Insights from the Hypothesis Reducer (Tool Insights Paper)",
+    "abstract": "We describe internal test-case reduction, the method of test-case reduction employed by Hypothesis, a widely-used property-based testing library for Python. The key idea of internal test-case reduction is that instead of applying test-case reduction externally to generated test cases, we apply it internally, to the sequence of random choices made during generation, so that a test case is reduced by continually re-generating smaller and simpler test cases that continue to trigger some property of interest (e.g. a bug in the system under test). This allows for fully generic test-case reduction without any user intervention and without the need to write a specific test-case reducer for a particular application domain. It also significantly mitigates the impact of the test-case validity problem, by ensuring that any reduced test case is one that could in principle have been generated. We describe the rationale behind this approach, explain its implementation in Hypothesis, and present an extensive evaluation comparing its effectiveness with that of several other test-case reducers, including C-Reduce and delta debugging, on applications including Python auto-formatting, C compilers, and the SymPy symbolic math library. Our hope is that these insights into the reduction mechanism employed by Hypothesis will be useful to researchers interested in randomized testing and test-case reduction, as the crux of the approach is fully generic and should be applicable to any random generator of test cases.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.13",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "David R.",
+        "last_name": "MacIver",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Alastair F.",
+        "last_name": "Donaldson",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MaciverD19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.8",
+    "title": "Space-Efficient Gradual Typing in Coercion-Passing Style",
+    "abstract": "Herman et al. pointed out that the insertion of run-time checks into a gradually typed program could hamper tail-call optimization and, as a result, worsen the space complexity of the program. To address the problem, they proposed a space-efficient coercion calculus, which was subsequently improved by Siek et al. The semantics of these calculi involves eager composition of run-time checks expressed by coercions to prevent the size of a term from growing. However, it relies also on a nonstandard reduction rule, which does not seem easy to implement. In fact, no compiler implementation of gradually typed languages fully supports the space-efficient semantics faithfully. In this paper, we study coercion-passing style, which Herman et al. have already mentioned, as a technique for straightforward space-efficient implementation of gradually typed languages. A program in coercion-passing style passes \"the rest of the run-time checks\" around---just like continuation-passing style (CPS), in which \"the rest of the computation\" is passed around---and (unlike CPS) composes coercions eagerly. We give a formal coercion-passing translation from $λ$S by Siek et al. to $λ$S$_1$, which is a new calculus of first-class coercions tailored for coercion-passing style, and prove correctness of the translation. We also implement our coercion-passing style transformation for the Grift compiler developed by Kuhlenschmidt et al. An experimental result shows stack overflow can be prevented properly at the cost of up to 3 times slower execution for most partially typed practical programs.",
+    "date": "2019-08-07",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.8",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Yuya",
+        "last_name": "Tsuda",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Atsushi",
+        "last_name": "Igarashi",
+        "institution": "Kyoto University"
+      },
+      {
+        "first_name": "Tomoya",
+        "last_name": "Tabuchi",
+        "institution": "Kyoto University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/TsudaIT19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.6",
+    "title": "Don't Panic! Better, Fewer, Syntax Errors for LR Parsers",
+    "abstract": "Syntax errors are generally easy to fix for humans, but not for parsers in general nor LR parsers in particular. Traditional \"panic mode\" error recovery, though easy to implement and applicable to any grammar, often leads to a cascading chain of errors that drown out the original. More advanced error recovery techniques suffer less from this problem but have seen little practical use because their typical performance was seen as poor, their worst case unbounded, and the repairs they reported arbitrary. In this paper we introduce the CPCT+ algorithm, and an implementation of that algorithm, that address these issues. First, CPCT+ reports the complete set of minimum cost repair sequences for a given location, allowing programmers to select the one that best fits their intention. Second, on a corpus of 200,000 real-world syntactically invalid Java programs, CPCT+ is able to repair 98.37%±0.017% of files within a timeout of 0.5s. Finally, CPCT+ uses the complete set of minimum cost repair sequences to reduce the cascading error problem, where incorrect error recovery causes further spurious syntax errors to be identified. Across the test corpus, CPCT+ reports 435,812±473 error locations to the user, reducing the cascading error problem substantially relative to the 981,628±0 error locations reported by panic mode.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.6",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Lukas",
+        "last_name": "Diekmann",
+        "institution": ""
+      },
+      {
+        "first_name": "Laurence",
+        "last_name": "Tratt",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/DiekmannT19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.5",
+    "title": "Reconciling Event Structures with Modern Multiprocessors",
+    "abstract": "In this work, we present a family of operational semantics that gradually approximates the realistic program behaviors in the C/C++11 memory model. Each semantics in our framework is built by elaborating and combining two simple ingredients: viewfronts and operation buffers. Viewfronts allow us to express the spatial aspect of thread interaction, i.e., which values a thread can read, while operation buffers enable manipulation with the temporal execution aspect, i.e., determining the order in which the results of certain operations can be observed by concurrently running threads. Starting from a simple abstract state machine, through a series of gradual refinements of the abstract state, we capture such language aspects and synchronization primitives as release/acquire atomics, sequentially-consistent and non-atomic memory accesses, also providing a semantics for relaxed atomics, while avoiding the Out-of-Thin-Air problem. To the best of our knowledge, this is the first formal and executable operational semantics of C11 capable of expressing all essential concurrent aspects of the standard. We illustrate our approach via a number of characteristic examples, relating the observed behaviors to those of standard litmus test programs from the literature. We provide an executable implementation of the semantics in PLT Redex, along with a number of implemented litmus tests and examples, and showcase our prototype on a large case study: randomized testing and debugging of a realistic Read-Copy-Update data structure.",
+    "date": "2016-06-04",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.5",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Anton",
+        "last_name": "Podkopaev",
+        "institution": ""
+      },
+      {
+        "first_name": "Ilya",
+        "last_name": "Sergey",
+        "institution": ""
+      },
+      {
+        "first_name": "Aleksandar",
+        "last_name": "Nanevski",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/MoiseenkoPLMV19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.11",
+    "title": "Owicki-Gries Reasoning for C11 RAR",
+    "abstract": "Owicki-Gries reasoning for concurrent programs uses Hoare logic together with an interference freedom rule for concurrency. In this paper, we develop a new proof calculus for the C11 RAR memory model (a fragment of C11 with both relaxed and release-acquire accesses) that allows all Owicki-Gries proof rules for compound statements, including non-interference, to remain unchanged. Our proof method features novel assertions specifying thread-specific views on the state of programs. This is combined with a set of Hoare logic rules that describe how these assertions are affected by atomic program steps. We demonstrate the utility of our proof calculus by verifying a number of standard C11 litmus tests and Peterson’s algorithm adapted for C11. Our proof calculus and its application to program verification have been fully mechanised in the theorem prover Isabelle.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.11",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Sadegh",
+        "last_name": "Dalvandi",
+        "institution": "University of Surrey"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Doherty",
+        "institution": "University of Sheffield"
+      },
+      {
+        "first_name": "Brijesh",
+        "last_name": "Dongol",
+        "institution": "University of Surrey"
+      },
+      {
+        "first_name": "Heike",
+        "last_name": "Wehrheim",
+        "institution": "Paderborn University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/DalvandiDDW19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.1",
+    "title": "Sound Regular Corecursion in coFJ",
+    "abstract": "The aim of the paper is to provide solid foundations for a programming paradigm natively supporting the creation and manipulation of cyclic data structures. To this end, we describe coFJ, a Java-like calculus where objects can be infinite and methods are equipped with a codefinition (an alternative body). We provide an abstract semantics of the calculus based on the framework of inference systems with corules. In coFJ with this semantics, FJ recursive methods on finite objects can be extended to infinite objects as well, and behave as desired by the programmer, by specifying a codefinition. We also describe an operational semantics which can be directly implemented in a programming language, and prove the soundness of such semantics with respect to the abstract one.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.1",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Davide",
+        "last_name": "Ancona",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Pietro Gino",
+        "last_name": "Barbieri",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Francesco",
+        "last_name": "Dagnino",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Zucca",
+        "institution": "University of Genoa"
+      }
+    ],
+    "dblp_key": "conf/ecoop/AnconaBDZ19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.7",
+    "title": "K-LLVM: A Relatively Complete Semantics of LLVM IR",
+    "abstract": "LLVM [Lattner and Adve, 2004] is designed for the compile-time, link-time and run-time optimization of programs written in various programming languages. The language supported by LLVM targeted by modern compilers is LLVM IR [llvm.org, 2018]. In this paper we define K-LLVM, a reference semantics for LLVM IR. To the best of our knowledge, K-LLVM is the most complete formal LLVM IR semantics to date, including all LLVM IR instructions, intrinsic functions in the LLVM documentation and Standard-C library functions that are necessary to execute many LLVM IR programs. Additionally, K-LLVM formulates an abstract machine that executes all LLVM IR instructions. The machine allows to describe our formal semantics in terms of simulating a conceptual virtual machine that runs LLVM IR programs, including non-deterministic programs. Even though the K-LLVM memory model in this paper is assumed to be a sequentially consistent memory model and does not include all LLVM concurrency memory behaviors, the design of K-LLVM’s data layout allows the K-LLVM abstract machine to execute some LLVM IR programs that previous semantics did not cover, such as the full range of LLVM IR behaviors for the interaction among LLVM IR casting, pointer arithmetic, memory operations and some memory flags (e.g. readonly) of function headers. Additionally, the memory model is modularized in a manner that supports investigating other memory models. To validate K-LLVM, we have implemented it in 𝕂 [Roşu, 2016], which generated an interpreter for LLVM IR. Using this, we ran tests including 1,385 unit test programs and around 3,000 concrete LLVM IR programs, and K-LLVM passed all of them.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.7",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Liyi",
+        "last_name": "Li",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Elsa L.",
+        "last_name": "Gunter",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/ecoop/LiG19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.4",
+    "title": "Static Race Detection and Mutex Safety and Liveness for Go Programs",
+    "abstract": "Go is a popular concurrent programming language thanks to its ability to efficiently combine concurrency and systems programming. In Go programs, a number of concurrency bugs can be caused by a mixture of data races and communication problems. In this paper, we develop a theory based on behavioural types to statically detect data races and deadlocks in Go programs. We first specify lock safety/liveness and data race properties over a Go program model, using the happens-before relation defined in the Go memory model. We represent these properties of programs in a μ-calculus model of types, and validate them using type-level model-checking. We then extend the framework to account for Go’s channels, and implement a static verification tool which can detect concurrency errors. This is, to the best of our knowledge, the first static verification framework of this kind for the Go language, uniformly analysing concurrency errors caused by a mix of shared memory accesses and asynchronous message-passing communications.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.4",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Julia",
+        "last_name": "Gabet",
+        "institution": ""
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/GabetY19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.9",
+    "title": "Multiparty Session Programming With Global Protocol Combinators",
+    "abstract": "Multiparty Session Types (MPST) is a typing discipline for communication protocols. It ensures the absence of communication errors and deadlocks for well-typed communicating processes. The state-of-the-art implementations of the MPST theory rely on (1) runtime linearity checks to ensure correct usage of communication channels and (2) external domain-specific languages for specifying and verifying multiparty protocols.&#13;\\nTo overcome these limitations, we propose a library for programming with global combinators - a set of functions for writing and verifying multiparty protocols in OCaml. Local behaviours for all processes in a protocol are inferred at once from a global combinator. We formalise global combinators and prove a sound realisability of global combinators - a well-typed global combinator derives a set of local types, by which typed endpoint programs can ensure type and communication safety. Our approach enables fully-static verification and implementation of the whole protocol, from the protocol specification to the process implementations, to happen in the same language. &#13;\\nWe compare our implementation to untyped and continuation-passing style implementations, and demonstrate its expressiveness by implementing a plethora of protocols. We show our library can interoperate with existing libraries and services, implementing DNS (Domain Name Service) protocol and the OAuth (Open Authentication) protocol.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.9",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Keigo",
+        "last_name": "Imai",
+        "institution": "Gifu University"
+      },
+      {
+        "first_name": "Rumyana",
+        "last_name": "Neykova",
+        "institution": "Brunel University of London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Shoji",
+        "last_name": "Yuen",
+        "institution": "Nagoya University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ImaiNYY19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.15",
+    "title": "Static Analysis of Shape in TensorFlow Programs",
+    "abstract": "Machine learning has been widely adopted in diverse science and engineering domains, aided by reusable libraries and quick development patterns. The TensorFlow library is probably the best-known representative of this trend and most users employ the Python API to its powerful back-end. TensorFlow programs are susceptible to several systematic errors, especially in the dynamic typing setting of Python. We present Pythia, a static analysis that tracks the shapes of tensors across Python library calls and warns of several possible mismatches. The key technical aspects are a close modeling of library semantics with respect to tensor shape, and an identification of violations and error-prone patterns. Pythia is powerful enough to statically detect (with 84.62% precision) 11 of the 14 shape-related TensorFlow bugs in the recent Zhang et al. empirical study - an independent slice of real-world bugs.",
+    "date": "2016-05-09",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.15",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "The Theano Development",
+        "last_name": "Team",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Al-Rfou,",
+        "last_name": "Rami",
+        "institution": "IBM (United States)"
+      },
+      {
+        "first_name": "Alain,",
+        "last_name": "Guillaume",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Almahairi,",
+        "last_name": "Amjad",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Angermueller,",
+        "last_name": "Christof",
+        "institution": "National and Kapodistrian University of Athens"
+      },
+      {
+        "first_name": "Bahdanau,",
+        "last_name": "Dzmitry",
+        "institution": ""
+      },
+      {
+        "first_name": "Ballas,",
+        "last_name": "Nicolas",
+        "institution": ""
+      },
+      {
+        "first_name": "Bastien,",
+        "last_name": "Frédéric",
+        "institution": ""
+      },
+      {
+        "first_name": "Bayer,",
+        "last_name": "Justin",
+        "institution": ""
+      },
+      {
+        "first_name": "Belikov,",
+        "last_name": "Anatoly",
+        "institution": ""
+      },
+      {
+        "first_name": "Belopolsky,",
+        "last_name": "Alexander",
+        "institution": ""
+      },
+      {
+        "first_name": "Bengio,",
+        "last_name": "Yoshua",
+        "institution": ""
+      },
+      {
+        "first_name": "Bergeron,",
+        "last_name": "Arnaud",
+        "institution": ""
+      },
+      {
+        "first_name": "Bergstra,",
+        "last_name": "James",
+        "institution": ""
+      },
+      {
+        "first_name": "Bisson,",
+        "last_name": "Valentin",
+        "institution": ""
+      },
+      {
+        "first_name": "Snyder, Josh",
+        "last_name": "Bleecher",
+        "institution": ""
+      },
+      {
+        "first_name": "Bouchard,",
+        "last_name": "Nicolas",
+        "institution": ""
+      },
+      {
+        "first_name": "Boulanger-Lewandowski,",
+        "last_name": "Nicolas",
+        "institution": ""
+      },
+      {
+        "first_name": "Bouthillier,",
+        "last_name": "Xavier",
+        "institution": ""
+      },
+      {
+        "first_name": "de Brébisson,",
+        "last_name": "Alexandre",
+        "institution": ""
+      },
+      {
+        "first_name": "Breuleux,",
+        "last_name": "Olivier",
+        "institution": ""
+      },
+      {
+        "first_name": "Carrier,",
+        "last_name": "Pierre-Luc",
+        "institution": ""
+      },
+      {
+        "first_name": "Cho,",
+        "last_name": "Kyunghyun",
+        "institution": ""
+      },
+      {
+        "first_name": "Chorowski,",
+        "last_name": "Jan",
+        "institution": ""
+      },
+      {
+        "first_name": "Christiano,",
+        "last_name": "Paul",
+        "institution": ""
+      },
+      {
+        "first_name": "Cooijmans,",
+        "last_name": "Tim",
+        "institution": ""
+      },
+      {
+        "first_name": "Côté,",
+        "last_name": "Marc-Alexandre",
+        "institution": ""
+      },
+      {
+        "first_name": "Côté,",
+        "last_name": "Myriam",
+        "institution": ""
+      },
+      {
+        "first_name": "Courville,",
+        "last_name": "Aaron",
+        "institution": ""
+      },
+      {
+        "first_name": "Dauphin, Yann",
+        "last_name": "N.",
+        "institution": ""
+      },
+      {
+        "first_name": "Delalleau,",
+        "last_name": "Olivier",
+        "institution": ""
+      },
+      {
+        "first_name": "Demouth,",
+        "last_name": "Julien",
+        "institution": ""
+      },
+      {
+        "first_name": "Desjardins,",
+        "last_name": "Guillaume",
+        "institution": ""
+      },
+      {
+        "first_name": "Dieleman,",
+        "last_name": "Sander",
+        "institution": ""
+      },
+      {
+        "first_name": "Dinh,",
+        "last_name": "Laurent",
+        "institution": ""
+      },
+      {
+        "first_name": "Ducoffe,",
+        "last_name": "Mélanie",
+        "institution": ""
+      },
+      {
+        "first_name": "Dumoulin,",
+        "last_name": "Vincent",
+        "institution": ""
+      },
+      {
+        "first_name": "Kahou, Samira",
+        "last_name": "Ebrahimi",
+        "institution": ""
+      },
+      {
+        "first_name": "Erhan,",
+        "last_name": "Dumitru",
+        "institution": ""
+      },
+      {
+        "first_name": "Fan,",
+        "last_name": "Ziye",
+        "institution": ""
+      },
+      {
+        "first_name": "Firat,",
+        "last_name": "Orhan",
+        "institution": ""
+      },
+      {
+        "first_name": "Germain,",
+        "last_name": "Mathieu",
+        "institution": ""
+      },
+      {
+        "first_name": "Glorot,",
+        "last_name": "Xavier",
+        "institution": ""
+      },
+      {
+        "first_name": "Goodfellow,",
+        "last_name": "Ian",
+        "institution": ""
+      },
+      {
+        "first_name": "Graham,",
+        "last_name": "Matt",
+        "institution": ""
+      },
+      {
+        "first_name": "Gulcehre,",
+        "last_name": "Caglar",
+        "institution": ""
+      },
+      {
+        "first_name": "Hamel,",
+        "last_name": "Philippe",
+        "institution": ""
+      },
+      {
+        "first_name": "Harlouchet,",
+        "last_name": "Iban",
+        "institution": ""
+      },
+      {
+        "first_name": "Heng,",
+        "last_name": "Jean-Philippe",
+        "institution": ""
+      },
+      {
+        "first_name": "Hidasi,",
+        "last_name": "Balázs",
+        "institution": ""
+      },
+      {
+        "first_name": "Honari,",
+        "last_name": "Sina",
+        "institution": ""
+      },
+      {
+        "first_name": "Jain,",
+        "last_name": "Arjun",
+        "institution": ""
+      },
+      {
+        "first_name": "Jean,",
+        "last_name": "Sébastien",
+        "institution": ""
+      },
+      {
+        "first_name": "Jia,",
+        "last_name": "Kai",
+        "institution": ""
+      },
+      {
+        "first_name": "Korobov,",
+        "last_name": "Mikhail",
+        "institution": ""
+      },
+      {
+        "first_name": "Kulkarni,",
+        "last_name": "Vivek",
+        "institution": ""
+      },
+      {
+        "first_name": "Lamb,",
+        "last_name": "Alex",
+        "institution": ""
+      },
+      {
+        "first_name": "Lamblin,",
+        "last_name": "Pascal",
+        "institution": ""
+      },
+      {
+        "first_name": "Larsen,",
+        "last_name": "Eric",
+        "institution": ""
+      },
+      {
+        "first_name": "Laurent,",
+        "last_name": "César",
+        "institution": ""
+      },
+      {
+        "first_name": "Lee,",
+        "last_name": "Sean",
+        "institution": ""
+      },
+      {
+        "first_name": "Lefrancois,",
+        "last_name": "Simon",
+        "institution": ""
+      },
+      {
+        "first_name": "Lemieux,",
+        "last_name": "Simon",
+        "institution": ""
+      },
+      {
+        "first_name": "Léonard,",
+        "last_name": "Nicholas",
+        "institution": ""
+      },
+      {
+        "first_name": "Lin,",
+        "last_name": "Zhouhan",
+        "institution": ""
+      },
+      {
+        "first_name": "Livezey, Jesse",
+        "last_name": "A.",
+        "institution": ""
+      },
+      {
+        "first_name": "Lorenz,",
+        "last_name": "Cory",
+        "institution": ""
+      },
+      {
+        "first_name": "Lowin,",
+        "last_name": "Jeremiah",
+        "institution": ""
+      },
+      {
+        "first_name": "Ma,",
+        "last_name": "Qianli",
+        "institution": ""
+      },
+      {
+        "first_name": "Manzagol,",
+        "last_name": "Pierre-Antoine",
+        "institution": ""
+      },
+      {
+        "first_name": "Mastropietro,",
+        "last_name": "Olivier",
+        "institution": ""
+      },
+      {
+        "first_name": "McGibbon, Robert",
+        "last_name": "T.",
+        "institution": ""
+      },
+      {
+        "first_name": "Memisevic,",
+        "last_name": "Roland",
+        "institution": ""
+      },
+      {
+        "first_name": "van Merriënboer,",
+        "last_name": "Bart",
+        "institution": ""
+      },
+      {
+        "first_name": "Michalski,",
+        "last_name": "Vincent",
+        "institution": ""
+      },
+      {
+        "first_name": "Mirza,",
+        "last_name": "Mehdi",
+        "institution": ""
+      },
+      {
+        "first_name": "Orlandi,",
+        "last_name": "Alberto",
+        "institution": ""
+      },
+      {
+        "first_name": "Pal,",
+        "last_name": "Christopher",
+        "institution": ""
+      },
+      {
+        "first_name": "Pascanu,",
+        "last_name": "Razvan",
+        "institution": ""
+      },
+      {
+        "first_name": "Pezeshki,",
+        "last_name": "Mohammad",
+        "institution": ""
+      },
+      {
+        "first_name": "Raffel,",
+        "last_name": "Colin",
+        "institution": ""
+      },
+      {
+        "first_name": "Renshaw,",
+        "last_name": "Daniel",
+        "institution": ""
+      },
+      {
+        "first_name": "Rocklin,",
+        "last_name": "Matthew",
+        "institution": ""
+      },
+      {
+        "first_name": "Romero,",
+        "last_name": "Adriana",
+        "institution": ""
+      },
+      {
+        "first_name": "Roth,",
+        "last_name": "Markus",
+        "institution": ""
+      },
+      {
+        "first_name": "Sadowski,",
+        "last_name": "Peter",
+        "institution": ""
+      },
+      {
+        "first_name": "Salvatier,",
+        "last_name": "John",
+        "institution": ""
+      },
+      {
+        "first_name": "Savard,",
+        "last_name": "François",
+        "institution": ""
+      },
+      {
+        "first_name": "Schlüter,",
+        "last_name": "Jan",
+        "institution": ""
+      },
+      {
+        "first_name": "Schulman,",
+        "last_name": "John",
+        "institution": ""
+      },
+      {
+        "first_name": "Schwartz,",
+        "last_name": "Gabriel",
+        "institution": ""
+      },
+      {
+        "first_name": "Serban, Iulian",
+        "last_name": "Vlad",
+        "institution": ""
+      },
+      {
+        "first_name": "Serdyuk,",
+        "last_name": "Dmitriy",
+        "institution": ""
+      },
+      {
+        "first_name": "Shabanian,",
+        "last_name": "Samira",
+        "institution": ""
+      },
+      {
+        "first_name": "Simon,",
+        "last_name": "Étienne",
+        "institution": ""
+      },
+      {
+        "first_name": "Spieckermann,",
+        "last_name": "Sigurd",
+        "institution": ""
+      },
+      {
+        "first_name": "Subramanyam, S.",
+        "last_name": "Ramana",
+        "institution": ""
+      },
+      {
+        "first_name": "Sygnowski,",
+        "last_name": "Jakub",
+        "institution": ""
+      },
+      {
+        "first_name": "Tanguay,",
+        "last_name": "Jérémie",
+        "institution": ""
+      },
+      {
+        "first_name": "van Tulder,",
+        "last_name": "Gijs",
+        "institution": ""
+      },
+      {
+        "first_name": "Turian,",
+        "last_name": "Joseph",
+        "institution": ""
+      },
+      {
+        "first_name": "Urban,",
+        "last_name": "Sebastian",
+        "institution": ""
+      },
+      {
+        "first_name": "Vincent,",
+        "last_name": "Pascal",
+        "institution": ""
+      },
+      {
+        "first_name": "Visin,",
+        "last_name": "Francesco",
+        "institution": ""
+      },
+      {
+        "first_name": "de Vries,",
+        "last_name": "Harm",
+        "institution": ""
+      },
+      {
+        "first_name": "Warde-Farley,",
+        "last_name": "David",
+        "institution": ""
+      },
+      {
+        "first_name": "Webb, Dustin",
+        "last_name": "J.",
+        "institution": ""
+      },
+      {
+        "first_name": "Willson,",
+        "last_name": "Matthew",
+        "institution": ""
+      },
+      {
+        "first_name": "Xu,",
+        "last_name": "Kelvin",
+        "institution": ""
+      },
+      {
+        "first_name": "Xue,",
+        "last_name": "Lijun",
+        "institution": ""
+      },
+      {
+        "first_name": "Yao,",
+        "last_name": "Li",
+        "institution": ""
+      },
+      {
+        "first_name": "Zhang,",
+        "last_name": "Saizheng",
+        "institution": ""
+      },
+      {
+        "first_name": "Zhang,",
+        "last_name": "Ying",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/LagouvardosDGAS19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.16",
+    "title": "Value Partitioning: A Lightweight Approach to Relational Static Analysis for JavaScript",
+    "abstract": "In static analysis of modern JavaScript libraries, relational analysis at key locations is critical to provide sound and useful results. Prior work addresses this challenge by the use of various forms of trace partitioning and syntactic patterns, which is fragile and does not scale well, or by incorporating complex backwards analysis. In this paper, we propose a new lightweight variant of trace partitioning named value partitioning that refines individual abstract values instead of entire abstract states. We describe how this approach can effectively capture important relational properties involving dynamic property accesses, functions with free variables, and predicate functions. Furthermore, we extend an existing JavaScript analyzer with value partitioning and demonstrate experimentally that it is a simple, precise, and efficient alternative to the existing approaches for analyzing widely used JavaScript libraries.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.16",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Benjamin Barslev",
+        "last_name": "Nielsen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Anders",
+        "last_name": "Møller",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/NielsenM19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.17",
+    "title": "Static Type Analysis by Abstract Interpretation of Python Programs",
+    "abstract": "Python is an increasingly popular dynamic programming language, particularly used in the scientific community and well-known for its powerful and permissive high-level syntax. Our work aims at detecting statically and automatically type errors. As these type errors are exceptions that can be caught later on, we precisely track all exceptions (raised or caught). We designed a static analysis by abstract interpretation able to infer the possible types of variables, taking into account the full control-flow. It handles both typing paradigms used in Python, nominal and structural, supports Python’s object model, introspection operators allowing dynamic type testing, dynamic attribute addition, as well as exception handling. We present a flow- and context-sensitive analysis with special domains to support containers (such as lists) and infer type equalities (allowing it to express parametric polymorphism). The analysis is soundly derived by abstract interpretation from a concrete semantics of Python developed by Fromherz et al. Our analysis is designed in a modular way as a set of domains abstracting a concrete collecting semantics. It has been implemented into the MOPSA analysis framework, and leverages external type annotations from the Typeshed project to support the vast standard library. We show that it scales to benchmarks a few thousand lines long, and preliminary results show it is able to analyze a small real-life command-line utility called PathPicker. Compared to previous work, it is sound, while it keeps similar efficiency and precision.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.17",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Raphaël",
+        "last_name": "Monat",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Abdelraouf",
+        "last_name": "Ouadjaout",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Antoine",
+        "last_name": "Miné",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/ecoop/MonatOM19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.18",
+    "title": "Reference Mutability for DOT",
+    "abstract": "Reference mutability is a type-based technique for controlling mutation that has been thoroughly studied in Java. We explore how reference mutability interacts with the features of Scala by adding it to the Dependent Object Types (DOT) calculus. Our extension shows how reference mutability can be encoded using existing Scala features such as path-dependent, intersection, and union types. We prove type soundness and the immutability guarantee provided by our calculus.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.18",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Vlastimil",
+        "last_name": "Dort",
+        "institution": "Charles University"
+      },
+      {
+        "first_name": "Ondřej",
+        "last_name": "Lhoták",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/ecoop/DortL19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.22",
+    "title": "Putting Randomized Compiler Testing into Production (Experience Report)",
+    "abstract": "We describe our experience over the last 18 months on a compiler testing technology transfer project: taking the GraphicsFuzz research project on randomized metamorphic testing of graphics shader compilers, and building the necessary tooling around it to provide a highly automated process for improving the Khronos Vulkan Conformance Test Suite (CTS) with test cases that expose fuzzer-found compiler bugs, or that plug gaps in test coverage. We present this tooling for test automation - gfauto - in detail, as well as our use of differential coverage and test case reduction as a method for automatically synthesizing tests that fill coverage gaps. We explain the value that GraphicsFuzz has provided in automatically testing the ecosystem of tools for transforming, optimizing and validating Vulkan shaders, and the challenges faced when testing a tool ecosystem rather than a single tool. We discuss practical issues associated with putting automated metamorphic testing into production, related to test case validity, bug de-duplication and floating-point precision, and provide illustrative examples of bugs found during our work.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.22",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Alastair F.",
+        "last_name": "Donaldson",
+        "institution": "Google (United Kingdom)"
+      },
+      {
+        "first_name": "Hugues",
+        "last_name": "Evrard",
+        "institution": "Google (United Kingdom)"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Thomson",
+        "institution": "Google (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/ecoop/DonaldsonET19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.19",
+    "title": "Tackling the Awkward Squad for Reactive Programming: The Actor-Reactor Model",
+    "abstract": "Reactive programming is a programming paradigm whereby programs are internally represented by a dependency graph, which is used to automatically (re)compute parts of a program whenever its input changes. In practice reactive programming can only be used for some parts of an application: a reactive program is usually embedded in an application that is still written in ordinary imperative languages such as JavaScript or Scala. In this paper we investigate this embedding and we distill \"the awkward squad for reactive programming\" as 3 concerns that are essential for real-world software development, but that do not fit within reactive programming. They are related to long lasting computations, side-effects, and the coordination between imperative and reactive code. To solve these issues we design a new programming model called the Actor-Reactor Model in which programs are split up in a number of actors and reactors. Actors and reactors enforce a strict separation of imperative and reactive code, and they can be composed via a number of composition operators that make use of data streams. We demonstrate the model via our own implementation in a language called Stella.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.19",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Sam Van den",
+        "last_name": "Vonder",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Thierry",
+        "last_name": "Renaux",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Bjarno",
+        "last_name": "Oeyen",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Joeri De",
+        "last_name": "Koster",
+        "institution": "Vrije Universiteit Brussel"
+      },
+      {
+        "first_name": "Wolfgang De",
+        "last_name": "Meuter",
+        "institution": "Vrije Universiteit Brussel"
+      }
+    ],
+    "dblp_key": "conf/ecoop/VonderROKM19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.20",
+    "title": "A Framework for Resource Dependent EDSLs in a Dependently Typed Language (Pearl)",
+    "abstract": "Idris' Effects library demonstrates how to embed resource dependent algebraic effect handlers into a dependently typed host language, providing run-time and compile-time based reasoning on type-level resources. Building upon this work, Resources is a framework for realising Embedded Domain Specific Languages (EDSLs) with type systems that contain domain specific substructural properties. Differing from Effects, Resources allows a language’s substructural properties to be encoded within type-level resources that are associated with language variables. Such an association allows for multiple effect instances to be reasoned about autonomically and without explicit type-level declaration. Type-level predicates are used as proof that the language’s substructural properties hold. Several exemplar EDSLs are presented that illustrates our framework’s operation and how dependent types provide correctness-by-construction guarantees that substructural properties of written programs hold.",
+    "date": "2020-11-06",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.20",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Jan de",
+        "last_name": "Muijnck-Hughes",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Edwin",
+        "last_name": "Brady",
+        "institution": "University of St Andrews"
+      },
+      {
+        "first_name": "Wim",
+        "last_name": "Vanderbauwhede",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Muijnck-HughesB19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.21",
+    "title": "Data Consistency in Transactional Storage Systems: A Centralised Semantics",
+    "abstract": "We introduce an interleaving operational semantics for describing the client-observable behaviour of atomic transactions on distributed key-value stores. Our semantics builds on abstract states comprising centralised, global key-value stores and partial client views. Using our abstract states, we present operational definitions of well-known consistency models in the literature, and prove them to be equivalent to their existing declarative definitions using abstract executions. We explore two applications of our operational framework: 1) verifying that the COPS replicated database and the Clock-SI partitioned database satisfy their consistency models using trace refinement, and 2) proving invariant properties of client programs.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.21",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Shale",
+        "last_name": "Xiong",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Andrea",
+        "last_name": "Cerone",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Azalea",
+        "last_name": "Raad",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Philippa",
+        "last_name": "Gardner",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/XiongCRG19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.30",
+    "title": "Safe, Flexible Aliasing with Deferred Borrows",
+    "abstract": "In recent years, programming-language support for static memory safety has developed significantly. In particular, borrowing and ownership systems, such as the one pioneered by the Rust language, require the programmer to abide by certain aliasing restrictions but in return guarantee that no unsafe aliasing can ever occur. This allows parallel code to be written, or existing code to be parallelized, safely and easily, and the aliasing restrictions also statically prevent a whole class of bugs such as iterator invalidation. Borrowing is easy to reason about because it matches the intuitive ownership-passing conventions often used in systems languages. Unfortunately, a borrowing-based system can sometimes be too restrictive. Because borrows enforce aliasing rules for their entire lifetimes, they cannot be used to implement some common patterns that pointers would allow. Programs often use pseudo-pointers, such as indices into an array of nodes or objects, instead, which can be error-prone: the program is still memory-safe by construction, but it is not logically memory-safe, because an object access may reach the wrong object. In this work, we propose deferred borrows, which provide the type-safety benefits of borrows without the constraints on usage patterns that they otherwise impose. Deferred borrows work by encapsulating enough state at creation time to perform the actual borrow later, while statically guaranteeing that the eventual borrow will reach the same object it would have otherwise. The static guarantee is made with a path-dependent type tying the deferred borrow to the container (struct, vector, etc.) of the borrowed object. This combines the type-safety of borrowing with the flexibility of traditional pointers, while retaining logical memory-safety.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.30",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Fallin",
+        "institution": "Mozilla Foundation"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Fallin19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.25",
+    "title": "Scala with Explicit Nulls",
+    "abstract": "The Scala programming language makes all reference types implicitly nullable. This is a problem, because null references do not support most operations that do make sense on regular objects, leading to runtime errors. In this paper, we present a modification to the Scala type system that makes nullability explicit in the types. Specifically, we make reference types non-nullable by default, while still allowing for nullable types via union types. We have implemented this design for explicit nulls as a fork of the Dotty (Scala 3) compiler. We evaluate our scheme by migrating a number of Scala libraries to use explicit nulls. Finally, we give a denotational semantics of type nullification, the interoperability layer between Java and Scala with explicit nulls. We show a soundness theorem stating that, for variants of System F_ω that model Java and Scala, nullification preserves values of types.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.25",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Nieto,",
+        "last_name": "Abel",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Zhao,",
+        "last_name": "Yaoyu",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Lhoták,",
+        "last_name": "Ondřej",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Chang,",
+        "last_name": "Angela",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Pu,",
+        "last_name": "Justin",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "conf/ecoop/NietoZLCP19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.28",
+    "title": "A Trusted Infrastructure for Symbolic Analysis of Event-Driven Web Applications",
+    "abstract": "We introduce a trusted infrastructure for the symbolic analysis of modern event-driven Web applications. This infrastructure consists of reference implementations of the DOM Core Level 1, DOM UI Events, JavaScript Promises and the JavaScript async/await APIs, all underpinned by a simple Core Event Semantics which is sufficiently expressive to describe the event models underlying these APIs. Our reference implementations are trustworthy in that three follow the appropriate standards line-by-line and all are thoroughly tested against the official test-suites, passing all the applicable tests. Using the Core Event Semantics and the reference implementations, we develop JaVerT.Click, a symbolic execution tool for JavaScript that, for the first time, supports reasoning about JavaScript programs that use multiple event-related APIs. We demonstrate the viability of JaVerT.Click by proving both the presence and absence of bugs in real-world JavaScript code.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.28",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Gabriela",
+        "last_name": "Sampaio",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "José Fragoso",
+        "last_name": "Santos",
+        "institution": "Instituto de Engenharia de Sistemas e Computadores Investigação e Desenvolvimento"
+      },
+      {
+        "first_name": "Petar",
+        "last_name": "Maksimović",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Philippa",
+        "last_name": "Gardner",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/ecoop/SampaioSMG19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.26",
+    "title": "A Type-Directed Operational Semantics For a Calculus with a Merge Operator",
+    "abstract": "Calculi with disjoint intersection types and a merge operator provide general mechanisms that can subsume various other features. Such calculi can also encode highly dynamic forms of object composition, which capture common programming patterns in dynamically typed languages (such as JavaScript) in a fully statically typed manner. Unfortunately, unlike many other foundational calculi (such as System F, System F_{< :} or Featherweight Java), recent calculi with the merge operator lack a (direct) operational semantics with standard and expected properties such as determinism and subject-reduction. Furthermore the metatheory for such calculi can only account for terminating programs, which is a significant restriction in practice. This paper proposes a type-directed operational semantics (TDOS) for λ_i^{:}: a calculus with intersection types and a merge operator. The calculus is inspired by two closely related calculi by Dunfield (2014) and Oliveira et al. (2016). Although Dunfield proposes a direct small-step semantics for her calculus, her semantics lacks both determinism and subject-reduction. Using our TDOS we obtain a direct semantics for λ_i^{:} that has both properties. To fully obtain determinism, the λ_i^{:} calculus employs a disjointness restriction proposed in Oliveira et al.’s λ_i calculus. As an added benefit the TDOS approach deals with recursion in a straightforward way, unlike λ_i and subsequent calculi where recursion is problematic. To further relate λ_i^{:} to the calculi by Dunfield and Oliveira et al. we show two results. Firstly, the semantics of λ_i^{:} is sound with respect to Dunfield’s small-step semantics. Secondly, we show that the type system of λ_i^{:} is complete with respect to the λ_i type system. All results have been fully formalized in the Coq theorem prover.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.26",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Xuejing",
+        "last_name": "Huang",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "conf/ecoop/HuangO19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.29",
+    "title": "The Duality of Subtyping",
+    "abstract": "Subtyping is a concept frequently encountered in many programming languages and calculi. Various forms of subtyping exist for different type system features, including intersection types, union types or bounded quantification. Normally these features are designed independently of each other, without exploiting obvious similarities (or dualities) between features.&#13;\\nThis paper proposes a novel methodology for designing subtyping relations that exploits duality between features. At the core of our methodology is a generalization of subtyping relations, which we call Duotyping. Duotyping is parameterized by the mode of the relation. One of these modes is the usual subtyping, while another mode is supertyping (the dual of subtyping). Using the mode it is possible to generalize the usual rules of subtyping to account not only for the intended behaviour of one particular language construct, but also of its dual. Duotyping brings multiple benefits, including: shorter specifications and implementations, dual features that come essentially for free, as well as new proof techniques for various properties of subtyping. To evaluate a design based on Duotyping against traditional designs, we formalized various calculi with common OOP features (including union types, intersection types and bounded quantification) in Coq in both styles. Our results show that the metatheory when using Duotyping does not come at a significant cost: the metatheory with Duotyping has similar complexity and size compared to the metatheory for traditional designs. However, we discover new features as duals to well-known features. Furthermore, we also show that Duotyping can significantly simplify transitivity proofs for many of the calculi studied by us.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.29",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Shaobo",
+        "last_name": "Cui",
+        "institution": ""
+      },
+      {
+        "first_name": "Baber",
+        "last_name": "Rehman",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/ecoop/OliveiraCR19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.24",
+    "title": "Flow-Sensitive Type-Based Heap Cloning",
+    "abstract": "By respecting program control-flow, flow-sensitive pointer analysis promises more precise results than its flow-insensitive counterpart. However, existing heap abstractions for C and C++ flow-sensitive pointer analyses model the heap by creating a single abstract heap object for each memory allocation. Two runtime heap objects which originate from the same allocation site are imprecisely modelled using one abstract object, which makes them share the same imprecise points-to sets and thus reduces the benefit of analysing heap objects flow-sensitively. On the other hand, equipping flow-sensitive analysis with context-sensitivity, whereby an abstract heap object would be created (cloned) per calling context, can yield a more precise heap model, but at the cost of uncontrollable analysis overhead when analysing larger programs. This paper presents TypeClone, a new type-based heap model for flow-sensitive analysis. Our key insight is to differentiate concrete heap objects lazily using type information at use sites within the program control-flow (e.g., when accessed via pointer dereferencing) for programs which conform to the strict aliasing rules set out by the C and C++ standards. The novelty of TypeClone lies in its lazy heap cloning: an untyped abstract heap object created at an allocation site is killed and replaced with a new object (i.e. a clone), uniquely identified by the type information at its use site, for flow-sensitive points-to propagation. Thus, heap cloning can be performed within a flow-sensitive analysis without the need for context-sensitivity. Moreover, TypeClone supports new kinds of strong updates for flow-sensitive analysis where heap objects are filtered out from imprecise points-to relations at object use sites according to the strict aliasing rules. Our method is neither strictly superior nor inferior to context-sensitive heap cloning, but rather, represents a new dimension that achieves a sweet spot between precision and efficiency. We evaluate our analysis by comparing TypeClone with state-of-the-art sparse flow-sensitive points-to analysis using the 12 largest programs in GNU Coreutils. Our experimental results also confirm that TypeClone is more precise than flow-sensitive pointer analysis and is able to, on average, answer over 15% more alias queries with a no-alias result.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.24",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Mohamad",
+        "last_name": "Barbar",
+        "institution": "Commonwealth Scientific and Industrial Research Organisation"
+      },
+      {
+        "first_name": "Yulei",
+        "last_name": "Sui",
+        "institution": "University of Technology Sydney"
+      },
+      {
+        "first_name": "Shiping",
+        "last_name": "Chen",
+        "institution": "Commonwealth Scientific and Industrial Research Organisation"
+      }
+    ],
+    "dblp_key": "conf/ecoop/BarbarS019",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.27",
+    "title": "Row and Bounded Polymorphism via Disjoint Polymorphism",
+    "abstract": "Polymorphism and subtyping are important features in mainstream OO languages. The most common way to integrate the two is via 𝖥_{< :} style bounded quantification. A closely related mechanism is row polymorphism, which provides an alternative to subtyping, while still enabling many of the same applications. Yet another approach is to have type systems with intersection types and polymorphism. A recent addition to this design space are calculi with disjoint intersection types and disjoint polymorphism. With all these alternatives it is natural to wonder how they are related. This paper provides an answer to this question. We show that disjoint polymorphism can recover forms of both row polymorphism and bounded polymorphism, while retaining key desirable properties, such as type-safety and decidability. Furthermore, we identify the extra power of disjoint polymorphism which enables additional features that cannot be easily encoded in calculi with row polymorphism or bounded quantification alone. Ultimately we expect that our work is useful to inform language designers about the expressive power of those common features, and to simplify implementations and metatheory of feature-rich languages with polymorphism and subtyping.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.27",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Ningning",
+        "last_name": "Xie",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Xuan",
+        "last_name": "Bi",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/ecoop/XieOBS19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.23",
+    "title": "Lifting Sequential Effects to Control Operators",
+    "abstract": "Sequential effect systems are a class of effect system that exploits information about program order, rather than discarding it as traditional commutative effect systems do. This extra expressive power allows effect systems to reason about behavior over time, capturing properties such as atomicity, unstructured lock ownership, or even general safety properties. While we now understand the essential denotational (categorical) models fairly well, application of these ideas to real software is hampered by the variety of source level control flow constructs and control operators in real languages. We address this new problem by appeal to a classic idea: macro-expression of commonly-used programming constructs in terms of control operators. We give an effect system for a subset of Racket’s tagged delimited control operators, as a lifting of an effect system for a language without direct control operators. This gives the first account of sequential effects in the presence of general control operators. Using this system, we also re-derive the sequential effect system rules for control flow constructs previously shown sound directly, and derive sequential effect rules for new constructs not previously studied in the context of source-level sequential effect systems. This offers a way to directly extend source-level support for sequential effect systems to real programming languages.",
+    "date": "2018-11-29",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.23",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Colin S.",
+        "last_name": "Gordon",
+        "institution": "Drexel University"
+      }
+    ],
+    "dblp_key": "conf/ecoop/Gordon19a",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.31",
+    "title": "Reshape Your Layouts, Not Your Programs: A Safe Language Extension for Better Cache Locality (SCICO Journal-first)",
+    "abstract": "The vast gap between CPU and RAM speed means that on modern architectures, developers need to carefully consider data placement in memory to exploit spatial and temporal cache locality and use CPU caches effectively. To that extent, developers have devised various strategies regarding data placement; for objects that should be close in memory, a contiguous pool of objects is allocated and then new instances are constructed inside it; an array of objects is clustered into multiple arrays, each holding the values of a specific field of the objects. Such data placements, however, have to be performed manually, hence readability, maintainability, memory safety, and key OO concepts such as encapsulation and object identity need to be sacrificed and the business logic needs to be modified accordingly. We propose a language extension, SHAPES, which aims to offer developers high-level fine-grained control over data placement, whilst retaining memory safety and the look-and-feel of OO. SHAPES extends an OO language with the concepts of pools and layouts: Developers declare pools that contain objects of a specific type and specify the pool’s layout. A layout specifies how objects in a pool are laid out in memory. That is, it dictates how the values of the fields of the pool’s objects are grouped together into clusters. Objects stored in pools behave identically to ordinary, standalone objects; the type system allows the code to be oblivious to the layout being used. This means that the business logic is completely decoupled from any placement concerns and the developer need not deviate from the spirit of OO to better utilise the cache. In this paper, we present the features of SHAPES, as well as the design rationale behind each feature. We then showcase the merit of SHAPES through a sequence of case studies; we claim that, compared to the manual pooling and clustering of objects, we can observe improvement in readability and maintainability, and comparable (i.e., on par or better) performance. We also present SHAPES^h, an OO calculus which models the SHAPES ideas, we formalise the type system, and prove soundness. The SHAPES^h type system uses ideas from Ownership Types [Clarke et al., 2013] and Java Generics [Gosling et al., 2014]: In SHAPES^h, pools are part of the types; SHAPES^h class and type definitions are enriched with pool parameters. Moreover, class pool parameters are enriched with bounds, which is what allows the business logic of SHAPES to be oblivious to the layout being used. SHAPES^h types also enforce pool uniformity and homogeneity. A pool is uniform if it contains objects of the same class only; a pool is homogeneous if the corresponding fields of all its objects point to objects in the same pool. These properties allow for more efficient implementation. For performance considerations, we also designed SHAPES^l, an untyped, unsafe low-level language with no explicit support for objects or pools. We argue that it is possible to translate SHAPES^l into existing low-level intermediate representations, such as LLVM [Lattner and Adve, 2004], present the translation of SHAPES^h into SHAPES^l, and show its soundness. Thus, we expect SHAPES to offer developers more fine-grained control over data placement, without sacrificing memory safety or the OO look-and-feel.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.31",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Αλέξανδρος",
+        "last_name": "Τάσος",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Juliana",
+        "last_name": "Franco",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Sophia",
+        "last_name": "Drossopoulou",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Wrigstad",
+        "institution": "Uppsala University"
+      },
+      {
+        "first_name": "Susan",
+        "last_name": "Eisenbach",
+        "institution": "Victoria University of Wellington"
+      }
+    ],
+    "dblp_key": "conf/ecoop/TasosFDWE19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.32",
+    "title": "A Big Step from Finite to Infinite Computations (SCICO Journal-first)",
+    "abstract": "The known is finite, the unknown infinite - Thomas Henry Huxley The behaviour of programs can be described by the final results of computations, and/or their interactions with the context, also seen as observations. For instance, a function call can terminate and return a value, as well as have output effects during its execution. Here, we deal with semantic definitions covering both results and observations. Often, such definitions are provided for finite computations only. Notably, in big-step style, infinite computations are simply not modelled, hence diverging and stuck terms are not distinguished. This becomes even more unsatisfactory if we have observations, since a non-terminating program may have significant infinite behaviour. Recently, examples of big-step semantics modeling divergence have been provided [Davide Ancona et al., 2017; Davide Ancona et al., 2018] by means of generalized inference systems [Davide Ancona et al., 2017; Francesco Dagnino, 2019], which allow corules to control coinduction. Indeed, modeling infinite behaviour by a purely coinductive interpretation of big-step rules would lead to spurious results [Xavier Leroy and Hervé Grall, 2009] and undetermined observation, whereas, by adding appropriate corules, we can correctly get divergence (∞) as the only result, and a uniquely determined observation. This approach has been adopted in [Davide Ancona et al., 2017; Davide Ancona et al., 2018] to design big-step definitions including infinite behaviour for lambda-calculus and a simple imperative Java-like language. However, in such works the designer of the semantics is in charge of finding the appropriate corules, and this is a non-trivial task. In this paper, we show a general construction that extends a given big-step semantics, modeling finite computations, to include infinite behaviour as well, notably by generating appropriate corules. The construction consists of two steps: 1) Starting from a monoid O modeling finite observations (e.g., finite traces), we construct an ω-monoid ⟨O, O_∞⟩ also modeling infinite observations (e.g., infinite traces). The latter structure is a variation of the notion of ω-semigroup [Dominique Perrin and Jean-Eric Pin, 2004], including a mixed product composing a finite with a possibly infinite observation, and an infinite product mapping an infinite sequence of finite observations into a single one (possibly infinite). 2) Starting from an inference system defining a big-step judgment c⇒⟨r, o⟩, with c denoting a configuration, r ∈ R a result, and o ∈ O a finite observation, we construct an inference system with corules defining an extended big-step judgment c⇒c ⇒ ⟨r_∞, o_∞⟩ with r_∞ ∈ R_∞ = R+{∞}, and o_∞ ∈ O_∞ a \"possibly infinite\" observation. The construction generates additional rules for propagating divergence, and corules for introducing divergence in a controlled way. The exact corules added in the construction depend on the type of observations that one starts with. To show the effectiveness of our approach, we provide several instances of the framework, with different kinds of (finite) observations. Finally, we prove a correctness result for the construction. To this end, we assume the original big-step semantics to be equivalent to (finite sequences of steps in) a reference small-step semantics, and we show that, by applying the construction, we obtain an extended big-step semantics which is still equivalent to the small-step semantics, where we consider possibly infinite sequences of steps.} As hypotheses, rather than {just} equivalence in the finite case {(which would be not enough)}, we assume a set of equivalence conditions between individual big-step rules and the small-step relation. This proof of equivalence holds for deterministic semantics; issues arising in the non-deterministic case and a possible solution are sketched in the conclusion of the full paper.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.32",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Davide",
+        "last_name": "Ancona",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Francesco",
+        "last_name": "Dagnino",
+        "institution": "University of Genoa"
+      },
+      {
+        "first_name": "Jurriaan",
+        "last_name": "Rot",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Zucca",
+        "institution": "University of Genoa"
+      }
+    ],
+    "dblp_key": "conf/ecoop/AnconaDRZ19",
+    "venue": "ecoop",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.4230/LIPIcs.ECOOP.2020.33",
+    "title": "Abstracting Gradual References (SCICO Journal-first)",
+    "abstract": "Gradual typing is an effective approach to integrate static and dynamic typing, which supports the smooth transition between both extremes via the (programmer-controlled) precision of type annotations [Jeremy Siek and Walid Taha, 2006; Siek et al., 2015]. Imprecision is normally introduced via the unknown type ?, e.g. function type Int → Bool is more precise than ? → ?, and both more precise than ?. Gradual typing relates types of different precision using consistent type relations, such as type consistency (resp. consistent subtyping), the gradual counterpart of type equality (resp. subtyping). For instance, ? → Int is consistent with Bool → ?. This approach has been applied in a number of settings, such as objects [Jeremy Siek and Walid Taha, 2007], subtyping [Jeremy Siek and Walid Taha, 2007; Ronald Garcia et al., 2016], effects [Bañados Schwerter et al., 2014; Bañados Schwerter et al., 2016], ownership [Ilya Sergey and Dave Clarke, 2012], typestates [Roger Wolff et al., 2011; Ronald Garcia et al., 2014], information-flow typing [Tim Disney and Cormac Flanagan, 2011; Luminous Fennell and Peter Thiemann, 2013; Matías Toro et al., 2018], session types [Igarashi et al., 2017], refinements [Nico Lehmann and {É}ric Tanter, 2017], set-theoretic types [Castagna and Lanvin, 2017], Hoare logic [Johannes Bader et al., 2018], parametric polymorphism [Amal Ahmed et al., 2011; Ahmed et al., 2017; Ina and Igarashi, 2011; Igarashi et al., 2017; Ningning Xie et al., 2018; Matías Toro et al., 2019], and references [Jeremy Siek and Walid Taha, 2006; Herman et al., 2010; Siek et al., 2015]. In particular, gradual typing for mutable references has seen the elaboration of various possible semantics: invariant references [Jeremy Siek and Walid Taha, 2006], guarded references [Herman et al., 2010], monotonic references [Siek et al., 2015], and permissive references [Siek et al., 2015]. Invariant references are a form of references where reference types are invariant with respect to type consistency. Guarded references admit variance thanks to systematic runtime checks on reference reads and writes; the runtime type of an allocated cell never changes during execution. Guarded references have been formulated in a space-efficient coercion calculus, which ensures that gradual programs do not accumulate unbounded pending checks during execution. Hereafter, we refer to this language as HCC. Monotonic references favor efficiency over flexibility by only allowing reference cells to vary towards more precise types. This allows reference operations in statically-typed regions to safely proceed without any runtime checks. Permissive references are the most flexible approach, in which reference cells can be initialized and updated to any value of any type at any time. These four developments reflect different design decisions with respect to gradual references: is the reference type constructor variant under consistency? Can the programmer specify a precise bound on the static type of a reference, and hence on the corresponding heap cell type? Can the heap cell type evolve its precision at runtime, and if yes, how? There is obviously no absolute answer to these questions, as they reflect different tradeoffs such as in efficiency and precision. This work explores the semantics that results from the application of a systematic methodology to gradualize static type systems. Currently we can find in the literature two methodologies to gradualize statically-typed languages: Abstracting Gradual Typing (AGT) [Ronald Garcia et al., 2016], and the Gradualizer [Matteo Cimini and Jeremy Siek, 2016]. In this work, we consider the AGT methodology as it naturally scales to auxiliary structures such as a mutable heap. The AGT methodology helps to systematically construct gradually-typed languages by using abstract interpretation [Cousot and Cousot, 1977] at the type level. In brief, AGT interprets gradual types as an abstraction of sets of possible static types, formally captured through a Galois connection. The static semantics of a gradual language are then derived by lifting the semantics of a statically-typed language through this connection, and the dynamic semantics follow by Curry-Howard from proof normalization of the type safety argument. The AGT methodology has been shown to be effective in many contexts: records and subtyping [Ronald Garcia et al., 2016], type-and-effects [Bañados Schwerter et al., 2014; Bañados Schwerter et al., 2016], refinement types [Nico Lehmann and Éric Tanter, 2017; Niki Vazou et al., 2018], set-theoretic and union types [Castagna and Lanvin, 2017; Matías Toro and Éric Tanter, 2017], information-flow typing [Matías Toro et al., 2018], and parametric polymorphism [Matías Toro et al., 2019]. However, this methodology has never been applied to mutable references in isolation. Although Toro et al. [Matías Toro et al., 2018] apply AGT to a language with references, they only gradualize security levels of types (e.g. Ref Int_?), not whole types (e.g. Ref ? is not supported). In this article we answer the following open questions: Which semantics for gradually-type references follows by systematically applying AGT? Does AGT justify one of the existing approaches, or does it suggest yet another design? Can we recover other semantics for gradual references, if yes, how? This article first reviews the different existing gradual approaches to mutable references through examples. It then presents the semantics for gradual references that is obtained by applying AGT, and how to accommodate the other semantics. More specifically, this work makes the following contributions: - We present λ_REF~, a gradual language with support for mutable references. We derive λ_REF~ by applying the AGT methodology to a fully-static simple language with mutable references called λ_REF. This is the first application of AGT that focuses on gradually-typed mutable references. - We prove that λ_REF~ satisfies the gradual guarantee of Siek et al. [Siek et al., 2015]. We also present the first formal statement and proof of the conservative extension of the dynamic semantics of the static language [Siek et al., 2015], for a gradual language derived using AGT. - We prove that the derived language, λ_REF~, corresponds to the semantics of guarded references from HCC. Formally, given a λ_REF~ term and its compilation to HCC^+ (an adapted version of HCC extended with conditionals and binary operations) we prove that both terms are bisimilar, and that consequently they either both terminate, both fail, or both diverge. - We observe that λ_REF~ and HCC^+ differ in the order of combination of runtime checks. As a result, HCC is space efficient whereas λ_REF~ is not: we can write programs in λ_REF~ that may accumulate an unbounded number of checks. We formalize the changes needed in the dynamic semantics of λ_REF~ to achieve space efficiency. This technique to recover space efficiency is in fact independent from mutable references, and is therefore applicable to other gradual languages derived with AGT. - We formally describe how to support other gradual reference semantics in λ_REF~ by presenting λ_REF~^𝗉𝗆, an extension that additionally supports both permissive and monotonic references. Finally, we prove for the first time that monotonic references satisfy the dynamic gradual guarantee, a non-trivial result that requires careful consideration of updates to the store. Additionally, we implemented λ_REF~ as an interactive prototype that displays both typing derivations and reduction traces. All the examples mentioned in this paper are readily available in the online prototype available at https://pleiad.cl/grefs. As a result, this paper sheds further light on the design space of gradual languages with mutable references and contributes to deepening the understanding of the AGT methodology.",
+    "date": "2020-01-01",
+    "link": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.33",
+    "conference_name": "ECOOP",
+    "authors": [
+      {
+        "first_name": "Matías",
+        "last_name": "Toro",
+        "institution": "University of Chile"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "University of Chile"
+      }
+    ],
+    "dblp_key": "conf/ecoop/ToroT19",
+    "venue": "ecoop",
+    "year": 2020
+  }
+]

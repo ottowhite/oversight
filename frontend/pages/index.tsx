@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type Paper = {
@@ -14,8 +15,12 @@ type Paper = {
 
 const API_BASE = ""; // use Next.js rewrite to proxy to backend
 
-const TIME_STEPS = [7, 14, 30, 90, 180, 365, 730, 1095, 1825, 2555, 3650];
-const DEFAULT_TIME_INDEX = 7; // 1095 days = 3 years
+// The last entry (36500 days ≈ 100 years) effectively means "all time" —
+// any sentinel that's larger than the age of the oldest paper in the corpus
+// (POPL 1973) would do.
+const TIME_STEPS = [7, 14, 30, 90, 180, 365, 730, 1095, 1825, 2555, 3650, 36500];
+const ALL_TIME_DAYS = 36500;
+const DEFAULT_TIME_INDEX = TIME_STEPS.length - 1; // "all time"
 
 const LIMIT_STEPS = [10, 15, 20, 25, 30, 40, 50];
 const DEFAULT_LIMIT_INDEX = 0; // 10 results
@@ -49,7 +54,16 @@ export default function HomePage() {
     NSDI: true,
     MLSys: true,
     EuroSys: true,
-    VLDB: true
+    VLDB: true,
+    // PL conferences
+    POPL: true,
+    PLDI: true,
+    ICFP: true,
+    OOPSLA: true,
+    ESOP: true,
+    ECOOP: true,
+    CC: true,
+    Haskell: true
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLElement>(null);
@@ -58,6 +72,7 @@ export default function HomePage() {
   const [eyeSpinning, setEyeSpinning] = useState(false);
   const [systemsExpanded, setSystemsExpanded] = useState(false);
   const [aiExpanded, setAiExpanded] = useState(false);
+  const [plExpanded, setPlExpanded] = useState(false);
   const [loading, setLoading] = useState(false);
   const lastRequestIdRef = useRef<number>(0);
   const [error, setError] = useState<string | null>(null);
@@ -92,6 +107,9 @@ export default function HomePage() {
   }, [sidebarOpen]);
 
   const timeLabel = useMemo(() => {
+    if (timeDays >= ALL_TIME_DAYS) {
+      return "All time";
+    }
     if (timeDays >= 365) {
       const years = Math.round(timeDays / 365);
       return `${years} year${years === 1 ? "" : "s"}`;
@@ -149,10 +167,12 @@ export default function HomePage() {
   // Conference categories
   const aiConferences = ['ICML', 'NeurIPS', 'ICLR'];
   const systemsConferences = ['OSDI', 'SOSP', 'ASPLOS', 'ATC', 'NSDI', 'MLSys', 'EuroSys', 'VLDB'];
+  const plConferences = ['POPL', 'PLDI', 'ICFP', 'OOPSLA', 'ESOP', 'ECOOP', 'CC', 'Haskell'];
 
   // Check if all conferences in a category are selected
   const isAllAISelected = aiConferences.every(conf => sources[conf as keyof typeof sources]);
   const isAllSystemsSelected = systemsConferences.every(conf => sources[conf as keyof typeof sources]);
+  const isAllPLSelected = plConferences.every(conf => sources[conf as keyof typeof sources]);
 
   function toggleSource(key: keyof typeof sources) {
     setSources((s) => ({ ...s, [key]: !s[key] }));
@@ -174,6 +194,17 @@ export default function HomePage() {
     setSources((s) => {
       const updated = { ...s };
       systemsConferences.forEach(conf => {
+        updated[conf as keyof typeof sources] = newValue;
+      });
+      return updated;
+    });
+  }
+
+  function toggleAllPL() {
+    const newValue = !isAllPLSelected;
+    setSources((s) => {
+      const updated = { ...s };
+      plConferences.forEach(conf => {
         updated[conf as keyof typeof sources] = newValue;
       });
       return updated;
@@ -240,6 +271,14 @@ export default function HomePage() {
             </svg>
           </button>
           <h1 className="text-lg font-semibold">Oversight</h1>
+          <Link href="/atlas">
+            <a
+              className="ml-3 text-sm text-base-content/60 transition-colors hover:text-base-content"
+              title="2D paper-cloud map"
+            >
+              Map view
+            </a>
+          </Link>
           <a
             href="https://github.com/ottowhite/oversight"
             target="_blank"
@@ -429,6 +468,44 @@ export default function HomePage() {
                 ))}
               </div>
 
+              {/* PL conferences */}
+              <div>
+                <label className="label cursor-pointer justify-start gap-3 py-2">
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-sm"
+                    checked={isAllPLSelected}
+                    onChange={toggleAllPL}
+                    ref={(el) => {
+                      if (el) {
+                        el.indeterminate = plConferences.some(conf => sources[conf as keyof typeof sources]) && !isAllPLSelected;
+                      }
+                    }}
+                  />
+                  <span className="label-text font-medium flex-1">PL conferences</span>
+                  <button
+                    type="button"
+                    className="btn btn-ghost btn-xs btn-circle"
+                    onClick={() => setPlExpanded((v) => !v)}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`h-4 w-4 transition-transform duration-150 ${plExpanded ? 'rotate-180' : ''}`}>
+                      <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </label>
+                {plExpanded && plConferences.map(conf => (
+                  <label key={conf} className="label cursor-pointer justify-start gap-3 py-1 ml-6">
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-sm"
+                      checked={sources[conf as keyof typeof sources]}
+                      onChange={() => toggleSource(conf as keyof typeof sources)}
+                    />
+                    <span className="label-text text-sm">{conf}</span>
+                  </label>
+                ))}
+              </div>
+
               {/* arXiv */}
               <label className="label cursor-pointer justify-start gap-3 py-2">
                 <input type="checkbox" className="checkbox checkbox-sm" checked={sources.arxiv} onChange={() => toggleSource("arxiv")} />
@@ -504,6 +581,13 @@ export default function HomePage() {
                     >
                       Find Similar
                     </button>
+                    <Link
+                      href={`/graph?papers=${encodeURIComponent(p.paper_id)}`}
+                    >
+                      <a className="btn btn-xs btn-ghost text-accent hover:bg-accent/10">
+                        Graph
+                      </a>
+                    </Link>
                     {p.link && (
                       <a
                         className="btn btn-xs btn-ghost text-accent hover:bg-accent/10"
@@ -618,10 +702,11 @@ export default function HomePage() {
                 const yearColumns: number[] = [];
                 for (let y = minYear; y <= maxYear; y++) yearColumns.push(y);
 
-                // Fixed display order: systems, AI, then arxiv
+                // Fixed display order: systems, AI, PL, then arxiv
                 const SOURCE_ORDER = [
                   'OSDI', 'SOSP', 'ASPLOS', 'ATC', 'NSDI', 'EuroSys', 'VLDB',
                   'ICML', 'NeurIPS', 'ICLR', 'MLSys',
+                  'POPL', 'PLDI', 'ICFP', 'OOPSLA', 'ESOP', 'ECOOP', 'CC', 'Haskell',
                   'arxiv',
                 ];
                 const knownSources = new Set(SOURCE_ORDER);

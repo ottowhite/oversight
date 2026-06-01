@@ -1,14 +1,19 @@
 from __future__ import annotations
 
 from datetime import date, timedelta
+import json
 import os
+import threading
 from typing import Any
 
-from flask import Flask, request
+import psycopg
+from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 from dotenv import load_dotenv
+from pgvector.psycopg import register_vector
 from psycopg import sql
 
+from .Paper import Paper
 from .PaperDatabase import PaperDatabase
 from .PaperRepository import PaperRepository
 from .ArXivRepository import ArXivRepository
@@ -23,6 +28,61 @@ cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
 CORS(app, resources={r"/api/*": {"origins": cors_origins}})
 
 
+# Every valid `source` value the search API recognises. The frontend
+# groups these visually (AI / Systems / PL) but the backend doesn't
+# care about the grouping — a flat list is all the filter needs.
+KNOWN_CONFERENCES: list[str] = [
+    "ICML",
+    "NeurIPS",
+    "ICLR",
+    "OSDI",
+    "SOSP",
+    "ASPLOS",
+    "ATC",
+    "NSDI",
+    "MLSys",
+    "EuroSys",
+    "VLDB",
+    "POPL",
+    "PLDI",
+    "ICFP",
+    "OOPSLA",
+    "ESOP",
+    "ECOOP",
+    "CC",
+    "Haskell",
+]
+KNOWN_SOURCES: list[str] = ["arxiv", *KNOWN_CONFERENCES]
+
+
+_neighbors_conn_lock = threading.Lock()
+_neighbors_conn: psycopg.Connection[tuple[Any, ...]] | None = None
+
+# Process-local cache for the similarity-distribution endpoint. Sampling 10K
+# random embedding pairs takes ~hundreds of ms; the result is stable for the
+# lifetime of the process under normal ingestion volume.
+_similarity_distribution_lock = threading.Lock()
+_similarity_distribution_cache: dict[str, float] | None = None
+_similarity_distribution_sample_size = 10_000
+
+
+def _get_neighbors_connection() -> psycopg.Connection[tuple[Any, ...]]:
+    """Return a process-local pgvector-registered connection.
+
+    The neighbors endpoint is read-only and latency-sensitive (target p95 30ms),
+    so we amortize the ~25ms connect + ``register_vector`` cost across requests
+    by reusing one connection per worker. Threaded WSGI servers serialize
+    access through the lock; for higher concurrency, swap in psycopg_pool.
+    """
+    global _neighbors_conn
+    if _neighbors_conn is None or _neighbors_conn.closed:
+        database_url = os.getenv("DATABASE_URL")
+        assert database_url is not None, "Database URL is not set"
+        _neighbors_conn = psycopg.connect(database_url, autocommit=True)
+        register_vector(_neighbors_conn)
+    return _neighbors_conn
+
+
 @app.get("/api/health")
 def health() -> tuple[dict[str, str], int]:
     return {"status": "ok"}, 200
@@ -31,61 +91,12 @@ def health() -> tuple[dict[str, str], int]:
 def _build_filters(
     repo: PaperRepository, sources_flags: dict[str, bool]
 ) -> list[sql.Composable]:
-    filters: list[sql.Composable] = []
-
-    # Collect individual sources
-    selected_sources: list[str] = []
-
-    # Handle arXiv
-    if sources_flags.get("arxiv", False):
-        selected_sources.append("arxiv")
-
-    # Handle individual AI conferences
-    ai_conferences = ["ICML", "NeurIPS", "ICLR"]
-    for conf in ai_conferences:
-        if sources_flags.get(conf, False):
-            selected_sources.append(conf)
-
-    # Handle individual Systems conferences
-    systems_conferences = [
-        "OSDI",
-        "SOSP",
-        "ASPLOS",
-        "ATC",
-        "NSDI",
-        "MLSys",
-        "EuroSys",
-        "VLDB",
-    ]
-    for conf in systems_conferences:
-        if sources_flags.get(conf, False):
-            selected_sources.append(conf)
-
-    # Build filter from selected sources
-    if selected_sources:
-        filters.append(repo.build_filter_sql(selected_sources))
-    else:
-        # If nothing selected, default to everything
-        filters.append(
-            repo.build_filter_sql(
-                [
-                    "arxiv",
-                    "ICML",
-                    "NeurIPS",
-                    "ICLR",
-                    "OSDI",
-                    "SOSP",
-                    "ASPLOS",
-                    "ATC",
-                    "NSDI",
-                    "MLSys",
-                    "EuroSys",
-                    "VLDB",
-                ]
-            )
-        )
-
-    return filters
+    selected = [src for src in KNOWN_SOURCES if sources_flags.get(src, False)]
+    # If the caller didn't pick any sources, treat that as "I want everything"
+    # rather than "I want zero rows back".
+    if not selected:
+        selected = KNOWN_SOURCES
+    return [repo.build_filter_sql(selected)]
 
 
 @app.post("/api/search")
@@ -94,30 +105,10 @@ def search() -> tuple[dict[str, Any], int]:
     body: dict[str, Any] = request.get_json(silent=True) or {}
     # Support query params for GET as well
     if request.method == "GET" and not body:
-        # Create sources dict from individual conference params
         sources: dict[str, bool] = {
-            "arxiv": request.args.get("arxiv", "false").lower() == "true",
+            src: request.args.get(src, "false").lower() == "true"
+            for src in KNOWN_SOURCES
         }
-
-        # Add individual AI conferences
-        ai_conferences = ["ICML", "NeurIPS", "ICLR"]
-        for conf in ai_conferences:
-            sources[conf] = request.args.get(conf, "false").lower() == "true"
-
-        # Add individual Systems conferences
-        systems_conferences = [
-            "OSDI",
-            "SOSP",
-            "ASPLOS",
-            "ATC",
-            "NSDI",
-            "MLSys",
-            "EuroSys",
-            "VLDB",
-        ]
-        for conf in systems_conferences:
-            sources[conf] = request.args.get(conf, "false").lower() == "true"
-
         body = {
             "text": request.args.get("text", ""),
             "time_window_days": request.args.get("time_window_days"),
@@ -132,8 +123,11 @@ def search() -> tuple[dict[str, Any], int]:
 
     time_window_days = body.get("time_window_days")
     try:
+        # Default to "all time" — anything older than the oldest paper in the
+        # corpus (POPL 1973). The frontend's slider exposes a finer scale; this
+        # default only kicks in for API clients that omit the field.
         time_window_days_int = (
-            int(time_window_days) if time_window_days is not None else 365 * 5
+            int(time_window_days) if time_window_days is not None else 36500
         )
     except Exception:
         return {"error": "time_window_days must be an integer"}, 400
@@ -184,6 +178,401 @@ def search() -> tuple[dict[str, Any], int]:
         )
 
     return {"results": results}, 200
+
+
+def _serialize_paper(paper: Any, similarity: float | None = None) -> dict[str, Any]:
+    """Serialize a Paper object for JSON responses."""
+    out: dict[str, Any] = {
+        "paper_id": paper.paper_id,
+        "title": paper.title,
+        "abstract": paper.abstract,
+        "source": paper.source,
+        "link": paper.link,
+        "authors": paper.authors,
+        "institutions": paper.institutions,
+        "paper_date": paper.paper_date.isoformat()
+        if hasattr(paper.paper_date, "isoformat")
+        else str(paper.paper_date),
+    }
+    if similarity is not None:
+        out["similarity"] = similarity
+    return out
+
+
+@app.get("/api/papers/<path:paper_id>/neighbors")
+def paper_neighbors(paper_id: str) -> tuple[dict[str, Any], int]:
+    """Return the seed paper and its similarity-graph neighbors.
+
+    Query params:
+      k       int in [1, 50] (default 20)
+      mutual  bool (default false). When true, restrict to mutual-kNN edges.
+    """
+    k_raw = request.args.get("k", "20")
+    try:
+        k = int(k_raw)
+    except (TypeError, ValueError):
+        return {"error": "k must be an integer"}, 400
+    if k < 1 or k > 50:
+        return {"error": "k must be between 1 and 50"}, 400
+
+    mutual_raw = request.args.get("mutual", "false").strip().lower()
+    if mutual_raw not in {"true", "false", "1", "0", "yes", "no"}:
+        return {"error": "mutual must be a boolean"}, 400
+    mutual = mutual_raw in {"true", "1", "yes"}
+
+    # Skip the PaperRepository wrapper here: this endpoint does no embedding
+    # work (the seed embedding is fetched from the DB), so loading the Google
+    # client per request would only add latency. Reuse a process-local
+    # connection so we don't pay 15-25ms of connect + register_vector per call.
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        db = PaperDatabase.from_connection(con)
+        neighbor_pairs = db.find_neighbors(paper_id, k=k, mutual=mutual)
+        ids_to_fetch = [paper_id] + [pid for pid, _ in neighbor_pairs]
+        rows = db.get_papers_by_ids(ids_to_fetch)
+
+    by_id = {row[2]: row for row in rows}
+    if paper_id not in by_id:
+        return {"error": f"paper {paper_id!r} not found"}, 404
+
+    seed_paper, _ = Paper.from_database_row(by_id[paper_id])
+    neighbors_out: list[dict[str, Any]] = []
+    for pid, sim in neighbor_pairs:
+        if pid not in by_id:
+            continue  # very rare: paper deleted between the two queries
+        nb_paper, _ = Paper.from_database_row(by_id[pid])
+        neighbors_out.append(_serialize_paper(nb_paper, similarity=sim))
+
+    return {
+        "seed": _serialize_paper(seed_paper),
+        "neighbors": neighbors_out,
+    }, 200
+
+
+@app.get("/api/papers/<path:paper_id>")
+def paper_detail(paper_id: str) -> tuple[dict[str, Any], int]:
+    """Return a single paper's full metadata (title, authors, abstract, link).
+
+    The ``<path:paper_id>`` converter accepts slashes so DOI-style ids
+    like ``10.1145/3704910`` work without client-side encoding gymnastics.
+    Used by the /atlas page's hover sidebar — extending /api/atlas to
+    include abstracts would balloon the 18k-point payload from 3.5 MB
+    to ~30 MB, so we lazy-fetch on hover instead.
+    """
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        db = PaperDatabase.from_connection(con)
+        rows = db.get_papers_by_ids([paper_id])
+
+    if not rows:
+        return {"error": f"paper {paper_id!r} not found"}, 404
+
+    paper, _ = Paper.from_database_row(rows[0])
+    return _serialize_paper(paper), 200
+
+
+def _percentile(sorted_values: list[float], pct: float) -> float:
+    """Linear-interpolation percentile on an already-sorted list.
+
+    ``pct`` is in [0, 100]. Mirrors numpy's default ("linear") method so
+    results match what a casual reader would expect, without pulling numpy
+    into the request path.
+    """
+    n = len(sorted_values)
+    assert n > 0, "cannot compute percentile of empty list"
+    if n == 1:
+        return float(sorted_values[0])
+    rank = (pct / 100.0) * (n - 1)
+    lo = int(rank)
+    hi = min(lo + 1, n - 1)
+    frac = rank - lo
+    return float(sorted_values[lo] * (1 - frac) + sorted_values[hi] * frac)
+
+
+def _compute_similarity_distribution(sample_size: int) -> dict[str, float]:
+    """Sample pairwise similarities and reduce them to a percentile dict."""
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        db = PaperDatabase.from_connection(con)
+        sims = db.sample_pairwise_similarities(sample_size)
+    if not sims:
+        return {
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "p99": 0.0,
+            "p99_5": 0.0,
+            "p99_9": 0.0,
+        }
+    sims.sort()
+    return {
+        "p50": _percentile(sims, 50),
+        "p90": _percentile(sims, 90),
+        "p95": _percentile(sims, 95),
+        "p99": _percentile(sims, 99),
+        "p99_5": _percentile(sims, 99.5),
+        "p99_9": _percentile(sims, 99.9),
+    }
+
+
+@app.get("/api/atlas")
+def atlas() -> Any:
+    """Return 2D coordinates for the paper-atlas scatter plot.
+
+    Query params:
+      projection  str (required) — projection name in paper_projection_2d
+      viewport    "xmin,ymin,xmax,ymax" (optional) — restrict to a rectangle
+      limit       int in [1, 1_000_000] (default 1_000_000)
+      format      "json" (default) or "ndjson" — opt into streaming NDJSON
+
+    JSON returns:
+      {"projection": ..., "count": N, "points": [{paper_id, title, source, x, y}, ...]}
+
+    NDJSON streams one header line first
+      {"projection": ..., "total": N, "bbox": [xmin, ymin, xmax, ymax]}
+    then one point per line as
+      {"paper_id": ..., "title": ..., "source": ..., "x": ..., "y": ...}
+
+    Points are ordered by paper_id (JSON path only) so a future cursor-style
+    pagination layer has a deterministic ordering to slice on. The NDJSON
+    path drops ORDER BY because sorting forces PG to buffer the entire
+    result before emitting any row, defeating the point of streaming.
+
+    The 1M cap leaves headroom over today's largest projection
+    (pacmap_v1 at 524k) without exposing an unbounded SELECT.
+    """
+    projection = request.args.get("projection", "").strip()
+    if not projection:
+        return {"error": "projection is required"}, 400
+
+    fmt = request.args.get("format", "json").strip().lower()
+    if fmt not in ("json", "ndjson"):
+        return {"error": "format must be 'json' or 'ndjson'"}, 400
+
+    limit_raw = request.args.get("limit", "1000000")
+    try:
+        limit = int(limit_raw)
+    except (TypeError, ValueError):
+        return {"error": "limit must be an integer"}, 400
+    if limit < 1 or limit > 1_000_000:
+        return {"error": "limit must be between 1 and 1_000_000"}, 400
+
+    viewport_raw = request.args.get("viewport")
+    viewport: tuple[float, float, float, float] | None = None
+    if viewport_raw:
+        parts = viewport_raw.split(",")
+        if len(parts) != 4:
+            return {"error": "viewport must be xmin,ymin,xmax,ymax"}, 400
+        try:
+            xmin, ymin, xmax, ymax = (float(p) for p in parts)
+        except ValueError:
+            return {"error": "viewport values must be floats"}, 400
+        viewport = (xmin, ymin, xmax, ymax)
+
+    if fmt == "ndjson":
+        return _atlas_ndjson(projection, viewport, limit)
+
+    # Reuse the neighbors connection: this endpoint is read-only and the
+    # ~25ms connect + register_vector cost dominates at small payloads.
+    with _neighbors_conn_lock:
+        con = _get_neighbors_connection()
+        with con.cursor() as cur:
+            if viewport is not None:
+                rows = cur.execute(
+                    """
+                    SELECT pp.paper_id, p.title, p.source, pp.x, pp.y
+                    FROM paper_projection_2d AS pp
+                    JOIN paper AS p ON p.paper_id = pp.paper_id
+                    WHERE pp.projection = %s
+                      AND pp.x BETWEEN %s AND %s
+                      AND pp.y BETWEEN %s AND %s
+                    ORDER BY pp.paper_id
+                    LIMIT %s
+                    """,
+                    [
+                        projection,
+                        viewport[0],
+                        viewport[2],
+                        viewport[1],
+                        viewport[3],
+                        limit,
+                    ],
+                ).fetchall()
+            else:
+                rows = cur.execute(
+                    """
+                    SELECT pp.paper_id, p.title, p.source, pp.x, pp.y
+                    FROM paper_projection_2d AS pp
+                    JOIN paper AS p ON p.paper_id = pp.paper_id
+                    WHERE pp.projection = %s
+                    ORDER BY pp.paper_id
+                    LIMIT %s
+                    """,
+                    [projection, limit],
+                ).fetchall()
+
+    points = [
+        {
+            "paper_id": pid,
+            "title": title,
+            "source": source,
+            "x": float(x),
+            "y": float(y),
+        }
+        for (pid, title, source, x, y) in rows
+    ]
+    return {"projection": projection, "count": len(points), "points": points}, 200
+
+
+def _atlas_ndjson(
+    projection: str,
+    viewport: tuple[float, float, float, float] | None,
+    limit: int,
+) -> Response:
+    """Stream atlas points as NDJSON.
+
+    Uses a fresh psycopg connection (not the shared _neighbors_conn) plus a
+    *named* server-side cursor so PG emits rows in batches instead of
+    buffering the full ~500k-row result. The shared connection can't be
+    reused here: a server-side cursor pins the connection for the duration
+    of the response, which would block every other endpoint.
+    """
+    database_url = os.getenv("DATABASE_URL")
+    assert database_url is not None, "Database URL is not set"
+
+    def generate() -> Any:
+        with psycopg.connect(database_url) as con:
+            register_vector(con)
+
+            # Header line first: a small aggregate query on an anonymous
+            # cursor so the client gets total + bbox in <100ms, well before
+            # the streaming SELECT starts emitting rows.
+            with con.cursor() as cur:
+                if viewport is not None:
+                    cur.execute(
+                        """
+                        SELECT COUNT(*), MIN(x), MAX(x), MIN(y), MAX(y)
+                        FROM paper_projection_2d
+                        WHERE projection = %s
+                          AND x BETWEEN %s AND %s
+                          AND y BETWEEN %s AND %s
+                        """,
+                        [
+                            projection,
+                            viewport[0],
+                            viewport[2],
+                            viewport[1],
+                            viewport[3],
+                        ],
+                    )
+                else:
+                    cur.execute(
+                        """
+                        SELECT COUNT(*), MIN(x), MAX(x), MIN(y), MAX(y)
+                        FROM paper_projection_2d
+                        WHERE projection = %s
+                        """,
+                        [projection],
+                    )
+                agg = cur.fetchone()
+
+            total = int(agg[0]) if agg is not None else 0
+            if agg is not None and agg[1] is not None:
+                bbox = [
+                    float(agg[1]),
+                    float(agg[3]),
+                    float(agg[2]),
+                    float(agg[4]),
+                ]
+            else:
+                bbox = [0.0, 0.0, 0.0, 0.0]
+
+            header = {"projection": projection, "total": total, "bbox": bbox}
+            yield (json.dumps(header) + "\n").encode("utf-8")
+
+            # Named cursor → DECLARE ... CURSOR server-side, so PG streams
+            # rows in batches of itersize rather than materializing the full
+            # result client-side. ORDER BY is intentionally dropped:
+            # sorting forces PG to buffer the entire result before emitting
+            # the first row, which is exactly what we're trying to avoid.
+            with con.cursor(name="atlas_stream") as cur:
+                cur.itersize = 5000
+                if viewport is not None:
+                    cur.execute(
+                        """
+                        SELECT pp.paper_id, p.title, p.source, pp.x, pp.y
+                        FROM paper_projection_2d AS pp
+                        JOIN paper AS p ON p.paper_id = pp.paper_id
+                        WHERE pp.projection = %s
+                          AND pp.x BETWEEN %s AND %s
+                          AND pp.y BETWEEN %s AND %s
+                        LIMIT %s
+                        """,
+                        [
+                            projection,
+                            viewport[0],
+                            viewport[2],
+                            viewport[1],
+                            viewport[3],
+                            limit,
+                        ],
+                    )
+                else:
+                    cur.execute(
+                        """
+                        SELECT pp.paper_id, p.title, p.source, pp.x, pp.y
+                        FROM paper_projection_2d AS pp
+                        JOIN paper AS p ON p.paper_id = pp.paper_id
+                        WHERE pp.projection = %s
+                        LIMIT %s
+                        """,
+                        [projection, limit],
+                    )
+                for pid, title, source, x, y in cur:
+                    yield (
+                        json.dumps(
+                            {
+                                "paper_id": pid,
+                                "title": title,
+                                "source": source,
+                                "x": float(x),
+                                "y": float(y),
+                            }
+                        )
+                        + "\n"
+                    ).encode("utf-8")
+
+    return Response(
+        stream_with_context(generate()),
+        mimetype="application/x-ndjson",
+        direct_passthrough=True,
+    )
+
+
+@app.get("/api/embeddings/similarity_distribution")
+def embeddings_similarity_distribution() -> tuple[dict[str, Any], int]:
+    """Return cosine-similarity percentiles for random pairs of embedded papers.
+
+    The frontend uses these to anchor the threshold slider in corpus
+    percentiles ("0.71 is the 99th percentile of pairwise similarity in your
+    corpus") rather than asking the user to pick a raw cosine number.
+
+    The sample is computed lazily on first request and cached in-memory for
+    the lifetime of the process. Pass ``?refresh=1`` to force recomputation.
+    """
+    global _similarity_distribution_cache
+
+    refresh_raw = request.args.get("refresh", "0").strip().lower()
+    refresh = refresh_raw in {"1", "true", "yes"}
+
+    with _similarity_distribution_lock:
+        if refresh or _similarity_distribution_cache is None:
+            _similarity_distribution_cache = _compute_similarity_distribution(
+                _similarity_distribution_sample_size
+            )
+        payload = dict(_similarity_distribution_cache)
+
+    return payload, 200
 
 
 def _next_conference_dates(

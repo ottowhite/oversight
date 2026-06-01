@@ -1,0 +1,390 @@
+[
+  {
+    "paper_id": "10.1145/3242744.3242757",
+    "title": "Rhine: FRP with type-level clocks",
+    "abstract": "Processing data at different rates is generally a hard problem in reactive programming. Buffering problems, lags, and concurrency issues often occur. Many of these problems are clock errors, where data at different rates is combined incorrectly. Techniques to avoid clock errors, such as type-level clocks and deterministic scheduling, exist in the field of synchronous programming, but are not implemented in general-purpose languages like Haskell.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242757",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Bärenz",
+        "institution": "University of Vienna"
+      },
+      {
+        "first_name": "Ivan",
+        "last_name": "Pérez",
+        "institution": "National Institute of Aerospace"
+      }
+    ],
+    "dblp_key": "conf/haskell/Barenz018",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242760",
+    "title": "Suggesting valid hole fits for typed-holes (experience report)",
+    "abstract": "Type systems allow programmers to communicate a partial specification of their program to the compiler using types, which can then be used to check that the implementation matches the specification. But can the types be used to aid programmers during development? In this experience report I describe the design and implementation of my lightweight and practical extension to the typed-holes of GHC that improves user experience by adding a list of valid hole fits and refinement hole fits to the error message of typed-holes. By leveraging the type checker, these fits are selected from identifiers in scope such that if the hole is substituted with a valid hole fit, the resulting expression is guaranteed to type check.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242760",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Matthías Páll",
+        "last_name": "Gissurarson",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/Gissurarson18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242745",
+    "title": "Generic programming of all kinds",
+    "abstract": "Datatype-generic programming is a widely used technique to define functions that work regularly over a class of datatypes. Examples include deriving serialization of data, equality or even functoriality. The state-of-the-art of generic programming still lacks handling GADTs, multiple type variables, and some other features. This paper exploits modern GHC extensions, including <pre>TypeInType</pre>, to handle arbitrary number of type variables, constraints, and existentials. We also provide an Agda model of our construction that does not require Russel’s paradox, proving the construction is consistent.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242745",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Alejandro",
+        "last_name": "Serrano",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Victor Cacciari",
+        "last_name": "Miraldo",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/haskell/SerranoM18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3264734",
+    "title": "Autobahn 2.0: minimizing bangs while maintaining performance (system demonstration)",
+    "abstract": "Lazy evaluation has many advantages, but it can cause bad performance. Consequently, Haskell allows users to force eager evaluation at certain program points by inserting strictness annotations, known and written as bangs (!). Unfortunately, manual bang placement is difficult. Autobahn 1.0 uses a genetic algorithm to infer bang annotations that improve performance. However, Autobahn 1.0 often generates large numbers of superfluous bangs, which is problematic because users must inspect each such bang to determine whether it is safe. We introduce Autobahn 2.0, which uses GHC profiling information to reduce the number of superfluous bangs. When evaluated on the NoFib benchmark suite, Autobahn 2.0 reduced the number of inferred bangs by 90.2% on average, while only degrading program performance by 15.7% compared with the performance produced by Autobahn 1.0. In a case study on a garbage collection simulator, Autobahn 2.0 eliminated 81.8% of the recommended bangs, with the same 15.7% optimization degradation.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3264734",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Marilyn",
+        "last_name": "Sun",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Kathleen",
+        "last_name": "Fisher",
+        "institution": "Tufts University"
+      }
+    ],
+    "dblp_key": "conf/haskell/SunF18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242747",
+    "title": "Branching processes for QuickCheck generators",
+    "abstract": "In QuickCheck (or, more generally, random testing), it is challenging to control random data generators' distributions---specially when it comes to user-defined algebraic data types (ADT). In this paper, we adapt results from an area of mathematics known as branching processes, and show how they help to analytically predict (at compile-time) the expected number of generated constructors, even in the presence of mutually recursive or composite ADTs. Using our probabilistic formulas, we design heuristics capable of automatically adjusting probabilities in order to synthesize generators which distributions are aligned with users' demands. We provide a Haskell implementation of our mechanism in a tool called DRaGeN and perform case studies with real-world applications. When generating random values, our synthesized QuickCheck generators show improvements in code coverage when compared with those automatically derived by state-of-the-art tools.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242747",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Agustín",
+        "last_name": "Mista",
+        "institution": "National University of Rosario"
+      },
+      {
+        "first_name": "Alejandro",
+        "last_name": "Russo",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Hughes",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/haskell/MistaRH18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242755",
+    "title": "Ghosts of departed proofs (functional pearl)",
+    "abstract": "Library authors often are faced with a design choice: should a function with preconditions be implemented as a partial function, or by returning a failure condition on incorrect use? Neither option is ideal. Partial functions lead to frustrating run-time errors. Failure conditions must be checked at the use-site, placing an unfair tax on the users who have ensured that the function's preconditions were correctly met.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242755",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Matt",
+        "last_name": "Noonan",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/Noonan18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242754",
+    "title": "The Thoralf plugin: for your fancy type needs",
+    "abstract": "Many fancy types (e.g., generalized algebraic data types, type families) require a type checker plugin. These fancy types have a type index (e.g., type level natural numbers) with an equality relation that is difficult or impossible to represent using GHC's built-in type equality. The most practical way to represent these equality relations is through a plugin that asserts equality constraints. However, such plugins are difficult to write and reason about.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242754",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Divesh",
+        "last_name": "Otwani",
+        "institution": "Haverford College"
+      },
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": "Bryn Mawr College"
+      }
+    ],
+    "dblp_key": "conf/haskell/OtwaniE18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242759",
+    "title": "A high-performance multicore IO manager based on libuv (experience report)",
+    "abstract": "We present a high performance multicore I/O manager based on libuv for Glasgow Haskell Compiler (GHC). The new I/O manager is packaged as an ordinary Haskell package rather than baked into GHC's runtime system(GHC RTS), yet takes advantage of GHC RTS's comprehensive concurrent support, such as lightweight threads and safe/unsafe FFI options. The new I/O manager's performance is comparable with existing implementation, with greater stability under high load. It also can be easily extended to support all of libuv's callback-based APIs, allowing us to write a complete high performance I/O toolkit without spending time on dealing with OS differences or low-level I/O system calls.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242759",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Han",
+        "last_name": "Dong",
+        "institution": ""
+      },
+      {
+        "first_name": "Tao",
+        "last_name": "He",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/haskell/HanH18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242749",
+    "title": "AutoBench: comparing the time performance of Haskell programs",
+    "abstract": "Two fundamental goals in programming are correctness (producing the right results) and efficiency (using as few resources as possible). Property-based testing tools such as QuickCheck provide a lightweight means to check the correctness of Haskell programs, but what about their efficiency? In this article, we show how QuickCheck can be combined with the Criterion benchmarking library to give a lightweight means to compare the time performance of Haskell programs. We present the design and implementation of the AutoBench system, demonstrate its utility with a number of case studies, and find that many QuickCheck correctness properties are also efficiency improvements.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242749",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Martin A. T.",
+        "last_name": "Handley",
+        "institution": "University of Nottingham"
+      },
+      {
+        "first_name": "Graham",
+        "last_name": "Hutton",
+        "institution": "University of Nottingham"
+      }
+    ],
+    "dblp_key": "conf/haskell/HandleyH18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242751",
+    "title": "Improving typeclass relations by being open",
+    "abstract": "Mathematical concepts such as monads, functors, monoids, and semigroups are expressed in Haskell as typeclasses. Therefore, in order to exploit relations such as “every monad is a functor”, and “every monoid is a semigroup”, we need to be able to also express relations between typeclasses.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242751",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Guido",
+        "last_name": "Martínez",
+        "institution": "Consejo Nacional de Investigaciones Científicas y Técnicas"
+      },
+      {
+        "first_name": "Mauro",
+        "last_name": "Jaskelioff",
+        "institution": "Consejo Nacional de Investigaciones Científicas y Técnicas"
+      },
+      {
+        "first_name": "Guido De",
+        "last_name": "Luca",
+        "institution": "National University of Rosario"
+      }
+    ],
+    "dblp_key": "conf/haskell/MartinezJL18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242756",
+    "title": "Theorem proving for all: equational reasoning in liquid Haskell (functional pearl)",
+    "abstract": "Equational reasoning is one of the key features of pure functional languages such as Haskell. To date, however, such reasoning always took place externally to Haskell, either manually on paper, or mechanised in a theorem prover. This article shows how equational reasoning can be performed directly and seamlessly within Haskell itself, and be checked using Liquid Haskell. In particular, language learners --- to whom external theorem provers are out of reach --- can benefit from having their proofs mechanically checked. Concretely, we show how the equational proofs and derivations from Graham's textbook can be recast as proofs in Haskell (spoiler: they look essentially the same).",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242756",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Niki",
+        "last_name": "Vazou",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Joachim",
+        "last_name": "Breitner",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Rose",
+        "last_name": "Kunkel",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "David Van",
+        "last_name": "Horn",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Graham",
+        "last_name": "Hutton",
+        "institution": "University of Nottingham"
+      }
+    ],
+    "dblp_key": "conf/haskell/VazouBKHH18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242758",
+    "title": "Embedding invertible languages with binders: a case of the FliPpr language",
+    "abstract": "This paper describes a new embedding technique of invertible programming languages, through the case of the FliPpr language. Embedded languages have the advantage of inheriting host languages' features and supports; and one of the influential methods of embedding is the tagless-final style, which enables a high level of programmability and extensibility. However, it is not straightforward to apply the method to the family of invertible/reversible/bidirectional languages, due to the different ways functions in such domains are represented. We consider FliPpr, an invertible pretty-printing system, as a representative of such languages, and show that Atkey et al.'s unembedding technique can be used to address the problem. Together with a reformulation of FliPpr, our embedding achieves a high level of interoperability with the host language Haskell, which is not found in any other invertible languages. We implement the idea and demonstrate the benefits of the approach with examples.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242758",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Kazutaka",
+        "last_name": "Matsuda",
+        "institution": "Tohoku University"
+      },
+      {
+        "first_name": "Meng",
+        "last_name": "Wang",
+        "institution": "University of Bristol"
+      }
+    ],
+    "dblp_key": "conf/haskell/MatsudaW18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242753",
+    "title": "Type variables in patterns",
+    "abstract": "For many years, GHC has implemented an extension to Haskell that allows type variables to be bound in type signatures and patterns, and to scope over terms. This extension was never properly specified. We rectify that oversight here. With the formal specification in hand, the otherwise-labyrinthine path toward a design for binding type variables in patterns becomes blindingly clear. We thus extend ScopedTypeVariables to bind type variables explicitly, obviating the Proxy workaround to the dustbin of history.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242753",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Richard A.",
+        "last_name": "Eisenberg",
+        "institution": "Bryn Mawr College"
+      },
+      {
+        "first_name": "Joachim",
+        "last_name": "Breitner",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/haskell/EisenbergBJ18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242746",
+    "title": "Deriving via: or, how to turn hand-written instances into an anti-pattern",
+    "abstract": "Haskell's deriving construct is a cheap and cheerful way to quickly generate instances of type classes that follow common patterns. But at present, there is only a subset of such type class patterns that deriving supports, and if a particular class lies outside of this subset, then one cannot derive it at all, with no alternative except for laboriously declaring the instances by hand.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242746",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Baldur",
+        "last_name": "Blöndal",
+        "institution": ""
+      },
+      {
+        "first_name": "Andres",
+        "last_name": "Löh",
+        "institution": ""
+      },
+      {
+        "first_name": "Ryan G.",
+        "last_name": "Scott",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "conf/haskell/BlondalLS18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242748",
+    "title": "A promise checked is a promise kept: inspection testing",
+    "abstract": "Occasionally, developers need to ensure that the compiler treats their code in a specific way that is only visible by inspecting intermediate or final compilation artifacts. This is particularly common with carefully crafted compositional libraries, where certain usage patterns are expected to trigger an intricate sequence of compiler optimizations – stream fusion is a well-known example.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242748",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Joachim",
+        "last_name": "Breitner",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/haskell/Breitner18",
+    "venue": "haskell",
+    "year": 2018
+  },
+  {
+    "paper_id": "10.1145/3242744.3242752",
+    "title": "Coherent explicit dictionary application for Haskell",
+    "abstract": "Type classes are one of Haskell's most popular features and extend its type system with ad-hoc polymorphism. Since their conception, there were useful features that could not be offered because of the desire to offer two correctness properties: coherence and global uniqueness of instances. Coherence essentially guarantees that program semantics are independent from type-checker internals. Global uniqueness of instances is relied upon by libraries for enforcing, for example, that a single order relation is used for all manipulations of an ordered binary tree.",
+    "date": "2018-09-17",
+    "link": "https://doi.org/10.1145/3242744.3242752",
+    "conference_name": "Haskell",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Winant",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Dominique",
+        "last_name": "Devriese",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/haskell/WinantD18",
+    "venue": "haskell",
+    "year": 2018
+  }
+]

@@ -1,0 +1,1105 @@
+[
+  {
+    "paper_id": "10.1145/3747512",
+    "title": "Almost Fair Simulations",
+    "abstract": "It is well known that liveness properties cannot be proven using standard simulation arguments. This issue has been mitigated by extending standard notions of simulation for transition systems to fairness-preserving simulations for systems equipped with an additional fairness condition modeling liveness assumptions and/or liveness requirements. In the context of automated verification of finite-state systems, proofs by simulation are an appealing method as there exist efficient algorithms to find a simulation between two systems. However, applications of fair simulation to interactive verification have been much less studied. Perhaps one reason is that the definitions of fair simulation relations typically involve non-trivial nestings of inductive and coinductive relations, making them particularly difficult to use and to reason about. In this paper, we argue that in many cases, stronger notions of fair simulation involving more controlled alternations of fixed points are sufficient. Starting from known fair simulation techniques, we progressively build up a family of almost fair simulation relations for transition systems equipped with a Büchi fairness condition. The simulation relations we present can all be equipped with intuitive reasoning rules, leading to elegant deductive systems to prove fair trace inclusion. We mechanized our simulation relations and their associated deductive systems in the Rocq proof assistant, proved their soundness, and we demonstrate their use through a selection of examples.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747512",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Arthur",
+        "last_name": "Correnson",
+        "institution": "Helmholtz Center for Information Security"
+      },
+      {
+        "first_name": "Iona",
+        "last_name": "Kuhn",
+        "institution": "Saarland University"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Finkbeiner",
+        "institution": "Helmholtz Center for Information Security"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CorrensonKF25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747539",
+    "title": "Call-Guarded Abstract Definitional Interpreters",
+    "abstract": "Over the last 15 years, several popular systematic abstraction frameworks have emerged---frameworks that allow a static analysis to be derived by systematically transforming a concrete semantics. These frameworks guarantee computability of the resulting artifact by the application of an a priori abstraction which induces a particular finitization in the execution space. While effective, this abstraction occurs without regard for program structure, subjecting each program point to the same fixed degree of context sensitivity. In this paper, we present CGADI, an enhancement to systematic abstraction frameworks based on definitional interpreters which defers abstraction until a parameterized safety property signals that it should be applied. We then examine this enhanced framework instantiated with two such safety properties: a simple reentrancy property which detects non-recursive portions of program execution, and a size change property which detects evaluation paths destined to converge by virtue of appropriately decreasing values along them. The result is that CGADI can operate in the fully-precise concrete space for portions of execution without forfeiting computability. Our evaluation demonstrates that CGADI is able to produce a higher number of precise results than a corresponding CFA at relatively low cost and that, with no special treatment, CGADI can handle many programming patterns targeted by specific analysis techniques.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747539",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kimball",
+        "last_name": "Germane",
+        "institution": "Brigham Young University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Germane25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747520",
+    "title": "Truly Functional Solutions to the Longest Uptrend Problem (Functional Pearl)",
+    "abstract": "Solutions to the longest increasing subsequence problem are typically implemented imperatively, relying on arrays for constant-time lookups and updates. Replacing these arrays with functional sequences allows a purely functional solution with the same asymptotic running time, but with significantly worse practical performance. In this pearl, we present a purely functional approach that is not only asymptotically optimal, but also efficient in practice. The core idea is to exploit the interplay between search, lookup, and update operations through Huet's zipper. In addition, we improve the adaptive behaviour of imperative solutions commonly found in the literature.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747520",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Alexander",
+        "last_name": "Dinges",
+        "institution": "Rheinland-Pfälzische Technische Universität Kaiserslautern-Landau"
+      },
+      {
+        "first_name": "Ralf",
+        "last_name": "Hinze",
+        "institution": "Rheinland-Pfälzische Technische Universität Kaiserslautern-Landau"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/DingesH25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747531",
+    "title": "Linear Types with Dynamic Multiplicities in Dependent Type Theory (Functional Pearl)",
+    "abstract": "We construct a linear type system inside dependent type theory. For this, we equip the output type of a program with a bag containing copies of each of the input variables. We call the number of copies of an input variable its multiplicity. We then characterise a dependent type which ensures that a program uses exactly the given multiplicity of each input variable. While our system is not closed under linear function types, we can program in the resulting system in a practical way using usual dependent functions, which we demonstrate by constructing standard programs on lists such as folds, unfolds and sorting algorithms. Since our linear type system is deeply embedded in a functional language, we can moreover dynamically compute multiplicities, which allows us to capture that a program uses a varying number of copies of some input depending on the other inputs. We can thereby give precise types to many functional programs that cannot be typed in systems with static multiplicities.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747531",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Doré",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Dore25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747540",
+    "title": "Big Steps in Higher-Order Mathematical Operational Semantics",
+    "abstract": "Small-step and big-step operational semantics are two fundamental styles of structural operational semantics (SOS), extensively used in practice. The former one is more fine-grained and is usually regarded as primitive, as it only defines a one-step reduction relation between a given program and its direct descendant under an ambient evaluation strategy. The latter one implements, in a self-contained manner, such a strategy directly by relating a program to the net result of the evaluation process. The agreement between these two styles of semantics is one of the key pillars in operational reasoning on programs; however, such agreement is typically proven from scratch every time on a case-by-case basis. A general, abstract mathematical argument behind this agreement is up till now missing. We cope with this issue within the framework of higher-order mathematical operational semantics by providing an abstract categorical notion of big-step SOS, complementing the existing notion of abstract higher-order GSOS. Moreover, we introduce a general construction for deriving the former from the latter, and prove an abstract equivalence result between the two.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747540",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sergey",
+        "last_name": "Goncharov",
+        "institution": "University of Birmingham"
+      },
+      {
+        "first_name": "Pouya",
+        "last_name": "Partow",
+        "institution": "University of Birmingham"
+      },
+      {
+        "first_name": "Stelios",
+        "last_name": "Tsampas",
+        "institution": "University of Southern Denmark"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/0001P025",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747522",
+    "title": "SecRef*: Securely Sharing Mutable References between Verified and Unverified Code in F",
+    "abstract": "We introduce SecRef*, a secure compilation framework protecting stateful programs verified in F* against linked unverified code, with which the program dynamically shares ML-style mutable references. To ease program verification in this setting, we track which references are shareable with the unverified code, and which ones are not shareable and whose contents are thus guaranteed to be unchanged after calling into unverified code. This universal property of non-shareable references is exposed in the interface on which the verified program can rely when calling into unverified code. The remaining refinement types and pre- and post-conditions that the verified code expects from the unverified code are converted into dynamic checks about the shared references by using higher-order contracts. We prove formally in F* that this strategy ensures sound and secure interoperability with unverified code. Since SecRef* is built on top of the Monotonic State effect of F*, these proofs rely on the first monadic representation for this effect, which is a contribution of our work that can be of independent interest. Finally, we use SecRef* to build a simple cooperative multi-threading scheduler that is verified and that securely interacts with unverified threads.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747522",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Cezar-Constantin",
+        "last_name": "Andrici",
+        "institution": "Max Planck Institute for Security and Privacy"
+      },
+      {
+        "first_name": "Danel",
+        "last_name": "Ahman",
+        "institution": "University of Tartu"
+      },
+      {
+        "first_name": "Cătălin",
+        "last_name": "Hriţcu",
+        "institution": "Max Planck Institute for Security and Privacy"
+      },
+      {
+        "first_name": "Ruxandra",
+        "last_name": "Icleanu",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Guido",
+        "last_name": "Martínez",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Exequiel",
+        "last_name": "Rivas",
+        "institution": "Tallinn University of Technology"
+      },
+      {
+        "first_name": "Théo",
+        "last_name": "Winterhalter",
+        "institution": "Centre Inria de Saclay"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AndriciAHIMRW25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747510",
+    "title": "Verifying Graph Algorithms in Separation Logic: A Case for an Algebraic Approach",
+    "abstract": "Verifying graph algorithms has long been considered challenging in separation logic, mainly due to structural sharing between graph subcomponents. We show that these challenges can be effectively addressed by representing graphs as a partial commutative monoid (PCM), and by leveraging structure-preserving functions (PCM morphisms), including higher-order combinators. PCM morphisms are important because they generalize separation logic's principle of local reasoning. While traditional framing isolates relevant portions of the heap only at the top level of a specification, morphisms enable contextual localization: they distribute over monoid operations to isolate relevant subgraphs, even when nested deeply within a specification. We demonstrate the morphisms' effectiveness with novel and concise verifications of two canonical graph benchmarks: the Schorr-Waite graph marking algorithm and the union-find data structure.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747510",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Marcos",
+        "last_name": "Grandury",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Aleksandar",
+        "last_name": "Nanevski",
+        "institution": "IMDEA Software Institute"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Gryzlov",
+        "institution": "IMDEA Software Institute"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/GranduryNG25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747518",
+    "title": "Multi-stage Programming with Splice Variables",
+    "abstract": "Multi-stage programming is a popular approach to typed meta-programming, reducing abstraction overhead and producing performant programs. However, the traditional quote-and-splice staging syntax, as introduced by Rowan Davies in 1996, can introduce complexities in managing expression evaluation, and also often necessitates sophisticated mechanisms for advanced features such as code pattern matching. This paper introduces λ○▷, a novel staging calculus featuring let-splice bindings, a construct that explicitly binds splice expressions to splice variables, providing flexibility in managing, sharing, and reusing splice computations. Inspired by contextual modal type theory, our type system associates types with a typing context to capture variables dependencies of splice variables. We demonstrate that this mechanism seamlessly scales to features like code pattern matching, by formalizing λ○▷, an extension of λ○▷ pat with code pattern matching and rewriting. We establish the syntactic type soundness of both calculi. Furthermore, we define a denotational semantics using a Kripke-style model, and prove adequacy results. All proofs have been fully mechanized using the Agda proof assistant.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747518",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Tsung-Ju",
+        "last_name": "Chiang",
+        "institution": "University of Toronto"
+      },
+      {
+        "first_name": "Ningning",
+        "last_name": "Xie",
+        "institution": "University of Toronto"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/ChiangX25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747505",
+    "title": "A Bargain for Mergesorts: How to Prove Your Mergesort Correct and Stable, Almost for Free",
+    "abstract": "We present a novel characterization of stable mergesort functions using relational parametricity, and show that it implies the functional correctness of mergesort. As a result, one can prove the correctness of several variations of mergesort (e.g., top-down, bottom-up, tail-recursive, non-tail-recursive, smooth, and non-smooth mergesorts) by proving the characteristic property for each variation. Thanks to our characterization and the parametricity translation, we deduced the correctness results, including stability, of various implementations of mergesort for lists, including highly optimized ones, in the Rocq Prover (formerly the Coq Proof Assistant).",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747505",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Cyril",
+        "last_name": "Cohen",
+        "institution": "Université Claude Bernard Lyon 1"
+      },
+      {
+        "first_name": "Kazuhiko",
+        "last_name": "Sakaguchi",
+        "institution": "Université Claude Bernard Lyon 1"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CohenS25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747537",
+    "title": "Verified Interpreters for Dynamic Languages with Applications to the Nix Expression Language",
+    "abstract": "To study the semantics of a programming language, it is useful to consider different specification forms— e.g. , a substitution-based small-step operational semantics and an environment-based interpreter—because they have mutually exclusive benefits. Developing these specifications and proving correspondences is challenging for ‘dynamic’/‘scripting’ languages such as JavaScript, PHP and Bash. We study this challenge in the context of the Nix expression language, a dynamic language used in the eponymous package manager and operating system. Nix is a Turing-complete, untyped functional language designed for the manipulation of JSON-style attribute sets, with tricky features such as overloaded use of variables for lambda bindings and attribute members, subtle shadowing rules, a mixture of evaluation strategies, and tricky mechanisms for recursion. We show that our techniques are applicable beyond Nix by starting from the call-by-name lambda calculus, which we extend to a core lambda calculus with dynamically computed variable names and dynamic binder names, and finally to Nix. Our key novelty is the use of a form of deferred substitutions , which enables us to give a concise substitution-based semantics for dynamic variable binding. We develop corresponding environment-based interpreters, which we prove to be sound and complete (for terminating, faulty and diverging programs) w.r.t. our operational semantics based on deferred substitutions. We mechanize all our results in the Rocq prover and showcase a new feature of the Rocq-std++ library for representing syntax with maps in recursive positions. We use Rocq’s extraction mechanism to turn our Nix interpreter into executable OCaml code, which we apply to the official Nix language tests. Altogether this gives rise to the most comprehensive formal semantics for the Nix expression language to date.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747537",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Rutger",
+        "last_name": "Broekhoff",
+        "institution": "Radboud University Nijmegen"
+      },
+      {
+        "first_name": "Robbert",
+        "last_name": "Krebbers",
+        "institution": "Radboud University Nijmegen"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/BroekhoffK25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747516",
+    "title": "Environment-Sharing Analysis and Caller-Provided Environments for Higher-Order Languages",
+    "abstract": "The representation of functions in higher-order languages includes both the function’s code and an environment structure that captures the bindings of the function’s free variables. This paper explores caller-provided environments, where instead of packaging the entirety of a function’s environment in its closure, a function can be provided with a portion of its environment by its caller. In higher-order languages, it is difficult to determine where functions are called, let alone what pieces of the function’s environment are available to be provided by the caller, thus we need a higher-order control-flow analysis to enable caller-provided environments. In this paper, we present a new abstract-interpretation-based analysis that discovers which pieces of a function’s environment are always shared between its definition and its callers. In such cases, the caller can provide the environment to the callee. Our analysis has been formalized in the Rocq proof assistant. We evaluate our analysis on a collection of programs demonstrating that it is both scalable and provides significantly better information over the common syntactic approach and better information than lightweight closure conversion . In fact, it yields the theoretical upper-bound for many programs. For caller-provided environments, deciding how to transform the program based on these revealed facts is also non-trivial and has the potential to incur extra runtime cost over standard strategies. We discuss how to make these decisions in a way that avoids the extra costs and how to transform a program accordingly. We also propose other uses of the analysis results beyond enabling caller-provided environments. We evaluate our transformation using an instrumented interpreter, showing that our approach is effective in reducing dynamic allocations for environments.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747516",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "J. A.",
+        "last_name": "Carr",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Quiring",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Reppy",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Skye",
+        "last_name": "Soss",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Byron",
+        "last_name": "Zhong",
+        "institution": "University of Chicago"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/CarrQRSSZ25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747527",
+    "title": "2-Functoriality of Initial Semantics, and Applications",
+    "abstract": "Initial semantics aims to model inductive structures and their properties, and to provide them with recursion principles respecting these properties. An ubiquitous example is the fold operator for lists. We are concerned with initial semantics that model languages with variable binding and their substitution structure, and that provide substitution-safe recursion principles. There are different approaches to implementing languages with variable binding depending on the choice of representation for contexts and free variables, such as unscoped syntax, or well-scoped syntax with finite or infinite contexts. Abstractly, each approach corresponds to choosing a different monoidal category to model contexts and binding, each choice yielding a different notion of \"model\" for the same abstract specification (or \"signature\"). In this work, we provide tools to compare and relate the models obtained from a signature for different choices of monoidal category. We do so by showing that initial semantics naturally has a 2-categorical structure when parametrized by the monoidal category modeling contexts. We thus can relate models obtained from different choices of monoidal categories provided the monoidal categories themselves are related. In particular, we use our results to relate the models of the different implementation - de Bruijn vs locally nameless, finite vs infinite contexts -, and to provide a generalized recursion principle for simply-typed syntax.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747527",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Benedikt",
+        "last_name": "Ahrens",
+        "institution": "Delft University of Technology"
+      },
+      {
+        "first_name": "Ambroise",
+        "last_name": "Lafont",
+        "institution": "École Polytechnique"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Lamiaux",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AhrensLL25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747521",
+    "title": "A Haskell Adiabatic DSL: Solving Classical Optimization Problems on Quantum Hardware",
+    "abstract": "In physics and chemistry, quantum systems are typically modeled using energy constraints formulated as Hamiltonians. Investigations into such systems often focus on the evolution of the Hamiltonians under various initial conditions, an approach summarized as Adiabatic Quantum Computing (AQC). Although this perspective may initially seem foreign to functional programmers, we demonstrate that conventional functional programming abstractions—specifically, the Traversable and Monad type classes—naturally capture the essence of AQC. To illustrate this connection, we introduce EnQ, a functional programming library designed to express diverse optimization problems as energy constraint computations (ECC). The library comprises three core components: generating the solution space, associating energy costs with potential solutions, and searching for optimal or near-optimal solutions. Because EnQ is implemented using standard Haskell, it can be executed directly through conventional classical Haskell compilers. More interestingly, we develop and implement a process to compile EnQ programs into circuits executable on quantum hardware. We validate EnQ’s effectiveness through a number of case studies, demonstrating its capacity to express and solve classical optimization problems on quantum hardware, including search problems, type inference, number partitioning, clique finding, and graph coloring.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747521",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Liyi",
+        "last_name": "Li",
+        "institution": "Iowa State University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Young",
+        "institution": "University of Kansas"
+      },
+      {
+        "first_name": "James Bryan",
+        "last_name": "Graves",
+        "institution": "Indiana University Bloomington"
+      },
+      {
+        "first_name": "Chandeepa",
+        "last_name": "Dissanayake",
+        "institution": "Iowa State University"
+      },
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "Indiana University Bloomington"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/0002YGDS25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747511",
+    "title": "McTT: A Verified Kernel for a Proof Assistant",
+    "abstract": "Proof assistants based on type theories have been widely successful from verifying safety-critical software to establishing a new standard of rigour by formalizing mathematics. But these proof assistants and even their type-checking kernels are also complex pieces of software, and software invariably has bugs, so why should we trust such proof assistants? In this paper, we describe the McTT (Mechanized Type Theory) infrastructure to build a verified implementation of a kernel for a core Martin-Löf type theory (MLTT). McTT is implemented in Rocq and consists of two main components: In the theoretical component, we specify the type theory and prove theorems such as normalization, consistency and injectivity of type constructors of MLTT using an untyped domain model. In the algorithmic component, we relate the declarative specification of typing and the model of normalization in the theoretical component with a functional implementation within Rocq. From this algorithmic component, we extract an OCaml implementation and couple it with a front-end parser for execution. This extracted OCaml code is comparable to what a skilled human programmer would have written and we have successfully used it to type-check a series of small-scale examples. McTT provides a fully verified kernel for a core MLTT with a full cumulative universe hierarchy. Every step in the compilation pipeline is verified except for the lexer and pretty-printer. As a result, McTT serves both as a framework to explore the meta-theory of advanced type theories and to investigate optimizations of and extensions to the type-checking kernel.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747511",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Junyoung",
+        "last_name": "Jang",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Antoine",
+        "last_name": "Gaulin",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Jason Z. S.",
+        "last_name": "Hu",
+        "institution": "Amazon (United States)"
+      },
+      {
+        "first_name": "Brigitte",
+        "last_name": "Pientka",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/0001GHP25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747506",
+    "title": "Frex: Dependently Typed Algebraic Simplification",
+    "abstract": "We present a new design for an algebraic simplification library structured around concepts from universal algebra: theories, models, homomorphisms, and universal properties of free algebras and free extensions of algebras. The library's dependently typed interface guarantees that both built-in and user-defined simplification modules are terminating, sound, and complete with respect to a well-specified class of equations. We have implemented the design in the Idris 2 and Agda dependently typed programming languages and shown that it supports modular extension to new theories, proof extraction and certification, goal extraction via reflection, and interactive development.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747506",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Guillaume",
+        "last_name": "Allais",
+        "institution": "University of Strathclyde"
+      },
+      {
+        "first_name": "Edwin",
+        "last_name": "Brady",
+        "institution": "University of St Andrews"
+      },
+      {
+        "first_name": "Nathan",
+        "last_name": "Corbyn",
+        "institution": "University of Oxford"
+      },
+      {
+        "first_name": "Ohad",
+        "last_name": "Kammar",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Jeremy",
+        "last_name": "Yallop",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/AllaisBCKY25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747513",
+    "title": "Bialgebraic Reasoning on Stateful Languages",
+    "abstract": "Reasoning about program equivalence in imperative languages is notoriously challenging, as the presence of states (in the form of variable stores) fundamentally increases the observational power of program terms. The key desideratum for any notion of equivalence is compositionality, guaranteeing that subprograms can be safely replaced by equivalent subprograms regardless of the context. To facilitate compositionality proofs and avoid boilerplate work, one would hope to employ the abstract bialgebraic methods provided by Turi and Plotkin’s powerful theory of mathematical operational semantics (a.k.a. abstract GSOS) or its recent extension by Goncharov et al. to higher-order languages. However, multiple attempts to apply abstract GSOS to stateful languages have thus failed. We propose a novel approach to the operational semantics of stateful languages based on the formal distinction between readers (terms that expect an initial input store before being executed), and writers (running terms that have already been provided with a store). In contrast to earlier work, this style of semantics is fully compatible with abstract GSOS, and we can thus leverage the existing theory to obtain coinductive reasoning techniques. We demonstrate that our approach generates non-trivial compositionality results for stateful languages with first-order and higher-order store and that it flexibly applies to program equivalences at different levels of granularity, such as trace, cost, and natural equivalence.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747513",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Sergey",
+        "last_name": "Goncharov",
+        "institution": "University of Birmingham"
+      },
+      {
+        "first_name": "Stefan",
+        "last_name": "Milius",
+        "institution": "Friedrich-Alexander-Universität Erlangen-Nürnberg"
+      },
+      {
+        "first_name": "Lutz",
+        "last_name": "Schröder",
+        "institution": "Friedrich-Alexander-Universität Erlangen-Nürnberg"
+      },
+      {
+        "first_name": "Stelios",
+        "last_name": "Tsampas",
+        "institution": "University of Southern Denmark"
+      },
+      {
+        "first_name": "Henning",
+        "last_name": "Urbat",
+        "institution": "Friedrich-Alexander-Universität Erlangen-Nürnberg"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/0001MS0U25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747526",
+    "title": "Fulls Seldom Differ",
+    "abstract": "Many programs process lists by recursing in a wide variety of sequential and/or divide-and-conquer patterns. Reasoning about the correctness and completeness of these programs requires reasoning about the lengths of the lists, techniques for which are typically undecidable or at least NP-complete. In this paper we show how introducing a relatively simple (sub-)language for expressions describing list lengths, whilst not completely general, covers a great number of these patterns. It includes not only doubling but also exponentiation (iterated doubling), and moreover admits a simple length-checking algorithm that is complete over a predictable problem domain. We prove termination of the algorithm via category-theoretic pullbacks, formalized in Agda, as well as providing a more realistic implementation in Rocq, and a toy language Fulbourn with interpreter in Haskell.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747526",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Mark",
+        "last_name": "Koch",
+        "institution": "Cambridge Quantum Computing (United Kingdom)"
+      },
+      {
+        "first_name": "Alan",
+        "last_name": "Lawrence",
+        "institution": "Cambridge Quantum Computing (United Kingdom)"
+      },
+      {
+        "first_name": "Conor",
+        "last_name": "McBride",
+        "institution": "University of Strathclyde"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Roy",
+        "institution": "Cambridge Quantum Computing (United Kingdom)"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KochLMR25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747517",
+    "title": "Polynomial-Time Program Equivalence for Machine Knitting",
+    "abstract": "We present an algorithm that canonicalizes the algebraic representations of the topological semantics of machine knitting programs. Machine knitting is a staple technology of modern textile production where hundreds of mechanical needles are manipulated to form yarn into interlocking loop structures. Our semantics are defined using a variant of a monoidal category, and they closely correspond to string diagrams. We formulate our canonicalization as an Abstract Rewriting System (ARS) over words in our category, and prove that our algorithm is correct and runs in polynomial time.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747517",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nathan",
+        "last_name": "Hurtig",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Jenny",
+        "last_name": "Lin",
+        "institution": "University of Utah"
+      },
+      {
+        "first_name": "Thomas S.",
+        "last_name": "Price",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Adriana",
+        "last_name": "Schulz",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "James",
+        "last_name": "McCann",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Gilbert",
+        "last_name": "Bernstein",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/HurtigLPSMB25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747508",
+    "title": "Normalization by Evaluation for Non-cumulativity",
+    "abstract": "Normalization by evaluation (NbE) based on an untyped domain model is a convenient and powerful way to normalize terms to their βη normal forms. It enables a concise technical setup and simplicity for mechanization. Nevertheless, to date, untyped NbE has only been studied for cumulative universe hierarchies, and its correctness proof critically relies on the cumulativity of the system. Therefore, we are faced with the question: whether untyped NbE applies to a non-cumulative universe hierarchy? Because such a universe hierarchy is also widely used by proof assistants like Agda and Lean, this question is of practical significance. Our work answers this question positively. One important property typically induced from non-cumulativity is uniqueness : every term has a unique type. To faithfully reflect the uniqueness property, we work with a Martin-L'of type theory with explicit universe levels ascribed in the syntactic judgments. On the semantic side, universe levels are also explicitly managed, which leads to more complex semantics compared with a cumulative universe hierarchy. We prove that the NbE algorithm is sound and complete, and confirm that NbE does work with non-cumulativity. Moreover, to better align with common practice, we also show that the explicit annotations of universe levels, though technically useful, are logically redundant: NbE remains applicable without these annotations. As such, we provide a mechanized foundation with NbE for non-cumulativity.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747508",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Shengyi",
+        "last_name": "Jiang",
+        "institution": "University of Hong Kong"
+      },
+      {
+        "first_name": "Jason Z. S.",
+        "last_name": "Hu",
+        "institution": "Amazon (United States)"
+      },
+      {
+        "first_name": "Bruno C. d. S.",
+        "last_name": "Oliveira",
+        "institution": "University of Hong Kong"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/JiangHO25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747507",
+    "title": "Robust Dynamic Embedding for Gradual Typing",
+    "abstract": "Gradual typing has long been advocated as a means to bridge the gap between static and dynamic typing disciplines, enabling a range of use cases such as the gradual migration of existing dynamically typed code to more statically typed code, as well as making advanced static typing disciplines more accessible. To assess whether a given gradual language can effectively support these use cases, several formal properties have been proposed, most notably the refined criteria set forth by Siek et al. One criterion asserts that the dynamic extreme of the spectrum should be expressible in the gradual language, formalized by the existence of an adequate embedding from the corresponding dynamic language. We observe that the existing dynamic embedding criterion does not capture the desirable property of being able to ascribe embedded code to a static type that it semantically satisfies, and ensure reliable interactions with other components within the gradual language. Specifically, we introduce the notion of robustness for gradual terms, meaning that when interacting with any gradual context, runtime failures that may occur ought to be caused by the context, not by the robust term itself. We then formulate the robust dynamic embedding criterion: if a dynamic component semantically satisfies a given static type, then its embedding subsequently ascribed to that static type should be a robust term. We demonstrate that robust dynamic embedding is not implied by any existing metatheoretical property from the literature, and is not upheld by various existing gradual languages. We show that robust dynamic embedding is achievable with a gradualized simply-typed language. All the results are formalized in the Rocq proof assistant. This novel criterion complements the set of criteria for gradual languages and opens several venues for further exploration, in particular for typing disciplines that enforce rich semantic properties.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747507",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Koen",
+        "last_name": "Jacobs",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Matías",
+        "last_name": "Toro",
+        "institution": "University of Chile"
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Tabareau",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Éric",
+        "last_name": "Tanter",
+        "institution": "University of Chile"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/JacobsTTT25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747535",
+    "title": "Type Theory in Type Theory using a Strictified Syntax",
+    "abstract": "The metatheory of dependent types has seen a lot of progress in recent years. In particular, the development of categorical gluing finally lets us work with semantic presentations of type theory (such as categories with families) to establish fundamental properties of type theory such as canonicity and normalisation. However, proofs by gluing have yet to reach the stage of computer formalisation: formal proofs for the metatheory of dependent types are still stuck in the age of tedious syntactic proofs. The main reason for this is that semantic presentations of type theory are defined using sophisticated indexed inductive types, which are especially prone to \"transport hell\". In this paper, we introduce a new technique to work with CwFs in intensional type theory without getting stuck in transport hell. More specifically, we construct an alternative presentation of the initial CwF which encodes the substitutions as metatheoretical functions. This has the effect of strictifying all the equations that are involved in the substitution calculus, which greatly reduces the need for transports. As an application, we use our strictified initial CwF to give a short and elegant proof of canonicity for a type theory with dependent products and booleans with large elimination. The resulting proof is fully formalised in Agda.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747535",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ambrus",
+        "last_name": "Kaposi",
+        "institution": "Eötvös Loránd University"
+      },
+      {
+        "first_name": "Loïc",
+        "last_name": "Pujet",
+        "institution": "Stockholm University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KaposiP25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747533",
+    "title": "Teaching Software Specification (Experience Report)",
+    "abstract": "A course on software specification deserves a prominent place in the undergraduate curriculum. This report describes our experience teaching a first-year course that places software specification front and center. In support of the course, we created a pedagogic programming language with a focus on contracts and property-based testing. Assignments draw on real-world programs, from a variety of domains, that are intended to show how formal specification can increase confidence in the correctness of code. Interviews with students suggest that this approach successfully conveys how formal specification is relevant to software construction.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747533",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Cameron",
+        "last_name": "Moy",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Patterson",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Moy025",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747529",
+    "title": "Multiple Resumptions and Local Mutable State, Directly",
+    "abstract": "While enabling use cases such as backtracking search and probabilistic programming, multiple resumptions have the reputation of being incompatible with efficient implementation techniques, such as stack switching. This paper sets out to resolve this conflict and thus bridge the gap between expressiveness and performance. To this end, we present a compilation strategy and runtime system for lexical effect handlers with support for multiple resumptions and stack-allocated mutable state. By building on garbage-free reference counting and associating stacks with stable prompts, our approach enables constant-time continuation capture and resumption when resumed exactly once, as well as constant-time state access. Nevertheless, we also support multiple resumptions by copying stacks when necessary. We practically evaluate our approach by implementing an LLVM backend for the Effekt language. A performance comparison with state-of-the-art systems, including dynamic and lexical effect handler implementations, suggests that our approach achieves competitive performance and the increased expressiveness only comes with limited overhead.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747529",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Serkan",
+        "last_name": "Muhcu",
+        "institution": "Technische Universität Berlin"
+      },
+      {
+        "first_name": "Philipp",
+        "last_name": "Schuster",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Michel",
+        "last_name": "Steuwer",
+        "institution": "Technische Universität Berlin"
+      },
+      {
+        "first_name": "Jonathan Immanuel",
+        "last_name": "Brachthäuser",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MuhcuSSB25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747525",
+    "title": "Functional Networking for Millions of Docker Desktops (Experience Report)",
+    "abstract": "Docker is a developer tool used by millions of developers to build, share and run software stacks. The Docker Desktop clients for Mac and Windows have long used a novel combination of virtualisation and OCaml unikernels to seamlessly run Linux containers on these non-Linux hosts. We reflect on a decade of shipping this functional OCaml code into production across hundreds of millions of developer desktops, and discuss the lessons learnt from our experiences in integrating OCaml deeply into the container architecture that now drives much of the global cloud. We conclude by observing just how good a fit for systems programming that the unikernel approach has been, particularly when combined with the OCaml module and type system.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747525",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Anil",
+        "last_name": "Madhavapeddy",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "David J.",
+        "last_name": "Scott",
+        "institution": "Wacker (United States)"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Ferris",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Gibb",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Thomas",
+        "last_name": "Gazagnaire",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MadhavapeddySFG25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747534",
+    "title": "Compiling with Generating Functions",
+    "abstract": "We present a new approach to scaling exact inference for probabilistic programs, using generating functions (GFs) as a compilation target. Existing methods that target representations like binary decision diagrams (BDDs) achieve strong state-of-the-art results. We show that a compiler targeting GFs can be similarly competitive—and, in some cases, more scalable—on a range of inference problems where BDD-based methods perform well. We present a formal model of this compiler, providing the first definition of GF compilation for a functional probabilistic language. We prove that this compiler is correct with respect to a denotational semantics. Our approach is implemented in a probabilistic programming system and evaluated on a range of inference problems. Our results establish GF compilation as a principled and powerful paradigm for exact inference: it offers strong scalability, good expressiveness, and a solid theoretical foundation.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747534",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jianlin",
+        "last_name": "Li",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "Yizhou",
+        "last_name": "Zhang",
+        "institution": "University of Waterloo"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Li025",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747536",
+    "title": "Pushing the Information-Theoretic Limits of Random Access Lists: Traversing Cons Lists in (1 + 1/𝜎 ) ⌊lg 𝑛⌋ + 𝜎 + 9 Steps",
+    "abstract": "Accessing an arbitrary element of a singly linked list or cons list requires traversing up to a linear number of pointers. The applicative random-access list is a data structure that behaves like a cons list except that accessing an arbitrary element traverses only a logarithmic number of pointers. Specifically, in a list of length n , an arbitrary element can be accessed by traversing at most 3⌈lg n ⌉−5 pointers. In this paper, we present a simple variation on random-access lists that improves this bound and requires traversing at most 2⌈lg( n +1)⌉− 3 pointers. We then present a more complicated variation that improves this bound to (1+1/σ)⌊lg n ⌋+σ+9 for any σ≥ 1. This shows that it is possible to get asymptotically close to the information-theoretically optimal bound of ⌈lg( n +1)⌉−1.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747536",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Edward",
+        "last_name": "Peters",
+        "institution": "Eugene Research Institute"
+      },
+      {
+        "first_name": "Yong Qi",
+        "last_name": "Foo",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Michael D.",
+        "last_name": "Adams",
+        "institution": "National University of Singapore"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PetersF025",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747532",
+    "title": "Type Universes as Kripke Worlds",
+    "abstract": "What are mutable references; what do they mean? The answers to these questions have spawned lots of important theoretical work and form the foundation of many impactful tools. However, existing semantics collapse a key distinction: which allocations does a reference depend on? In this paper, we deconstruct the space of mutable higher-order references. We formalize a novel distinction—splitting the design space of references not only into higher-order vs (full-)ground references, but also dependency of an allocation on past vs future allocations. This distinction is fundamental to a thorny issue that arises in constructing semantic models of mutable references—the type-world circularity. The issue disappears for what we call predicative references, those that only quantify over past, not future, allocations, and for non-higher-order impredicative references. We design a syntax and semantics for each point in our newly described space. The syntax relies on a type universe hierarchy, à la dependent type theory, to kind the types of allocated terms, and stratify allocations. Each type universe corresponds to a semantic Kripke world, giving a lightweight syntactic mechanism to design and restrict heap shapes. The semantics bear a resemblance to work on regions, and suggest some connection between universe systems and regions, which we describe in some detail.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747532",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Paulette",
+        "last_name": "Koronkevich",
+        "institution": "University of British Columbia"
+      },
+      {
+        "first_name": "William J.",
+        "last_name": "Bowman",
+        "institution": "University of British Columbia"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/KoronkevichB25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747530",
+    "title": "First-Order Laziness",
+    "abstract": "In strict languages, laziness is typically modeled with explicit thunks that defer a computation until needed and memoize the result. Such thunks are implemented using a closure. Implementing lazy data structures using thunks thus has several disadvantages: closures cannot be printed or inspected during debugging; allocating closures requires additional memory, sometimes leading to poor performance; reasoning about the performance of such lazy data structures is notoriously subtle. These complications prevent wider adoption of lazy data structures, even in settings where they should shine. In this paper, we introduce lazy constructors as a simple first-order alternative to lazy thunks. Lazy constructors enable the thunks of a lazy data structure to be defunctionalized, yielding implementations of lazy data structures that are not only significantly faster but can easily be inspected for debugging.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747530",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Anton",
+        "last_name": "Lorenzen",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Daan",
+        "last_name": "Leijen",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Wouter",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Sam",
+        "last_name": "Lindley",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LorenzenLSL25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747514",
+    "title": "Modular Reasoning about Error Bounds for Concurrent Probabilistic Programs",
+    "abstract": "We present Coneris, the first *higher-order concurrent separation logic* for reasoning about error probability bounds of higher-order concurrent probabilistic programs with higher-order state. To support modular reasoning about concurrent (non-probabilistic) program modules, state-of-the-art program logics internalize the classic notion of linearizability within the logic through the concept of *logical atomicity*. Coneris extends this idea to probabilistic concurrent program modules. Thus Coneris supports modular reasoning about probabilistic concurrent modules by capturing a novel notion of *randomized logical atomicity* within the logic. To do so, Coneris utilizes *presampling tapes* and a novel *probabilistic update modality* to describe how state is changed probabilistically at linearization points. We demonstrate this approach by means of smaller synthetic examples and larger case studies. All of the presented results, including the meta-theory, have been mechanized in the Rocq proof assistant and the Iris separation logic framework.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747514",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kwing Hei",
+        "last_name": "Li",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Alejandro",
+        "last_name": "Aguirre",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Simon Oddershede",
+        "last_name": "Gregersen",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Philipp G.",
+        "last_name": "Haselwarter",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Joseph",
+        "last_name": "Tassarotti",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Li0GHTB25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747515",
+    "title": "Reasoning about Weak Isolation Levels in Separation Logic",
+    "abstract": "Consistency guarantees among concurrently executing transactions in local- and distributed systems, commonly referred to as isolation levels, have been formalized in a number of models. Thus far, no model can reason about executable implementations of databases or local transaction libraries providing weak isolation levels. Weak isolation levels are characterized by being highly concurrent and, unlike their stronger counterpart serializability, they are not equivalent to the consistency guarantees provided by a transaction library implemented using a global lock. Industrial-strength databases almost exclusively implement weak isolation levels as their default level. This calls for formalism as numerous bugs violating isolation have been detected in these databases. In this paper, we formalize three weak isolation levels in separation logic, namely read uncommitted , read committed , and snapshot isolation . We define modular separation logic specifications that are independent of the underlying transaction library implementation. Historically, isolation levels have been specified using examples of executions between concurrent transactions that are not allowed to occur, and we demonstrate that our specifications correctly prohibit such examples. To show that our specifications are realizable, we formally verify that an executable implementation of a key-value database running the multi-version concurrency control algorithm from the original snapshot isolation paper satisfies our specification of snapshot isolation. Moreover, we prove implications between the specifications—snapshot isolation implies read committed and read committed implies read uncommitted—and thus the verification effort of the database serves as proof that all of our specifications are realizable. All results are mechanized in the Rocq proof assistant on top of the Iris separation logic framework.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747515",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Anders Alnor",
+        "last_name": "Mathiasen",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Léon",
+        "last_name": "Gondelman",
+        "institution": "Aalborg University"
+      },
+      {
+        "first_name": "Léon",
+        "last_name": "Ducruet",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Amin",
+        "last_name": "Timany",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Lars",
+        "last_name": "Birkedal",
+        "institution": "Aarhus University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/MathiasenGDTB25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747528",
+    "title": "CRDT Emulation, Simulation, and Representation Independence",
+    "abstract": "Conflict-free replicated data types (CRDTs) are distributed data structures designed for fault tolerance and high availability. CRDTs have historically been taxonomized into state-based CRDTs, in which replicas apply updates locally and periodically broadcast their state to other replicas over the network, and operation-based (or op-based ) CRDTs, in which every state-updating operation is individually broadcast. In the literature, state-based and op-based CRDTs are considered equivalent due to the existence of algorithms that let them emulate each other, and verification techniques and results that apply to one kind of CRDT are said to apply to the other thanks to this equivalence. However, what it means for state-based and op-based CRDTs to emulate each other has never been made fully precise. Emulation is nontrivial since state-based and op-based CRDTs place different requirements on the underlying network with regard to both the causal ordering of message delivery, and the granularity of the messages themselves. We specify and formalize CRDT emulation in terms of simulation by modeling CRDTs and their interactions with the network as transition systems. We show that emulation can be understood as weak simulations between the transition systems of the original and emulating CRDT systems, thus closing a gap in the CRDT literature. We precisely characterize which properties of CRDT systems are preserved by our weak simulations, and therefore which properties can be said to be preserved by emulation algorithms. Finally, we leverage our emulation results to obtain a general representation independence result for CRDTs: intuitively, clients of a CRDT cannot tell whether they are interacting with a state-based or op-based CRDT in particular.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747528",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nathan",
+        "last_name": "Liittschwager",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Castello",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Stelios",
+        "last_name": "Tsampas",
+        "institution": "University of Southern Denmark"
+      },
+      {
+        "first_name": "Lindsey",
+        "last_name": "Kuper",
+        "institution": "University of California, Santa Cruz"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/LiittschwagerC025",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747538",
+    "title": "Relax! The Semilenient Core of Choreographic Programming (Functional Pearl)",
+    "abstract": "The past few years have seen a surge of interest in choreographic programming, a programming paradigm for concurrent and distributed systems. The paradigm allows programmers to implement a distributed interaction protocol with a single high-level program, called a choreography , and then mechanically project it into correct implementations of its participating processes. A choreography can be expressed as a λ-term parameterized by constructors for creating data “at” a process and for communicating data between processes. Through this lens, recent work has shown how one can add choreographies to mainstream languages like Java, or even embed choreographies as a DSL in languages like Haskell and Rust. These new choreographic languages allow programmers to write in applicative style (like in functional programming) and write higher-order choreographies for better modularity. But the semantics of functional choreographic languages is not well-understood. Whereas typical λ-calculi can have their operational semantics defined with just a few rules, existing models for choreographic λ-calculi have dozens of complex rules and no clear or agreed-upon evaluation strategy . We show that functional choreographic programming is simple. Beginning with the Chorλ model from previous work, we strip away inessential features to produce a “core” model called λ χ . We discover that underneath Chorλ’s apparently ad-hoc semantics lies a close connection to non-strict λ-calculi; we call the resulting evaluation strategy semilenient . Then, inspired by previous non-strict calculi, we develop a notion of choreographic evaluation contexts and a special commute rule to simplify and explain the unusual semantics of functional choreographic languages. The extra structure leads us to a presentation of λ χ with just ten rules, and a discovery of three missing rules in previous presentations of Chorλ. We also show how the extra structure comes with nice properties, which we use to simplify the correspondence proof between choreographies and their projections. Our model serves as both a principled foundation for functional choreographic languages and a good entry point for newcomers.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747538",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dan",
+        "last_name": "Plyukhin",
+        "institution": "University of Southern Denmark"
+      },
+      {
+        "first_name": "Xueying",
+        "last_name": "Qin",
+        "institution": "University of Southern Denmark"
+      },
+      {
+        "first_name": "Fabrizio",
+        "last_name": "Montesi",
+        "institution": "University of Southern Denmark"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/PlyukhinQM25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747524",
+    "title": "Correctness Meets Performance: From Agda to Futhark",
+    "abstract": "In this paper we demonstrate a technique for developing high performance applications with strong correctness guarantees. Using a theorem prover, we derive a high-level specification of the application that includes correctness invariants of our choice. After that, within the same theorem prover, we implement an extraction of the specified application into a high-performance language of our choice. Concretely, we are using Agda to specify a framework for automatic differentiation (reverse mode) that is focused on index-safe tensors. This framework comes with an optimiser for tensor expressions and the ability to translate these expressions into Futhark. We specify a canonical convolutional neural network within the proposed framework, compute the derivatives needed for the training phase and then demonstrate that the generated code approaches the performance of TensorFlow code when running on a GPU.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747524",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Artjoms",
+        "last_name": "Šinkarovs",
+        "institution": "University of Southampton"
+      },
+      {
+        "first_name": "Troels",
+        "last_name": "Henriksen",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/SinkarovsH25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747519",
+    "title": "Fusing Session-Typed Concurrent Programming into Functional Programming",
+    "abstract": "We introduce FuSes, a Functional programming language that integrates Session-typed concurrent process calculus code. A functional layer sits on top of a session-typed process layer. To generate and reason about open session-typed processes, the functional layer uses the contextual box modality extended with linear channel contexts. Due to the fundamental differences between the operational semantics of the functional layer and the concurrent semantics of processes, we bridge the two layers using a set of primitives to run and observe the behavior of closed processes within the functional layer. In addition, FuSes supports code analysis and manipulation of open session-typed process code. To showcase its benefit to programmers we implement well-known optimizations as type-safe metaprograms over concurrent processes such as batch optimizations. Our technical contributions include a type system for FuSes, an operational semantics, a proof of its type safety, and its implementation.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747519",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Chuta",
+        "last_name": "Sano",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Deepak",
+        "last_name": "Garg",
+        "institution": "Max Planck Institute for Software Systems"
+      },
+      {
+        "first_name": "Ryan",
+        "last_name": "Kavanagh",
+        "institution": "Université du Québec à Montréal"
+      },
+      {
+        "first_name": "Brigitte",
+        "last_name": "Pientka",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Bernardo",
+        "last_name": "Toninho",
+        "institution": "University of Lisbon"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Sano0KPT25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747509",
+    "title": "Formal Semantics and Program Logics for a Fragment of OCaml",
+    "abstract": "This paper makes a first step towards a formal definition of OCaml and a foundational program verification environment for OCaml. We present a formal definition of OLang, a nontrivial sequential fragment of OCaml, which includes first-class functions, ordinary and extensible algebraic data types, pattern matching, references, exceptions, and effect handlers. We define the dynamic semantics of OLang as a monadic interpreter. This interpreter runs atop a custom monad where computations are internally represented as trees of operations and equipped with a small-step semantics. We define two program logics for OLang. A stateless Hoare Logic allows reasoning about so-called \"pure\" programs; an Iris-based Separation Logic allows reasoning about arbitrary programs. We present the construction of the two logics as well as some examples of their use.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747509",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Remy",
+        "last_name": "Seassau",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Irene",
+        "last_name": "Yoon",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "Jean-Marie",
+        "last_name": "Madiot",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      },
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en sciences et technologies du numérique"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/Seassau0MP25",
+    "venue": "icfp",
+    "year": 2025
+  },
+  {
+    "paper_id": "10.1145/3747523",
+    "title": "Effectful Lenses: There and Back with Different Monads",
+    "abstract": "Bidirectional transformations (BXs) are a widely adopted approach for data synchronisation that is usually based on two functions, one from the source to the view and one back. Traditionally, these functions must not have side effects. While a few frameworks aim to lift this restriction by introducing monads into lenses, they are still quite limited, e.g., allowing only side effects in the backwards transformation. In this paper, we propose a much more general framework for effectful lenses. Our effectful lenses can have different effects in their two directions, and the effects need not be cancellable. We also define the round-trip relations and use them to generalise the two well-known round-trip properties to effectful lenses. Moreover, composition preserves the two well-known round-trip properties, and we also provide a rich combinator language, which enables compositional programming for effectful lenses. Finally, we present a case study to illustrate the flexibility and expressivity of our framework.",
+    "date": "2025-08-05",
+    "link": "https://doi.org/10.1145/3747523",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ruifeng",
+        "last_name": "Xie",
+        "institution": "Peking University"
+      },
+      {
+        "first_name": "Tom",
+        "last_name": "Schrijvers",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Zhenjiang",
+        "last_name": "Hu",
+        "institution": "Peking University"
+      }
+    ],
+    "dblp_key": "journals/pacmpl/XieS025",
+    "venue": "icfp",
+    "year": 2025
+  }
+]

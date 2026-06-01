@@ -1,0 +1,648 @@
+[
+  {
+    "paper_id": "10.1145/944705.944707",
+    "title": "Scripting the type inference process",
+    "abstract": "To improve the quality of type error messages in functional programming languages, we propose four techniques which influence the behaviour of constraint-based type inference processes. These techniques take the form of externally supplied type inference directives, precluding the need to make any changes to the compiler. A second advantage is that the directives are automatically checked for soundness with respect to the underlying type system. We show how the techniques can be used to improve the type error messages reported for a combinator library. More specifically, how they can help to generate error messages which are conceptually closer to the domain for which the library was developed. The techniques have all been incorporated in the Helium compiler, which implements a large subset of Haskell.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944707",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Bastiaan",
+        "last_name": "Heeren",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Jurriaan",
+        "last_name": "Hage",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "S. Doaitse",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/icfp/HeerenHS03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944731",
+    "title": "Optimistic evaluation: an adaptive evaluation strategy for non-strict programs",
+    "abstract": "Lazy programs are beautiful, but they are slow because they build many thunks. Simple measurements show that most of these thunks are unnecessary: they are in fact always evaluated, or are always cheap. In this paper we describe Optimistic Evaluation --- an evaluation strategy that exploits this observation. Optimistic Evaluation complements compile-time analyses with run-time experiments: it evaluates a thunk speculatively, but has an abortion mechanism to back out if it makes a bad choice. A run-time adaption mechanism records expressions found to be unsuitable for speculative evaluation, and arranges for them to be evaluated more lazily in the future.We have implemented optimistic evaluation in the Glasgow Haskell Compiler. The results are encouraging: many programs speed up significantly (5-25%), some improve dramatically, and none go more than 15% slower.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944731",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Ennals",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/EnnalsJ03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944709",
+    "title": "MLF: raising ML to the power of system F",
+    "abstract": "We propose a type system MLF that generalizes ML with first-class polymorphism as in System F. Expressions may contain second-order type annotations. Every typable expression admits a principal type, which however depends on type annotations. Principal types capture all other types that can be obtained by implicit type instantiation and they can be inferred.All expressions of ML are well-typed without any annotations. All expressions of System F can be mechanically encoded into MLF by dropping all type abstractions and type applications, and injecting types of lambda-abstractions into MLF types. Moreover, only parameters of lambda-abstractions that are used polymorphically need to remain annotated.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944709",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Didier Le",
+        "last_name": "Botlan",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Didier",
+        "last_name": "Rémy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/BotlanR03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944726",
+    "title": "A static type system for JVM access control",
+    "abstract": "This paper presents a static type system for JAVA Virtual Machine (JVM) code that enforces an access control mechanism similar to the one found, for example, in a JAVA implementation. In addition to verifying type consistency of a given JVM code, the type system statically verifies that the code accesses only those resources that are granted by the prescribed access policy. The type system is proved to be sound with respect to an operational semantics that enforces access control dynamically, similarly to JAVA stack inspection. This result ensures that \"well typed code cannot violate access policy.\" The paper then develops a type inference algorithm and shows that it is sound with respect to the type system and that it always infers a minimal set of access privileges. These results allows us to develop a static system for JVM access control without resorting to costly runtime stack inspection.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944726",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Tomoyuki",
+        "last_name": "Higuchi",
+        "institution": "Japan Advanced Institute of Science and Technology"
+      },
+      {
+        "first_name": "Atsushi",
+        "last_name": "Ohori",
+        "institution": "Japan Advanced Institute of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/HiguchiO03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944724",
+    "title": "Disjunctive normal forms and local exceptions",
+    "abstract": "All classical ?-terms typable with disjunctive normal forms are shown to share a common computational behavior: they implement a local exception handling mechanism whose exact workings depend on the tautology. Equivalent and more efficient control combinators are described through a specialized sequent calculus and shown to be correct.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944724",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Emmanuel",
+        "last_name": "Beffara",
+        "institution": "Université Paris Cité"
+      },
+      {
+        "first_name": "Vincent",
+        "last_name": "Danos",
+        "institution": "Université Paris Cité"
+      }
+    ],
+    "dblp_key": "conf/icfp/BeffaraD03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944712",
+    "title": "Compiling regular patterns",
+    "abstract": "Pattern matching mechanisms based on regular expressions feature in a number of recent languages for processing tree-structured data such as XML. A compiler for such a language must address not only the familiar problems of pattern optimization for ML-style algebraic datatypes and pattern matching, but also some new ones, arising principally from the use of recursion in patterns. We identify several factors playing a significant role in the quality of the generated code, propose two pattern compilers---one generating backtracking target programs, the other non-backtracking---and sketch proofs of their correctness.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944712",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Michael Y.",
+        "last_name": "Levin",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/icfp/Levin03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944727",
+    "title": "Polish parsers, step by step",
+    "abstract": "We present the derivation of a space efficient parser combinator library: the constructed parsers do not keep unnecessary references to the input, produce online results and efficiently handle ambiguous grammars. The underlying techniques can be applied in many contexts where traditionally backtracking is used.We present two data types, one for keeping track of the progress of the search process, and one for representing the final result in a linear way. Once these data types are combined into a single type, we can perform a breadth-first search, while returning parts of the result as early as possible.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944727",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "R. J. M.",
+        "last_name": "Hughes",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "S. Doaitse",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/icfp/HughesS03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944706",
+    "title": "Conservation of information: applications in functional, reversible, and quantum computing",
+    "abstract": "Microscopic physics is entirely reversible, yet almost all computation is done using irreversible processes. Adding two numbers together, for example, destroys information, unless one of the numbers is retained. Over the past few years, some advantages of taking reversible computation seriously have emerged -- first in the context of saving energy, through the development of dissipationless logic, and then in the promise of quantum computation, which is necessarily also reversible and dissipationless.The necessary conservation of information in these systems raises the question of how we can best capture this strong constraint from an abstract point of view. Already ideas such as linear logic can be applied, but the full implementation of conservative logic ideas will require language and architectural innovation and a rethink of our computational models.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944706",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Thomas F.",
+        "last_name": "Knight",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/Knight03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944730",
+    "title": "Meta-programming through typeful code representation",
+    "abstract": "By allowing the programmer to write code that can generate code at run-time, meta-programming offers a powerful approach to program construction. For instance, meta-programming can often be employed to enhance program efficiency and facilitate the construction of generic programs. However, meta-programming, especially in an untyped setting, is notoriously error-prone. In this paper, we aim at making meta-programming less error-prone by providing a type system to facilitate the construction of correct meta-programs. We first introduce some code constructors for constructing typeful code representation in which program variables are replaced with deBruijn indices, and then formally demonstrate how such typeful code representation can be used to support meta-programming. The main contribution of the paper lies in recognition and then formalization of a novel approach to typed meta-programming that is practical, general and flexible.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944730",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Chiyan",
+        "last_name": "Chen",
+        "institution": ""
+      },
+      {
+        "first_name": "Hongwei",
+        "last_name": "Xi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/ChenX03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944717",
+    "title": "From Hilbert space to Dilbert space: context semantics as a language for games and flow analysis",
+    "abstract": "We give a tutorial and first-principles description of the context semantics of Gonthier, Abadi, and Lévy [5, 4], a computer-science analogue of Girard's geometry of interaction [3]. In the spirit of the invited presentation of Tom Knight (see this Proceedings [7]), the semantics is reversible, and supports pseudo-quantum computation via a superposed sharing of terms and evaluation contexts [2].Context semantics provides a mechanism for modelling ?-calculus, and more generally multiplicative-exponential linear logic (MELL); we explain the the call-by-name (CBN) coding of the ?-calculus, and sketch a proof of the correctness of readback, where the normal form of a ?-term is recovered from its semantics. This analysis yields the algorithmic correctness of Lamping's optimal reduction algorithm [8]. We relate the context semantics to linear logic types and to ideas from game semantics, used to prove full abstraction theorems for PCF and other ?-calculus variants [1, 6, 10]. Readback is essentially a game played by an environment (the Opponent) who wants to discover the Böhm tree (normal form) of a term known by a Player. A type plays the role---using the games jargon---of an arena of possible moves, and a term of that type provides a winning strategy for the Player, permitting the Player to respond correctly to moves made by the Opponent. The interaction between Opponent and Player describes a perfect flow analysis which answers questions like, \"can call site a ever call procedure p?\" The context semantics provides a low-level coding mechanism for describing such flows, the positions of subexpressions and head variables in Böhm trees, as well as moves in the above described two-player games.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944717",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Harry G.",
+        "last_name": "Mairson",
+        "institution": "Brandeis University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Mairson03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944719",
+    "title": "Dependency-style generic Haskell",
+    "abstract": "Generic Haskell is an extension of Haskell that supports the construction of generic programs. During the development of several applications, such as an XML editor and compressor, we encountered a number of limitations with the existing (Classic) Generic Haskell language, as implemented by the current Generic Haskell compiler. Specifically, generic definitions become disproportionately more difficult to write as their complexity increases, such as when one generic function uses another, because recursion is implicit in generic definitions. In the current implementation, writing such functions suffers the burden of a large administrative overhead and is at times counter-intuitive. Furthermore, the absence of type checking in the current implementation can make Generic Haskell hard to use.In this paper we develop the foundations of Dependency-style Generic Haskell which addresses the above problems, shifting the burden from the programmer to the compiler. These foundations consist of a full type system for Dependency-style Generic Haskell's core language and appropriate reduction rules. The type system enables the programmer to write generic functions in a more natural style, taking care of dependency details which were previously the programmer's responsibility.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944719",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Andres",
+        "last_name": "Löh",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Dave",
+        "last_name": "Clarke",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Johan",
+        "last_name": "Jeuring",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/icfp/LohCJ03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944722",
+    "title": "A sound and complete axiomatization of delimited continuations",
+    "abstract": "The shift and reset operators, proposed by Danvy and Filinski, are powerful control primitives for capturing delimited continuations. Delimited continuation is a similar concept as the standard (unlimited) continuation, but it represents part of the rest of the computation, rather than the whole rest of computation. In the literature, the semantics of shift and reset has been given by a CPS-translation only. This paper gives a direct axiomatization of calculus with shift and reset, namely, we introduce a set of equations, and prove that it is sound and complete with respect to the CPS-translation. We also introduce a calculus with control operators which is as expressive as the calculus with shift and reset, has a sound and complete axiomatization, and is conservative over Sabry and Felleisen's theory for first-class continuations.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944722",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Yukiyoshi",
+        "last_name": "Kameyama",
+        "institution": "University of Tsukuba"
+      },
+      {
+        "first_name": "Masahito",
+        "last_name": "Hasegawa",
+        "institution": "Kyoto University"
+      }
+    ],
+    "dblp_key": "conf/icfp/KameyamaH03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944711",
+    "title": "CDuce: an XML-centric general-purpose language",
+    "abstract": "We present the functional language CDuce, discuss some design issues, and show its adequacy for working with XML documents. Distinctive features of CDuce are a powerful pattern matching, first class functions, overloaded functions, a very rich type system (arrows, sequences, pairs, records, intersections, unions, differences), precise type inference for patterns and error localization, and a natural interpretation of types as sets of values. We also outline some important implementation issues; in particular, a dispatch algorithm that demonstrates how static type information can be used to obtain very efficient compilation schemas..",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944711",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Véronique",
+        "last_name": "Benzaken",
+        "institution": "Université Paris-Sud"
+      },
+      {
+        "first_name": "Giuseppe",
+        "last_name": "Castagna",
+        "institution": "Centre National de la Recherche Scientifique"
+      },
+      {
+        "first_name": "Alain",
+        "last_name": "Frisch",
+        "institution": "Département d'Informatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/BenzakenCF03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944714",
+    "title": "Global abstraction-safe marshalling with hash types",
+    "abstract": "Type abstraction is a key feature of ML-like languages for writing large programs. Marshalling is necessary for writing distributed programs, exchanging values via network byte-streams or persistent stores. In this paper we combine the two, developing compile-time and run-time semantics for marshalling, that guarantee abstraction-safety between separately-built programs. We obtain a namespace for abstract types that is global, i.e. meaningful between programs, by hashing module declarations. We examine the scenarios in which values of abstract types are communicated from one program to another, and ensure, by constructing hashes appropriately, that the dynamic and static notions of type equality mirror each other. We use singleton kinds to express abstraction in the static semantics; abstraction is tracked in the dynamic semantics by coloured brackets. These allow us to prove preservation, erasure, and coincidence results. We argue that our proposal is a good basis for extensions to existing ML-like languages, pragmatically straightforward for language users and for implementors.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944714",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "James J.",
+        "last_name": "Leifer",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Gilles",
+        "last_name": "Peskine",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Keith",
+        "last_name": "Wansbrough",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/icfp/LeiferPSW03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944721",
+    "title": "A user-centred approach to functions in Excel",
+    "abstract": "We describe extensions to the Excel spreadsheet that integrate userdefined functions into the spreadsheet grid, rather than treating them as a &amp;quot;bolt-on&amp;quot;. Our first objective was to bring the benefits of additional programming language features to a system that is often not recognised as a programming language. Second, in a project involving the evolution of a well-established language, compatibility with previous versions is a major issue, and maintaining this compatibility was our second objective. Third and most important, the commercial success of spreadsheets is largely due to the fact that many people find them more usable than programming languages for programming-like tasks. Thus, our third objective (with resulting constraints) was to maintain this usability advantage.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944721",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Simon Peyton",
+        "last_name": "Jones",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Alan F.",
+        "last_name": "Blackwell",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Margaret",
+        "last_name": "Burnett",
+        "institution": "Oregon State University"
+      }
+    ],
+    "dblp_key": "conf/icfp/JonesBB03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944715",
+    "title": "Dynamic rebinding for marshalling and update, with destruct-time?",
+    "abstract": "Most programming languages adopt static binding, but for distributed programming an exclusive reliance on static binding is too restrictive: dynamic binding is required in various guises, for example when a marshalled value is received from the network, containing identifiers that must be rebound to local resources. Typically it is provided only by ad-hoc mechanisms that lack clean semantics.In this paper we adopt a foundational approach, developing core dynamic rebinding mechanisms as extensions to simply-typed call-by-value ? -calculus. To do so we must first explore refinements of the call-by-value reduction strategy that delay instantiation, to ensure computations make use of the most recent versions of rebound definitions. We introduce redex-time and destruct-time strategies. The latter forms the basis for a ?marsh calculus that supports dynamic rebinding of marshalled values, while remaining as far as possible statically-typed. We sketch an extension of ? marsh with concurrency and communication, giving examples showing how wrappers for encapsulating untrusted code can be expressed. Finally, we show that a high-level semantics for dynamic updating can also be based on the destruct-time strategy, defining a ?marsh calculus with simple primitives to provide type-safe updating of running code. We thereby establish primitives and a common semantic foundation for a variety of real-world dynamic rebinding requirements.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944715",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Gavin",
+        "last_name": "Bierman",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Gareth",
+        "last_name": "Stoyle",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Keith",
+        "last_name": "Wansbrough",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/icfp/BiermanHSSW03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944713",
+    "title": "Software is discrete mathematics",
+    "abstract": "A three-year study collected information bearing on the question of whether studying mathematics improves programming skills. An analysis of the data revealed significant differences in the programming effectiveness of two populations of students: (1) those who studied discrete mathematics through examples focused on reasoning about software and (2) those who studied the same mathematical topics illustrated with more traditional examples. Functional programming played a central role in the study because it provides a straightforward framework for the presentation of concepts such as predicate logic and proof by induction. Such topics can be covered in depth, staying almost entirely within the context of reasoning about software. The intricate complexities in logic that mutable variables carry with them need not arise, early on, to confuse novices struggling to understand new ideas. In addition, because functional languages provide useful and compact ways to express mathematical concepts, and because the choice of notation in mathematics courses is often at the discretion of the instructor (in contrast to the notational restrictions often fiercely guarded by the faculty in programming courses), discrete mathematics courses, as they are found in most computer science programs, provide an easy opportunity to enhance the education of students by exposing them to functional programming concepts.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944713",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Rex",
+        "last_name": "Page",
+        "institution": "University of Oklahoma"
+      }
+    ],
+    "dblp_key": "conf/icfp/Page03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944710",
+    "title": "An extension of HM(X) with bounded existential and universal data-types",
+    "abstract": "We propose a conservative extension of HM(X), a generic constraint-based type inference framework, with bounded existential (a.k.a. abstract) and universal (a.k.a. polymorphic) data-types. In the first part of the article, which remains abstract of the type and constraint language (i.e. the logic X), we introduce the type system, prove its safety and define a type inference algorithm which computes principal typing judgments. In the second part, we propose a realistic constraint solving algorithm for the case of structural sub-typing, which handles the non-standard construct of the constraint language generated by type inference: a form of bounded universal quantification.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944710",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Vincent",
+        "last_name": "Simonet",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/Simonet03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944723",
+    "title": "Call-by-value is dual to call-by-name",
+    "abstract": "The rules of classical logic may be formulated in pairs corresponding to De Morgan duals: rules about & are dual to rules about V. A line of work, including that of Filinski (1989), Griffin (1990), Parigot (1992), Danos, Joinet, and Schellinx (1995), Selinger (1998,2001), and Curien and Herbelin (2000), has led to the startling conclusion that call-by-value is the de Morgan dual of call-by-name.This paper presents a dual calculus that corresponds to the classical sequent calculus of Gentzen (1935) in the same way that the lambda calculus of Church (1932,1940) corresponds to the intuitionistic natural deduction of Gentzen (1935). The paper includes crisp formulations of call-by-value and call-by-name that are obviously dual; no similar formulations appear in the literature. The paper gives a CPS translation and its inverse, and shows that the translation is both sound and complete, strengthening a result in Curien and Herbelin (2000).",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944723",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Philip",
+        "last_name": "Wadler",
+        "institution": "Avaya (Bermuda)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Wadler03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944732",
+    "title": "Understanding aspects: extended abstract",
+    "abstract": "No abstract available.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944732",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Wand03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944725",
+    "title": "An effective theory of type refinements",
+    "abstract": "We develop an explicit two level system that allows programmers to reason about the behavior of effectful programs. The first level is an ordinary ML-style type system, which confers standard properties on program behavior. The second level is a conservative extension of the first that uses a logic of type refinements to check more precise properties of program behavior. Our logic is a fragment of intuitionistic linear logic, which gives programmers the ability to reason locally about changes of program state. We provide a generic resource semantics for our logic as well as a sound, decidable, syntactic refinement-checking system. We also prove that refinements give rise to an optimization principle for programs. Finally, we illustrate the power of our system through a number of examples.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944725",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Yitzhak",
+        "last_name": "Mandelbaum",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Harper",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/MandelbaumWH03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944729",
+    "title": "FreshML: programming with binders made simple",
+    "abstract": "FreshML extends ML with elegant and practical constructs for declaring and manipulating syntactical data involving statically scoped binding operations. User-declared FreshML datatypes involving binders are concrete, in the sense that values of these types can be deconstructed by matching against patterns naming bound variables explicitly. This may have the computational effect of swapping bound names with freshly generated ones; previous work on FreshML used a complicated static type system inferring information about the 'freshness' of names for expressions in order to tame this effect. The main contribution of this paper is to show (perhaps surprisingly) that a standard type system without freshness inference, coupled with a conventional treatment of fresh name generation, suffices for FreshML's crucial correctness property that values of datatypes involving binders are operationally equivalent if and only if they represent a-equivalent pieces of object-level syntax. This is established via a novel denotational semantics. FreshML without static freshness inference is no more impure than ML and experience with it shows that it supports a programming style pleasingly close to informal practice when it comes to dealing with object-level syntax modulo a-equivalence.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944729",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Mark R.",
+        "last_name": "Shinwell",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Andrew M.",
+        "last_name": "Pitts",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Murdoch J.",
+        "last_name": "Gabbay",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/icfp/ShinwellPG03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944720",
+    "title": "Functional automatic differentiation with dirac impulses",
+    "abstract": "Functional Reactive Programming (FRP) is a framework for reactive programming in a functional setting. FRP has been applied to a number of domains, such as graphical animation, graphical user interfaces, robotics, and computer vision. Recently, we have been interested in applying FRP-like principles to hybrid modeling and simulation of physical systems. As a step in that direction, we have extended an existing FRP implementation, Yampa, in two new ways that make it possible to express certain models in a very natural way, and reduces the amount of work needed to put modeling equations into a suitable form for simulation. First, we have added Dirac impulses that allow certain types of discontinuities to be handled in an easy yet rigorous manner. Second, we have adapted automatic differentiation to the setting of Yampa, and generalized it to work correctly with Dirac impulses. This allows derivatives of piecewise continuous signals to be well-defined at all points. This paper reviews the basic ideas behind automatic differentiation, in particular Jerzy Karczmarczuk's elegant version for a lazy functional language with overloading, and then considers the integration with Yampa and the addition of Dirac impulses.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944720",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Henrik",
+        "last_name": "Nilsson",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Nilsson03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944708",
+    "title": "Discriminative sum types locate the source of type errors",
+    "abstract": "We propose a type system for locating the source of type errors in an applied lambda calculus with ML-style polymorphism. The system is based on discriminative sum types---known from work on soft typing---with annotation subtyping and recursive types. This way, type clashes can be registered in the type for later reporting. The annotations track the potential producers and consumers for each value so that clashes can be traced to their cause.Every term is typeable in our system and type inference is decidable. A type derivation in our system describes all type errors present in the program, so that a principal derivation yields a principal description of all type errors present. Error messages are derived from completed type derivations. Thus, error messages are independent of the particular algorithm used for type inference, provided it constructs such a derivation.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944708",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Neubauer",
+        "institution": "University of Fribourg"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Fribourg"
+      }
+    ],
+    "dblp_key": "conf/icfp/NeubauerT03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944716",
+    "title": "Iterative-free program analysis",
+    "abstract": "flow analyses are reduced to the problem of finding a fixed point in a certain transition system, and such fixed point is commonly computed through an iterative procedure that repeats tracing until convergence.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944716",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Mizuhito",
+        "last_name": "Ogawa",
+        "institution": "Japan Advanced Institute of Science and Technology"
+      },
+      {
+        "first_name": "Zhenjiang",
+        "last_name": "Hu",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Isao",
+        "last_name": "Sasano",
+        "institution": "Japan Advanced Institute of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/OgawaHS03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944718",
+    "title": "A theory of aspects",
+    "abstract": "This paper define the semantics of MinAML, an idealized aspect-oriented programming language, by giving a type-directed translation from its user-friendly external language to its compact, well-defined core language. We argue that our framework is an effective way to give semantics to aspect-oriented programming languages in general because the translation eliminates shallow syntactic differences between related constructs and permits definition of a clean, easy-to-understand, and easy-to-reason-about core language.The core language extends the simply-typed lambda calculus with two central new abstractions: explicitly labeled program points and first-class advice. The labels serve both to trigger advice and to mark continuations that the advice may return to. These constructs are defined orthogonally to the other features of the language and we show that our abstractions can be used in both functional and object-oriented contexts. The labels are well-scoped and the language as a whole is well-typed. Consequently, programmers can use lexical scoping in the standard way to prevent aspects from interfering with local program invariants.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944718",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Steve",
+        "last_name": "Zdancewic",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Jay",
+        "last_name": "Ligatti",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/icfp/WalkerZL03",
+    "venue": "icfp",
+    "year": 2003
+  },
+  {
+    "paper_id": "10.1145/944705.944728",
+    "title": "Boxes go bananas: encoding higher-order abstract syntax with parametric polymorphism",
+    "abstract": "Higher-order abstract syntax is a simple technique for implementing languages with functional programming. Object variables and binders are implemented by variables and binders in the host language. By using this technique, one can avoid implementing common and tricky routines dealing with variables, such as capture-avoiding substitution. However, despite the advantages this technique provides, it is not commonly used because it is difficult to write sound elimination forms (such as folds or catamorphisms) for higher-order abstract syntax. To fold over such a datatype, one must either simultaneously define an inverse operation (which may not exist) or show that all functions embedded in the datatype are parametri.In this paper, we show how first-class polymorphism can be used to guarantee the parametricity of functions embedded in higher-order abstract syntax. With this restriction, we implement a library of iteration operators over data-structures containing functionals. From this implementation, we derive \"fusion laws\" that functional programmers may use to reason about the iteration operator. Finally, we show how this use of parametric polymorphism corresponds to the Schürmann, Despeyroux and Pfenning method of enforcing parametricity through modal types. We do so by using this library to give a sound and complete encoding of their calculus into System F?. This encoding can serve as a starting point for reasoning about higher-order structures in polymorphic languages.",
+    "date": "2003-08-25",
+    "link": "https://doi.org/10.1145/944705.944728",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Geoffrey",
+        "last_name": "Washburn",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Stephanie",
+        "last_name": "Weirich",
+        "institution": "California University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/icfp/WashburnW03",
+    "venue": "icfp",
+    "year": 2003
+  }
+]

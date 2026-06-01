@@ -1,0 +1,575 @@
+[
+  {
+    "paper_id": "10.1145/512760.512779",
+    "title": "Almost Control-Free (Indeterministic) Parallel Computation on Permit Schemes",
+    "abstract": "The parallelity means \"simultaneous performance or execution\" and it may concern either computer units of different sorts (e.g. a memory and a processor), or computer units of the same sort (e.g. several processors).The computers Illiac 4 and Burroughs Scientific Processor (BSP) (announced recently) have several arithmetic processors. They are designed for large-scale computations with a special sort of numeric data structures, i.e. with large matrices (arrays). Their parallelity concerns naturally and essentially the definitions of matrix operations.According to [Br] the software techniques for exploiting the parallelism of the BSP consists of a \"vectorization\" of an usual serial program. There are 16 processors in the BSP which are heavily dependent each on the other, because at each instant by each of these processors just one and the same operation may be performed. Therefore a synchronization of all processors is assumed, which is the most important difference from the concept of parallel program scheme of [KM], which allows to speak about a sequence of particular steps, each of which is represented by execution of particular statements in parallel.In this paper a parallel computer with m ≥ 1 processors is assumed, which is also synchronized [Cu 1], but the processors are fully independent each on the other, i.e. on different processors different operations may be performed at each instant. Further, the parallelity concerns arbitrary simple data and arbitrary operations in all generality (and not only matrices). Thus the inherent parallelity of any serial program should be discovered and used for speeding up the duration of computation at most m times, while the memory space requirements remain unchanged.In [Cu 2] parallel flow diagrams were introduced and further the following \"parallelization \" (i.e. a \"computation\" of a parallel execution sequence of steps) of a serial program, was discussed in two parts: 1) newly permitted statements are determined by a permitter, and then 2) a subset of m (or less) statements is selected from the set of all permitted (and not yet selected) statements by a selector. The selected statements are executed in parallel on m processors, etc. until all permitted statements are selected (and executed), and the computation terminates. The permitter and the selector should replace the statement counter of serial programs or flow diagrams, by which is determined which statement should be executed as the next one. It is nuclear whether a suitable hardware technology can be designed to perform as a permitter and selector require.The linearity of programs is connected with serial computers (having just one processor, thus m = 1) essentially, and therefore in the following flow diagrams (or program schemes) will be used instead, because they allow a natural and transparent modification to permit diagrams and schemes, which represent a new sort of computing prescription (not necessarily deterministic algorithms) being a generalization of well-known binary trees, by which usual arithmetic expressions are represented.It is well known that there is no inherent reason for performing an operation from the numerator of a fraction sooner than an operation from the denominator. This arbitrariness of the order conceals an intrinsic parallelism of any expression which contains an n-ary operation with n ≥ 2 (which corresponds to the fact that the value of such operation does not depend on the order in which the values of its n arguments were achieved). This obvious fact is less clear when algorithms instead of operations are considered.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512779",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Karel",
+        "last_name": "Čulík",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "conf/popl/Culik78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512778",
+    "title": "Verification and Design Aspects of &quot;True&quot; Concurrency",
+    "abstract": "Most abstract models of a set of parallel processes define a computation of the model to be a sequence. It is either a sequence of actions taken by the system [Lip] or a sequence of states of the system existing between actions [Kel, Lau, Ash]. Parallelsim is represented only by the fact that following a given action or state, the \"next\" action or state is not necessarily unique. That is, parallesim is represented by nondeterminism. A. W. Holt has called this representation approach \"serializable concurrency\" as opposed to \"true concurrency\" [Hol]. He, among others, has questioned the appropriateness of implying a total ordering between events that are only known to be partially ordered.In this paper, a definition of an algebraic model of a set of concurrently-executing sequential processes is presented. The \"computations\" of this model are directed acyclic graphs. The nodes of each computation graph represent computer operations and the edges represent the partial ordering of operations with respect to time.Examples demonstrate that these directed acyclic graphs aid in focusing a programmer/verifier's attention on the most important features of a computation. The model suggests the following verification paradigm: since systems often execute a certain sequence of actions to achieve a certain goal, verification procedures should identify these sequences, whether or not each is performed within a single process.A key notion in the abstract model is the treatment of synchronization mechanisms as full-fledged processes. A programming language syntax called \"path programs\" which is suggested by this notion is presented. Path programs are a generalization of the path expressions of Campbell and Habermann [CamHab]. The programming notation is based on the assumption that a processor can be dedicated to each shared data structure in the system. The duty of this processor is to control the synchronization of operations on the data structure.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512778",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Mizell",
+        "institution": "University of Southern California"
+      }
+    ],
+    "dblp_key": "conf/popl/Mizell78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512762",
+    "title": "The Smalltalk-76 Programming System",
+    "abstract": "This paper describes a programming system based on the metaphor of communicating objects. Experience with a running system shows that this model provides flexibility, modularity and compactness. A compiled representation for the language is presented, along with an interpreter suitable for microcoding. The object-oriented model provides naturally efficient addressing; a corresponding virtual memory is described which offers dense utilization of resident space.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512762",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Daniel H. H.",
+        "last_name": "Ingalls",
+        "institution": "Palo Alto Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/Ingalls78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512761",
+    "title": "Compilation and Delayed Evaluation in APL",
+    "abstract": "Most existing APL implementations are interpretive in nature, that is, each time an APL statement is encountered it is executed by a body of code that is perfectly general, i.e. capable of evaluating any APL expression, and is in no way tailored to the statement on hand. This costly generality is said to be justified because APL variables are typeless and thus can vary arbitrarily in type, shape, and size during the execution of a program. What this argument overlooks is that the operational semantics of an APL statement are not modified by the varying storage requirements of its variables.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512761",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Leo J.",
+        "last_name": "Guibas",
+        "institution": "Palo Alto Research Center"
+      },
+      {
+        "first_name": "Douglas K.",
+        "last_name": "Wyatt",
+        "institution": "Palo Alto Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/GuibasW78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512772",
+    "title": "Automating Proofs of the Absence of Common Runtime Errors",
+    "abstract": "The Runcheck Verifier is a working system for proving the absence of common runtime errors. The language accepted is Pascal without variant records, side effects in functions, shared variable parameters to procedures, or functional arguments. The errors checked are: 1) accessing a variable that has not been assigned a value, 2) array subscripting out of range, 3) subrange type error, 4) dereferencing a NIL pointer, 5) arithmetic overflow, and 6) division by zero.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512772",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Steven M.",
+        "last_name": "German",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/German78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512773",
+    "title": "A Metalanguage for Interactive Proof in LCF",
+    "abstract": "Article Free Access Share on A Metalanguage for interactive proof in LCF Authors: M. Gordon University of Edinburgh University of EdinburghView Profile , R. Milner University of Edinburgh University of EdinburghView Profile , L. Morris Syracuse University Syracuse UniversityView Profile , M. Newey Australian National University Australian National UniversityView Profile , C. Wadsworth University of Edinburgh University of EdinburghView Profile Authors Info & Claims POPL '78: Proceedings of the 5th ACM SIGACT-SIGPLAN symposium on Principles of programming languagesJanuary 1978Pages 119–130https://doi.org/10.1145/512760.512773Published:01 January 1978Publication History 55citation684DownloadsMetricsTotal Citations55Total Downloads684Last 12 Months96Last 6 weeks5 Get Citation AlertsNew Citation Alert added!This alert has been successfully added and will be sent to:You will be notified whenever a record that you have chosen has been cited.To manage your alert preferences, click on the button below.Manage my AlertsNew Citation Alert!Please log in to your account Save to BinderSave to BinderCreate a New BinderNameCancelCreateExport CitationPublisher SiteeReaderPDF",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512773",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mike",
+        "last_name": "Gordon",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "R.",
+        "last_name": "Milner",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "L.",
+        "last_name": "Morris",
+        "institution": "Syracuse University"
+      },
+      {
+        "first_name": "M.",
+        "last_name": "Newey",
+        "institution": "Australian National University"
+      },
+      {
+        "first_name": "Christopher P.",
+        "last_name": "Wadsworth",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/popl/GordonMMNW78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512768",
+    "title": "A General Scheme for the Automatic Inference of Variable Types",
+    "abstract": "We present the best known algorithm for the determination of run-time types in a programming language requiring no type declarations. We demonstrate that it is superior to other published algorithms and that it is the best possible algorithm from among all those that use the same set of primitive operators.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512768",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Marc",
+        "last_name": "Kaplan",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Jeffrey D.",
+        "last_name": "Ullman",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/KaplanU78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512782",
+    "title": "Nondeterminism in Logics of Programs",
+    "abstract": "We investigate the principles underlying reasoning about nondeterministic programs, and present a logic to support this kind of reasoning. Our logic, an extension of dynamic logic ([22] and [12]), subsumes most existing first-order logics of nondeterministic programs, including that developed by Dijkstra based on the concept of weakest precondition. A significant feature is the strict separation between the two kinds of nonterminating computations: infinite computations and failures. The logic has a Tarskian truth-value semanics, an essential prerequisite to establishing completeness of axiomatizations of the logic. We give an axiomatization for flowchart (regular) programs that is complete relative to arithmetic in the sense of Cook. Having a satisfactory tool at hand, we turn to the clarification of the concept of the total correctness of nondeterministic programs, providing in passing, a critical evaluation of the widely used \"predicate transformer\" approach to the definition of programming constructs, initiated by Dijkstra [5]. Our axiom system supplies a complete axiomatization of wp.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512782",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Harel",
+        "institution": "Massachusetts Institute of Technology"
+      },
+      {
+        "first_name": "Vaughan",
+        "last_name": "Pratt",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/HarelP78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512781",
+    "title": "A Partial Evaluator, Its Use for Compiling Iterative Statements in Lisp",
+    "abstract": "A partial evaluation program for LISP is described, and an application where it has been used. The partial evaluator performs a number of other, related operations such as opening of functions and certain optimizations on programs. The application is based on the fact that we can generate from an interpreter and a partial evaluator the same object code as a corresponding compiler should do. The paper will first formally describe the relationship between an interpreter and a compiler through partial evaluation. The partial evaluator system is then briefly described and finally an experiment is shown where an interpreter for the iterative statement in INTERLISP is partially evaluated.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512781",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Anders",
+        "last_name": "Haraldsson",
+        "institution": "Linköping University"
+      }
+    ],
+    "dblp_key": "conf/popl/Haraldsson78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512764",
+    "title": "Data Types as Values: Polymorphism, Type-Checking, Encapsulation",
+    "abstract": "This paper describes a novel approach to the treatment of data types in programming languages, which allows a simple interpretation of \"polymorphic\" or \"generic\" procedures, makes a simple set of type-checking rules semantically justifiable and provides a straightforward treatment of encapsulation.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512764",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Alan",
+        "last_name": "Demers",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Donahue",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Glenn S.",
+        "last_name": "Skinner",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/DemersDS78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512785",
+    "title": "A New Method for Compiler Code Generation",
+    "abstract": "An algorithm is given to translate a relatively low-level intermediate representation of a program into assembly code or machine code for a target computer. The algorithm is table driven. A construction algorithm is used to produce the table from a functional description of the target machine. The method produces high quality code for many commercially available computers. By replacing the table, it is possible to retarget a compiler for another kind of computer. In addition techniques are given to prove the correctness of the translator.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512785",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "R. Steven",
+        "last_name": "Glanville",
+        "institution": "Hewlett-Packard (United States)"
+      },
+      {
+        "first_name": "Susan L.",
+        "last_name": "Graham",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/popl/GlanvilleG78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512763",
+    "title": "Clauses: Scope Structures and Defined Functions in Lucid",
+    "abstract": "In this paper we describe how Lucid can be extended to allow user-defined functions and scope conventions, i.e. conventions for limiting the range or scope of the validity of definitions. This is done using new constructs called clauses which are similar in form to the blocks and procedure declarations of Algol-like languages, but are nevertheless strictly non-imperative, because a clause is actually a compound assertion, i.e. an assertion formed, as a program is, by combining a collection of assertions.Each type of clause (there are four) has a straightforward mathematical semantics together with its own characteristic \"manipulation rules\" for general program massage. In addition, the informal operational view of (some) Lucid programs (described in a previous paper) can be extended to give an (incomplete) operational understanding of the effect of the clauses. In this framework a \"compute\" clause defines a block; a \"mapping\" clause defines a conventional (pointwise) function; a \"produce\" clause defines a block with persistent memory (or an anonymous 'process' or 'actor'); and a \"function\" clause defines a sort of procedure with own variables (or a general kind of coroutine).",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512763",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "E. A.",
+        "last_name": "Ashcroft",
+        "institution": "University of Waterloo"
+      },
+      {
+        "first_name": "William W.",
+        "last_name": "Wadge",
+        "institution": "University of Warwick"
+      }
+    ],
+    "dblp_key": "conf/popl/AshcroftW78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512774",
+    "title": "Unrestricted Procedure Calls in Hoare&apos;s Logic",
+    "abstract": "This paper presents a new version of Hoare's logic including generalized procedure call and assignment rules which correctly handle aliased variables. Formal justifications are given for the new rules.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512774",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Cartwright",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Derek C.",
+        "last_name": "Oppen",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/CartwrightO78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512770",
+    "title": "Automatic Discovery of Linear Restraints Among Variables of a Program",
+    "abstract": "The model of abstract interpretation of programs developed by Cousot and Cousot [2nd ISOP, 1976], Cousot and Cousot [POPL 1977] and Cousot [PhD thesis 1978] is applied to the static determination of linear equality or inequality invariant relations among numerical variables of programs.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512770",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Patrick",
+        "last_name": "Cousot",
+        "institution": ""
+      },
+      {
+        "first_name": "Nicolas",
+        "last_name": "Halbwachs",
+        "institution": "Laboratoire d'Informatique de Grenoble"
+      }
+    ],
+    "dblp_key": "conf/popl/CousotH78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512776",
+    "title": "Reasoning about Recursively Defined Data Structures",
+    "abstract": "A decision algorithm is given for the quantifier-free theory of recursively defined data structures which, for a conjunction of length n, decides its satisfiability in time linear in n. The first-order theory of recursively defined data structures, in particular the first-order theory of LISP list structure (the theory of CONS, CAR, CDR), is shown to be decidable but not elementary recursive.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512776",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Derek C.",
+        "last_name": "Oppen",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/Oppen78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512787",
+    "title": "Local Constraints in the Syntax and Semantics of Programming Languages",
+    "abstract": "The method of local constraints attempts to describe context-free languages in an apparently context-sensitive form which helps to retain the intuitive insights about the grammatical structure. This form of description, while apparently context-sensitive is, in fact, context-free and allows a program derivation structure to be represented as a tree with additional constraints, thus allowing for the possibility of a correctness proof in the form of Knuthian semantics. A part of ALGOL 60 syntax has been restated as a grammar with local constraints. It is also shown that parsing of grammars with local constraints can be carried out by a suitable extension of Early's algorithm. Finally, the relationship of local constraints to the semantics of programs is discussed in Section 4 by considering some program transformations.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512787",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Aravind K.",
+        "last_name": "Joshi",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Leon S.",
+        "last_name": "Levy",
+        "institution": "University of Delaware"
+      },
+      {
+        "first_name": "Kang",
+        "last_name": "Yueh",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/popl/JoshiLY78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512777",
+    "title": "Off-Line and On-Line Algorithms for Deducing Equalities",
+    "abstract": "The classical common subexpression problem in program optimization is the detection of identical subexpressions. Suppose we have some extra information and are given pairs of expressions ei1=ei2 which must have the same value, and expressions fj1≠fj2 which must have different values. We ask if as a result, h1=h2, or h1≠h2. This has been called the uniform word problem for finitely presented algebras, and has application in theorem-proving and code optimization. We show that such questions can be answered in O(nlogn) time, where n is the number of nodes in a graph representation of all relevant expressions. A linear time algorithm for detecting common subexpressions is derived. Algorithms which process equalities, inequalities and deductions on-line are discussed.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512777",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Peter J.",
+        "last_name": "Downey",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Hanan",
+        "last_name": "Samet",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Ravi",
+        "last_name": "Sethi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/DowneySS78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512769",
+    "title": "Symbolic Programming Analysis in Almost Linear Time",
+    "abstract": "A global flow model is assumed; as usual, the flow of control is represented by a digraph called the control flow graph. The objective of our program analysis is the construction of a mapping (a cover) from program text expressions to symbolic expressions for their value holding over all executions of the program. The particular cover constructed by our methods is in general weaker than the covers obtainable by the methods of [Ki, FKU, R1], but our method has the advantage of being very efficient; requiring O(ℓ + aα(a)) extended bit vector operations (a logical operation or a shift to the first nonzero bit) on all control flow graphs (whether reducible or not), where a is the number of edges of the control flow graph, ℓ is the length of the text of the program, and α is Tarjan's function (an extremely slowly growing function).",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512769",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John H.",
+        "last_name": "Reif",
+        "institution": "University of Rochester"
+      }
+    ],
+    "dblp_key": "conf/popl/Reif78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512783",
+    "title": "A Straightforward Denotational Semantics for Non-Determinant Data Flow Programs",
+    "abstract": "Data flow programming languages are especially amenable to mathematization of their semantics in the denotational style of Scott and Strachey. However, many real world programming problems, such as operating systems and data base inquiry systems, require a programming language capable of non-determinacy because of the non-determinate behavior of their physical environment. To date, there has been no satisfactory denotational semantics of programming languages with non-determinacy. This paper presents a straightforward denotational treatment of non-determinate data flow programs as functions from sets of tagged sequences to sets of tagged sequences. A simple complete partial order on such sets exists, in which the data flow primitives are continuous functions, so that any data flow program computes a well defined function.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512783",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Paul R.",
+        "last_name": "Kosinski",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/Kosinki78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512771",
+    "title": "A Portable Compiler: Theory and Practice",
+    "abstract": "A compiler for the C language has recently been constructed which is now compiling C for about half a dozen machines. The compiler was influenced in various ways by recent theoretical developments. This paper gives an overview of the compiler structure and algorithms, emphasizing those areas where theory was helpful, and discussing the approaches taken where theory was lacking.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512771",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "S. C.",
+        "last_name": "Johnson",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Johnson78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512775",
+    "title": "A Simplifier Based on Efficient Decision Algorithms",
+    "abstract": "We describe a simplifier for use in program manipulation and verification. The simplifier finds a normal form for any expression over the language consisting of individual variables, the usual boolean connectives, the conditional function cond (denoting if-then-else), the integers (numerals), the arithmetic functions and predicates +, - and ≤, the LISP constants, functions and predicates nil, car, cdr, cons and atom, the functions store and select for storing into and selecting from arrays, and uninterpreted function symbols. Individual variables range over the union of the rationals, the set of arrays, the LISP s-expressions and the booleans true and false. The constant, function and predicate symbols take their natural interpretations.The simplifier is complete; that is, it simplifies every valid formula to true. Thus it is also a decision procedure for the quantifier-free theory of rationals, arrays and s-expressions under the above functions and predicates.The organization of the simplifier is based on a method for combining decision algorithms for several theories into a single decision algorithm for a larger theory containing the original theories. More precisely, given a set S of functions and predicates over a fixed domain, a satisfiability program for S is a program which determines the satisfiability of conjunctions of literals (signed atomic formulas) whose predicates and function signs are in S. We give a general procedure for combining satisfiability programs for sets S and T into a single satisfiability program for S ∪ T, given certain conditions on S and T. We show how a satisfiability program for a set S can be used to write a complete simplifier for expressions containing functions and predicates of S as well as uninterpreted function symbols.The simplifier described in this paper is currently used in the Stanford Pascal Verifier.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512775",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Greg",
+        "last_name": "Nelson",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Derek C.",
+        "last_name": "Oppen",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/NelsonO78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512780",
+    "title": "Complexity of Expressions Allowing Concurrency",
+    "abstract": "We study some consequences of the formal language approach to modelling software system behavior for the case of asynchronous, concurrent subsystems. We use the formal language shuffle operation to give an \"algebraic\" definition of semantics for a simple (structured) concurrent programming language and prove that the use of this operation is necessary. Having established this necessity, we investigate other types of behavioral expressions which use the operation and show that the analysis problem for these expressions is either undecidable or intractable. The results provide some limitations, for example, on the path expression method of system behavior analysis. Our lower bound proofs involve the use of synchronization symbols, which seem to be a formal language analogue of semaphores.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512780",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "William F.",
+        "last_name": "Ogden",
+        "institution": "Case Western Reserve University"
+      },
+      {
+        "first_name": "William E.",
+        "last_name": "Riddle",
+        "institution": "University of Colorado Boulder"
+      },
+      {
+        "first_name": "W. C.",
+        "last_name": "Round",
+        "institution": "University of Michigan–Ann Arbor"
+      }
+    ],
+    "dblp_key": "conf/popl/OgdenRR78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512786",
+    "title": "A Forward Move Algorithm for LR Error Recovery",
+    "abstract": "A move algorithm, and some of its formal properties, is presented for use in a practical syntactic error scheme for LR parsers. The algorithm finds fragment (comparable to a valid prefix) just to the right of a point of error detection. For expositional purposes the algorithm is presented as parsing arbitrarily far beyond the point of error detection in a parallel mode, as long as all parses agree on the read or reduce action to be taken at each parse step. In practice the forward move is achieved serially by adding recovery states to the LR machine. Based on the formal properties of the forward move we propose an error algorithm that uses the accumulated right context. The performance of the algorithm is illustrated in a specific case and discussed in general.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512786",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Thomas J.",
+        "last_name": "Pennello",
+        "institution": "University of California, Santa Cruz"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "DeRemer",
+        "institution": "University of California, Santa Cruz"
+      }
+    ],
+    "dblp_key": "conf/popl/PennelloD78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512767",
+    "title": "Monoids for Rapid Data Flow Analysis",
+    "abstract": "The earliest data flow analysis research dealt with concrete problems (such as detection of available expressions) and with low level representations of control flow (with one large graph, each of whose nodes represents a basic block). Several recent papers have introduced an abstract approach, dealing with any problem expressible in terms of a semilattice L and a monoid M of isotone maps from L to L, under various algebraic constraints. Examples include [CC77; GW76; KU76; Ki73; Ta75; Ta76; We75]. Several other recent papers have introduced a high level representation with many small graphs, each of which represents a small portion of the control flow information in a program. The hierarchy of small graphs is explicit in [Ro77a; Ro77b] and implicit in papers that deal with syntax directed analysis of programs written within the confines of classical structured programming [DDH72, Sec. 1.7]. Examples include [TK76; ZB74]. The abstract papers have retained the low level representations while the high level papers have retained the concrete problems of the earliest work. This paper studies abstract conditions on L and M that lead to rapid data flow analysis, with emphasis on high level representations. Unlike some analysis methods oriented toward structured programming [TK76; Wu75; ZB74], our method retains the ability to cope with arbitrary escape and jump statements while it exploits the control flow information implicit in the parse tree.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512767",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Barry K.",
+        "last_name": "Rosen",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/Rosen78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512766",
+    "title": "Syntactic Control of Interference",
+    "abstract": "In programming languages which permit both assignment and procedures, distinct identifiers can represent data structures which share storage or procedures with interfering side effects. In addition to being a direct source of programming errors, this phenomenon, which we call interference can impact type structure and parallelism. We show how to eliminate these difficulties by imposing syntactic restrictions, without prohibiting the kind of constructive interference which occurs with higher-order procedures or SIMULA classes. The basic idea is to prohibit interference between identifiers, but to permit interference among components of collections named by single identifiers.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512766",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Reynolds",
+        "institution": "Syracuse University"
+      }
+    ],
+    "dblp_key": "conf/popl/Reynolds78",
+    "venue": "popl",
+    "year": 1978
+  },
+  {
+    "paper_id": "10.1145/512760.512765",
+    "title": "Type Definitions with Parameters",
+    "abstract": "It has long been known that recursively defined types in a highly typed language such as Algol 68 or Pascal may be tested for structural equivalence by the same algorithm that compares finite automata [5,11]. Several authors (for example, [3,8,9,16]) have proposed that classes of types be simultaneously defined by the use of parameterized type definitions, such asType list(x) = record val:x; next:↑list(x) end .This paper shows that unless the use of such parameterized definitions is restricted, new (unparameterized) types may be defined which more closely resemble deterministic context-free languages. In fact, the equivalence problem for such types becomes as hard as the (currently unsolved) deterministic pushdown automaton equivalence problem. Several restrictions on type definitions are considered which allow known equivalence algorithms to be applied.",
+    "date": "1978-01-01",
+    "link": "https://doi.org/10.1145/512760.512765",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Marvin",
+        "last_name": "Solomon",
+        "institution": "University of Wisconsin–Madison"
+      }
+    ],
+    "dblp_key": "conf/popl/Solomon78",
+    "venue": "popl",
+    "year": 1978
+  }
+]

@@ -57,11 +57,20 @@ format/check:
 typecheck:
 	uv run ty check src/
 
-oversight/sync:
+oversight/sync: oversight/sync/arxiv oversight/sync/pl
+
+oversight/sync/arxiv:
 	uv run python -m oversight.ArXivRepository --sync
+
+oversight/sync/pl:
+	uv run python -m oversight.PLConferenceHarvester --skip-existing-doi
+	uv run oversight consume data/pl_conferences/ --format scraped
 
 oversight/digest:
 	uv run python -m oversight.ArXivRepository --digest
+
+oversight/projections:
+	uv run oversight projections --name pacmap_v1
 
 oversight/install-cron:
 	sudo ./scripts/install_sync_cron.sh

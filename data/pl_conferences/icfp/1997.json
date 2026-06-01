@@ -1,0 +1,904 @@
+[
+  {
+    "paper_id": "10.1145/258948.258961",
+    "title": "Foundations for the Implementation of Higher-Order Subtyping",
+    "abstract": "We show how to implement a calculus with higher-order subtyping and subkinding by replacing uses of implicit subsumption with explicit coercions. To ensure this can be done, a polymorphic function is adjusted to take, as an additional argument, a proof that its type constructor argument has the desired kind. Such a proof is extracted from the derivation of a kinding judgement and may in turn require proof coercions, which are extracted from subkinding judgements. This technique is formalized as a type-directed translation from a calculus of higher-order subtyping to a subtyping-free calculus. This translation generalizes an existing result for second-order subtyping calculi (such as F &le;).We also discuss two interpretations of subtyping, one that views it as type inclusion and another that views it is the existence of a well-behaved coercion, and we show, by a type-theoretic construction, that our translation is the minimum consequence of shifting from the inclusion interpretation to the coercion-existence interpretation. This construction shows that the translation is the natural one, and it also provides a framework for extending the translation to richer type systems. Finally, we show how the two interpretations can be reconciled in a common semantics. It is then easy to show the coherence of the translation relative to that semantics.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258961",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Crary97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258956",
+    "title": "Catenable Double-Ended Queues",
+    "abstract": "Catenable double-ended queues are double-ended queues (deques) that support catenation (i.e., append) efficiently without sacrificing the efficiency of other operations. We present a purely functional implementation of catenable deques for which every operation, including catenation, takes O(1) amortized time. Kaplan and Tarjan have independently developed a much more complicated implemen-tation of catenable deques that achieves similar worst-case bounds. The two designs are superficially similar, but differ in the underlying mechanism used to achieve efficiency in a persistent setting (i.e., when used in a non-single-threaded fashion). Their implementation uses a technique called recursive slowdown, while ours relies on the simpler mechanism of lazy evaluation.Besides lazy evaluation, our implementation also exemplifies the use of two additional language features: polymorphic recursion and views. Neither is indispensable, but both significantly simplify the presentation.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258956",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Okasaki",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Okasaki97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258962",
+    "title": "A Practical Subtyping System For Erlang",
+    "abstract": "We present a type system for the programming language Erlang. The type system supports subtyping and declaration-free recursive types, using subtyping constraints. Our system is similar to one explored by Aiken and Wimmers, though it sacrifices expressive power in favour of simplicity. We cover our techniques for type inference, type simplification, and checking when an inferred type conforms to a user-supplied type signature, and report on early experience with our prototype.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258962",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Simon",
+        "last_name": "Marlow",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Philip",
+        "last_name": "Wadler",
+        "institution": "Alcatel Lucent (Germany)"
+      }
+    ],
+    "dblp_key": "conf/icfp/MarlowW97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258952",
+    "title": "Strongly Typed Flow-Directed Representation Transformations",
+    "abstract": "We present a new framework for transforming data representations in a strongly typed intermediate language. Our method allows both value producers (sources) and value consumers (sinks) to support multiple representations, automatically inserting any required code. Specialized representations can be easily chosen for particular source/sink pairs.The framework is based on these techniques:1. Flow annotated types encode the \"flows-from\" (source) and \"flows-to\" (sink) information of a flow graph.2. Intersection and union types support (a) encoding precise flow information, (b) separating flow information so that transformations can be well typed, (c) automatically reorganizing flow paths to enable multiple representations.As an instance of our framework, we provide a function representation transformation that encompasses both closure conversion and inlining. Our framework is adaptable to data other than functions.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258952",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Allyn",
+        "last_name": "Dimock",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Muller",
+        "institution": "Boston College"
+      },
+      {
+        "first_name": "Franklyn",
+        "last_name": "Turbak",
+        "institution": "Wellesley College"
+      },
+      {
+        "first_name": "J. B.",
+        "last_name": "Wells",
+        "institution": "University of Glasgow"
+      }
+    ],
+    "dblp_key": "conf/icfp/DimockMTW97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258951",
+    "title": "A Modular, Polyvariant, and Type-Based Closure Analysis",
+    "abstract": "We observe that the principal typing property of a type system is the enabling technology for modularity and separate compilation [10]. We use this technology to formulate a modular and polyvariant closure analysis, based on the rank 2 intersection types annotated with control-flow information. Modularity manifests itself in a syntax-directed, annotated-type inference algorithm that can analyse program fragments containing free variables: a principal typing property is used to formalise it. Polyvariance manifests itself in the separation of different behaviours of the same function at its different uses: this is formalised via the rank 2 intersection types. As the rank 2 intersection type discipline types at least all (core) ML programs, our analysis can be used in the separate compilation of such programs. 1 Introduction Compiler optimisations are crucially dependent on the availability of control-flow information at compile time. For any first-order imperative program, this infor...",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258951",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Anindya",
+        "last_name": "Banerjee",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/Banerjee97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258976",
+    "title": "The Measured Cost of Copying Garbage Collection Mechanisms",
+    "abstract": "We examine the costs and benefits of a variety of copying garbage collection (GC) mechanisms across multiple architectures and programming languages. Our study covers both low-level object representation and copying issues as well as the mechanisms needed to support more advanced techniques such as generational collection, large object spaces, and type segregated areas.Our experiments are made possible by a novel performance analysis tool, Oscar. Oscar allows us to capture snapshots of programming language heaps that may then be used to replay garbage collections. The replay program is self-contained and written in C, which makes it easy to port to other architectures and to analyze with standard performance analysis tools. Furthermore, it is possible to study additional programming languages simply by instrumenting existing implementations to capture heap snapshots.In general, we found that careful implementation of GC mechanisms can have a significant benefit. For a simple collector, we measured improvements of as much as 95%. We then found that while the addition of advanced features can have a sizeable overhead (up to 15%), the net benefit is quite positive, resulting in additional gains of up to 42%. We also found that results varied depending upon the platform and language. Machine characteristics such as cache arrangements, instruction set (RISC/CISC), and register pool were important. For different languages, average object size seemed to be most important.The results of our experiments demonstrate the usefulness of a tool like Oscar for studying GC performance. Without much overhead, we can easily identify areas where programming language implementors could collaborate with GC implementors to improve GC performance.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258976",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Jonathan T.",
+        "last_name": "Moore",
+        "institution": "University of Pennsylvania"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Nettles",
+        "institution": "University of Pennsylvania"
+      }
+    ],
+    "dblp_key": "conf/icfp/HicksMN97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258960",
+    "title": "Lambda-Splitting: A Higher-Order Approach to Cross-Module Optimizations",
+    "abstract": "We describe an algorithm for automatic inline expansion across module boundaries that works in the presence of higher-order functions and free variables; it rearranges bindings and scopes as necessary to move nonexpansive code from one module to another. We describe---and implement---the algorithm as transformations on λ-calculus. Our inliner interacts well with separate compilation and is efficient, robust, and practical enough for everyday use in the SML/NJ compiler. Inlining improves performance by 4--8% on existing code, and makes it possible to use much more data abstraction by consistently eliminating penalties for modularity.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258960",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "M.",
+        "last_name": "Blume",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Andrew W.",
+        "last_name": "Appel",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/icfp/BlumeA97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258973",
+    "title": "Functional Reactive Animation",
+    "abstract": "Fran (Functional Reactive Animation) is a collection of data types and functions for composing richly interactive, multi-media animations. The key ideas in Fran are its notions of behaviors and events. Behaviors are time-varying, reactive values, while events are sets of arbitrarily complex condi-tions, carrying possibly rich information. Most traditional values can be treated as behaviors, and when images are thus treated, they become animations. Although these no-tions are captured as data types rather than a programming language, we provide them with a denotational semantics, including a proper treatment of real time, to guide reason-ing and implementation. A method to eectively and ef-ciently perform event detection using interval analysis is also described, which relies on the partial information struc-ture on the domain of event times. Fran has been imple-mented in Hugs, yielding surprisingly good performance for an interpreter-based system. Several examples are given, in-cluding the ability to describe physical phenomena involving",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258973",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Conal",
+        "last_name": "Elliott",
+        "institution": "Microsoft Research (India)"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Hudak",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/ElliottH97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258989",
+    "title": "Distributed Programming, a Purely Functional Approach",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258989",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Eleni",
+        "last_name": "Spiliopoulou",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Ian",
+        "last_name": "Holyer",
+        "institution": "University of Bristol"
+      },
+      {
+        "first_name": "Neil M",
+        "last_name": "Davies",
+        "institution": "University of Bristol"
+      }
+    ],
+    "dblp_key": "conf/icfp/SpiliopoulouHD97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258983",
+    "title": "Modelling String Folding with G2L Grammars",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258983",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Natalio",
+        "last_name": "Krasnogor",
+        "institution": "Universidad Nacional de La Plata"
+      },
+      {
+        "first_name": "Pablo E. Martínez",
+        "last_name": "López",
+        "institution": "Universidad Nacional de La Plata"
+      },
+      {
+        "first_name": "Pablo",
+        "last_name": "Mocciola",
+        "institution": "Universidad Nacional de La Plata"
+      },
+      {
+        "first_name": "David A.",
+        "last_name": "Pelta",
+        "institution": "Universidad Nacional de La Plata"
+      }
+    ],
+    "dblp_key": "conf/icfp/KrasnogorLMP97a",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258982",
+    "title": "Protien Folding meets Functional Programming",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258982",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Natalio",
+        "last_name": "Krasnogor",
+        "institution": "Universidad Nacional de La Plata"
+      },
+      {
+        "first_name": "Pablo E. Martínez",
+        "last_name": "López",
+        "institution": "Universidad Nacional de La Plata"
+      },
+      {
+        "first_name": "Pablo",
+        "last_name": "Mocciola",
+        "institution": "Universidad Nacional de La Plata"
+      },
+      {
+        "first_name": "David A.",
+        "last_name": "Pelta",
+        "institution": "Universidad Nacional de La Plata"
+      }
+    ],
+    "dblp_key": "conf/icfp/KrasnogorLMP97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258966",
+    "title": "on Global Dynamics of Optimal Graph Reduction",
+    "abstract": "Optimal graph reduction technology for the &lambda;-calculus, as developed by Lamping, with modifications by Asperti, Gonthier, Abadl, and L&eacute;vy, has a well-understood local dynamics based on a standard menagerie of reduction rules, as well as a global context semantics based on Girard's geometry of interaction. However, the global dynamics of graph reduction has not been subject to careful investigation. In particular, graphs lose their structural resemblance to &lambda;-terms after only a few graph reduction steps, and little is known about graph reduction strategies that maintain efficiency or structure. While the context semantics provides global information about the computation, its use as part of a reduction strategy seems computationally infeasible. We propose a tractable graph reduction strategy that preserves computationally relevant global structure, and allows us to efficiently bound the computational resources needed to implement optimal reduction.A simple canonical representation for graphs is introduced that we call fan-normal form. This normal form allows us to reduce graphs based on efficient identification of &beta;-redexes, rather than being guided by lower-level search for interacting nodes. In addition and perhaps more important, the fan-normal form facilitates a complexity analysis of graph reductions, showing that the number of fan interactions is essentially bounded by a polynomial in the number of unique L&eacute;vy labels generated during a labelled reduction. This global analysis of the finitary dynamics of optimal reduction is the first demonstration that a reasonable implementation-independent cost model for the &lambda;-calculus is in fact realized by Lamping's abstract algorithm. It remains to be seen whether similar claims can be made about so-called bookkeeping for fan interactions.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258966",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Julia L.",
+        "last_name": "Lawall",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "Harry G.",
+        "last_name": "Mairson",
+        "institution": "Brandeis University"
+      }
+    ],
+    "dblp_key": "conf/icfp/LawallM97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258964",
+    "title": "Tupling Calculation Eliminates Multiple Data Traversals",
+    "abstract": "Tupling is a well-known transformation tactic to obtain new efficient recursive functions by grouping some recursive functions into a tuple. It may be applied to eliminate multiple traversals over the common data structure. The major difficulty in tupling transformation is to find what functions are to be tupled and how to transform the tupled function into an efficient one. Previous approaches to tupling transformation are essentially based on fold/unfold transformation. Though general, they suffer from the high cost of keeping track of function calls to avoid infinite unfolding, which prevents them from being used in a compiler.To remedy this situation, we propose a new method to expose recursive structures in recursive definitions and show how this structural information can be explored for calculating out efficient programs by means of tupling. Our new tupling calculation algorithm can eliminate most of multiple data traversals and is easy to be implemented.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258964",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zhenjiang",
+        "last_name": "Hu",
+        "institution": "The University of Tokyo"
+      },
+      {
+        "first_name": "Hideya",
+        "last_name": "Iwasaki",
+        "institution": "Tokyo University of Agriculture and Technology"
+      },
+      {
+        "first_name": "Masato",
+        "last_name": "Takeichi",
+        "institution": "Tokyo University of Information Sciences"
+      },
+      {
+        "first_name": "Akihiko",
+        "last_name": "Takano",
+        "institution": "Hitachi (Japan)"
+      }
+    ],
+    "dblp_key": "conf/icfp/HuITT97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258953",
+    "title": "Type-Driven Defunctionalization",
+    "abstract": "In 1972, Reynolds outlined a general method for eliminating functional arguments known as defunctionalization. The idea underlying defunctionalization is encoding a functional value as first-order data, and then realizing the applications of the encoded function via an apply function. Although this process is simple enough, problems arise when defunctionalization is used in a polymorphic language. In such a language, a functional argument of a higher-order function can take different type instances in different applications. As a consequence, its associated apply function can be untypable in the source language. In the paper we present a defunctionalization transformation which preserves typability. Moreover, the transformation imposes no restriction on functional arguments of recursive functions, and it handles functions as results as well as functions encapsulated in constructors. The key to this success is the use of type information in the defunctionalization transformation. Run-time characteristics are preserved by defunctionalization; hence, there is no performance improvement coming from the transformation itself. However closures need not be implemented to compile the transformed program.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258953",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Jeffrey",
+        "last_name": "Bell",
+        "institution": ""
+      },
+      {
+        "first_name": "Françoise",
+        "last_name": "Bellegarde",
+        "institution": ""
+      },
+      {
+        "first_name": "James",
+        "last_name": "Hook",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/BellBH97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258986",
+    "title": "Synthesis of Functions by Transformations and Constraints",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258986",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Cristóbal",
+        "last_name": "Pareja-Flores",
+        "institution": "Universidad Complutense de Madrid"
+      },
+      {
+        "first_name": "J. Ángel",
+        "last_name": "Velázquez‐Iturbide",
+        "institution": "Universidad Politécnica de Madrid"
+      }
+    ],
+    "dblp_key": "conf/icfp/Pareja-FloresV97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258963",
+    "title": "On the Complexity of Set-Based Analysis",
+    "abstract": "We define a general notion of set-based analysis --- any language whose operational semantics is defined by environment evaluation has a well defined set-based abstraction. This general definition covers both Aiken and Wimmers' type system and Heintze' set-based analysis. Aiken and Wimmers give a nondeterministic exponential time algorithm for their analysis. Heintze gives an O(n3) procedure. We show that this discrepancy is due to the complexity of the case statements analyzed. For polymorphic programs with deep patterns in case statements (as in the Aiken-Wimmers language) we show that the problem of determining type-safety under set-based abstraction is complete for deterministic exponential time. The problem remains complete for deterministic exponential time for programs without let (monovariant programs). However, for monovariant programs in which all patterns in case statements are shallow, as in the Heintze language, type-safety under set-based abstraction is decidable in cubic time. We give five additional theorems which (nearly exhaustively) characterize the time complexity of set-based analysis as a function of the complexity of case statements.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258963",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Nevin",
+        "last_name": "Heintze",
+        "institution": "Nokia (United States)"
+      },
+      {
+        "first_name": "David",
+        "last_name": "McAllester",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/icfp/HeintzeM97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258971",
+    "title": "Implementing Bit-addressing with Specialization",
+    "abstract": "General media-processing programs are easily expressed with bit-addressing and variable-sized bit-fields. But the natural implementation of bit-addressing relies on dynamic shift offsets and repeated loads, resulting in slow execution. If the code is specialized to the alignment of the data against word boundaries, the offsets become static and many repeated loads can be removed. We show how introducing modular arithmetic into an automatic compiler generator enables the transformation of a program that uses bit-addressing into a synthesizes of fast specialized programs.In partiai-evaluation jargon we say: modular arithmetic is supported by extending the binding time lattice used by the static analysis in a polyvariant compiler generator. The new binding time Cyclic functions like a partially static integer.A software cache combined with a fast, optimistic sharing analysis built into the compilers eliminates repeated loads and stores. The utility of the transformation is demonstrated with a collection of examples and benchmark data. The examples include vector arithmetic, audio synthesis, image processing, and a base-64 codec.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258971",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Scott",
+        "last_name": "Draves",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Draves97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258957",
+    "title": "Statically Checkable Pattern Abstractions",
+    "abstract": "Pattern abstractions increase the expressiveness of pattern matching, enabling the programmer to describe a broader class of regular forests with patterns. Furthermore, pattern abstractions support code reuse and code factoring, features that facilitate maintenance and evolution of code. Past research on pattern abstractions has generally ignored the aspect of compile-time checks for exhaustiveness and redundancy. In this paper we propose a class of expressive patterns that admits these compile-time checks.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258957",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Fähndrich",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Boyland",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/FahndrichB97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258979",
+    "title": "Disposable Memo Functions (Extended Abstract)",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258979",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Byron",
+        "last_name": "Cook",
+        "institution": ""
+      },
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/CookL97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258972",
+    "title": "Structuring Graphical Paradigms in TkGofer",
+    "abstract": "In this paper we describe the implementation of several graphical programming paradigms (Model View Controller, Fudgets, and Functional Animations) using the GUI library TkGofer. This library relies on a combination of monads and multiple-parameter type classes to provide an abstract, type safe interface to Tcl/Tk. We show how choosing the right abstractions makes the given implementations surprisingly concise and easy to understand. 1 Introduction In his article `Why Functional Programming Matters&amp;apos; [7], John Hughes explains that an important feature of a programming language is the way in which a language provides glue for combining building blocks to form larger structures. The better the glue, the more modular programs can be made. He argues that functional languages offer very powerful kinds of glue like higher order functions and lazy evaluation. Further research evolved a new kind of glue: type and constructor classes [9]. Unfortunately, there used to be a separation between th...",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258972",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Koen",
+        "last_name": "Claessen",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "Ton",
+        "last_name": "Vullinghs",
+        "institution": "Universität Ulm"
+      },
+      {
+        "first_name": "Erik",
+        "last_name": "Meijer",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/icfp/ClaessenVM97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258970",
+    "title": "Monadic State: Axiomatization and Type Safety",
+    "abstract": "Type safety of imperative programs is an area fraught with difficulty and requiring great care. The SML solution to the problem, originally involving imperative type variables, has been recently simplified to the syntactic-value restriction. In Haskell, the problem is addressed in a rather different way using explicit monadic state. We present an operational semantics for state in Haskell and the first full proof of type safety. We demonstrate that the semantic notion of value provided by the explicit monadic types is able to avoid any problems with generalization.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258970",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Launchbury",
+        "institution": "Oregon Research Institute"
+      },
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "University of Oregon"
+      }
+    ],
+    "dblp_key": "conf/icfp/LaunchburyS97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258954",
+    "title": "Systematic Realisation of Control Flow Analyses for CML",
+    "abstract": "We present a methodology for the systematic realisation of control flow analyses and illustrate it for Concurrent ML. We start with an abstract specification of the analysis that is next proved semantically sound with respect to a traditional small-step operational semantics; this result holds for terminating as well as non-terminating programs. The analysis is defined coinductively and it is shown that all programs have a least analysis result (that is indeed the best one). To realise the analysis we massage the specification in three stages: (i) to explicitly record reachability of subexpressions, (ii) to be defined in a syntax-directed manner, and (iii) to generate a set of constraints that subsequently can be solved by standard techniques. We prove equivalence results between the different versions of the analysis; in particular it follows that the least solution to the constraints generated will be the least analysis result also to the initial specification. 1 Introduction Many c...",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258954",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kirsten L. Solberg",
+        "last_name": "Gasser",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Flemming",
+        "last_name": "Nielson",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Hanne Riis",
+        "last_name": "Nielson",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/GasserNN97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258977",
+    "title": "A GUI on Top of a Functional Language",
+    "abstract": "status: Published",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258977",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kris",
+        "last_name": "Aerts",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "Karel De",
+        "last_name": "Vlaminck",
+        "institution": "KU Leuven"
+      }
+    ],
+    "dblp_key": "conf/icfp/AertsV97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258985",
+    "title": "BigTypes in ML",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258985",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Bruce J.",
+        "last_name": "McAdam",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/icfp/McAdam97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258969",
+    "title": "Compositional References for Stateful Functional Programming",
+    "abstract": "We introduce the notion of compositional references into the framework of monadic functional programming and propose a set of new primitives based on this notion. They enable us to use a wide range of mutable data structures. There, references may be passed around explicitly, or mutable data structures such as arrays and tuples may be passed implicitly as hidden state. The former style is called the explicit style and is usually more expressive, while the latter is called the implicit style and has simpler semantics. We investigate the relation between the two styles and discus implementation issues.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258969",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Koji",
+        "last_name": "Kagawa",
+        "institution": "Kagawa University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Kagawa97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258955",
+    "title": "Functional Programming with Graphs",
+    "abstract": "Graph algorithms expressed in functional languages often suffer from their inherited imperative, state-based style. In particular, this impedes formal program manipulation. We show how to model persistent graphs in functional languages by graph constructors. This provides a decompositional view of graphs which is very close to that of data types and leads to a \"more fictional\" formulation of graph algorithms. Graph constructors enable the definition of general fold operations for graphs. We present a promotion theorem for one of these folds that allows program fusion and the elimination of intermediate results. Fusion is not restricted to the elimination of tree-like structures, and we prove another theorem that facilitates the elimination of intermediate graphs. We describe an ML-implementation of persistent graphs which efficiently supports the presented fold operators. For example, depth-first-search expressed by a fold over a functional graph has the same complexity as the corresponding imperative algorithm.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258955",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Erwig",
+        "institution": "University of Hagen"
+      }
+    ],
+    "dblp_key": "conf/icfp/Erwig97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258965",
+    "title": "A Bounds Inference Method for Vector-Based Memoisation",
+    "abstract": "The dynamic-sized tabulation method can be used to eliminate redundant calls for certain classes of recursive programs. An innovative aspect of the method is the use of lambda abstractions that may subsequently be converted to bounded vectors, in order to share redundant calls via vector lookup.To facilitate this conversion to vector form, we propose a new inference method to conservatively determine the bounds for arithmetic parameters of recursive functions. Suitable techniques for inferring the safe bounds of these parameters are introduced, together with supporting transformations. The resulting method can obtain efficient vector-based programs without the need for run-time bounds checking.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258965",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Wei-Ngan",
+        "last_name": "Chin",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Masami",
+        "last_name": "Hagiya",
+        "institution": "The University of Tokyo"
+      }
+    ],
+    "dblp_key": "conf/icfp/ChinH97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258967",
+    "title": "The Development of Erlang",
+    "abstract": "This paper describes the development of the programming language Erlang during the period 1985-1997. Erlang is a concurrent programming language designed for programming large-scale distributed soft real-time control applications. The design of Erlang was heavily influenced by ideas from the logic and functional programming communities. Other sources of inspiration came from languages such as Chill and Ada which are used in industry for programming control systems. 1 Introduction This paper describes the development of the Erlang programming language. Erlang is a language which draws heavily from various traditions in the logic, functional and realtime control programming communities. Our goal was to make a language which could be used for building large soft real-time control systems. By large I mean systems with possibly millions of lines of code. By a soft real-time system I mean a system which does not fail catastrophically if a real-time deadline is missed. Erlang was developed ...",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258967",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Joe",
+        "last_name": "Armstrong",
+        "institution": "Ericsson (Sweden)"
+      }
+    ],
+    "dblp_key": "conf/icfp/Armstrong97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258959",
+    "title": "The Effectiveness of Flow Analysis for Inlining",
+    "abstract": "An interprocedural flow analysis can justify inlining in higher-order languages. In principle, more inlining can be performed as analysis accuracy improves. This paper compares four flow analyses to determine how effectively they justify inlining in practice. The paper makes two contributions. First, the relative merits of the flow analyses are measured with all other variables held constant. The four analyses include two monovariant and two polyvariant analyses that cover a wide range of the accuracy/cost spectrum. Our measurements show that the effectiveness of the inliner improves slightly as analysis accuracy improves, but the improvement is offset by the compile-time cost of the accurate analyses. The second contribution is an improvement to the previously reported inlining algorithm used in our experiments. The improvement causes flow information provided by a polyvariant analysis to be selectively merged. By merging flow information depending on the inlining context, the algorithm is able to expose additional opportunities for inlining. This merging technique can be used in any program transformer justified by a polyvariant flow analysis. The revised algorithm is fully implemented in a production Scheme compiler.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258959",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "John M.",
+        "last_name": "Ashley",
+        "institution": "University of Kansas"
+      }
+    ],
+    "dblp_key": "conf/icfp/Ashley97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258980",
+    "title": "Affordable Dynamic Types",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258980",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Chris",
+        "last_name": "Dornan",
+        "institution": "University College Cork"
+      }
+    ],
+    "dblp_key": "conf/icfp/Dornan97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258968",
+    "title": "Type Specialization for Imperative Languages",
+    "abstract": "We extend type specialisation to a computational lambda calculus with first-class references. The resulting specialiser has been used to specialise a self-interpreter for this typed computational lambda calculus optimally. Furthermore, this specialiser can perform operations on references at specialisation time, when possible. Keywords: program transformation, specialisation, type systems, monads. 1 Introduction Partial evaluation is an important program specialisation technique [18]. Partial evaluation is a program transformation, which transforms a program and parts of its input (the static part) into a new program. The partial evaluator performs the operations for which enough data is available and reconstructs the rest. A partial evaluator operates on both values and symbolic values (code or values or a combination of code and values), whereas an interpreter operates only on values. Partial evaluators appear in two variants, online and offline. In online partial evaluators a...",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258968",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Dirk",
+        "last_name": "Dussart",
+        "institution": "KU Leuven"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Hughes",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "conf/icfp/DussartHT97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258984",
+    "title": "A Functional Macro Expansion System for Optimizing Code Generation: Gaining Context-Sensitivity without Losing Confluence",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258984",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Eero",
+        "last_name": "Lassila",
+        "institution": "University of Helsinki"
+      }
+    ],
+    "dblp_key": "conf/icfp/Lassila97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258988",
+    "title": "Simple Semantic Analysis Problems for Functional Programs",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258988",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Viktor",
+        "last_name": "Sabelfeld",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Andrei",
+        "last_name": "Sabelfeld",
+        "institution": "Folkwang University of the Arts"
+      }
+    ],
+    "dblp_key": "conf/icfp/SabelfeldS97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258974",
+    "title": "Automatic Management of Operating System Resources",
+    "abstract": "One of the attractive features of functional programming languages is that they provide automatic management of the store, in the form of garbage collection. However, the benefits of automatic resource management can be applied to other resources as well. Scsh, a systems-programming dialect of Scheme, provides automatic resource management for operating-systems structures, notably processes, I/O channels, and signal events. This kind of automatic management extends the benefits of garbage collection---modularity, robustness, simplicity, and clarity---to new sets of objects in programming, and also gives us hints as to how operating systems should be structured from the perspective of functional programming languages.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258974",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/icfp/Shivers97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258987",
+    "title": "Intensional Sets Using Explicit Substitutions",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258987",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Gilles",
+        "last_name": "Richard",
+        "institution": "Université d'Orléans"
+      },
+      {
+        "first_name": "Frédéric",
+        "last_name": "Saubion",
+        "institution": "Université d'Orléans"
+      },
+      {
+        "first_name": "A.",
+        "last_name": "Tellez-Arenas",
+        "institution": "Université d'Orléans"
+      }
+    ],
+    "dblp_key": "conf/icfp/RichardST97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258975",
+    "title": "Formal Models of Distributed Memory Management",
+    "abstract": "We develop am abstract model of memory management in distributed systems. The model is low-level enough so that we can express communication, allocation and garbage collection, but otherwise hides many of the lower-level details of an actual implementation.Recently, such formal models have been developed for memory management in a functional, sequential setting [10]. The models are rewriting systems whose terms are programs. Programs have both the \"code\" (control string) and the \"store\" syntactically apparent. Evaluation is expressed as conditional rewriting and includes store operations. Garbage collection becomes a rewriting relation that removes part of the store without affecting the behavior of the program.Distribution adds another dimension to an already complex problem. By using techniques developed for communicating and concurrent systems [9], we extend their work to a distributed environment. Sending and receiving messages is also made apparent at the syntactic level. A very general garbage collection rule based on reachability is introduced and proved correct. Now proving correct a specific collection strategy is reduced to showing that the relation between programs defined by the strategy is a sub-relation of the general relation. Any actual implementation which is capable of providing the transitions (including their atomicity constraints) specified by the strategy is therefore correct.This model allows us to specify and prove correct in a compact manner two garbage collectors; the first one does a simple garbage collection local to a node. The second garbage collector uses migration of data in order to be able to reclaim inter-node cyclic garbage.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258975",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Ungureanu",
+        "institution": "New York University"
+      },
+      {
+        "first_name": "Benjamin",
+        "last_name": "Goldberg",
+        "institution": "New York University"
+      }
+    ],
+    "dblp_key": "conf/icfp/UngureanuG97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258958",
+    "title": "Flexible Representation Analysis",
+    "abstract": "Statically typed languages with Hindley-Milner polymorphism have long been compiled using inefficient and fully boxed data representations. Recently, several new compilation methods have been proposed to support more efficient and unboxed multi-word representations. Unfortunately, none of these techniques is fully satisfactory. For example, Leroy's coercion-based approach does not handle recursive data types and mutable types well. The type-passing approach (proposed by Harper and Morrisett) handles all data objects, but it involves extensive runtime type analysis and code manipulations.This paper presents a new flexible representation analysis technique that combines the best of both approaches. Our new scheme supports unboxed representations for recursive and mutable types, yet it only requires little runtime type analysis. In fact, we show that there is a continuum of possibilities between the coercion-based approach and the type-passing approach. By varying the amount of boxing and the type information passed at runtime, a compiler can freely explore any point in the continuum---choosing from a wide range of representation strategies based on practical concerns. Finally, our new scheme also easily extends to handle type abstractions across ML-like higher-order modules.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258958",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Shao97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258990",
+    "title": "Multi-Stage Programming",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258990",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Walid",
+        "last_name": "Taha",
+        "institution": "Oregon Museum of Science and Industry"
+      },
+      {
+        "first_name": "Tim",
+        "last_name": "Sheard",
+        "institution": "Oregon Museum of Science and Industry"
+      }
+    ],
+    "dblp_key": "conf/icfp/TahaS97",
+    "venue": "icfp",
+    "year": 1997
+  },
+  {
+    "paper_id": "10.1145/258948.258991",
+    "title": "Lambda-Flow: A Parallel Functional Synchronous Dataflow Language",
+    "abstract": "No abstract available.",
+    "date": "1997-08-01",
+    "link": "https://doi.org/10.1145/258948.258991",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Guilhem de",
+        "last_name": "Wailly",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/icfp/Wailly97",
+    "venue": "icfp",
+    "year": 1997
+  }
+]

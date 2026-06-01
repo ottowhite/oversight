@@ -1,0 +1,940 @@
+[
+  {
+    "paper_id": "10.1145/1111037.1111070",
+    "title": "The essence of command injection attacks in web applications",
+    "abstract": "Web applications typically interact with a back-end database to retrieve persistent data and then present the data to the user as dynamically generated output, such as HTML web pages. However, this interaction is commonly done through a low-level API by dynamically constructing query strings within a general-purpose programming language, such as Java. This low-level interaction is ad hoc because it does not take into account the structure of the output language. Accordingly, user inputs are treated as isolated lexical entities which, if not properly sanitized, can cause the web application to generate unintended output. This is called a command injection attack, which poses a serious threat to web application security. This paper presents the first formal definition of command injection attacks in the context of web applications, and gives a sound and complete algorithm for preventing them based on context-free grammars and compiler parsing techniques. Our key observation is that, for an attack to succeed, the input that gets propagated into the database query or the output document must change the intended syntactic structure of the query or document. Our definition and algorithm are general and apply to many forms of command injection attacks. We validate our approach with SqlCheckS, an implementation for the setting of SQL command injection attacks. We evaluated SqlCheckS on real-world web applications with systematically compiled real-world attack data as input. SqlCheckS produced no false positives or false negatives, incurred low runtime overhead, and applied straightforwardly to web applications written in different languages.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111070",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Zhendong",
+        "last_name": "Su",
+        "institution": "University of California, Davis"
+      },
+      {
+        "first_name": "Gary",
+        "last_name": "Wassermann",
+        "institution": "University of California, Davis"
+      }
+    ],
+    "dblp_key": "conf/popl/SuW06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111063",
+    "title": "Interruptible iterators",
+    "abstract": "This paper introduces interruptible iterators, a language feature that makes expressive iteration abstractions much easier to implement. Iteration abstractions are valuable for software design, as shown by their frequent use in well-designed data structure libraries such as the Java Collections Framework. While Java iterators support iteration abstraction well from the standpoint of client code, they are awkward to implement correctly and efficiently, especially if the iterator needs to support imperative update of the underlying collection, such as removing the current element. Some languages, such as CLU and C# 2.0, support iteration through a limited coroutine mechanism, but these mechanisms do not support imperative updates. Interruptible iterators are more powerful coroutines in which the loop body is able to interrupt the iterator with requests to perform updates. Interrupts are similar to exceptions, but propagate differently and have resumption semantics. Interruptible iterators have been implemented as part of the JMatch programming language, an extended version of Java. A JMatch reimplementation of the Java Collections Framework shows that implementations can be made substantially shorter and simpler; performance results show that this language mechanism can also be implemented efficiently.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111063",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jed",
+        "last_name": "Liu",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Aaron",
+        "last_name": "Kimball",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Andrew C.",
+        "last_name": "Myers",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/popl/LiuKM06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111041",
+    "title": "Simplifying reductions",
+    "abstract": "We present optimization techniques for high level equational programs that are generalizations of affine control loops (ACLs). Significant parts of the SpecFP and PerfectClub benchmarks are ACLs. They often contain reductions: associative and commutative operators applied to a collection of values. They also often exhibit reuse: intermediate values computed or used at different index points being identical. We develop various techniques to automatically exploit reuse to simplify the computational complexity of evaluating reductions. Finally, we present an algorithm for the optimal application of such simplifications resulting in an equivalent specification with minimum complexity.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111041",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gautam",
+        "last_name": "",
+        "institution": "Institut de Recherche en Informatique et Systèmes Aléatoires"
+      },
+      {
+        "first_name": "Sanjay",
+        "last_name": "Rajopadhye",
+        "institution": "Colorado State University"
+      }
+    ],
+    "dblp_key": "conf/popl/GuptaR06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111059",
+    "title": "Hybrid type checking",
+    "abstract": "Traditional static type systems are very effective for verifying basic interface specifications, but are somewhat limited in the kinds specifications they support. Dynamically-checked contracts can enforce more precise specifications, but these are not checked until run time, resulting in incomplete detection of defects. Hybrid type checking is a synthesis of these two approaches that enforces precise interface specifications, via static analysis where possible, but also via dynamic checks where necessary. This paper explores the key ideas and implications of hybrid type checking, in the context of the simply-typed A-calculus with arbitrary refinements of base types.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111059",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": "University of California, Santa Cruz"
+      }
+    ],
+    "dblp_key": "conf/popl/Flanagan06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111038",
+    "title": "Why dependent types matter",
+    "abstract": "Language designers have in recent years proposed a wealth of richer type systems for programming which seek to extend the range of statically enforced guarantees on data and code. Most such proposals have been evolutionary extensions of ML or Haskell, offering programmers a balanced compromise between expressive strength and existing well-understood technology. Typically they revolve around type- or kind-indexed types such as GADTs, supported by limited equality reasoning at the type-checking level, thus separating the dynamic behaviour of programs from the (simpler) static behaviour of indexing information occurring in their types.I want to argue in this talk for a more radical departure from such practice by examining full spectrum type dependency, lifting such restrictions on the data upon which types may depend. Conor McBride and I designed the language EPIGRAM for experiments in programming with inductive families of data (of which GADTs are a special case). Using it for illustration, I will explore some of the possibilities and challenges afforded by full spectrum type dependency at the static and dynamic level:",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111038",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "James",
+        "last_name": "McKinna",
+        "institution": "University of St Andrews"
+      }
+    ],
+    "dblp_key": "conf/popl/McKinna06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111043",
+    "title": "Engineering with logic: HOL specification and symbolic-evaluation testing for TCP implementations",
+    "abstract": "The TCP/IP protocols and Sockets API underlie much of modern computation, but their semantics have historically been very complex and ill-defined. The real standard is the de facto one of the common implementations, including, for example, the 15,000--20,000 lines of C in the BSD implementation. Dealing rigorously with the behaviour of such bodies of code is challenging.We have recently developed a post-hoc specification of TCP, UDP, and Sockets that is rigorous, detailed, readable, has broad coverage, and is remarkably accurate. In this paper we describe the novel techniques that were required.Working within a general-purpose proof assistant (HOL), we developed language idioms (within higher-order logic) in which to write the specification: operational semantics with nondeterminism, time, system calls, monadic relational programming, etc. We followed an experimental semantics approach, validating the specification against several thousand traces captured from three implementations (FreeBSD, Linux, and WinXP). Many differences between these were identified, and a number of bugs. Validation was done using a special-purpose symbolic model checker programmed above HOL.We suggest that similar logic engineering techniques could be applied to future critical software infrastructure at design time, leading to cleaner designs and (via specification-based testing using a similar checker) more predictable implementations.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111043",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Steve",
+        "last_name": "Bishop",
+        "institution": "Bridge University"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Fairbairn",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Norrish",
+        "institution": "Canberra (United Kingdom)"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Sewell",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Smith",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Keith",
+        "last_name": "Wansbrough",
+        "institution": "University of Cambridge"
+      }
+    ],
+    "dblp_key": "conf/popl/BishopFNSSW06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111055",
+    "title": "Compiler-directed channel allocation for saving power in on-chip networks",
+    "abstract": "Increasing complexity in the communication patterns of embedded applications parallelized over multiple processing units makes it difficult to continue using the traditional bus-based on-chip communication techniques. The main contribution of this paper is to demonstrate the importance of compiler technology in reducing power consumption of applications designed for emerging multi processor, NoC (Network-on-Chip) based embedded systems. Specifically, we propose and evaluate a compiler-directed approach to NoC power management in the context of array-intensive applications, used frequently in embedded image/video processing. The unique characteristic of the compiler-based approach proposed in this paper is that it increases the idle periods of communication channels by reusing the same set of channels for as many communication messages as possible. The unused channels in this case take better advantage of the underlying power saving mechanism employed by the network architecture. However, this channel reuse optimization should be applied with care as it can hurt performance if two or more simultaneous communications are mapped onto the same set of channels. Therefore, the problem addressed in this paper is one of reducing the number of channels used to implement a set of communications without increasing the communication latency significantly. To test the effectiveness of our approach, we implemented it within an optimizing compiler and performed experiments using twelve application codes and a network simulation environment. Our experiments show that the proposed compiler-based approach is very successful in practice and works well under both hardware based and software based channel turn-off schemes.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111055",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Guangyu",
+        "last_name": "Chen",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Feihui",
+        "last_name": "Li",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Mahmut",
+        "last_name": "Kandemir",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "conf/popl/ChenLK06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111066",
+    "title": "Certified assembly programming with embedded code pointers",
+    "abstract": "Embedded code pointers (ECPs) are stored handles of functions and continuations commonly seen in low-level binaries as well as functional or higher-order programs. ECPs are known to be very hard to support well in Hoare-logic style verification systems. As a result, existing proof-carrying code (PCC) systems have to either sacrifice the expressiveness or the modularity of program specifications, or resort to construction of complex semantic models. In Reynolds's LICS'02 paper, supporting ECPs is listed as one of the main open problems for separation logic.In this paper we present a simple and general technique for solving the ECP problem for Hoare-logic-based PCC systems. By adding a small amount of syntax to the assertion language, we show how to combine semantic consequence relation with syntactic proof techniques. The result is a new powerful framework that can perform modular reasoning on ECPs while still retaining the expressiveness of Hoare logic. We show how to use our techniques to support polymorphism, closures, and other language extensions and how to solve the ECP problem for separation logic. Our system is fully mechanized. We give its complete soundness proof and a full verification of Reynolds's CPS-style \"list-append\" example in the Coq proof assistant.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111066",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Zhaozhong",
+        "last_name": "Ni",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/popl/NiS06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111042",
+    "title": "Formal certification of a compiler back-end or: programming a compiler with a proof assistant",
+    "abstract": "This paper reports on the development and formal certification (proof of semantic preservation) of a compiler from Cminor (a C-like imperative language) to PowerPC assembly code, using the Coq proof assistant both for programming the compiler and for proving its correctness. Such a certified compiler is useful in the context of formal methods applied to the certification of critical software: the certification of the compiler guarantees that the safety properties proved on the source code hold for the executable compiled code as well.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111042",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Xavier",
+        "last_name": "Leroy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/Leroy06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111060",
+    "title": "A polymorphic modal type system for lisp-like multi-staged languages",
+    "abstract": "This article presents a polymorphic modal type system and its principal type inference algorithm that conservatively extend ML by all of Lisp's staging constructs (the quasi-quotation system). The combination is meaningful because ML is a practical higher-order, impure, and typed language, while Lisp's quasi-quotation system has long evolved complying with the demands from multi-staged programming practices. Our type system supports open code, unrestricted operations on references, intentional variable-capturing substitution as well as capture-avoiding substitution, and lifting values into code, whose combination escaped all the previous systems.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111060",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ik-Soon",
+        "last_name": "Kim",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Kwangkeun",
+        "last_name": "Yi",
+        "institution": "Seoul National University"
+      },
+      {
+        "first_name": "Cristiano",
+        "last_name": "Calcagno",
+        "institution": "Imperial Valley College"
+      }
+    ],
+    "dblp_key": "conf/popl/KimYC06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111068",
+    "title": "Autolocker: synchronization inference for atomic sections",
+    "abstract": "The movement to multi-core processors increases the need for simpler, more robust parallel programming models. Atomic sections have been widely recognized for their ease of use. They are simpler and safer to use than manual locking and they increase modularity. But existing proposals have several practical problems, including high overhead and poor interaction with I/O. We present pessimistic atomic sections, a fresh approach that retains many of the advantages of optimistic atomic sections as seen in \"transactional memory\" without sacrificing performance or compatibility. Pessimistic atomic sections employ the locking mechanisms familiar to programmers while relieving them of most burdens of lock-based programming, including deadlocks. Significantly, pessimistic atomic sections separate correctness from performance: they allow programmers to extract more parallelism via finer-grained locking without fear of introducing bugs. We believe this property is crucial for exploiting multi-core processor designs.We describe a tool, Autolocker, that automatically converts pessimistic atomic sections into standard lock-based code. Autolocker relies extensively on program analysis to determine a correct locking policy free of deadlocks and race conditions. We evaluate the expressiveness of Autolocker by modifying a 50,000 line high-performance web server to use atomic sections while retaining the original locking policy. We analyze Autolocker's performance using microbenchmarks, where Autolocker outperforms software transactional memory by more than a factor of 3.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111068",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Bill",
+        "last_name": "McCloskey",
+        "institution": "Berkeley College"
+      },
+      {
+        "first_name": "Feng",
+        "last_name": "Zhou",
+        "institution": "Berkeley College"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Gay",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Brewer",
+        "institution": "Intel (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/McCloskeyZGB06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111056",
+    "title": "Fast and loose reasoning is morally correct",
+    "abstract": "Functional programmers often reason about programs as if they were written in a total language, expecting the results to carry over to non-total (partial) languages. We justify such reasoning.Two languages are defined, one total and one partial, with identical syntax. The semantics of the partial language includes partial and infinite values, and all types are lifted, including the function spaces. A partial equivalence relation (PER) is then defined, the domain of which is the total subset of the partial language. For types not containing function spaces the PER relates equal values, and functions are related if they map related values to related values.It is proved that if two closed terms have the same semantics in the total language, then they have related semantics in the partial language. It is also shown that the PER gives rise to a bicartesian closed category which can be used to reason about values in the domain of the relation.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111056",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Nils Anders",
+        "last_name": "Danielsson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Hughes",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Patrik",
+        "last_name": "Jansson",
+        "institution": "Chalmers University of Technology"
+      },
+      {
+        "first_name": "Jeremy",
+        "last_name": "Gibbons",
+        "institution": "University of Oxford"
+      }
+    ],
+    "dblp_key": "conf/popl/DanielssonHJG06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111044",
+    "title": "Decidability and proof systems for language-based noninterference relations",
+    "abstract": "Noninterference is the basic semantical condition used to account for confidentiality and integrity-related properties in programming languages. There appears to be an at least implicit belief in the programming languages community that partial approaches based on type systems or other static analysis techniques are necessary for noninterference analyses to be tractable. In this paper we show that this belief is not necessarily true. We focus on the notion of strong low bisimulation proposed by Sabelfeld and Sands. We show that, relative to a decidable expression theory, strong low bisimulation is decidable for a simple parallel while-language, and we give a sound and relatively complete proof system for deriving noninterference assertions. The completeness proof provides an effective proof search strategy. Moreover, we show that common alternative noninterference relations based on traces or input-output relations are undecidable. The first part of the paper is cast in terms of multi-level security. In the second part of the paper we generalize the setting to accommodate a form of intransitive interference. We discuss the model and show how the decidability and proof system results generalize to this richer setting.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111044",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mads",
+        "last_name": "Dam",
+        "institution": "Kista Photonics Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/Dam06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111051",
+    "title": "A fixpoint calculus for local and global program flows",
+    "abstract": "We define a new fixpoint modal logic, the visibly pushdown μ-calculus (VP-μ), as an extension of the modal μ-calculus. The models of this logic are execution trees of structured programs where the procedure calls and returns are made visible. This new logic can express pushdown specifications on the model that its classical counterpart cannot, and is motivated by recent work on visibly pushdown languages [4]. We show that our logic naturally captures several interesting program specifications in program verification and dataflow analysis. This includes a variety of program specifications such as computing combinations of local and global program flows, pre/post conditions of procedures, security properties involving the context stack, and interprocedural dataflow analysis properties. The logic can capture flow-sensitive and inter-procedural analysis, and it has constructs that allow skipping procedure calls so that local flows in a procedure can also be tracked. The logic generalizes the semantics of the modal μ-calculus by considering summaries instead of nodes as first-class objects, with appropriate constructs for concatenating summaries, and naturally captures the way in which pushdown models are model-checked. The main result of the paper is that the model-checking problem for VP-μ is effectively solvable against pushdown models with no more effort than that required for weaker logics such as CTL. We also investigate the expressive power of the logic VP-μ: we show that it encompasses all properties expressed by a corresponding pushdown temporal logic on linear structures (caret [2]) as well as by the classical μ-calculus. This makes VP-μ the most expressive known program logic for which algorithmic software model checking is feasible. In fact, the decidability of most known program logics (μ-calculus, temporal logics LTL and CTL, caret, etc.) can be understood by their interpretation in the monadic second-order logic over trees. This is not true for the logic VP-μ, making it a new powerful tractable program logic.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111051",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Rajeev",
+        "last_name": "Alur",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "Swarat",
+        "last_name": "Chaudhuri",
+        "institution": "California University of Pennsylvania"
+      },
+      {
+        "first_name": "P.",
+        "last_name": "Madhusudan",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/popl/AlurCM06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111073",
+    "title": "Staged allocation: a compositional technique for specifying and implementing procedure calling conventions",
+    "abstract": "We present staged allocation, a technique for specifying calling conventions by composing tiny allocators called stages. A specification written using staged allocation has a precise, formal semantics, and it can be executed directly inside a compiler. Specifications of nine standard C~calling conventions range in size from 15 to 30 lines each. An implementation of staged allocation takes about 250 lines of ML or 650~lines of C++. Each specification can be used not only to help a compiler implement the calling convention but also to generate a test suite.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111073",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Reuben",
+        "last_name": "Olinsky",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Lindig",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "Norman F.",
+        "last_name": "Ramsey",
+        "institution": "Harvard University Press"
+      }
+    ],
+    "dblp_key": "conf/popl/OlinskyLR06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111045",
+    "title": "On flow-sensitive security types",
+    "abstract": "This article investigates formal properties of a family of semantically sound flow-sensitive type systems for tracking information flow in simple While programs. The family is indexed by the choice of flow lattice.By choosing the flow lattice to be the powerset of program variables, we obtain a system which, in a very strong sense, subsumes all other systems in the family (in particular, for each program, it provides a principal typing from which all others may be inferred). This distinguished system is shown to be equivalent to, though more simply described than, Amtoft and Banerjee's Hoare-style independence logic (SAS'04).In general, some lattices are more expressive than others. Despite this, we show that no type system in the family can give better results for a given choice of lattice than the type system for that lattice itself.Finally, for any program typeable in one of these systems, we show how to construct an equivalent program which is typeable in a simple flow-insensitive system. We argue that this general approach could be useful in a proof-carrying-code setting.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111045",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Hunt",
+        "institution": "City, University of London"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Sands",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/HuntS06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111039",
+    "title": "The next 700 data description languages",
+    "abstract": "In the spirit of Landin, we present a calculus of dependent types to serve as the semantic foundation for a family of languages called data description languages. Such languages, which include pads, datascript, and packettypes, are designed to facilitate programming with ad hoc data, ie, data not in well-behaved relational or xml formats. In the calculus, each type describes the physical layout and semantic properties of a data source. In the semantics, we interpret types simultaneously as the in-memory representation of the data described and as parsers for the data source. The parsing functions are robust, automatically detecting and recording errors in the data stream without halting parsing. We show the parsers are type-correct, returning data whose type matches the simple-type interpretation of the specification. We also prove the parsers are \"error-correct,\" accurately reporting the number of physical and semantic errors that occur in the returned data. We use the calculus to describe the features of various data description languages, and we discuss how we have used the calculus to improve PADS.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111039",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Kathleen",
+        "last_name": "Fisher",
+        "institution": "AT&T (United States)"
+      },
+      {
+        "first_name": "Yitzhak",
+        "last_name": "Mandelbaum",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/FisherMW06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111050",
+    "title": "Small bisimulations for reasoning about higher-order imperative programs",
+    "abstract": "We introduce a new notion of bisimulation for showing contextual equivalence of expressions in an untyped lambda-calculus with an explicit store, and in which all expressed values, including higher-order values, are storable. Our notion of bisimulation leads to smaller and more tractable relations than does the method of Sumii and Pierce [31]. In particular, our method allows one to write down a bisimulation relation directly in cases where [31] requires an inductive specification, and where the principle of local invariants [22] is inapplicable. Our method can also express examples with higher-order functions, in contrast with the most widely known previous methods [4, 22, 32] which are limited in their ability to deal with such examples. The bisimulation conditions are derived by manually extracting proof obligations from a hypothetical direct proof of contextual equivalence.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111050",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Vasileios",
+        "last_name": "Koutavas",
+        "institution": "Universidad del Noreste"
+      },
+      {
+        "first_name": "Mitchell",
+        "last_name": "Wand",
+        "institution": "Universidad del Noreste"
+      }
+    ],
+    "dblp_key": "conf/popl/KoutavasW06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111053",
+    "title": "Adventures in time and space",
+    "abstract": "Abstract. This paper investigates what is essentially a call-by-value version of PCF under a complexity-theoretically motivated type system. The programming formalism, ATR, has its first-order programs characterize the polynomial-time computable functions, and its second-order programs characterize the type-2 basic feasible functionals of Mehlhorn and of Cook and Urquhart. (The ATR-types are confined to levels 0, 1, and 2.) The type system comes in two parts, one that primarily restricts the sizes of values of expressions and a second that primarily restricts the time required to evaluate expressions. The size-restricted part is motivated by Bellantoni and Cook’s and Leivant’s implicit characterizations of polynomial-time. The time-restricting part is an affine version of Barber and Plotkin’s DILL. Two semantics are constructed for ATR. The first is a pruning of the naïve denotational semantics for ATR. This pruning removes certain functions that cause otherwise feasible forms of recursion to go wrong. The second semantics is a model for ATR’s time complexity relative to a certain abstract machine. This model provides a setting for complexity recurrences arising from ATR recursions, the solutions of which yield second-order polynomial time bounds. The time-complexity semantics is also shown to be sound relative to the costs of interpretation on the abstract machine. 1.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111053",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Norman",
+        "last_name": "Danner",
+        "institution": "Wesleyan University"
+      },
+      {
+        "first_name": "James S.",
+        "last_name": "Royer",
+        "institution": "Syracuse University"
+      }
+    ],
+    "dblp_key": "conf/popl/DannerR06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111065",
+    "title": "Frame rules from answer types for code pointers",
+    "abstract": "We define a type system, which may also be considered as a simple Hoare logic, for a fragment of an assembly language that deals with code pointers and jumps. The typing is aimed at local reasoning in the sense that only the type of a code pointer is needed, and there is no need to know the whole code itself. The main features of the type system are separation logic connectives for describing the heap, and polymorphic answer types of continuations for keeping track of jumps. Specifically, we address an interaction between separation and answer types: frame rules for local reasoning in the presence of jumps are recovered by instantiating the answer type. However, the instantiation of answer types is not sound for all types. To guarantee soundness, we restrict instantiation to closed types, where the notion of closedness arises from biorthogonality (in a sense inspired by Krivine and Pitts). A machine state is orthogonal to a disjoint heap if their combination does not lead to a fault. Closed types are sets of machine states that are orthogonal to a set of heaps. We use closed types as well-behaved answer types.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111065",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Hayo",
+        "last_name": "Thielecke",
+        "institution": "University of Birmingham"
+      }
+    ],
+    "dblp_key": "conf/popl/Thielecke06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111069",
+    "title": "Protecting representation with effect encapsulation",
+    "abstract": "Representation exposure is a well-known problem in the object-oriented realm. Object encapsulation mechanisms have established a tradition for solving this problem based on a principle of reference containment. This paper proposes a novel type system which is based on a different principle, we call effect encapsulation, which confines side effects, rather than object references, according to an ownership structure. Compared to object encapsulation, effect encapsulation liberates us from the restriction on object referenceability and offers more flexibility. In this paper, we show that effect encapsulation can be statically type checked.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111069",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Yi",
+        "last_name": "Lu",
+        "institution": "UNSW Sydney"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Potter",
+        "institution": "UNSW Sydney"
+      }
+    ],
+    "dblp_key": "conf/popl/LuP06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111048",
+    "title": "Verifying properties of well-founded linked lists",
+    "abstract": "We describe a novel method for verifying programs that manipulate linked lists, based on two new predicates that characterize reachability of heap cells. These predicates allow reasoning about both acyclic and cyclic lists uniformly with equal ease. The crucial insight behind our approach is that a circular list invariably contains a distinguished head cell that provides a handle on the list. This observation suggests a programming methodology that requires the heap of the program at each step to be well-founded, i.e., for any field f in the program, every sequence u.f,u.f.f,... contains at least one head cell. We believe that our methodology captures the most common idiom of programming with linked data structures. We enforce our methodology by automatically instrumenting the program with updates to two auxiliary variables representing these predicates and adding assertions in terms of these auxiliary variables. To prove program properties and the instrumented assertions, we provide a first-order axiomatization of our two predicates. We also introduce a novel induction principle made possible by the well-foundedness of the heap. We use our induction principle to derive from two basic axioms a small set of additional first-order axioms that are useful for proving the correctness of several programs. We have implemented our method in a tool and used it to verify the correctness of a variety of nontrivial programs manipulating both acyclic and cyclic singly-linked lists and doubly-linked lists. We also demonstrate the use of indexed predicate abstraction to automatically synthesize loop invariants for these examples.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111048",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Shuvendu K.",
+        "last_name": "Lahiri",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Shaz",
+        "last_name": "Qadeer",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/LahiriQ06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111062",
+    "title": "A virtual class calculus",
+    "abstract": "Virtual classes are class-valued attributes of objects. Like virtual methods, virtual classes are defined in an object's class and may be redefined within subclasses. They resemble inner classes, which are also defined within a class, but virtual classes are accessed through object instances, not as static components of a class. When used as types, virtual classes depend upon object identity -- each object instance introduces a new family of virtual class types. Virtual classes support large-scale program composition techniques, including higher-order hierarchies and family polymorphism. The original definition of virtual classes in BETA left open the question of static type safety, since some type errors were not caught until runtime. Later the languages Caesar and gbeta have used a more strict static analysis in order to ensure static type safety. However, the existence of a sound, statically typed model for virtual classes has been a long-standing open question. This paper presents a virtual class calculus, VC, that captures the essence of virtual classes in these full-fledged programming languages. The key contributions of the paper are a formalization of the dynamic and static semantics of VC and a proof of the soundness of VC.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111062",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Erik",
+        "last_name": "Ernst",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Klaus",
+        "last_name": "Ostermann",
+        "institution": "Technical University of Darmstadt"
+      },
+      {
+        "first_name": "William R.",
+        "last_name": "Cook",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/popl/ErnstOC06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111072",
+    "title": "A verifiable SSA program representation for aggressive compiler optimization",
+    "abstract": "We present a verifiable low-level program representation to embed, propagate, and preserve safety information in high perfor-mance compilers for safe languages such as Java and C#. Our representation precisely encodes safety information via static single-assignment (SSA) [11, 3] proof variables that are first-class constructs in the program.We argue that our representation allows a compiler to both (1) express aggressively optimized machine-independent code and (2) leverage existing compiler infrastructure to preserve safety information during optimization. We demonstrate that this approach supports standard compiler optimizations, requires minimal changes to the implementation of those optimizations, and does not artificially impede those optimizations to preserve safety. We also describe a simple type system that formalizes type safety in an SSA-style control-flow graph program representation. Through the types of proof variables, our system enables compositional verification of memory safety in optimized code. Finally, we discuss experiences integrating this representation into the machine-independent global optimizer of STARJIT, a high-performance just-in-time compiler that performs aggressive control-flow, data-flow, and algebraic optimizations and is competitive with top production systems.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111072",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Vijay",
+        "last_name": "Menon",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Neal",
+        "last_name": "Glew",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Brian",
+        "last_name": "Murphy",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "McCreight",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Tatiana",
+        "last_name": "Shpeisman",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Ali-Reza",
+        "last_name": "Adl-Tabatabai",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Leaf",
+        "last_name": "Petersen",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/MenonGMMSAP06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111054",
+    "title": "N-synchronous Kahn networks: a relaxed model of synchrony for real-time systems",
+    "abstract": "The design of high-performance stream-processing systems is a fast growing domain, driven by markets such like high-end TV, gaming, 3D animation and medical imaging. It is also a surprisingly demanding task, with respect to the algorithmic and conceptual simplicity of streaming applications. It needs the close cooperation between numerical analysts, parallel programming experts, real-time control experts and computer architects, and incurs a very high level of quality insurance and optimization.In search for improved productivity, we propose a programming model and language dedicated to high-performance stream processing. This language builds on the synchronous programming model and on domain knowledge -- the periodic evolution of streams -- to allow correct-by-construction properties to be proven by the compiler. These properties include resource requirements and delays between input and output streams. Automating this task avoids tedious and error-prone engineering, due to the combinatorics of the composition of filters with multiple data rates and formats. Correctness of the implementation is also difficult to assess with traditional (asynchronous, simulation-based) approaches. This language is thus provided with a relaxed notion of synchronous composition, called n-synchrony: two processes are n-synchronous if they can communicate in the ordinary (0-)synchronous model with a FIFO buffer of size n.Technically, we extend a core synchronous data-flow language with a notion of periodic clocks, and design a relaxed clock calculus (a type system for clocks) to allow non strictly synchronous processes to be composed or correlated. This relaxation is associated with two sub-typing rules in the clock calculus. Delay, buffer insertion and control code for these buffers are automatically inferred from the clock types through a systematic transformation into a standard synchronous program. We formally define the semantics of the language and prove the soundness and completeness of its clock calculus and synchronization transformation. Finally, the language is compared with existing formalisms.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111054",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Albert",
+        "last_name": "Cohen",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Duranton",
+        "institution": "Philips (Netherlands)"
+      },
+      {
+        "first_name": "Christine",
+        "last_name": "Eisenbeis",
+        "institution": "Laboratoire de Recherche en Informatique"
+      },
+      {
+        "first_name": "Claire",
+        "last_name": "Pagetti",
+        "institution": "Laboratoire de Recherche en Informatique"
+      },
+      {
+        "first_name": "Florence",
+        "last_name": "Plateau",
+        "institution": "Laboratoire de Recherche en Informatique"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Pouzet",
+        "institution": "Université Paris-Sud"
+      }
+    ],
+    "dblp_key": "conf/popl/CohenDEPPP06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111049",
+    "title": "Environment analysis via Delta CFA",
+    "abstract": "We describe a new program-analysis framework, based on CPS and procedure-string abstractions, that can handle critical analyses which the k-CFA framework cannot. We present the main theorems concerning correctness, show an application analysis, and describe a running implementation.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111049",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Might",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/MightS06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111071",
+    "title": "Harmless advice",
+    "abstract": "This paper defines an object-oriented language with harmless aspect-oriented advice. A piece of harmless advice is a computation that, like ordinary aspect-oriented advice, executes when control reaches a designated control-flow point. However, unlike ordinary advice, harmless advice is designed to obey a weak non-interference property. Harmless advice may change the termination behavior of computations and use I/O, but it does not otherwise influence the final result of the mainline code. The benefit of harmless advice is that it facilitates local reasoning about program behavior. More specifically, programmers may ignore harmless advice when reasoning about the partial correctness properties of their programs. In addition, programmers may add new pieces of harmless advice to pre-existing programs in typical \"after-the-fact\" aspect-oriented style without fear they will break important data invariants used by the mainline code.In order to detect and enforce harmlessness, the paper defines a novel type and effect system related to information-flow type systems. The central technical result is that well-typed harmless advice does not interfere with the mainline computation. The paper also presents an implementation of the language and a case study using harmless advice to implement security policies.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111071",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Daniel S.",
+        "last_name": "Dantas",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Walker",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/Dantas06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111046",
+    "title": "A logic for information flow in object-oriented programs",
+    "abstract": "This paper specifies, via a Hoare-like logic, an interprocedural and flow sensitive (but termination insensitive) information flow analysis for object-oriented programs. Pointer aliasing is ubiquitous in such programs, and can potentially leak confidential information. Thus the logic employs independence assertions to describe the noninterference property that formalizes confidentiality, and employs region assertions to describe possible aliasing. Programmer assertions, in the style of JML, are also allowed, thereby permitting a more fine-grained specification of information flow policy.The logic supports local reasoning about state in the style of separation logic. Small specifications are used; they mention only the variables and addresses relevant to a command. Specifications are combined using a frame rule. An algorithm for the computation of postconditions is described: under certain assumptions, there exists a strongest postcondition which the algorithm computes.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111046",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Torben",
+        "last_name": "Amtoft",
+        "institution": "Kansas State University"
+      },
+      {
+        "first_name": "Sruthi",
+        "last_name": "Bandhakavi",
+        "institution": "Kansas State University"
+      },
+      {
+        "first_name": "Anindya",
+        "last_name": "Banerjee",
+        "institution": "Kansas State University"
+      }
+    ],
+    "dblp_key": "conf/popl/AmtoftBB06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111064",
+    "title": "Specifying C++ concepts",
+    "abstract": "C++ templates are key to the design of current successful mainstream libraries and systems. They are the basis of programming techniques in diverse areas ranging from conventional general-purpose programming to software for safety-critical embedded systems. Current work on improving templates focuses on the notion of concepts (a type system for templates), which promises significantly improved error diagnostics and increased expressive power such as concept-based overloading and function template partial specialization. This paper presents C++ templates with an emphasis on problems related to separate compilation. We consider the problem of how to express concepts in a precise way that is simple enough to be usable by ordinary programmers. In doing so, we expose a few weakness of the current specification of the C++ standard library and suggest a far more precise and complete specification. We also present a systematic way of translating our proposed concept definitions, based on use-patterns rather than function signatures, into constraint sets that can serve as convenient basis for concept checking in a compiler.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111064",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gabriel Dos",
+        "last_name": "Reis",
+        "institution": ""
+      },
+      {
+        "first_name": "Bjarne",
+        "last_name": "Stroustrup",
+        "institution": "AT&T (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/ReisS06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111052",
+    "title": "The Scala experiment: can we provide better language support for component systems?",
+    "abstract": "No abstract available.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111052",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Odersky",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Odersky06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111067",
+    "title": "Associating synchronization constraints with data in an object-oriented language",
+    "abstract": "Concurrency-related bugs may happen when multiple threads access shared data and interleave in ways that do not correspond to any sequential execution. Their absence is not guaranteed by the traditional notion of “data race ” freedom. We present a new definition of data races in terms of 11 problematic interleaving scenarios, and prove that it is complete by showing that any execution not exhibiting these scenarios is serializable for a chosen set of locations. Our definition subsumes the traditional definition of a data race as well as high-level data races such as stale-value errors and inconsistent views. We also propose a language feature called atomic sets of locations, which lets programmers specify the existence of consistency properties between fields in objects, without specifying the properties themselves. We use static analysis to automatically infer those points in the code where synchronization is needed to avoid data races under our new definition. An important benefit of this approach is that, in general, far fewer annotations are required than is the case with existing approaches such as synchronized blocks or atomic sections. Our implementation successfully inferred the appropriate synchronization for a significant subset of Java’s Standard Collections framework.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111067",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mandana",
+        "last_name": "Vaziri",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Tip",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Julian",
+        "last_name": "Dolby",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/VaziriTD06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111047",
+    "title": "Polymorphic regular tree types and patterns",
+    "abstract": "We propose a type system based on regular tree grammars, where algebraic datatypes are interpreted in a structural way. Thus, the same constructors can be reused for different types and a flexible subtyping relation can be defined between types, corresponding to the inclusion of their semantics. For instance, one can define a type for lists and a subtype of this type corresponding to lists of even length. Patterns are simply types annotated with binders. This provides a generalization of algebraic patterns with the ability of matching arbitrarily deep in a value. Our main contribution, compared to languages such as XDuce and CDuce, is that we are able to deal with both polymorphism and function types.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111047",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Jérôme",
+        "last_name": "Vouillon",
+        "institution": "Centre National de la Recherche Scientifique"
+      }
+    ],
+    "dblp_key": "conf/popl/Vouillon06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111040",
+    "title": "A hierarchical model of data locality",
+    "abstract": "In POPL 2002, Petrank and Rawitz showed a universal result— finding optimal data placement is not only NP-hard but also impossible to approximate within a constant factor if P ̸ = NP. Here we study a recently published concept called reference affinity, which characterizes a group of data that are always accessed together in computation. On the theoretical side, we give the complexity for finding reference affinity in program traces, using a novel reduction that converts the notion of distance into satisfiability. We also prove that reference affinity automatically captures the hierarchical locality in divide-and-conquer computations including matrix solvers and N-body simulation. The proof establishes formal links between computation patterns in time and locality relations in space. On the practical side, we show that efficient heuristics exist. In particular, we present a sampling method and show that it is more effective than the previously published technique, especially for data that are often but not always accessed together. We show the effect on generated and real traces. These theoretical and empirical results demonstrate that effective data placement is still attainable in general-purpose programs because common (albeit not all) locality patterns can be precisely modeled and efficiently analyzed.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111040",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Chengliang",
+        "last_name": "Zhang",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Chen",
+        "last_name": "Ding",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Mitsunori",
+        "last_name": "Ogihara",
+        "institution": "University of Rochester"
+      },
+      {
+        "first_name": "Yutao",
+        "last_name": "Zhong",
+        "institution": "George Mason University"
+      },
+      {
+        "first_name": "Youfeng",
+        "last_name": "Wu",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/ZhangDOZW06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111058",
+    "title": "Stratified type inference for generalized algebraic data types",
+    "abstract": "Stratified type inference for generalized algebraic data types.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111058",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Pottier",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Yann",
+        "last_name": "Régis-Gianas",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/popl/PottierR06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111057",
+    "title": "Modular set-based analysis from contracts",
+    "abstract": "In PLT Scheme, programs consist of modules with contracts. The latter describe the inputs and outputs of functions and objects via predicates. A run-time system enforces these predicates; if a predicate fails, the enforcer raises an exception that blames a specific module with an explanation of the fault.In this paper, we show how to use such module contracts to turn set-based analysis into a fully modular parameterized analysis. Using this analysis, a static debugger can indicate for any given contract check whether the corresponding predicate is always satisfied, partially satisfied, or (potentially) completely violated. The static debugger can also predict the source of potential errors, i.e., it is sound with respect to the blame assignment of the contract system.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111057",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Philippe",
+        "last_name": "Meunier",
+        "institution": "Universidad del Noreste"
+      },
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "University of Chicago"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Universidad del Noreste"
+      }
+    ],
+    "dblp_key": "conf/popl/MeunierFF06",
+    "venue": "popl",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1111037.1111061",
+    "title": "The next mainstream programming language: a game developer&apos;s perspective",
+    "abstract": "Game developers have long been early adopters of new technologies. This is so because we are largely unburdened by legacy code: With each new hardware generation, we are free to rethink our software assumptions and develop new products using new tools and even new programming languages. As a result, games are fertile ground for applying academic advances in these areas.And never has our industry been in need of such advances as it is now! The scale and scope of game development has increased more than ten-fold over the past ten years, yet the underlying limitations of the mainstream C/C++/Java/C# language family remain largely unaddressed.The talk begins with a high-level presentation of the game developer's world: the kinds of algorithms we employ on modern CPUs and GPUs, the difficulties of componentization and concurrency, and the challenges of writing very complex software with real-time performance requirements.The talk then outlines the ways that future programming languages could help us write better code, providing examples derived from experience writing games and software frameworks that support games. The major areas covered are abstraction facilities -- how we can use them to develop more extensible frameworks and components; practical opportunities for employing stronger typing to reduce run-time failures; and the need for pervasive concurrency support, both implicit and explicit, to effectively exploit the several forms of parallelism present in games and graphics.",
+    "date": "2006-01-11",
+    "link": "https://doi.org/10.1145/1111037.1111061",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Tim",
+        "last_name": "Sweeney",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Sweeney06",
+    "venue": "popl",
+    "year": 2006
+  }
+]

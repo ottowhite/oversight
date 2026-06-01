@@ -1,0 +1,699 @@
+[
+  {
+    "paper_id": "10.1145/155090.155109",
+    "title": "Space Efficient Conservative Garbage Collection",
+    "abstract": "We call a garbage collector conservative if it has only partial information about the location of pointers, and is thus forced to treat arbitrary bit patterns as though they might be pointers, in at least some cases. We show that some very inexpensive, but previously unused techniques can have dramatic impact on the effectiveness of conservative garbage collectors in reclaiming memory. Our most significant observation is that static data that appears to point to the heap should not result in misidentified references to the heap. The garbage collector has enough information to allocate around such references. We also observe that programming style has a significant impact on the amount of spuriously retained storage, typically even if the collector is not terribly conservative. Some fairly common C and C programming styles significantly decrease the effectiveness of any garbage collector. These observations suffice to explain some of the different assessments of conservative collection that have appeared in the literature.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155109",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Hans‐Juergen",
+        "last_name": "Boehm",
+        "institution": "Hewlett-Packard (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Boehm93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155095",
+    "title": "Abstract Debugging of Higher-Order Imperative Languages",
+    "abstract": "Abstract interpretation is a formal method that enables the static determination (i.e. at compile-time) of the dynamic properties (i.e. at run-time) of programs. We present an abstract interpretation-based method, called abstract debugging, which enables the static and formal debugging of programs, prior to their execution, by finding the origin of potential bugs as well as necessary conditions for these bugs not to occur at run-time. We show how invariant assertions and intermittent assertions, such as termination, can be used to formally debug programs. Finally, we show how abstract debugging can be effectively and efficiently applied to higher-order imperative programs with exceptions and jumps to non-local labels, and present the Syntox system that enables the abstract debugging of the Pascal language by the determination of the range of the scalar variables of programs.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155095",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "François",
+        "last_name": "Bourdoncle",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Bourdoncle93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155106",
+    "title": "Compiling Real-Time Programs into Schedulable Code",
+    "abstract": "We present a programming language with first-class timing constructs, whose semantics is based on timeconstrained relationships between observable events. Since a system specification postulates timing relationships between events, realizing the specification in a program becomes a more straightforward process. Using these constraints, as well as those imposed by data and control flow properties, our objective is to transform the code so that its worst-case execution time is consistent with its real-time requirements. To accomplish this goal we first translate an event-based source program into intermediate code, in which the timing constraints are imposed on the code itself, and then use a compilation technique which synthesizes feasible code from the original source program. 1 Overview The construction of a hard real-time system can, in practice, be a painful process. Many factors conspire to make this the case, among which are inflexible scheduling paradigms and the lack of high-le...",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155106",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Seongsoo",
+        "last_name": "Hong",
+        "institution": ""
+      },
+      {
+        "first_name": "R.",
+        "last_name": "Gerber",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/HongG93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155092",
+    "title": "Detection and Recovery of Endangered Variables Caused by Instruction Scheduling",
+    "abstract": "Instruction scheduling re-orders and interleaves instruction sequences from different source statements. This impacts the task of a symbolic debugger, which attempts to present the user a picture of program execution that matches the source program. At a breakpoint B, if the value in the run-time location of a variable V may not correspond to the value the user expects V to have, then this variable is endangered at B. This paper describes an approach to detecting and recovering endangered variables caused by instruction scheduling. We measure the effects of instruction scheduling on a symbolic debugger's ability to recover source values at a breakpoint. This paper reports measurements for three C programs from the SPEC suite and a collection of programs from the Numerical Recipes, which have been compiled with a variant of a commercial C compiler.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155092",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ali-Reza",
+        "last_name": "Adl-Tabatabai",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Thomas R.",
+        "last_name": "Gross",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Adl-TabatabaiG93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155101",
+    "title": "Global Optimizations for Parallelism and Locality on Scalable Parallel Machines",
+    "abstract": "Data locality is critical to achieving high performance on large-scale parallel machines. Non-local data accesses result in communication that can greatly impact performance. Thus the mapping, or decomposition, of the computation and data onto the processors of a scalable parallel machine is a key issue in compiling programs for these architectures. This paper describes a compiler algorithm that automatically finds computation and data decompositions that optimize both parallelism and locality. This algorithm is designed for use with both distributed and shared address space machines. The scope of our algorithm is dense matrix computations where the array accesses are affine functions of the loop indices. Our algorithm can handle programs with general nestings of parallel and sequential loops. We present a mathematical framework that enables us to systematically derive the decompositions. Our algorithm can exploit parallelism in both fully parallelizable loops as well as loops that require explicit synchronization. The algorithm will trade off extra degrees of parallelism to eliminate communication. If communication is needed, the algorithm will try to introduce the least expensive forms of communication into those parts of the program that are least frequently executed. 1",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155101",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jennifer M.",
+        "last_name": "Anderson",
+        "institution": ""
+      },
+      {
+        "first_name": "Monica S.",
+        "last_name": "Lam",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/AndersonL93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155098",
+    "title": "Dependence-Based Program Analysis",
+    "abstract": "Program analysis and optimization can be speeded up through the use of the dependence flow graph (DFG), a representation of program dependences which generalizes def-use chains and static single assignment (SSA) form. In this paper, we give a simple graph-theoretic description of the DFG and show how the DFG for a program can be constructed in O(EV ) time. We then show how forward and backward dataflow analyses can be performed efficiently on the DFG, using constant propagation and elimination of partial redundancies as examples. These analyses can be framed as solutions of dataflow equations in the DFG. Our construction algorithm is of independent interest because it can be used to construct a program&amp;apos;s control dependence graph in O(E) time and its SSA representation in O(EV ) time, which are improvements over existing algorithms. 1 Introduction Anumber of recent papers have focused attention on the problem of speeding up program optimization [FOW87, BMO90, CCF91, PBJ + 91, CFR +...",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155098",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Richard",
+        "last_name": "Johnson",
+        "institution": "Cornell University"
+      },
+      {
+        "first_name": "Keshav",
+        "last_name": "Pingali",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/JohnsonP93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155107",
+    "title": "Improving the Cache Locality of Memory Allocation",
+    "abstract": "The allocation and disposal of memory is a ubiquitous operation in most programs. Rarely do programmers concern themselves with details of memory allocators; most assume that memory allocators provided by the system perform well. This paper presents a performance evaluation of the reference locality of dynamic storage allocation algorithms based on trace-driven simualtion of five large allocation-intensive C programs. In this paper, we show how the design of a memory allocator can significantly affect the reference locality for various applications. Our measurements show that poor locality in sequential-fit allocation algorithms reduces program performance, both by increasing paging and cache miss rates. While increased paging can be debilitating on any architecture, cache misses rates are also important for modern computer architectures. We show that algorithms attempting to be space-efficient by coalescing adjacent free objects show poor reference locality, possibly negating the benefits of space efficiency. At the other extreme, algorithms can expend considerable effort to increase reference locality yet gain little in total execution performance. Our measurements suggest an allocator design that is both very fast and has good locality of reference.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155107",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dirk",
+        "last_name": "Grunwald",
+        "institution": ""
+      },
+      {
+        "first_name": "Benjamin G.",
+        "last_name": "Zorn",
+        "institution": ""
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Henderson",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/GrunwaldZH93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155097",
+    "title": "A Practical Data Flow Framework for Array Reference Analysis and its Use in Optimizations",
+    "abstract": "Data flow analysis techniques have traditionally been restricted to the analysis of scalar variables. This retriction, however, imposes a limitation on the kinds of optimizations that can be performed in loops containing array references. We present a data flow framework for array reference analysis that provides the information needed in various optimizations targeted at sequential or fine-grained parallel architectures. The framework extends the traditional scalar framework by incorporating iteration distance values into the analysis to qualify the computed data flow solution during the fixed point iteration. Analyses phrased in this framework are capable of discovering recurrent access patterns among array references that evolve during the execution of a loop. Applications of our framework are discussed for register allocation, load/store optimizations, and controlled loop unrolling.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155097",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Evelyn",
+        "last_name": "Duesterwald",
+        "institution": "University of Pittsburgh"
+      },
+      {
+        "first_name": "Rajiv",
+        "last_name": "Gupta",
+        "institution": "University of Pittsburgh"
+      },
+      {
+        "first_name": "Mary Lou",
+        "last_name": "Soffa",
+        "institution": "University of Pittsburgh"
+      }
+    ],
+    "dblp_key": "conf/pldi/DuesterwaldGS93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155103",
+    "title": "First-Class Data-Type Representations in SchemeXerox",
+    "abstract": "In most programming language implementations, the compiler has detailed knowledge of the representations of and operations on primitive data typed and data-type constructors. In SCHEMEXEROX, this knowledge is almost entirely external to the compiler, in ordinary, procedural user code. The primitive representations and operations are embodied in first-class “representation types” that are constructed and implemented in an abstract and high-level fashion. Despite this abstractness, a few generally-useful optimizing transformations are sufficient to allow the SCHEMEXEROX compiler to generate efficient code for the primitive operations, essentially as good as could be achieved using more contorted, traditional techniques.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155103",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Norman I.",
+        "last_name": "Adams",
+        "institution": "Palo Alto Research Center"
+      },
+      {
+        "first_name": "Pavel",
+        "last_name": "Curtis",
+        "institution": "Palo Alto Research Center"
+      },
+      {
+        "first_name": "Mike",
+        "last_name": "Spreitzer",
+        "institution": "Palo Alto Research Center"
+      }
+    ],
+    "dblp_key": "conf/pldi/AdamsCS93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155110",
+    "title": "Guardians in a Generation-Based Garbage Collector",
+    "abstract": "This paper describes a new language feature that allows dynamically allocated objects to be saved from deallocation by an automatic storage management system so that clean-up or other actions can be performed using the data stored within the objects. The program has full control over the timing of clean-up actions, which eliminates several potential problems and often eliminates the need for critical sections in code that interacts with clean-up actions. Our implementation is “generation-friendly” in the sense that the additional overhead within a generation-based garbage collector is proportional to the work already done there, and the overhead within the mutator is proportional to the number of clean-up actions actually performed.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155110",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "R. Kent",
+        "last_name": "Dybvig",
+        "institution": "Laboratoire d'Informatique de Paris-Nord"
+      },
+      {
+        "first_name": "Carl",
+        "last_name": "Bruggeman",
+        "institution": "Laboratoire d'Informatique de Paris-Nord"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Eby",
+        "institution": "Laboratoire d'Informatique de Paris-Nord"
+      }
+    ],
+    "dblp_key": "conf/pldi/DybvigBE93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155108",
+    "title": "Using Lifetime Predictors to Improve Memory Allocation Performance",
+    "abstract": "Dynamic storage allocation is used heavily in many application areas including interpreters, simulators, optimizers, and translators. We describe research that can improve all aspects of the performance of dynamic storage allocation by predicting the lifetimes of short-lived objects when they are allocated. Using five significant, allocation-intensive C programs, we show that a great fraction of all bytes allocated are short-lived (> 90% in all cases). Furthermore, we describe an algorithm for liftetime prediction that accurately predicts the lifetimes of 42–99% of all objects allocated. We describe and simulate a storage allocator that takes adavantage of lifetime prediction of short-lived objects and show that it can significantly improve a program's memory overhead and reference locality, and even, at times, improve CPU performance as well.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155108",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David A.",
+        "last_name": "Barrett",
+        "institution": ""
+      },
+      {
+        "first_name": "Benjamin G.",
+        "last_name": "Zorn",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/BarrettZ93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155094",
+    "title": "Efficient Accomodation of May-Alias Information in SSA Form",
+    "abstract": "We present an algorithm for incrementally including may-alias information into Static Single Assignment form by computing a sequence of increasingly precise (and correspondingly larger) partial SSA forms. Our experiments show significant speedup of our method over exhaustive use of may-alias information, as optimization problems converge well before most may-aliases are needed.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155094",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ron K.",
+        "last_name": "Cytron",
+        "institution": "Oberlin College"
+      },
+      {
+        "first_name": "Reid",
+        "last_name": "Gershbein",
+        "institution": "Oberlin College"
+      }
+    ],
+    "dblp_key": "conf/pldi/CytronG93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155093",
+    "title": "Isolation and Analysis of Optimization Errors",
+    "abstract": "This paper describes two related tools developed to support the isolation and analysis of optimization errors in the vpo optimizer.Both tools rely on vpo identifying sequences of changes, referred to as transformations,",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155093",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mickey R.",
+        "last_name": "Boyd",
+        "institution": "Florida State University"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Whalley",
+        "institution": "Florida State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BoydW93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155112",
+    "title": "Implementing Type Classes",
+    "abstract": "We describe the implementation of a type checker for the functional programming language Haskell that supports the use of type classes. This extends the type system of ML to support overloading (ad-hoc polymorphism) and can be used to implement features such as equality types and numeric overloading in a simple and general way.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155112",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Peterson",
+        "institution": "Yale University"
+      },
+      {
+        "first_name": "Mark P.",
+        "last_name": "Jones",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/pldi/PetersonJ93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155099",
+    "title": "Interprocedural Constant Propagation: A Study of Jump Function Implementations",
+    "abstract": "An implementation of interprocedural constant propagation must model the transmission of values through each procedure. In the framework proposed by Callahan, Cooper, Kennedy, and Torczon in 1986, this intraprocedural propagation is modeled with a jump function. While Callahan et al. propose several kinds of jump functions, they give no data to help choose between them. This paper reports on a comparative study of jump function implementations. It shows that different jump functions produce different numbers of useful constants; it suggests a particular function, called the pass-through parameter jump function, as the most cost-effective in practice.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155099",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dan",
+        "last_name": "Grove",
+        "institution": "Oracle (United States)"
+      },
+      {
+        "first_name": "Linda",
+        "last_name": "Torczon",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/GroveT93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155113",
+    "title": "The Essence of Compiling with Continuations",
+    "abstract": "In order to simplify the compilation process, many compilers for higher-order languages use the continuation-passing style (CPS) transformation in a first phase to generate an intermediate representation of the source program. The salient aspect of this intermediate form is that all procedures take an argument that represents the rest of the computation (the “continuation”). Since the nai¨ve CPS transformation considerably increases the size of programs, CPS compilers perform reductions to produce a more compact intermediate representation. Although often implemented as a part of the CPS transformation, this step is conceptually a second phase. Finally, code generators for typical CPS compilers treat continuations specially in order to optimize the interpretation of continuation parameters.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155113",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Cormac",
+        "last_name": "Flanagan",
+        "institution": ""
+      },
+      {
+        "first_name": "Amr",
+        "last_name": "Sabry",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Bruce F.",
+        "last_name": "Duba",
+        "institution": "Seattle University"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/FlanaganSDF93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155116",
+    "title": "Load/Store Range Analysis for Global Register Allocation",
+    "abstract": "Live range splitting techniques divide the live ranges of variables into live range segments to improve global register allocation. We present a new technique for live range splitting called load/store range analysis. This analysis localizes the profits and the register requirements of every access to every variable to provide a fine granularity of candidates for register allocation. Load/Store range analysis is based on the data flow analysis algorithm for def-use chaining. Experiments on a small suite of C and FORTRAN benchmark programs show that a graph coloring register allocator operating on load/store ranges often provides better allocations than the same allocator operating on live ranges. Experimental results also show that the computational cost of using load/store ranges for register allocation is moderately more than the cost of using live ranges. 1 Introduction The goal of register allocation is to map variables in an intermediate language program to either registers or mem...",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155116",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Priyadarshan",
+        "last_name": "Kolte",
+        "institution": ""
+      },
+      {
+        "first_name": "Mary Jean",
+        "last_name": "Harrold",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/KolteH93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155100",
+    "title": "Orchestrating Interactions Among Parallel Computations",
+    "abstract": "Many parallel programs contain multiple sub-computations, each with distinct communication and load balancing requirements. The traditional approach to compiling such programs is to impose a processor synchronization barrier between sub-computations, optimizing each as a separate entity. This paper develops a methodology for managing the interactions among sub-computations, avoiding strict synchronization where concurrent or pipelined relationships are possible.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155100",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Susan L.",
+        "last_name": "Graham",
+        "institution": "Berkeley College"
+      },
+      {
+        "first_name": "Steven",
+        "last_name": "Lucco",
+        "institution": "Berkeley College"
+      },
+      {
+        "first_name": "Oliver",
+        "last_name": "Sharp",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/pldi/GrahamLS93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155117",
+    "title": "Balanced Scheduling: Instruction Scheduling When Memory Latency is Uncertain",
+    "abstract": "Traditional list schedulers order instructions based on an optimistic estimate of the load delay imposed by the implementation. Therefore they cannot respond to variations in load latencies (due to cache hits or misses, congestion in the memory interconnect, etc.) and cannot easily be applied across different implementations. We have developed an alternative algorithm, known as balanced scheduling, that schedule instructions based on an estimate of the amount of instruction level parallelism in the program. Since scheduling decisions are program-rather than machine-based, balanced scheduling is unaffected by implementation changes. Since it is based on the amount of instruction level parallelism that a program can support, it can respond better to variations in load latencies. Performance improvements over a traditional list scheduler on a Fortran workload and simulating several different machine types (cache-based workstations, large parallel machines with a multipath interconnect and a combination, all with non-blocking processors) are quite good, averaging between 3% and 18%.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155117",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel R.",
+        "last_name": "Kerns",
+        "institution": "Mercer Island School District"
+      },
+      {
+        "first_name": "Susan J.",
+        "last_name": "Eggers",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/pldi/KernsE93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155115",
+    "title": "Lifetime-Sensitive Modulo Scheduling",
+    "abstract": "This paper shows how to software pipeline a loop for minimal register pressure without sacrificing the loop's minimum execution time. This novel bidirectional slack-scheduling method has been implemented in a FORTRAN compiler and tested on many scientific benchmarks. The empirical results—when measured against an absolute lower bound on execution time, and against a novel schedule-independent absolute lower bound on register pressure—indicate near-optimal performance.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155115",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Richard A.",
+        "last_name": "Huff",
+        "institution": "Cornell University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Huff93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155119",
+    "title": "Branch Prediction For Free",
+    "abstract": "Many compilers rely on branch prediction to improve program performance by identifying frequently executed regions and by aiding in scheduling instructions.Profile-based predictors require a time-consuming and inconvenient compile-profile-compile cycle in order to make predictions. We present a program-based branch predictor that performs well for a large and diverse set of programs written in C and Fortran. In addition to using natural loop analysis to predict branches that control the iteration of loops, we focus on heuristics for predicting non-loop branches, which dominate the dynamic branch count of many programs. The heuristics are simple and require little program analysis, yet they are effective in terms of coverage and miss rate. Although program-based prediction does not equal the accuracy of profile-based prediction, we believe it reaches a sufficiently high level to be useful. Additional type and semantic information available to a compiler would enhance our heuristics.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155119",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Ball",
+        "institution": "Nokia (United States)"
+      },
+      {
+        "first_name": "James R.",
+        "last_name": "Larus",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/BallL93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155096",
+    "title": "Interprocedural Side Effect Analysis With Pointer Aliasing",
+    "abstract": "We present a new interprocedural modification side effects algorithm for C programs, that can discern side effects through general-purpose pointer usage. Ours is the first complete design and implementation of such an algorithm. Preliminary performance findings support the practicality of the technique, which is based on our previous approximation algorithm for pointer aliases [LR92]. Each indirect store through a pointer variable is found, on average, to correspond to a store into 1.2 locations. This indicates that our program-point-specific pointer aliasing information is quite precise when used to determine the effects of these stores.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155096",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "William",
+        "last_name": "Landi",
+        "institution": ""
+      },
+      {
+        "first_name": "Barbara G.",
+        "last_name": "Ryder",
+        "institution": ""
+      },
+      {
+        "first_name": "Sean X.",
+        "last_name": "Zhang",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/LandiRZ93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155102",
+    "title": "Communication Optimization and Code Generation for Distributed Memory Machines",
+    "abstract": "This paper presents several algorithms to solve code generation and optimization problems specific to machines with distributed address spaces. Given a description of how the computation is to be partitioned across the processors in a machine, our algorithms produce an SPMD (single program multiple data) program to be run on each processor. Our compiler generated the necessary receive and send instructions, optimizes the communication by eliminating redundant communication and aggregating small messages into large messages, allocates space locally on each processor, and translates global data addresses to local addresses.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155102",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Saman",
+        "last_name": "Amarasinghe",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Monica S.",
+        "last_name": "Lam",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/AmarasingheL93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155111",
+    "title": "Real-Time Replication Garbage Collection",
+    "abstract": "We have implemented the first copying garbage collector that permits continuous unimpeded mutator access to the original objects during copying. The garbage collector incrementally replicates all accessible objects and uses a mutation log to bring the replicas up-to-date with changes made by the mutator. An experimental implementation demonstrates that the costs of using our algorithm are small and that bounded pause times of 50 milliseconds can be readily achieved.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155111",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Scott",
+        "last_name": "Nettles",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "James W.",
+        "last_name": "O’Toole",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/NettlesO93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155091",
+    "title": "Practical Data Breakpoints: Design and Implementation",
+    "abstract": "A data breakpoint associates debugging actions with programmer-specified conditions on the memory state of an executing program. Data breakpoints provide a means for discovering program bugs that are tedious or impossible to isolate using control breakpoints alone. In practice, programmers rarely use data breakpoints, because they are either unimplemented or prohibitively slow in available debugging software. In this paper, we present the design and implementation of a practical data breakpoint facility.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155091",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Wahbe",
+        "institution": ""
+      },
+      {
+        "first_name": "Steven",
+        "last_name": "Lucco",
+        "institution": ""
+      },
+      {
+        "first_name": "Susan L.",
+        "last_name": "Graham",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/WahbeLG93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155104",
+    "title": "Handling Control",
+    "abstract": "Non-local control transfer and exception handling have a long tradition in higher-order programming languages such as Common Lisp, Scheme and ML. However, each language stops short of providing a full and complementary approach—control handling is provided only if the corresponding control operator is first-order. In this work, we describe handlers in a higher-order control setting. We invoke our earlier theoretical result that all denotational models of control languages invariably include capabilities that handle control. These capabilities, when incorporated into the language, form an elegant and powerful higher-order generalization of the first-order exception-handling mechanism.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155104",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dorai",
+        "last_name": "Sitaram",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/Sitaram93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155105",
+    "title": "Programmable Syntax Macros",
+    "abstract": "Lisp has shown that a programmable syntax macro system acts as an adjunct to the compiler that gives the programmer important and powerful abstraction facilities not provided by the language. Unlike simple token substitution macros, such as are provided by CPP (the C preprocessor), syntax macros operate on Abstract Syntax Trees (ASTs). Programmable syntax macro systems have not yet been developed for syntactically rich languages such as C because rich concrete syntax requires the manual construction of syntactically valid program fragments, which is a tedious, difficult, and error prone process. Also, using two languages, one for writing the program, and one for writing macros, is another source of complexity. This research solves these problems by having the macro language be a minimal extension of the programming language, by introducing explicit code template operators into the macro language, and by using a type system to guarantee, at macro definition time, that all macros and macro functions only produce syntactically valid program fragments. The code template operators make the language context sensitive, which requires changes to the parser. The parser must perform type analysis in order to parse macro definitions, or to parse user code that invokes macros.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155105",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Weise",
+        "institution": ""
+      },
+      {
+        "first_name": "Roger F.",
+        "last_name": "Crew",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/WeiseC93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155118",
+    "title": "Reverse If-Conversion",
+    "abstract": "In this paper we present a set of isomorphic control transformations that allow the compiler to apply local scheduling techniques to acyclic subgraphs of the control flow graph. Thus, the code motion complexities of global scheduling are eliminated. This approach relies on a new technique, Reverse If-Conversion (RIC), that transforms scheduled If-Converted code back to the control flow graph representation. This paper presents the predicate internal representation, the algorithms for RIC, and the correctness of RIC. In addition, the scheduling issues are addressed and an application to software pipelining is presented.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155118",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Nancy J.",
+        "last_name": "Warter",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Scott",
+        "last_name": "Mahlke",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Wen‐mei",
+        "last_name": "Hwu",
+        "institution": "National Center for Supercomputing Applications"
+      },
+      {
+        "first_name": "B. Ramakrishna",
+        "last_name": "Rau",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/pldi/WarterMHR93",
+    "venue": "pldi",
+    "year": 1993
+  },
+  {
+    "paper_id": "10.1145/155090.155114",
+    "title": "Register Allocation with Instruction Scheduling: A New Approach",
+    "abstract": "We present a new framework in which considerations of both register allocation and instruction scheduling can be applied uniformly and simultaneously. In this framework an optimal coloring of a graph, called the parallel interference graph, provides an optimal register allocation and preserves the property that no false dependences are introduced, thus all the options for parallelism are kept for the scheduler to handle. For this framework we provide heuristics for trading off parallel scheduling with register spilling.",
+    "date": "1993-06-01",
+    "link": "https://doi.org/10.1145/155090.155114",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Shlomit S.",
+        "last_name": "Pinter",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/Pinter93",
+    "venue": "pldi",
+    "year": 1993
+  }
+]

@@ -1,0 +1,619 @@
+[
+  {
+    "paper_id": "10.1145/3377555.3377900",
+    "title": "Robust quantization of deep neural networks",
+    "abstract": "We studied robust quantization of deep neural networks (DNNs) for embedded devices. Existing compression techniques often generate DNNs that are sensitive to external errors. Because embedded devices may be affected by external lights and outside weather, DNNs running on those devices must be robust to such errors. For robust quantization of DNNs, we formulate an optimization problem that finds the bit width for each layer minimizing the robustness loss. To efficiently find the solution, we design a dynamic programming based algorithm, called Qed. We also propose an incremental algorithm, Q* that quickly finds a reasonably robust quantization and then gradually improves it. We have evaluated Qed and Q* with three DNN models (LeNet, AlexNet, and VGG-16) and with Gaussian random errors and realistic errors. For comparison, we also evaluate universal quantization that uses equal bit width for all layers and Deep Compression, a weight-sharing based compression technique. When tested with increasing size of errors, Qed most robustly gives correct inference output. Even if a DNN is optimized for robustness, its quantizations may not be robust unless Qed is used. Moreover, we evaluate Q* for its trade off in execution time and robustness. In one tenth of Qed’s execution time, Q* gives a quantization 98% as robust as the one by Qed.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377900",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Young‐Seok",
+        "last_name": "Kim",
+        "institution": "Hanyang University"
+      },
+      {
+        "first_name": "Junyeol",
+        "last_name": "Lee",
+        "institution": "Hanyang University"
+      },
+      {
+        "first_name": "Younghoon",
+        "last_name": "Kim",
+        "institution": "Hanyang University"
+      },
+      {
+        "first_name": "Jiwon",
+        "last_name": "Seo",
+        "institution": "Hanyang University"
+      }
+    ],
+    "dblp_key": "conf/cc/KimLKS20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377902",
+    "title": "Mix your contexts well: opportunities unleashed by recent advances in scaling context-sensitivity",
+    "abstract": "Existing precise context-sensitive heap analyses do not scale well for large OO programs. Further, identifying the right context abstraction becomes quite intriguing as two of the most popular categories of context abstractions (call-site- and object-sensitive) lead to theoretically incomparable precision. In this paper, we address this problem by first doing a detailed comparative study (in terms of precision and efficiency) of the existing approaches, both with and without heap cloning. In addition, we propose novel context abstractions that lead to a new sweet-spot in the arena.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377902",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Manas",
+        "last_name": "Thakur",
+        "institution": "Indian Institute of Technology Mandi"
+      },
+      {
+        "first_name": "V. Krishna",
+        "last_name": "Nandivada",
+        "institution": "Indian Institute of Technology Madras"
+      }
+    ],
+    "dblp_key": "conf/cc/ThakurN20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377888",
+    "title": "Dynamic property caches: a step towards faster JavaScript proxy objects",
+    "abstract": "Inline caches and hidden classes are two essential components for closing the performance gap between static languages such as Java, Scheme, or ML and dynamic languages such as JavaScript or Python. They rely on the observation that for a particular object access located at a particular point of the program, the shapes, usually referred to as the hidden classes, of accessed objects are likely to be the same. Taking benefit of that invariant, they replace the expensive lookup the semantics of these languages normally demand with one test, the inline cache, and a memory read indexed by an offset computed during the last cache miss. These optimizations are essential but they are not general enough to cope with JavaScript’s proxies. In particular, when the property name is itself unknown statically, inline cache-based optimizations always take a slow path.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377888",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Serrano",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "Northwestern University"
+      }
+    ],
+    "dblp_key": "conf/cc/SerranoF20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377898",
+    "title": "Is stateful packrat parsing really linear in practice? a counter-example, an improved grammar, and its parsing algorithms",
+    "abstract": "Stateful packrat parsing is an algorithm for parsing syntaxes that have context-sensitive features. It is a well-known knowledge among researchers that the running time of stateful packrat parsing is linear for real-world grammars, as demonstrated in existing studies. However, we have found the cases in real-world grammars and tools that lead its running time to become exponential.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377898",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Nariyoshi",
+        "last_name": "Chida",
+        "institution": "NTT (Japan)"
+      },
+      {
+        "first_name": "Yuhei",
+        "last_name": "Kawakoya",
+        "institution": "NTT (Japan)"
+      },
+      {
+        "first_name": "Dai",
+        "last_name": "Ikarashi",
+        "institution": "NTT (Japan)"
+      },
+      {
+        "first_name": "Kenji",
+        "last_name": "Takahashi",
+        "institution": "NTT (Japan)"
+      },
+      {
+        "first_name": "Koushik",
+        "last_name": "Sen",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/cc/ChidaKITS20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377890",
+    "title": "Vectorization-aware loop unrolling with seed forwarding",
+    "abstract": "Loop unrolling is a widely adopted loop transformation, commonly used for enabling subsequent optimizations. Straight-line-code vectorization (SLP) is an optimization that benefits from unrolling. SLP converts isomorphic instruction sequences into vector code. Since unrolling generates repeatead isomorphic instruction sequences, it enables SLP to vectorize more code. However, most production compilers apply these optimizations independently and uncoordinated. Unrolling is commonly tuned to avoid code bloat, not maximizing the potential for vectorization, leading to missed vectorization opportunities.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377890",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Rodrigo C. O.",
+        "last_name": "Rocha",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Vasileios",
+        "last_name": "Porpodas",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Pavlos",
+        "last_name": "Petoumenos",
+        "institution": "University of Manchester"
+      },
+      {
+        "first_name": "Luís F. W.",
+        "last_name": "Góes",
+        "institution": "Pontifícia Universidade Católica de Minas Gerais"
+      },
+      {
+        "first_name": "Zheng",
+        "last_name": "Wang",
+        "institution": "University of Leeds"
+      },
+      {
+        "first_name": "Murray",
+        "last_name": "Cole",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Hugh",
+        "last_name": "Leather",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/RochaPPG0CL20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377885",
+    "title": "Scalable pointer analysis of data structures using semantic models",
+    "abstract": "Pointer analysis is widely used as a base for different kinds of static analyses and compiler optimizations. Designing a scalable pointer analysis with acceptable precision for use in production compilers is still an open question. Modern object oriented languages like Java and Scala promote abstractions and code reuse, both of which make it difficult to achieve precision. Collection data structures are an example of a pervasively used component in such languages. But analyzing collection implementations with full context sensitivity leads to prohibitively long analysis times.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377885",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Pratik",
+        "last_name": "Fegade",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Wimmer",
+        "institution": "Oracle (United States)"
+      }
+    ],
+    "dblp_key": "conf/cc/FegadeW20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377896",
+    "title": "Generating fast sparse matrix vector multiplication from a high level generic functional IR",
+    "abstract": "Usage of high-level intermediate representations promises the generation of fast code from a high-level description, improving the productivity of developers while achieving the performance traditionally only reached with low-level programming approaches.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377896",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Federico",
+        "last_name": "Pizzuti",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Michel",
+        "last_name": "Steuwer",
+        "institution": "University of Glasgow"
+      },
+      {
+        "first_name": "Christophe",
+        "last_name": "Dubach",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/PizzutiSD20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377887",
+    "title": "A study of event frequency profiling with differential privacy",
+    "abstract": "Program profiling is widely used to measure run-time execution properties---for example, the frequency of method and statement execution. Such profiling could be applied to deployed software to gain performance insights about the behavior of many instances of the analyzed software. However, such data gathering raises privacy concerns: for example, it reveals whether (and how often) a software user accesses a particular software functionality. There is growing interest in adding privacy protections for many categories of data analyses, but such techniques have not been studied sufficiently for program event profiling.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377887",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Hailong",
+        "last_name": "Zhang",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Yu",
+        "last_name": "Hao",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Sufian",
+        "last_name": "Latif",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Raef",
+        "last_name": "Bassily",
+        "institution": "The Ohio State University"
+      },
+      {
+        "first_name": "Atanas",
+        "last_name": "Rountev",
+        "institution": "The Ohio State University"
+      }
+    ],
+    "dblp_key": "conf/cc/0006HLBR20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377897",
+    "title": "Secure delivery of program properties through optimizing compilation",
+    "abstract": "Annotations and assertions capturing static program properties are ubiquitous, from robust software engineering to safety-critical or secure code. These may be functional or non-functional properties of control and data flow, memory usage, I/O and real time. We propose an approach to encode, translate, and preserve the semantics of both functional and non-functional properties along the optimizing compilation of C to machine code. The approach involves (1) capturing and translating source-level properties through lowering passes and intermediate representations, such that data and control flow optimizations will preserve their consistency with the transformed program, and (2) carrying properties and their translation as debug information down to machine code. Our experiments using LLVM validate the soundness, expressiveness and efficiency of the approach, considering a reference suite of functional properties as well as established security properties and applications hardened against side-channel attacks.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377897",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Son Tuan",
+        "last_name": "Vu",
+        "institution": "Laboratoire de Recherche en Informatique de Paris 6"
+      },
+      {
+        "first_name": "Karine",
+        "last_name": "Heydemann",
+        "institution": "Sorbonne Université"
+      },
+      {
+        "first_name": "Arnaud de",
+        "last_name": "Grandmaison",
+        "institution": ""
+      },
+      {
+        "first_name": "Albert",
+        "last_name": "Cohen",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/cc/VuHG020",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377893",
+    "title": "Automatically harnessing sparse acceleration",
+    "abstract": "Sparse linear algebra is central to many scientific programs, yet compilers fail to optimize it well. High-performance libraries are available, but adoption costs are significant. Moreover, libraries tie programs into vendor-specific software and hardware ecosystems, creating non-portable code.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377893",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Philip",
+        "last_name": "Ginsbach",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Bruce",
+        "last_name": "Collie",
+        "institution": "University of Edinburgh"
+      },
+      {
+        "first_name": "Michael F. P.",
+        "last_name": "O'Boyle",
+        "institution": "University of Edinburgh"
+      }
+    ],
+    "dblp_key": "conf/cc/GinsbachCO20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377892",
+    "title": "Improving database query performance with automatic fusion",
+    "abstract": "Array-based programming languages have shown significant promise for improving performance of column-based in-memory database systems, allowing elegant representation of query execution plans that are also amenable to standard compiler optimization techniques. Use of loop fusion, however, is not straightforward, due to the complexity of built-in functions for implementing complex database operators. In this work, we apply a compiler approach to optimize SQL query execution plans that are expressed in an array-based intermediate representation. We analyze this code to determine shape properties of the data being processed, and use a subsequent optimization phase to fuse multiple database operators into single, compound operations, reducing the need for separate computation and storage of intermediate values. Experimental results on a range of TPC-H queries show that our fusion technique is effective in generating efficient code, improving query time over a baseline system.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377892",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Hanfeng",
+        "last_name": "Chen",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Krolik",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Bettina",
+        "last_name": "Kemme",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Clark",
+        "last_name": "Verbrugge",
+        "institution": "McGill University"
+      },
+      {
+        "first_name": "Laurie",
+        "last_name": "Hendren",
+        "institution": "McGill University"
+      }
+    ],
+    "dblp_key": "conf/cc/ChenKKVH20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377886",
+    "title": "Runtime multi-versioning and specialization inside a memoized speculative loop optimizer",
+    "abstract": "In this paper, we propose a runtime framework that implements code multi-versioning and specialization to optimize and parallelize loop kernels that are invoked many times with varying parameters. These parameters may influence the code structure, the touched memory locations, the workload, and the runtime performance. They may also impact the validity of the parallelizing and optimizing polyhedral transformations that are applied on-the-fly.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377886",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Raquel",
+        "last_name": "Lazcano",
+        "institution": "Universidad Politécnica de Madrid"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Madroñal",
+        "institution": "Universidad Politécnica de Madrid"
+      },
+      {
+        "first_name": "Eduardo",
+        "last_name": "Juárez",
+        "institution": "Universidad Politécnica de Madrid"
+      },
+      {
+        "first_name": "Philippe",
+        "last_name": "Clauss",
+        "institution": "Université de Strasbourg"
+      }
+    ],
+    "dblp_key": "conf/cc/LazcanoMJC20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377891",
+    "title": "Mixed-data-model heterogeneous compilation and OpenMP offloading",
+    "abstract": "Heterogeneous computers combine a general-purpose host processor with domain-specific programmable many-core accelerators, uniting high versatility with high performance and energy efficiency. While the host manages ever-more application memory, accelerators are designed to work mainly on their local memory. This difference in addressed memory leads to a discrepancy between the optimal address width of the host and the accelerator. Today 64-bit host processors are commonplace, but few accelerators exceed 32-bit addressable local memory, a difference expected to increase with 128-bit hosts in the exascale era. Managing this discrepancy requires support for multiple data models in heterogeneous compilers. So far, compiler support for multiple data models has not been explored, which hampers the programmability of such systems and inhibits their adoption.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377891",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Kurth",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Koen",
+        "last_name": "Wolters",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Björn",
+        "last_name": "Forsberg",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Alessandro",
+        "last_name": "Capotondi",
+        "institution": "University of Modena and Reggio Emilia"
+      },
+      {
+        "first_name": "Andrea",
+        "last_name": "Marongiu",
+        "institution": "University of Modena and Reggio Emilia"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Grosser",
+        "institution": "ETH Zurich"
+      },
+      {
+        "first_name": "Luca",
+        "last_name": "Benini",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/cc/KurthWFCMGB20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377889",
+    "title": "Compiling first-order functions to session-typed parallel code",
+    "abstract": "Building correct and efficient message-passing parallel programs still poses many challenges. The incorrect use of message-passing constructs can introduce deadlocks, and a bad task decomposition will not achieve good speedups. Current approaches focus either on correctness or efficiency, but limited work has been done on ensuring both. In this paper, we propose a new parallel programming framework, PAlg, which is a first-order language with participant annotations that ensures deadlock-freedom by construction. PAlg programs are coupled with an abstraction of their communication structure, a global type from the theory of multiparty session types (MPST). This global type serves as an output for the programmer to assess the efficiency of their achieved parallelisation. PAlg is implemented as an EDSL in Haskell, from which we: 1. compile to low-level message-passing C code; 2. compile to sequential C code, or interpret as sequential Haskell functions; and, 3. infer the communication protocol followed by the compiled message-passing program. We use the properties of global types to perform message reordering optimisations to the compiled C code. We prove the extensional equivalence of the compiled code, as well as protocol compliance. We achieve linear speedups on a shared-memory 12-core machine, and a speedup of 16 on a 2-node, 24-core NUMA.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377889",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Castro",
+        "institution": "Imperial College London"
+      },
+      {
+        "first_name": "Nobuko",
+        "last_name": "Yoshida",
+        "institution": "Imperial College London"
+      }
+    ],
+    "dblp_key": "conf/cc/Castro-PerezY20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377899",
+    "title": "Bitwidth customization in image processing pipelines using interval analysis and SMT solvers",
+    "abstract": "Unlike CPUs and GPUs, it is possible to use custom fixed-point data types, specified as a tuple (α, β), on FPGAs. The parameters α and β denote the number of integral and fractional bitwidths respectively. The power and area savings while performing arithmetic operations on fixed-point data types are well known to be significant over using floating-point data types.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377899",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Suresh",
+        "last_name": "Purini",
+        "institution": "Indian Institute of Technology Hyderabad"
+      },
+      {
+        "first_name": "Vinamra",
+        "last_name": "Benara",
+        "institution": "Indian Institute of Technology Hyderabad"
+      },
+      {
+        "first_name": "Ziaul",
+        "last_name": "Choudhury",
+        "institution": "Indian Institute of Technology Hyderabad"
+      },
+      {
+        "first_name": "Uday",
+        "last_name": "Bondhugula",
+        "institution": "Indian Institute of Science Bangalore"
+      }
+    ],
+    "dblp_key": "conf/cc/PuriniBCB20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377895",
+    "title": "Balancing performance and productivity for the development of dynamic binary instrumentation tools: a case study on Arm systems",
+    "abstract": "Dynamic Binary Instrumentation (DBI) is a well-established approach for analysing the execution of applications at the level of machine code. DBI frameworks implement a runtime system capable of modifying running applications without access to their source code. These frameworks provide APIs used by DBI tools to plug in their specific analysis and instrumentation routines. However, the dynamic instrumentation needed by these DBI tools is either challenging to implement, and/or introduces a significant performance overhead.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377895",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Cosmin",
+        "last_name": "Gorgovan",
+        "institution": "University of Manchester"
+      },
+      {
+        "first_name": "Guillermo",
+        "last_name": "Callaghan",
+        "institution": "University of Manchester"
+      },
+      {
+        "first_name": "Mikel",
+        "last_name": "Luján",
+        "institution": "University of Manchester"
+      }
+    ],
+    "dblp_key": "conf/cc/GorgovanCL20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377901",
+    "title": "Relaxing the one definition rule in interpreted C++",
+    "abstract": "Most implementations of the C++ programming language generate binary executable code. However, interpreted execution of C++ sources has its own use cases as the Cling interpreter from CERN's ROOT project has shown. Some limitations are derived from the ODR (One Definition Rule) that rules out multiple definitions of entities within a single translation unit (TU). ODR is there to ensure uniform view of a given C++ entity across translation units. Ensuring uniform view of C++ entities helps when producing ABI compatible binaries. Interpreting C++ presumes a single ever-growing translation unit that define away some of the ODR use-cases. Therefore, it may well be desirable to relax the ODR and, consequently, to support the ability of developers to override any existing definition for a given declaration. This approach is especially well-suited for iterative prototyping. In this paper, we extend Cling, a Clang/LLVM-based C++ interpreter, to enable redefinitions of C++ entities at the prompt. To achieve this, top-level declarations are nested into inline namespaces and the translation unit lookup table is adjusted to invalidate previous definitions that would otherwise result in ambiguities. Formally, this technique refactors the code to an equivalent that does not violate the ODR, as each definition is nested in a different namespace. Furthermore, any previous definition that has been shadowed is still accessible by means of its fully-qualified name. A prototype implementation of the presented technique has been integrated into the Cling C++ interpreter, showing that our technique is feasible and usable.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377901",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Javier",
+        "last_name": "López-Gómez",
+        "institution": "Universidad Carlos III de Madrid"
+      },
+      {
+        "first_name": "Javier",
+        "last_name": "Fernández",
+        "institution": "Universidad Carlos III de Madrid"
+      },
+      {
+        "first_name": "David del Rio",
+        "last_name": "Astorga",
+        "institution": "Universidad Carlos III de Madrid"
+      },
+      {
+        "first_name": "Vassil",
+        "last_name": "Vassilev",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "N. A.",
+        "last_name": "Naumann",
+        "institution": "European Organization for Nuclear Research"
+      },
+      {
+        "first_name": "J. Daniel",
+        "last_name": "García",
+        "institution": "Universidad Carlos III de Madrid"
+      }
+    ],
+    "dblp_key": "conf/cc/Lopez-Gomez0AVN20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377884",
+    "title": "Postcondition-preserving fusion of postorder tree transformations",
+    "abstract": "Tree transformations are common in applications such as program rewriting in compilers. Using a series of simple transformations to build a more complex system can make the resulting software easier to understand, maintain, and reason about. Fusion strategies for combining such successive tree transformations promote this modularity, whilst mitigating the performance impact from increased numbers of tree traversals. However, it is important to ensure that fused transformations still perform their intended tasks. Existing approaches to fusing tree transformations tend to take an informal approach to soundness, or be too restrictive to consider the kind of transformations needed in a compiler. We use postconditions to define a more useful formal notion of successful fusion, namely postcondition-preserving fusion. We also present criteria that are sufficient to ensure postcondition-preservation and facilitate modular reasoning about the success of fusion.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377884",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "E.",
+        "last_name": "Davies",
+        "institution": "University of Warwick"
+      },
+      {
+        "first_name": "Sara",
+        "last_name": "Kalvala",
+        "institution": "University of Warwick"
+      }
+    ],
+    "dblp_key": "conf/cc/DaviesK20",
+    "venue": "cc",
+    "year": 2020
+  },
+  {
+    "paper_id": "10.1145/3377555.3377894",
+    "title": "Compiler-based graph representations for deep learning models of code",
+    "abstract": "In natural language processing, novel methods in deep learning, like recurrent neural networks (RNNs) on sequences of words, have been very successful. In contrast to natural languages, programming languages usually have a well-defined structure. With this structure compilers can reason about programs, using graphs such as abstract syntax trees (ASTs) or control-data flow graphs (CDFGs). In this paper, we argue that we should use these graph structures instead of sequences for learning compiler optimization tasks. To this end, we use graph neural networks (GNNs) for learning predictive compiler tasks on two representations based on ASTs and CDFGs. Experiments show that this improves upon the state-of-the-art in the task of heterogeneous OpenCL mapping, while providing orders of magnitude faster inference times, crucial for compiler optimizations. When testing on benchmark suites not included for training, our AST-based model significantly outperforms the state-of-the-art by over 12 percentage points in terms of accuracy. It is the only one to perform clearly better than a random mapping. On the task of predicting thread coarsening factors, we show that all of the methods fail to produce an overall speedup.",
+    "date": "2020-02-22",
+    "link": "https://doi.org/10.1145/3377555.3377894",
+    "conference_name": "CC",
+    "authors": [
+      {
+        "first_name": "Alexander",
+        "last_name": "Brauckmann",
+        "institution": "TU Dresden"
+      },
+      {
+        "first_name": "Andrés",
+        "last_name": "Goens",
+        "institution": "TU Dresden"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Ertel",
+        "institution": "Barkhausen Institute"
+      },
+      {
+        "first_name": "Jerónimo",
+        "last_name": "Castrillón",
+        "institution": "TU Dresden"
+      }
+    ],
+    "dblp_key": "conf/cc/BrauckmannGEC20",
+    "venue": "cc",
+    "year": 2020
+  }
+]

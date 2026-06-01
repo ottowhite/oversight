@@ -1,0 +1,593 @@
+[
+  {
+    "paper_id": "10.1145/581478.581504",
+    "title": "Final shift for call/cc: : direct implementation of shift and reset",
+    "abstract": "We present a direct implementation of the shift and reset control operators in the SFE system. The new implementation improves upon the traditional technique of simulating shift and reset via callcc. Typical applications of these operators exhibit space savings and a significant overall performance gain. Our technique is based upon the popular incremental stack/heap strategy for representing continuations. We present implementation details as well as some benchmark measurements for typical applications.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581504",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Gasbichler",
+        "institution": "University of Tübingen"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Sperber",
+        "institution": "University of Tübingen"
+      }
+    ],
+    "dblp_key": "conf/icfp/GasbichlerS02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581493",
+    "title": "Interactive visual functional programming",
+    "abstract": "An interactive graphical environment for supporting the development and use of Haskell applications programs is described. The environment, named Vital, is particularly intended for supporting the open-ended, incremental development style often preferred by non-specialist users in which successive steps of program development are motivated and informed by results so far obtained.Significant features of Vital include: the graphical display of data structures in a format defined by a datatype-indexed stylesheet, the way that evaluation of (possibly infinite) values is demand-driven by the action of the user scrolling around an unbounded workspace, and support for copy-and-paste graphical editing of data structures. This latter allows, for example, the user to modify a complex data structure by point-and-click operations, or to create (by functional evaluation) a regular data structure and then edit values or expressions into it. The effect of each editing operation is immediately reflected in the Haskell program source code.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581493",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Keith",
+        "last_name": "Hanna",
+        "institution": "University of Kent"
+      }
+    ],
+    "dblp_key": "conf/icfp/Hanna02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581482",
+    "title": "Monads for incremental computing",
+    "abstract": "This paper presents a monadic approach to incremental computation, suitable for purely functional languages such as Haskell. A program that uses incremental computation is able to perform an incremental amount of computation to accommodate for changes in input data. Recently, Acar, Blelloch and Harper presented a small Standard ML library that supports efficient, high-level incremental computations [1]. Here, we present a monadic variant of that library, written in Haskell extended with first-class references. By using monads, not only are we able to provide a purely functional interface to the library, the types also enforce \"correct usage\" without having to resort to any type-system extension. We also find optimization opportunities based on standard monadic combinators.This is an exercise in putting to work monad transformers with environments, references, and continuations.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581482",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Magnus",
+        "last_name": "Carlsson",
+        "institution": "Oregon Health & Science University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Carlsson02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581486",
+    "title": "Composable and compilable macros: : you want it when?",
+    "abstract": "Many macro systems, especially for Lisp and Scheme, allow macro transformers to perform general computation. Moreover, the language for implementing compile-time macro transformers is usually the same as the language for implementing run-time functions. As a side effect of this sharing, implementations tend to allow the mingling of compile-time values and run-time values, as well as values from separate compilations. Such mingling breaks programming tools that must parse code without executing it. Macro implementors avoid harmful mingling by obeying certain macro-definition protocols and by inserting phase-distinguishing annotations into the code. However, the annotations are fragile, the protocols are not enforced, and programmers can only reason about the result in terms of the compiler's implementation. MzScheme---the language of the PLT Scheme tool suite---addresses the problem through a macro system that separates compilation without sacrificing the expressiveness of macros.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581486",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthew",
+        "last_name": "Flatt",
+        "institution": "University of Utah"
+      }
+    ],
+    "dblp_key": "conf/icfp/Flatt02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581488",
+    "title": "Exception analysis for non-strict languages",
+    "abstract": "In this paper we present the first exception analysis for a non-strict language. We augment a simply-typed functional language with exceptions, and show that we can define a type-based inference system to detect uncaught exceptions. We have implemented this exception analysis in the GHC compiler for Haskell, which has been recently extended with exceptions. We give empirical evidence that the analysis is practical.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581488",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Kevin",
+        "last_name": "Glynn",
+        "institution": "UCLouvain"
+      },
+      {
+        "first_name": "Peter J.",
+        "last_name": "Stuckey",
+        "institution": "University of Melbourne"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Sulzmann",
+        "institution": "National University of Singapore"
+      },
+      {
+        "first_name": "Harald",
+        "last_name": "Søndergaard",
+        "institution": "University of Melbourne"
+      }
+    ],
+    "dblp_key": "conf/icfp/GlynnSSS02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581483",
+    "title": "Packrat parsing: : simple, powerful, lazy, linear time, functional pearl",
+    "abstract": "Packrat parsing is a novel technique for implementing parsers in a lazy functional programming language. A packrat parser provides the power and flexibility of top-down parsing with backtracking and unlimited lookahead, but nevertheless guarantees linear parse time. Any language defined by an LL(k) or LR(k) grammar can be recognized by a packrat parser, in addition to many languages that conventional linear-time algorithms do not support. This additional power simplifies the handling of common syntactic idioms such as the widespread but troublesome longest-match rule, enables the use of sophisticated disambiguation strategies such as syntactic and semantic predicates, provides better grammar composition properties, and allows lexical analysis to be integrated seamlessly into parsing. Yet despite its power, packrat parsing shares the same simplicity and elegance as recursive descent parsing; in fact converting a backtracking recursive descent parser into a linear-time packrat parser often involves only a fairly straightforward structural change. This paper describes packrat parsing informally with emphasis on its use in practical applications, and explores its advantages and disadvantages with respect to the more conventional alternatives.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581483",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Bryan",
+        "last_name": "Ford",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/Ford02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581502",
+    "title": "An experimental study of renewal-older-first garbage collection",
+    "abstract": "Generational collection has improved the efficiency of garbage collection in fast-allocating programs by focusing on collecting young garbage, but has done little to reduce the cost of collecting a heap containing large amounts of older data. A new generational technique, older-first collection, shows promise in its ability to manage older data.This paper reports on an implementation study that compared two older-first collectors to traditional (younger-first) generational collectors. One of the older-first collectors performed well and was often effective at reducing the first-order cost of collection relative to younger-first collectors. Older-first collectors perform especially well when objects have queue-like or random lifetimes.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581502",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Lars T.",
+        "last_name": "Hansen",
+        "institution": "Opera Software (Norway)"
+      },
+      {
+        "first_name": "William",
+        "last_name": "Clinger",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/icfp/HansenC02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581492",
+    "title": "Composing monads using coproducts",
+    "abstract": "Monads are a useful abstraction of computation, as they model diverse computational effects such as stateful computations, exceptions and I/O in a uniform manner. Their potential to provide both a modular semantics and a modular programming style was soon recognised. However, in general, monads proved difficult to compose and so research focused on special mechanisms for their composition such as distributive monads and monad transformers.We present a new approach to this problem which is general in that nearly all monads compose, mathematically elegant in using the standard categorical tools underpinning monads and computationally expressive in supporting a canonical recursion operator. In a nutshell, we propose that two monads should be composed by taking their coproduct. Although abstractly this is a simple idea, the actual construction of the coproduct of two monads is non-trivial. We outline this construction, show how to implement the coproduct within Haskell and demonstrate its usage with a few examples. We also discuss its relationship with other ways of combining monads, in particular distributive laws for monads and monad transformers.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581492",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Christoph",
+        "last_name": "Lüth",
+        "institution": "University of Bremen"
+      },
+      {
+        "first_name": "Neil",
+        "last_name": "Ghani",
+        "institution": "University of Leicester"
+      }
+    ],
+    "dblp_key": "conf/icfp/LuthG02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581480",
+    "title": "Bootstrapping one-sided flexible arrays",
+    "abstract": "The abstract data type one-sided flexible array, also called random-access list, supports look-up and update of elements and can grow and shrink at one end. We describe a purely functional implementation based on weight-balanced multiway trees that is both simple and versatile. A novel feature of the representation is that the running time of the operations can be tailored to one's needs---even dynamically at array-creation time. In particular, one can trade the running time of look-up operations for the running time of update operations. For instance, if the multiway trees have a fixed degree, the operations take θ(log n) time, where n is the size of the flexible array. If the degree doubles levelwise, look-up speeds up to θ(sqrtlog n) while update slows down to θ(2sqrt log n). We show that different tree shapes can be conveniently modelled after mixed-radix number systems.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581480",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Ralf",
+        "last_name": "Hinze",
+        "institution": "University of Bonn"
+      }
+    ],
+    "dblp_key": "conf/icfp/Hinze02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581500",
+    "title": "There and back again",
+    "abstract": "We present a programming pattern where a recursive function traverses a data structure---typically a list---at return time. The idea is that the recursive calls get us there (typically to a base case) and the returns get us back again while traversing the data structure. We name this programming pattern of traversing a data structure at return time \"There And Back Again\" (TABA).The TABA pattern directly applies to computing a symbolic convolution. It also synergizes well with other programming patterns, e.g., dynamic programming and traversing a list at double speed. We illustrate TABA and dynamic programming with Catalan numbers. We illustrate TABA and traversing a list at double speed with palindromes and we obtain a novel solution to this traditional exercise.A TABA-based function written in direct style makes full use of an Algol-like control stack and needs no heap allocation. Conversely, in a TABA-based function written in continuation-passing style, the continuation acts as a list iterator. In general, the TABA pattern saves one from constructing intermediate lists in reverse order.",
+    "date": "2001-10-04",
+    "link": "https://doi.org/10.1145/581478.581500",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Olivier",
+        "last_name": "Danvy",
+        "institution": "Aarhus University"
+      },
+      {
+        "first_name": "Mayer",
+        "last_name": "Goldberg",
+        "institution": "Ben-Gurion University of the Negev"
+      }
+    ],
+    "dblp_key": "conf/icfp/DanvyG02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581501",
+    "title": "A compiled implementation of strong reduction",
+    "abstract": "Motivated by applications to proof assistants based on dependent types, we develop and prove correct a strong reducer and ß-equivalence checker for the λ-calculus with products, sums, and guarded fixpoints. Our approach is based on compilation to the bytecode of an abstract machine performing weak reductions on non-closed terms, derived with minimal modifications from the ZAM machine used in the Objective Caml bytecode interpreter, and complemented by a recursive \"read back\" procedure. An implementation in the Coq proof assistant demonstrates important speed-ups compared with the original interpreter-based implementation of strong reduction in Coq.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581501",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Benjamin",
+        "last_name": "Grégoire",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Xavier",
+        "last_name": "Leroy",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/GregoireL02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581487",
+    "title": "A demand-driven adaptive type analysis",
+    "abstract": "Compilers for dynamically and statically typed languages ensure safe execution by verifying that all operations are performed on appropriate values. An operation as simple as car in Scheme and hd in SML will include a run time check unless the compiler can prove that the argument is always a non-empty list using some type analysis. We present a demand-driven type analysis that can adapt the precision of the analysis to various parts of the program being compiled. This approach has the advantage that the analysis effort can be spent where it is justified by the possibility of removing a run time check, and where added precision is needed to accurately analyze complex parts of the program. Like the k-cfa our approach is based on abstract interpretation but it can analyze some important programs more accurately than the k-cfa for any value of k. We have built a prototype of our type analysis and tested it on various programs with higher order functions. It can remove all run time type checks in some nontrivial programs which use map and the Y combinator.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581487",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Danny",
+        "last_name": "Dubé",
+        "institution": "Université de Montréal"
+      },
+      {
+        "first_name": "Marc",
+        "last_name": "Feeley",
+        "institution": "Université de Montréal"
+      }
+    ],
+    "dblp_key": "conf/icfp/DubeF02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581484",
+    "title": "Contracts for higher-order functions",
+    "abstract": "Assertions play an important role in the construction of robust software. Their use in programming languages dates back to the 1970s. Eiffel, an object-oriented programming language, wholeheartedly adopted assertions and developed the \"Design by Contract\" philosophy. Indeed, the entire object-oriented community recognizes the value of assertion-based contracts on methods.In contrast, languages with higher-order functions do not support assertion-based contracts. Because predicates on functions are, in general, undecidable, specifying such predicates appears to be meaningless. Instead, the functional languages community developed type systems that statically approximate interesting predicates.In this paper, we show how to support higher-order function contracts in a theoretically well-founded and practically viable manner. Specifically, we introduce λcon, a typed lambda calculus with assertions for higher-order functions. The calculus models the assertion monitoring system that we employ in DrScheme. We establish basic properties of the model (type soundness, etc.) and illustrate the usefulness of contract checking with examples from DrScheme's code base.We believe that the development of an assertion system for higher-order functions serves two purposes. On one hand, the system has strong practical potential because existing type systems simply cannot express many assertions that programmers would like to state. On the other hand, an inspection of a large base of invariants may provide inspiration for the direction of practical future type system research.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581484",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Robert Bruce",
+        "last_name": "Findler",
+        "institution": "Northeastern University"
+      },
+      {
+        "first_name": "Matthias",
+        "last_name": "Felleisen",
+        "institution": "Northeastern University"
+      }
+    ],
+    "dblp_key": "conf/icfp/FindlerF02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581497",
+    "title": "An expressive, scalable type theory for certified code",
+    "abstract": "We present the type theory LTT, intended to form a basis for typed target languages, providing an internal notion of logical proposition and proof. The inclusion of explicit proofs allows the type system to guarantee properties that would otherwise be incompatible with decidable type checking. LTT also provides linear facilities for tracking ephemeral properties that hold only for certain program states.Our type theory allows for re-use of typechecking software by casting a variety of type systems within a single language. We illustrate our methodology of representation by means of two examples, one functional and one stateful, and describe the associated operational semantics and proofs of type safety.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581497",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Karl",
+        "last_name": "Crary",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Joseph C.",
+        "last_name": "Vanderwaart",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/CraryV02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581494",
+    "title": "Typing dynamic typing",
+    "abstract": "Even when programming in a statically typed language we every now and then encounter statically untypable values; such values result from interpreting values or from communicating with the outside world. To cope with this problem most languages include some form of dynamic types. It may be that the core language has been explicitly extended with such a type, or that one is allowed to live dangerously by using functions like unsafeCoerce. We show how, by a careful use of existentially and universally quantified types, one may achievem the same effect, without extending the language with new or unsafe features. The techniques explained are universally applicable, provided the core language is expressive enough; this is the case for the common implementations of Haskell. The techniques are used in the description of a type checking compiler that, starting from an expression term, constructs a typed function representing the semantics of that expression. In this function the overhead associated with the type checking is only once being paid for; in this sense we have thus achieved static type checking.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581494",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Arthur I.",
+        "last_name": "Baars",
+        "institution": "Utrecht University"
+      },
+      {
+        "first_name": "S. Doaitse",
+        "last_name": "Swierstra",
+        "institution": "Utrecht University"
+      }
+    ],
+    "dblp_key": "conf/icfp/BaarsS02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581505",
+    "title": "Program generation, termination, and binding-time analysis",
+    "abstract": "Recent research suggests that the goal of fully automatic and reliable program generation for a broad range of applications is coming nearer to feasibility. However, several interesting and challenging problems remain to be solved before it becomes a reality.We first discuss the relations between problem specifications and their solutions in program form, and then narrow the discussion to an important special case: program transformation. Although the goal of fully automatic program generation is still far from fully achieved, there has been some success in a special case: partial evaluation, also known as program specialization.A key problem in all program generation is termination of the generation process. This paper (See the GPCE'02 proceedings for the full paper.} describes recent progress towards automatically solving the termination problem, first for individual programs, and then for specializers and \"generating extensions,\" the program generators that most offline partial evaluators produce.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581505",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Neil D.",
+        "last_name": "Jones",
+        "institution": "University of Copenhagen"
+      },
+      {
+        "first_name": "Arne John",
+        "last_name": "Glenstrup",
+        "institution": "University of Copenhagen"
+      }
+    ],
+    "dblp_key": "conf/icfp/JonesG02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581489",
+    "title": "Modular typechecking for hierarchically extensible datatypes and functions",
+    "abstract": "One promising approach for adding object-oriented (OO) facilities to functional languages like ML is to generalize the existing datatype and function constructs to be hierarchical and extensible, so that datatype variants simulate classes and function cases simulate methods. This approach allows existing datatypes to be easily extended with both new operations and new variants, resolving a long-standing conflict between the functional and OO styles. However, previous designs based on this approach have been forced to give up modular typechecking, requiring whole-program checks to ensure type safety. We describe Extensible ML (eml), an ML-like language that supports hierarchical, extensible datatypes and functions while preserving purely modular typechecking. To achieve this result, eml's type system imposes a few requirements on datatype and function extensibility, but eml is still able to express both traditional functional and OO idioms. We have formalized a core version of eml and proven the associated type system sound, and we have developed a prototype interpreter for the language.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581489",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Todd",
+        "last_name": "Millstein",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Colin",
+        "last_name": "Bleckner",
+        "institution": "University of Washington"
+      },
+      {
+        "first_name": "Craig",
+        "last_name": "Chambers",
+        "institution": "University of Washington"
+      }
+    ],
+    "dblp_key": "conf/icfp/MillsteinBC02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581490",
+    "title": "Functional formal methods",
+    "abstract": "Some functional programming languages are also mathematical logics. One can reason formally, traditionally, and directly about programs in such languages. This is driving a new application area for functional programming: modeling microarchitectures, hardware design languages, and imperative programming languages. Such models serve the dual purposes of simulation and formal analysis.ACL2, \"<u>A</u> <u>C</u>omputational <u>L</u>ogic for <u>A</u>pplicative <u>C</u>ommon <u>L</u>isp,\" is a functional programming language that is also a first-order mathematical logic supported by a Boyer-Moore style mechanical theorem prover [5]. It is being used to model and verify artifacts of commercial and industrial interest.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581490",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "J Strother",
+        "last_name": "Moore",
+        "institution": "The University of Texas at Austin"
+      }
+    ],
+    "dblp_key": "conf/icfp/Moore02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581498",
+    "title": "Meta-programming with names and necessity",
+    "abstract": "Meta-programming languages provide infrastructure to generate and execute object programs at run-time. In a typed setting, they contain a modal type constructor which classifies object code. These code types generally come in two flavors: closed and open. Closed code expressions can be invoked at run-time, but the computations over them are more rigid, and typically produce less efficient residual object programs. Open code provides better inlining and partial evaluation of object programs, but once constructed, expressions of this type cannot in general be evaluated.Recent work in this area has focused on combining the two notions into a sound system. We present a novel way to achieve this. It is based on adding the notion of names from the work on Nominal Logic and FreshML to the λ -calculus of proof terms for the necessity fragment of modal logic S4. The resulting language provides a more fine-grained control over free variables of object programs when compared to the existing languages for meta-programming. In addition, this approach lends itself well to addition of intensional code analysis, i.e. ability of meta programs to inspect and destruct object programs at run-time in a type-safe manner, which we also undertake.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581498",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Aleksandar",
+        "last_name": "Nanevski",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Nanevski02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581479",
+    "title": "Towards more natural functional programming languages",
+    "abstract": "Programming languages are the way for a person to express a mental plan in a way that the computer can understand. Therefore, it is appropriate to consider properties of people when designing new programming languages. In our research, we are investigating how people think about algorithms, and how programming languages can be made easier to learn and more effective for people to use. By taking human-productivity aspects of programming languages seriously, designers can more effectively match programming language features with human capabilities and problem solving methods. Human factors methods can be used to measure the effects, so unsubstantiated claims can be avoided.This talk will present a quick summary of new and old results in what is known about people and programming, from areas that are sometimes called \"empirical studies of programmers\" and \"psychology of programming.\" Much is known about what people find difficult, and what syntax and language features are especially tricky and bug-prone. Our new research has discovered how people naturally think about algorithms and data structures, which can help with making programming languages more closely match people's problem solving techniques.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581479",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Brad A.",
+        "last_name": "Myers",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/icfp/Myers02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581503",
+    "title": "Compiling scheme to JVM bytecode: : a performance study",
+    "abstract": "We have added a Java virtual machine (henceforth JVM) bytecode generator to the optimizing Scheme-to-C compiler Bigloo. We named this new compiler BiglooJVM. We have used this new compiler to evaluate how suitable the JVM bytecode is as a target for compiling strict functional languages such as Scheme. In this paper, we focus on the performance issue. We have measured the execution time of many Scheme programs when compiled to C and when compiled to JVM. We found that for each benchmark, at least one of our hardware platforms ran the BiglooJVM version in less than twice the time taken by the Bigloo version. In order to deliver fast programs the generated JVM bytecode must be carefully crafted in order to benefit from the speedup of just-in-time compilers.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581503",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Bernard",
+        "last_name": "Serpette",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Serrano",
+        "institution": "Institut national de recherche en informatique et en automatique"
+      }
+    ],
+    "dblp_key": "conf/icfp/SerpetteS02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581495",
+    "title": "A theory of overloading",
+    "abstract": "We present a minimal extension of the Hindley/Milner system to allow for overloading of identifiers. Our approach relies on a combination of the HM(X) type system framework with Constraint Handling Rules (CHRs). CHRs are a declarative language for writing incremental constraint solvers. CHRs allow us to precisely describe the relationships among overloaded identifiers. Under some sufficient conditions on the CHRs we achieve decidable type inference and the semantic meaning of programs is unambiguous. Our approach allows us to combine open and closed world overloading. We also show how to deal with overlapping definitions.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581495",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Peter J.",
+        "last_name": "Stuckey",
+        "institution": "University of Melbourne"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Sulzmann",
+        "institution": "University of Melbourne"
+      }
+    ],
+    "dblp_key": "conf/icfp/StuckeyS02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581481",
+    "title": "Concatenate, reverse and map vanish for free",
+    "abstract": "We introduce a new transformation method to eliminate intermediate data structures occurring in functional programs due to repeated list concatenations and other data manipulations (additionally exemplified with list reversal and mapping of functions over lists).The general idea is to uniformly abstract from data constructors and manipulating operations by means of rank-2 polymorphic combinators that exploit algebraic properties of these operations to provide an optimized implementation. The correctness of transformations is proved by using the free theorems derivable from parametric polymorphic types.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581481",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Janis",
+        "last_name": "Voigtländer",
+        "institution": "Technische Universität Dresden"
+      }
+    ],
+    "dblp_key": "conf/icfp/Voigtlander02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581496",
+    "title": "Type classes with more higher-order polymorphism",
+    "abstract": "We propose an extension of Haskell's type class system with lambda abstractions in the type language. Type inference for our extension relies on a novel constrained unification procedure called guided higher-order unification. This unification procedure is more general than Haskell's kind-preserving unification but less powerful than full higher-order unification.The main technical result is the soundness and completeness of the unification rules for the fragment of lambda calculus that we admit on the type level.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581496",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Matthias",
+        "last_name": "Neubauer",
+        "institution": "University of Fribourg"
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Thiemann",
+        "institution": "University of Fribourg"
+      }
+    ],
+    "dblp_key": "conf/icfp/NeubauerT02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581491",
+    "title": "Shortcut fusion for accumulating parameters &amp; zip-like functions",
+    "abstract": "We present an alternative approach to shortcut fusion based on the function unfoldr. Despite its simplicity the technique can remove intermediate lists in examples which are known to be difficult. We show that it can remove all lists from definitions involving zip-like functions and functions using accumulating parameters.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581491",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Josef",
+        "last_name": "Svenningsson",
+        "institution": "Chalmers University of Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/Svenningsson02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581485",
+    "title": "An interoperable calculus for external object access",
+    "abstract": "By extending an ML-style type system with record polymorphism, recursive type definition, and an ordering relation induced by field inclusion, it is possible to achieve seamless and type safe interoperability with an object-oriented language. Based on this observation, we define a polymorphic language that can directly access external objects and methods, and develop a type inference algorithm. This calculus enjoys the features of both higher-order programming with ML polymorphism and class-based object-oriented programming with dynamic method dispatch. To establish type safety, we define a sample object-oriented language with multiple inheritance as the target for interoperability, define an operational semantics of the calculus, and show that the type system is sound with respect to the operational semantics. These results have been implemented in our prototype interpretable language, which can access Java class files and other external resources.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581485",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Atsushi",
+        "last_name": "Ohori",
+        "institution": "Japan Advanced Institute of Science and Technology"
+      },
+      {
+        "first_name": "Kiyoshi",
+        "last_name": "Yamatodani",
+        "institution": "Japan Advanced Institute of Science and Technology"
+      }
+    ],
+    "dblp_key": "conf/icfp/OhoriY02",
+    "venue": "icfp",
+    "year": 2002
+  },
+  {
+    "paper_id": "10.1145/581478.581499",
+    "title": "Tagless staged interpreters for typed languages",
+    "abstract": "Multi-stage programming languages provide a convenient notation for explicitly staging programs. Staging a definitional interpreter for a domain specific language is one way of deriving an implementation that is both readable and efficient. In an untyped setting, staging an interpreter \"removes a complete layer of interpretive overhead\", just like partial evaluation. In a typed setting however, Hindley-Milner type systems do not allow us to exploit typing information in the language being interpreted. In practice, this can mean a slowdown cost by a factor of three or mor.Previously, both type specialization and tag elimination were applied to this problem. In this paper we propose an alternative approach, namely, expressing the definitional interpreter in a dependently typed programming language. We report on our experience with the issues that arise in writing such an interpreter and in designing such a language. .To demonstrate the soundness of combining staging and dependent types in a general sense, we formalize our language (called Meta-D) and prove its type safety. To formalize Meta-D, we extend Shao, Saha, Trifonov and Papaspyrou's λH language to a multi-level setting. Building on λH allows us to demonstrate type safety in a setting where the type language contains all the calculus of inductive constructions, but without having to repeat the work needed for establishing the soundness of that system.",
+    "date": "2002-09-17",
+    "link": "https://doi.org/10.1145/581478.581499",
+    "conference_name": "ICFP",
+    "authors": [
+      {
+        "first_name": "Emir",
+        "last_name": "PašaliΕ",
+        "institution": "Oregon Health & Science University"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Taha",
+        "institution": "Rice University"
+      },
+      {
+        "first_name": "Tim",
+        "last_name": "Sheard",
+        "institution": "Oregon Health & Science University"
+      }
+    ],
+    "dblp_key": "conf/icfp/PasalicTS02",
+    "venue": "icfp",
+    "year": 2002
+  }
+]

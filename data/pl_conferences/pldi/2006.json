@@ -1,0 +1,1049 @@
+[
+  {
+    "paper_id": "10.1145/1133981.1134014",
+    "title": "Algorithm specialization in generic programming: challenges of constrained generics in C++",
+    "abstract": "Generic programming has recently emerged as a paradigm for developing highly reusable software libraries, most notably in C++. We have designed and implemented a constrained generics extension for C++ to support modular type checking of generic algorithms and to address other issues associated with unconstrained generics. To be as broadly applicable as possible, generic algorithms are defined with minimal requirements on their inputs. At the same time, to achieve a high degree of efficiency, generic algorithms may have multiple implementations that exploit features of specific classes of inputs. This process of algorithm specialization relies on non-local type information and conflicts directly with the local nature of modular type checking. In this paper, we review the design and implementation of our extensions for generic programming in C++, describe the issues of algorithm specialization and modular type checking in detail, and discuss the important design tradeoffs in trying to accomplish both.We present the particular design that we chose for our implementation, with the goal of hitting the sweet spot in this interesting design space.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134014",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jaakko",
+        "last_name": "Järvi",
+        "institution": ""
+      },
+      {
+        "first_name": "Douglas",
+        "last_name": "Gregor",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Jeremiah",
+        "last_name": "Willcock",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Andrew",
+        "last_name": "Lumsdaine",
+        "institution": "Indiana University"
+      },
+      {
+        "first_name": "Jeremy G.",
+        "last_name": "Siek",
+        "institution": "Rice University"
+      }
+    ],
+    "dblp_key": "conf/pldi/JarviGWLS06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134002",
+    "title": "Pruning dynamic slices with confidence",
+    "abstract": "Given an incorrect value produced during a failed program run (e.g., a wrong output value or a value that causes the program to crash), the backward dynamic slice of the value very frequently captures the faulty code responsible for producing the incorrect value. Although the dynamic slice often contains only a small percentage of the statements executed during the failed program run, the dynamic slice can still be large and thus considerable effort may be required by the programmer to locate the faulty code.In this paper we develop a strategy for pruning the dynamic slice to identify a subset of statements in the dynamic slice that are likely responsible for producing the incorrect value. We observe that some of the statements used in computing the incorrect value may also have been involved in computing correct values (e.g., a value produced by a statement in the dynamic slice of the incorrect value may also have been used in computing a correct output value prior to the incorrect value). For each such executed statement in the dynamic slice, using the value profiles of the executed statements, we compute a confidence value ranging from 0 to 1 - a higher confidence value corresponds to greater likelihood that the execution of the statement produced a correct value. Given a failed run involving execution of a single error, we demonstrate that the pruning of a dynamic slice by excluding only the statements with the confidence value of 1 is highly effective in reducing the size of the dynamic slice while retaining the faulty code in the slice. Our experiments show that the number of distinct statements in a pruned dynamic slice are 1.79 to 190.57 times less than the full dynamic slice. Confidence values also prioritize the statements in the dynamic slice according to the likelihood of them being faulty. We show that examining the statements in the order of increasing confidence values is an effective strategy for reducing the effort of fault location.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134002",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Xiangyu",
+        "last_name": "Zhang",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Neelam",
+        "last_name": "Gupta",
+        "institution": "University of Arizona"
+      },
+      {
+        "first_name": "Rajiv",
+        "last_name": "Gupta",
+        "institution": "University of Arizona"
+      }
+    ],
+    "dblp_key": "conf/pldi/ZhangGG06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134023",
+    "title": "The Compressor: concurrent, incremental, and parallel compaction",
+    "abstract": "The widely used Mark-and-Sweep garbage collector has a drawback in that it does not move objects during collection. As a result, large long-running realistic applications, such as Web application servers, frequently face the fragmentation problem. To eliminate fragmentation, a heap compaction is run periodically. However, compaction typically imposes very long undesirable pauses in the application. While efficient concurrent collectors are ubiquitous in production runtime systems (such as JVMs), an efficient non-intrusive compactor is still missing.In this paper we present the Compressor, a novel compaction algorithm that is concurrent, parallel, and incremental. The Compressor compacts the entire heap to a single condensed area, while preserving the objects' order, but reduces pause times significantly, thereby allowing acceptable runs on large heaps. Furthermore, the Compressor is the first compactor that requires only a single heap pass. As such, it is the most efficient compactors known today, even when run in a parallel Stop-the-World manner (i.e., when the program threads are halted). Thus, to the best of our knowledge, the Compressor is the most efficient compactor known today. The Compressor was implemented on a Jikes Research RVM and we provide measurements demonstrating its qualities.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134023",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Haim",
+        "last_name": "Kermany",
+        "institution": "Technion – Israel Institute of Technology"
+      },
+      {
+        "first_name": "Erez",
+        "last_name": "Petrank",
+        "institution": "Technion – Israel Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/KermanyP06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133992",
+    "title": "Artemis: practical runtime monitoring of applications for execution anomalies",
+    "abstract": "A number of hardware and software techniques have been proposed to detect dynamic program behaviors that may indicate a bug in a program. Because these techniques suffer from high overheads they are useful in finding bugs in programs before they are released, but are significantly less useful in finding bugs in long-running programs on production systems -- the same bugs that are the most difficult to find using traditional techniques. In this paper we propose the Artemis1 is the Greek goddess of the hunt and wild animals. Our framework guides the hunt for wild bugs. compiler-based instrumentation framework that complements many pre-existing runtime monitoring techniques. The Artemis framework guides baseline monitoring techniques toward regions of the program where bugs are likely to occur, yielding a low asymptotic monitoring overhead. Artemis also facilitates system-load aware runtime monitoring that allows the monitoring coverage to be dynamically scaled up to take advantage of extra cycles when the system load is low, and dynamically scaled down to monitor only the most suspicious regions when the system load is high. Our experiments show that Artemis' asymptotic overhead can outperform the performance floor overhead of random sampling for many tools, and that Artemis can effectively guide a monitoring tool to the buggy regions of a program. Our experimental results show that Artemis applied to a hardware-based PC-invariance monitoring scheme and a value-based invariance detection and checking scheme significantly improves their runtime monitoring overhead (by up to 4.6 times) with moderate impact on their bug-detecting capabilities.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133992",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Fei",
+        "last_name": "Long",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Samuel P.",
+        "last_name": "Midkiff",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/pldi/FeiM06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133984",
+    "title": "Optimizing memory transactions",
+    "abstract": "Atomic blocks allow programmers to delimit sections of code as 'atomic', leaving the language's implementation to enforce atomicity. Existing work has shown how to implement atomic blocks over word-based transactional memory that provides scalable multi-processor performance without requiring changes to the basic structure of objects in the heap. However, these implementations perform poorly because they interpose on all accesses to shared memory in the atomic block, redirecting updates to a thread-private log which must be searched by reads in the block and later reconciled with the heap when leaving the block.This paper takes a four-pronged approach to improving performance: (1) we introduce a new 'direct access' implementation that avoids searching thread-private logs, (2) we develop compiler optimizations to reduce the amount of logging (e.g. when a thread accesses the same data repeatedly in an atomic block), (3) we use runtime filtering to detect duplicate log entries that are missed statically, and (4) we present a series of GC-time techniques to compact the logs generated by long-running atomic blocks.Our implementation supports short-running scalable concurrent benchmarks with less than 50\\% overhead over a non-thread-safe baseline. We support long atomic blocks containing millions of shared memory accesses with a 2.5-4.5x slowdown.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133984",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Tim",
+        "last_name": "Harris",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "M.",
+        "last_name": "Pleško",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Avraham",
+        "last_name": "Shinnar",
+        "institution": "Harvard University Press"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Tarditi",
+        "institution": "Microsoft Research (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/pldi/HarrisPST06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134026",
+    "title": "Combining abstract interpreters",
+    "abstract": "We present a methodology for automatically combining abstract interpreters over given lattices to construct an abstract interpreter for the combination of those lattices. This lends modularity to the process of design and implementation of abstract interpreters.We define the notion of logical product of lattices. This kind of combination is more precise than the reduced product combination. We give algorithms to obtain the join operator and the existential quantification operator for the combined lattice from the corresponding operators of the individual lattices. We also give a bound on the number of steps required to reach a fixed point across loops during analysis over the combined lattice in terms of the corresponding bounds for the individual lattices. We prove that our combination methodology yields the most precise abstract interpretation operators over the logical product of lattices when the individual lattices are over theories that are convex, stably infinite, and disjoint.We also present an interesting application of logical product wherein some lattices can be reduced to combination of other (unrelated) lattices with known abstract interpreters.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134026",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Sumit",
+        "last_name": "Gulwani",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Ashish",
+        "last_name": "Tiwari",
+        "institution": "SRI International"
+      }
+    ],
+    "dblp_key": "conf/pldi/GulwaniT06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133988",
+    "title": "Fast and flexible instruction selection with on-demand tree-parsing automata",
+    "abstract": "Tree parsing as supported by code generator generators like BEG, burg, iburg, lburg and ml-burg is a popular instruction selection method. There are two existing approaches for implementing tree parsing: dynamic programming, and tree-parsing automata; each approach has its advantages and disadvantages. We propose a new implementation approach that combines the advantages of both existing approaches: we start out with dynamic programming at compile time, but at every step we generate a state for a tree-parsing automaton, which is used the next time a tree matching the state is found, turning the instruction selector into a fast tree-parsing automaton. We have implemented this approach in the Gforth code generator. The implementation required little effort and reduced the startup time of Gforth by up to a factor of 2.5.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133988",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "M. Anton",
+        "last_name": "Ertl",
+        "institution": "TU Wien"
+      },
+      {
+        "first_name": "Kevin",
+        "last_name": "Casey",
+        "institution": "Trinity College Dublin"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Gregg",
+        "institution": "Trinity College Dublin"
+      }
+    ],
+    "dblp_key": "conf/pldi/ErtlCG06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134019",
+    "title": "LOCKSMITH: context-sensitive correlation analysis for race detection",
+    "abstract": "One common technique for preventing data races in multi-threaded programs is to ensure that all accesses to shared locations are consistently protected by a lock. We present a tool called LOCKSMITH for detecting data races in C programs by looking for violations of this pattern. We call the relationship between locks and the locations they protect consistent correlation, and the core of our technique is a novel constraint-based analysis that infers consistent correlation context-sensitively, using the results to check that locations are properly guarded by locks. We present the core of our algorithm for a simple formal language λ> which we have proven sound, and discuss how we scale it up to an algorithm that aims to be sound for all of C. We develop several techniques to improve the precision and performance of the analysis, including a sharing analysis for inferring thread locality; existential quantification for modeling locks in data structures; and heuristics for modeling unsafe features of C such as type casts. When applied to several benchmarks, including multi-threaded servers and Linux device drivers, LOCKSMITH found several races while producing a modest number of false alarm.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134019",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Polyvios",
+        "last_name": "Pratikakis",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Jeffrey S.",
+        "last_name": "Foster",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "University of Maryland, College Park"
+      }
+    ],
+    "dblp_key": "conf/pldi/PratikakisFH06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133999",
+    "title": "SAFECode: enforcing alias analysis for weakly typed languages",
+    "abstract": "Static analysis of programs in weakly typed languages such as C and C++ is generally not sound because of possible memory errors due to dangling pointer references, uninitialized pointers, and array bounds overflow. We describe a compilation strategy for standard C programs that guarantees that aggressive interprocedural pointer analysis (or less precise ones), a call graph, and type information for a subset of memory, are never invalidated by any possible memory errors. We formalize our approach as a new type system with the necessary run-time checks in operational semantics and prove the correctness of our approach for a subset of C. Our semantics provide the foundation for other sophisticated static analyses to be applied to C programs with a guarantee of soundness. Our work builds on a previously published transformation called Automatic Pool Allocation to ensure that hard-to-detect memory errors (dangling pointer references and certain array bounds errors) cannot invalidate the call graph, points-to information or type information. The key insight behind our approach is that pool allocation can be used to create a run-time partitioning of memory that matches the compile-time memory partitioning in a points-to graph, and efficient checks can be used to isolate the run-time partitions. Furthermore, we show that the sound analysis information enables static checking techniques that eliminate many run-time checks. Our approach requires no source code changes, allows memory to be managedexplicitly, and does not use meta-data on pointers or individual tag bits for memory. Using several benchmark s and system codes, we show experimentally that the run-time overheads are low (less than 10% in nearly all cases and 30% in the worst case we have seen).We also show the effectiveness of static analyses in eliminating run-time checks.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133999",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dinakar",
+        "last_name": "Dhurjati",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Sumant",
+        "last_name": "Kowshik",
+        "institution": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "first_name": "Vikram",
+        "last_name": "Adve",
+        "institution": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "dblp_key": "conf/pldi/DhurjatiKA06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134021",
+    "title": "Profile-guided proactive garbage collection for locality optimization",
+    "abstract": "Many applications written in garbage collected languages have large dynamic working sets and poor data locality. We present a new system for continuously improving program data locality at run time with low overhead. Our system proactively reorganizes the heap by leveraging the garbage collector and uses profile information collected through a low-overhead mechanism to guide the reorganization at run time. The key contributions include making a case that garbage collection should be viewed as a proactive technique for improving data locality by triggering garbage collection for locality optimization independently of normal garbage collection for space, combining page and cache locality optimization in the same system, and demonstrating that sampling provides sufficiently detailed data access information to guide both page and cache locality optimization with low runtime overhead. We present experimental results obtained by modifying a commercial, state-of-the-art garbage collector to support our claims. Independently triggering garbage collection for locality optimization significantly improved optimizations benefits. Combining page and cache locality optimizations in the same system provided larger average execution time improvements (17%) than either alone (page 8%, cache 7%). Finally, using sampling limited profiling overhead to less than 3%, on average.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134021",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Wen-ke",
+        "last_name": "Chen",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Sanjay",
+        "last_name": "Bhansali",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Trishul",
+        "last_name": "Chilimbi",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Xiaofeng",
+        "last_name": "Gao",
+        "institution": "University of California San Diego"
+      },
+      {
+        "first_name": "Weihaw",
+        "last_name": "Chuang",
+        "institution": "University of California San Diego"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChenBCGC06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134008",
+    "title": "Automatic instruction scheduler retargeting by reverse-engineering",
+    "abstract": "In order to generate high-quality code for modern processors, a compiler must aggressively schedule instructions, maximizing resource utilization for execution efficiency. For a compiler to produce such code, it must avoid structural hazards by being aware of the processor's available resources and of how these resources are utilized by each instruction. Unfortunately, the most prevalent approach to constructing such a scheduler, manually discovering and specifying this information, is both tedious and error-prone. This paper presents a new approach which, when given a processor or processor model, automatically determines this information. After establishing that the problem of perfectly determining a processor's structural hazards through probing is not solvable, this paper proposes a heuristic algorithm that discovers most of this information in practice. This can be used either to alleviate the problems associated with manual creation or to verify an existing specification. Scheduling with these automatically derived structural hazards yields almost all of the performance gain achieved using perfect hazard information.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134008",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Matthew J.",
+        "last_name": "Bridges",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Neil",
+        "last_name": "Vachharajani",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Guilherme",
+        "last_name": "Ottoni",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David I.",
+        "last_name": "August",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/BridgesVOA06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133993",
+    "title": "An experimental analysis of self-adjusting computation",
+    "abstract": "Dependence graphs and memoization can be used to efficiently update the output of a program as the input changes dynamically. Recent work has studied techniques for combining these approaches to effectively dynamize a wide range of applications. Toward this end various theoretical results were given. In this paper we describe the implementation of a library based on these ideas, and present experimental results on the efficiency of this library on a variety of applications. The results of the experiments indicate that the approach is effective in practice, often requiring orders of magnitude less time than recomputing the output from scratch. We believe this is the first experimental evidence that incremental computation of any type is effective in practice for a reasonably broad set of applications.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133993",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Umut A.",
+        "last_name": "Acar",
+        "institution": "Toyota Technological Institute"
+      },
+      {
+        "first_name": "Guy E.",
+        "last_name": "Blelloch",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "M.",
+        "last_name": "Blume",
+        "institution": "Toyota Technological Institute"
+      },
+      {
+        "first_name": "Kanat",
+        "last_name": "Tangwongsan",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/AcarBBT06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134003",
+    "title": "Context-sensitive domain-independent algorithm composition and selection",
+    "abstract": "Progressing beyond the productivity of present-day languages appears to require using domain-specific knowledge. Domain-specific languages and libraries (DSLs) proliferate, but most optimizations and language features have limited portability because each language's semantics are related closely to its domain. We explain how any DSL compiler can use a domain-independent AI planner to implement algorithm composition as a language feature. Our notion of composition addresses a common DSL problem: good library designers tend to minimize redundancy by including only fundamental procedures that users must chain together into call sequences. Novice users are confounded by not knowing an appropriate sequence to achieve their goal. Composition allows the programmer to define and call an abstract algorithm (AA) like a procedure. The compiler replaces an AA call with a sequence of library calls, while considering the calling context. Because AI planners compute a sequence of operations to reach a goal state, the compiler can implement composition by analyzing the calling context to provide the planner's initial state. Nevertheless, mapping composition onto planning is not straightforward because applying planning to software requires extensions to classical planning, and procedure specifications may be incomplete when expressed in a planning language. Compositions may not be provably correct, so our approach mitigates semantic incompleteness with unobtrusive programmer-compiler interaction. This tradeoff is key to making composition a practical and natural feature of otherwise imperative languages, whose users eschew complex logical specifications. Compositions satisfying an AA may not be equal in performance, memory usage, or precision and require selection of a preferred solution. We examine language design and implementation issues, and we perform a case study on the BioPerl bioinformatics library.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134003",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Troy A.",
+        "last_name": "Johnson",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Rudolf",
+        "last_name": "Eigenmann",
+        "institution": "Purdue University West Lafayette"
+      }
+    ],
+    "dblp_key": "conf/pldi/JohnsonE06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133987",
+    "title": "Better extensibility through modular syntax",
+    "abstract": "We explore how to make the benefits of modularity available for syntactic specifications and present Rats!, a parser generator for Java that supports easily extensible syntax. Our parser generator builds on recent research on parsing expression grammars (PEGs), which, by being closed under composition, prioritizing choices, supporting unlimited lookahead, and integrating lexing and parsing, offer an attractive alternative to context-free grammars. PEGs are implemented by so-called packrat parsers, which are recursive descent parsers that memoize all intermediate results (hence their name). Memoization ensures linear-time performance in the presence of unlimited lookahead, but also results in an essentially lazy, functional parsing technique. In this paper, we explore how to leverage PEGs and packrat parsers as the foundation for extensible syntax. In particular, we show how make packrat parsing more widely applicable by implementing this lazy, functional technique in a strict, imperative language, while also generating better performing parsers through aggressive optimizations. Next, we develop a module system for organizing, modifying, and composing large-scale syntactic specifications. Finally, we describe a new technique for managing (global) parsing state in functional parsers. Our experimental evaluation demonstrates that the resulting parser generator succeeds at providing extensible syntax. In particular, Rats! enables other grammar writers to realize real-world language extensions in little time and code, and it generates parsers that consistently out-perform parsers created by two GLR parser generators.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133987",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Grimm",
+        "institution": "New York University"
+      }
+    ],
+    "dblp_key": "conf/pldi/Grimm06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134018",
+    "title": "Effective static race detection for Java",
+    "abstract": "We present a novel technique for static race detection in Java programs, comprised of a series of stages that employ a combination of static analyses to successively reduce the pairs of memory accesses potentially involved in a race. We have implemented our technique and applied it to a suite of multi-threaded Java programs. Our experiments show that it is precise, scalable, and useful, reporting tens to hundreds of serious and previously unknown concurrency bugs in large, widely-used programs with few false alarms.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134018",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Mayur",
+        "last_name": "Naik",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Alex",
+        "last_name": "Aiken",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "John",
+        "last_name": "Whaley",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/NaikAW06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134028",
+    "title": "Modular verification of assembly code with stack-based control abstractions",
+    "abstract": "Runtime stacks are critical components of any modern software--they are used to implement powerful control structures such as function call/return, stack cutting and unwinding, coroutines, and thread context switch. Stack operations, however, are very hard to reason about: there are no known formal specifications for certifying C-style setjmp/longjmp, stack cutting and unwinding, or weak continuations (in C--). In many proof-carrying code (PCC) systems, return code pointers and exception handlers are treated as general first-class functions (as in continuation-passing style) even though both should have more limited scopes.In this paper we show that stack-based control abstractions follow a much simpler pattern than general first-class code pointers. We present a simple but flexible Hoare-style framework for modular verification of assembly code with all kinds of stackbased control abstractions, including function call/return, tail call, setjmp/longjmp, weak continuation, stack cutting, stack unwinding, multi-return function call, coroutines, and thread context switch. Instead of presenting a specific logic for each control structure, we develop all reasoning systems as instances of a generic framework. This allows program modules and their proofs developed in different PCC systems to be linked together. Our system is fully mechanized. We give the complete soundness proof and a full verification of several examples in the Coq proof assistant.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134028",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Xinyu",
+        "last_name": "Feng",
+        "institution": ""
+      },
+      {
+        "first_name": "Zhong",
+        "last_name": "Shao",
+        "institution": ""
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Vaynberg",
+        "institution": ""
+      },
+      {
+        "first_name": "Sen",
+        "last_name": "Xiang",
+        "institution": "University of Science and Technology of China"
+      },
+      {
+        "first_name": "Zhaozhong",
+        "last_name": "Ni",
+        "institution": "Yale University"
+      }
+    ],
+    "dblp_key": "conf/pldi/FengSVXN06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134004",
+    "title": "Reducing NoC energy consumption through compiler-directed channel voltage scaling",
+    "abstract": "While scalable NoC (Network-on-Chip) based communication architectures have clear advantages over long point-to-point communication channels, their power consumption can be very high. In contrast to most of the existing hardware-based efforts on NoC power optimization, this paper proposes a compiler-directed approach where the compiler decides the appropriate voltage/frequency levels to be used for each communication channel in the NoC. Our approach builds and operates on a novel graph based representation of a parallel program and has been implemented within an optimizing compiler and tested using 12 embedded benchmarks. Our experiments indicate that the proposed approach behaves better - from both performance and power perspectives - than a hardwarebased scheme and the energy savings it achieves are very close to the savings that could be obtained from an optimal, but hypothetical voltage/frequency scaling scheme.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134004",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Guangyu",
+        "last_name": "Chen",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Feihui",
+        "last_name": "Li",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "Mahmut",
+        "last_name": "Kandemir",
+        "institution": "Pennsylvania State University"
+      },
+      {
+        "first_name": "M.J.",
+        "last_name": "Irwin",
+        "institution": "Pennsylvania State University"
+      }
+    ],
+    "dblp_key": "conf/pldi/ChenLKI06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134000",
+    "title": "DieHard: probabilistic memory safety for unsafe languages",
+    "abstract": "Applications written in unsafe languages like C and C++ are vulnerable to memory errors such as buffer overflows, dangling pointers, and reads of uninitialized data. Such errors can lead to program crashes, security vulnerabilities, and unpredictable behavior. We present DieHard, a runtime system that tolerates these errors while probabilistically maintaining soundness. DieHard uses randomization and replication to achieve probabilistic memory safety by approximating an infinite-sized heap. DieHard's memory manager randomizes the location of objects in a heap that is at least twice as large as required. This algorithm prevents heap corruption and provides a probabilistic guarantee of avoiding memory errors. For additional safety, DieHard can operate in a replicated mode where multiple replicas of the same application are run simultaneously. By initializing each replica with a different random seed and requiring agreement on output, the replicated version of Die-Hard increases the likelihood of correct execution because errors are unlikely to have the same effect across all replicas. We present analytical and experimental results that show DieHard's resilience to a wide range of memory errors, including a heap-based buffer overflow in an actual application.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134000",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Emery D.",
+        "last_name": "Berger",
+        "institution": "University of Massachusetts Amherst"
+      },
+      {
+        "first_name": "Benjamin G.",
+        "last_name": "Zorn",
+        "institution": "Microsoft (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/BergerZ06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133997",
+    "title": "Auto-vectorization of interleaved data for SIMD",
+    "abstract": "Most implementations of the Single Instruction Multiple Data (SIMD) model available today require that data elements be packed in vector registers. Operations on disjoint vector elements are not supported directly and require explicit data reorganization manipulations. Computations on non-contiguous and especially interleaved data appear in important applications, which can greatly benefit from SIMD instructions once the data is reorganized properly. Vectorizing such computations efficiently is therefore an ambitious challenge for both programmers and vectorizing compilers. We demonstrate an automatic compilation scheme that supports effective vectorization in the presence of interleaved data with constant strides that are powers of 2, facilitating data reorganization. We demonstrate how our vectorization scheme applies to dominant SIMD architectures, and present experimental results on a wide range of key kernels, showing speedups in execution time up to 3.7 for interleaving levels (stride) as high as 8.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133997",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Dorit",
+        "last_name": "Nuzman",
+        "institution": "IBM Research - Haifa"
+      },
+      {
+        "first_name": "Ira",
+        "last_name": "Rosen",
+        "institution": "IBM Research - Haifa"
+      },
+      {
+        "first_name": "Ayal",
+        "last_name": "Zaks",
+        "institution": "IBM Research - Haifa"
+      }
+    ],
+    "dblp_key": "conf/pldi/NuzmanRZ06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134029",
+    "title": "Termination proofs for systems code",
+    "abstract": "Program termination is central to the process of ensuring that systems code can always react. We describe a new program termination prover that performs a path-sensitive and context-sensitive program analysis and provides capacity for large program fragments (i.e. more than 20,000 lines of code) together with support for programming language features such as arbitrarily nested loops, pointers, function-pointers, side-effects, etc.We also present experimental results on device driver dispatch routines from theWindows operating system. The most distinguishing aspect of our tool is how it shifts the balance between the two tasks of constructing and respectively checking the termination argument. Checking becomes the hard step. In this paper we show how we solve the corresponding challenge of checking with binary reachability analysis.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134029",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Byron",
+        "last_name": "Cook",
+        "institution": "Microsoft Research (United Kingdom)"
+      },
+      {
+        "first_name": "Andreas",
+        "last_name": "Podelski",
+        "institution": "Max Planck Institute for Informatics"
+      },
+      {
+        "first_name": "Andrey",
+        "last_name": "Rybalchenko",
+        "institution": "Max Planck Institute for Informatics"
+      }
+    ],
+    "dblp_key": "conf/pldi/CookPR06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134012",
+    "title": "Accurate, efficient, and adaptive calling context profiling",
+    "abstract": "Calling context profiles are used in many inter-procedural code optimizations and in overall program understanding. Unfortunately, the collection of profile information is highly intrusive due to the high frequency of method calls in most applications. Previously proposed calling-context profiling mechanisms consequently suffer from either low accuracy, high overhead, or both. We have developed a new approach for building the calling context tree at runtime, called adaptive bursting. By selectively inhibiting redundant profiling, this approach dramatically reduces overhead while preserving profile accuracy. We first demonstrate the drawbacks of previously proposed calling context profiling mechanisms. We show that a low-overhead solution using sampled stack-walking alone is less than 50% accurate, based on degree of overlap with a complete calling-context tree. We also show that a static bursting approach collects a highly accurate profile, but causes an unacceptable application slowdown. Our adaptive solution achieves 85% degree of overlap and provides an 88% hot-edge coverage when using a 0.1 hot-edge threshold, while dramatically reducing overhead compared to the static bursting approach.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134012",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Xiaotong",
+        "last_name": "Zhuang",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Maurício",
+        "last_name": "Serrano",
+        "institution": ""
+      },
+      {
+        "first_name": "Harold W.",
+        "last_name": "Cain",
+        "institution": ""
+      },
+      {
+        "first_name": "Jong-Deok",
+        "last_name": "Choi",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/ZhuangSCC06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134010",
+    "title": "Online performance auditing: using hot optimizations without getting burned",
+    "abstract": "As hardware complexity increases and virtualization is added at more layers of the execution stack, predicting the performance impact of optimizations becomes increasingly difficult. Production compilers and virtual machines invest substantial development effort in performance tuning to achieve good performance for a range of benchmarks. Although optimizations typically perform well on average, they often have unpredictable impact on running time, sometimes degrading performance significantly. Today's VMs perform sophisticated feedback-directed optimizations, but these techniques do not address performance degradations, and they actually make the situation worse by making the system more unpredictable.This paper presents an online framework for evaluating the effectiveness of optimizations, enabling an online system to automatically identify and correct performance anomalies that occur at runtime. This work opens the door for a fundamental shift in the way optimizations are developed and tuned for online systems, and may allow the body of work in offline empirical optimization search to be applied automatically at runtime. We present our implementation and evaluation of this system in a product Java VM.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134010",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Jeremy",
+        "last_name": "Lau",
+        "institution": "University of California, San Diego"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Arnold",
+        "institution": ""
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hind",
+        "institution": ""
+      },
+      {
+        "first_name": "Brad",
+        "last_name": "Calder",
+        "institution": "University of California, San Diego"
+      }
+    ],
+    "dblp_key": "conf/pldi/LauAHC06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134024",
+    "title": "Free-Me: a static analysis for automatic individual object reclamation",
+    "abstract": "Garbage collection has proven benefits, including fewer memory related errors and reduced programmer effort. Garbage collection, however, trades space for time. It reclaims memory only when it is invoked: invoking it more frequently reclaims memory quickly, but incurs a significant cost; invoking it less frequently fills memory with dead objects. In contrast, explicit memory management provides prompt low cost reclamation, but at the expense of programmer effort.This work comes closer to the best of both worlds by adding novel compiler and runtime support for compiler inserted frees to a garbage-collected system. The compiler's free-me analysis identifies when objects become unreachable and inserts calls to free. It combines a lightweight pointer analysis with liveness information that detects when short-lived objects die. Our approach differs from stack and region allocation in two crucial ways. First, it frees objects incrementally exactly when they become unreachable, instead of based on program scope. Second, our system does not require allocation-site lifetime homogeneity, and thus frees objects on some paths and not on others. It also handles common patterns: it can free objects in loops and objects created by factory methods.We evaluate free() variations for free-list and bump-pointer allocators. Explicit freeing improves performance by promptly reclaiming objects and reducing collection load. Compared to marksweep alone, free-me cuts total time by 22% on average, collector time by 50% to 70%, and allows programs to run in 17% less memory. This combination retains the software engineering benefits of garbage collection while increasing space efficiency and improving performance, and thus is especially appealing for real-time and space constrained systems.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134024",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Samuel Z.",
+        "last_name": "Guyer",
+        "institution": "Tufts University"
+      },
+      {
+        "first_name": "Kathryn S.",
+        "last_name": "McKinley",
+        "institution": "The University of Texas at Austin"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Frampton",
+        "institution": "Australian National University"
+      }
+    ],
+    "dblp_key": "conf/pldi/GuyerMF06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134011",
+    "title": "Cache-conscious coallocation of hot data streams",
+    "abstract": "The memory system performance of many programs can be improved by coallocating contemporaneously accessed heap objects in the same cache block. We present a novel profile-based analysis for producing such a layout. The analysis achieves cacheconscious coallocation of a hot data stream H (i.e., a regular data access pattern that frequently repeats) by isolating and combining allocation sites of object instances that appear in H such that intervening allocations coming from other sites are separated. The coallocation solution produced by the analysis is enforced by an automatic tool, cminstr, that redirects a program's heap allocations to a run-time coallocation library comalloc. We also extend the analysis to coallocation at object field granularity. The resulting field coallocation solution generalizes common data restructuring techniques, such as field reordering, object splitting, and object merging, and allows their combination. Furthermore, it provides insight into object restructuring by breaking down the coallocation benefit on a per-technique basis, which provides the opportunity to pick the \"sweet spot\" for each program. Experimental results using a set of memory-performance-limited benchmarks, including a few SPECInt2000 programs, and Microsoft VisualFoxPro, indicate that programs possess significant coallocation opportunities. Automatic object coallocation improves execution time by 13% on average in the presence of hardware prefetching. Hand-implemented field coallocation solutions for two of the benchmarks produced additional improvements (12% and 22%) but the effort involved suggests implementing an automated version for type-safe languages, such as Java and C#.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134011",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Trishul",
+        "last_name": "Chilimbi",
+        "institution": "Microsoft (United States)"
+      },
+      {
+        "first_name": "Ran",
+        "last_name": "Shaham",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/ChilimbiS06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133983",
+    "title": "The Atomos transactional programming language",
+    "abstract": "Atomos is the first programming language with implicit transactions, strong atomicity, and a scalable multiprocessor implementation. Atomos is derived from Java, but replaces its synchronization and conditional waiting constructs with simpler transactional alternatives.The Atomos watch statement allows programmers to specify fine-grained watch sets used with the Atomos retry conditional waiting statement for efficient transactional conflict-driven wakeup even in transactional memory systems with a limited number of transactional contexts. Atomos supports open-nested transactions, which are necessary for building both scalable application programs and virtual machine implementations.The implementation of the Atomos scheduler demonstrates the use of open nesting within the virtual machine and introduces the concept of transactional memory violation handlers that allow programs to recover from data dependency violations without rolling back.Atomos programming examples are given to demonstrate the usefulness of transactional programming primitives. Atomos and Java are compared through the use of several benchmarks. The results demonstrate both the improvements in parallel programming ease and parallel program performance provided by Atomos.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133983",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Brian D.",
+        "last_name": "Carlstrom",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Austen",
+        "last_name": "McDonald",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Hassan",
+        "last_name": "Chafi",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "JaeWoong",
+        "last_name": "Chung",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Chi Cao",
+        "last_name": "Minh",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Christos",
+        "last_name": "Kozyrakis",
+        "institution": "Stanford University"
+      },
+      {
+        "first_name": "Kunle",
+        "last_name": "Olukotun",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/pldi/CarlstromMCCMKO06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133985",
+    "title": "Compiler and runtime support for efficient software transactional memory",
+    "abstract": "Programmers have traditionally used locks to synchronize concurrent access to shared data. Lock-based synchronization, however, has well-known pitfalls: using locks for fine-grain synchronization and composing code that already uses locks are both difficult and prone to deadlock. Transactional memory provides an alternate concurrency control mechanism that avoids these pitfalls and significantly eases concurrent programming. Transactional memory language constructs have recently been proposed as extensions to existing languages or included in new concurrent language specifications, opening the door for new compiler optimizations that target the overheads of transactional memory.This paper presents compiler and runtime optimizations for transactional memory language constructs. We present a high-performance software transactional memory system (STM) integrated into a managed runtime environment. Our system efficiently implements nested transactions that support both composition of transactions and partial roll back. Our JIT compiler is the first to optimize the overheads of STM, and we show novel techniques for enabling JIT optimizations on STM operations. We measure the performance of our optimizations on a 16-way SMP running multi-threaded transactional workloads. Our results show that these techniques enable transactional memory's performance to compete with that of well-tuned synchronization.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133985",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Ali-Reza",
+        "last_name": "Adl-Tabatabai",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Brian T. R.",
+        "last_name": "Lewis",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Vijay",
+        "last_name": "Menon",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Brian",
+        "last_name": "Murphy",
+        "institution": ""
+      },
+      {
+        "first_name": "Bratin",
+        "last_name": "Saha",
+        "institution": "Intel (United States)"
+      },
+      {
+        "first_name": "Tatiana",
+        "last_name": "Shpeisman",
+        "institution": "Intel (United States)"
+      }
+    ],
+    "dblp_key": "conf/pldi/Adl-TabatabaiLMMSS06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133995",
+    "title": "Shared memory programming for large scale machines",
+    "abstract": "This paper describes the design and implementation of a scalable run-time system and an optimizing compiler for Unified Parallel C (UPC). An experimental evaluation on BlueGene/L®, a distributed-memory machine, demonstrates that the combination of the compiler with the runtime system produces programs with performance comparable to that of efficient MPI programs and good performance scalability up to hundreds of thousands of processors.Our runtime system design solves the problem of maintaining shared object consistency efficiently in a distributed memory machine. Our compiler infrastructure simplifies the code generated for parallel loops in UPC through the elimination of affinity tests, eliminates several levels of indirection for accesses to segments of shared arrays that the compiler can prove to be local, and implements remote update operations through a lower-cost asynchronous message. The performance evaluation uses three well-known benchmarks --- HPC RandomAccess, HPC STREAM and NAS CG --- to obtain scaling and absolute performance numbers for these benchmarks on up to 131072 processors, the full BlueGene/L machine. These results were used to win the HPC Challenge Competition at SC05 in Seattle WA, demonstrating that PGAS languages support both productivity and performance.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133995",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Christopher",
+        "last_name": "Barton",
+        "institution": "University of Alberta"
+      },
+      {
+        "first_name": "Călin",
+        "last_name": "Caşcaval",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "George",
+        "last_name": "Almási",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "Yili",
+        "last_name": "Zheng",
+        "institution": "Purdue University West Lafayette"
+      },
+      {
+        "first_name": "Montse",
+        "last_name": "Farreras",
+        "institution": "Universitat Politècnica de Catalunya"
+      },
+      {
+        "first_name": "Siddhartha",
+        "last_name": "Chatterje",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "José Nelson",
+        "last_name": "Amaral",
+        "institution": "University of Alberta"
+      }
+    ],
+    "dblp_key": "conf/pldi/BartonCAZFCA06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134006",
+    "title": "A global progressive register allocator",
+    "abstract": "This paper describes a global progressive register allocator, a register allocator that uses an expressive model of the register allocation problem to quickly find a good allocation and then progressively find better allocations until a provably optimal solution is found or a preset time limit is reached. The key contributions of this paper are an expressive model of global register allocation based on multicommodity network flows that explicitly represents spill code optimization, register preferences, copy insertion, and constant rematerialization; two fast, but effective, heuristic allocators based on this model; and a more elaborate progressive allocator that uses Lagrangian relaxation to compute the optimality of its allocations. Our progressive allocator demonstrates code size improvements as large as 16.75% compared to a traditional graph allocator. On average, we observe an initial improvement of 3.47%, which increases progressively to 6.84% as more time is permitted for compilation.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134006",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "David Ryan",
+        "last_name": "Koes",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Seth Copen",
+        "last_name": "Goldstein",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/pldi/KoesG06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134007",
+    "title": "Profile-based global live-range splitting",
+    "abstract": "Live-range splitting is a technique to split the live range of a given variable into multiple subranges, each of which can be assigned to a different register or spilled out to memory in order to improve results of coloring register allocation. Previous techniques, such as aggressive live-range splitting, tend to produce extra spill code in the frequently executed (called hot) regions of the code, since they don't distinguish hot regions from others. We propose a new live-range splitting algorithm, which can reduce the amount of spill code in hot regions by coalescing the live ranges based on profile information after splitting the live ranges at every join and fork point in the control-flow graph. Our experimental results have shown that our new algorithm improved the performance of SPECjvm98 by up to 33% over aggressive live-range splitting and 7% over the base coloring algorithm without any live-range splitting.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134007",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Takuya",
+        "last_name": "Nakaike",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Tatsushi",
+        "last_name": "Inagaki",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Hideaki",
+        "last_name": "Komatsu",
+        "institution": "IBM Research - Tokyo"
+      },
+      {
+        "first_name": "Toshio",
+        "last_name": "Nakatani",
+        "institution": "IBM Research - Tokyo"
+      }
+    ],
+    "dblp_key": "conf/pldi/NakaikeIKN06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134016",
+    "title": "Continuations and transducer composition",
+    "abstract": "On-line transducers are an important class of computational agent; we construct and compose together many software systems using them, such as stream processors, layered network protocols, DSP networks and graphics pipelines. We show an interesting use of continuations, that, when taken in a CPS setting, exposes the control flow of these systems. This enables a CPS-based compiler to optimise systems composed of these transducers, using only standard, known analyses and optimisations. Critically, the analysis permits optimisation across the composition of these transducers, allowing efficient construction of systems in a hierarchical way.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134016",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Olin",
+        "last_name": "Shivers",
+        "institution": "Georgia Institute of Technology"
+      },
+      {
+        "first_name": "Matthew",
+        "last_name": "Might",
+        "institution": "Georgia Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/pldi/ShiversM06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134015",
+    "title": "Eventrons: a safe programming construct for high-frequency hard real-time applications",
+    "abstract": "While real-time garbage collection has achieved worst-case latencies on the order of a millisecond, this technology is approaching its practical limits. For tasks requiring extremely low latency, and especially periodic tasks with frequencies above 1 KHz, Java programmers must currently resort to the NoHeapRealtimeThread construct of the Real-Time Specification for Java. This technique requires expensive run-time checks, can result in unpredictable low-level exceptions, and inhibits communication with the rest of the garbage-collected application. We present Eventrons, a programming construct that can arbitrarily preempt the garbage collector, yet guarantees safety and allows its data to be visible to the garbage-collected heap. Eventrons are a strict subset of Java, and require no run-time memory access checks. Safety is enforced using a data-sensitive analysis and simple run-time support with extremely low overhead. We have implemented Eventrons in IBM's J9 Java virtual machine, and present experimental results in which we ran Eventrons at frequencies up to 22 KHz (a 45 μs period). Across 10 million periods, 99.997% of the executions ran within 10 μss of their deadline, compared to 99.999% of the executions of the equivalent program written in C.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134015",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Daniel",
+        "last_name": "Spoonhower",
+        "institution": "Carnegie Mellon University"
+      },
+      {
+        "first_name": "Joshua",
+        "last_name": "Auerbach",
+        "institution": ""
+      },
+      {
+        "first_name": "David F.",
+        "last_name": "Bacon",
+        "institution": ""
+      },
+      {
+        "first_name": "Perry",
+        "last_name": "Cheng",
+        "institution": ""
+      },
+      {
+        "first_name": "David",
+        "last_name": "Grove",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/SpoonhowerABCG06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133991",
+    "title": "Practical dynamic software updating for C",
+    "abstract": "Software updates typically require stopping and restarting an application, but many systems cannot afford to halt service, or would prefer not to. Dynamic software updating (DSU) addresses this difficulty by permitting programs to be updated while they run. DSU is appealing compared to other approaches for on-line upgrades because it is quite general and requires no redundant hardware. The challenge is in making DSU practical: it should be flexible, and yet safe, efficient, and easy to use.In this paper, we present Ginseng, a DSU implementation for C that aims to meet this challenge. We compile programs specially so that they can be dynamically patched, and generate most of a dynamic patch automatically. Ginseng performs a series of analyses that when combined with some simple runtime support ensure that an update will not violate type-safety while guaranteeing that data is kept up-to-date. We have used Ginseng to construct and dynamically apply patches to three substantial open-source server programs---Very Secure FTP daemon, OpenSSH sshd daemon, and GNU Zebra. In total, we dynamically patched each program with three years' worth of releases. Though the programs changed substantially, the majority of updates were easy to generate. Performance experiments show that all patches could be applied in less than 5 ms, and that the overhead on application throughput due to updating support ranged from 0 to at most 32%.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133991",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Iulian",
+        "last_name": "Neamtiu",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Hicks",
+        "institution": "University of Maryland, College Park"
+      },
+      {
+        "first_name": "Gareth",
+        "last_name": "Stoyle",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Oriol",
+        "institution": "ETH Zurich"
+      }
+    ],
+    "dblp_key": "conf/pldi/NeamtiuHSO06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1134022",
+    "title": "Correctness-preserving derivation of concurrent garbage collection algorithms",
+    "abstract": "Constructing correct concurrent garbage collection algorithms is notoriously hard. Numerous such algorithms have been proposed, implemented, and deployed - and yet the relationship among them in terms of speed and precision is poorly understood, and the validation of one algorithm does not carry over to others.As programs with low latency requirements written in garbagecollected languages become part of society's mission-critical infrastructure, it is imperative that we raise the level of confidence in the correctness of the underlying system, and that we understand the trade-offs inherent in our algorithmic choice.In this paper we present correctness-preserving transformations that can be applied to an initial abstract concurrent garbage collection algorithm which is simpler, more precise, and easier to prove correct than algorithms used in practice--but also more expensive and with less concurrency. We then show how both pre-existing and new algorithms can be synthesized from the abstract algorithm by a series of our transformations. We relate the algorithms formally using a new definition of precision, and informally with respect to overhead and concurrency.This provides many insights about the nature of concurrent collection, allows the direct synthesis of new and useful algorithms, reduces the burden of proof to a single simple algorithm, and lays the groundwork for the automated synthesis of correct concurrent collectors.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1134022",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Vechev",
+        "institution": "University of Cambridge"
+      },
+      {
+        "first_name": "Eran",
+        "last_name": "Yahav",
+        "institution": ""
+      },
+      {
+        "first_name": "David F.",
+        "last_name": "Bacon",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/pldi/VechevYB06",
+    "venue": "pldi",
+    "year": 2006
+  },
+  {
+    "paper_id": "10.1145/1133981.1133989",
+    "title": "A framework for unrestricted whole-program optimization",
+    "abstract": "Procedures have long been the basic units of compilation in conventional optimization frameworks. However, procedures are typically formed to serve software engineering rather than optimization goals, arbitrarily constraining code transformations. Techniques, such as aggressive inlining and interprocedural optimization, have been developed to alleviate this problem, but, due to code growth and compile time issues, these can be applied only sparingly.This paper introduces the Procedure Boundary Elimination (PBE) compilation framework, which allows unrestricted whole-program optimization. PBE allows all intra-procedural optimizations and analyses to operate on arbitrary subgraphs of the program, regardless of the original procedure boundaries and without resorting to inlining. In order to control compilation time, PBE also introduces novel extensions of region formation and encapsulation. PBE enables targeted code specialization, which recovers the specialization benefits of inlining while keeping code growth in check. This paper shows that PBE attains better performance than inlining with half the code growth.",
+    "date": "2006-06-11",
+    "link": "https://doi.org/10.1145/1133981.1133989",
+    "conference_name": "PLDI",
+    "authors": [
+      {
+        "first_name": "Spyridon",
+        "last_name": "Triantafyllis",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Matthew J.",
+        "last_name": "Bridges",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Easwaran",
+        "last_name": "Raman",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Guilherme",
+        "last_name": "Ottoni",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "David I.",
+        "last_name": "August",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/pldi/TriantafyllisBROA06",
+    "venue": "pldi",
+    "year": 2006
+  }
+]

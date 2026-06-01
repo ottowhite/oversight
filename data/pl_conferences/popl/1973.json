@@ -1,0 +1,432 @@
+[
+  {
+    "paper_id": "10.1145/512927.512941",
+    "title": "Advice on Structuring Compilers and Proving Them Correct",
+    "abstract": "The purpose of this paper is to advise an approach (and to support that advice by discussion of an example) towards achieving a goal first announced by John McCarthy: that compilers for higher-level programming languages should be made completely trustworthy by proving their correctness. The author believes that the compiler-correctness problem can be made much less general and better-structured than the unrestricted program-correctness problem; to do so will of course entail restricting what a compiler may be.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512941",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "F. Lockwood",
+        "last_name": "Morris",
+        "institution": "Syracuse University"
+      }
+    ],
+    "dblp_key": "conf/popl/Morris73a",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512946",
+    "title": "Analysis of a Simple Algorithm for Global Flow Problems",
+    "abstract": "There is an ordering of the nodes of a flow graph G which topologically sorts the dominance relation and can be found in 0(edges) steps. This ordering is the reverse of the order in which a node is last visited while growing any depth-first spanning tree of G. Moreover, if G is reducible, then this ordering topologically sorts the dag of G. Thus, for a reducible flow graph (rfg) there is a simple algorithm to compute the dominators of each node in 0(edges) bit vector steps.The main result of this paper relates two parameters of an rfg. If G is reducible, d is the largest number of back edges found in any cycle-free path in G, and k is the length of the interval derived sequence of G, then k≥d. From this result it follows that there is a very simple bit propagation algorithm (indeed, the obvious one) which also uses the above ordering, and is at least as good as the interval algorithm for solving all known global data flow problems such as available expressions and live variables.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512946",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthew S.",
+        "last_name": "Hecht",
+        "institution": "Princeton University"
+      },
+      {
+        "first_name": "Jeffrey D.",
+        "last_name": "Ullman",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/HechtU73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512932",
+    "title": "Practical Syntactic Error Recovery",
+    "abstract": "A substantial portion of any programmer's time is spent in debugging. One of the major services of any compiler ought to be to provide as much information as possible about compile-time errors in order to minimize the time required for debugging. A good error detection and recovery scheme should maximize the number of errors detected but minimize the number of times it reports an error when there is none. These spurious error detections and their associated error messages are usually engendered by an inappropriate recovery action.In this paper we describe a recovery scheme for syntax errors which provides high quality recovery with good diagnostic information at relatively low cost. In addition, implementation of the recovery scheme can be automated - that is, the recovery routine can be created by a parser-generator. Therefore, the compiler designer need not be burdened with the difficulties of error recovery and the programming effort necessary to design and debug a myriad of ad hoc recovery routines.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512932",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Susan L.",
+        "last_name": "Graham",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Steven P.",
+        "last_name": "Rhodes",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/popl/GrahamR73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512929",
+    "title": "Strict Deterministic Versus LR(0) Parsing",
+    "abstract": "Recently strict deterministic grammars and languages have been introduced [9,10,11]. This family of languages is quite fundamental in the study of the mathematical properties of deterministic languages and in dealing with some classical families of grammars such as LR(k) and bounded right context grammars [7,8,14]. These grammars are closely related to LR(0) grammars [1,12,13,14], in fact each strict deterministic grammar is also LR(0). In the present paper, we consider the question of how to parse strict deterministic grammars. We introduce part of a more general theory called \"characteristic LR(k) parsing\". This actually produces parsers which are tuned to the characteristics of a particular family of grammars. We apply the theory to the family of strict deterministic grammars and we get parsers which are as fast as canonical LR(k) parsers but are substantially smaller. They are not necessarily minimal but we postpone any discussion of minimality to the sequel.The techniques used in the present discussion are quite general [5]. For instance, the study in [3] is similar in spirit to our technique. The optimization techniques for LR(k) parsers in [2] do not work in the case k = 0 without modification. After modifying those methods for k = 0, it can be shown that our parsers cannot be produced by those techniques. This fact has its positive aspect in that our parsers may be smaller and its negative aspect in that error detection may be delayed.The present paper is divided into the present introduction and three sections. In the remainder of this introduction, some basic definitions of strict deterministic and LR(k) parsing are given. We have tried to follow [1] as much as possible in order to minimize the amount of new material to be absorbed. The order of the results is the order needed to prove that the characteristic parser works. In Section III, we apply the theory of Section II to strict deterministic parsing. A simple example shows that the new parsers can be unboundedly smaller than the canonical LR(0) parser.The present paper is meant to be an extended abstract and no proofs are included.The rest of the introduction is concerned with notational conventions for the technical concepts needed.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512929",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Matthew M.",
+        "last_name": "Geller",
+        "institution": "University of California, Berkeley"
+      },
+      {
+        "first_name": "Michael A.",
+        "last_name": "Harrison",
+        "institution": "University of California, Berkeley"
+      }
+    ],
+    "dblp_key": "conf/popl/GellerH73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512940",
+    "title": "Mode Modules as Representations of Domains",
+    "abstract": "High level programming languages tend to free a programmer from concern about the underlying machine structure and permit him to talk about his problem domain in more direct terms. Thus, he may imagine that objects such as real numbers, character strings, and linear arrays really exist in the machine as atomic entities and he need not understand the details of how they are actually represented in the machine. Of course what distinguishes various kinds of objects are the operations that may be performed on them, so when talking about the domain of real numbers, we should include the basic arithmetic operations and constants, and for strings, operations such as length, concatenation and indexing.Unfortunately, existing languages do not permit a programmer to ignore completely questions of representation, for if his problem domain does not happen to be included already in the repertoire of domains supported by the language, the programmer must figure out a representation himself and remember it throughout his programming effort. For example, a FORTRAN programmer may know that it is not meaningful to multiply two integers that happen to represent insurance policy numbers, but he has no way of informing the compiler of this fact.Many extensible languages do provide a wide range of data types including structured types, enabling a programmer to choose a more natural representation of his external objects, but the structured data types reflect only the structure of the data, not its meaning. They still provide only one natural representation for both integers and dates, mass and speed, or planar vectors in cartesian or polar coordinates.Many domains that arise in practice have a great deal of similarity between them which one must employ in his programs. For example, the domain of length 3 vectors and the domain of length 4 vectors have the \"same\" rule of addition, that is, add componentwise, and it would be onerous to have to repeat this information for each new length vector. Thus, one needs both the ability to define brand new domains and also a method for expressing relations among them.We present here some mechanisms, collectively called Aleph-1, which allow the expansion of a programming language's repertoire of internal domains. Many of the ideas embodied in Aleph-1 have been described previously in the literature, and we acknowledge their influence on our thinking, in particular the work of Balzer [1] and Reynolds [5] suggesting the utility of separating out the abstract behavior of an object from its representation, the languages Pascal [10] and Simula-67 [3] which associate functions with data types and types with alternate representations, modular generic functions in Basel [2], Standish's wide variety of structured data [6], and the systematic (though not extensible) treatment of coercion in Algol-68 [8]. Our domain mechanisms bear certain strong similarities to those developed by Morris for the purposes of protection [4].",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512940",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Alice E.",
+        "last_name": "Fischer",
+        "institution": "Boston Sports & Shoulder Center"
+      },
+      {
+        "first_name": "Michael J.",
+        "last_name": "Fischer",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/FischerF73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512934",
+    "title": "Programming Language Semantics and Closed Applicative Languages",
+    "abstract": "This paper proposes axioms to define a sequence of language-classes; the most general is that of \"programming language\", the most restricted has some simple and attractive properties. Here \"language\" is used in its traditional sense as referring to a set of interpreted expressions. We are concerned with the syntax of an expression only to the degree needed to relate its structure to its \"meaning\". A clear distinction is drawn between a \"language\" and the many possible \"realizations\" of that language.This introduction comprises a survey and opinionated discussion of the contents of the paper, therefore the reader who wishes to get on with the technical exposition can skip to the next section.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512934",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "John",
+        "last_name": "Backus",
+        "institution": "IBM (United States)"
+      }
+    ],
+    "dblp_key": "conf/popl/Backus73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512948",
+    "title": "Large Scale File Processing - Pogol",
+    "abstract": "Article Free Access Share on Large scale file processing: POGOL Author: Gloria J. Lambert Dept. of Defense Dept. of DefenseView Profile Authors Info & Claims POPL '73: Proceedings of the 1st annual ACM SIGACT-SIGPLAN symposium on Principles of programming languagesOctober 1973Pages 226–234https://doi.org/10.1145/512927.512948Published:01 October 1973Publication History 0citation377DownloadsMetricsTotal Citations0Total Downloads377Last 12 Months60Last 6 weeks2 Get Citation AlertsNew Citation Alert added!This alert has been successfully added and will be sent to:You will be notified whenever a record that you have chosen has been cited.To manage your alert preferences, click on the button below.Manage my AlertsNew Citation Alert!Please log in to your account Save to BinderSave to BinderCreate a New BinderNameCancelCreateExport CitationPublisher SiteeReaderPDF",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512948",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gloria J.",
+        "last_name": "Lambert",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Lambert73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512949",
+    "title": "On the Decision Problems of Program Schemas with Commutative and Invertable Functions",
+    "abstract": "We consider partially interpreted monadic schemas in which some functions are specified to commute, or some function is specified to be invertible. The decision problems considered are those of halting, divergence, equivalence, inclusion and isomorphism. It is shown that with either commutativity or invertibility alone, all these decision problems are solvable, whereas with both commutativity and invertibility, all become unsolvable. These results are also related to the decision problems for finite automata on multi-dimensional infinite tapes.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512949",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Ashok K.",
+        "last_name": "Chandra",
+        "institution": "Stanford University"
+      }
+    ],
+    "dblp_key": "conf/popl/Chandra73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512928",
+    "title": "Deterministic Parsing of Ambiguous Grammars",
+    "abstract": "We consider methods of describing the syntax of programming languages in ways that are more flexible and natural than conventional BNF descriptions. These methods involve the use of ambiguous context-free grammars together with rules to resolve syntactic ambiguities. We show how efficient LL and LR parsers can be constructed directly from certain classes of these specifications.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512928",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Alfred V.",
+        "last_name": "Aho",
+        "institution": ""
+      },
+      {
+        "first_name": "S. C.",
+        "last_name": "Johnson",
+        "institution": ""
+      },
+      {
+        "first_name": "Jeffrey D.",
+        "last_name": "Ullman",
+        "institution": "Princeton University"
+      }
+    ],
+    "dblp_key": "conf/popl/AhoJU73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512945",
+    "title": "A Unified Approach to Global Program Optimization",
+    "abstract": "A technique is presented for global analysis of program structure in order to perform compile time optimization of object code generated for expressions. The global expression optimization presented includes constant propagation, common subexpression elimination, elimination of redundant register load operations, and live expression analysis. A general purpose program flow analysis algorithm is developed which depends upon the existence of an \"optimizing function.\" The algorithm is defined formally using a directed graph model of program flow structure, and is shown to be correct. Several optimizing functions are defined which, when used in conjunction with the flow analysis algorithm, provide the various forms of code optimization. The flow analysis algorithm is sufficiently general that additional functions can easily be defined for other forms of global code optimization.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512945",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Gary A.",
+        "last_name": "Kildall",
+        "institution": "Naval Postgraduate School"
+      }
+    ],
+    "dblp_key": "conf/popl/Kildall73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512935",
+    "title": "On the Definitional Method of Standard PL/1",
+    "abstract": "In order to define the semantics of PL/I in a form which is both precise and readable, a method of definition has been developed which employs an abstract machine operating on tree-structured data. The classes of trees involved are defined by formal grammars, while the algorithms governing the behaviour of the machine are expressed semi-formally in prose. This algorithmic metalanguage is itself intended to have largely intuitive semantics, but these are made more precise by an indication of how they could be supported at a lower level of detail within the abstract machine.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512935",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "David",
+        "last_name": "Beech",
+        "institution": "IBM (United Kingdom)"
+      }
+    ],
+    "dblp_key": "conf/popl/Beech73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512942",
+    "title": "Actor Induction and Meta-Evaluation",
+    "abstract": "The PLANNER project is continuing research in natural and effective means for embedding knowledge in procedures. In the course of this work we have succeeded in unifying the formalism around one fundamental concept: the ACTOR. Intuitively, an ACTOR is an active agent which plays a role on cue according to a script. We use the ACTOR metaphor to emphasize the inseparability of control and data flow in our model. Data structures, functions, semaphores, monitors, ports, descriptions, Quillian nets, logical formulae, numbers, identifiers, demons, processes, contexts, and data bases can all be shown to be special cases of actors. All of the above are objects with certain useful modes of behavior. Our formalism shows how all of these modes of behavior can be defined in terms of one kind of behavior: sending messages to actors. An actor is always invoked uniformly in exactly the same way regardless of whether it behaves as a recursive function, data structure, or process.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512942",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Carl",
+        "last_name": "Hewitt",
+        "institution": ""
+      },
+      {
+        "first_name": "Peter",
+        "last_name": "Bishop",
+        "institution": ""
+      },
+      {
+        "first_name": "Irene",
+        "last_name": "Greif",
+        "institution": ""
+      },
+      {
+        "first_name": "Brian Cantwell",
+        "last_name": "Smith",
+        "institution": ""
+      },
+      {
+        "first_name": "Todd",
+        "last_name": "Matson",
+        "institution": ""
+      },
+      {
+        "first_name": "Richard de",
+        "last_name": "Steiger",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/HewittBGSMS73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512944",
+    "title": "Procedure Linkage Optimization",
+    "abstract": "This paper discusses the desirability of procedure linkage optimization and sketches a general theory of interpretive semantics which is motivated by technical problems in specifying and validating program transformations that optimize procedure linkages. One particular transformation is treated in detail.Recursive ALGOL 60 procedures sometimes pass parameters by name in such a way that the general thunk mechanism is unnecessary and inefficient. We present an optimization which detects this kind of call-by-name and implements it thunklessly. We prove that the transformation preserves semantics and we discuss the effect on running time and memory management.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512944",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "A.",
+        "last_name": "Maggiolo‐Schettini",
+        "institution": ""
+      },
+      {
+        "first_name": "Barry K.",
+        "last_name": "Rosen",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      },
+      {
+        "first_name": "H. Raymond",
+        "last_name": "Strong",
+        "institution": "IBM Research - Thomas J. Watson Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/Maggiolo-SchettiniRS73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512931",
+    "title": "Top Down Operator Precedence",
+    "abstract": "Article Free Access Share on Top down operator precedence Author: Vaughan R. Pratt Massachusetts Institute of Technology Massachusetts Institute of TechnologyView Profile Authors Info & Claims POPL '73: Proceedings of the 1st annual ACM SIGACT-SIGPLAN symposium on Principles of programming languagesOctober 1973 Pages 41–51https://doi.org/10.1145/512927.512931Online:01 October 1973Publication History 25citation3,168DownloadsMetricsTotal Citations25Total Downloads3,168Last 12 Months170Last 6 weeks70 Get Citation AlertsNew Citation Alert added!This alert has been successfully added and will be sent to:You will be notified whenever a record that you have chosen has been cited.To manage your alert preferences, click on the button below.Manage my AlertsNew Citation Alert!Please log in to your account Save to BinderSave to BinderCreate a New BinderNameCancelCreateExport CitationPublisher SiteeReaderPDF",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512931",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Vaughan",
+        "last_name": "Pratt",
+        "institution": "Massachusetts Institute of Technology"
+      }
+    ],
+    "dblp_key": "conf/popl/Pratt73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512930",
+    "title": "Labelled Precedence Parsing",
+    "abstract": "Precendece techniques have been widely used in the past in the construction of parsers. However, the restrictions imposed by them on the grammars were hard to meet. Thus, alteration of the rules of the grammar was necessary in order to make them acceptable to the parser. We have shown that, by keeping track of the possible set of rules that could be applied at any one time, one can enlarge the class of grammars considered. The possible set of rules to be considered is obtained directly from the information given by a labelled set of precedence relations. Thus, the parsers are easily obtained. Compared to the precedence parsers, this new method gives a considerable increase in the class of parsable grammars, as well as an improvement in error detection. An interesting consequence of this approach is a new decomposition technique for LR parsers.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512930",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mario",
+        "last_name": "Schkolnick",
+        "institution": "Carnegie Mellon University"
+      }
+    ],
+    "dblp_key": "conf/popl/Schkolnick73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512943",
+    "title": "Reasoning About Programs",
+    "abstract": "This paper describes a theorem prover that embodies knowledge about programming constructs, such as numbers, arrays, lists, and expressions. The program can reason about these concepts and is used as part of a program verification system that uses the Floyd-Naur explication of program semantics. It is implemented in the QA4 language; the QA4 system allows many bits of strategic knowledge, each expressed as a small program, to be coordinated so that a program stands forward when it is relevant to the problem at hand. The language allows clear, concise representation of this sort of knowledge. The QA4 system also has special facilities for dealing with commutative functions, ordering relations, and equivalence relations; these features are heavily used in this deductive system. The program interrogates the user and asks his advice in the course of a proof. Verifications have been found for Hoare's FIND program, a real-number division algorithm, and some sort programs, as well as for many simpler algorithms. Additional theorems have been proved about a pattern matcher and a version of Robinson's unification algorithm.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512943",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Richard",
+        "last_name": "Waldinger",
+        "institution": "Menlo School"
+      },
+      {
+        "first_name": "Karl",
+        "last_name": "Levitt",
+        "institution": "Menlo School"
+      }
+    ],
+    "dblp_key": "conf/popl/WaldingerL73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512947",
+    "title": "Transitions in Extendible Arrays",
+    "abstract": "Arrays are among the best understood and most widely used data structures. Yet even now, there are no satisfactory techniques for handling algorithms involving extendible arrays (where, e.g., rows and/or columns can be added dynamically). In this paper, the problem of allocating storage for extendible arrays is examined in the light of our earlier work on data graphs and addressing schemes. A formal analog of the assertion that simplicity of array extension precludes simplicity of transition (marching along rows/columns) is proved.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512947",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Arnold L.",
+        "last_name": "Rosenberg",
+        "institution": ""
+      }
+    ],
+    "dblp_key": "conf/popl/Rosenberg73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512936",
+    "title": "Mathematical Semantics of Snobol 4",
+    "abstract": "This paper analyzes the semantics of the programming language SNOBOL4, following the mathematical approach proposed by D. Scott and C. Strachey. The study aims at clarifying a rather unusual semantic structure, and at demonstrating that the mathematical approach can provide a natural and usable formal specification of a practical programming language.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512936",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "R. D.",
+        "last_name": "Tennent",
+        "institution": "Queen's University"
+      }
+    ],
+    "dblp_key": "conf/popl/Tennent73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512938",
+    "title": "Types are Not Sets",
+    "abstract": "The title is not a statement of fact, of course, but an opinion about how language designers should think about types. There has been a natural tendency to look to mathematics for a consistent, precise notion of what types are. The point of view there is extensional: a type is a subset of the universe of values. While this approach may have served its purpose quite adequately in mathematics, defining programming language types in this way ignores some vital ideas. Some interesting developments following the extensional approach are the ALGOL-68 type system [vW], Scott's theory [S], and Reynolds' system [R]. While each of these lend valuable insight to programming languages, I feel they miss an important aspect of types.Rather than worry about what types are I shall focus on the role of type checking. Type checking seems to serve two distinct purposes: authentication and secrecy. Both are useful when a programmer undertakes to implement a class of abstract objects to be used by many other programmers. He usually proceeds by choosing a representation for the objects in terms of other objects and then writes the required operations to manipulate them.",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512938",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "James H.",
+        "last_name": "Morris",
+        "institution": "Palo Alto Research Center"
+      }
+    ],
+    "dblp_key": "conf/popl/Morris73",
+    "venue": "popl",
+    "year": 1973
+  },
+  {
+    "paper_id": "10.1145/512927.512933",
+    "title": "A Parallel Approach to Compilation",
+    "abstract": "Article Free Access Share on A parallel approach to compilation Author: Mary Zosel Lawrence Livermore Laboratory Lawrence Livermore LaboratoryView Profile Authors Info & Claims POPL '73: Proceedings of the 1st annual ACM SIGACT-SIGPLAN symposium on Principles of programming languagesOctober 1973 Pages 59–70https://doi.org/10.1145/512927.512933Online:01 October 1973Publication History 11citation237DownloadsMetricsTotal Citations11Total Downloads237Last 12 Months5Last 6 weeks1 Get Citation AlertsNew Citation Alert added!This alert has been successfully added and will be sent to:You will be notified whenever a record that you have chosen has been cited.To manage your alert preferences, click on the button below.Manage my AlertsNew Citation Alert!Please log in to your account Save to BinderSave to BinderCreate a New BinderNameCancelCreateExport CitationPublisher SiteeReaderPDF",
+    "date": "1973-01-01",
+    "link": "https://doi.org/10.1145/512927.512933",
+    "conference_name": "POPL",
+    "authors": [
+      {
+        "first_name": "Mary",
+        "last_name": "Zosel",
+        "institution": "Laboratory for Research on Enterprise and Decisions"
+      }
+    ],
+    "dblp_key": "conf/popl/Zosel73",
+    "venue": "popl",
+    "year": 1973
+  }
+]
